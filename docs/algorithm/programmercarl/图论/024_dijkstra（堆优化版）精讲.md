@@ -55,14 +55,14 @@
 
 数据范围：
 
-1 <= N <= 500;
-1 <= M <= 5000;
+1 &lt;= N &lt;= 500;
+1 &lt;= M &lt;= 5000;
 
 ## 思路
 
 **[《代码随想录》算法视频公开课](https://programmercarl.com/about/gongkaike.html)：[图论：最短路算法之Dijkstra（堆优化版）| 迪杰斯特拉算法](https://www.bilibili.com/video/BV1HigNz8Emt/),相信结合视频再看本篇题解，更有助于大家对本题的理解**。
 
-> 本篇我们来讲解 堆优化版dijkstra，看本篇之前，一定要先看 我讲解的 朴素版dijkstra，否则本篇会有部分内容看不懂。
+&gt; 本篇我们来讲解 堆优化版dijkstra，看本篇之前，一定要先看 我讲解的 朴素版dijkstra，否则本篇会有部分内容看不懂。
 
 在上一篇中，我们讲解了朴素版的dijkstra，该解法的时间复杂度为 O(n^2)，可以看出时间复杂度 只和 n （节点数量）有关系。
 
@@ -219,7 +219,7 @@ vector<list<int>> grid(n + 1);
 
 大家发现图中的边没有权值，而本题中 我们的边是有权值的，权值怎么表示？在哪里表示？
 
-所以 在`vector<list<int>> grid(n + 1);` 中 就不能使用int了，而是需要一个键值对 来存两个数字，一个数表示节点，一个数表示 指向该节点的这条边的权值。
+所以 在`vector&lt;list&lt;int&gt;&gt; grid(n + 1);` 中 就不能使用int了，而是需要一个键值对 来存两个数字，一个数表示节点，一个数表示 指向该节点的这条边的权值。
 
 那么 代码可以改成这样： （pair 为键值对，可以存放两个int）
 
@@ -241,9 +241,9 @@ vector<list<pair<int,int>>> grid(n + 1);
 
 这样 我们就把图中权值表示出来了。
 
-但是在代码中 使用 `pair<int, int>` 很容易让我们搞混了，第一个int 表示什么，第二个int表示什么，导致代码可读性很差，或者说别人看你的代码看不懂。
+但是在代码中 使用 `pair&lt;int, int&gt;` 很容易让我们搞混了，第一个int 表示什么，第二个int表示什么，导致代码可读性很差，或者说别人看你的代码看不懂。
 
-那么 可以 定一个类 来取代 `pair<int, int>`
+那么 可以 定一个类 来取代 `pair&lt;int, int&gt;`
 
 类（或者说是结构体）定义如下：
 
@@ -303,7 +303,7 @@ public:
 priority_queue<pair<int, int>, vector<pair<int, int>>, mycomparison> pq;
 ```
 
-（`pair<int, int>`中 第二个int 为什么要存 源点到该节点的权值，因为 这个小顶堆需要按照权值来排序）
+（`pair&lt;int, int&gt;`中 第二个int 为什么要存 源点到该节点的权值，因为 这个小顶堆需要按照权值来排序）
 
 有了小顶堆自动对边的权值排序，那我们只需要直接从 堆里取堆顶元素（小顶堆中，最小的权值在上面），就可以取到离源点最近的节点了 （未访问过的节点，不会加到堆里进行排序）
 
@@ -321,7 +321,7 @@ pair<int, int> cur = pq.top(); pq.pop();
 visited[cur.first] = true;
 ```
 
-（`cur.first` 是指取 `pair<int, int>` 里的第一个int，即节点编号 ）
+（`cur.first` 是指取 `pair&lt;int, int&gt;` 里的第一个int，即节点编号 ）
 
 第三步（更新非访问节点到源点的距离），这里的思路 也是 和朴素dijkstra一样的。
 
@@ -361,7 +361,7 @@ for (Edge edge : grid[cur.first])
 
 （如果不知道 Edge 是什么，看上面「图的存储」中邻接表的讲解）
 
-`cur.first` 就是cur节点编号， 参考上面pair的定义： pair<节点编号，源点到该节点的权值>
+`cur.first` 就是cur节点编号， 参考上面pair的定义： pair&lt;节点编号，源点到该节点的权值&gt;
 
 接下来就是更新 非访问节点到源点的距离，代码实现和 朴素dijkstra 是一样的，代码如下：
 

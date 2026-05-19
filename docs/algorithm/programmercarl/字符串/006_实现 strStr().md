@@ -1,4 +1,4 @@
-> 在一个串中查找是否出现过另一个串，这是KMP的看家本领。
+&gt; 在一个串中查找是否出现过另一个串，这是KMP的看家本领。
 
 # 28. 实现 strStr()
 
@@ -886,7 +886,7 @@ func strStr(haystack string, needle string) int {
 
 ### JavaScript:
 
-> 前缀表统一减一
+&gt; 前缀表统一减一
 
 ```javascript
 /**
@@ -929,7 +929,7 @@ var strStr = function (haystack, needle) {
 };
 ```
 
-> 前缀表统一不减一
+&gt; 前缀表统一不减一
 
 ```javascript
 /**
@@ -974,7 +974,7 @@ var strStr = function (haystack, needle) {
 
 ### TypeScript:
 
-> 前缀表统一减一
+&gt; 前缀表统一减一
 
 ```typescript
 function strStr(haystack: string, needle: string): number {
@@ -1011,7 +1011,7 @@ function strStr(haystack: string, needle: string): number {
 };
 ```
 
-> 前缀表不减一
+&gt; 前缀表不减一
 
 ```typescript
 // 不减一版本
@@ -1051,7 +1051,7 @@ function strStr(haystack: string, needle: string): number {
 
 ### Swift:
 
-> 前缀表统一减一
+&gt; 前缀表统一减一
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1101,7 +1101,7 @@ func getNext(_ next: inout [Int], needle: [Character]) {
 }
 ```
 
-> 前缀表右移
+&gt; 前缀表右移
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1156,7 +1156,7 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
     }
 ```
 
-> 前缀表统一不减一
+&gt; 前缀表统一不减一
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1209,7 +1209,7 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
 
 ### PHP：
 
-> 前缀表统一减一
+&gt; 前缀表统一减一
 
 ```php
 function strStr($haystack, $needle) {
@@ -1247,7 +1247,7 @@ function getNext(&$next, $s){
 }
 ```
 
-> 前缀表统一不减一
+&gt; 前缀表统一不减一
 
 ```php
 function strStr($haystack, $needle) {
@@ -1287,7 +1287,7 @@ function getNext(&$next, $s){
 
 ### Rust:
 
-> 前缀表统一不减一
+&gt; 前缀表统一不减一
 
 ```rust
 impl Solution {
@@ -1328,7 +1328,7 @@ impl Solution {
 }
 ```
 
-> 前缀表统一减一
+&gt; 前缀表统一减一
 
 ```rust
 impl Solution {
@@ -1372,7 +1372,7 @@ impl Solution {
 }
 ```
 
-> 前缀表统一不减一
+&gt; 前缀表统一不减一
 
 ```csharp
 public int StrStr(string haystack, string needle)
@@ -1441,7 +1441,7 @@ public int[] GetNext(string needle)
 
 ### C:
 
-> 前缀表统一右移和减一
+&gt; 前缀表统一右移和减一
 
 ```c
 int *build_next(char* needle, int len) {

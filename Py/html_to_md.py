@@ -363,6 +363,10 @@ def prepare_output_dir(output_dir: Path, preserve_files: Iterable[Path] | None =
 
 def normalize_whitespace(text: str) -> str:
     text = html.unescape(text)
+    return normalize_rendered_markdown(text)
+
+
+def normalize_rendered_markdown(text: str) -> str:
     text = text.replace("\u00a0", " ")
     text = re.sub(r"[\t\r\f\v]+", " ", text)
     text = re.sub(r"[ ]{2,}", " ", text)
@@ -370,9 +374,22 @@ def normalize_whitespace(text: str) -> str:
     return text.strip()
 
 
+def escape_mdx_text(text: str) -> str:
+    return (
+        text.replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace("{", "&#123;")
+        .replace("}", "&#125;")
+    )
+
+
+def normalize_mdx_text(text: str) -> str:
+    return escape_mdx_text(normalize_whitespace(text))
+
+
 def sanitize_filename(value: str, fallback: str) -> str:
     value = normalize_whitespace(value) or fallback
-    value = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "-", value)
+    value = re.sub(r'[<>:"/\\|?*!\x00-\x1f]', "-", value)
     value = value.strip(" .")
     return value or fallback
 
@@ -657,7 +674,7 @@ def gather_blocks(container: Tag, preserve_links: bool, base_url: str | None) ->
 
     for child in container.children:
         if isinstance(child, NavigableString):
-            text = normalize_whitespace(str(child))
+            text = normalize_mdx_text(str(child))
             if text:
                 blocks.append(text)
             continue
@@ -717,7 +734,7 @@ def should_skip_promotional_block(node: Tag, base_url: str | None) -> bool:
 
 def render_node(node: Tag | NavigableString, preserve_links: bool, base_url: str | None) -> str:
     if isinstance(node, NavigableString):
-        return str(node)
+        return normalize_mdx_text(str(node))
 
     if not isinstance(node, Tag):
         return ""
@@ -816,7 +833,7 @@ def render_inline_children(node: Tag, preserve_links: bool, base_url: str | None
     pieces: list[str] = []
     for child in node.children:
         if isinstance(child, NavigableString):
-            pieces.append(str(child))
+            pieces.append(normalize_mdx_text(str(child)))
             continue
 
         class_text = " ".join(child.get("class") or []).lower()
@@ -829,7 +846,7 @@ def render_inline_children(node: Tag, preserve_links: bool, base_url: str | None
         if child.name == "span" and ("icon" in class_text or "outbound" in class_text):
             continue
         pieces.append(render_node(child, preserve_links, base_url))
-    return normalize_whitespace("".join(pieces))
+    return normalize_rendered_markdown("".join(pieces))
 
 
 def render_inline_code(text: str) -> str:
@@ -932,7 +949,7 @@ def render_list_item(node: Tag, preserve_links: bool, base_url: str | None, inde
     nested_lists: list[Tag] = []
     for child in node.children:
         if isinstance(child, NavigableString):
-            parts.append(str(child))
+            parts.append(normalize_mdx_text(str(child)))
             continue
         if child.name in {"ul", "ol"}:
             nested_lists.append(child)
@@ -990,10 +1007,10 @@ def cell_text(cell: Tag, preserve_links: bool, base_url: str | None) -> str:
     pieces: list[str] = []
     for child in cell.children:
         if isinstance(child, NavigableString):
-            pieces.append(str(child))
+            pieces.append(normalize_mdx_text(str(child)))
         else:
             pieces.append(render_node(child, preserve_links, base_url))
-    text = normalize_whitespace("".join(pieces))
+    text = normalize_rendered_markdown("".join(pieces))
     text = re.sub(r"\n+", " ", text)
     return text
 
