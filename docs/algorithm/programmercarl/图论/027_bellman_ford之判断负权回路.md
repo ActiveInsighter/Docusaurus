@@ -54,7 +54,7 @@ circle
 
 **[《代码随想录》算法视频公开课](https://programmercarl.com/about/gongkaike.html)：[图论：学透最短路算法之bellman_ford算法判断负权回路 | 贝尔曼-福特算法](https://www.bilibili.com/video/BV1EitczREi5),相信结合视频再看本篇题解，更有助于大家对本题的理解**。
 
-本题是 [kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html) 延伸题目。
+本题是[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)延伸题目。
 
 本题是要我们判断 负权回路，也就是图中出现环且环上的边总权值为负数。
 
@@ -64,7 +64,7 @@ circle
 
 接下来我们来看 如何使用 bellman_ford 算法来判断 负权回路。
 
-在 [kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html) 中 我们讲了 bellman_ford 算法的核心就是一句话：对 所有边 进行 n-1 次松弛。 同时文中的 【拓展】部分， 我们也讲了 松弛n次以上 会怎么样？
+在[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)中 我们讲了 bellman_ford 算法的核心就是一句话：对 所有边 进行 n-1 次松弛。 同时文中的 【拓展】部分， 我们也讲了 松弛n次以上 会怎么样？
 
 在没有负权回路的图中，松弛 n 次以上 ，结果不会有变化。
 
@@ -98,9 +98,9 @@ circle
 
 而本题有负权回路的情况下，一直都会有更短的最短路，所以 松弛 第n次，minDist数组 也会发生改变。
 
-那么解决本题的 核心思路，就是在 [kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html) 的基础上，再多松弛一次，看minDist数组 是否发生变化。
+那么解决本题的 核心思路，就是在[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)的基础上，再多松弛一次，看minDist数组 是否发生变化。
 
-代码和 [kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html) 基本是一样的，如下：（关键地方已注释）
+代码和[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)基本是一样的，如下：（关键地方已注释）
 
 ```cpp
 #include <iostream>
@@ -151,8 +151,8 @@ int main() {
 }
 ```
 
-- 时间复杂度： O(N * E)  , N为节点数量，E为图中边的数量
-- 空间复杂度： O(N)  ，即 minDist 数组所开辟的空间
+- 时间复杂度： O(N * E) , N为节点数量，E为图中边的数量
+- 空间复杂度： O(N) ，即 minDist 数组所开辟的空间
 
 ## 拓展
 
@@ -162,7 +162,7 @@ int main() {
 
 如果使用 SPFA 那么节点都是进队列的，那么节点进入队列几次后 足够判断该图是否有负权回路呢？
 
-在 [0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93I-SPFA) 中，我们讲过 在极端情况下，即：所有节点都与其他节点相连，每个节点的入度为 n-1 （n为节点数量），所以每个节点最多加入 n-1 次队列。
+在[0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93I-SPFA)中，我们讲过 在极端情况下，即：所有节点都与其他节点相连，每个节点的入度为 n-1 （n为节点数量），所以每个节点最多加入 n-1 次队列。
 
 那么如果节点加入队列的次数 超过了 n-1次 ，那么该图就一定有负权回路。
 

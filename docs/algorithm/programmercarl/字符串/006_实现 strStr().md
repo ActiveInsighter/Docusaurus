@@ -1,4 +1,4 @@
-&gt; 在一个串中查找是否出现过另一个串，这是KMP的看家本领。
+> 在一个串中查找是否出现过另一个串，这是KMP的看家本领。
 
 # 28. 实现 strStr()
 
@@ -92,7 +92,7 @@ next数组就是一个前缀表（prefix table）。
 
 ![KMP详解1](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B21.gif)
 
-动画里，我特意把 子串`aa` 标记上了，这是有原因的，大家先注意一下，后面还会说到。
+动画里，我特意把 子串`aa`标记上了，这是有原因的，大家先注意一下，后面还会说到。
 
 可以看出，文本串中第六个字符b 和 模式串的第六个字符f，不匹配了。如果暴力匹配，发现不匹配，此时就要从头匹配了。
 
@@ -129,11 +129,9 @@ next数组就是一个前缀表（prefix table）。
 
 这就是前缀表，那为啥就能告诉我们 上次匹配的位置，并跳过去呢？
 
-回顾一下，刚刚匹配的过程在下标5的地方遇到不匹配，模式串是指向f，如图：
-![KMP精讲1](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B21.png)
+回顾一下，刚刚匹配的过程在下标5的地方遇到不匹配，模式串是指向f，如图：![KMP精讲1](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B21.png)
 
-然后就找到了下标2，指向b，继续匹配：如图：
-![KMP精讲2](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B22.png)
+然后就找到了下标2，指向b，继续匹配：如图：![KMP精讲2](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B22.png)
 
 以下这句话，对于理解为什么使用前缀表可以告诉我们匹配失败之后跳到哪里重新匹配 非常重要！
 
@@ -166,8 +164,7 @@ next数组就是一个前缀表（prefix table）。
 长度为前5个字符的子串`aabaa`，最长相同前后缀的长度为2。
 长度为前6个字符的子串`aabaaf`，最长相同前后缀的长度为0。
 
-那么把求得的最长相同前后缀的长度就是对应前缀表的元素，如图：
-![KMP精讲8](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B28.png)
+那么把求得的最长相同前后缀的长度就是对应前缀表的元素，如图：![KMP精讲8](https://file1.kamacoder.com/i/algo/KMP%E7%B2%BE%E8%AE%B28.png)
 
 可以看出模式串与前缀表对应位置的数字表示的就是：**下标i之前（包括i）的字符串中，有多大长度的相同前缀后缀。**
 
@@ -227,7 +224,7 @@ next数组就可以是前缀表，但是很多实现都是把前缀表统一减�
 void getNext(int* next, const string& s)
 ```
 
-**构造next数组其实就是计算模式串s，前缀表的过程。** 主要有如下三步：
+**构造next数组其实就是计算模式串s，前缀表的过程。**主要有如下三步：
 
 1. 初始化
 2. 处理前后缀不相同的情况
@@ -321,7 +318,7 @@ void getNext(int* next, const string& s){
 
 定义两个下标j 指向模式串起始位置，i指向文本串起始位置。
 
-那么j初始值依然为-1，为什么呢？ **依然因为next数组里记录的起始位置为-1。**
+那么j初始值依然为-1，为什么呢？**依然因为next数组里记录的起始位置为-1。**
 
 i就从0开始，遍历文本串，代码如下：
 
@@ -886,7 +883,7 @@ func strStr(haystack string, needle string) int {
 
 ### JavaScript:
 
-&gt; 前缀表统一减一
+> 前缀表统一减一
 
 ```javascript
 /**
@@ -929,7 +926,7 @@ var strStr = function (haystack, needle) {
 };
 ```
 
-&gt; 前缀表统一不减一
+> 前缀表统一不减一
 
 ```javascript
 /**
@@ -974,7 +971,7 @@ var strStr = function (haystack, needle) {
 
 ### TypeScript:
 
-&gt; 前缀表统一减一
+> 前缀表统一减一
 
 ```typescript
 function strStr(haystack: string, needle: string): number {
@@ -1011,7 +1008,7 @@ function strStr(haystack: string, needle: string): number {
 };
 ```
 
-&gt; 前缀表不减一
+> 前缀表不减一
 
 ```typescript
 // 不减一版本
@@ -1051,7 +1048,7 @@ function strStr(haystack: string, needle: string): number {
 
 ### Swift:
 
-&gt; 前缀表统一减一
+> 前缀表统一减一
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1101,7 +1098,7 @@ func getNext(_ next: inout [Int], needle: [Character]) {
 }
 ```
 
-&gt; 前缀表右移
+> 前缀表右移
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1156,7 +1153,7 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
     }
 ```
 
-&gt; 前缀表统一不减一
+> 前缀表统一不减一
 
 ```swift
 func strStr(_ haystack: String, _ needle: String) -> Int {
@@ -1209,7 +1206,7 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
 
 ### PHP：
 
-&gt; 前缀表统一减一
+> 前缀表统一减一
 
 ```php
 function strStr($haystack, $needle) {
@@ -1247,7 +1244,7 @@ function getNext(&$next, $s){
 }
 ```
 
-&gt; 前缀表统一不减一
+> 前缀表统一不减一
 
 ```php
 function strStr($haystack, $needle) {
@@ -1287,7 +1284,7 @@ function getNext(&$next, $s){
 
 ### Rust:
 
-&gt; 前缀表统一不减一
+> 前缀表统一不减一
 
 ```rust
 impl Solution {
@@ -1328,7 +1325,7 @@ impl Solution {
 }
 ```
 
-&gt; 前缀表统一减一
+> 前缀表统一减一
 
 ```rust
 impl Solution {
@@ -1372,7 +1369,7 @@ impl Solution {
 }
 ```
 
-&gt; 前缀表统一不减一
+> 前缀表统一不减一
 
 ```csharp
 public int StrStr(string haystack, string needle)
@@ -1441,7 +1438,7 @@ public int[] GetNext(string needle)
 
 ### C:
 
-&gt; 前缀表统一右移和减一
+> 前缀表统一右移和减一
 
 ```c
 int *build_next(char* needle, int len) {
