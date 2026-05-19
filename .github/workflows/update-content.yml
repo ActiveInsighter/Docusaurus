@@ -1,0 +1,68 @@
+name: Update generated docs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 20 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "Py/**"
+      - ".github/workflows/update-content.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-generated-docs-main
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Py/requirements.txt
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r Py/requirements.txt
+
+      - name: Install Chromium for Playwright
+        run: python -m playwright install --with-deps chromium
+
+      - name: Fetch rendered HTML
+        run: python Py/fetch.py --targets-file Py/URL.txt --output-dir HTML --clean-stale --concurrency 5
+
+      - name: Convert HTML to Docusaurus docs
+        run: python Py/html_to_md.py --input-dir HTML --output-dir docs/algorithm/programmercarl --targets-file Py/URL.txt --jobs 4
+
+      - name: Show docs changes
+        run: git status --short -- docs/algorithm/programmercarl
+
+      - name: Commit generated docs
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain -- docs/algorithm/programmercarl)" ]; then
+            echo "No generated docs changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/algorithm/programmercarl
+          git commit -m "docs: update generated algorithm notes"
+          git push origin HEAD:main
