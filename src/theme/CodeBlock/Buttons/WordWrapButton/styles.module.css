@@ -1,0 +1,21 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.wordWrapButtonIcon {
+  width: 1.08rem;
+  height: 1.08rem;
+}
+
+.wordWrapButton {
+  flex: 0 0 auto;
+}
+
+.wordWrapButtonEnabled {
+  border: 0;
+  background: var(--md-code-button-active-bg);
+  color: var(--md-code-button-hover-fg);
+}

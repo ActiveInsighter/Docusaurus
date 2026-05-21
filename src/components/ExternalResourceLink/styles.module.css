@@ -1,0 +1,115 @@
+.link {
+  position: relative;
+  color: var(--ifm-link-color);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.16s ease;
+  word-break: break-word;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--ifm-link-hover-color);
+  text-decoration: none;
+}
+
+.label {
+  color: inherit;
+}
+
+.metadataCard {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  display: grid;
+  width: min(28rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  gap: 0.42rem;
+  padding: 0.82rem 0.92rem;
+  border: 1px solid var(--md-border);
+  border-radius: 10px;
+  background: var(--md-surface-elevated);
+  box-shadow: var(--md-shadow);
+  color: var(--ifm-color-content);
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.45;
+  opacity: 0;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  text-align: left;
+  transform: translateY(0.24rem);
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease,
+    visibility 0.14s ease;
+  visibility: hidden;
+  word-break: break-word;
+}
+
+.metadataCard::before {
+  position: absolute;
+  top: -0.38rem;
+  left: 1rem;
+  width: 0.68rem;
+  height: 0.68rem;
+  border-top: 1px solid var(--md-border);
+  border-left: 1px solid var(--md-border);
+  background: var(--md-surface-elevated);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.link:hover .metadataCard,
+.link:focus-visible .metadataCard {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.metadataHost {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.metadataTitle,
+.metadataDescription {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.metadataTitle {
+  color: var(--ifm-color-content);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-line-clamp: 2;
+}
+
+.metadataDescription {
+  color: var(--ifm-color-content-secondary);
+  -webkit-line-clamp: 2;
+}
+
+@media (max-width: 640px) {
+  .metadataCard {
+    position: fixed;
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+  }
+
+  .metadataCard::before {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+.buttonGroup {
+  display: inline-flex;
+  height: 2.05rem;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.toolbarButton {
+  display: inline-grid;
+  width: 2.05rem;
+  height: 2.05rem;
+  border: 0;
+  border-radius: 999rem;
+  background: var(--md-code-button-bg);
+  color: var(--md-code-button-fg);
+  line-height: 0;
+  opacity: 1 !important;
+  padding: 0;
+  place-items: center;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.toolbarButton:hover,
+.toolbarButton:focus-visible {
+  background: var(--md-code-button-hover-bg);
+  color: var(--md-code-button-hover-fg);
+}
+
+.toolbarButton svg {
+  display: block;
+  width: 1.08rem;
+  height: 1.08rem;
+}
+
+.toolbarButton > span {
+  display: grid;
+  width: 1.08rem;
+  height: 1.08rem;
+  place-items: center;
+}
