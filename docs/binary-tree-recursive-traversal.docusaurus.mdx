@@ -1,0 +1,965 @@
+---
+sidebar_position: 1
+title: 二叉树的递归遍历
+description: 用递归三要素理解二叉树的前序、中序、后序遍历
+tags: [数据结构, 二叉树, 递归, LeetCode]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<style>{`
+.bt-figure {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(127, 127, 127, 0.08) 25%, transparent 25%) -10px 0 / 20px 20px,
+    linear-gradient(225deg, rgba(127, 127, 127, 0.08) 25%, transparent 25%) -10px 0 / 20px 20px,
+    var(--ifm-background-surface-color);
+  overflow-x: auto;
+}
+
+.bt-figure svg {
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+  display: block;
+}
+
+.bt-caption {
+  margin: 0.75rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.bt-node {
+  fill: var(--ifm-background-color);
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2.5;
+}
+
+.bt-node-main {
+  fill: var(--ifm-color-primary);
+  stroke: var(--ifm-color-primary);
+}
+
+.bt-node-text {
+  fill: var(--ifm-font-color-base);
+  font-size: 20px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.bt-node-main-text {
+  fill: #fff;
+}
+
+.bt-edge {
+  stroke: var(--ifm-color-emphasis-500);
+  stroke-width: 2.2;
+  fill: none;
+}
+
+.bt-card {
+  fill: var(--ifm-background-color);
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  rx: 14;
+}
+
+.bt-card-title {
+  fill: var(--ifm-color-primary);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.bt-card-text {
+  fill: var(--ifm-font-color-base);
+  font-size: 17px;
+}
+
+.bt-muted {
+  fill: var(--ifm-color-emphasis-700);
+  font-size: 15px;
+}
+
+.bt-chip {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.9em;
+}
+`}</style>
+
+export function TraversalOverviewSvg() {
+  return (
+    <div className="bt-figure">
+      <svg viewBox="0 0 920 520" role="img" aria-labelledby="tree-overview-title tree-overview-desc">
+        <title id="tree-overview-title">二叉树前序、中序、后序遍历对比图</title>
+        <desc id="tree-overview-desc">以节点 1 到 6 组成的二叉树为例，展示三种递归遍历的访问顺序。</desc>
+
+        <defs>
+          <marker id="bt-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="var(--ifm-color-emphasis-500)" />
+          </marker>
+        </defs>
+
+        <text x="460" y="34" textAnchor="middle" fontSize="24" fontWeight="800" fill="var(--ifm-font-color-base)">
+          一棵示例二叉树
+        </text>
+
+        <line className="bt-edge" x1="245" y1="92" x2="165" y2="165" />
+        <line className="bt-edge" x1="275" y1="92" x2="355" y2="165" />
+        <line className="bt-edge" x1="150" y1="215" x2="95" y2="295" />
+        <line className="bt-edge" x1="180" y1="215" x2="235" y2="295" />
+        <line className="bt-edge" x1="365" y1="215" x2="420" y2="295" />
+
+        <circle className="bt-node bt-node-main" cx="260" cy="80" r="30" />
+        <text className="bt-node-text bt-node-main-text" x="260" y="80">1</text>
+
+        <circle className="bt-node" cx="160" cy="190" r="30" />
+        <text className="bt-node-text" x="160" y="190">2</text>
+
+        <circle className="bt-node" cx="360" cy="190" r="30" />
+        <text className="bt-node-text" x="360" y="190">3</text>
+
+        <circle className="bt-node" cx="80" cy="320" r="30" />
+        <text className="bt-node-text" x="80" y="320">4</text>
+
+        <circle className="bt-node" cx="250" cy="320" r="30" />
+        <text className="bt-node-text" x="250" y="320">5</text>
+
+        <circle className="bt-node" cx="440" cy="320" r="30" />
+        <text className="bt-node-text" x="440" y="320">6</text>
+
+        <rect className="bt-card" x="535" y="72" width="325" height="92" />
+        <text className="bt-card-title" x="560" y="105">前序：中 → 左 → 右</text>
+        <text className="bt-card-text" x="560" y="137">访问顺序：1 → 2 → 4 → 5 → 3 → 6</text>
+
+        <rect className="bt-card" x="535" y="198" width="325" height="92" />
+        <text className="bt-card-title" x="560" y="231">中序：左 → 中 → 右</text>
+        <text className="bt-card-text" x="560" y="263">访问顺序：4 → 2 → 5 → 1 → 3 → 6</text>
+
+        <rect className="bt-card" x="535" y="324" width="325" height="92" />
+        <text className="bt-card-title" x="560" y="357">后序：左 → 右 → 中</text>
+        <text className="bt-card-text" x="560" y="389">访问顺序：4 → 5 → 2 → 6 → 3 → 1</text>
+
+        <path d="M 470 320 C 520 315, 510 115, 535 115" className="bt-edge" markerEnd="url(#bt-arrow)" />
+        <path d="M 470 320 C 520 325, 510 245, 535 245" className="bt-edge" markerEnd="url(#bt-arrow)" />
+        <path d="M 470 320 C 520 335, 510 375, 535 375" className="bt-edge" markerEnd="url(#bt-arrow)" />
+
+        <text className="bt-muted" x="460" y="475" textAnchor="middle">
+          同一棵树，区别只在“什么时候处理当前节点”：先处理、中间处理、最后处理。
+        </text>
+      </svg>
+      <p className="bt-caption">图 1：前序、中序、后序不是三种完全不同的算法，而是同一个递归框架里“处理当前节点”的位置不同。</p>
+    </div>
+  );
+}
+
+export function RecursiveFrameSvg() {
+  return (
+    <div className="bt-figure">
+      <svg viewBox="0 0 920 430" role="img" aria-labelledby="frame-title frame-desc">
+        <title id="frame-title">递归调用栈示意图</title>
+        <desc id="frame-desc">以 preorder traversal 为例，展示 traversal 函数调用自身进入子树，再逐层返回。</desc>
+
+        <defs>
+          <marker id="frame-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="var(--ifm-color-emphasis-500)" />
+          </marker>
+        </defs>
+
+        <text x="460" y="34" textAnchor="middle" fontSize="24" fontWeight="800" fill="var(--ifm-font-color-base)">
+          递归调用栈：先深入，再返回
+        </text>
+
+        <rect className="bt-card" x="70" y="82" width="205" height="86" />
+        <text className="bt-card-title" x="92" y="116">1. traversal(1)</text>
+        <text className="bt-card-text" x="92" y="145">处理节点 1</text>
+
+        <rect className="bt-card" x="360" y="82" width="205" height="86" />
+        <text className="bt-card-title" x="382" y="116">2. traversal(2)</text>
+        <text className="bt-card-text" x="382" y="145">进入左子树</text>
+
+        <rect className="bt-card" x="650" y="82" width="205" height="86" />
+        <text className="bt-card-title" x="672" y="116">3. traversal(4)</text>
+        <text className="bt-card-text" x="672" y="145">继续深入</text>
+
+        <rect className="bt-card" x="650" y="238" width="205" height="86" />
+        <text className="bt-card-title" x="672" y="272">4. 遇到 null</text>
+        <text className="bt-card-text" x="672" y="301">返回上一层</text>
+
+        <rect className="bt-card" x="360" y="238" width="205" height="86" />
+        <text className="bt-card-title" x="382" y="272">5. traversal(5)</text>
+        <text className="bt-card-text" x="382" y="301">处理右孩子</text>
+
+        <rect className="bt-card" x="70" y="238" width="205" height="86" />
+        <text className="bt-card-title" x="92" y="272">6. traversal(3)</text>
+        <text className="bt-card-text" x="92" y="301">回到根的右子树</text>
+
+        <line className="bt-edge" x1="275" y1="125" x2="352" y2="125" markerEnd="url(#frame-arrow)" />
+        <line className="bt-edge" x1="565" y1="125" x2="642" y2="125" markerEnd="url(#frame-arrow)" />
+        <line className="bt-edge" x1="752" y1="170" x2="752" y2="230" markerEnd="url(#frame-arrow)" />
+        <line className="bt-edge" x1="650" y1="281" x2="573" y2="281" markerEnd="url(#frame-arrow)" />
+        <line className="bt-edge" x1="360" y1="281" x2="283" y2="281" markerEnd="url(#frame-arrow)" />
+
+        <text className="bt-muted" x="460" y="382" textAnchor="middle">
+          每次调用都只负责“当前节点 + 左子树 + 右子树”，不要试图在脑中一次性展开整棵树。
+        </text>
+      </svg>
+      <p className="bt-caption">图 2：递归的本质是函数调用栈。写代码时想清楚一层即可，剩下的交给递归调用。</p>
+    </div>
+  );
+}
+
+> 一看就会，一写就废，本质上不是递归难，而是没有固定的分析套路。
+
+# 二叉树的递归遍历
+
+本文用二叉树的前序、中序、后序遍历，建立一套写递归代码的固定方法。以后遇到更复杂的树形递归题，也可以沿用这套思路。
+
+:::tip[核心结论]
+二叉树递归遍历只有一个框架：
+
+1. 当前节点为空，直接返回。
+2. 处理当前节点。
+3. 递归处理左子树。
+4. 递归处理右子树。
+
+前序、中序、后序的区别，只是“处理当前节点”这一步放在哪里。
+:::
+
+## 1. 先理解：递归不是玄学
+
+很多人写递归时容易卡住，是因为总想在脑子里完整模拟所有调用过程。
+
+其实写递归时应该只关注一层：
+
+- 当前函数负责处理当前节点。
+- 左子树交给下一次递归。
+- 右子树交给下一次递归。
+- 当前节点为空时，本层递归结束。
+
+也就是说，你只要写对一层，整棵树就会按照同样的规则被处理。
+
+## 2. 递归三要素
+
+写任何递归题，都建议按下面三个问题检查。
+
+| 要素 | 需要回答的问题 | 在二叉树遍历中的体现 |
+| --- | --- | --- |
+| 递归函数的参数和返回值 | 当前递归需要哪些信息？结果要不要返回？ | 参数是当前节点 `cur` 和结果数组 `result`，通常不需要返回值 |
+| 终止条件 | 什么时候不再继续递归？ | 当前节点为空：`if (cur == nullptr) return;` |
+| 单层递归逻辑 | 当前这一层具体做什么？ | 处理当前节点、递归左子树、递归右子树 |
+
+:::info
+不要一上来就想“整棵树如何遍历完”。先想清楚 `traversal(cur)` 这一层应该做什么。
+:::
+
+## 3. 示例树和三种遍历顺序
+
+下面用同一棵二叉树说明三种遍历：
+
+<TraversalOverviewSvg />
+
+对应的树结构是：
+
+```txt
+        1
+      /   \
+     2     3
+    / \     \
+   4   5     6
+```
+
+三种遍历的口诀如下：
+
+| 遍历方式 | 顺序 | 对当前节点的处理时机 | 示例结果 |
+| --- | --- | --- | --- |
+| 前序遍历 | 中 → 左 → 右 | 先处理当前节点 | `1, 2, 4, 5, 3, 6` |
+| 中序遍历 | 左 → 中 → 右 | 左子树结束后处理当前节点 | `4, 2, 5, 1, 3, 6` |
+| 后序遍历 | 左 → 右 → 中 | 左右子树都结束后处理当前节点 | `4, 5, 2, 6, 3, 1` |
+
+## 4. 前序遍历：中 → 左 → 右
+
+前序遍历的特点是：**一进入当前节点，就立刻记录它**。
+
+### 4.1 确定递归函数
+
+因为需要把遍历结果保存到数组里，所以把结果数组作为参数传进去。
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result)
+```
+
+这里不需要返回值，因为结果通过 `result` 收集。
+
+### 4.2 确定终止条件
+
+当当前节点为空时，这一层没有任何事情可做，直接返回。
+
+```cpp
+if (cur == nullptr) return;
+```
+
+### 4.3 确定单层递归逻辑
+
+前序遍历是 <span className="bt-chip">中 → 左 → 右</span>：
+
+```cpp
+result.push_back(cur->val);       // 中
+traversal(cur->left, result);     // 左
+traversal(cur->right, result);    // 右
+```
+
+完整代码如下：
+
+```cpp
+class Solution {
+public:
+    void traversal(TreeNode* cur, vector<int>& result) {
+        if (cur == nullptr) return;
+
+        result.push_back(cur->val);       // 中
+        traversal(cur->left, result);     // 左
+        traversal(cur->right, result);    // 右
+    }
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traversal(root, result);
+        return result;
+    }
+};
+```
+
+<RecursiveFrameSvg />
+
+## 5. 中序遍历：左 → 中 → 右
+
+中序遍历的特点是：**先完整处理左子树，再处理当前节点，最后处理右子树**。
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result) {
+    if (cur == nullptr) return;
+
+    traversal(cur->left, result);     // 左
+    result.push_back(cur->val);       // 中
+    traversal(cur->right, result);    // 右
+}
+```
+
+中序遍历在二叉搜索树中非常重要，因为二叉搜索树的中序遍历结果是递增序列。
+
+## 6. 后序遍历：左 → 右 → 中
+
+后序遍历的特点是：**先处理完左右子树，最后处理当前节点**。
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result) {
+    if (cur == nullptr) return;
+
+    traversal(cur->left, result);     // 左
+    traversal(cur->right, result);    // 右
+    result.push_back(cur->val);       // 中
+}
+```
+
+后序遍历很适合处理“需要先知道子树结果，再处理当前节点”的问题，例如：
+
+- 求二叉树高度。
+- 判断平衡二叉树。
+- 删除树节点。
+- 计算一棵子树的信息后向父节点返回。
+
+## 7. 三种遍历的统一模板
+
+你可以把三种写法记成一个统一模板：
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result) {
+    if (cur == nullptr) return;
+
+    // 前序位置：中
+    traversal(cur->left, result);
+    // 中序位置：中
+    traversal(cur->right, result);
+    // 后序位置：中
+}
+```
+
+把 `result.push_back(cur->val);` 放在不同位置，就得到不同遍历：
+
+```cpp
+// 前序：中左右
+result.push_back(cur->val);
+traversal(cur->left, result);
+traversal(cur->right, result);
+
+// 中序：左中右
+traversal(cur->left, result);
+result.push_back(cur->val);
+traversal(cur->right, result);
+
+// 后序：左右中
+traversal(cur->left, result);
+traversal(cur->right, result);
+result.push_back(cur->val);
+```
+
+## 8. 常见错误
+
+### 8.1 忘记终止条件
+
+错误写法：
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result) {
+    result.push_back(cur->val);
+    traversal(cur->left, result);
+    traversal(cur->right, result);
+}
+```
+
+如果 `cur` 是空指针，访问 `cur->val` 会直接出错。所以必须先判断：
+
+```cpp
+if (cur == nullptr) return;
+```
+
+### 8.2 把“递归函数”和“主函数”混在一起
+
+建议把递归逻辑单独写成辅助函数：
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& result);
+```
+
+主函数只负责创建结果数组、调用递归、返回结果：
+
+```cpp
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> result;
+    traversal(root, result);
+    return result;
+}
+```
+
+### 8.3 只记代码，不理解位置
+
+前序、中序、后序不是靠背代码，而是看当前节点在递归中的处理位置：
+
+- 先处理当前节点，就是前序。
+- 左子树后处理当前节点，就是中序。
+- 左右子树都结束后处理当前节点，就是后序。
+
+## 9. LeetCode 练习
+
+- [144. 二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+- [94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+- [145. 二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+
+## 10. 多语言版本
+
+<Tabs>
+<TabItem value="cpp" label="C++" default>
+
+```cpp
+// 前序遍历：中左右
+class Solution {
+public:
+    void traversal(TreeNode* cur, vector<int>& result) {
+        if (cur == nullptr) return;
+
+        result.push_back(cur->val);
+        traversal(cur->left, result);
+        traversal(cur->right, result);
+    }
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traversal(root, result);
+        return result;
+    }
+};
+```
+
+```cpp
+// 中序遍历：左中右
+class Solution {
+public:
+    void traversal(TreeNode* cur, vector<int>& result) {
+        if (cur == nullptr) return;
+
+        traversal(cur->left, result);
+        result.push_back(cur->val);
+        traversal(cur->right, result);
+    }
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traversal(root, result);
+        return result;
+    }
+};
+```
+
+```cpp
+// 后序遍历：左右中
+class Solution {
+public:
+    void traversal(TreeNode* cur, vector<int>& result) {
+        if (cur == nullptr) return;
+
+        traversal(cur->left, result);
+        traversal(cur->right, result);
+        result.push_back(cur->val);
+    }
+
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traversal(root, result);
+        return result;
+    }
+};
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+// 前序遍历：中左右
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        traversal(root, result);
+        return result;
+    }
+
+    private void traversal(TreeNode cur, List<Integer> result) {
+        if (cur == null) return;
+
+        result.add(cur.val);
+        traversal(cur.left, result);
+        traversal(cur.right, result);
+    }
+}
+```
+
+```java
+// 中序遍历：左中右
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        traversal(root, result);
+        return result;
+    }
+
+    private void traversal(TreeNode cur, List<Integer> result) {
+        if (cur == null) return;
+
+        traversal(cur.left, result);
+        result.add(cur.val);
+        traversal(cur.right, result);
+    }
+}
+```
+
+```java
+// 后序遍历：左右中
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        traversal(root, result);
+        return result;
+    }
+
+    private void traversal(TreeNode cur, List<Integer> result) {
+        if (cur == null) return;
+
+        traversal(cur.left, result);
+        traversal(cur.right, result);
+        result.add(cur.val);
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+# 前序遍历：中左右
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+
+        def traversal(cur):
+            if cur is None:
+                return
+
+            result.append(cur.val)
+            traversal(cur.left)
+            traversal(cur.right)
+
+        traversal(root)
+        return result
+```
+
+```python
+# 中序遍历：左中右
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+
+        def traversal(cur):
+            if cur is None:
+                return
+
+            traversal(cur.left)
+            result.append(cur.val)
+            traversal(cur.right)
+
+        traversal(root)
+        return result
+```
+
+```python
+# 后序遍历：左右中
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+
+        def traversal(cur):
+            if cur is None:
+                return
+
+            traversal(cur.left)
+            traversal(cur.right)
+            result.append(cur.val)
+
+        traversal(root)
+        return result
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+// 前序遍历：中左右
+func preorderTraversal(root *TreeNode) []int {
+    result := []int{}
+
+    var traversal func(cur *TreeNode)
+    traversal = func(cur *TreeNode) {
+        if cur == nil {
+            return
+        }
+
+        result = append(result, cur.Val)
+        traversal(cur.Left)
+        traversal(cur.Right)
+    }
+
+    traversal(root)
+    return result
+}
+```
+
+```go
+// 中序遍历：左中右
+func inorderTraversal(root *TreeNode) []int {
+    result := []int{}
+
+    var traversal func(cur *TreeNode)
+    traversal = func(cur *TreeNode) {
+        if cur == nil {
+            return
+        }
+
+        traversal(cur.Left)
+        result = append(result, cur.Val)
+        traversal(cur.Right)
+    }
+
+    traversal(root)
+    return result
+}
+```
+
+```go
+// 后序遍历：左右中
+func postorderTraversal(root *TreeNode) []int {
+    result := []int{}
+
+    var traversal func(cur *TreeNode)
+    traversal = func(cur *TreeNode) {
+        if cur == nil {
+            return
+        }
+
+        traversal(cur.Left)
+        traversal(cur.Right)
+        result = append(result, cur.Val)
+    }
+
+    traversal(root)
+    return result
+}
+```
+
+</TabItem>
+
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+// 前序遍历：中左右
+var preorderTraversal = function(root) {
+  const result = [];
+
+  const traversal = (cur) => {
+    if (cur === null) return;
+
+    result.push(cur.val);
+    traversal(cur.left);
+    traversal(cur.right);
+  };
+
+  traversal(root);
+  return result;
+};
+```
+
+```javascript
+// 中序遍历：左中右
+var inorderTraversal = function(root) {
+  const result = [];
+
+  const traversal = (cur) => {
+    if (cur === null) return;
+
+    traversal(cur.left);
+    result.push(cur.val);
+    traversal(cur.right);
+  };
+
+  traversal(root);
+  return result;
+};
+```
+
+```javascript
+// 后序遍历：左右中
+var postorderTraversal = function(root) {
+  const result = [];
+
+  const traversal = (cur) => {
+    if (cur === null) return;
+
+    traversal(cur.left);
+    traversal(cur.right);
+    result.push(cur.val);
+  };
+
+  traversal(root);
+  return result;
+};
+```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+// 前序遍历：中左右
+function preorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];
+
+  function traversal(cur: TreeNode | null): void {
+    if (cur === null) return;
+
+    result.push(cur.val);
+    traversal(cur.left);
+    traversal(cur.right);
+  }
+
+  traversal(root);
+  return result;
+}
+```
+
+```typescript
+// 中序遍历：左中右
+function inorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];
+
+  function traversal(cur: TreeNode | null): void {
+    if (cur === null) return;
+
+    traversal(cur.left);
+    result.push(cur.val);
+    traversal(cur.right);
+  }
+
+  traversal(root);
+  return result;
+}
+```
+
+```typescript
+// 后序遍历：左右中
+function postorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];
+
+  function traversal(cur: TreeNode | null): void {
+    if (cur === null) return;
+
+    traversal(cur.left);
+    traversal(cur.right);
+    result.push(cur.val);
+  }
+
+  traversal(root);
+  return result;
+}
+```
+
+</TabItem>
+
+<TabItem value="c" label="C">
+
+```c
+// 前序遍历：中左右
+void preorder(struct TreeNode* cur, int* result, int* returnSize) {
+    if (cur == NULL) return;
+
+    result[(*returnSize)++] = cur->val;
+    preorder(cur->left, result, returnSize);
+    preorder(cur->right, result, returnSize);
+}
+
+int* preorderTraversal(struct TreeNode* root, int* returnSize) {
+    int* result = (int*)malloc(sizeof(int) * 100);
+    *returnSize = 0;
+    preorder(root, result, returnSize);
+    return result;
+}
+```
+
+```c
+// 中序遍历：左中右
+void inorder(struct TreeNode* cur, int* result, int* returnSize) {
+    if (cur == NULL) return;
+
+    inorder(cur->left, result, returnSize);
+    result[(*returnSize)++] = cur->val;
+    inorder(cur->right, result, returnSize);
+}
+
+int* inorderTraversal(struct TreeNode* root, int* returnSize) {
+    int* result = (int*)malloc(sizeof(int) * 100);
+    *returnSize = 0;
+    inorder(root, result, returnSize);
+    return result;
+}
+```
+
+```c
+// 后序遍历：左右中
+void postorder(struct TreeNode* cur, int* result, int* returnSize) {
+    if (cur == NULL) return;
+
+    postorder(cur->left, result, returnSize);
+    postorder(cur->right, result, returnSize);
+    result[(*returnSize)++] = cur->val;
+}
+
+int* postorderTraversal(struct TreeNode* root, int* returnSize) {
+    int* result = (int*)malloc(sizeof(int) * 100);
+    *returnSize = 0;
+    postorder(root, result, returnSize);
+    return result;
+}
+```
+
+</TabItem>
+
+<TabItem value="csharp" label="C#">
+
+```csharp
+// 前序遍历：中左右
+public IList<int> PreorderTraversal(TreeNode root) {
+    var result = new List<int>();
+
+    void Traversal(TreeNode cur) {
+        if (cur == null) return;
+
+        result.Add(cur.val);
+        Traversal(cur.left);
+        Traversal(cur.right);
+    }
+
+    Traversal(root);
+    return result;
+}
+```
+
+```csharp
+// 中序遍历：左中右
+public IList<int> InorderTraversal(TreeNode root) {
+    var result = new List<int>();
+
+    void Traversal(TreeNode cur) {
+        if (cur == null) return;
+
+        Traversal(cur.left);
+        result.Add(cur.val);
+        Traversal(cur.right);
+    }
+
+    Traversal(root);
+    return result;
+}
+```
+
+```csharp
+// 后序遍历：左右中
+public IList<int> PostorderTraversal(TreeNode root) {
+    var result = new List<int>();
+
+    void Traversal(TreeNode cur) {
+        if (cur == null) return;
+
+        Traversal(cur.left);
+        Traversal(cur.right);
+        result.Add(cur.val);
+    }
+
+    Traversal(root);
+    return result;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## 11. 总结
+
+二叉树递归遍历的关键不是背三份代码，而是理解这一点：
+
+> 递归函数只负责当前节点这一层。左子树和右子树交给相同函数继续处理。
+
+最后再记住一句：
+
+- 前序：当前节点在前面处理。
+- 中序：当前节点在中间处理。
+- 后序：当前节点在最后处理。

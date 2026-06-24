@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # dijkstra（堆优化版）精讲
@@ -637,7 +640,8 @@ int main() {
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 import java.util.*;
@@ -734,7 +738,8 @@ public class Main {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 ```python
 import heapq
@@ -783,7 +788,8 @@ result = dijkstra(n, m, edges, start, end)
 print(result)
 ```
 
-### Go
+</TabItem>
+<TabItem value="go" label="Go">
 
 ```go
 package main
@@ -888,20 +894,5 @@ func main() {
 }
 ```
 
-### Rust
-
-### JavaScript
-
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+</Tabs>

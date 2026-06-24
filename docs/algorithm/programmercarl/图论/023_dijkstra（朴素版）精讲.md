@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # dijkstra（朴素版）精讲
@@ -717,7 +720,8 @@ for (int v = 1; v <= n; v++) {
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 import java.util.Arrays;
@@ -785,7 +789,8 @@ public class Main {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 ```text
 import sys
@@ -843,13 +848,10 @@ if __name__ == "__main__":
     print(result)
 ```
 
-### Go
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
 
-### Rust
-
-### JavaScript
-
-```js
+```javascript
 function dijkstra(grid, start, end) {
     const visited = Array.from({length: end + 1}, () => false)
     const minDist = Array.from({length: end + 1}, () => Number.MAX_VALUE)
@@ -906,16 +908,5 @@ async function main() {
 main()
 ```
 
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+</Tabs>

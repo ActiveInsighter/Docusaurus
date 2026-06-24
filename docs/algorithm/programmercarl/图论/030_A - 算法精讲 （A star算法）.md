@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # A * 算法精讲 （A star算法）
 
 [卡码网：126. 骑士的攻击](https://kamacoder.com/problempage.php?pid=1203)
@@ -325,9 +328,8 @@ IDA * 算法 对这一空间增长问题进行了优化，关于 IDA * 算法，
 
 ## 其他语言版本
 
-### Java
-
-### Python
+<Tabs>
+<TabItem value="python" label="Python" default>
 
 ```python
 import heapq
@@ -361,13 +363,10 @@ for _ in range(n):
     print(bfs((a1, a2), (b1, b2)))
 ```
 
-### Go
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
 
-### Rust
-
-### JavaScript
-
-```js
+```javascript
 class MinHeap {
   constructor() {
     this.val = []
@@ -492,19 +491,8 @@ async function main() {
 main()
 ```
 
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+<TabItem value="c" label="C">
 
 ```c
 #include <stdio.h>
@@ -669,3 +657,6 @@ int main() {
     return 0;
 }
 ```
+
+</TabItem>
+</Tabs>

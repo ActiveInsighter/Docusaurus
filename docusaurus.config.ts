@@ -228,6 +228,10 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       'classic',
@@ -265,6 +269,8 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     // Replace with your project's social card
@@ -373,11 +379,19 @@ const config: Config = {
         'bash',
         'c',
         'cpp',
+        'csharp',
+        'dart',
+        'diff',
+        'json',
         'java',
+        'markdown',
+        'mermaid',
         'python',
         'rust',
         'go',
         'php',
+        'powershell',
+        'ruby',
         'swift',
         'kotlin',
         'scala',

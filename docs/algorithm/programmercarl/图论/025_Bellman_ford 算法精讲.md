@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # Bellman_ford 算法精讲
@@ -379,7 +382,8 @@ Bellman_ford 是可以计算 负权值的单源最短路算法。
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 public class Main {
@@ -438,7 +442,8 @@ public class Main {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 ```python
 def main():
@@ -468,13 +473,10 @@ if __name__ == "__main__":
     print(main())
 ```
 
-### Go
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
 
-### Rust
-
-### JavaScript
-
-```js
+```javascript
 async function main() {
     // 輸入
     const rl = require('readline').createInterface({ input: process.stdin })
@@ -513,16 +515,5 @@ async function main() {
 main()
 ```
 
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+</Tabs>

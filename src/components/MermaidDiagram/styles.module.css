@@ -1,0 +1,29 @@
+.diagram {
+  max-width: 100%;
+  margin: 1.2rem 0 1.5rem;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.message {
+  margin: 1.2rem 0 1.5rem;
+  border: 1px solid var(--md-border-soft);
+  border-radius: 8px;
+  background: var(--md-surface-elevated);
+  color: var(--ifm-color-content-secondary);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.85rem 1rem;
+}
+
+.error {
+  border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-danger);
+  white-space: pre-wrap;
+}

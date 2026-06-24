@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # Floyd 算法精讲
@@ -404,7 +407,8 @@ floyd算法的时间复杂度相对较高，适合 稠密图且源点较多的�
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 - 基于三维数组的Floyd算法
 
@@ -469,7 +473,8 @@ public class FloydBase {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 基于三维数组的Floyd
 
@@ -533,22 +538,5 @@ if __name__ == '__main__':
             print(grid[start][end])
 ```
 
-### Go
-
-### Rust
-
-### JavaScript
-
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+</Tabs>

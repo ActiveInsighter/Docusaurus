@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # kruskal算法精讲
@@ -391,7 +394,8 @@ Kruskal算法 时间复杂度 为 nlogn，其中n 为边的数量，适用稀疏
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 import java.util.*;
@@ -467,7 +471,8 @@ public class Main {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 ```python
 class Edge:
@@ -529,13 +534,10 @@ if __name__ == "__main__":
     print(result_val)
 ```
 
-### Go
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
 
-### Rust
-
-### JavaScript
-
-```js
+```javascript
 function kruskal(v, edges) {
     const father = Array.from({ length: v + 1 }, (_, i) => i)
 
@@ -589,19 +591,8 @@ async function main() {
 main()
 ```
 
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+<TabItem value="c" label="C">
 
 并查集方法一
 
@@ -746,3 +737,6 @@ int main()
     return 0;
 }
 ```
+
+</TabItem>
+</Tabs>

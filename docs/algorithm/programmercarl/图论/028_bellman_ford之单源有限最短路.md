@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # bellman_ford之单源有限最短路
@@ -618,7 +621,8 @@ dijkstra 是贪心的思路 每一次搜索都只会找距离源点最近的非�
 
 ## 其他语言版本
 
-### Java
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 import java.util.*;
@@ -801,7 +805,8 @@ public class SPFAForSSSP {
 }
 ```
 
-### Python
+</TabItem>
+<TabItem value="python" label="Python">
 
 Bellman-Ford方法求解单源有限最短路
 
@@ -880,22 +885,5 @@ if __name__ == "__main__":
     main()
 ```
 
-### Go
-
-### Rust
-
-### JavaScript
-
-### TypeScript
-
-### PhP
-
-### Swift
-
-### Scala
-
-### C#
-
-### Dart
-
-### C
+</TabItem>
+</Tabs>

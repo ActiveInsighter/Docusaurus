@@ -50,6 +50,9 @@ jobs:
       - name: Convert HTML to Docusaurus docs
         run: python Py/html_to_md.py --input-dir HTML --output-dir docs/algorithm/programmercarl --targets-file Py/URL.txt --jobs 4
 
+      - name: Group multi-language code tabs
+        run: python Py/code_tabs.py --docs-dir docs/algorithm/programmercarl
+
       - name: Show docs changes
         run: git status --short -- docs/algorithm/programmercarl
 

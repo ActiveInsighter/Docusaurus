@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > 在一个串中查找是否出现过另一个串，这是KMP的看家本领。
 
 # 28. 实现 strStr()
@@ -535,7 +538,8 @@ public:
 
 ## 其他语言版本
 
-### Java：
+<Tabs>
+<TabItem value="java" label="Java" default>
 
 ```java
 class Solution {
@@ -695,7 +699,8 @@ class Solution {
 }
 ```
 
-### Python3：
+</TabItem>
+<TabItem value="python" label="Python">
 
 （版本一）前缀表（减一）
 
@@ -793,7 +798,8 @@ class Solution:
         return haystack.find(needle)
 ```
 
-### Go：
+</TabItem>
+<TabItem value="go" label="Go">
 
 ```go
 // 方法一:前缀表使用减1实现
@@ -881,7 +887,8 @@ func strStr(haystack string, needle string) int {
 }
 ```
 
-### JavaScript:
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
 
 > 前缀表统一减一
 
@@ -969,7 +976,8 @@ var strStr = function (haystack, needle) {
 };
 ```
 
-### TypeScript:
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
 
 > 前缀表统一减一
 
@@ -1046,7 +1054,8 @@ function strStr(haystack: string, needle: string): number {
 }
 ```
 
-### Swift:
+</TabItem>
+<TabItem value="swift" label="Swift">
 
 > 前缀表统一减一
 
@@ -1204,7 +1213,8 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
     }
 ```
 
-### PHP：
+</TabItem>
+<TabItem value="php" label="PHP">
 
 > 前缀表统一减一
 
@@ -1282,7 +1292,8 @@ function getNext(&$next, $s){
 }
 ```
 
-### Rust:
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 > 前缀表统一不减一
 
@@ -1436,7 +1447,8 @@ public int[] GetNext(string needle)
 }
 ```
 
-### C:
+</TabItem>
+<TabItem value="c" label="C">
 
 > 前缀表统一右移和减一
 
@@ -1498,3 +1510,6 @@ int strStr(char* haystack, char* needle) {
     return -1;
 }
 ```
+
+</TabItem>
+</Tabs>

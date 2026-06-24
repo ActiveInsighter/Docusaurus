@@ -1,0 +1,386 @@
+.frame {
+  margin: 1.25rem 0 1.55rem;
+  border: 1px solid var(--algo-border);
+  border-radius: 8px;
+  background: var(--algo-bg);
+  box-shadow: var(--algo-shadow);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--algo-text);
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: 0;
+}
+
+.canvasBackground {
+  fill: var(--algo-bg);
+}
+
+.diagramContent {
+  isolation: isolate;
+}
+
+.patternDot {
+  fill: var(--algo-pattern);
+}
+
+.patternLine,
+.patternLineSoft {
+  fill: none;
+  stroke: var(--algo-pattern);
+  stroke-width: 1;
+}
+
+.patternLineSoft {
+  opacity: 0.55;
+}
+
+.marker {
+  fill: none;
+  stroke: var(--algo-edge);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.markerActive {
+  stroke: var(--algo-primary);
+}
+
+.markerSuccess {
+  stroke: var(--algo-success);
+}
+
+.markerWarning {
+  stroke: var(--algo-warning);
+}
+
+.markerDanger {
+  stroke: var(--algo-danger);
+}
+
+.markerMuted {
+  stroke: var(--algo-muted);
+}
+
+.edgePath,
+.annotationArrow {
+  fill: none;
+  stroke: var(--algo-edge);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.edgeStatusActive .edgePath,
+.edgeStatusPath .edgePath {
+  stroke: var(--algo-primary);
+  stroke-width: 2.6;
+}
+
+.edgeStatusVisited .edgePath {
+  stroke: var(--algo-success);
+}
+
+.edgeStatusDanger .edgePath {
+  stroke: var(--algo-danger);
+}
+
+.edgeStatusMuted .edgePath {
+  stroke: var(--algo-muted);
+  opacity: 0.56;
+}
+
+.edgeDashed {
+  stroke-dasharray: 7 7;
+}
+
+.edgeAnimated {
+  animation: algo-dash 1.2s linear infinite;
+}
+
+.edgeLabel {
+  pointer-events: none;
+  overflow: visible;
+}
+
+.annotationLabel {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.labelPill,
+.pointerLabel,
+.operationLabel,
+.calloutBox,
+.matrixAxisLabel {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--algo-muted);
+  font-size: 12px;
+  font-weight: 760;
+  line-height: 1.2;
+  overflow: hidden;
+  padding: 0 4px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px var(--algo-bg), 0 -1px 2px var(--algo-bg);
+  white-space: nowrap;
+}
+
+.nodeShape,
+.cellShape,
+.matrixCellShape {
+  fill: var(--algo-node-bg);
+  stroke: var(--algo-node-border);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.nodeContent,
+.cellContent,
+.matrixCellContent {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--algo-node-text);
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.12;
+  overflow: hidden;
+  padding: 0 6px;
+  text-align: center;
+}
+
+.nodeInner {
+  min-width: 0;
+}
+
+.nodeLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nodeSubLabel {
+  color: var(--algo-muted);
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.nodeBadge {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--algo-muted);
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1;
+  text-shadow: 0 1px 2px var(--algo-bg), 0 -1px 2px var(--algo-bg);
+}
+
+.nodeVariantPrimary .nodeShape,
+.nodeStatusActive .nodeShape,
+.nodeStatusCurrent .nodeShape,
+.cellStatusActive .cellShape,
+.matrixCellStatusActive .matrixCellShape {
+  fill: var(--algo-primary-soft);
+  stroke: var(--algo-primary);
+}
+
+.nodeVariantSuccess .nodeShape,
+.nodeStatusSuccess .nodeShape,
+.cellStatusSuccess .cellShape,
+.matrixCellStatusSuccess .matrixCellShape {
+  fill: var(--algo-success-soft);
+  stroke: var(--algo-success);
+}
+
+.nodeVariantWarning .nodeShape,
+.nodeStatusWarning .nodeShape,
+.cellStatusWarning .cellShape,
+.matrixCellStatusWarning .matrixCellShape {
+  fill: var(--algo-warning-soft);
+  stroke: var(--algo-warning);
+}
+
+.nodeVariantDanger .nodeShape,
+.nodeStatusDanger .nodeShape,
+.cellStatusDanger .cellShape,
+.matrixCellStatusDanger .matrixCellShape {
+  fill: var(--algo-danger-soft);
+  stroke: var(--algo-danger);
+}
+
+.nodeVariantGhost .nodeShape {
+  fill: transparent;
+}
+
+.nodeVariantCode .nodeShape,
+.nodeVariantMemory .nodeShape {
+  fill: var(--algo-code-bg);
+  stroke: var(--algo-code-border);
+}
+
+.nodeStatusVisited .nodeShape {
+  fill: var(--algo-visited-soft);
+  stroke: var(--algo-visited);
+}
+
+.nodeStatusMuted,
+.cellStatusMuted,
+.matrixCellStatusMuted {
+  opacity: 0.56;
+}
+
+.nodeStatusMuted .nodeShape,
+.cellStatusMuted .cellShape,
+.matrixCellStatusMuted .matrixCellShape {
+  fill: var(--algo-muted-soft);
+  stroke: var(--algo-muted);
+}
+
+.rangeShape,
+.regionShape {
+  fill: var(--algo-primary-wash);
+  stroke: var(--algo-primary);
+  stroke-dasharray: 7 6;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.rangeStatusSuccess .rangeShape,
+.regionStatusSuccess .regionShape {
+  fill: var(--algo-success-soft);
+  stroke: var(--algo-success);
+}
+
+.rangeStatusWarning .rangeShape,
+.regionStatusWarning .regionShape {
+  fill: var(--algo-warning-soft);
+  stroke: var(--algo-warning);
+}
+
+.rangeStatusDanger .rangeShape,
+.regionStatusDanger .regionShape {
+  fill: var(--algo-danger-soft);
+  stroke: var(--algo-danger);
+}
+
+
+.rangeShape.rangeFill {
+  stroke: none;
+  opacity: 0.58;
+}
+
+.rangeShape.rangeOutline {
+  fill: none;
+}
+
+.indexLabel {
+  fill: var(--algo-muted);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.pointerLine,
+.operationLine {
+  fill: none;
+  stroke: var(--algo-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.pointerStatusSuccess .pointerLine {
+  stroke: var(--algo-success);
+}
+
+.pointerStatusWarning .pointerLine {
+  stroke: var(--algo-warning);
+}
+
+.pointerStatusDanger .pointerLine {
+  stroke: var(--algo-danger);
+}
+
+.pointerStatusMuted .pointerLine {
+  stroke: var(--algo-muted);
+}
+
+.capLine {
+  fill: none;
+  stroke: var(--algo-muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.capOpenMask {
+  fill: none;
+  stroke: var(--algo-bg);
+  stroke-linecap: square;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.capFade {
+  fill: var(--algo-bg);
+  opacity: 0.72;
+}
+
+.calloutLine {
+  fill: none;
+  stroke: var(--algo-primary);
+  stroke-dasharray: 5 5;
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.calloutBox {
+  color: var(--algo-node-text);
+  font-size: 12px;
+  line-height: 1.35;
+  padding: 0 4px;
+  white-space: normal;
+}
+
+.matrixAxisLabel {
+  border-radius: 6px;
+  background: transparent;
+  color: var(--algo-muted);
+  padding: 0;
+}
+
+@keyframes algo-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
