@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # kruskal算法精讲
 
@@ -135,7 +135,7 @@ kruscal的思路：
 
 **但在代码中，如果将两个节点加入同一个集合，又如何判断两个节点是否在同一个集合呢**？
 
-这里就涉及到我们之前讲解的[并查集](https://programmercarl.com/kamacoder/图论并查集理论基础.html)。
+这里就涉及到我们之前讲解的[并查集](https://programmercarl.com/algo/graph/union-find-basics.html)。
 
 我们在并查集开篇的时候就讲了，并查集主要就两个功能：
 
@@ -144,7 +144,7 @@ kruscal的思路：
 
 大家发现这正好符合 Kruskal算法的需求，这也是为什么**我要先讲并查集，再讲 Kruskal**。
 
-关于 并查集，我已经在[并查集精讲](https://programmercarl.com/kamacoder/图论并查集理论基础.html)详细讲解过了，所以这里不再赘述，我们直接用。
+关于 并查集，我已经在[并查集精讲](https://programmercarl.com/algo/graph/union-find-basics.html)详细讲解过了，所以这里不再赘述，我们直接用。
 
 本题代码如下，已经详细注释：
 

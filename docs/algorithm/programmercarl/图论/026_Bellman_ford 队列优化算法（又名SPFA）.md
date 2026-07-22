@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # Bellman_ford 队列优化算法（又名SPFA）
 
@@ -180,7 +180,7 @@ import TabItem from '@theme/TabItem';
 
 在上面模拟过程中，我们每次都要知道 一个节点作为出发点连接了哪些节点。
 
-如果想方便知道这些数据，就需要使用邻接表来存储这个图，如果对于邻接表不了解的话，可以看[kama0047.参会dijkstra堆](https://programmercarl.com/kamacoder/0047.参会dijkstra堆.html)中 图的存储 部分。
+如果想方便知道这些数据，就需要使用邻接表来存储这个图，如果对于邻接表不了解的话，可以看[kama0047.参会dijkstra堆](https://programmercarl.com/algo/graph/kamacoder-0047-meeting-dijkstra-heap.html)中 图的存储 部分。
 
 整体代码如下：
 
@@ -325,9 +325,9 @@ SPFA（队列优化版Bellman_ford） 在理论上 时间复杂度更胜一筹�
 
 （而且有重复元素加入队列是正常的，多条路径到达同一个节点，节点必要要选择一个最短的路径，而这个节点就会重复加入队列进行判断，选一个最短的）
 
-在[0094.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)中我们讲过对所有边 最多松弛 n -1 次，就一定可以求出所有起点到所有节点的最小距离即 minDist数组。
+在[0094.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)中我们讲过对所有边 最多松弛 n -1 次，就一定可以求出所有起点到所有节点的最小距离即 minDist数组。
 
-即使再松弛n次以上， 所有起点到所有节点的最小距离（minDist数组） 不会再变了。 （这里如果不理解，建议认真看[0094.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)讲解）
+即使再松弛n次以上， 所有起点到所有节点的最小距离（minDist数组） 不会再变了。 （这里如果不理解，建议认真看[0094.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)讲解）
 
 所以本题我们使用队列优化，有元素重复加入队列，也会因为最后 minDist数组 不会在发生变化而终止。
 

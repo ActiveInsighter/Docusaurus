@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # Bellman_ford 算法精讲
 
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
 
 在求单源最短路的方法中，使用dijkstra 的话，则要求图中边的权值都为正数。
 
-我们在[dijkstra朴素版](https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html)中专门有讲解：为什么有边为负数 使用dijkstra就不行了。
+我们在[dijkstra朴素版](https://programmercarl.com/algo/graph/kamacoder-0047-meeting-dijkstra-naive.html)中专门有讲解：为什么有边为负数 使用dijkstra就不行了。
 
 **本题是经典的带负权值的单源最短路问题，此时就轮到Bellman_ford登场了**，接下来我们来详细介绍Bellman_ford 算法 如何解决这类问题。
 

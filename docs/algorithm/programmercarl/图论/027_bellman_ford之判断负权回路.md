@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # bellman_ford之判断负权回路
 
@@ -57,7 +57,7 @@ circle
 
 **[《代码随想录》算法视频公开课](https://programmercarl.com/about/gongkaike.html)：[图论：学透最短路算法之bellman_ford算法判断负权回路 | 贝尔曼-福特算法](https://www.bilibili.com/video/BV1EitczREi5),相信结合视频再看本篇题解，更有助于大家对本题的理解**。
 
-本题是[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)延伸题目。
+本题是[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)延伸题目。
 
 本题是要我们判断 负权回路，也就是图中出现环且环上的边总权值为负数。
 
@@ -67,7 +67,7 @@ circle
 
 接下来我们来看 如何使用 bellman_ford 算法来判断 负权回路。
 
-在[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)中 我们讲了 bellman_ford 算法的核心就是一句话：对 所有边 进行 n-1 次松弛。 同时文中的 【拓展】部分， 我们也讲了 松弛n次以上 会怎么样？
+在[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)中 我们讲了 bellman_ford 算法的核心就是一句话：对 所有边 进行 n-1 次松弛。 同时文中的 【拓展】部分， 我们也讲了 松弛n次以上 会怎么样？
 
 在没有负权回路的图中，松弛 n 次以上 ，结果不会有变化。
 
@@ -75,7 +75,7 @@ circle
 
 那么每松弛一次，都会更新最短路径，所以结果会一直有变化。
 
-（如果对于 bellman_ford 不了解的录友，建议详细看这里：[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)）
+（如果对于 bellman_ford 不了解的录友，建议详细看这里：[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)）
 
 以上为理论分析，接下来我们再画图举例。
 
@@ -97,13 +97,13 @@ circle
 
 如果在负权回路多绕两圈，三圈，无穷圈，那么我们的总成本就会无限小， 如果要求最小成本的话，你会发现本题就无解了。
 
-在 bellman_ford 算法中，松弛 n-1 次所有的边 就可以求得 起点到任何节点的最短路径，松弛 n 次以上，minDist数组（记录起到到其他节点的最短距离）中的结果也不会有改变 （如果对 bellman_ford 算法 不了解，也不知道 minDist 是什么，建议详看上篇讲解[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)）
+在 bellman_ford 算法中，松弛 n-1 次所有的边 就可以求得 起点到任何节点的最短路径，松弛 n 次以上，minDist数组（记录起到到其他节点的最短距离）中的结果也不会有改变 （如果对 bellman_ford 算法 不了解，也不知道 minDist 是什么，建议详看上篇讲解[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)）
 
 而本题有负权回路的情况下，一直都会有更短的最短路，所以 松弛 第n次，minDist数组 也会发生改变。
 
-那么解决本题的 核心思路，就是在[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)的基础上，再多松弛一次，看minDist数组 是否发生变化。
+那么解决本题的 核心思路，就是在[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)的基础上，再多松弛一次，看minDist数组 是否发生变化。
 
-代码和[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)基本是一样的，如下：（关键地方已注释）
+代码和[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)基本是一样的，如下：（关键地方已注释）
 
 ```cpp
 #include <iostream>
@@ -165,7 +165,7 @@ int main() {
 
 如果使用 SPFA 那么节点都是进队列的，那么节点进入队列几次后 足够判断该图是否有负权回路呢？
 
-在[0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93I-SPFA)中，我们讲过 在极端情况下，即：所有节点都与其他节点相连，每个节点的入度为 n-1 （n为节点数量），所以每个节点最多加入 n-1 次队列。
+在[0094.城市间货物运输I-SPFA](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i-spfa.html)中，我们讲过 在极端情况下，即：所有节点都与其他节点相连，每个节点的入度为 n-1 （n为节点数量），所以每个节点最多加入 n-1 次队列。
 
 那么如果节点加入队列的次数 超过了 n-1次 ，那么该图就一定有负权回路。
 

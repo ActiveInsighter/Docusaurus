@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # dijkstra（堆优化版）精讲
 
@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
 
 如果n很大的话，我们可以换一个角度来优先性能。
 
-在 讲解 最小生成树的时候，我们 讲了两个算法，[prim算法](https://programmercarl.com/kamacoder/0053.寻宝-prim.html)（从点的角度来求最小生成树）、[Kruskal算法](https://programmercarl.com/kamacoder/0053.寻宝-Kruskal.html)（从边的角度来求最小生成树）
+在 讲解 最小生成树的时候，我们 讲了两个算法，[prim算法](https://programmercarl.com/algo/graph/kamacoder-0053-treasure-prim.html)（从点的角度来求最小生成树）、[Kruskal算法](https://programmercarl.com/algo/graph/kamacoder-0053-treasure-kruskal.html)（从边的角度来求最小生成树）
 
 这么在n 很大的时候，也有另一个思考维度，即：从边的数量出发。
 

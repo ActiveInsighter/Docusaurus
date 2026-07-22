@@ -4,16 +4,16 @@
 
 ![股票问题总结](https://file1.kamacoder.com/i/algo/%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.jpg)
 
-- [动态规划：121.买卖股票的最佳时机](https://programmercarl.com/0121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html)
-- [动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)
-- [动态规划：123.买卖股票的最佳时机III](https://programmercarl.com/0123.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIII.html)
-- [动态规划：188.买卖股票的最佳时机IV](https://programmercarl.com/0188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV.html)
-- [动态规划：309.最佳买卖股票时机含冷冻期](https://programmercarl.com/0309.%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F.html)
-- [动态规划：714.买卖股票的最佳时机含手续费](https://programmercarl.com/0714.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)
+- [动态规划：121.买卖股票的最佳时机](https://programmercarl.com/algo/dynamic-programming/0121-best-time-to-buy-and-sell-stock.html)
+- [动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)
+- [动态规划：123.买卖股票的最佳时机III](https://programmercarl.com/algo/dynamic-programming/0123-best-time-to-buy-and-sell-stock-iii.html)
+- [动态规划：188.买卖股票的最佳时机IV](https://programmercarl.com/algo/dynamic-programming/0188-best-time-to-buy-and-sell-stock-iv.html)
+- [动态规划：309.最佳买卖股票时机含冷冻期](https://programmercarl.com/algo/dynamic-programming/0309-best-time-to-buy-and-sell-stock-with-cooldown.html)
+- [动态规划：714.买卖股票的最佳时机含手续费](https://programmercarl.com/algo/dynamic-programming/0714-best-time-to-buy-and-sell-stock-with-transaction-fee-dynamic-programming.html)
 
 ## 卖股票的最佳时机
 
-[动态规划：121.买卖股票的最佳时机](https://programmercarl.com/0121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html)，**股票只能买卖一次，问最大利润**。
+[动态规划：121.买卖股票的最佳时机](https://programmercarl.com/algo/dynamic-programming/0121-best-time-to-buy-and-sell-stock.html)，**股票只能买卖一次，问最大利润**。
 
 【贪心解法】
 
@@ -100,7 +100,7 @@ public:
 
 ## 买卖股票的最佳时机II
 
-[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)可以多次买卖股票，问最大收益。
+[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)可以多次买卖股票，问最大收益。
 
 【贪心解法】
 
@@ -134,9 +134,9 @@ dp数组定义：
 - 第i-1天就持有股票，那么就保持现状，所得现金就是昨天持有股票的所得现金 即：dp[i - 1][0]
 - 第i天买入股票，所得现金就是昨天不持有股票的所得现金减去 今天的股票价格 即：dp[i - 1][1] - prices[i]
 
-**注意这里和[121. 买卖股票的最佳时机](https://programmercarl.com/0121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html)唯一不同的地方，就是推导dp[i][0]的时候，第i天买入股票的情况**。
+**注意这里和[121. 买卖股票的最佳时机](https://programmercarl.com/algo/dynamic-programming/0121-best-time-to-buy-and-sell-stock.html)唯一不同的地方，就是推导dp[i][0]的时候，第i天买入股票的情况**。
 
-在[121. 买卖股票的最佳时机](https://programmercarl.com/0121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html)中，因为股票全程只能买卖一次，所以如果买入股票，那么第i天持有股票即dp[i][0]一定就是 -prices[i]。
+在[121. 买卖股票的最佳时机](https://programmercarl.com/algo/dynamic-programming/0121-best-time-to-buy-and-sell-stock.html)中，因为股票全程只能买卖一次，所以如果买入股票，那么第i天持有股票即dp[i][0]一定就是 -prices[i]。
 
 而本题，因为一只股票可以买卖多次，所以当第i天买入股票的时候，所持有的现金可能有之前买卖过的利润。
 
@@ -164,7 +164,7 @@ public:
 
 ## 买卖股票的最佳时机III
 
-[动态规划：123.买卖股票的最佳时机III](https://programmercarl.com/0123.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIII.html)最多买卖两次，问最大收益。
+[动态规划：123.买卖股票的最佳时机III](https://programmercarl.com/algo/dynamic-programming/0123-best-time-to-buy-and-sell-stock-iii.html)最多买卖两次，问最大收益。
 
 【动态规划】
 
@@ -253,7 +253,7 @@ public:
 
 ## 买卖股票的最佳时机IV
 
-[动态规划：188.买卖股票的最佳时机IV](https://programmercarl.com/0188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV.html)最多买卖k笔交易，问最大收益。
+[动态规划：188.买卖股票的最佳时机IV](https://programmercarl.com/algo/dynamic-programming/0188-best-time-to-buy-and-sell-stock-iv.html)最多买卖k笔交易，问最大收益。
 
 使用二维数组 dp[i][j] ：第i天的状态为j，所剩下的最大现金是dp[i][j]
 
@@ -320,11 +320,11 @@ public:
 
 ## 最佳买卖股票时机含冷冻期
 
-[动态规划：309.最佳买卖股票时机含冷冻期](https://programmercarl.com/0309.%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F.html)可以多次买卖但每次卖出有冷冻期1天。
+[动态规划：309.最佳买卖股票时机含冷冻期](https://programmercarl.com/algo/dynamic-programming/0309-best-time-to-buy-and-sell-stock-with-cooldown.html)可以多次买卖但每次卖出有冷冻期1天。
 
-相对于[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)，本题加上了一个冷冻期。
+相对于[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)，本题加上了一个冷冻期。
 
-在[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)中有两个状态，持有股票后的最多现金，和不持有股票的最多现金。本题则可以花费为四个状态
+在[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)中有两个状态，持有股票后的最多现金，和不持有股票的最多现金。本题则可以花费为四个状态
 
 dp[i][j]：第i天状态为j，所剩的最多现金为dp[i][j]。
 
@@ -401,9 +401,9 @@ public:
 
 ## 买卖股票的最佳时机含手续费
 
-[动态规划：714.买卖股票的最佳时机含手续费](https://programmercarl.com/0714.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)可以多次买卖，但每次有手续费。
+[动态规划：714.买卖股票的最佳时机含手续费](https://programmercarl.com/algo/dynamic-programming/0714-best-time-to-buy-and-sell-stock-with-transaction-fee-dynamic-programming.html)可以多次买卖，但每次有手续费。
 
-相对于[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)，本题只需要在计算卖出操作的时候减去手续费就可以了，代码几乎是一样的。
+相对于[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)，本题只需要在计算卖出操作的时候减去手续费就可以了，代码几乎是一样的。
 
 唯一差别在于递推公式部分，所以本篇也就不按照动规五部曲详细讲解了，主要讲解一下递推公式部分。
 
@@ -430,7 +430,7 @@ dp[i][1] 表示第i天不持有股票所得最多现金
 
 所以：dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] + prices[i] - fee);
 
-**本题和[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html)的区别就是这里需要多一个减去手续费的操作**。
+**本题和[动态规划：122.买卖股票的最佳时机II](https://programmercarl.com/algo/dynamic-programming/0122-best-time-to-buy-and-sell-stock-ii-dynamic-programming.html)的区别就是这里需要多一个减去手续费的操作**。
 
 以上分析完毕，代码如下：
 

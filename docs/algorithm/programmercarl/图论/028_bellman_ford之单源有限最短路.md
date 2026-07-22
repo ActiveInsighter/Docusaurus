@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**[参与本项目](https://programmercarl.com/kamacoder/qita/join.md)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
+**[参与本项目](https://programmercarl.com/qita/join.html)，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们受益！**
 
 # bellman_ford之单源有限最短路
 
@@ -53,15 +53,15 @@ import TabItem from '@theme/TabItem';
 
 ## 思路
 
-本题为单源有限最短路问题，同样是[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)延伸题目。
+本题为单源有限最短路问题，同样是[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)延伸题目。
 
 注意题目中描述是**最多经过 k 个城市的条件下，而不是一定经过k个城市，也可以经过的城市数量比k小，但要最短的路径**。
 
-在[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)中我们讲了：**对所有边松弛一次，相当于计算 起点到达 与起点一条边相连的节点 的最短距离**。
+在[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)中我们讲了：**对所有边松弛一次，相当于计算 起点到达 与起点一条边相连的节点 的最短距离**。
 
 节点数量为n，起点到终点，最多是 n-1 条边相连。 那么对所有边松弛 n-1 次 就一定能得到 起点到达 终点的最短距离。
 
-（如果对以上讲解看不懂，建议详看[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)）
+（如果对以上讲解看不懂，建议详看[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)）
 
 本题是最多经过 k 个城市， 那么是 k + 1条边相连的节点。 这里可能有录友想不懂为什么是k + 1，来看这个图：
 
@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
 
 对所有边松弛一次，相当于计算 起点到达 与起点一条边相连的节点 的最短距离，那么对所有边松弛 k + 1次，就是求 起点到达 与起点k + 1条边相连的节点的 最短距离。
 
-**注意**： 本题是[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)的拓展题，如果对 bellman_ford 没有深入了解，强烈建议先看[kama94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)再做本题。
+**注意**： 本题是[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)的拓展题，如果对 bellman_ford 没有深入了解，强烈建议先看[kama94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)再做本题。
 
 理解以上内容，其实本题代码就很容易了，bellman_ford 标准写法是松弛 n-1 次，本题就松弛 k + 1次就好。
 
@@ -359,19 +359,19 @@ int main() {
 
 ## 拓展二（本题本质）
 
-那么前面讲解过的[94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)和[95.城市间货物运输II](https://programmercarl.com/kamacoder/0095.城市间货物运输II.html)也是bellman_ford经典算法，也没使用 minDist_copy，怎么就没问题呢？
+那么前面讲解过的[94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)和[95.城市间货物运输II](https://programmercarl.com/algo/graph/kamacoder-0095-city-goods-transportation-ii.html)也是bellman_ford经典算法，也没使用 minDist_copy，怎么就没问题呢？
 
 > 如果没看过我上面这两篇讲解的话，建议详细学习上面两篇，再看我下面讲的区别，否则容易看不懂。
 
-[94.城市间货物运输I](https://programmercarl.com/kamacoder/0094.城市间货物运输I.html)， 是没有 负权回路的，那么 多松弛多少次，对结果都没有影响。
+[94.城市间货物运输I](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i.html)， 是没有 负权回路的，那么 多松弛多少次，对结果都没有影响。
 
 求 节点1 到 节点n 的最短路径，松弛n-1 次就够了，松弛 大于 n-1次，结果也不会变。
 
 那么在对所有边进行第一次松弛的时候，如果基于 本次计算的 minDist 来计算 minDist （相当于多做松弛了），也是对最终结果没影响。
 
-[95.城市间货物运输II](https://programmercarl.com/kamacoder/0095.城市间货物运输II.html)是判断是否有 负权回路，一旦有负权回路， 对所有边松弛 n-1 次以后，在做松弛 minDist 数值一定会变，根据这一点来判断是否有负权回路。
+[95.城市间货物运输II](https://programmercarl.com/algo/graph/kamacoder-0095-city-goods-transportation-ii.html)是判断是否有 负权回路，一旦有负权回路， 对所有边松弛 n-1 次以后，在做松弛 minDist 数值一定会变，根据这一点来判断是否有负权回路。
 
-所以，[95.城市间货物运输II](https://programmercarl.com/kamacoder/0095.城市间货物运输II.html)只需要判断minDist数值变化了就行，而 minDist 的数值对不对，并不是我们关心的。
+所以，[95.城市间货物运输II](https://programmercarl.com/algo/graph/kamacoder-0095-city-goods-transportation-ii.html)只需要判断minDist数值变化了就行，而 minDist 的数值对不对，并不是我们关心的。
 
 那么本题 为什么计算minDist 一定要基于上次 的 minDist 数值。
 
@@ -382,7 +382,7 @@ int main() {
 
 ## 拓展三（SPFA）
 
-本题也可以用 SPFA来做，关于 SPFA ，已经在这里[0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.城市间货物运输I-SPFA.html)有详细讲解。
+本题也可以用 SPFA来做，关于 SPFA ，已经在这里[0094.城市间货物运输I-SPFA](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i-spfa.html)有详细讲解。
 
 使用SPFA算法解决本题的时候，关键在于 如何控制松弛k次。
 
@@ -459,7 +459,7 @@ int main() {
 
 时间复杂度： O(K * H) H 为不确定数，取决于 图的稠密度，但H 一定是小于等于 E 的
 
-关于 SPFA的是时间复杂度分析，我在[0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.城市间货物运输I-SPFA.html)有详细讲解
+关于 SPFA的是时间复杂度分析，我在[0094.城市间货物运输I-SPFA](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i-spfa.html)有详细讲解
 
 但大家会发现，以上代码大家提交后，怎么耗时这么多？
 
@@ -554,7 +554,7 @@ int main() {
 
 但因为 SPFA 节点的进出队列操作，耗时很大，所以相同的时间复杂度的情况下，SPFA 实际上更耗时了。
 
-这一点我在[0094.城市间货物运输I-SPFA](https://programmercarl.com/kamacoder/0094.城市间货物运输I-SPFA.html)有分析，感兴趣的录友再回头去看看。
+这一点我在[0094.城市间货物运输I-SPFA](https://programmercarl.com/algo/graph/kamacoder-0094-city-goods-transportation-i-spfa.html)有分析，感兴趣的录友再回头去看看。
 
 ## 拓展四（能否用dijkstra）
 
@@ -564,7 +564,7 @@ dijkstra 是贪心的思路 每一次搜索都只会找距离源点最近的非�
 
 如果限制最多访问k个节点，那么 dijkstra 未必能在有限次就能到达终点，即使在经过k个节点确实可以到达终点的情况下。
 
-这么说大家会感觉有点抽象，我用[dijkstra朴素版精讲](https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html)里的示例在举例说明： （如果没看过我讲的[dijkstra朴素版精讲](https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html)，建议去仔细看一下，否则下面讲解容易看不懂）
+这么说大家会感觉有点抽象，我用[dijkstra朴素版精讲](https://programmercarl.com/algo/graph/kamacoder-0047-meeting-dijkstra-naive.html)里的示例在举例说明： （如果没看过我讲的[dijkstra朴素版精讲](https://programmercarl.com/algo/graph/kamacoder-0047-meeting-dijkstra-naive.html)，建议去仔细看一下，否则下面讲解容易看不懂）
 
 在以下这个图中，求节点1 到 节点7 最多经过2个节点 的最短路是多少呢？
 
@@ -576,7 +576,7 @@ dijkstra 是贪心的思路 每一次搜索都只会找距离源点最近的非�
 
 最多经过2个节点，也就是3条边相连的路线：节点1 -&gt; 节点2 -&gt; 节点6-&gt; 节点7
 
-如果是 dijkstra 求解的话，求解过程是这样的： （下面是dijkstra的模拟过程，我精简了很多，如果看不懂，一定要先看[dijkstra朴素版精讲](https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html)）
+如果是 dijkstra 求解的话，求解过程是这样的： （下面是dijkstra的模拟过程，我精简了很多，如果看不懂，一定要先看[dijkstra朴素版精讲](https://programmercarl.com/algo/graph/kamacoder-0047-meeting-dijkstra-naive.html)）
 
 初始化如图所示：
 
