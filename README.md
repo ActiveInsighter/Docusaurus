@@ -6,7 +6,7 @@
 
 ## 本地开发
 
-环境要求：Node.js 20 或更高版本，推荐使用 Node.js 22。
+环境要求：Node.js 20 或更高版本，推荐使用 Node.js 24。
 
 ```bash
 npm ci
@@ -91,7 +91,7 @@ Cloudflare Pages 的推荐构建配置：
 ```text
 Build command: npm run build
 Build output directory: build
-Node.js version: 22
+Node.js version: 24
 ```
 
 仓库中的 GitHub Actions 负责检查和内容生成；Cloudflare Pages 负责生产部署。
