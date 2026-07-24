@@ -1,26 +1,29 @@
 name: Refresh branch dependencies and preview
 
 on:
-  push:
+  pull_request:
     branches:
-      - feat/docs-ui-latest-dependencies
+      - main
+    paths-ignore:
+      - ".github/workflow-runs/**"
 
 permissions:
   contents: write
 
 concurrency:
-  group: refresh-docs-ui-dependencies
+  group: refresh-docs-ui-dependencies-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
   refresh-and-validate:
+    if: github.head_ref == 'feat/docs-ui-latest-dependencies'
     runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:
       - name: Checkout feature branch
         uses: actions/checkout@v7
         with:
-          ref: feat/docs-ui-latest-dependencies
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -93,7 +96,6 @@ jobs:
           done
 
           python - <<'PY'
-          from pathlib import Path
           from urllib.parse import quote
           from playwright.sync_api import sync_playwright
 
@@ -153,5 +155,5 @@ jobs:
             echo "Dependencies were already current."
             exit 0
           fi
-          git commit -m "chore: update all dependencies to latest stable versions [skip ci]"
-          git push origin HEAD:feat/docs-ui-latest-dependencies
+          git commit -m "chore: update all dependencies to latest stable versions"
+          git push origin HEAD:${{ github.head_ref }}
