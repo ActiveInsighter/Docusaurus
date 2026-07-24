@@ -10,6 +10,8 @@ on:
     paths:
       - "Py/**"
       - ".github/workflows/update-content.yml"
+      - "scripts/record-workflow-state.mjs"
+      - "scripts/commit-workflow-state.mjs"
 
 permissions:
   contents: write
@@ -17,6 +19,11 @@ permissions:
 concurrency:
   group: update-generated-docs-main
   cancel-in-progress: false
+
+env:
+  WORKFLOW_KEY: update-content
+  WORKFLOW_FILE: update-content.yml
+  STATE_LOG: .github/workflow-runs/update-content/latest-log.txt
 
 jobs:
   update:
@@ -29,6 +36,14 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Setup Node.js for workflow state
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Record run start
+        run: node scripts/record-workflow-state.mjs start
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -37,30 +52,71 @@ jobs:
           cache-dependency-path: Py/requirements.txt
 
       - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r Py/requirements.txt
-
-      - name: Install Chromium for Playwright
-        run: python -m playwright install --with-deps chromium
-
-      - name: Fetch rendered HTML
-        run: python Py/fetch.py --targets-file Py/URL.txt --output-dir HTML --clean-stale --concurrency 5
-
-      - name: Convert HTML to Docusaurus docs
-        run: python Py/html_to_md.py --input-dir HTML --output-dir docs/algorithm/programmercarl --targets-file Py/URL.txt --jobs 4
-
-      - name: Group multi-language code tabs
-        run: python Py/code_tabs.py --docs-dir docs/algorithm/programmercarl
-
-      - name: Show docs changes
-        run: git status --short -- docs/algorithm/programmercarl
-
-      - name: Commit generated docs
+        id: python_dependencies
+        continue-on-error: true
         shell: bash
         run: |
+          set -o pipefail
+          echo "## Install Python dependencies" | tee -a "$STATE_LOG"
+          python -m pip install --disable-pip-version-check -r Py/requirements.txt 2>&1 | tee -a "$STATE_LOG"
+
+      - name: Install Chromium for Playwright
+        id: chromium
+        if: steps.python_dependencies.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "" | tee -a "$STATE_LOG"
+          echo "## Install Chromium" | tee -a "$STATE_LOG"
+          python -m playwright install --with-deps chromium 2>&1 | tee -a "$STATE_LOG"
+
+      - name: Fetch rendered HTML
+        id: fetch_html
+        if: steps.chromium.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "" | tee -a "$STATE_LOG"
+          echo "## Fetch rendered HTML" | tee -a "$STATE_LOG"
+          python Py/fetch.py --targets-file Py/URL.txt --output-dir HTML --clean-stale --concurrency 5 2>&1 | tee -a "$STATE_LOG"
+
+      - name: Convert HTML to Docusaurus docs
+        id: convert_docs
+        if: steps.fetch_html.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "" | tee -a "$STATE_LOG"
+          echo "## Convert HTML to docs" | tee -a "$STATE_LOG"
+          python Py/html_to_md.py --input-dir HTML --output-dir docs/algorithm/programmercarl --targets-file Py/URL.txt --jobs 4 2>&1 | tee -a "$STATE_LOG"
+
+      - name: Group multi-language code tabs
+        id: code_tabs
+        if: steps.convert_docs.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "" | tee -a "$STATE_LOG"
+          echo "## Group code tabs" | tee -a "$STATE_LOG"
+          python Py/code_tabs.py --docs-dir docs/algorithm/programmercarl 2>&1 | tee -a "$STATE_LOG"
+
+      - name: Commit generated docs locally
+        id: commit_docs
+        if: steps.code_tabs.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "" | tee -a "$STATE_LOG"
+          echo "## Generated docs changes" | tee -a "$STATE_LOG"
+          git status --short -- docs/algorithm/programmercarl | tee -a "$STATE_LOG"
+
           if [ -z "$(git status --porcelain -- docs/algorithm/programmercarl)" ]; then
-            echo "No generated docs changes to commit."
+            echo "No generated docs changes to commit." | tee -a "$STATE_LOG"
             exit 0
           fi
 
@@ -68,4 +124,34 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/algorithm/programmercarl
           git commit -m "docs: update generated algorithm notes"
-          git push origin HEAD:main
+
+      - name: Record run finish
+        if: always()
+        env:
+          STEP_OUTCOMES_JSON: >-
+            {"python_dependencies":"${{ steps.python_dependencies.outcome }}","chromium":"${{ steps.chromium.outcome }}","fetch_html":"${{ steps.fetch_html.outcome }}","convert_docs":"${{ steps.convert_docs.outcome }}","code_tabs":"${{ steps.code_tabs.outcome }}","commit_docs":"${{ steps.commit_docs.outcome }}"}
+        run: node scripts/record-workflow-state.mjs finish
+
+      - name: Commit run state and push
+        if: always()
+        continue-on-error: true
+        run: node scripts/commit-workflow-state.mjs "Record generated docs result [skip ci]"
+
+      - name: Fail when update steps fail
+        if: always()
+        env:
+          PYTHON_DEPENDENCIES_OUTCOME: ${{ steps.python_dependencies.outcome }}
+          CHROMIUM_OUTCOME: ${{ steps.chromium.outcome }}
+          FETCH_HTML_OUTCOME: ${{ steps.fetch_html.outcome }}
+          CONVERT_DOCS_OUTCOME: ${{ steps.convert_docs.outcome }}
+          CODE_TABS_OUTCOME: ${{ steps.code_tabs.outcome }}
+          COMMIT_DOCS_OUTCOME: ${{ steps.commit_docs.outcome }}
+        run: |
+          if [ "$PYTHON_DEPENDENCIES_OUTCOME" != "success" ] \
+            || [ "$CHROMIUM_OUTCOME" != "success" ] \
+            || [ "$FETCH_HTML_OUTCOME" != "success" ] \
+            || [ "$CONVERT_DOCS_OUTCOME" != "success" ] \
+            || [ "$CODE_TABS_OUTCOME" != "success" ] \
+            || [ "$COMMIT_DOCS_OUTCOME" != "success" ]; then
+            exit 1
+          fi
