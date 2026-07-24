@@ -42,12 +42,16 @@ footer {
 }
 
 .table-of-contents__link {
+  display: block;
+  max-width: 100%;
   border-radius: 7px;
   color: var(--ifm-toc-link-color);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 520;
-  line-height: 1.58;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
   padding: 0.22rem 0.42rem;
+  white-space: normal;
   text-wrap: pretty;
   transition: background-color 0.16s ease, color 0.16s ease;
 }
@@ -82,9 +86,9 @@ footer {
 
 @media (min-width: 997px) {
   .theme-doc-toc-desktop {
-    width: clamp(17.5rem, 20vw, 21rem);
+    width: clamp(18rem, 19vw, 20.5rem);
     max-width: none;
-    margin-right: clamp(-2rem, -2vw, -0.75rem);
+    margin-right: 0.35rem;
     padding-left: 0.4rem;
   }
 
@@ -104,8 +108,8 @@ footer {
 
 @media (min-width: 1440px) {
   .theme-doc-toc-desktop {
-    width: 21.5rem;
-    margin-right: -2.5rem;
+    width: 20.5rem;
+    margin-right: 0.75rem;
   }
 }
 
