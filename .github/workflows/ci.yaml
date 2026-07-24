@@ -82,8 +82,16 @@ jobs:
         id: deploy
         if: >-
           steps.build.outcome == 'success' &&
-          github.ref == 'refs/heads/main' &&
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          (
+            (
+              github.ref == 'refs/heads/main' &&
+              (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+            ) ||
+            (
+              github.event_name == 'pull_request' &&
+              github.head_ref == 'chore/one-time-production-deploy'
+            )
+          )
         continue-on-error: true
         uses: cloudflare/wrangler-action@v4
         with:
@@ -129,7 +137,11 @@ jobs:
           TYPECHECK_OUTCOME: ${{ steps.typecheck.outcome }}
           BUILD_OUTCOME: ${{ steps.build.outcome }}
           DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
-          DEPLOY_REQUIRED: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+          DEPLOY_REQUIRED: >-
+            ${{
+              (github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')) ||
+              (github.event_name == 'pull_request' && github.head_ref == 'chore/one-time-production-deploy')
+            }}
         run: |
           if [ "$INSTALL_OUTCOME" != "success" ] \
             || [ "$TYPECHECK_OUTCOME" != "success" ] \
