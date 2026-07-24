@@ -1,33 +1,19 @@
-# Build Docusaurus run log
-run_id: 30100468623
-run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30100468623
+# Build and deploy Docusaurus run log
+run_id: 30105720847
+run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30105720847
 branch: main
-head_sha: 2f9df99c0a6a1e35d451ddf437d98a51b2a30e9b
-started_at: 2026-07-24T14:18:49.914Z
+head_sha: 1d7a31601582ba0acda3f59b202d473bb8af7359
+started_at: 2026-07-24T15:32:38.712Z
 ## Install dependencies
 
-added 1429 packages in 13s
-
-## TypeScript
-
-> mydocs@0.0.0 typecheck
-> tsc
-
-
-## Docusaurus build
-
-> mydocs@0.0.0 build
-> docusaurus build
-
-[INFO] [zh-Hans] Creating an optimized production build...
-[SUCCESS] Generated static files in "build".
-[INFO] Use `npm run serve` command to test your build locally.
+added 1429 packages in 14s
 
 ## Final summary
-finished_at: 2026-07-24T14:20:20.993Z
-duration_seconds: 91
+finished_at: 2026-07-24T15:32:52.633Z
+duration_seconds: 14
 status: completed
-conclusion: success
-install: success
-typecheck: success
-build: success
+conclusion: failure
+install: cancelled
+typecheck: skipped
+build: skipped
+deploy: skipped
