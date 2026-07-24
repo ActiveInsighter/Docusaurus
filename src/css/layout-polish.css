@@ -4,7 +4,7 @@
   --md-navbar-glass-lower: rgba(255, 255, 255, 0.1);
   --md-navbar-glass-bottom: rgba(255, 255, 255, 0);
   --md-navbar-fade-height: 1.15rem;
-  --md-navbar-height: 3.2rem;
+  --md-navbar-height: 3rem;
   --md-toc-active-bg: rgba(40, 75, 99, 0.08);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .navbar__logo {
-  height: 1.9rem;
+  height: 1.72rem;
 }
 
 .navbar__item,
