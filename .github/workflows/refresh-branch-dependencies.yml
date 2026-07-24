@@ -1,0 +1,157 @@
+name: Refresh branch dependencies and preview
+
+on:
+  push:
+    branches:
+      - feat/docs-ui-latest-dependencies
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-docs-ui-dependencies
+  cancel-in-progress: true
+
+jobs:
+  refresh-and-validate:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v7
+        with:
+          ref: feat/docs-ui-latest-dependencies
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Py/requirements.txt
+
+      - name: Update npm dependencies to latest stable versions
+        run: |
+          npx --yes npm-check-updates@latest -u --target latest
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Pin latest stable Python dependencies
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+
+          path = Path('Py/requirements.txt')
+          updated = []
+          for raw_line in path.read_text(encoding='utf-8').splitlines():
+              line = raw_line.strip()
+              if not line or line.startswith('#'):
+                  updated.append(raw_line)
+                  continue
+              package = re.split(r'[<>=!~\[]', line, maxsplit=1)[0].strip()
+              url = f"https://pypi.org/pypi/{urllib.parse.quote(package)}/json"
+              with urllib.request.urlopen(url, timeout=30) as response:
+                  version = json.load(response)['info']['version']
+              updated.append(f'{package}=={version}')
+              print(f'{package}: {version}')
+          path.write_text('\n'.join(updated) + '\n', encoding='utf-8')
+          PY
+
+      - name: Install and check updated dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          python -m pip install --disable-pip-version-check -r Py/requirements.txt
+          npm run typecheck
+          npm run build
+
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+
+      - name: Validate UI and capture screenshots
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          npm run serve -- --host 127.0.0.1 --port 3000 > /tmp/docusaurus-serve.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import quote
+          from playwright.sync_api import sync_playwright
+
+          doc_path = '数学真题/01-高数上/01-模块一极限的概念、性质及计算/01-一、函数极限的计算'
+          doc_url = 'http://127.0.0.1:3000/docs/' + quote(doc_path, safe='/') + '/'
+
+          with sync_playwright() as playwright:
+              browser = playwright.chromium.launch()
+              page = browser.new_page(viewport={'width': 1600, 'height': 1000}, device_scale_factor=1)
+              page.goto(doc_url, wait_until='networkidle')
+              page.wait_for_selector('.theme-doc-toc-desktop')
+              page.wait_for_timeout(600)
+
+              toc_math_count = page.locator('.table-of-contents .katex').count()
+              if toc_math_count < 3:
+                  raise RuntimeError(f'Expected rendered formulas in TOC, found {toc_math_count}')
+
+              navbar_backdrop = page.locator('.navbar').evaluate(
+                  "element => getComputedStyle(element).backdropFilter || getComputedStyle(element).webkitBackdropFilter"
+              )
+              if navbar_backdrop in ('', 'none'):
+                  raise RuntimeError(f'Navbar blur is not active: {navbar_backdrop!r}')
+
+              toc_box = page.locator('.theme-doc-toc-desktop').bounding_box()
+              if not toc_box or toc_box['width'] < 270:
+                  raise RuntimeError(f'Document TOC is still too narrow: {toc_box}')
+
+              visible_footers = page.locator('footer:visible').count()
+              if visible_footers:
+                  raise RuntimeError(f'Footer should be hidden, found {visible_footers}')
+
+              page.screenshot(path='artifacts/docs-ui-desktop.png', full_page=False)
+              page.emulate_media(color_scheme='dark')
+              page.reload(wait_until='networkidle')
+              page.wait_for_timeout(500)
+              page.screenshot(path='artifacts/docs-ui-dark.png', full_page=False)
+              browser.close()
+
+          print(f'Validated {toc_math_count} rendered TOC formulas at {doc_url}')
+          PY
+
+      - name: Upload UI screenshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-ui-preview
+          path: artifacts/*.png
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Commit refreshed dependency locks
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json Py/requirements.txt
+          if git diff --cached --quiet; then
+            echo "Dependencies were already current."
+            exit 0
+          fi
+          git commit -m "chore: update all dependencies to latest stable versions [skip ci]"
+          git push origin HEAD:feat/docs-ui-latest-dependencies
