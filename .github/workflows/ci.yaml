@@ -11,6 +11,9 @@ on:
       - main
     paths-ignore:
       - ".github/workflow-runs/**"
+  issue_comment:
+    types:
+      - created
   workflow_dispatch:
 
 permissions:
@@ -30,12 +33,20 @@ env:
 
 jobs:
   build:
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (
+        github.event.issue.pull_request &&
+        github.event.comment.body == '/deploy-production' &&
+        github.event.comment.user.login == github.repository_owner
+      )
     runs-on: ubuntu-22.04
     timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.event_name == 'issue_comment' && 'main' || github.ref }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -82,8 +93,17 @@ jobs:
         id: deploy
         if: >-
           steps.build.outcome == 'success' &&
-          github.ref == 'refs/heads/main' &&
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          (
+            (
+              github.ref == 'refs/heads/main' &&
+              (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+            ) ||
+            (
+              github.event_name == 'issue_comment' &&
+              github.event.comment.body == '/deploy-production' &&
+              github.event.comment.user.login == github.repository_owner
+            )
+          )
         continue-on-error: true
         uses: cloudflare/wrangler-action@v4
         with:
@@ -118,7 +138,10 @@ jobs:
         run: node scripts/record-workflow-state.mjs finish
 
       - name: Commit run state
-        if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: >-
+          always() &&
+          github.event_name != 'pull_request' &&
+          (github.ref == 'refs/heads/main' || github.event_name == 'issue_comment')
         continue-on-error: true
         run: node scripts/commit-workflow-state.mjs "[CF-Pages-Skip] Record Docusaurus build and deployment result [skip ci]"
 
@@ -129,7 +152,11 @@ jobs:
           TYPECHECK_OUTCOME: ${{ steps.typecheck.outcome }}
           BUILD_OUTCOME: ${{ steps.build.outcome }}
           DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
-          DEPLOY_REQUIRED: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+          DEPLOY_REQUIRED: >-
+            ${{
+              (github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')) ||
+              (github.event_name == 'issue_comment' && github.event.comment.body == '/deploy-production' && github.event.comment.user.login == github.repository_owner)
+            }}
         run: |
           if [ "$INSTALL_OUTCOME" != "success" ] \
             || [ "$TYPECHECK_OUTCOME" != "success" ] \
