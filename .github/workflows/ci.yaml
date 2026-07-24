@@ -43,7 +43,6 @@ jobs:
           cache: npm
 
       - name: Record run start
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: node scripts/record-workflow-state.mjs start
 
       - name: Install dependencies
@@ -78,7 +77,7 @@ jobs:
           npm run build 2>&1 | tee -a "$STATE_LOG"
 
       - name: Record run finish
-        if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: always()
         env:
           STEP_OUTCOMES_JSON: >-
             {"install":"${{ steps.install.outcome }}","typecheck":"${{ steps.typecheck.outcome }}","build":"${{ steps.build.outcome }}"}
