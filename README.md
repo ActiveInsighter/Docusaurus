@@ -56,6 +56,16 @@ docusaurus-d92
 
 为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。完成该设置后，每个 `main` 版本只会由 GitHub Actions 发布一次。
 
+### Verify navbar visuals
+
+修改顶部导航栏样式时，Pull Request 会额外运行 Playwright 视觉检查：
+
+1. 构建并启动真实生产站点；
+2. 打开包含长数学公式的文档并滚动到正文区域；
+3. 分别截取浅色和深色模式；
+4. 检查导航栏宽度、右侧留白、透明渐变、背景模糊、边框、阴影和横向溢出；
+5. 上传截图与浏览器实际计算的布局数据。
+
 ### Update generated docs
 
 每天定时、手动触发或相关生成脚本变化时执行：
