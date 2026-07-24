@@ -49,7 +49,9 @@ function parseStepOutcomes() {
 function determineConclusion(stepOutcomes) {
   const values = Object.values(stepOutcomes);
   if (values.length === 0) return process.env.JOB_CONCLUSION || 'unknown';
-  return values.every((value) => value === 'success') ? 'success' : 'failure';
+  return values.every((value) => value === 'success' || value === 'skipped')
+    ? 'success'
+    : 'failure';
 }
 
 function secondsBetween(start, end) {

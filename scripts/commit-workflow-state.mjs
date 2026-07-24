@@ -4,7 +4,8 @@ import path from 'node:path';
 
 const workflowKey = sanitizeKey(process.env.WORKFLOW_KEY || 'build');
 const message =
-  process.argv.slice(2).join(' ') || `Record ${workflowKey} workflow state [skip ci]`;
+  process.argv.slice(2).join(' ') ||
+  `[CF-Pages-Skip] Record ${workflowKey} workflow state [skip ci]`;
 const stateDir = path.join('.github', 'workflow-runs', workflowKey);
 const stateFiles = [
   'latest-run-id.txt',

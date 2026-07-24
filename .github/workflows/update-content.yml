@@ -135,7 +135,7 @@ jobs:
       - name: Commit run state and push
         if: always()
         continue-on-error: true
-        run: node scripts/commit-workflow-state.mjs "Record generated docs result [skip ci]"
+        run: node scripts/commit-workflow-state.mjs "[CF-Pages-Skip] Record generated docs result [skip ci]"
 
       - name: Fail when update steps fail
         if: always()

@@ -1,25 +1,58 @@
 :root {
-  --md-navbar-glass: rgba(255, 255, 255, 0.7);
-  --md-navbar-glass-border: rgba(40, 75, 99, 0.12);
-  --md-navbar-glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.66),
-    0 10px 34px rgba(27, 48, 61, 0.06);
+  --md-navbar-glass-top: rgba(255, 255, 255, 0.84);
+  --md-navbar-glass-middle: rgba(255, 255, 255, 0.5);
+  --md-navbar-glass-bottom: rgba(255, 255, 255, 0);
+  --md-navbar-fade-height: 0.8rem;
   --md-toc-active-bg: rgba(40, 75, 99, 0.08);
 }
 
 [data-theme='dark'] {
-  --md-navbar-glass: rgba(5, 5, 5, 0.7);
-  --md-navbar-glass-border: rgba(255, 255, 255, 0.12);
-  --md-navbar-glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 12px 36px rgba(0, 0, 0, 0.28);
+  --md-navbar-glass-top: rgba(5, 5, 5, 0.8);
+  --md-navbar-glass-middle: rgba(5, 5, 5, 0.46);
+  --md-navbar-glass-bottom: rgba(5, 5, 5, 0);
   --md-toc-active-bg: rgba(255, 255, 255, 0.08);
 }
 
 .navbar {
-  border-bottom: 1px solid var(--md-navbar-glass-border);
-  background: var(--md-navbar-glass) !important;
-  box-shadow: var(--md-navbar-glass-shadow);
-  -webkit-backdrop-filter: saturate(165%) blur(20px);
-  backdrop-filter: saturate(165%) blur(20px);
+  position: sticky;
+  min-height: 3.35rem;
+  height: 3.35rem;
+  padding-block: 0.16rem;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 calc(-1 * var(--md-navbar-fade-height));
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--md-navbar-glass-top) 0%,
+    var(--md-navbar-glass-middle) 56%,
+    var(--md-navbar-glass-bottom) 100%
+  );
+  -webkit-backdrop-filter: saturate(155%) blur(16px);
+  backdrop-filter: saturate(155%) blur(16px);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.76) 72%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.76) 72%,
+    transparent 100%
+  );
 }
 
 .navbar__inner {
@@ -27,10 +60,14 @@
   z-index: 1;
 }
 
+.navbar__logo {
+  height: 2rem;
+}
+
 .navbar__link,
 .navbar__brand,
 .navbar__item {
-  text-shadow: 0 1px 0 color-mix(in srgb, var(--md-page-bg) 72%, transparent);
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--md-page-bg) 68%, transparent);
 }
 
 footer {
@@ -46,11 +83,11 @@ footer {
   max-width: 100%;
   border-radius: 7px;
   color: var(--ifm-toc-link-color);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 520;
-  line-height: 1.62;
+  line-height: 1.58;
   overflow-wrap: anywhere;
-  padding: 0.22rem 0.42rem;
+  padding: 0.2rem 0.34rem;
   white-space: normal;
   text-wrap: pretty;
   transition: background-color 0.16s ease, color 0.16s ease;
@@ -72,7 +109,7 @@ footer {
 }
 
 .table-of-contents .katex {
-  font-size: 0.96em;
+  font-size: 0.94em;
 }
 
 .table-of-contents .katex-display {
@@ -86,35 +123,35 @@ footer {
 
 @media (min-width: 997px) {
   .theme-doc-toc-desktop {
-    width: clamp(17.75rem, 18vw, 18.75rem);
-    max-width: none;
+    flex: 0 0 clamp(14.25rem, 15vw, 15.5rem);
+    width: clamp(14.25rem, 15vw, 15.5rem);
+    max-width: clamp(14.25rem, 15vw, 15.5rem);
     margin-right: 0;
-    padding-left: 0.4rem;
+    padding-left: 0.22rem;
   }
 
   .theme-doc-toc-desktop .table-of-contents {
-    padding: 0.45rem 0.4rem 1.25rem 1.05rem;
+    padding: 0.36rem 0.22rem 1.1rem 0.82rem;
     border-left-color: color-mix(
       in srgb,
-      var(--ifm-toc-border-color) 82%,
+      var(--ifm-toc-border-color) 76%,
       transparent
     );
   }
 
   .theme-doc-toc-desktop .table-of-contents ul {
-    padding-left: 0.68rem;
-  }
-}
-
-@media (min-width: 1440px) {
-  .theme-doc-toc-desktop {
-    width: 18.75rem;
+    padding-left: 0.55rem;
   }
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .navbar {
-    background: var(--md-page-bg) !important;
+  .navbar::before {
+    background: linear-gradient(
+      to bottom,
+      var(--md-page-bg) 0%,
+      var(--md-page-bg) 72%,
+      transparent 100%
+    );
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
