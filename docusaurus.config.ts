@@ -3,7 +3,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type {PrismTheme} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import normalizeMathUnicode from './src/remark/normalizeMathUnicode';
+import normalizeMathUnicode from './src/rehype/normalizeMathUnicode';
 
 const quartzLightCodeTheme: PrismTheme = {
   plain: {
@@ -241,8 +241,11 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           numberPrefixParser: false,
-          remarkPlugins: [normalizeMathUnicode, remarkMath],
-          rehypePlugins: [[rehypeKatex, katexOptions]],
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [
+            normalizeMathUnicode,
+            [rehypeKatex, katexOptions],
+          ],
           editUrl: 'https://github.com/ActiveInsighter/Docusaurus/edit/main/',
         },
         blog: false,
