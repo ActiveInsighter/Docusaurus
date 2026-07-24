@@ -7,6 +7,11 @@ from typing import Any
 
 from playwright.sync_api import Page, sync_playwright
 
+DOC_PATH = (
+    "/docs/数学真题/01-高数上/01-模块一极限的概念、性质及计算/"
+    "01-一、函数极限的计算/"
+)
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -71,6 +76,8 @@ def read_navbar_state(page: Page) -> dict[str, Any]:
             document: {
               clientWidth: root.clientWidth,
               scrollWidth: root.scrollWidth,
+              scrollY: window.scrollY,
+              scrollHeight: root.scrollHeight,
             },
           };
         }
@@ -99,6 +106,7 @@ def assert_layout(state: dict[str, Any], theme: str) -> None:
     assert nav["boxShadow"] == "none", f"{theme}: navbar still has a shadow"
     assert "linear-gradient" in glass["backgroundImage"], f"{theme}: glass gradient missing"
     assert "blur(24px)" in glass["backdropFilter"], f"{theme}: 24px backdrop blur missing"
+    assert float(document["scrollY"]) >= 500.0, f"{theme}: test document did not scroll beneath navbar"
     assert int(document["scrollWidth"]) <= int(document["clientWidth"]) + 1, (
         f"{theme}: horizontal overflow detected"
     )
@@ -113,8 +121,8 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
         theme,
     )
     page.wait_for_timeout(600)
-    page.evaluate("window.scrollTo(0, 260)")
-    page.wait_for_timeout(400)
+    page.evaluate("window.scrollTo(0, 620)")
+    page.wait_for_timeout(500)
 
     state = read_navbar_state(page)
     page.screenshot(path=str(output_dir / f"navbar-{theme}.png"), full_page=False)
@@ -139,8 +147,9 @@ def main() -> None:
                 viewport={"width": 1600, "height": 1000},
                 device_scale_factor=1,
             )
-            page.goto(f"{args.base_url.rstrip('/')}/docs/overview/", wait_until="networkidle")
+            page.goto(f"{args.base_url.rstrip('/')}{DOC_PATH}", wait_until="networkidle")
             page.wait_for_selector(".navbar")
+            page.wait_for_selector("article")
 
             results["light"] = capture_theme(page, output_dir, "light")
             results["dark"] = capture_theme(page, output_dir, "dark")
