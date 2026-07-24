@@ -3,6 +3,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type {PrismTheme} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import normalizeMathUnicode from './src/remark/normalizeMathUnicode';
 
 const quartzLightCodeTheme: PrismTheme = {
   plain: {
@@ -194,6 +195,11 @@ const quartzDarkCodeTheme: PrismTheme = {
   ],
 };
 
+const katexOptions = {
+  strict: (errorCode: string) =>
+    errorCode === 'unicodeTextInMathMode' ? 'ignore' : 'warn',
+};
+
 const config: Config = {
   title: 'To Any Docs',
   tagline: '学习、技术与项目实践的长期知识库',
@@ -235,8 +241,8 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           numberPrefixParser: false,
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
+          remarkPlugins: [normalizeMathUnicode, remarkMath],
+          rehypePlugins: [[rehypeKatex, katexOptions]],
           editUrl: 'https://github.com/ActiveInsighter/Docusaurus/edit/main/',
         },
         blog: false,
