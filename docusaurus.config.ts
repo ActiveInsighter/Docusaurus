@@ -250,7 +250,10 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/custom.css',
+            './src/css/layout-polish.css',
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -309,38 +312,6 @@ const config: Config = {
           position: 'right',
         },
       ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: '内容',
-          items: [
-            {
-              label: '文档总览',
-              to: '/docs/overview',
-            },
-            {
-              label: '搜索文档',
-              to: '/search',
-            },
-          ],
-        },
-        {
-          title: '项目',
-          items: [
-            {
-              label: 'GitHub 仓库',
-              href: 'https://github.com/ActiveInsighter/Docusaurus',
-            },
-            {
-              label: '问题反馈',
-              href: 'https://github.com/ActiveInsighter/Docusaurus/issues',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} To Any Docs. Built with Docusaurus.`,
     },
     prism: {
       theme: quartzLightCodeTheme,
