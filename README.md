@@ -2,7 +2,7 @@
 
 基于 Docusaurus、React 和 TypeScript 构建的个人知识文档站，用于长期整理考研复习、计算机基础、算法与项目实践内容。
 
-生产站点由 Cloudflare Pages 连接 GitHub 仓库并在 `main` 分支更新后自动部署。
+生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus-d92`。
 
 ## 本地开发
 
@@ -31,14 +31,30 @@ npm run serve
 
 ## GitHub Actions
 
-### Build Docusaurus
+### Build and deploy Docusaurus
 
-在向 `main` 推送、创建 Pull Request 或手动触发时执行：
+创建 Pull Request 时只执行检查和生产构建；合并或推送到 `main` 时执行：
 
 1. 安装锁定版本的 npm 依赖；
 2. 执行 TypeScript 检查；
 3. 构建生产站点；
-4. 在 `main` 分支记录最近的 Run ID、运行链接、步骤结果、耗时与日志。
+4. 使用 `cloudflare/wrangler-action` 将 `build/` 部署到 Cloudflare Pages；
+5. 记录最近的 Run ID、运行链接、步骤结果、部署结果、耗时与日志。
+
+部署需要以下 GitHub Actions Secrets：
+
+```text
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
+```
+
+Cloudflare Pages 项目名在工作流中设置为：
+
+```text
+docusaurus-d92
+```
+
+为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。
 
 ### Update generated docs
 
@@ -67,7 +83,7 @@ npm run serve
 - `history.json`：最近 10 次运行记录；
 - `latest-log.txt`：最近一次运行日志。
 
-状态提交使用 `[skip ci]`，并通过工作流路径过滤避免形成重复构建循环。
+状态提交使用 `[CF-Pages-Skip]` 和 `[skip ci]` 前缀，并通过工作流路径过滤避免形成重复构建或 Pages 部署循环。
 
 ## 内容生成
 
@@ -86,12 +102,12 @@ python -m playwright install chromium
 
 ## 部署
 
-Cloudflare Pages 的推荐构建配置：
+GitHub Actions 使用以下命令部署已构建的静态文件：
 
-```text
-Build command: npm run build
-Build output directory: build
-Node.js version: 24
+```bash
+wrangler pages deploy build \
+  --project-name=docusaurus-d92 \
+  --branch=main
 ```
 
-仓库中的 GitHub Actions 负责检查和内容生成；Cloudflare Pages 负责生产部署。
+Pull Request 不会部署；只有 `main` 分支的成功构建和在 `main` 上手动触发的工作流会发布生产版本。并发控制会取消同一分支上尚未完成的旧构建，确保优先部署最新提交。
