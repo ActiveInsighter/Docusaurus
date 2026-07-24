@@ -1,10 +1,8 @@
-import type { Config } from '@docusaurus/types';
+import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import type { PrismTheme } from 'prism-react-renderer';
+import type {PrismTheme} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const quartzLightCodeTheme: PrismTheme = {
   plain: {
@@ -197,35 +195,33 @@ const quartzDarkCodeTheme: PrismTheme = {
 };
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'To Any Docs',
+  tagline: '学习、技术与项目实践的长期知识库',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
+    faster: true,
   },
 
-  // Set the production url of your site here
   url: 'https://to-any.top',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
   trailingSlash: true,
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'ActiveInsighter',
+  projectName: 'Docusaurus',
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
+    localeConfigs: {
+      'zh-Hans': {
+        label: '简体中文',
+        htmlLang: 'zh-CN',
+      },
+    },
   },
 
   markdown: {
@@ -241,28 +237,9 @@ const config: Config = {
           numberPrefixParser: false,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/ActiveInsighter/Docusaurus/edit/main/',
         },
-        blog: {
-          showReadingTime: true,
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -273,8 +250,6 @@ const config: Config = {
   themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -303,9 +278,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'My Site',
+      title: 'To Any Docs',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'To Any Docs',
         src: 'img/logo.svg',
       },
       items: [
@@ -313,15 +288,14 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: '文档',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
         {
           type: 'search',
           position: 'right',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/ActiveInsighter/Docusaurus',
           label: 'GitHub',
           position: 'right',
         },
@@ -331,46 +305,33 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: '内容',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: '文档总览',
+              to: '/docs/overview',
+            },
+            {
+              label: '搜索文档',
+              to: '/search',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '项目',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub 仓库',
+              href: 'https://github.com/ActiveInsighter/Docusaurus',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: '问题反馈',
+              href: 'https://github.com/ActiveInsighter/Docusaurus/issues',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} To Any Docs. Built with Docusaurus.`,
     },
     prism: {
       theme: quartzLightCodeTheme,
