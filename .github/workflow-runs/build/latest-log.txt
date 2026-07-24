@@ -1,32 +1,19 @@
 # Build and deploy Docusaurus run log
-run_id: 30106060080
-run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30106060080
+run_id: 30106353993
+run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30106353993
 branch: main
-head_sha: 91339dcdeb28e5aa2e6eddbe859f2e2918b6ebc1
-started_at: 2026-07-24T15:37:20.992Z
+head_sha: 3d88541bee0fb2fb19f5228e86a46b6c671d6933
+started_at: 2026-07-24T15:41:40.702Z
 ## Install dependencies
 
-added 1429 packages in 12s
-
-## TypeScript
-
-> mydocs@0.0.0 typecheck
-> tsc
-
-
-## Docusaurus build
-
-> mydocs@0.0.0 build
-> docusaurus build
-
-[INFO] [zh-Hans] Creating an optimized production build...
+added 1429 packages in 16s
 
 ## Final summary
-finished_at: 2026-07-24T15:37:47.973Z
-duration_seconds: 27
+finished_at: 2026-07-24T15:41:56.958Z
+duration_seconds: 16
 status: completed
 conclusion: failure
-install: success
-typecheck: success
-build: cancelled
+install: cancelled
+typecheck: skipped
+build: skipped
 deploy: skipped
