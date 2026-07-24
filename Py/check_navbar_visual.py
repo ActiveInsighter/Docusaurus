@@ -90,7 +90,7 @@ def assert_layout(state: dict[str, Any], theme: str) -> None:
     assert float(nav["right"]) >= viewport_width - 1.0, f"{theme}: navbar does not fill viewport"
     assert float(inner["right"]) >= viewport_width - 1.0, f"{theme}: navbar inner leaves a right gap"
     assert float(right["right"]) >= viewport_width - 32.0, f"{theme}: right controls are too far from edge"
-    assert 46.0 <= float(nav["height"]) <= 56.0, f"{theme}: navbar height is unbalanced"
+    assert 48.0 <= float(nav["height"]) <= 55.0, f"{theme}: navbar height is unbalanced"
 
     for side in ("borderTop", "borderRight", "borderBottom", "borderLeft"):
         assert nav[side] == "0px", f"{theme}: navbar has an unexpected border"
@@ -117,8 +117,12 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.wait_for_timeout(400)
 
     state = read_navbar_state(page)
-    assert_layout(state, theme)
     page.screenshot(path=str(output_dir / f"navbar-{theme}.png"), full_page=False)
+    (output_dir / f"navbar-{theme}-metrics.json").write_text(
+        json.dumps(state, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    assert_layout(state, theme)
     return state
 
 
@@ -126,23 +130,30 @@ def main() -> None:
     args = parse_args()
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    results: dict[str, Any] = {}
 
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch()
-        page = browser.new_page(viewport={"width": 1600, "height": 1000}, device_scale_factor=1)
-        page.goto(f"{args.base_url.rstrip('/')}/docs/overview/", wait_until="networkidle")
-        page.wait_for_selector(".navbar")
+    try:
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            page = browser.new_page(
+                viewport={"width": 1600, "height": 1000},
+                device_scale_factor=1,
+            )
+            page.goto(f"{args.base_url.rstrip('/')}/docs/overview/", wait_until="networkidle")
+            page.wait_for_selector(".navbar")
 
-        results = {
-            "light": capture_theme(page, output_dir, "light"),
-            "dark": capture_theme(page, output_dir, "dark"),
-        }
-        browser.close()
+            results["light"] = capture_theme(page, output_dir, "light")
+            results["dark"] = capture_theme(page, output_dir, "dark")
+            browser.close()
+    except Exception as error:
+        (output_dir / "failure.txt").write_text(f"{type(error).__name__}: {error}\n", encoding="utf-8")
+        raise
+    finally:
+        (output_dir / "navbar-metrics.json").write_text(
+            json.dumps(results, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
 
-    (output_dir / "navbar-metrics.json").write_text(
-        json.dumps(results, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
     print(json.dumps(results, ensure_ascii=False, indent=2))
 
 
