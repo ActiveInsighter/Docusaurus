@@ -1,12 +1,17 @@
 # Build Docusaurus run log
-run_id: 30095440563
-run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30095440563
+run_id: 30099937146
+run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30099937146
 branch: main
-head_sha: 5d29afd9f015cc5c527553b4ec9d3eb9e8d27822
-started_at: 2026-07-24T13:04:29.044Z
+head_sha: 9a3c60136f64c6072c90788337611e82ad31d37e
+started_at: 2026-07-24T14:11:10.956Z
 ## Install dependencies
 
-added 1436 packages in 9s
+added 1429 packages in 24s
+npm warn allow-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   @swc/core@1.15.46 (postinstall: node postinstall.js)
+npm warn allow-scripts   core-js@3.49.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
 
 ## TypeScript
 
@@ -24,8 +29,8 @@ added 1436 packages in 9s
 [INFO] Use `npm run serve` command to test your build locally.
 
 ## Final summary
-finished_at: 2026-07-24T13:05:46.247Z
-duration_seconds: 77
+finished_at: 2026-07-24T14:12:51.445Z
+duration_seconds: 100
 status: completed
 conclusion: success
 install: success
