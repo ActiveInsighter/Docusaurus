@@ -1,23 +1,28 @@
 :root {
-  --md-navbar-glass-top: rgba(255, 255, 255, 0.84);
-  --md-navbar-glass-middle: rgba(255, 255, 255, 0.5);
+  --md-navbar-glass-top: rgba(255, 255, 255, 0.46);
+  --md-navbar-glass-middle: rgba(255, 255, 255, 0.27);
+  --md-navbar-glass-lower: rgba(255, 255, 255, 0.1);
   --md-navbar-glass-bottom: rgba(255, 255, 255, 0);
-  --md-navbar-fade-height: 0.8rem;
+  --md-navbar-fade-height: 1.15rem;
+  --md-navbar-height: 3rem;
   --md-toc-active-bg: rgba(40, 75, 99, 0.08);
 }
 
 [data-theme='dark'] {
-  --md-navbar-glass-top: rgba(5, 5, 5, 0.8);
-  --md-navbar-glass-middle: rgba(5, 5, 5, 0.46);
+  --md-navbar-glass-top: rgba(5, 5, 5, 0.5);
+  --md-navbar-glass-middle: rgba(5, 5, 5, 0.3);
+  --md-navbar-glass-lower: rgba(5, 5, 5, 0.12);
   --md-navbar-glass-bottom: rgba(5, 5, 5, 0);
   --md-toc-active-bg: rgba(255, 255, 255, 0.08);
 }
 
 .navbar {
   position: sticky;
-  min-height: 3.35rem;
-  height: 3.35rem;
-  padding-block: 0.16rem;
+  width: 100%;
+  max-width: none;
+  min-height: var(--md-navbar-height);
+  height: var(--md-navbar-height);
+  padding: 0 !important;
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -31,26 +36,28 @@
   inset: 0 0 calc(-1 * var(--md-navbar-fade-height));
   z-index: 0;
   pointer-events: none;
+  border: 0;
   background: linear-gradient(
     to bottom,
     var(--md-navbar-glass-top) 0%,
-    var(--md-navbar-glass-middle) 56%,
+    var(--md-navbar-glass-middle) 50%,
+    var(--md-navbar-glass-lower) 76%,
     var(--md-navbar-glass-bottom) 100%
   );
-  -webkit-backdrop-filter: saturate(155%) blur(16px);
-  backdrop-filter: saturate(155%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  backdrop-filter: saturate(180%) blur(24px);
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
     #000 58%,
-    rgba(0, 0, 0, 0.76) 72%,
+    rgba(0, 0, 0, 0.8) 76%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     #000 0%,
     #000 58%,
-    rgba(0, 0, 0, 0.76) 72%,
+    rgba(0, 0, 0, 0.8) 76%,
     transparent 100%
   );
 }
@@ -58,16 +65,41 @@
 .navbar__inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding-inline: clamp(0.75rem, 1.45vw, 1.35rem);
+  box-sizing: border-box;
+}
+
+.navbar__items {
+  min-width: 0;
+}
+
+.navbar__items--right {
+  min-width: 0;
+  margin-left: auto;
+  gap: 0.1rem;
+}
+
+.navbar__brand {
+  margin-right: clamp(0.85rem, 1.6vw, 1.45rem);
 }
 
 .navbar__logo {
-  height: 2rem;
+  height: 1.72rem;
+}
+
+.navbar__item,
+.navbar__link {
+  padding-inline: 0.58rem;
 }
 
 .navbar__link,
 .navbar__brand,
 .navbar__item {
-  text-shadow: 0 1px 0 color-mix(in srgb, var(--md-page-bg) 68%, transparent);
+  text-shadow: 0 1px 1px color-mix(in srgb, var(--md-page-bg) 52%, transparent);
 }
 
 footer {
@@ -144,12 +176,22 @@ footer {
   }
 }
 
+@media (max-width: 996px) {
+  .navbar__inner {
+    padding-inline: 0.65rem;
+  }
+
+  .navbar__brand {
+    margin-right: 0.45rem;
+  }
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .navbar::before {
     background: linear-gradient(
       to bottom,
-      var(--md-page-bg) 0%,
-      var(--md-page-bg) 72%,
+      color-mix(in srgb, var(--md-page-bg) 82%, transparent) 0%,
+      color-mix(in srgb, var(--md-page-bg) 58%, transparent) 72%,
       transparent 100%
     );
     -webkit-backdrop-filter: none;
