@@ -86,9 +86,9 @@ footer {
 
 @media (min-width: 997px) {
   .theme-doc-toc-desktop {
-    width: clamp(18rem, 19vw, 20.5rem);
+    width: clamp(17.75rem, 18vw, 18.75rem);
     max-width: none;
-    margin-right: 0.35rem;
+    margin-right: 0;
     padding-left: 0.4rem;
   }
 
@@ -108,8 +108,7 @@ footer {
 
 @media (min-width: 1440px) {
   .theme-doc-toc-desktop {
-    width: 20.5rem;
-    margin-right: 0.75rem;
+    width: 18.75rem;
   }
 }
 
