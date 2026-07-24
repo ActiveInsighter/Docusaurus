@@ -23,9 +23,7 @@ function syncTocHeadingMarkup(): void {
     if (!heading) return;
 
     const clone = heading.cloneNode(true) as HTMLElement;
-    clone
-      .querySelectorAll('.hash-link, [aria-hidden="true"]')
-      .forEach((element) => element.remove());
+    clone.querySelectorAll('.hash-link').forEach((element) => element.remove());
     clone.querySelectorAll('[id]').forEach((element) => {
       element.removeAttribute('id');
     });
