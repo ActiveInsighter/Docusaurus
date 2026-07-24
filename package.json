@@ -2,6 +2,10 @@
   "name": "mydocs",
   "version": "0.0.0",
   "private": true,
+  "allowScripts": {
+    "@swc/core@1.15.46": true,
+    "core-js@3.49.0": true
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
