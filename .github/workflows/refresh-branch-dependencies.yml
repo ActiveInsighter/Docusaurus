@@ -39,15 +39,20 @@ jobs:
           cache: pip
           cache-dependency-path: Py/requirements.txt
 
+      - name: Prepare validation output
+        run: mkdir -p artifacts
+
       - name: Update npm dependencies to latest stable versions
+        shell: bash
         run: |
-          npx --yes npm-check-updates@latest -u --target latest
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          set -o pipefail
+          npx --yes npm-check-updates@latest -u --target latest 2>&1 | tee artifacts/dependency-validation.log
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund 2>&1 | tee -a artifacts/dependency-validation.log
 
       - name: Pin latest stable Python dependencies
         shell: bash
         run: |
-          python - <<'PY'
+          python - <<'PY' 2>&1 | tee -a artifacts/dependency-validation.log
           import json
           import re
           import urllib.parse
@@ -70,12 +75,42 @@ jobs:
           path.write_text('\n'.join(updated) + '\n', encoding='utf-8')
           PY
 
-      - name: Install and check updated dependencies
+      - name: Commit refreshed dependency locks
+        shell: bash
         run: |
-          npm ci --no-audit --no-fund
-          python -m pip install --disable-pip-version-check -r Py/requirements.txt
-          npm run typecheck
-          npm run build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json Py/requirements.txt
+          if git diff --cached --quiet; then
+            echo "Dependencies were already current."
+            exit 0
+          fi
+          git commit -m "chore: update all dependencies to latest stable versions"
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Install npm dependencies
+        shell: bash
+        run: |
+          set -o pipefail
+          npm ci --no-audit --no-fund 2>&1 | tee -a artifacts/dependency-validation.log
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m pip install --disable-pip-version-check -r Py/requirements.txt 2>&1 | tee -a artifacts/dependency-validation.log
+
+      - name: Check TypeScript
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run typecheck 2>&1 | tee -a artifacts/dependency-validation.log
+
+      - name: Build site
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee -a artifacts/dependency-validation.log
 
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
@@ -83,7 +118,6 @@ jobs:
       - name: Validate UI and capture screenshots
         shell: bash
         run: |
-          mkdir -p artifacts
           npm run serve -- --host 127.0.0.1 --port 3000 > /tmp/docusaurus-serve.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
@@ -95,7 +129,7 @@ jobs:
             sleep 1
           done
 
-          python - <<'PY'
+          python - <<'PY' 2>&1 | tee -a artifacts/dependency-validation.log
           from urllib.parse import quote
           from playwright.sync_api import sync_playwright
 
@@ -137,23 +171,11 @@ jobs:
           print(f'Validated {toc_math_count} rendered TOC formulas at {doc_url}')
           PY
 
-      - name: Upload UI screenshots
+      - name: Upload validation output
+        if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: docs-ui-preview
-          path: artifacts/*.png
-          if-no-files-found: error
+          name: docs-ui-preview-${{ github.run_attempt }}
+          path: artifacts/*
+          if-no-files-found: warn
           retention-days: 7
-
-      - name: Commit refreshed dependency locks
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json Py/requirements.txt
-          if git diff --cached --quiet; then
-            echo "Dependencies were already current."
-            exit 0
-          fi
-          git commit -m "chore: update all dependencies to latest stable versions"
-          git push origin HEAD:${{ github.head_ref }}
