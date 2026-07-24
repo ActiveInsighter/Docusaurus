@@ -2,7 +2,7 @@
 
 基于 Docusaurus、React 和 TypeScript 构建的个人知识文档站，用于长期整理考研复习、计算机基础、算法与项目实践内容。
 
-生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus-d92`。
+生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus-d92`。Cloudflare Pages 仅接收构建产物，不再负责监听 Git 提交并重复构建。
 
 ## 本地开发
 
@@ -54,7 +54,7 @@ Cloudflare Pages 项目名在工作流中设置为：
 docusaurus-d92
 ```
 
-为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。
+为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。完成该设置后，每个 `main` 版本只会由 GitHub Actions 发布一次。
 
 ### Update generated docs
 
