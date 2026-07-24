@@ -1,12 +1,12 @@
 # Build Docusaurus run log
-run_id: 30093612221
-run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30093612221
+run_id: 30094363964
+run_url: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30094363964
 branch: main
-head_sha: 170990a611a25a694c8118eeffe40c630f812fae
-started_at: 2026-07-24T12:35:20.269Z
+head_sha: f5bf54ae8da4ee5320106c27f83931706fd012a1
+started_at: 2026-07-24T12:47:26.911Z
 ## Install dependencies
 
-added 1436 packages in 40s
+added 1436 packages in 10s
 
 ## TypeScript
 
@@ -42,41 +42,29 @@ No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
 No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
 LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅲ" (8546) [unknownSymbol]
 No character metrics for 'Ⅲ' in style 'Main-Regular' and mode 'text'
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "若" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "为" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "奇" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "数" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "若" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "为" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "偶" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "数" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
-No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
-No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
-No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
-No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
-No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
-No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
-LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
-No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
-No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "（" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "）" used in math mode [unicodeTextInMathMode]
 LaTeX-incompatible input and strict mode is set to 'warn': Too few columns specified in the {array} column argument. [textEnv]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "其" used in math mode [unicodeTextInMathMode]
-LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "他" used in math mode [unicodeTextInMathMode]
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
+No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
+No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
+No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
+No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
+No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
+No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅰ" (8544) [unknownSymbol]
+LaTeX-incompatible input and strict mode is set to 'warn': Unrecognized Unicode character "Ⅱ" (8545) [unknownSymbol]
+No character metrics for 'Ⅰ' in style 'Main-Regular' and mode 'text'
+No character metrics for 'Ⅱ' in style 'Main-Regular' and mode 'text'
 [SUCCESS] Generated static files in "build".
 [INFO] Use `npm run serve` command to test your build locally.
 
 ## Final summary
-finished_at: 2026-07-24T12:37:30.683Z
-duration_seconds: 130
+finished_at: 2026-07-24T12:48:53.730Z
+duration_seconds: 87
 status: completed
 conclusion: success
 install: success
