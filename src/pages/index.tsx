@@ -18,10 +18,13 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/docs/overview">
+            开始浏览文档
+          </Link>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            className="button button--outline button--secondary button--lg"
+            href="https://github.com/ActiveInsighter/Docusaurus">
+            查看 GitHub 仓库
           </Link>
         </div>
       </div>
@@ -33,8 +36,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="面向考研复习、计算机基础、算法与项目实践的长期知识库。">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
