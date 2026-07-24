@@ -1,0 +1,28 @@
+[
+  {
+    "repository": "ActiveInsighter/Docusaurus",
+    "workflow_key": "build",
+    "workflow_file": "ci.yaml",
+    "workflow": "Build Docusaurus",
+    "job": "build",
+    "run_id": "30093612221",
+    "run_number": "27",
+    "run_attempt": "1",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30093612221",
+    "actor": "ActiveInsighter",
+    "event": "push",
+    "branch": "main",
+    "head_sha": "170990a611a25a694c8118eeffe40c630f812fae",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-07-24T12:35:20.269Z",
+    "finished_at": "2026-07-24T12:37:30.683Z",
+    "duration_seconds": 130,
+    "step_outcomes": {
+      "install": "success",
+      "typecheck": "success",
+      "build": "success"
+    },
+    "log_file": ".github/workflow-runs/build/latest-log.txt"
+  }
+]
