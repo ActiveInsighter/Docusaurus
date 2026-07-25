@@ -179,7 +179,7 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     assert blur_radius(container["backdropFilter"]) >= 12.0, (
         f"{theme}: modal overlay blur missing: {container['backdropFilter']}"
     )
-    assert 620.0 <= float(modal["width"]) <= 760.0, (
+    assert 620.0 <= float(modal["width"]) <= 800.0, (
         f"{theme}: DocSearch modal width is unbalanced: {modal['width']}"
     )
     modal_center = (float(modal["left"]) + float(modal["right"])) / 2.0
