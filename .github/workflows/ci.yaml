@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   deployments: write
 
 concurrency:
@@ -24,9 +24,6 @@ concurrency:
 env:
   NODE_VERSION: 24
   CLOUDFLARE_PAGES_PROJECT: docusaurus-d92
-  WORKFLOW_KEY: build
-  WORKFLOW_FILE: ci.yaml
-  STATE_LOG: .github/workflow-runs/build/latest-log.txt
 
 jobs:
   build:
@@ -35,8 +32,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -44,47 +39,22 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: Record run start
-        run: node scripts/record-workflow-state.mjs start
-
       - name: Install dependencies
-        id: install
-        continue-on-error: true
-        shell: bash
-        run: |
-          set -o pipefail
-          echo "## Install dependencies" | tee -a "$STATE_LOG"
-          npm ci --no-audit --no-fund 2>&1 | tee -a "$STATE_LOG"
+        run: npm ci --no-audit --no-fund
 
       - name: Check TypeScript
-        id: typecheck
-        if: steps.install.outcome == 'success'
-        continue-on-error: true
-        shell: bash
-        run: |
-          set -o pipefail
-          echo "" | tee -a "$STATE_LOG"
-          echo "## TypeScript" | tee -a "$STATE_LOG"
-          npm run typecheck 2>&1 | tee -a "$STATE_LOG"
+        run: npm run typecheck
+
+      - name: Test workflow run index
+        run: npm run test:workflow-runs
 
       - name: Build site
-        id: build
-        if: steps.install.outcome == 'success' && steps.typecheck.outcome == 'success'
-        continue-on-error: true
-        shell: bash
-        run: |
-          set -o pipefail
-          echo "" | tee -a "$STATE_LOG"
-          echo "## Docusaurus build" | tee -a "$STATE_LOG"
-          npm run build 2>&1 | tee -a "$STATE_LOG"
+        run: npm run build
 
       - name: Deploy production to Cloudflare Pages
-        id: deploy
         if: >-
-          steps.build.outcome == 'success' &&
           github.ref == 'refs/heads/main' &&
           (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        continue-on-error: true
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -95,48 +65,3 @@ jobs:
             --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT }}
             --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Record deployment details
-        if: always() && steps.deploy.outcome != 'skipped'
-        shell: bash
-        env:
-          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-          DEPLOYMENT_ALIAS: ${{ steps.deploy.outputs.pages-deployment-alias }}
-        run: |
-          echo "" | tee -a "$STATE_LOG"
-          echo "## Cloudflare Pages deployment" | tee -a "$STATE_LOG"
-          echo "project: $CLOUDFLARE_PAGES_PROJECT" | tee -a "$STATE_LOG"
-          echo "outcome: ${{ steps.deploy.outcome }}" | tee -a "$STATE_LOG"
-          echo "deployment_url: $DEPLOYMENT_URL" | tee -a "$STATE_LOG"
-          echo "deployment_alias: $DEPLOYMENT_ALIAS" | tee -a "$STATE_LOG"
-
-      - name: Record run finish
-        if: always()
-        env:
-          STEP_OUTCOMES_JSON: >-
-            {"install":"${{ steps.install.outcome }}","typecheck":"${{ steps.typecheck.outcome }}","build":"${{ steps.build.outcome }}","deploy":"${{ steps.deploy.outcome }}"}
-        run: node scripts/record-workflow-state.mjs finish
-
-      - name: Commit run state
-        if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        continue-on-error: true
-        run: node scripts/commit-workflow-state.mjs "[CF-Pages-Skip] Record Docusaurus build and deployment result [skip ci]"
-
-      - name: Fail when checks or deployment fail
-        if: always()
-        env:
-          INSTALL_OUTCOME: ${{ steps.install.outcome }}
-          TYPECHECK_OUTCOME: ${{ steps.typecheck.outcome }}
-          BUILD_OUTCOME: ${{ steps.build.outcome }}
-          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
-          DEPLOY_REQUIRED: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
-        run: |
-          if [ "$INSTALL_OUTCOME" != "success" ] \
-            || [ "$TYPECHECK_OUTCOME" != "success" ] \
-            || [ "$BUILD_OUTCOME" != "success" ]; then
-            exit 1
-          fi
-
-          if [ "$DEPLOY_REQUIRED" = "true" ] && [ "$DEPLOY_OUTCOME" != "success" ]; then
-            exit 1
-          fi
