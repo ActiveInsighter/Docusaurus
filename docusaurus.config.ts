@@ -254,6 +254,7 @@ const config: Config = {
             './src/css/custom.css',
             './src/css/layout-polish.css',
             './src/css/docsearch-polish.css',
+            './src/css/layout-final.css',
           ],
         },
       } satisfies Preset.Options,
@@ -291,9 +292,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'To Any Docs',
+      title: '首页',
       logo: {
-        alt: 'To Any Docs',
+        alt: '首页',
         src: 'img/logo.svg',
       },
       items: [

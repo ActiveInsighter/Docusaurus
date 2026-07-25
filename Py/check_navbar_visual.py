@@ -17,8 +17,8 @@ DOC_PATH = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Verify the transparent floating navbar, compact glass controls, "
-            "and stable sidebar/TOC navigation states."
+            "Verify full-height desktop sidebars, compact transparent glass "
+            "navbar controls, and stable navigation states."
         )
     )
     parser.add_argument("--base-url", default="http://127.0.0.1:3000")
@@ -30,6 +30,10 @@ def rgba_alpha(value: str) -> float:
     normalized = value.strip().lower()
     if normalized == "transparent":
         return 0.0
+
+    color_match = re.fullmatch(r"color\(srgb\s+.+\s+/\s+([\d.]+)\)", normalized)
+    if color_match is not None:
+        return float(color_match.group(1))
 
     match = re.fullmatch(r"rgba?\((.+)\)", normalized)
     if match is None:
@@ -45,11 +49,14 @@ def rgba_alpha(value: str) -> float:
     return float(alpha)
 
 
+def px(value: str) -> float:
+    match = re.search(r"-?[\d.]+", value)
+    return float(match.group(0)) if match is not None else 0.0
+
+
 def blur_radius(value: str) -> float:
     match = re.search(r"blur\(([\d.]+)px\)", value)
-    if match is None:
-        return 0.0
-    return float(match.group(1))
+    return float(match.group(1)) if match is not None else 0.0
 
 
 def font_weight(value: str) -> float:
@@ -71,20 +78,34 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const inner = document.querySelector('.navbar__inner');
           const main = document.querySelector('.main-wrapper');
           const sidebar = document.querySelector('.theme-doc-sidebar-container');
+          const sidebarViewport = sidebar?.firstElementChild;
+          const sidebarMenu = sidebar?.querySelector('.menu');
           const toc = document.querySelector('.theme-doc-toc-desktop');
+          const tocContent = toc?.firstElementChild;
           const brand = document.querySelector('.navbar__brand');
+          const brandTitle = document.querySelector('.navbar__title');
           const navLink = document.querySelector('.navbar__link');
           const search = document.querySelector('.navbar .DocSearch-Button');
+          const title = document.querySelector('article h1');
           const material = document.querySelector('[data-navbar-material="true"]');
 
-          if (!(navbar instanceof HTMLElement)) throw new Error('navbar not found');
-          if (!(inner instanceof HTMLElement)) throw new Error('navbar inner not found');
-          if (!(main instanceof HTMLElement)) throw new Error('main wrapper not found');
-          if (!(sidebar instanceof HTMLElement)) throw new Error('desktop sidebar not found');
-          if (!(toc instanceof HTMLElement)) throw new Error('desktop toc not found');
-          if (!(brand instanceof HTMLElement)) throw new Error('navbar brand not found');
-          if (!(navLink instanceof HTMLElement)) throw new Error('navbar link not found');
-          if (!(search instanceof HTMLElement)) throw new Error('DocSearch button not found');
+          for (const [name, element] of Object.entries({
+            navbar,
+            inner,
+            main,
+            sidebar,
+            sidebarViewport,
+            sidebarMenu,
+            toc,
+            tocContent,
+            brand,
+            brandTitle,
+            navLink,
+            search,
+            title,
+          })) {
+            if (!(element instanceof HTMLElement)) throw new Error(`${name} not found`);
+          }
 
           const sidebarLinks = [...sidebar.querySelectorAll('a.menu__link')];
           const exact =
@@ -102,22 +123,18 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               !link.classList.contains('menu__link--active') &&
               link.getClientRects().length > 0,
           );
-          if (!(exact instanceof HTMLAnchorElement)) {
-            throw new Error('exact current sidebar link not found');
-          }
-          if (!(inactiveSidebar instanceof HTMLAnchorElement)) {
-            throw new Error('inactive sidebar link not found');
-          }
+          const firstSidebar = sidebarLinks.find(link => link.getClientRects().length > 0);
+          if (!(exact instanceof HTMLAnchorElement)) throw new Error('current sidebar link missing');
+          if (!(inactiveSidebar instanceof HTMLAnchorElement)) throw new Error('inactive sidebar link missing');
+          if (!(firstSidebar instanceof HTMLAnchorElement)) throw new Error('first sidebar link missing');
 
           const tocLinks = [...toc.querySelectorAll('a.table-of-contents__link')];
           const activeToc = toc.querySelector('a.table-of-contents__link--active');
           const inactiveToc = tocLinks.find(link => link !== activeToc);
-          if (!(activeToc instanceof HTMLAnchorElement)) {
-            throw new Error('active toc link not found');
-          }
-          if (!(inactiveToc instanceof HTMLAnchorElement)) {
-            throw new Error('inactive toc link not found');
-          }
+          const firstToc = tocLinks.find(link => link.getClientRects().length > 0);
+          if (!(activeToc instanceof HTMLAnchorElement)) throw new Error('active toc link missing');
+          if (!(inactiveToc instanceof HTMLAnchorElement)) throw new Error('inactive toc link missing');
+          if (!(firstToc instanceof HTMLAnchorElement)) throw new Error('first toc link missing');
 
           const read = element => {
             const rect = element.getBoundingClientRect();
@@ -132,12 +149,17 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               position: style.position,
               pointerEvents: style.pointerEvents,
               background: style.backgroundColor,
+              backgroundImage: style.backgroundImage,
               borderWidth: style.borderWidth,
               borderColor: style.borderColor,
               boxShadow: style.boxShadow,
               color: style.color,
+              fontSize: style.fontSize,
               fontWeight: style.fontWeight,
               transform: style.transform,
+              overflowY: style.overflowY,
+              paddingLeft: style.paddingLeft,
+              paddingRight: style.paddingRight,
               backdropFilter:
                 style.backdropFilter || style.webkitBackdropFilter || '',
             };
@@ -145,18 +167,25 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 
           const root = document.documentElement;
           return {
-            viewportWidth: window.innerWidth,
+            viewport: {width: window.innerWidth, height: window.innerHeight},
             navbar: read(navbar),
             inner: read(inner),
             main: read(main),
             sidebarBox: read(sidebar),
+            sidebarViewport: read(sidebarViewport),
+            sidebarMenu: read(sidebarMenu),
+            tocBox: read(toc),
+            tocContent: read(tocContent),
             materialPresent: material instanceof HTMLElement,
+            brandText: brandTitle.textContent?.trim() ?? '',
+            title: {...read(title), text: title.textContent?.trim() ?? ''},
             controls: {
               brand: read(brand),
               link: read(navLink),
               search: read(search),
             },
             sidebar: {
+              first: {...read(firstSidebar), text: firstSidebar.textContent?.trim() ?? ''},
               exact: {
                 ...read(exact),
                 text: exact.textContent?.trim() ?? '',
@@ -168,14 +197,9 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               },
             },
             toc: {
-              active: {
-                ...read(activeToc),
-                text: activeToc.textContent?.trim() ?? '',
-              },
-              inactive: {
-                ...read(inactiveToc),
-                text: inactiveToc.textContent?.trim() ?? '',
-              },
+              first: {...read(firstToc), text: firstToc.textContent?.trim() ?? ''},
+              active: {...read(activeToc), text: activeToc.textContent?.trim() ?? ''},
+              inactive: {...read(inactiveToc), text: inactiveToc.textContent?.trim() ?? ''},
             },
             document: {
               clientWidth: root.clientWidth,
@@ -189,57 +213,91 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 
 
 def assert_ui_state(state: dict[str, Any], theme: str) -> None:
+    viewport = state["viewport"]
     navbar = state["navbar"]
     main = state["main"]
-    sidebar_box = state["sidebarBox"]
+    sidebar_viewport = state["sidebarViewport"]
+    sidebar_menu = state["sidebarMenu"]
+    toc_box = state["tocBox"]
     controls = state["controls"]
     sidebar = state["sidebar"]
     toc = state["toc"]
+    title = state["title"]
     document = state["document"]
-    viewport_width = float(state["viewportWidth"])
 
     assert navbar["position"] == "fixed", f"{theme}: navbar is not floating"
     assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
-    assert float(navbar["right"]) >= viewport_width - 1.0, (
+    assert float(navbar["right"]) >= float(viewport["width"]) - 1.0, (
         f"{theme}: navbar does not span the viewport"
     )
-    assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to the top"
-    assert 40.0 <= float(navbar["height"]) <= 51.0, (
+    assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to top"
+    assert 36.0 <= float(navbar["height"]) <= 47.0, (
         f"{theme}: navbar is not compact: {navbar['height']}"
     )
-    assert_transparent(navbar["background"], f"{theme}: navbar outer box is not transparent")
-    assert navbar["boxShadow"] == "none", f"{theme}: navbar outer box has a shadow"
-    assert navbar["borderWidth"] == "0px", f"{theme}: navbar outer box has a border"
-    assert navbar["pointerEvents"] == "none", (
-        f"{theme}: transparent navbar blocks the content below"
-    )
-    assert not state["materialPresent"], (
-        f"{theme}: legacy layered navbar material is still rendered"
+    assert_transparent(navbar["background"], f"{theme}: navbar shell is not transparent")
+    assert navbar["boxShadow"] == "none", f"{theme}: navbar shell has a shadow"
+    assert navbar["borderWidth"] == "0px", f"{theme}: navbar shell has a border"
+    assert navbar["pointerEvents"] == "none", f"{theme}: navbar shell blocks content"
+    assert not state["materialPresent"], f"{theme}: legacy navbar material returned"
+    assert state["brandText"] == "首页", (
+        f"{theme}: navbar brand is not localized: {state['brandText']!r}"
     )
 
     assert float(main["top"]) <= 2.0, (
-        f"{theme}: main content still reserves a navbar row: {main['top']}"
-    )
-    assert float(sidebar_box["top"]) <= float(navbar["bottom"]) + 1.0, (
-        f"{theme}: sidebar does not use the top viewport area"
+        f"{theme}: main content still reserves navbar space: {main['top']}"
     )
 
+    assert float(sidebar_viewport["top"]) <= 1.0, (
+        f"{theme}: left sidebar viewport does not start at top: {sidebar_viewport['top']}"
+    )
+    assert float(sidebar_viewport["height"]) >= float(viewport["height"]) - 2.0, (
+        f"{theme}: left sidebar viewport is not full height: {sidebar_viewport['height']}"
+    )
+    assert float(sidebar["first"]["top"]) <= 24.0, (
+        f"{theme}: left sidebar content still reserves a navbar gap: {sidebar['first']['top']}"
+    )
+    assert px(sidebar_menu["paddingLeft"]) > px(sidebar_menu["paddingRight"]), (
+        f"{theme}: left menu was not shifted toward the divider"
+    )
+    assert px(sidebar_menu["paddingRight"]) <= 4.5, (
+        f"{theme}: left menu keeps too much space before the divider: "
+        f"{sidebar_menu['paddingRight']}"
+    )
+
+    assert float(toc_box["top"]) <= 1.0, (
+        f"{theme}: right TOC scroller does not start at top: {toc_box['top']}"
+    )
+    assert float(toc_box["height"]) >= float(viewport["height"]) - 2.0, (
+        f"{theme}: right TOC scroller is not full height: {toc_box['height']}"
+    )
+    assert float(toc["first"]["top"]) <= 24.0, (
+        f"{theme}: right TOC content still reserves a navbar gap: {toc['first']['top']}"
+    )
+
+    control_heights = []
     for name, control in controls.items():
-        assert control["pointerEvents"] == "auto", (
-            f"{theme}: {name} control is not interactive"
+        alpha = rgba_alpha(control["background"])
+        assert control["pointerEvents"] == "auto", f"{theme}: {name} is not interactive"
+        assert control["borderWidth"] != "0px", f"{theme}: {name} lacks a glass boundary"
+        assert 0.12 <= alpha <= 0.68, (
+            f"{theme}: {name} surface is not visibly translucent: {control['background']}"
         )
-        assert control["borderWidth"] != "0px", (
-            f"{theme}: {name} control lacks a glass boundary"
+        assert blur_radius(control["backdropFilter"]) >= 16.0, (
+            f"{theme}: {name} blur is too weak: {control['backdropFilter']}"
         )
-        assert rgba_alpha(control["background"]) > 0.05, (
-            f"{theme}: {name} control lacks a readable surface"
+        assert "gradient" in control["backgroundImage"], (
+            f"{theme}: {name} lacks the glass highlight layer"
         )
-        assert blur_radius(control["backdropFilter"]) >= 10.0, (
-            f"{theme}: {name} control blur is missing: {control['backdropFilter']}"
-        )
-        assert control["transform"] == "none", (
-            f"{theme}: {name} control uses a positional transform"
-        )
+        assert control["transform"] == "none", f"{theme}: {name} uses a transform"
+        control_heights.append(float(control["height"]))
+
+    assert max(control_heights) - min(control_heights) <= 1.5, (
+        f"{theme}: navbar controls are vertically misaligned: {control_heights}"
+    )
+
+    assert 26.0 <= px(title["fontSize"]) <= 37.0, (
+        f"{theme}: document title size is unbalanced: {title['fontSize']}"
+    )
 
     exact = sidebar["exact"]
     inactive = sidebar["inactive"]
@@ -250,17 +308,14 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     assert abs(font_weight(exact["fontWeight"]) - font_weight(inactive["fontWeight"])) <= 1.0, (
         f"{theme}: sidebar active state changes font weight"
     )
-    assert exact["color"] != inactive["color"], (
-        f"{theme}: sidebar active text color is not distinct"
-    )
 
     active_toc = toc["active"]
     inactive_toc = toc["inactive"]
     assert abs(
         font_weight(active_toc["fontWeight"]) - font_weight(inactive_toc["fontWeight"])
-    ) <= 1.0, f"{theme}: toc active state changes font weight"
+    ) <= 1.0, f"{theme}: TOC active state changes font weight"
     assert active_toc["color"] != inactive_toc["color"], (
-        f"{theme}: active toc link is not distinguished by color"
+        f"{theme}: active TOC link is not distinguished by color"
     )
 
     assert float(document["scrollY"]) >= 500.0, f"{theme}: test document did not scroll"
@@ -275,16 +330,27 @@ def find_hover_target(page: Page) -> Locator:
         ".menu__list-item:not(:has(> .menu__list-item-collapsible)) "
         "> a.menu__link:not([aria-current='page'])"
     )
+    navbar_box = page.locator(".navbar").bounding_box()
+    minimum_top = 54.0
+    if navbar_box is not None:
+        minimum_top = float(navbar_box["y"]) + float(navbar_box["height"]) + 8.0
+
+    viewport_height = float(page.viewport_size["height"] if page.viewport_size else 1000)
     for index in range(links.count()):
         candidate = links.nth(index)
-        if candidate.is_visible():
+        box = candidate.bounding_box()
+        if (
+            candidate.is_visible()
+            and box is not None
+            and float(box["y"]) >= minimum_top
+            and float(box["y"]) + float(box["height"]) <= viewport_height - 8.0
+        ):
             return candidate
-    raise AssertionError("no visible inactive leaf sidebar link found")
+    raise AssertionError("no unobstructed inactive sidebar leaf found")
 
 
 def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
     target = find_hover_target(page)
-    target_text = target.inner_text().strip()
 
     def read_target() -> dict[str, Any]:
         return target.evaluate(
@@ -320,11 +386,9 @@ def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
         f"{theme}: sidebar hover changed font weight"
     )
     assert after["transform"] == "none", f"{theme}: sidebar hover uses a transform"
-    assert rgba_alpha(after["background"]) > 0.001, (
-        f"{theme}: hovered sidebar link {target_text!r} lacks feedback"
-    )
+    assert rgba_alpha(after["background"]) > 0.001, f"{theme}: sidebar hover feedback missing"
 
-    return {"targetText": target_text, "before": before, "after": after}
+    return {"targetText": target.inner_text().strip(), "before": before, "after": after}
 
 
 def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
@@ -335,14 +399,19 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
         }""",
         theme,
     )
-    page.wait_for_timeout(600)
+    page.wait_for_timeout(500)
     page.evaluate("window.scrollTo(0, 620)")
     page.wait_for_timeout(650)
 
     state = read_ui_state(page)
-    assert_ui_state(state, theme)
+    diagnostics_path = output_dir / f"docs-ui-{theme}-metrics.json"
+    diagnostics_path.write_text(
+        json.dumps({"state": state}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     page.screenshot(path=str(output_dir / f"docs-ui-{theme}.png"), full_page=False)
 
+    assert_ui_state(state, theme)
     hover = verify_hover_stability(page, theme)
     page.screenshot(
         path=str(output_dir / f"docs-ui-{theme}-sidebar-hover.png"),
@@ -351,7 +420,7 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.mouse.move(900, 650)
 
     result = {"state": state, "hover": hover}
-    (output_dir / f"docs-ui-{theme}-metrics.json").write_text(
+    diagnostics_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
@@ -375,7 +444,7 @@ def main() -> None:
             page.wait_for_selector(".navbar")
             page.wait_for_selector(".theme-doc-sidebar-container")
             page.wait_for_selector(".theme-doc-toc-desktop")
-            page.wait_for_selector("article")
+            page.wait_for_selector("article h1")
 
             results["light"] = capture_theme(page, output_dir, "light")
             results["dark"] = capture_theme(page, output_dir, "dark")

@@ -1,26 +1,25 @@
 :root {
-  --md-navbar-height: 2.65rem;
-  --md-navbar-control-height: 2.05rem;
-  --md-navbar-control-bg: rgba(255, 255, 255, 0.7);
-  --md-navbar-control-bg-hover: rgba(255, 255, 255, 0.88);
-  --md-navbar-control-border: rgba(27, 48, 61, 0.13);
-  --md-navbar-control-shadow: 0 6px 20px rgba(27, 48, 61, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --md-navbar-height: 2.5rem;
+  --md-navbar-control-height: 1.95rem;
+  --md-navbar-control-bg: rgba(255, 255, 255, 0.38);
+  --md-navbar-control-bg-hover: rgba(255, 255, 255, 0.56);
+  --md-navbar-control-border: rgba(27, 48, 61, 0.16);
+  --md-navbar-control-highlight: rgba(255, 255, 255, 0.46);
+  --md-navbar-control-shadow: 0 7px 22px rgba(27, 48, 61, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
   --md-toc-active-bg: transparent;
 }
 
 [data-theme='dark'] {
-  --md-navbar-control-bg: rgba(18, 20, 23, 0.7);
-  --md-navbar-control-bg-hover: rgba(29, 32, 36, 0.88);
-  --md-navbar-control-border: rgba(255, 255, 255, 0.13);
-  --md-navbar-control-shadow: 0 8px 24px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  --md-navbar-control-bg: rgba(12, 14, 17, 0.44);
+  --md-navbar-control-bg-hover: rgba(25, 29, 33, 0.62);
+  --md-navbar-control-border: rgba(255, 255, 255, 0.16);
+  --md-navbar-control-highlight: rgba(255, 255, 255, 0.045);
+  --md-navbar-control-shadow: 0 9px 26px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   --md-toc-active-bg: transparent;
 }
 
-/* The navbar itself is only a transparent interaction layer. It is removed
- * from document flow so the sidebar and document layout can use the full
- * viewport. Only the compact controls receive glass surfaces. */
 .navbar {
   position: fixed;
   inset: 0 0 auto;
@@ -44,21 +43,27 @@
   min-width: 0;
   height: 100%;
   margin: 0;
-  padding: 0.3rem clamp(0.68rem, 1.25vw, 1.1rem);
+  padding: 0.27rem clamp(0.62rem, 1.1vw, 0.96rem);
   box-sizing: border-box;
   pointer-events: none;
 }
 
 .navbar__items {
   min-width: 0;
-  gap: 0.28rem;
+  gap: 0.24rem;
   pointer-events: none;
 }
 
 .navbar__items--right {
   min-width: 0;
   margin-left: auto;
-  gap: 0.28rem;
+  gap: 0.24rem;
+}
+
+.navbar__item {
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
 
 .navbar :where(a, button, .DocSearch-Button) {
@@ -68,47 +73,50 @@
 .navbar__brand,
 .navbar__link,
 .navbar__toggle,
-.navbar__items--right > .navbar__item > .clean-btn {
+.navbar .clean-btn,
+.navbar .DocSearch-Button {
   min-height: var(--md-navbar-control-height);
   border: 1px solid var(--md-navbar-control-border);
   border-radius: 999px;
-  background: var(--md-navbar-control-bg);
+  background-color: var(--md-navbar-control-bg);
+  background-image: linear-gradient(
+    180deg,
+    var(--md-navbar-control-highlight),
+    transparent 58%
+  );
   color: var(--ifm-navbar-link-color);
   box-shadow: var(--md-navbar-control-shadow);
-  -webkit-backdrop-filter: blur(14px) saturate(138%);
-  backdrop-filter: blur(14px) saturate(138%);
+  -webkit-backdrop-filter: blur(18px) saturate(155%);
+  backdrop-filter: blur(18px) saturate(155%);
+  transform: none;
   transition: background-color 150ms ease, border-color 150ms ease,
     color 150ms ease, box-shadow 150ms ease;
 }
 
 .navbar__brand {
-  gap: 0.42rem;
-  margin-right: clamp(0.35rem, 0.8vw, 0.7rem);
-  padding: 0 0.62rem 0 0.42rem;
+  gap: 0.38rem;
+  margin-right: clamp(0.28rem, 0.65vw, 0.56rem);
+  padding: 0 0.56rem 0 0.36rem;
 }
 
 .navbar__logo {
-  height: 1.48rem;
+  height: 1.4rem;
 }
 
 .navbar__title {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   line-height: 1;
-}
-
-.navbar__item,
-.navbar__link {
-  padding-inline: 0.62rem;
 }
 
 .navbar__link {
   display: inline-flex;
   align-items: center;
+  padding-inline: 0.56rem;
   line-height: 1;
 }
 
 .navbar__toggle,
-.navbar__items--right > .navbar__item > .clean-btn {
+.navbar .clean-btn {
   width: var(--md-navbar-control-height);
   height: var(--md-navbar-control-height);
   min-width: var(--md-navbar-control-height);
@@ -116,25 +124,45 @@
   justify-content: center;
 }
 
+.navbar .DocSearch-Button {
+  height: var(--md-navbar-control-height) !important;
+  min-height: var(--md-navbar-control-height) !important;
+  margin: 0 !important;
+  border-color: var(--md-navbar-control-border) !important;
+  background-color: var(--md-navbar-control-bg) !important;
+  background-image: linear-gradient(
+    180deg,
+    var(--md-navbar-control-highlight),
+    transparent 58%
+  ) !important;
+  box-shadow: var(--md-navbar-control-shadow) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(155%) !important;
+  backdrop-filter: blur(18px) saturate(155%) !important;
+  transform: none !important;
+}
+
 .navbar__brand:hover,
 .navbar__link:hover,
 .navbar__toggle:hover,
-.navbar__items--right > .navbar__item > .clean-btn:hover {
+.navbar .clean-btn:hover,
+.navbar .DocSearch-Button:hover {
   border-color: color-mix(
     in srgb,
-    var(--ifm-color-primary) 42%,
+    var(--ifm-color-primary) 46%,
     var(--md-navbar-control-border)
-  );
-  background: var(--md-navbar-control-bg-hover);
+  ) !important;
+  background-color: var(--md-navbar-control-bg-hover) !important;
   color: var(--ifm-navbar-link-hover-color);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--ifm-color-primary) 10%, transparent),
-    inset 0 1px 0 color-mix(in srgb, #fff 68%, transparent);
+  box-shadow: 0 9px 26px color-mix(in srgb, var(--ifm-color-primary) 11%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 62%, transparent) !important;
+  transform: none !important;
 }
 
 .navbar__brand:focus-visible,
 .navbar__link:focus-visible,
 .navbar__toggle:focus-visible,
-.navbar__items--right > .navbar__item > .clean-btn:focus-visible {
+.navbar .clean-btn:focus-visible,
+.navbar .DocSearch-Button:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
   outline-offset: 2px;
 }
@@ -142,20 +170,17 @@
 .navbar__link--active {
   border-color: color-mix(
     in srgb,
-    var(--ifm-color-primary) 34%,
+    var(--ifm-color-primary) 38%,
     var(--md-navbar-control-border)
   );
-  background: color-mix(
+  background-color: color-mix(
     in srgb,
-    var(--ifm-color-primary) 9%,
+    var(--ifm-color-primary) 10%,
     var(--md-navbar-control-bg)
   );
   color: var(--ifm-color-primary);
 }
 
-/* Docusaurus marks every category in the current route as active. Keep route
- * ancestors neutral, but restore the background highlight on the exact page.
- * The font weight stays unchanged so navigation never shifts or wraps. */
 .theme-doc-sidebar-container .menu__list-item-collapsible--active,
 .theme-doc-sidebar-container
   .menu__list-item-collapsible:has(
@@ -295,17 +320,67 @@ footer {
   white-space: nowrap;
 }
 
+.theme-doc-markdown.markdown > h1:first-child {
+  font-size: clamp(1.58rem, 1.9vw, 1.98rem);
+  line-height: 1.28;
+  margin-bottom: 1.05rem;
+}
+
 @media (min-width: 997px) {
+  :root {
+    --ifm-navbar-height: 0px;
+  }
+
+  .theme-doc-sidebar-container {
+    align-self: flex-start;
+    min-height: 100vh;
+    height: 100vh;
+    margin-top: 0 !important;
+  }
+
+  .theme-doc-sidebar-container > div {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    padding-top: 0 !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .theme-doc-sidebar-container .menu {
+    min-height: 100%;
+    padding: 0.42rem 0.18rem 1.15rem 0.92rem;
+  }
+
   .theme-doc-toc-desktop {
+    position: sticky !important;
+    top: 0 !important;
     flex: 0 0 clamp(14.25rem, 15vw, 15.5rem);
+    align-self: flex-start;
     width: clamp(14.25rem, 15vw, 15.5rem);
     max-width: clamp(14.25rem, 15vw, 15.5rem);
+    height: 100vh;
+    max-height: 100vh;
+    margin-top: 0 !important;
     margin-right: 0;
+    padding-top: 0;
     padding-left: 0.22rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .theme-doc-toc-desktop > * {
+    position: static !important;
+    top: auto !important;
+    height: auto;
+    max-height: none !important;
+    overflow: visible;
   }
 
   .theme-doc-toc-desktop .table-of-contents {
-    padding: 0.36rem 0.22rem 1.1rem 0.82rem;
+    padding: 0.42rem 0.22rem 1.1rem 0.82rem;
     border-left-color: color-mix(
       in srgb,
       var(--ifm-toc-border-color) 76%,
@@ -320,17 +395,17 @@ footer {
 
 @media (max-width: 996px) {
   :root {
-    --md-navbar-height: 2.55rem;
-    --md-navbar-control-height: 1.98rem;
+    --md-navbar-height: 2.42rem;
+    --md-navbar-control-height: 1.9rem;
   }
 
   .navbar__inner {
-    padding: 0.28rem 0.55rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .navbar__brand {
-    margin-right: 0.2rem;
-    padding-inline: 0.38rem;
+    margin-right: 0.18rem;
+    padding-inline: 0.34rem;
   }
 
   .navbar__title {
@@ -342,9 +417,11 @@ footer {
   .navbar__brand,
   .navbar__link,
   .navbar__toggle,
-  .navbar__items--right > .navbar__item > .clean-btn {
-    background: var(--md-surface-elevated);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+  .navbar .clean-btn,
+  .navbar .DocSearch-Button {
+    background-color: var(--md-surface-elevated) !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 }
