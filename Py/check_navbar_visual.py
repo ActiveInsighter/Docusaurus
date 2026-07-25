@@ -61,7 +61,9 @@ def blur_radius(value: str) -> float:
 
 def font_weight(value: str) -> float:
     aliases = {"normal": 400.0, "bold": 700.0}
-    return aliases.get(value, float(value))
+    if value in aliases:
+        return aliases[value]
+    return float(value)
 
 
 def assert_transparent(value: str, message: str) -> None:
@@ -79,7 +81,7 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const sidebarViewport = sidebar?.firstElementChild;
           const sidebarMenu = sidebar?.querySelector('.menu');
           const toc = document.querySelector('.theme-doc-toc-desktop');
-          const tocViewport = toc?.firstElementChild;
+          const tocContent = toc?.firstElementChild;
           const brand = document.querySelector('.navbar__brand');
           const brandTitle = document.querySelector('.navbar__title');
           const navLink = document.querySelector('.navbar__link');
@@ -95,7 +97,7 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             sidebarViewport,
             sidebarMenu,
             toc,
-            tocViewport,
+            tocContent,
             brand,
             brandTitle,
             navLink,
@@ -173,7 +175,7 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             sidebarViewport: read(sidebarViewport),
             sidebarMenu: read(sidebarMenu),
             tocBox: read(toc),
-            tocViewport: read(tocViewport),
+            tocContent: read(tocContent),
             materialPresent: material instanceof HTMLElement,
             brandText: brandTitle.textContent?.trim() ?? '',
             title: {...read(title), text: title.textContent?.trim() ?? ''},
@@ -214,11 +216,9 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     viewport = state["viewport"]
     navbar = state["navbar"]
     main = state["main"]
-    sidebar_box = state["sidebarBox"]
     sidebar_viewport = state["sidebarViewport"]
     sidebar_menu = state["sidebarMenu"]
     toc_box = state["tocBox"]
-    toc_viewport = state["tocViewport"]
     controls = state["controls"]
     sidebar = state["sidebar"]
     toc = state["toc"]
@@ -226,46 +226,52 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     document = state["document"]
 
     assert navbar["position"] == "fixed", f"{theme}: navbar is not floating"
-    assert abs(float(navbar["left"])) <= 1.0 and float(navbar["right"]) >= float(viewport["width"]) - 1.0
+    assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
+    assert float(navbar["right"]) >= float(viewport["width"]) - 1.0, (
+        f"{theme}: navbar does not span the viewport"
+    )
     assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to top"
-    assert 36.0 <= float(navbar["height"]) <= 47.0, f"{theme}: navbar is not compact"
+    assert 36.0 <= float(navbar["height"]) <= 47.0, (
+        f"{theme}: navbar is not compact: {navbar['height']}"
+    )
     assert_transparent(navbar["background"], f"{theme}: navbar shell is not transparent")
     assert navbar["boxShadow"] == "none", f"{theme}: navbar shell has a shadow"
     assert navbar["borderWidth"] == "0px", f"{theme}: navbar shell has a border"
     assert navbar["pointerEvents"] == "none", f"{theme}: navbar shell blocks content"
     assert not state["materialPresent"], f"{theme}: legacy navbar material returned"
-    assert state["brandText"] == "首页", f"{theme}: navbar brand is not localized"
+    assert state["brandText"] == "首页", (
+        f"{theme}: navbar brand is not localized: {state['brandText']!r}"
+    )
 
-    assert float(main["top"]) <= 2.0, f"{theme}: main content still reserves navbar space"
+    assert float(main["top"]) <= 2.0, (
+        f"{theme}: main content still reserves navbar space: {main['top']}"
+    )
 
     assert float(sidebar_viewport["top"]) <= 1.0, (
         f"{theme}: left sidebar viewport does not start at top: {sidebar_viewport['top']}"
     )
     assert float(sidebar_viewport["height"]) >= float(viewport["height"]) - 2.0, (
-        f"{theme}: left sidebar viewport is not full height"
+        f"{theme}: left sidebar viewport is not full height: {sidebar_viewport['height']}"
     )
     assert float(sidebar["first"]["top"]) <= 24.0, (
-        f"{theme}: left sidebar content still reserves a navbar gap"
-    )
-    right_gap = float(sidebar_box["right"]) - float(sidebar["first"]["right"])
-    assert right_gap <= 18.0, (
-        f"{theme}: left sidebar content remains too far from divider ({right_gap}px)"
+        f"{theme}: left sidebar content still reserves a navbar gap: {sidebar['first']['top']}"
     )
     assert px(sidebar_menu["paddingLeft"]) > px(sidebar_menu["paddingRight"]), (
         f"{theme}: left menu was not shifted toward the divider"
     )
+    assert px(sidebar_menu["paddingRight"]) <= 4.5, (
+        f"{theme}: left menu keeps too much space before the divider: "
+        f"{sidebar_menu['paddingRight']}"
+    )
 
+    assert float(toc_box["top"]) <= 1.0, (
+        f"{theme}: right TOC scroller does not start at top: {toc_box['top']}"
+    )
     assert float(toc_box["height"]) >= float(viewport["height"]) - 2.0, (
-        f"{theme}: right TOC column is not full height"
-    )
-    assert float(toc_viewport["top"]) <= 1.0, (
-        f"{theme}: right TOC viewport does not start at top"
-    )
-    assert float(toc_viewport["height"]) >= float(viewport["height"]) - 2.0, (
-        f"{theme}: right TOC viewport is not full height"
+        f"{theme}: right TOC scroller is not full height: {toc_box['height']}"
     )
     assert float(toc["first"]["top"]) <= 24.0, (
-        f"{theme}: right TOC content still reserves a navbar gap"
+        f"{theme}: right TOC content still reserves a navbar gap: {toc['first']['top']}"
     )
 
     control_heights = []
@@ -386,9 +392,14 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.wait_for_timeout(650)
 
     state = read_ui_state(page)
-    assert_ui_state(state, theme)
+    diagnostics_path = output_dir / f"docs-ui-{theme}-metrics.json"
+    diagnostics_path.write_text(
+        json.dumps({"state": state}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     page.screenshot(path=str(output_dir / f"docs-ui-{theme}.png"), full_page=False)
 
+    assert_ui_state(state, theme)
     hover = verify_hover_stability(page, theme)
     page.screenshot(
         path=str(output_dir / f"docs-ui-{theme}-sidebar-hover.png"),
@@ -397,7 +408,7 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.mouse.move(900, 650)
 
     result = {"state": state, "hover": hover}
-    (output_dir / f"docs-ui-{theme}-metrics.json").write_text(
+    diagnostics_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
