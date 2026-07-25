@@ -7,8 +7,10 @@ on:
     paths:
       - "src/css/custom.css"
       - "src/css/layout-polish.css"
+      - "src/css/docsearch-polish.css"
       - "src/theme/Navbar/**"
       - "Py/check_navbar_visual.py"
+      - "Py/check_docsearch_visual.py"
       - ".github/workflows/navbar-visual.yml"
   workflow_dispatch:
 
@@ -67,6 +69,12 @@ jobs:
       - name: Capture and assert documentation UI
         run: >-
           python Py/check_navbar_visual.py
+          --base-url http://127.0.0.1:3000
+          --output-dir artifacts/docs-ui-visual
+
+      - name: Capture and assert DocSearch UI
+        run: >-
+          python Py/check_docsearch_visual.py
           --base-url http://127.0.0.1:3000
           --output-dir artifacts/docs-ui-visual
 
