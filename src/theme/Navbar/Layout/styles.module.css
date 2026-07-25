@@ -1,13 +1,14 @@
 .material {
-  --navbar-material-height: clamp(6.5rem, 8vw, 7.5rem);
-  --navbar-soft-blur: 10px;
-  --navbar-strong-blur: 24px;
-  --navbar-soft-saturation: 145%;
-  --navbar-strong-saturation: 160%;
-  --navbar-tint-top: rgba(255, 255, 255, 0.52);
-  --navbar-tint-middle: rgba(255, 255, 255, 0.22);
-  --navbar-tint-lower: rgba(255, 255, 255, 0.07);
-  --navbar-strong-tint: rgba(255, 255, 255, 0.035);
+  --navbar-material-height: clamp(6.9rem, 8.4vw, 8rem);
+  --navbar-soft-blur: 12px;
+  --navbar-strong-blur: 28px;
+  --navbar-soft-saturation: 142%;
+  --navbar-strong-saturation: 158%;
+  --navbar-tint-top: rgba(255, 255, 255, 0.5);
+  --navbar-tint-middle: rgba(255, 255, 255, 0.2);
+  --navbar-tint-lower: rgba(255, 255, 255, 0.055);
+  --navbar-strong-tint: rgba(255, 255, 255, 0.045);
+  --navbar-highlight: rgba(255, 255, 255, 0.2);
 
   position: fixed;
   inset: 0 0 auto;
@@ -15,30 +16,34 @@
   width: 100%;
   height: var(--navbar-material-height);
   overflow: hidden;
+  overflow: clip;
   pointer-events: none;
+  contain: paint;
+  isolation: isolate;
 }
 
 :global([data-theme='dark']) .material {
-  --navbar-tint-top: rgba(7, 8, 10, 0.54);
-  --navbar-tint-middle: rgba(7, 8, 10, 0.25);
-  --navbar-tint-lower: rgba(7, 8, 10, 0.08);
-  --navbar-strong-tint: rgba(7, 8, 10, 0.045);
+  --navbar-tint-top: rgba(6, 7, 9, 0.5);
+  --navbar-tint-middle: rgba(6, 7, 9, 0.23);
+  --navbar-tint-lower: rgba(6, 7, 9, 0.065);
+  --navbar-strong-tint: rgba(6, 7, 9, 0.055);
+  --navbar-highlight: rgba(255, 255, 255, 0.035);
 }
 
 .softBlur,
 .strongBlur,
 .tint {
   position: absolute;
-  inset: 0;
   border: 0;
   pointer-events: none;
 }
 
 .softBlur {
+  inset: 0;
   background: linear-gradient(
     to bottom,
     var(--navbar-tint-middle) 0%,
-    color-mix(in srgb, var(--navbar-tint-lower) 72%, transparent) 58%,
+    color-mix(in srgb, var(--navbar-tint-lower) 78%, transparent) 55%,
     transparent 100%
   );
   -webkit-backdrop-filter: blur(var(--navbar-soft-blur))
@@ -48,26 +53,33 @@
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    #000 38%,
-    rgba(0, 0, 0, 0.78) 58%,
-    rgba(0, 0, 0, 0.32) 80%,
+    #000 34%,
+    rgba(0, 0, 0, 0.84) 54%,
+    rgba(0, 0, 0, 0.42) 76%,
+    rgba(0, 0, 0, 0.12) 91%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    #000 38%,
-    rgba(0, 0, 0, 0.78) 58%,
-    rgba(0, 0, 0, 0.32) 80%,
+    #000 34%,
+    rgba(0, 0, 0, 0.84) 54%,
+    rgba(0, 0, 0, 0.42) 76%,
+    rgba(0, 0, 0, 0.12) 91%,
     transparent 100%
   );
 }
 
+/* Keep the expensive blur concentrated near the top. The lower fade is handled
+ * by the lighter full-height layer, which preserves the premium stepped blur
+ * while reducing the backdrop-filter area. */
 .strongBlur {
+  inset: 0 0 25%;
   background: linear-gradient(
     to bottom,
     var(--navbar-strong-tint) 0%,
-    transparent 72%
+    color-mix(in srgb, var(--navbar-strong-tint) 48%, transparent) 46%,
+    transparent 100%
   );
   -webkit-backdrop-filter: blur(var(--navbar-strong-blur))
     saturate(var(--navbar-strong-saturation));
@@ -76,29 +88,38 @@
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    rgba(0, 0, 0, 0.92) 18%,
-    rgba(0, 0, 0, 0.58) 38%,
-    rgba(0, 0, 0, 0.16) 60%,
-    transparent 72%
+    rgba(0, 0, 0, 0.96) 16%,
+    rgba(0, 0, 0, 0.72) 39%,
+    rgba(0, 0, 0, 0.3) 65%,
+    rgba(0, 0, 0, 0.08) 84%,
+    transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    rgba(0, 0, 0, 0.92) 18%,
-    rgba(0, 0, 0, 0.58) 38%,
-    rgba(0, 0, 0, 0.16) 60%,
-    transparent 72%
+    rgba(0, 0, 0, 0.96) 16%,
+    rgba(0, 0, 0, 0.72) 39%,
+    rgba(0, 0, 0, 0.3) 65%,
+    rgba(0, 0, 0, 0.08) 84%,
+    transparent 100%
   );
 }
 
 .tint {
-  background: linear-gradient(
-    to bottom,
-    var(--navbar-tint-top) 0%,
-    var(--navbar-tint-middle) 30%,
-    var(--navbar-tint-lower) 58%,
-    transparent 100%
-  );
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 90% 42% at 50% -12%,
+      var(--navbar-highlight) 0%,
+      transparent 72%
+    ),
+    linear-gradient(
+      to bottom,
+      var(--navbar-tint-top) 0%,
+      var(--navbar-tint-middle) 27%,
+      var(--navbar-tint-lower) 57%,
+      transparent 100%
+    );
 }
 
 @supports not (
@@ -144,8 +165,14 @@
 
 @media (max-width: 996px) {
   .material {
-    --navbar-material-height: 6rem;
-    --navbar-soft-blur: 8px;
-    --navbar-strong-blur: 18px;
+    --navbar-material-height: 6.15rem;
+    --navbar-soft-blur: 9px;
+    --navbar-strong-blur: 20px;
+    --navbar-soft-saturation: 135%;
+    --navbar-strong-saturation: 148%;
+  }
+
+  .strongBlur {
+    bottom: 30%;
   }
 }
