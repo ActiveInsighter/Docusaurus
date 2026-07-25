@@ -21,6 +21,10 @@ article.theme-doc-markdown h1:first-of-type,
 }
 
 @media (min-width: 997px) {
+  :root {
+    --md-navbar-control-height: 2rem;
+  }
+
   .theme-doc-sidebar-container {
     position: sticky !important;
     top: 0 !important;
