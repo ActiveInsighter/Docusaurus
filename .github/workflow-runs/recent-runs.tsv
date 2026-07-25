@@ -1,3 +1,6 @@
+build	30142964353	in_progress	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142964353
+docs-ui-visual	30142964354	in_progress	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142964354
+build	30142930639	failure	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142930639
 build	30142879069	success	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142879069
 update-content	30142645921	success	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142645921
 build	30142645922	failure	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142645922
@@ -5,6 +8,3 @@ build	30142582127	success	https://github.com/ActiveInsighter/Docusaurus/actions/
 update-content	30141840928	success	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141840928
 build	30141840919	failure	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141840919
 build	30141239900	success	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141239900
-docs-ui-visual	30141239881	success	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141239881
-build	30141206551	cancelled	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141206551
-docs-ui-visual	30141206554	cancelled	https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141206554
