@@ -82,7 +82,7 @@ const quartzLightCodeTheme: PrismTheme = {
     {
       types: ['deleted'],
       style: {
-        color: '#b42318',
+        color: '#cf222e',
       },
     },
     {
@@ -122,26 +122,26 @@ const quartzDarkCodeTheme: PrismTheme = {
     {
       types: ['operator', 'entity', 'url'],
       style: {
-        color: '#7ee7d1',
-      },
-    },
-    {
-      types: ['namespace', 'builtin', 'class-name'],
-      style: {
-        color: '#d2a8ff',
+        color: '#79c0ff',
       },
     },
     {
       types: ['keyword', 'atrule', 'important'],
       style: {
-        color: '#ff8f86',
+        color: '#ff7b72',
         fontWeight: '600',
+      },
+    },
+    {
+      types: ['builtin', 'class-name', 'namespace'],
+      style: {
+        color: '#d2a8ff',
       },
     },
     {
       types: ['function'],
       style: {
-        color: '#f2cc60',
+        color: '#d2a8ff',
       },
     },
     {
@@ -232,6 +232,9 @@ const config: Config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   presets: [
@@ -240,13 +243,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          numberPrefixParser: false,
+          routeBasePath: 'docs',
           remarkPlugins: [remarkMath],
-          rehypePlugins: [
-            normalizeMathUnicode,
-            [rehypeKatex, katexOptions],
-          ],
-          editUrl: 'https://github.com/ActiveInsighter/Docusaurus/edit/main/',
+          rehypePlugins: [normalizeMathUnicode, [rehypeKatex, katexOptions]],
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
         },
         blog: false,
         theme: {
@@ -291,9 +292,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'To Any Docs',
+      title: '首页',
       logo: {
-        alt: 'To Any Docs',
+        alt: '首页',
         src: 'img/logo.svg',
       },
       items: [
