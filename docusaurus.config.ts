@@ -82,7 +82,7 @@ const quartzLightCodeTheme: PrismTheme = {
     {
       types: ['deleted'],
       style: {
-        color: '#cf222e',
+        color: '#b42318',
       },
     },
     {
@@ -122,26 +122,26 @@ const quartzDarkCodeTheme: PrismTheme = {
     {
       types: ['operator', 'entity', 'url'],
       style: {
-        color: '#79c0ff',
+        color: '#7ee7d1',
+      },
+    },
+    {
+      types: ['namespace', 'builtin', 'class-name'],
+      style: {
+        color: '#d2a8ff',
       },
     },
     {
       types: ['keyword', 'atrule', 'important'],
       style: {
-        color: '#ff7b72',
+        color: '#ff8f86',
         fontWeight: '600',
-      },
-    },
-    {
-      types: ['builtin', 'class-name', 'namespace'],
-      style: {
-        color: '#d2a8ff',
       },
     },
     {
       types: ['function'],
       style: {
-        color: '#d2a8ff',
+        color: '#f2cc60',
       },
     },
     {
@@ -232,9 +232,6 @@ const config: Config = {
 
   markdown: {
     mermaid: true,
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
   },
 
   presets: [
@@ -243,11 +240,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: 'docs',
+          numberPrefixParser: false,
           remarkPlugins: [remarkMath],
-          rehypePlugins: [normalizeMathUnicode, [rehypeKatex, katexOptions]],
-          showLastUpdateAuthor: false,
-          showLastUpdateTime: false,
+          rehypePlugins: [
+            normalizeMathUnicode,
+            [rehypeKatex, katexOptions],
+          ],
+          editUrl: 'https://github.com/ActiveInsighter/Docusaurus/edit/main/',
         },
         blog: false,
         theme: {
