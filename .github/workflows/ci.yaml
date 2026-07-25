@@ -78,6 +78,9 @@ jobs:
           set -euo pipefail
 
           raw_projects="$(npx --yes wrangler@4 pages project list --json)"
+          mkdir -p artifacts/cloudflare-pages
+          printf '%s\n' "${raw_projects}" > artifacts/cloudflare-pages/projects.json
+
           projects="$(
             jq -c '
               if type == "array" then .
@@ -144,6 +147,15 @@ jobs:
           echo "project_name=${project_name}" >>"${GITHUB_OUTPUT}"
           printf '### Cloudflare Pages\n\n- Project: `%s`\n- Domain: `%s`\n' \
             "${project_name}" "${CLOUDFLARE_PAGES_DOMAIN}" >>"${GITHUB_STEP_SUMMARY}"
+
+      - name: Upload Cloudflare Pages project inventory
+        if: always() && steps.pages-project.outcome != 'skipped'
+        uses: actions/upload-artifact@v7
+        with:
+          name: cloudflare-pages-projects-${{ github.run_id }}
+          path: artifacts/cloudflare-pages/projects.json
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Check Cloudflare Pages project access
         if: >-
