@@ -17,8 +17,8 @@ DOC_PATH = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Verify stable color-only navigation states and the layered "
-            "documentation navbar blur, then capture light/dark screenshots."
+            "Verify the transparent floating navbar, compact glass controls, "
+            "and stable sidebar/TOC navigation states."
         )
     )
     parser.add_argument("--base-url", default="http://127.0.0.1:3000")
@@ -59,13 +59,6 @@ def font_weight(value: str) -> float:
     return float(value)
 
 
-def numeric_z_index(value: str) -> float | None:
-    try:
-        return float(value)
-    except ValueError:
-        return None
-
-
 def assert_transparent(value: str, message: str) -> None:
     assert rgba_alpha(value) <= 0.001, f"{message}: {value}"
 
@@ -76,28 +69,22 @@ def read_ui_state(page: Page) -> dict[str, Any]:
         () => {
           const navbar = document.querySelector('.navbar');
           const inner = document.querySelector('.navbar__inner');
-          const right = document.querySelector('.navbar__items--right');
-          const material = document.querySelector('[data-navbar-material="true"]');
-          const softGlass = document.querySelector(
-            '[data-navbar-material-layer="soft"]',
-          );
-          const strongGlass = document.querySelector(
-            '[data-navbar-material-layer="strong"]',
-          );
-          const tint = document.querySelector(
-            '[data-navbar-material-layer="tint"]',
-          );
+          const main = document.querySelector('.main-wrapper');
           const sidebar = document.querySelector('.theme-doc-sidebar-container');
           const toc = document.querySelector('.theme-doc-toc-desktop');
+          const brand = document.querySelector('.navbar__brand');
+          const navLink = document.querySelector('.navbar__link');
+          const search = document.querySelector('.navbar .DocSearch-Button');
+          const material = document.querySelector('[data-navbar-material="true"]');
+
           if (!(navbar instanceof HTMLElement)) throw new Error('navbar not found');
           if (!(inner instanceof HTMLElement)) throw new Error('navbar inner not found');
-          if (!(right instanceof HTMLElement)) throw new Error('right navbar items not found');
-          if (!(material instanceof HTMLElement)) throw new Error('navbar material not found');
-          if (!(softGlass instanceof HTMLElement)) throw new Error('soft blur layer not found');
-          if (!(strongGlass instanceof HTMLElement)) throw new Error('strong blur layer not found');
-          if (!(tint instanceof HTMLElement)) throw new Error('tint layer not found');
+          if (!(main instanceof HTMLElement)) throw new Error('main wrapper not found');
           if (!(sidebar instanceof HTMLElement)) throw new Error('desktop sidebar not found');
           if (!(toc instanceof HTMLElement)) throw new Error('desktop toc not found');
+          if (!(brand instanceof HTMLElement)) throw new Error('navbar brand not found');
+          if (!(navLink instanceof HTMLElement)) throw new Error('navbar link not found');
+          if (!(search instanceof HTMLElement)) throw new Error('DocSearch button not found');
 
           const sidebarLinks = [...sidebar.querySelectorAll('a.menu__link')];
           const exact =
@@ -110,7 +97,9 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               }
             });
           const inactiveSidebar = sidebarLinks.find(
-            link => link !== exact && !link.classList.contains('menu__link--active') &&
+            link =>
+              link !== exact &&
+              !link.classList.contains('menu__link--active') &&
               link.getClientRects().length > 0,
           );
           if (!(exact instanceof HTMLAnchorElement)) {
@@ -130,7 +119,7 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             throw new Error('inactive toc link not found');
           }
 
-          const readBox = element => {
+          const read = element => {
             const rect = element.getBoundingClientRect();
             const style = getComputedStyle(element);
             return {
@@ -140,106 +129,51 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               bottom: rect.bottom,
               width: rect.width,
               height: rect.height,
+              position: style.position,
+              pointerEvents: style.pointerEvents,
               background: style.backgroundColor,
+              borderWidth: style.borderWidth,
+              borderColor: style.borderColor,
+              boxShadow: style.boxShadow,
               color: style.color,
               fontWeight: style.fontWeight,
               transform: style.transform,
-            };
-          };
-
-          const readLayer = element => {
-            const rect = element.getBoundingClientRect();
-            const style = getComputedStyle(element);
-            return {
-              left: rect.left,
-              right: rect.right,
-              top: rect.top,
-              bottom: rect.bottom,
-              width: rect.width,
-              height: rect.height,
-              backgroundImage: style.backgroundImage,
               backdropFilter:
                 style.backdropFilter || style.webkitBackdropFilter || '',
-              maskImage: style.maskImage || style.webkitMaskImage || '',
-              borderTop: style.borderTopWidth,
-              borderRight: style.borderRightWidth,
-              borderBottom: style.borderBottomWidth,
-              borderLeft: style.borderLeftWidth,
-              display: style.display,
-              pointerEvents: style.pointerEvents,
             };
           };
 
-          const navRect = navbar.getBoundingClientRect();
-          const innerRect = inner.getBoundingClientRect();
-          const rightRect = right.getBoundingClientRect();
-          const materialRect = material.getBoundingClientRect();
-          const navStyle = getComputedStyle(navbar);
-          const materialStyle = getComputedStyle(material);
           const root = document.documentElement;
-
           return {
             viewportWidth: window.innerWidth,
-            nav: {
-              left: navRect.left,
-              right: navRect.right,
-              width: navRect.width,
-              height: navRect.height,
-              borderTop: navStyle.borderTopWidth,
-              borderRight: navStyle.borderRightWidth,
-              borderBottom: navStyle.borderBottomWidth,
-              borderLeft: navStyle.borderLeftWidth,
-              boxShadow: navStyle.boxShadow,
-              background: navStyle.backgroundColor,
-              position: navStyle.position,
-              zIndex: navStyle.zIndex,
-            },
-            inner: {
-              left: innerRect.left,
-              right: innerRect.right,
-              width: innerRect.width,
-            },
-            right: {
-              left: rightRect.left,
-              right: rightRect.right,
-              width: rightRect.width,
-            },
-            glass: {
-              material: {
-                left: materialRect.left,
-                right: materialRect.right,
-                top: materialRect.top,
-                bottom: materialRect.bottom,
-                width: materialRect.width,
-                height: materialRect.height,
-                position: materialStyle.position,
-                pointerEvents: materialStyle.pointerEvents,
-                overflowX: materialStyle.overflowX,
-                overflowY: materialStyle.overflowY,
-                zIndex: materialStyle.zIndex,
-              },
-              soft: readLayer(softGlass),
-              strong: readLayer(strongGlass),
-              tint: readLayer(tint),
+            navbar: read(navbar),
+            inner: read(inner),
+            main: read(main),
+            sidebarBox: read(sidebar),
+            materialPresent: material instanceof HTMLElement,
+            controls: {
+              brand: read(brand),
+              link: read(navLink),
+              search: read(search),
             },
             sidebar: {
               exact: {
-                ...readBox(exact),
+                ...read(exact),
                 text: exact.textContent?.trim() ?? '',
                 ariaCurrent: exact.getAttribute('aria-current') ?? '',
               },
               inactive: {
-                ...readBox(inactiveSidebar),
+                ...read(inactiveSidebar),
                 text: inactiveSidebar.textContent?.trim() ?? '',
               },
             },
             toc: {
               active: {
-                ...readBox(activeToc),
+                ...read(activeToc),
                 text: activeToc.textContent?.trim() ?? '',
               },
               inactive: {
-                ...readBox(inactiveToc),
+                ...read(inactiveToc),
                 text: inactiveToc.textContent?.trim() ?? '',
               },
             },
@@ -247,7 +181,6 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               clientWidth: root.clientWidth,
               scrollWidth: root.scrollWidth,
               scrollY: window.scrollY,
-              scrollHeight: root.scrollHeight,
             },
           };
         }
@@ -256,117 +189,79 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 
 
 def assert_ui_state(state: dict[str, Any], theme: str) -> None:
-    viewport_width = float(state["viewportWidth"])
-    nav = state["nav"]
-    inner = state["inner"]
-    right = state["right"]
-    material = state["glass"]["material"]
-    soft_glass = state["glass"]["soft"]
-    strong_glass = state["glass"]["strong"]
-    tint = state["glass"]["tint"]
+    navbar = state["navbar"]
+    main = state["main"]
+    sidebar_box = state["sidebarBox"]
+    controls = state["controls"]
     sidebar = state["sidebar"]
     toc = state["toc"]
     document = state["document"]
+    viewport_width = float(state["viewportWidth"])
 
-    assert abs(float(nav["left"])) <= 1.0, f"{theme}: navbar does not start at viewport edge"
-    assert float(nav["right"]) >= viewport_width - 1.0, f"{theme}: navbar does not fill viewport"
-    assert float(inner["right"]) >= viewport_width - 1.0, f"{theme}: navbar inner leaves a right gap"
-    assert float(right["right"]) >= viewport_width - 32.0, f"{theme}: right controls are too far from edge"
-    assert 48.0 <= float(nav["height"]) <= 55.0, f"{theme}: navbar height is unbalanced"
-
-    assert abs(float(material["left"])) <= 1.0, (
-        f"{theme}: gradient material does not start at viewport edge"
+    assert navbar["position"] == "fixed", f"{theme}: navbar is not floating"
+    assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
+    assert float(navbar["right"]) >= viewport_width - 1.0, (
+        f"{theme}: navbar does not span the viewport"
     )
-    assert float(material["right"]) >= viewport_width - 1.0, (
-        f"{theme}: gradient material does not fill viewport"
+    assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to the top"
+    assert 40.0 <= float(navbar["height"]) <= 51.0, (
+        f"{theme}: navbar is not compact: {navbar['height']}"
     )
-    assert abs(float(material["top"])) <= 1.0, (
-        f"{theme}: gradient material is not pinned to the top"
+    assert_transparent(navbar["background"], f"{theme}: navbar outer box is not transparent")
+    assert navbar["boxShadow"] == "none", f"{theme}: navbar outer box has a shadow"
+    assert navbar["borderWidth"] == "0px", f"{theme}: navbar outer box has a border"
+    assert navbar["pointerEvents"] == "none", (
+        f"{theme}: transparent navbar blocks the content below"
     )
-    assert float(material["height"]) >= float(nav["height"]) + 50.0, (
-        f"{theme}: gradient material is too short for a soft lower fade"
-    )
-    assert float(material["height"]) <= 165.0, (
-        f"{theme}: gradient material is excessively tall"
-    )
-    assert material["position"] == "fixed", (
-        f"{theme}: gradient material must remain fixed while content scrolls"
-    )
-    assert material["pointerEvents"] == "none", (
-        f"{theme}: gradient material blocks interactions"
-    )
-    assert material["overflowX"] in ("hidden", "clip"), (
-        f"{theme}: gradient material is not paint-clipped"
+    assert not state["materialPresent"], (
+        f"{theme}: legacy layered navbar material is still rendered"
     )
 
-    for side in ("borderTop", "borderRight", "borderBottom", "borderLeft"):
-        assert nav[side] == "0px", f"{theme}: navbar has an unexpected border"
-        assert soft_glass[side] == "0px", f"{theme}: soft blur layer has a border"
-        assert strong_glass[side] == "0px", f"{theme}: strong blur layer has a border"
-        assert tint[side] == "0px", f"{theme}: tint layer has a border"
-
-    assert nav["boxShadow"] == "none", f"{theme}: navbar still has a shadow"
-    assert_transparent(nav["background"], f"{theme}: navbar background is not transparent")
-
-    assert "linear-gradient" in soft_glass["backgroundImage"], (
-        f"{theme}: soft blur gradient missing"
+    assert float(main["top"]) <= 2.0, (
+        f"{theme}: main content still reserves a navbar row: {main['top']}"
     )
-    assert "linear-gradient" in strong_glass["backgroundImage"], (
-        f"{theme}: strong blur gradient missing"
-    )
-    assert "linear-gradient" in tint["backgroundImage"], (
-        f"{theme}: material tint gradient missing"
-    )
-    assert "radial-gradient" in tint["backgroundImage"], (
-        f"{theme}: material top highlight missing"
-    )
-    assert "linear-gradient" in soft_glass["maskImage"], (
-        f"{theme}: soft blur mask missing"
-    )
-    assert "linear-gradient" in strong_glass["maskImage"], (
-        f"{theme}: strong blur mask missing"
+    assert float(sidebar_box["top"]) <= float(navbar["bottom"]) + 1.0, (
+        f"{theme}: sidebar does not use the top viewport area"
     )
 
-    soft_blur = blur_radius(soft_glass["backdropFilter"])
-    strong_blur = blur_radius(strong_glass["backdropFilter"])
-    assert soft_blur >= 10.0, f"{theme}: base blur is too weak ({soft_blur}px)"
-    assert strong_blur >= soft_blur + 12.0, (
-        f"{theme}: top blur is not sufficiently stronger than the lower blur "
-        f"({strong_blur}px vs {soft_blur}px)"
-    )
-    assert float(strong_glass["height"]) <= float(material["height"]) * 0.8, (
-        f"{theme}: expensive strong blur covers too much of the material"
-    )
-
-    nav_z_index = numeric_z_index(nav["zIndex"])
-    material_z_index = numeric_z_index(material["zIndex"])
-    if nav_z_index is not None and material_z_index is not None:
-        assert material_z_index < nav_z_index, (
-            f"{theme}: material must stay behind navbar controls"
+    for name, control in controls.items():
+        assert control["pointerEvents"] == "auto", (
+            f"{theme}: {name} control is not interactive"
+        )
+        assert control["borderWidth"] != "0px", (
+            f"{theme}: {name} control lacks a glass boundary"
+        )
+        assert rgba_alpha(control["background"]) > 0.05, (
+            f"{theme}: {name} control lacks a readable surface"
+        )
+        assert blur_radius(control["backdropFilter"]) >= 10.0, (
+            f"{theme}: {name} control blur is missing: {control['backdropFilter']}"
+        )
+        assert control["transform"] == "none", (
+            f"{theme}: {name} control uses a positional transform"
         )
 
     exact = sidebar["exact"]
     inactive = sidebar["inactive"]
-    assert exact["ariaCurrent"] == "page", f"{theme}: current link lacks aria-current=page"
-    assert_transparent(exact["background"], f"{theme}: current sidebar link has a fill")
+    assert exact["ariaCurrent"] == "page", f"{theme}: current sidebar link lacks aria-current"
+    assert rgba_alpha(exact["background"]) > 0.001, (
+        f"{theme}: current sidebar background highlight is missing"
+    )
     assert abs(font_weight(exact["fontWeight"]) - font_weight(inactive["fontWeight"])) <= 1.0, (
         f"{theme}: sidebar active state changes font weight"
     )
     assert exact["color"] != inactive["color"], (
-        f"{theme}: sidebar current page is not distinguished by color"
+        f"{theme}: sidebar active text color is not distinct"
     )
-    assert exact["transform"] == "none", f"{theme}: current sidebar link uses a transform"
 
     active_toc = toc["active"]
     inactive_toc = toc["inactive"]
-    assert_transparent(active_toc["background"], f"{theme}: active toc link has a fill")
     assert abs(
         font_weight(active_toc["fontWeight"]) - font_weight(inactive_toc["fontWeight"])
     ) <= 1.0, f"{theme}: toc active state changes font weight"
     assert active_toc["color"] != inactive_toc["color"], (
         f"{theme}: active toc link is not distinguished by color"
     )
-    assert active_toc["transform"] == "none", f"{theme}: active toc link uses a transform"
 
     assert float(document["scrollY"]) >= 500.0, f"{theme}: test document did not scroll"
     assert int(document["scrollWidth"]) <= int(document["clientWidth"]) + 1, (
@@ -375,121 +270,61 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
 
 
 def find_hover_target(page: Page) -> Locator:
-    leaf_links = page.locator(
+    links = page.locator(
         ".theme-doc-sidebar-container "
         ".menu__list-item:not(:has(> .menu__list-item-collapsible)) "
         "> a.menu__link:not([aria-current='page'])"
     )
-    for index in range(leaf_links.count()):
-        candidate = leaf_links.nth(index)
+    for index in range(links.count()):
+        candidate = links.nth(index)
         if candidate.is_visible():
             return candidate
     raise AssertionError("no visible inactive leaf sidebar link found")
 
 
-def verify_hover_state(page: Page, theme: str) -> dict[str, Any]:
+def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
     target = find_hover_target(page)
     target_text = target.inner_text().strip()
 
-    before = target.evaluate(
-        """
-        element => {
-          const rect = element.getBoundingClientRect();
-          const style = getComputedStyle(element);
-          return {
-            left: rect.left,
-            right: rect.right,
-            top: rect.top,
-            bottom: rect.bottom,
-            width: rect.width,
-            height: rect.height,
-            fontWeight: style.fontWeight,
-            transform: style.transform,
-          };
-        }
-        """
-    )
-    exact_before = page.locator(
-        ".theme-doc-sidebar-container a.menu__link[aria-current='page']"
-    ).evaluate(
-        """
-        element => {
-          const style = getComputedStyle(element);
-          return {
-            background: style.backgroundColor,
-            color: style.color,
-            fontWeight: style.fontWeight,
-          };
-        }
-        """
-    )
+    def read_target() -> dict[str, Any]:
+        return target.evaluate(
+            """
+            element => {
+              const rect = element.getBoundingClientRect();
+              const style = getComputedStyle(element);
+              return {
+                left: rect.left,
+                right: rect.right,
+                top: rect.top,
+                bottom: rect.bottom,
+                width: rect.width,
+                height: rect.height,
+                background: style.backgroundColor,
+                fontWeight: style.fontWeight,
+                transform: style.transform,
+              };
+            }
+            """
+        )
 
+    before = read_target()
     target.hover()
     page.wait_for_timeout(220)
-
-    after = target.evaluate(
-        """
-        element => {
-          const rect = element.getBoundingClientRect();
-          const style = getComputedStyle(element);
-          return {
-            left: rect.left,
-            right: rect.right,
-            top: rect.top,
-            bottom: rect.bottom,
-            width: rect.width,
-            height: rect.height,
-            background: style.backgroundColor,
-            fontWeight: style.fontWeight,
-            transform: style.transform,
-          };
-        }
-        """
-    )
-    exact_after = page.locator(
-        ".theme-doc-sidebar-container a.menu__link[aria-current='page']"
-    ).evaluate(
-        """
-        element => {
-          const style = getComputedStyle(element);
-          return {
-            background: style.backgroundColor,
-            color: style.color,
-            fontWeight: style.fontWeight,
-          };
-        }
-        """
-    )
+    after = read_target()
 
     for key in ("left", "right", "top", "bottom", "width", "height"):
         assert abs(float(before[key]) - float(after[key])) <= 0.25, (
-            f"{theme}: hovered sidebar link changed geometry ({key})"
+            f"{theme}: sidebar hover changed geometry ({key})"
         )
     assert before["fontWeight"] == after["fontWeight"], (
-        f"{theme}: hovered sidebar link changed font weight"
+        f"{theme}: sidebar hover changed font weight"
     )
-    assert after["transform"] == "none", f"{theme}: hovered sidebar link uses a transform"
+    assert after["transform"] == "none", f"{theme}: sidebar hover uses a transform"
     assert rgba_alpha(after["background"]) > 0.001, (
         f"{theme}: hovered sidebar link {target_text!r} lacks feedback"
     )
-    assert_transparent(
-        exact_after["background"],
-        f"{theme}: current sidebar link gained a fill while another link was hovered",
-    )
-    assert exact_before["color"] == exact_after["color"], (
-        f"{theme}: current sidebar color changed while another link was hovered"
-    )
-    assert exact_before["fontWeight"] == exact_after["fontWeight"], (
-        f"{theme}: current sidebar weight changed while another link was hovered"
-    )
 
-    return {
-        "targetText": target_text,
-        "before": before,
-        "after": after,
-        "exactBefore": exact_before,
-        "exactAfter": exact_after,
-    }
+    return {"targetText": target_text, "before": before, "after": after}
 
 
 def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
@@ -505,17 +340,17 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.wait_for_timeout(650)
 
     state = read_ui_state(page)
-    page.screenshot(path=str(output_dir / f"docs-ui-{theme}.png"), full_page=False)
     assert_ui_state(state, theme)
+    page.screenshot(path=str(output_dir / f"docs-ui-{theme}.png"), full_page=False)
 
-    hover_state = verify_hover_state(page, theme)
+    hover = verify_hover_stability(page, theme)
     page.screenshot(
         path=str(output_dir / f"docs-ui-{theme}-sidebar-hover.png"),
         full_page=False,
     )
     page.mouse.move(900, 650)
 
-    result = {"state": state, "hover": hover_state}
+    result = {"state": state, "hover": hover}
     (output_dir / f"docs-ui-{theme}-metrics.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
@@ -538,7 +373,6 @@ def main() -> None:
             )
             page.goto(f"{args.base_url.rstrip('/')}{DOC_PATH}", wait_until="networkidle")
             page.wait_for_selector(".navbar")
-            page.wait_for_selector('[data-navbar-material="true"]')
             page.wait_for_selector(".theme-doc-sidebar-container")
             page.wait_for_selector(".theme-doc-toc-desktop")
             page.wait_for_selector("article")
