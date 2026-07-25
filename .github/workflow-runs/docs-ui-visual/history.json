@@ -1,5 +1,24 @@
 [
   {
+    "run_id": "30149269292",
+    "run_number": 17,
+    "run_attempt": 1,
+    "workflow": "Verify documentation UI visuals",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "branch": "main",
+    "head_sha": "5e3ada6bff90df01a7543b8041d4cec479ff86ed",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-07-25T07:25:14Z",
+    "run_started_at": "2026-07-25T07:25:14Z",
+    "updated_at": "2026-07-25T07:25:17Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30149269292",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30149269292/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30149269292/logs"
+  },
+  {
     "run_id": "30149159987",
     "run_number": 16,
     "run_attempt": 1,
@@ -169,24 +188,5 @@
     "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142964354",
     "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142964354/jobs",
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142964354/logs"
-  },
-  {
-    "run_id": "30141239881",
-    "run_number": 7,
-    "run_attempt": 1,
-    "workflow": "Verify documentation UI visuals",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "branch": "fix/sidebar-active-navbar-gradient",
-    "head_sha": "b4bd7360cee77c7ea603debd04f70046d7f3dd33",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T02:53:41Z",
-    "run_started_at": "2026-07-25T02:53:41Z",
-    "updated_at": "2026-07-25T02:56:28Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141239881",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141239881/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141239881/logs"
   }
 ]
