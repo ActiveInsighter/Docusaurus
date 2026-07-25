@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-25T08:09:13.225Z",
+  "generated_at": "2026-07-25T08:10:03.317Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
@@ -27,23 +27,23 @@
     "workflow_file": "ci.yaml"
   },
   "latest_failed_run": {
-    "run_id": "30150407062",
-    "run_number": 19,
+    "run_id": "30150536665",
+    "run_number": 20,
     "run_attempt": 1,
     "workflow": "Verify documentation UI visuals",
     "event": "pull_request",
     "status": "completed",
     "conclusion": "failure",
     "branch": "fix/full-height-sidebars-glass-controls",
-    "head_sha": "6e97da73cd9aad3ab6b8f44b3d84499229bc83be",
+    "head_sha": "ddd15baef854869afc3f9c88ffdb624d9c724615",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T08:02:56Z",
-    "run_started_at": "2026-07-25T08:02:56Z",
-    "updated_at": "2026-07-25T08:05:22Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150407062",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150407062/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150407062/logs",
+    "created_at": "2026-07-25T08:07:14Z",
+    "run_started_at": "2026-07-25T08:07:14Z",
+    "updated_at": "2026-07-25T08:09:52Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150536665",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150536665/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150536665/logs",
     "workflow_key": "docs-ui-visual",
     "workflow_file": "navbar-visual.yml"
   },
@@ -75,15 +75,15 @@
       "run_attempt": 1,
       "workflow": "Verify documentation UI visuals",
       "event": "pull_request",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "branch": "fix/full-height-sidebars-glass-controls",
       "head_sha": "ddd15baef854869afc3f9c88ffdb624d9c724615",
       "actor": "ActiveInsighter",
       "triggering_actor": "ActiveInsighter",
       "created_at": "2026-07-25T08:07:14Z",
       "run_started_at": "2026-07-25T08:07:14Z",
-      "updated_at": "2026-07-25T08:07:17Z",
+      "updated_at": "2026-07-25T08:09:52Z",
       "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150536665",
       "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150536665/jobs",
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150536665/logs",
@@ -282,7 +282,7 @@
       "workflow": "Verify documentation UI visuals",
       "retained_run_count": 10,
       "latest_run_id": "30150536665",
-      "latest_failed_run_id": "30150407062"
+      "latest_failed_run_id": "30150536665"
     }
   ]
 }
