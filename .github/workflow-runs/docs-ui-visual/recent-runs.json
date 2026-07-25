@@ -1,5 +1,24 @@
 [
   {
+    "run_id": "30150288367",
+    "run_number": 18,
+    "run_attempt": 1,
+    "workflow": "Verify documentation UI visuals",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "failure",
+    "branch": "fix/full-height-sidebars-glass-controls",
+    "head_sha": "7db868deff6f4aebdc60c85287ea65912bbf4500",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-07-25T07:59:11Z",
+    "run_started_at": "2026-07-25T07:59:11Z",
+    "updated_at": "2026-07-25T07:59:52Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150288367",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150288367/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150288367/logs"
+  },
+  {
     "run_id": "30149269292",
     "run_number": 17,
     "run_attempt": 1,
@@ -169,24 +188,5 @@
     "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30145001063",
     "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30145001063/jobs",
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30145001063/logs"
-  },
-  {
-    "run_id": "30142964354",
-    "run_number": 8,
-    "run_attempt": 1,
-    "workflow": "Verify documentation UI visuals",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "branch": "fix/navbar-gradient-material-best-practice",
-    "head_sha": "348699745e4562bc4d8331eef269142b593aa154",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T03:50:22Z",
-    "run_started_at": "2026-07-25T03:50:22Z",
-    "updated_at": "2026-07-25T03:52:36Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142964354",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142964354/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142964354/logs"
   }
 ]
