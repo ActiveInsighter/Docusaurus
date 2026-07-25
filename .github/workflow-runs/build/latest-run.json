@@ -1,19 +1,19 @@
 {
-  "run_id": "30151075390",
-  "run_number": 112,
+  "run_id": "30151197970",
+  "run_number": 113,
   "run_attempt": 1,
   "workflow": "Build and deploy Docusaurus",
   "event": "pull_request",
   "status": "completed",
   "conclusion": "success",
   "branch": "fix/full-height-sidebars-glass-controls",
-  "head_sha": "e84ca92d16e63ca2e672b4991dd876e092ab69b8",
+  "head_sha": "955ac0f05e3a24bd33c1486fb7195dec78973b91",
   "actor": "ActiveInsighter",
   "triggering_actor": "ActiveInsighter",
-  "created_at": "2026-07-25T08:25:27Z",
-  "run_started_at": "2026-07-25T08:25:27Z",
-  "updated_at": "2026-07-25T08:27:17Z",
-  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30151075390",
-  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30151075390/jobs",
-  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30151075390/logs"
+  "created_at": "2026-07-25T08:29:42Z",
+  "run_started_at": "2026-07-25T08:29:42Z",
+  "updated_at": "2026-07-25T08:31:30Z",
+  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30151197970",
+  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30151197970/jobs",
+  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30151197970/logs"
 }
