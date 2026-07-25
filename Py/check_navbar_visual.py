@@ -330,11 +330,23 @@ def find_hover_target(page: Page) -> Locator:
         ".menu__list-item:not(:has(> .menu__list-item-collapsible)) "
         "> a.menu__link:not([aria-current='page'])"
     )
+    navbar_box = page.locator(".navbar").bounding_box()
+    minimum_top = 54.0
+    if navbar_box is not None:
+        minimum_top = float(navbar_box["y"]) + float(navbar_box["height"]) + 8.0
+
+    viewport_height = float(page.viewport_size["height"] if page.viewport_size else 1000)
     for index in range(links.count()):
         candidate = links.nth(index)
-        if candidate.is_visible():
+        box = candidate.bounding_box()
+        if (
+            candidate.is_visible()
+            and box is not None
+            and float(box["y"]) >= minimum_top
+            and float(box["y"]) + float(box["height"]) <= viewport_height - 8.0
+        ):
             return candidate
-    raise AssertionError("no visible inactive sidebar leaf found")
+    raise AssertionError("no unobstructed inactive sidebar leaf found")
 
 
 def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
@@ -362,7 +374,7 @@ def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
         )
 
     before = read_target()
-    target.hover(force=True)
+    target.hover()
     page.wait_for_timeout(220)
     after = read_target()
 
