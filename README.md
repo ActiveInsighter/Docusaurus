@@ -2,7 +2,7 @@
 
 基于 Docusaurus、React 和 TypeScript 构建的个人知识文档站，用于长期整理考研复习、计算机基础、算法与项目实践内容。
 
-生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus-d92`。Cloudflare Pages 仅接收构建产物，不再负责监听 Git 提交并重复构建。
+生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到与 `to-any.top` 关联的现有 Cloudflare Pages 项目。Cloudflare Pages 仅接收构建产物，不再负责监听 Git 提交并重复构建。
 
 ## 本地开发
 
@@ -34,13 +34,15 @@ npm run serve
 
 ### Build and deploy Docusaurus
 
-创建 Pull Request 时只执行检查和生产构建；合并或推送到 `main` 时执行：
+创建 Pull Request 时执行检查、生产构建和 Cloudflare Pages 项目解析；合并或推送到 `main` 时执行：
 
 1. 安装锁定版本的 npm 依赖；
 2. 执行 TypeScript 检查；
 3. 测试工作流 Run ID 索引逻辑；
 4. 构建生产站点；
-5. 使用 `cloudflare/wrangler-action` 将 `build/` 部署到 Cloudflare Pages。
+5. 从当前 Cloudflare 账户读取 Pages 项目列表；
+6. 优先使用仓库变量指定的项目，否则按 `to-any.top` 自定义域名自动匹配；
+7. 使用 Wrangler 将 `build/` 部署到解析出的 Pages 项目。
 
 部署需要以下 GitHub Actions Secrets：
 
@@ -49,11 +51,15 @@ CLOUDFLARE_ACCOUNT_ID
 CLOUDFLARE_API_TOKEN
 ```
 
-Cloudflare Pages 项目名在工作流中设置为：
+可选仓库变量：
 
 ```text
-docusaurus-d92
+CLOUDFLARE_PAGES_PROJECT
 ```
+
+通常不需要设置该变量。工作流会优先查找与 `to-any.top` 关联的 Pages 项目；当账户中只有一个 Pages 项目时，也会自动使用该项目。只有账户中存在多个项目且无法通过域名唯一确定时，才需要把正确项目名写入 `CLOUDFLARE_PAGES_PROJECT`。
+
+工作流不会自动创建新的 Pages 项目，以免把生产站点部署到错误项目并丢失已有的自定义域名设置。解析失败时，日志会列出当前账户可见的项目名并明确提示设置仓库变量。
 
 为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。完成该设置后，每个 `main` 版本只会由 GitHub Actions 发布一次。
 
@@ -142,11 +148,17 @@ python -m playwright install chromium
 
 ## 部署
 
-GitHub Actions 使用以下命令部署已构建的静态文件：
+GitHub Actions 会先执行：
+
+```bash
+wrangler pages project list --json
+```
+
+解析出正确项目名后，再部署已构建的静态文件：
 
 ```bash
 wrangler pages deploy build \
-  --project-name=docusaurus-d92 \
+  --project-name=<自动解析出的项目名> \
   --branch=main
 ```
 
