@@ -10,7 +10,8 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
-    "check": "npm run typecheck && npm run build",
+    "check": "npm run typecheck && npm run test:workflow-runs && npm run build",
+    "test:workflow-runs": "node --test scripts/sync-workflow-runs.test.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -33,7 +34,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.2",
