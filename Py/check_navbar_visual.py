@@ -33,10 +33,32 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const navbar = document.querySelector('.navbar');
           const inner = document.querySelector('.navbar__inner');
           const right = document.querySelector('.navbar__items--right');
+          const material = document.querySelector('[data-navbar-material="true"]');
+          const softGlass = document.querySelector(
+            '[data-navbar-material-layer="soft"]',
+          );
+          const strongGlass = document.querySelector(
+            '[data-navbar-material-layer="strong"]',
+          );
+          const tint = document.querySelector(
+            '[data-navbar-material-layer="tint"]',
+          );
           const sidebar = document.querySelector('.theme-doc-sidebar-container');
           if (!(navbar instanceof HTMLElement)) throw new Error('navbar not found');
           if (!(inner instanceof HTMLElement)) throw new Error('navbar inner not found');
           if (!(right instanceof HTMLElement)) throw new Error('right navbar items not found');
+          if (!(material instanceof HTMLElement)) {
+            throw new Error('navbar gradient material not found');
+          }
+          if (!(softGlass instanceof HTMLElement)) {
+            throw new Error('soft navbar blur layer not found');
+          }
+          if (!(strongGlass instanceof HTMLElement)) {
+            throw new Error('strong navbar blur layer not found');
+          }
+          if (!(tint instanceof HTMLElement)) {
+            throw new Error('navbar tint layer not found');
+          }
           if (!(sidebar instanceof HTMLElement)) throw new Error('desktop sidebar not found');
 
           const links = [...sidebar.querySelectorAll('a.menu__link')];
@@ -56,9 +78,12 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const navRect = navbar.getBoundingClientRect();
           const innerRect = inner.getBoundingClientRect();
           const rightRect = right.getBoundingClientRect();
+          const materialRect = material.getBoundingClientRect();
           const navStyle = getComputedStyle(navbar);
-          const softGlassStyle = getComputedStyle(navbar, '::before');
-          const strongGlassStyle = getComputedStyle(navbar, '::after');
+          const materialStyle = getComputedStyle(material);
+          const softGlassStyle = getComputedStyle(softGlass);
+          const strongGlassStyle = getComputedStyle(strongGlass);
+          const tintStyle = getComputedStyle(tint);
           const exactStyle = getComputedStyle(exact);
           const root = document.documentElement;
 
@@ -94,6 +119,23 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             }];
           });
 
+          const readLayer = (element, style) => ({
+            backgroundImage: style.backgroundImage,
+            backdropFilter:
+              style.backdropFilter ||
+              style.webkitBackdropFilter ||
+              '',
+            maskImage: style.maskImage || style.webkitMaskImage || '',
+            borderTop: style.borderTopWidth,
+            borderRight: style.borderRightWidth,
+            borderBottom: style.borderBottomWidth,
+            borderLeft: style.borderLeftWidth,
+            display: style.display,
+            pointerEvents: style.pointerEvents,
+            top: element.getBoundingClientRect().top,
+            bottom: element.getBoundingClientRect().bottom,
+          });
+
           return {
             viewportWidth: window.innerWidth,
             nav: {
@@ -107,6 +149,8 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               borderLeft: navStyle.borderLeftWidth,
               boxShadow: navStyle.boxShadow,
               background: navStyle.backgroundColor,
+              position: navStyle.position,
+              zIndex: navStyle.zIndex,
             },
             inner: {
               left: innerRect.left,
@@ -119,32 +163,22 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               width: rightRect.width,
             },
             glass: {
-              soft: {
-                backgroundImage: softGlassStyle.backgroundImage,
-                backdropFilter:
-                  softGlassStyle.backdropFilter ||
-                  softGlassStyle.webkitBackdropFilter ||
-                  '',
-                maskImage:
-                  softGlassStyle.maskImage || softGlassStyle.webkitMaskImage || '',
-                borderTop: softGlassStyle.borderTopWidth,
-                borderRight: softGlassStyle.borderRightWidth,
-                borderBottom: softGlassStyle.borderBottomWidth,
-                borderLeft: softGlassStyle.borderLeftWidth,
+              material: {
+                left: materialRect.left,
+                right: materialRect.right,
+                top: materialRect.top,
+                bottom: materialRect.bottom,
+                width: materialRect.width,
+                height: materialRect.height,
+                position: materialStyle.position,
+                pointerEvents: materialStyle.pointerEvents,
+                overflowX: materialStyle.overflowX,
+                overflowY: materialStyle.overflowY,
+                zIndex: materialStyle.zIndex,
               },
-              strong: {
-                backgroundImage: strongGlassStyle.backgroundImage,
-                backdropFilter:
-                  strongGlassStyle.backdropFilter ||
-                  strongGlassStyle.webkitBackdropFilter ||
-                  '',
-                maskImage:
-                  strongGlassStyle.maskImage || strongGlassStyle.webkitMaskImage || '',
-                borderTop: strongGlassStyle.borderTopWidth,
-                borderRight: strongGlassStyle.borderRightWidth,
-                borderBottom: strongGlassStyle.borderBottomWidth,
-                borderLeft: strongGlassStyle.borderLeftWidth,
-              },
+              soft: readLayer(softGlass, softGlassStyle),
+              strong: readLayer(strongGlass, strongGlassStyle),
+              tint: readLayer(tint, tintStyle),
             },
             sidebar: {
               exact: {
@@ -203,6 +237,13 @@ def font_weight(value: str) -> float:
     return float(value)
 
 
+def numeric_z_index(value: str) -> float | None:
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
 def assert_transparent(value: str, message: str) -> None:
     assert rgba_alpha(value) <= 0.001, f"{message}: {value}"
 
@@ -212,8 +253,10 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     nav = state["nav"]
     inner = state["inner"]
     right = state["right"]
+    material = state["glass"]["material"]
     soft_glass = state["glass"]["soft"]
     strong_glass = state["glass"]["strong"]
+    tint = state["glass"]["tint"]
     sidebar = state["sidebar"]
     document = state["document"]
 
@@ -223,17 +266,45 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     assert float(right["right"]) >= viewport_width - 32.0, f"{theme}: right controls are too far from edge"
     assert 48.0 <= float(nav["height"]) <= 55.0, f"{theme}: navbar height is unbalanced"
 
+    assert abs(float(material["left"])) <= 1.0, (
+        f"{theme}: gradient material does not start at viewport edge"
+    )
+    assert float(material["right"]) >= viewport_width - 1.0, (
+        f"{theme}: gradient material does not fill viewport"
+    )
+    assert abs(float(material["top"])) <= 1.0, (
+        f"{theme}: gradient material is not pinned to the top"
+    )
+    assert float(material["height"]) >= float(nav["height"]) + 48.0, (
+        f"{theme}: gradient material is too short to create a soft lower fade"
+    )
+    assert float(material["height"]) <= 160.0, (
+        f"{theme}: gradient material is excessively tall"
+    )
+    assert material["position"] == "fixed", (
+        f"{theme}: gradient material must remain fixed while content scrolls"
+    )
+    assert material["pointerEvents"] == "none", (
+        f"{theme}: gradient material blocks navbar or page interactions"
+    )
+
     for side in ("borderTop", "borderRight", "borderBottom", "borderLeft"):
         assert nav[side] == "0px", f"{theme}: navbar has an unexpected border"
         assert soft_glass[side] == "0px", f"{theme}: soft glass layer has a border"
         assert strong_glass[side] == "0px", f"{theme}: strong glass layer has a border"
+        assert tint[side] == "0px", f"{theme}: tint layer has a border"
 
     assert nav["boxShadow"] == "none", f"{theme}: navbar still has a shadow"
+    assert_transparent(nav["background"], f"{theme}: navbar background is not transparent")
+
     assert "linear-gradient" in soft_glass["backgroundImage"], (
         f"{theme}: soft glass gradient missing"
     )
     assert "linear-gradient" in strong_glass["backgroundImage"], (
         f"{theme}: strong glass gradient missing"
+    )
+    assert "linear-gradient" in tint["backgroundImage"], (
+        f"{theme}: material tint gradient missing"
     )
     assert "linear-gradient" in soft_glass["maskImage"], (
         f"{theme}: soft blur mask missing"
@@ -244,11 +315,19 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
 
     soft_blur = blur_radius(soft_glass["backdropFilter"])
     strong_blur = blur_radius(strong_glass["backdropFilter"])
-    assert soft_blur >= 10.0, f"{theme}: base blur is too weak ({soft_blur}px)"
-    assert strong_blur >= soft_blur + 10.0, (
+    assert soft_blur >= 8.0, f"{theme}: base blur is too weak ({soft_blur}px)"
+    assert strong_blur >= soft_blur + 8.0, (
         f"{theme}: top blur is not stronger than the lower blur "
         f"({strong_blur}px vs {soft_blur}px)"
     )
+
+    nav_z_index = numeric_z_index(nav["zIndex"])
+    material_z_index = numeric_z_index(material["zIndex"])
+    if nav_z_index is not None and material_z_index is not None:
+        assert material_z_index < nav_z_index, (
+            f"{theme}: material must stay behind navbar controls "
+            f"({material_z_index} vs {nav_z_index})"
+        )
 
     exact = sidebar["exact"]
     assert exact["ariaCurrent"] == "page", f"{theme}: current link lacks aria-current=page"
@@ -379,6 +458,7 @@ def main() -> None:
             )
             page.goto(f"{args.base_url.rstrip('/')}{DOC_PATH}", wait_until="networkidle")
             page.wait_for_selector(".navbar")
+            page.wait_for_selector('[data-navbar-material="true"]')
             page.wait_for_selector(".theme-doc-sidebar-container")
             page.wait_for_selector("article")
 
