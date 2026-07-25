@@ -210,7 +210,7 @@ const config: Config = {
     faster: true,
   },
 
-  url: 'https://to-any.top',
+  url: 'https://docusaurus-d92.pages.dev',
   baseUrl: '/',
   trailingSlash: true,
 
