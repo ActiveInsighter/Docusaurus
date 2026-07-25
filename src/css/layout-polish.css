@@ -20,9 +20,6 @@
   --md-toc-active-bg: transparent;
 }
 
-/* The outer navbar is only a transparent interaction layer. It floats above
- * the full-height document layout while each actual control owns a compact,
- * independently composited glass surface. */
 .navbar {
   position: fixed;
   inset: 0 0 auto;
@@ -63,8 +60,6 @@
   gap: 0.24rem;
 }
 
-/* Remove Infima's vertical item padding so every floating control shares one
- * baseline and the search trigger no longer appears taller than its siblings. */
 .navbar__item {
   display: flex;
   align-items: center;
@@ -129,8 +124,6 @@
   justify-content: center;
 }
 
-/* docsearch-polish.css is loaded after this file, so the important declarations
- * deliberately keep the search trigger on the same glass system and geometry. */
 .navbar .DocSearch-Button {
   height: var(--md-navbar-control-height) !important;
   min-height: var(--md-navbar-control-height) !important;
@@ -188,9 +181,6 @@
   color: var(--ifm-color-primary);
 }
 
-/* Docusaurus marks every category in the current route as active. Keep route
- * ancestors neutral, but retain the original background highlight on the exact
- * page. Matching weights prevent width changes and click jitter. */
 .theme-doc-sidebar-container .menu__list-item-collapsible--active,
 .theme-doc-sidebar-container
   .menu__list-item-collapsible:has(
@@ -330,8 +320,6 @@ footer {
   white-space: nowrap;
 }
 
-/* The page title should remain prominent without consuming a large portion of
- * the first viewport. */
 .theme-doc-markdown.markdown > h1:first-child {
   font-size: clamp(1.58rem, 1.9vw, 1.98rem);
   line-height: 1.28;
@@ -339,9 +327,6 @@ footer {
 }
 
 @media (min-width: 997px) {
-  /* Docusaurus uses this variable to reserve space above both desktop sidebars.
-   * The navbar now floats independently, so remove that reservation and let the
-   * left menu and right TOC scroll through the full viewport. */
   :root {
     --ifm-navbar-height: 0px;
   }
@@ -363,33 +348,35 @@ footer {
     overscroll-behavior: contain;
   }
 
-  /* Move the usable left-menu canvas slightly right while reducing its unused
-   * gap before the divider. */
   .theme-doc-sidebar-container .menu {
     min-height: 100%;
     padding: 0.42rem 0.18rem 1.15rem 0.92rem;
   }
 
   .theme-doc-toc-desktop {
+    position: sticky !important;
+    top: 0 !important;
     flex: 0 0 clamp(14.25rem, 15vw, 15.5rem);
     align-self: flex-start;
     width: clamp(14.25rem, 15vw, 15.5rem);
     max-width: clamp(14.25rem, 15vw, 15.5rem);
     height: 100vh;
     max-height: 100vh;
+    margin-top: 0 !important;
     margin-right: 0;
     padding-top: 0;
     padding-left: 0.22rem;
-  }
-
-  .theme-doc-toc-desktop > * {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100vh;
-    max-height: 100vh !important;
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
+  }
+
+  .theme-doc-toc-desktop > * {
+    position: static !important;
+    top: auto !important;
+    height: auto;
+    max-height: none !important;
+    overflow: visible;
   }
 
   .theme-doc-toc-desktop .table-of-contents {
