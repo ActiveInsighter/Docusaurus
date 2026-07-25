@@ -12,6 +12,17 @@ on:
       - "Py/check_navbar_visual.py"
       - "Py/check_docsearch_visual.py"
       - ".github/workflows/navbar-visual.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "src/css/custom.css"
+      - "src/css/layout-polish.css"
+      - "src/css/docsearch-polish.css"
+      - "src/theme/Navbar/**"
+      - "Py/check_navbar_visual.py"
+      - "Py/check_docsearch_visual.py"
+      - ".github/workflows/navbar-visual.yml"
   workflow_dispatch:
 
 permissions:
