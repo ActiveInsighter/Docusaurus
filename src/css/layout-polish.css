@@ -136,19 +136,35 @@
   text-shadow: 0 1px 1px color-mix(in srgb, var(--md-page-bg) 52%, transparent);
 }
 
-/* Docusaurus marks the whole ancestor chain as active. Keep those ancestors
- * neutral and reserve the highlighted state for the exact current route. */
+/* Docusaurus marks category links along the whole route as active. Keep those
+ * ancestors neutral and reserve the highlighted state for aria-current=page. */
 .theme-doc-sidebar-container .menu__list-item-collapsible--active,
+.theme-doc-sidebar-container
+  .menu__list-item-collapsible:has(
+    > .menu__link--active:not([aria-current='page'])
+  ),
 .theme-layout-navbar-sidebar
   .theme-doc-sidebar-menu
-  .menu__list-item-collapsible--active {
+  .menu__list-item-collapsible--active,
+.theme-layout-navbar-sidebar
+  .theme-doc-sidebar-menu
+  .menu__list-item-collapsible:has(
+    > .menu__link--active:not([aria-current='page'])
+  ) {
   background-color: transparent;
 }
 
 .theme-doc-sidebar-container .menu__link--active:not([aria-current='page']),
+.theme-doc-sidebar-container
+  .menu__list-item-collapsible
+  > .menu__link.menu__link--active:not([aria-current='page']),
 .theme-layout-navbar-sidebar
   .theme-doc-sidebar-menu
-  .menu__link--active:not([aria-current='page']) {
+  .menu__link--active:not([aria-current='page']),
+.theme-layout-navbar-sidebar
+  .theme-doc-sidebar-menu
+  .menu__list-item-collapsible
+  > .menu__link.menu__link--active:not([aria-current='page']) {
   background-color: transparent;
   color: var(--md-sidebar-fg);
   font-weight: 600;
@@ -158,15 +174,30 @@
   .menu__list
   .menu__list
   .menu__link--active:not([aria-current='page']),
+.theme-doc-sidebar-container
+  .menu__list
+  .menu__list
+  .menu__list-item-collapsible
+  > .menu__link.menu__link--active:not([aria-current='page']),
 .theme-layout-navbar-sidebar
   .theme-doc-sidebar-menu
   .menu__list
   .menu__list
-  .menu__link--active:not([aria-current='page']) {
+  .menu__link--active:not([aria-current='page']),
+.theme-layout-navbar-sidebar
+  .theme-doc-sidebar-menu
+  .menu__list
+  .menu__list
+  .menu__list-item-collapsible
+  > .menu__link.menu__link--active:not([aria-current='page']) {
   color: var(--md-sidebar-muted);
 }
 
 .theme-doc-sidebar-container .menu__link[aria-current='page'],
+.theme-doc-sidebar-container
+  .menu__list
+  .menu__list
+  .menu__link[aria-current='page'],
 .theme-doc-sidebar-container
   .menu__list-item-collapsible
   > .menu__link[aria-current='page'],
@@ -175,11 +206,24 @@
   .menu__link[aria-current='page'],
 .theme-layout-navbar-sidebar
   .theme-doc-sidebar-menu
+  .menu__list
+  .menu__list
+  .menu__link[aria-current='page'],
+.theme-layout-navbar-sidebar
+  .theme-doc-sidebar-menu
   .menu__list-item-collapsible
   > .menu__link[aria-current='page'] {
   background-color: var(--md-sidebar-active-bg);
   color: var(--md-sidebar-active-fg);
   font-weight: 720;
+}
+
+.theme-doc-sidebar-container
+  .menu__list-item-collapsible:has(> .menu__link[aria-current='page']),
+.theme-layout-navbar-sidebar
+  .theme-doc-sidebar-menu
+  .menu__list-item-collapsible:has(> .menu__link[aria-current='page']) {
+  background-color: var(--md-sidebar-active-bg);
 }
 
 footer {
