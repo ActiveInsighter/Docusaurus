@@ -75,14 +75,23 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             });
 
           const activeAncestorRows = [
-            ...sidebar.querySelectorAll('.menu__list-item-collapsible--active'),
-          ].map(row => {
-            const style = getComputedStyle(row);
-            const directLink = row.querySelector(':scope > .menu__link');
-            return {
-              text: directLink?.textContent?.trim() ?? '',
-              background: style.backgroundColor,
-            };
+            ...sidebar.querySelectorAll('.menu__list-item-collapsible'),
+          ].flatMap(row => {
+            const directLink = row.querySelector(
+              ':scope > a.menu__link.menu__link--active',
+            );
+            if (!(directLink instanceof HTMLAnchorElement) || directLink === exact) {
+              return [];
+            }
+            const rowStyle = getComputedStyle(row);
+            const linkStyle = getComputedStyle(directLink);
+            return [{
+              text: directLink.textContent?.trim() ?? '',
+              background: rowStyle.backgroundColor,
+              linkBackground: linkStyle.backgroundColor,
+              linkColor: linkStyle.color,
+              linkFontWeight: linkStyle.fontWeight,
+            }];
           });
 
           return {
@@ -187,6 +196,13 @@ def blur_radius(value: str) -> float:
     return float(match.group(1))
 
 
+def font_weight(value: str) -> float:
+    aliases = {"normal": 400.0, "bold": 700.0}
+    if value in aliases:
+        return aliases[value]
+    return float(value)
+
+
 def assert_transparent(value: str, message: str) -> None:
     assert rgba_alpha(value) <= 0.001, f"{message}: {value}"
 
@@ -239,17 +255,30 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     assert rgba_alpha(exact["background"]) > 0.001, (
         f"{theme}: exact current sidebar link is not highlighted"
     )
+    assert font_weight(exact["fontWeight"]) >= 700.0, (
+        f"{theme}: exact current sidebar link is not emphasized"
+    )
 
     for link in sidebar["activeAncestorLinks"]:
         assert_transparent(
             link["background"],
             f"{theme}: ancestor sidebar link {link['text']!r} is highlighted",
         )
+        assert font_weight(link["fontWeight"]) <= 650.0, (
+            f"{theme}: ancestor sidebar link {link['text']!r} is over-emphasized"
+        )
 
     for row in sidebar["activeAncestorRows"]:
         assert_transparent(
             row["background"],
             f"{theme}: ancestor sidebar row {row['text']!r} is highlighted",
+        )
+        assert_transparent(
+            row["linkBackground"],
+            f"{theme}: ancestor sidebar row link {row['text']!r} is highlighted",
+        )
+        assert font_weight(row["linkFontWeight"]) <= 650.0, (
+            f"{theme}: ancestor sidebar row {row['text']!r} is over-emphasized"
         )
 
     assert float(document["scrollY"]) >= 500.0, f"{theme}: test document did not scroll beneath navbar"
