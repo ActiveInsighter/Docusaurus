@@ -1,0 +1,74 @@
+name: Record workflow runs
+
+on:
+  workflow_run:
+    workflows:
+      - Build and deploy Docusaurus
+      - Update generated docs
+      - Verify documentation UI visuals
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: workflow-run-index-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Rebuild and commit workflow run index
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for attempt in {1..5}; do
+            echo "Sync attempt $attempt"
+            git fetch origin main
+            git reset --hard origin/main
+
+            node scripts/sync-workflow-runs.mjs
+            git add .github/workflow-runs
+
+            if git diff --cached --quiet; then
+              echo "Workflow run index is already current."
+              exit 0
+            fi
+
+            git commit -m "[CF-Pages-Skip] Sync recent workflow run IDs [skip ci]"
+            if git push origin HEAD:main; then
+              echo "Workflow run index updated."
+              exit 0
+            fi
+
+            echo "Push raced with another main update; regenerating from the GitHub Actions API."
+            sleep $((attempt * 2))
+          done
+
+          echo "Unable to update workflow run index after 5 attempts."
+          exit 1
