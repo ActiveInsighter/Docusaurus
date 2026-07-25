@@ -1,20 +1,9 @@
 :root {
-  --md-navbar-glass-top: rgba(255, 255, 255, 0.3);
-  --md-navbar-glass-middle: rgba(255, 255, 255, 0.15);
-  --md-navbar-glass-lower: rgba(255, 255, 255, 0.045);
-  --md-navbar-glass-bottom: rgba(255, 255, 255, 0);
-  --md-navbar-fade-height: 1.65rem;
   --md-navbar-height: 3rem;
-  --md-navbar-blur-soft: 12px;
-  --md-navbar-blur-strong: 30px;
   --md-toc-active-bg: rgba(40, 75, 99, 0.08);
 }
 
 [data-theme='dark'] {
-  --md-navbar-glass-top: rgba(5, 5, 5, 0.34);
-  --md-navbar-glass-middle: rgba(5, 5, 5, 0.17);
-  --md-navbar-glass-lower: rgba(5, 5, 5, 0.055);
-  --md-navbar-glass-bottom: rgba(5, 5, 5, 0);
   --md-toc-active-bg: rgba(255, 255, 255, 0.08);
 }
 
@@ -28,77 +17,12 @@
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
-  isolation: isolate;
   overflow: visible;
-}
-
-.navbar::before,
-.navbar::after {
-  content: '';
-  position: absolute;
-  inset: 0 0 calc(-1 * var(--md-navbar-fade-height));
-  z-index: 0;
-  pointer-events: none;
-  border: 0;
-}
-
-.navbar::before {
-  background: linear-gradient(
-    to bottom,
-    var(--md-navbar-glass-top) 0%,
-    var(--md-navbar-glass-middle) 46%,
-    var(--md-navbar-glass-lower) 76%,
-    var(--md-navbar-glass-bottom) 100%
-  );
-  -webkit-backdrop-filter: saturate(170%) blur(var(--md-navbar-blur-soft));
-  backdrop-filter: saturate(170%) blur(var(--md-navbar-blur-soft));
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 44%,
-    rgba(0, 0, 0, 0.68) 68%,
-    rgba(0, 0, 0, 0.18) 88%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 44%,
-    rgba(0, 0, 0, 0.68) 68%,
-    rgba(0, 0, 0, 0.18) 88%,
-    transparent 100%
-  );
-}
-
-.navbar::after {
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--md-page-bg) 5%, transparent) 0%,
-    transparent 72%
-  );
-  -webkit-backdrop-filter: saturate(185%) blur(var(--md-navbar-blur-strong));
-  backdrop-filter: saturate(185%) blur(var(--md-navbar-blur-strong));
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgba(0, 0, 0, 0.86) 24%,
-    rgba(0, 0, 0, 0.45) 48%,
-    rgba(0, 0, 0, 0.12) 68%,
-    transparent 84%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgba(0, 0, 0, 0.86) 24%,
-    rgba(0, 0, 0, 0.45) 48%,
-    rgba(0, 0, 0, 0.12) 68%,
-    transparent 84%
-  );
+  z-index: var(--ifm-z-index-fixed, 200);
 }
 
 .navbar__inner {
   position: relative;
-  z-index: 1;
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -307,37 +231,5 @@ footer {
 
   .navbar__brand {
     margin-right: 0.45rem;
-  }
-}
-
-@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .navbar::before {
-    background: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--md-page-bg) 78%, transparent) 0%,
-      color-mix(in srgb, var(--md-page-bg) 52%, transparent) 66%,
-      transparent 100%
-    );
-  }
-
-  .navbar::after {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .navbar::before {
-    background: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--md-page-bg) 82%, transparent) 0%,
-      color-mix(in srgb, var(--md-page-bg) 58%, transparent) 72%,
-      transparent 100%
-    );
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  .navbar::after {
-    display: none;
   }
 }
