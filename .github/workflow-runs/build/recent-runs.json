@@ -1,5 +1,24 @@
 [
   {
+    "run_id": "30143304700",
+    "run_number": 80,
+    "run_attempt": 1,
+    "workflow": "Build and deploy Docusaurus",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "failure",
+    "branch": "main",
+    "head_sha": "92b56c32308c1622180dcc98d1377f5c4322a339",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-07-25T04:02:07Z",
+    "run_started_at": "2026-07-25T04:02:07Z",
+    "updated_at": "2026-07-25T04:04:11Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30143304700",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30143304700/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30143304700/logs"
+  },
+  {
     "run_id": "30143238973",
     "run_number": 79,
     "run_attempt": 1,
@@ -169,24 +188,5 @@
     "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141239900",
     "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141239900/jobs",
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141239900/logs"
-  },
-  {
-    "run_id": "30141206551",
-    "run_number": 70,
-    "run_attempt": 1,
-    "workflow": "Build and deploy Docusaurus",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "cancelled",
-    "branch": "fix/sidebar-active-navbar-gradient",
-    "head_sha": "27cb9995e1ade5af0f060fe3e8d0825c6f412e14",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T02:52:31Z",
-    "run_started_at": "2026-07-25T02:52:31Z",
-    "updated_at": "2026-07-25T02:53:57Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30141206551",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141206551/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30141206551/logs"
   }
 ]
