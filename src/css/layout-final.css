@@ -1,0 +1,42 @@
+/* Final layout overrides loaded after DocSearch so all floating controls share
+ * the same border-box geometry and the document columns use the viewport. */
+.navbar__brand,
+.navbar__link,
+.navbar__toggle,
+.navbar .clean-btn,
+.navbar .DocSearch-Button {
+  box-sizing: border-box;
+}
+
+.navbar .DocSearch-Button {
+  box-sizing: border-box !important;
+}
+
+article.theme-doc-markdown h1:first-of-type,
+.theme-doc-markdown h1:first-of-type,
+.markdown > h1:first-child {
+  font-size: clamp(1.58rem, 1.9vw, 1.98rem) !important;
+  line-height: 1.28;
+  margin-bottom: 1.05rem;
+}
+
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    position: sticky !important;
+    top: 0 !important;
+    align-self: flex-start;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin-top: 0 !important;
+    overflow: hidden;
+  }
+
+  .theme-doc-sidebar-container > div {
+    position: static !important;
+    top: auto !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow-y: auto;
+  }
+}
