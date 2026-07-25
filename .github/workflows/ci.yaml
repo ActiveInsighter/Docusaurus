@@ -22,7 +22,7 @@ concurrency:
 
 env:
   NODE_VERSION: 24
-  CLOUDFLARE_PAGES_PROJECT: docusaurus-d92
+  CLOUDFLARE_PAGES_DOMAIN: to-any.top
 
 jobs:
   build:
@@ -50,43 +50,123 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # These commands are useful diagnostics, but they can require broader
-      # account-discovery/read permissions than a least-privilege Pages deploy
-      # token. Keep their output without allowing them to block the authoritative
-      # deployment command below.
       - name: Check Cloudflare authentication
         if: >-
-          github.ref == 'refs/heads/main' &&
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          (github.ref == 'refs/heads/main' &&
+           (github.event_name == 'push' || github.event_name == 'workflow_dispatch')) ||
+          (github.event_name == 'pull_request' &&
+           github.event.pull_request.head.repo.full_name == github.repository)
         continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4 whoami
 
+      - name: Resolve Cloudflare Pages project
+        id: pages-project
+        if: >-
+          (github.ref == 'refs/heads/main' &&
+           (github.event_name == 'push' || github.event_name == 'workflow_dispatch')) ||
+          (github.event_name == 'pull_request' &&
+           github.event.pull_request.head.repo.full_name == github.repository)
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PREFERRED_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+        run: |
+          set -euo pipefail
+
+          raw_projects="$(npx --yes wrangler@4 pages project list --json)"
+          projects="$(
+            jq -c '
+              if type == "array" then .
+              elif type == "object" and (.result | type) == "array" then .result
+              else error("Unexpected Wrangler project-list JSON shape")
+              end
+            ' <<<"${raw_projects}"
+          )"
+
+          project_count="$(jq 'length' <<<"${projects}")"
+          available_names="$(jq -r 'map(.name) | join(", ")' <<<"${projects}")"
+          echo "Cloudflare Pages projects in the configured account: ${available_names:-none}"
+
+          project_name=""
+
+          if [[ -n "${PREFERRED_PROJECT}" ]]; then
+            if jq -e --arg name "${PREFERRED_PROJECT}" \
+              'any(.[]; .name == $name)' <<<"${projects}" >/dev/null; then
+              project_name="${PREFERRED_PROJECT}"
+            else
+              echo "::error::Repository variable CLOUDFLARE_PAGES_PROJECT is set to '${PREFERRED_PROJECT}', but that project does not exist in the configured Cloudflare account."
+              exit 1
+            fi
+          fi
+
+          if [[ -z "${project_name}" ]]; then
+            mapfile -t domain_matches < <(
+              jq -r --arg domain "${CLOUDFLARE_PAGES_DOMAIN}" '
+                .[]
+                | select(
+                    ((.domains // [])
+                      | map(
+                          sub("^https?://"; "")
+                          | sub("/$"; "")
+                        )
+                      | index($domain)) != null
+                    or
+                    (((.subdomain // "")
+                      | sub("^https?://"; "")
+                      | sub("/$"; "")) == $domain)
+                  )
+                | .name
+              ' <<<"${projects}"
+            )
+
+            if [[ "${#domain_matches[@]}" -eq 1 ]]; then
+              project_name="${domain_matches[0]}"
+            elif [[ "${#domain_matches[@]}" -gt 1 ]]; then
+              echo "::error::More than one Pages project is associated with ${CLOUDFLARE_PAGES_DOMAIN}: ${domain_matches[*]}"
+              exit 1
+            fi
+          fi
+
+          if [[ -z "${project_name}" && "${project_count}" -eq 1 ]]; then
+            project_name="$(jq -r '.[0].name' <<<"${projects}")"
+          fi
+
+          if [[ -z "${project_name}" ]]; then
+            echo "::error::Could not determine the Pages project for ${CLOUDFLARE_PAGES_DOMAIN}. Set the repository variable CLOUDFLARE_PAGES_PROJECT to one of: ${available_names:-none}."
+            exit 1
+          fi
+
+          echo "Resolved Cloudflare Pages project: ${project_name}"
+          echo "project_name=${project_name}" >>"${GITHUB_OUTPUT}"
+          printf '### Cloudflare Pages\n\n- Project: `%s`\n- Domain: `%s`\n' \
+            "${project_name}" "${CLOUDFLARE_PAGES_DOMAIN}" >>"${GITHUB_STEP_SUMMARY}"
+
       - name: Check Cloudflare Pages project access
         if: >-
-          github.ref == 'refs/heads/main' &&
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        continue-on-error: true
+          steps.pages-project.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: >-
           npx --yes wrangler@4 pages deployment list
-          --project-name="${CLOUDFLARE_PAGES_PROJECT}"
+          --project-name="${{ steps.pages-project.outputs.project_name }}"
           --environment=production
           --json
 
       - name: Deploy production to Cloudflare Pages
         if: >-
           github.ref == 'refs/heads/main' &&
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+          steps.pages-project.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: >-
           npx --yes wrangler@4 pages deploy build
-          --project-name="${CLOUDFLARE_PAGES_PROJECT}"
+          --project-name="${{ steps.pages-project.outputs.project_name }}"
           --branch=main
           --commit-hash="${GITHUB_SHA}"
