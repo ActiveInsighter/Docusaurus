@@ -253,6 +253,7 @@ const config: Config = {
           customCss: [
             './src/css/custom.css',
             './src/css/layout-polish.css',
+            './src/css/docsearch-polish.css',
           ],
         },
       } satisfies Preset.Options,
