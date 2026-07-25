@@ -173,6 +173,6 @@
   }
 
   .strongBlur {
-    inset-bottom: 30%;
+    bottom: 30%;
   }
 }
