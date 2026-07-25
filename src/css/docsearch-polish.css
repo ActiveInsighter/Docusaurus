@@ -1,1 +1,525 @@
-/* placeholder */
+/* Algolia DocSearch polish
+ * Keep the stock search behavior while matching the documentation site's
+ * restrained glass, spacing, and light/dark color system.
+ */
+
+:root {
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-highlight-color: var(--ifm-color-primary);
+  --docsearch-text-color: #24313a;
+  --docsearch-muted-color: #71808a;
+  --docsearch-container-background: rgba(17, 29, 38, 0.26);
+  --docsearch-modal-background: rgba(251, 252, 253, 0.9);
+  --docsearch-searchbox-background: rgba(255, 255, 255, 0.78);
+  --docsearch-searchbox-focus-background: rgba(255, 255, 255, 0.96);
+  --docsearch-hit-background: rgba(255, 255, 255, 0.72);
+  --docsearch-hit-color: #24313a;
+  --docsearch-hit-active-color: #172630;
+  --docsearch-footer-background: rgba(248, 250, 251, 0.82);
+  --docsearch-modal-shadow: 0 28px 90px rgba(23, 38, 48, 0.2);
+  --docsearch-searchbox-shadow: 0 0 0 3px rgba(40, 75, 99, 0.12);
+  --docsearch-hit-shadow: 0 1px 0 rgba(27, 48, 61, 0.08);
+  --docsearch-key-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(238, 243, 246, 0.96)
+  );
+  --docsearch-key-shadow: inset 0 -1px 0 rgba(40, 75, 99, 0.12),
+    0 1px 1px rgba(27, 48, 61, 0.08);
+  --docsearch-logo-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] {
+  --docsearch-text-color: #e6edf3;
+  --docsearch-muted-color: #9aa9b3;
+  --docsearch-container-background: rgba(0, 0, 0, 0.58);
+  --docsearch-modal-background: rgba(12, 14, 16, 0.92);
+  --docsearch-searchbox-background: rgba(31, 35, 39, 0.82);
+  --docsearch-searchbox-focus-background: rgba(38, 43, 48, 0.96);
+  --docsearch-hit-background: rgba(28, 32, 36, 0.78);
+  --docsearch-hit-color: #d9e2e8;
+  --docsearch-hit-active-color: #ffffff;
+  --docsearch-footer-background: rgba(16, 18, 20, 0.86);
+  --docsearch-modal-shadow: 0 30px 100px rgba(0, 0, 0, 0.62);
+  --docsearch-searchbox-shadow: 0 0 0 3px rgba(138, 180, 200, 0.16);
+  --docsearch-hit-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  --docsearch-key-gradient: linear-gradient(
+    180deg,
+    rgba(54, 59, 64, 0.98),
+    rgba(35, 39, 43, 0.98)
+  );
+  --docsearch-key-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 1px 1px rgba(0, 0, 0, 0.3);
+  --docsearch-logo-color: #b7c7d1;
+}
+
+.navbar .DocSearch-Button {
+  position: relative;
+  min-width: clamp(8.8rem, 12vw, 11rem);
+  height: 2.25rem;
+  margin: 0;
+  padding: 0 0.55rem 0 0.72rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--md-border) 76%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--md-surface-elevated) 72%, transparent);
+  color: var(--ifm-color-content-secondary);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 64%, transparent),
+    0 6px 18px rgba(27, 48, 61, 0.045);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  transition: border-color 160ms ease, background-color 160ms ease,
+    color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+[data-theme='dark'] .navbar .DocSearch-Button {
+  background: rgba(20, 22, 24, 0.68);
+  border-color: rgba(255, 255, 255, 0.13);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.navbar .DocSearch-Button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--ifm-color-primary) 7%, transparent),
+    transparent 42%,
+    color-mix(in srgb, var(--ifm-color-primary) 4%, transparent)
+  );
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.navbar .DocSearch-Button:hover {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 52%, var(--md-border));
+  background: color-mix(in srgb, var(--md-surface-elevated) 88%, transparent);
+  color: var(--ifm-color-content);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 72%, transparent),
+    0 9px 24px rgba(27, 48, 61, 0.09);
+  transform: translateY(-1px);
+}
+
+[data-theme='dark'] .navbar .DocSearch-Button:hover {
+  background: rgba(29, 32, 35, 0.84);
+  border-color: rgba(183, 199, 209, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .DocSearch-Button:hover::after,
+.navbar .DocSearch-Button:focus-visible::after {
+  opacity: 1;
+}
+
+.navbar .DocSearch-Button:focus,
+.navbar .DocSearch-Button:focus-visible {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 16%, transparent),
+    0 9px 24px rgba(27, 48, 61, 0.09);
+}
+
+.navbar .DocSearch-Button-Container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  gap: 0.48rem;
+}
+
+.navbar .DocSearch-Search-Icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ifm-color-primary);
+  stroke-width: 1.8;
+}
+
+.navbar .DocSearch-Button-Placeholder {
+  overflow: hidden;
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 570;
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar .DocSearch-Button-Keys {
+  position: relative;
+  z-index: 1;
+  min-width: auto;
+  margin-left: auto;
+  gap: 0.18rem;
+}
+
+.navbar .DocSearch-Button-Key {
+  display: grid;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  padding: 0 0.22rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--md-border) 72%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--md-surface) 82%, transparent);
+  color: var(--md-muted);
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--md-border) 60%, transparent);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.62rem;
+  line-height: 1;
+  top: auto;
+}
+
+[data-theme='dark'] .navbar .DocSearch-Button-Key {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.075);
+  color: #a8b3bb;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.34);
+}
+
+.DocSearch-Container {
+  background: var(--docsearch-container-background);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
+}
+
+.DocSearch-Modal {
+  width: min(46rem, calc(100vw - 2rem));
+  max-width: 46rem;
+  margin-top: min(10vh, 6rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--md-border) 82%, transparent);
+  border-radius: 22px;
+  background: var(--docsearch-modal-background);
+  box-shadow: var(--docsearch-modal-shadow);
+  -webkit-backdrop-filter: blur(28px) saturate(135%);
+  backdrop-filter: blur(28px) saturate(135%);
+}
+
+[data-theme='dark'] .DocSearch-Modal {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.DocSearch-SearchBar {
+  padding: 0.9rem 0.9rem 0.65rem;
+}
+
+.DocSearch-Form {
+  height: 3.25rem;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, var(--md-border));
+  border-radius: 16px;
+  background: var(--docsearch-searchbox-background);
+  box-shadow: none;
+  transition: border-color 160ms ease, background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.DocSearch-Form:focus-within {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 74%, transparent);
+  background: var(--docsearch-searchbox-focus-background);
+  box-shadow: var(--docsearch-searchbox-shadow);
+}
+
+.DocSearch-MagnifierLabel {
+  padding: 0 0.72rem 0 0.9rem;
+  color: var(--ifm-color-primary);
+}
+
+.DocSearch-MagnifierLabel svg {
+  width: 1.18rem;
+  height: 1.18rem;
+  stroke-width: 1.8;
+}
+
+.DocSearch-Input {
+  color: var(--docsearch-text-color);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.98rem;
+  font-weight: 560;
+  letter-spacing: 0.005em;
+}
+
+.DocSearch-Input::placeholder {
+  color: var(--docsearch-muted-color);
+  opacity: 0.78;
+}
+
+.DocSearch-Reset,
+.DocSearch-Cancel {
+  color: var(--docsearch-muted-color);
+}
+
+.DocSearch-Reset {
+  padding: 0 0.72rem;
+}
+
+.DocSearch-Reset:hover,
+.DocSearch-Cancel:hover {
+  color: var(--docsearch-text-color);
+}
+
+.DocSearch-Dropdown {
+  padding: 0.45rem 0.72rem 0.75rem;
+  background: transparent;
+  scrollbar-color: color-mix(in srgb, var(--ifm-color-primary) 24%, transparent)
+    transparent;
+}
+
+.DocSearch-Dropdown::-webkit-scrollbar {
+  width: 0.65rem;
+}
+
+.DocSearch-Dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.DocSearch-Dropdown::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 24%, transparent);
+  background-clip: padding-box;
+}
+
+.DocSearch-Hit-source {
+  margin: 0.8rem 0.42rem 0.42rem;
+  padding: 0;
+  color: var(--docsearch-muted-color);
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.DocSearch-Hit {
+  padding-bottom: 0.38rem;
+}
+
+.DocSearch-Hit a {
+  min-height: 3.7rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--md-border) 74%, transparent);
+  border-radius: 13px;
+  background: var(--docsearch-hit-background);
+  color: var(--docsearch-hit-color);
+  box-shadow: var(--docsearch-hit-shadow);
+  transition: border-color 140ms ease, background-color 140ms ease,
+    box-shadow 140ms ease, transform 140ms ease;
+}
+
+.DocSearch-Hit[aria-selected='true'] a,
+.DocSearch-Hit--active a {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, var(--docsearch-hit-background));
+  color: var(--docsearch-hit-active-color);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  transform: translateY(-1px);
+}
+
+.DocSearch-Hit-Container {
+  gap: 0.66rem;
+}
+
+.DocSearch-Hit-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  place-items: center;
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+.DocSearch-Hit-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.DocSearch-Hit-content-wrapper {
+  min-width: 0;
+}
+
+.DocSearch-Hit-title {
+  color: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.42;
+}
+
+.DocSearch-Hit-path {
+  margin-top: 0.13rem;
+  color: var(--docsearch-muted-color);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.DocSearch-Hit-Select-Icon {
+  color: var(--ifm-color-primary);
+}
+
+.DocSearch-Hit mark {
+  padding: 0 0.1em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+  color: var(--docsearch-highlight-color);
+  font-weight: 720;
+}
+
+.DocSearch-StartScreen,
+.DocSearch-NoResults,
+.DocSearch-ErrorScreen {
+  padding: 1.8rem 1rem 2.3rem;
+  color: var(--docsearch-muted-color);
+}
+
+.DocSearch-Screen-Icon {
+  color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--docsearch-muted-color));
+}
+
+.DocSearch-Title {
+  color: var(--docsearch-text-color);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.DocSearch-Help,
+.DocSearch-NoResults-Prefill-List {
+  color: var(--docsearch-muted-color);
+}
+
+.DocSearch-Footer {
+  min-height: 3.25rem;
+  padding: 0.55rem 0.9rem;
+  border-top: 1px solid color-mix(in srgb, var(--md-border) 72%, transparent);
+  background: var(--docsearch-footer-background);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  backdrop-filter: blur(16px) saturate(130%);
+}
+
+[data-theme='dark'] .DocSearch-Footer {
+  border-top-color: rgba(255, 255, 255, 0.09);
+}
+
+.DocSearch-Commands {
+  gap: 0.8rem;
+}
+
+.DocSearch-Commands-Key,
+.DocSearch-Button-Key {
+  background: var(--docsearch-key-gradient);
+  box-shadow: var(--docsearch-key-shadow);
+}
+
+.DocSearch-Commands-Key {
+  min-width: 1.28rem;
+  height: 1.28rem;
+  border: 0;
+  border-radius: 5px;
+  color: var(--docsearch-muted-color);
+}
+
+.DocSearch-Label {
+  color: var(--docsearch-muted-color);
+  font-size: 0.68rem;
+}
+
+.DocSearch-Logo svg {
+  color: var(--docsearch-logo-color);
+}
+
+@media (max-width: 996px) {
+  .navbar .DocSearch-Button {
+    min-width: 2.25rem;
+    width: 2.25rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .navbar .DocSearch-Button-Container {
+    gap: 0;
+  }
+
+  .navbar .DocSearch-Button-Placeholder,
+  .navbar .DocSearch-Button-Keys {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .DocSearch-Container {
+    padding: 0;
+  }
+
+  .DocSearch-Modal {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .DocSearch-SearchBar {
+    padding: max(0.72rem, env(safe-area-inset-top)) 0.68rem 0.55rem;
+  }
+
+  .DocSearch-Form {
+    height: 3rem;
+    border-radius: 14px;
+  }
+
+  .DocSearch-Cancel {
+    margin-left: 0.45rem;
+    padding: 0.5rem 0.35rem;
+    font-weight: 650;
+  }
+
+  .DocSearch-Dropdown {
+    padding-inline: 0.55rem;
+  }
+
+  .DocSearch-Hit a {
+    min-height: 3.55rem;
+    border-radius: 12px;
+  }
+
+  .DocSearch-Footer {
+    padding-bottom: max(0.55rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar .DocSearch-Button,
+  .DocSearch-Form,
+  .DocSearch-Hit a {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .navbar .DocSearch-Button,
+  .DocSearch-Container,
+  .DocSearch-Modal,
+  .DocSearch-Footer {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .navbar .DocSearch-Button {
+    background: var(--md-surface-elevated);
+  }
+
+  .DocSearch-Container {
+    background: rgba(17, 29, 38, 0.58);
+  }
+
+  .DocSearch-Modal {
+    background: var(--md-surface);
+  }
+}
