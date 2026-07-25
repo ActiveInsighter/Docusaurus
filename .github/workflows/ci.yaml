@@ -38,18 +38,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
-
-      - name: Check TypeScript
-        run: npm run typecheck
-
-      - name: Test workflow run index
-        run: npm run test:workflow-runs
-
-      - name: Build site
-        run: npm run build
-
       - name: Check Cloudflare authentication
         if: >-
           (github.ref == 'refs/heads/main' &&
@@ -168,6 +156,18 @@ jobs:
           --project-name="${{ steps.pages-project.outputs.project_name }}"
           --environment=production
           --json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Check TypeScript
+        run: npm run typecheck
+
+      - name: Test workflow run index
+        run: npm run test:workflow-runs
+
+      - name: Build site
+        run: npm run build
 
       - name: Deploy production to Cloudflare Pages
         if: >-
