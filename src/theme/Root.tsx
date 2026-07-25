@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import {AnswerVisibilityProvider} from '@site/src/components/Question';
 
 import '@fontsource-variable/jetbrains-mono/wght.css';
 import '@fontsource-variable/noto-sans-sc/wght.css';
@@ -8,5 +9,7 @@ type Props = {
 };
 
 export default function Root({children}: Props): ReactNode {
-  return children;
+  return (
+    <AnswerVisibilityProvider>{children}</AnswerVisibilityProvider>
+  );
 }

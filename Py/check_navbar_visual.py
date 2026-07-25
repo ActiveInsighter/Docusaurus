@@ -17,8 +17,8 @@ DOC_PATH = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Verify full-height desktop sidebars, compact transparent glass "
-            "navbar controls, and stable navigation states."
+            "Verify the unified glass navbar, restored Docusaurus sidebars, "
+            "stable controls, and overflow-safe desktop/mobile layouts."
         )
     )
     parser.add_argument("--base-url", default="http://127.0.0.1:3000")
@@ -87,8 +87,6 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const navLink = document.querySelector('.navbar__link');
           const search = document.querySelector('.navbar .DocSearch-Button');
           const title = document.querySelector('article h1');
-          const material = document.querySelector('[data-navbar-material="true"]');
-
           for (const [name, element] of Object.entries({
             navbar,
             inner,
@@ -157,13 +155,17 @@ def read_ui_state(page: Page) -> dict[str, Any]:
               fontSize: style.fontSize,
               fontWeight: style.fontWeight,
               transform: style.transform,
+              overflowX: style.overflowX,
               overflowY: style.overflowY,
+              clientWidth: element.clientWidth,
+              scrollWidth: element.scrollWidth,
               paddingLeft: style.paddingLeft,
               paddingRight: style.paddingRight,
               backdropFilter:
                 style.backdropFilter || style.webkitBackdropFilter || '',
             };
           };
+          const materialStyle = getComputedStyle(navbar, '::before');
 
           const root = document.documentElement;
           return {
@@ -176,7 +178,15 @@ def read_ui_state(page: Page) -> dict[str, Any]:
             sidebarMenu: read(sidebarMenu),
             tocBox: read(toc),
             tocContent: read(tocContent),
-            materialPresent: material instanceof HTMLElement,
+            navbarMaterial: {
+              background: materialStyle.backgroundColor,
+              borderBottomWidth: materialStyle.borderBottomWidth,
+              boxShadow: materialStyle.boxShadow,
+              backdropFilter:
+                materialStyle.backdropFilter ||
+                materialStyle.webkitBackdropFilter ||
+                '',
+            },
             brandText: brandTitle.textContent?.trim() ?? '',
             title: {...read(title), text: title.textContent?.trim() ?? ''},
             controls: {
@@ -215,7 +225,9 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     viewport = state["viewport"]
     navbar = state["navbar"]
+    material = state["navbarMaterial"]
     main = state["main"]
+    sidebar_box = state["sidebarBox"]
     sidebar_viewport = state["sidebarViewport"]
     sidebar_menu = state["sidebarMenu"]
     toc_box = state["tocBox"]
@@ -225,26 +237,36 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     title = state["title"]
     document = state["document"]
 
-    assert navbar["position"] == "fixed", f"{theme}: navbar is not floating"
+    assert navbar["position"] == "sticky", f"{theme}: navbar is not sticky"
     assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
     assert float(navbar["right"]) >= float(viewport["width"]) - 1.0, (
         f"{theme}: navbar does not span the viewport"
     )
     assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to top"
-    assert 36.0 <= float(navbar["height"]) <= 47.0, (
+    assert 44.0 <= float(navbar["height"]) <= 54.0, (
         f"{theme}: navbar is not compact: {navbar['height']}"
     )
     assert_transparent(navbar["background"], f"{theme}: navbar shell is not transparent")
     assert navbar["boxShadow"] == "none", f"{theme}: navbar shell has a shadow"
     assert navbar["borderWidth"] == "0px", f"{theme}: navbar shell has a border"
-    assert navbar["pointerEvents"] == "none", f"{theme}: navbar shell blocks content"
-    assert not state["materialPresent"], f"{theme}: legacy navbar material returned"
+    assert navbar["pointerEvents"] == "auto", f"{theme}: navbar is not interactive"
+    assert blur_radius(navbar["backdropFilter"]) == 0.0, (
+        f"{theme}: navbar shell creates an extra blur layer"
+    )
+    assert 0.55 <= rgba_alpha(material["background"]) <= 0.92, (
+        f"{theme}: navbar material opacity is unbalanced: {material['background']}"
+    )
+    assert blur_radius(material["backdropFilter"]) >= 16.0, (
+        f"{theme}: unified navbar blur is missing: {material['backdropFilter']}"
+    )
+    assert px(material["borderBottomWidth"]) >= 1.0, (
+        f"{theme}: navbar material divider is missing"
+    )
+    assert material["boxShadow"] != "none", (
+        f"{theme}: navbar material lacks depth"
+    )
     assert state["brandText"] == "首页", (
         f"{theme}: navbar brand is not localized: {state['brandText']!r}"
-    )
-
-    assert float(main["top"]) <= 2.0, (
-        f"{theme}: main content still reserves navbar space: {main['top']}"
     )
 
     assert float(sidebar_viewport["top"]) <= 1.0, (
@@ -253,27 +275,29 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     assert float(sidebar_viewport["height"]) >= float(viewport["height"]) - 2.0, (
         f"{theme}: left sidebar viewport is not full height: {sidebar_viewport['height']}"
     )
-    assert float(sidebar["first"]["top"]) <= 24.0, (
-        f"{theme}: left sidebar content still reserves a navbar gap: {sidebar['first']['top']}"
+    assert float(sidebar["first"]["top"]) >= float(navbar["bottom"]) + 4.0, (
+        f"{theme}: left sidebar content overlaps the navbar: {sidebar['first']['top']}"
     )
-    assert px(sidebar_menu["paddingLeft"]) > px(sidebar_menu["paddingRight"]), (
-        f"{theme}: left menu was not shifted toward the divider"
+    assert (
+        abs(px(sidebar_menu["paddingLeft"]) - px(sidebar_menu["paddingRight"]))
+        <= 2.0
+    ), (
+        f"{theme}: restored sidebar padding is unbalanced: "
+        f"{sidebar_menu['paddingLeft']} / {sidebar_menu['paddingRight']}"
     )
-    assert px(sidebar_menu["paddingRight"]) <= 4.5, (
-        f"{theme}: left menu keeps too much space before the divider: "
-        f"{sidebar_menu['paddingRight']}"
+    assert sidebar_box["overflowX"] == "hidden", (
+        f"{theme}: left sidebar does not suppress horizontal overflow"
     )
-
-    assert float(toc_box["top"]) <= 1.0, (
-        f"{theme}: right TOC scroller does not start at top: {toc_box['top']}"
-    )
-    assert float(toc_box["height"]) >= float(viewport["height"]) - 2.0, (
-        f"{theme}: right TOC scroller is not full height: {toc_box['height']}"
-    )
-    assert float(toc["first"]["top"]) <= 24.0, (
-        f"{theme}: right TOC content still reserves a navbar gap: {toc['first']['top']}"
+    assert sidebar_viewport["overflowX"] == "hidden", (
+        f"{theme}: left sidebar viewport can show a horizontal scrollbar"
     )
 
+    assert float(toc_box["top"]) >= float(navbar["bottom"]) + 8.0, (
+        f"{theme}: right TOC overlaps the navbar: {toc_box['top']}"
+    )
+    assert float(toc_box["bottom"]) <= float(viewport["height"]) + 1.0, (
+        f"{theme}: right TOC exceeds the viewport: {toc_box['bottom']}"
+    )
     control_heights = []
     for name, control in controls.items():
         alpha = rgba_alpha(control["background"])
@@ -282,8 +306,8 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
         assert 0.12 <= alpha <= 0.68, (
             f"{theme}: {name} surface is not visibly translucent: {control['background']}"
         )
-        assert blur_radius(control["backdropFilter"]) >= 16.0, (
-            f"{theme}: {name} blur is too weak: {control['backdropFilter']}"
+        assert blur_radius(control["backdropFilter"]) == 0.0, (
+            f"{theme}: {name} adds a redundant blur: {control['backdropFilter']}"
         )
         assert "gradient" in control["backgroundImage"], (
             f"{theme}: {name} lacks the glass highlight layer"
@@ -427,6 +451,82 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     return result
 
 
+def verify_mobile_sidebar(page: Page, output_dir: Path) -> dict[str, Any]:
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.evaluate("window.scrollTo(0, 0)")
+    page.wait_for_timeout(350)
+
+    toggle = page.locator(".navbar__toggle")
+    assert toggle.count() == 1
+    toggle.click()
+
+    sidebar = page.locator(".navbar-sidebar")
+    backdrop = page.locator(".navbar-sidebar__backdrop")
+    sidebar.wait_for(state="visible")
+    backdrop.wait_for(state="visible")
+
+    state = page.evaluate(
+        """
+        () => {
+          const sidebar = document.querySelector('.navbar-sidebar');
+          const backdrop = document.querySelector('.navbar-sidebar__backdrop');
+          const root = document.documentElement;
+          if (!(sidebar instanceof HTMLElement)) throw new Error('mobile sidebar missing');
+          if (!(backdrop instanceof HTMLElement)) throw new Error('mobile backdrop missing');
+          const read = element => {
+            const rect = element.getBoundingClientRect();
+            const style = getComputedStyle(element);
+            return {
+              top: rect.top,
+              bottom: rect.bottom,
+              left: rect.left,
+              right: rect.right,
+              width: rect.width,
+              height: rect.height,
+              position: style.position,
+            };
+          };
+          const topElement = document.elementFromPoint(20, 20);
+          return {
+            viewport: {width: innerWidth, height: innerHeight},
+            sidebar: read(sidebar),
+            backdrop: read(backdrop),
+            topPointInsideSidebar:
+              topElement instanceof Element && sidebar.contains(topElement),
+            document: {
+              clientWidth: root.clientWidth,
+              scrollWidth: root.scrollWidth,
+            },
+          };
+        }
+        """
+    )
+
+    for name in ("sidebar", "backdrop"):
+        box = state[name]
+        assert box["position"] == "fixed", f"mobile {name} is not fixed"
+        assert abs(float(box["top"])) <= 1.0, f"mobile {name} does not start at top"
+        assert float(box["bottom"]) >= float(state["viewport"]["height"]) - 1.0, (
+            f"mobile {name} does not cover the viewport"
+        )
+    assert state["topPointInsideSidebar"], (
+        "navbar controls are painted above the open mobile sidebar"
+    )
+    assert int(state["document"]["scrollWidth"]) <= int(
+        state["document"]["clientWidth"]
+    ) + 1, "mobile page has horizontal overflow"
+
+    page.screenshot(
+        path=str(output_dir / "docs-ui-mobile-sidebar.png"),
+        full_page=False,
+    )
+    close = page.locator(".navbar-sidebar__close")
+    assert close.count() == 1
+    close.click()
+    sidebar.wait_for(state="hidden")
+    return state
+
+
 def main() -> None:
     args = parse_args()
     output_dir = Path(args.output_dir)
@@ -448,6 +548,7 @@ def main() -> None:
 
             results["light"] = capture_theme(page, output_dir, "light")
             results["dark"] = capture_theme(page, output_dir, "dark")
+            results["mobile"] = verify_mobile_sidebar(page, output_dir)
             browser.close()
     except Exception as error:
         (output_dir / "failure.txt").write_text(

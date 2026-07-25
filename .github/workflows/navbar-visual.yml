@@ -7,6 +7,7 @@ on:
     paths:
       - "src/css/custom.css"
       - "src/css/layout-polish.css"
+      - "src/css/layout-final.css"
       - "src/css/docsearch-polish.css"
       - "src/theme/Navbar/**"
       - "Py/check_navbar_visual.py"
@@ -18,6 +19,7 @@ on:
     paths:
       - "src/css/custom.css"
       - "src/css/layout-polish.css"
+      - "src/css/layout-final.css"
       - "src/css/docsearch-polish.css"
       - "src/theme/Navbar/**"
       - "Py/check_navbar_visual.py"

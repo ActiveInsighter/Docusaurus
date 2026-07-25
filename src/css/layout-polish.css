@@ -1,27 +1,34 @@
 :root {
-  --md-navbar-height: 2.5rem;
-  --md-navbar-control-height: 1.95rem;
-  --md-navbar-control-bg: rgba(255, 255, 255, 0.38);
-  --md-navbar-control-bg-hover: rgba(255, 255, 255, 0.56);
-  --md-navbar-control-border: rgba(27, 48, 61, 0.16);
-  --md-navbar-control-highlight: rgba(255, 255, 255, 0.46);
-  --md-navbar-control-shadow: 0 7px 22px rgba(27, 48, 61, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  --md-navbar-height: 2.8rem;
+  --md-navbar-control-height: 1.85rem;
+  --md-navbar-bg: rgba(249, 251, 252, 0.8);
+  --md-navbar-border: rgba(27, 48, 61, 0.1);
+  --md-navbar-shadow: 0 5px 20px rgba(27, 48, 61, 0.055);
+  --md-navbar-control-bg: rgba(255, 255, 255, 0.54);
+  --md-navbar-control-bg-hover: rgba(255, 255, 255, 0.82);
+  --md-navbar-control-border: rgba(27, 48, 61, 0.13);
+  --md-navbar-control-highlight: rgba(255, 255, 255, 0.56);
+  --md-navbar-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 2px 8px rgba(27, 48, 61, 0.045);
   --md-toc-active-bg: transparent;
+  --ifm-navbar-height: var(--md-navbar-height);
 }
 
 [data-theme='dark'] {
-  --md-navbar-control-bg: rgba(12, 14, 17, 0.44);
-  --md-navbar-control-bg-hover: rgba(25, 29, 33, 0.62);
-  --md-navbar-control-border: rgba(255, 255, 255, 0.16);
-  --md-navbar-control-highlight: rgba(255, 255, 255, 0.045);
-  --md-navbar-control-shadow: 0 9px 26px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --md-navbar-bg: rgba(7, 8, 10, 0.78);
+  --md-navbar-border: rgba(255, 255, 255, 0.09);
+  --md-navbar-shadow: 0 6px 24px rgba(0, 0, 0, 0.24);
+  --md-navbar-control-bg: rgba(27, 30, 34, 0.58);
+  --md-navbar-control-bg-hover: rgba(38, 42, 47, 0.78);
+  --md-navbar-control-border: rgba(255, 255, 255, 0.13);
+  --md-navbar-control-highlight: rgba(255, 255, 255, 0.04);
+  --md-navbar-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 2px 9px rgba(0, 0, 0, 0.16);
   --md-toc-active-bg: transparent;
 }
 
 .navbar {
-  position: fixed;
+  position: sticky;
   inset: 0 0 auto;
   width: 100%;
   max-width: none;
@@ -31,9 +38,24 @@
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   overflow: visible;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: var(--ifm-z-index-fixed, 200);
+}
+
+.navbar::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-bottom: 1px solid var(--md-navbar-border);
+  background: var(--md-navbar-bg);
+  box-shadow: var(--md-navbar-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
+  content: '';
+  pointer-events: none;
 }
 
 .navbar__inner {
@@ -43,15 +65,15 @@
   min-width: 0;
   height: 100%;
   margin: 0;
-  padding: 0.27rem clamp(0.62rem, 1.1vw, 0.96rem);
+  padding: 0.26rem clamp(0.62rem, 1.1vw, 0.96rem);
   box-sizing: border-box;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .navbar__items {
   min-width: 0;
   gap: 0.24rem;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .navbar__items--right {
@@ -86,8 +108,8 @@
   );
   color: var(--ifm-navbar-link-color);
   box-shadow: var(--md-navbar-control-shadow);
-  -webkit-backdrop-filter: blur(18px) saturate(155%);
-  backdrop-filter: blur(18px) saturate(155%);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   transform: none;
   transition: background-color 150ms ease, border-color 150ms ease,
     color 150ms ease, box-shadow 150ms ease;
@@ -136,8 +158,8 @@
     transparent 58%
   ) !important;
   box-shadow: var(--md-navbar-control-shadow) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(155%) !important;
-  backdrop-filter: blur(18px) saturate(155%) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   transform: none !important;
 }
 
@@ -153,8 +175,13 @@
   ) !important;
   background-color: var(--md-navbar-control-bg-hover) !important;
   color: var(--ifm-navbar-link-hover-color);
-  box-shadow: 0 9px 26px color-mix(in srgb, var(--ifm-color-primary) 11%, transparent),
-    inset 0 1px 0 color-mix(in srgb, #fff 62%, transparent) !important;
+  box-shadow: inset 0 1px 0
+      color-mix(in srgb, #fff 64%, transparent),
+    0 3px 10px color-mix(
+      in srgb,
+      var(--ifm-color-primary) 8%,
+      transparent
+    ) !important;
   transform: none !important;
 }
 
@@ -327,76 +354,24 @@ footer {
 }
 
 @media (min-width: 997px) {
-  :root {
-    --ifm-navbar-height: 0px;
-  }
-
-  .theme-doc-sidebar-container {
-    align-self: flex-start;
-    min-height: 100vh;
-    height: 100vh;
-    margin-top: 0 !important;
-  }
-
+  .theme-doc-sidebar-container,
   .theme-doc-sidebar-container > div {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    padding-top: 0 !important;
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .theme-doc-sidebar-container .menu {
-    min-height: 100%;
-    padding: 0.42rem 0.18rem 1.15rem 0.92rem;
-  }
-
-  .theme-doc-toc-desktop {
-    position: sticky !important;
-    top: 0 !important;
-    flex: 0 0 clamp(14.25rem, 15vw, 15.5rem);
-    align-self: flex-start;
-    width: clamp(14.25rem, 15vw, 15.5rem);
-    max-width: clamp(14.25rem, 15vw, 15.5rem);
-    height: 100vh;
-    max-height: 100vh;
-    margin-top: 0 !important;
-    margin-right: 0;
-    padding-top: 0;
-    padding-left: 0.22rem;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
-  }
-
-  .theme-doc-toc-desktop > * {
-    position: static !important;
-    top: auto !important;
-    height: auto;
-    max-height: none !important;
-    overflow: visible;
-  }
-
-  .theme-doc-toc-desktop .table-of-contents {
-    padding: 0.42rem 0.22rem 1.1rem 0.82rem;
-    border-left-color: color-mix(
-      in srgb,
-      var(--ifm-toc-border-color) 76%,
-      transparent
-    );
-  }
-
-  .theme-doc-toc-desktop .table-of-contents ul {
-    padding-left: 0.55rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 
 @media (max-width: 996px) {
   :root {
-    --md-navbar-height: 2.42rem;
-    --md-navbar-control-height: 1.9rem;
+    --md-navbar-height: 2.65rem;
+    --md-navbar-control-height: 1.85rem;
   }
 
   .navbar__inner {
@@ -414,6 +389,12 @@ footer {
 }
 
 @media (prefers-reduced-transparency: reduce) {
+  .navbar::before {
+    background: var(--md-surface-elevated);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   .navbar__brand,
   .navbar__link,
   .navbar__toggle,

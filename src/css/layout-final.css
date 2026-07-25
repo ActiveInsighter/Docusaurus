@@ -12,6 +12,16 @@
   box-sizing: border-box !important;
 }
 
+.navbar__brand:focus-visible,
+.navbar__link:focus-visible,
+.navbar__toggle:focus-visible,
+.navbar .clean-btn:focus-visible,
+.navbar .DocSearch-Button:focus-visible {
+  outline: 2px solid
+    color-mix(in srgb, var(--ifm-color-primary) 72%, transparent) !important;
+  outline-offset: 2px;
+}
+
 article.theme-doc-markdown h1:first-of-type,
 .theme-doc-markdown h1:first-of-type,
 .markdown > h1:first-child {
@@ -22,25 +32,6 @@ article.theme-doc-markdown h1:first-of-type,
 
 @media (min-width: 997px) {
   :root {
-    --md-navbar-control-height: 2rem;
-  }
-
-  .theme-doc-sidebar-container {
-    position: sticky !important;
-    top: 0 !important;
-    align-self: flex-start;
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
-    margin-top: 0 !important;
-    overflow: hidden;
-  }
-
-  .theme-doc-sidebar-container > div {
-    position: static !important;
-    top: auto !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    overflow-y: auto;
+    --md-navbar-control-height: 1.85rem;
   }
 }

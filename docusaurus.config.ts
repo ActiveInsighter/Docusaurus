@@ -252,9 +252,6 @@ const config: Config = {
         theme: {
           customCss: [
             './src/css/custom.css',
-            './src/css/layout-polish.css',
-            './src/css/docsearch-polish.css',
-            './src/css/layout-final.css',
           ],
         },
       } satisfies Preset.Options,
@@ -266,6 +263,11 @@ const config: Config = {
   themeConfig: {
     colorMode: {
       respectPrefersColorScheme: true,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
     },
     algolia: {
       appId: 'CAESKGNRU8',
@@ -303,6 +305,10 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: '文档',
+        },
+        {
+          type: 'custom-question-answer-toggle',
+          position: 'right',
         },
         {
           type: 'search',

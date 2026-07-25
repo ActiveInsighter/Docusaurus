@@ -57,6 +57,9 @@ def read_button_state(page: Page) -> dict[str, Any]:
           if (!(button instanceof HTMLElement)) throw new Error('DocSearch button missing');
           const rect = button.getBoundingClientRect();
           const style = getComputedStyle(button);
+          const navbar = document.querySelector('.navbar');
+          if (!(navbar instanceof HTMLElement)) throw new Error('Navbar missing');
+          const materialStyle = getComputedStyle(navbar, '::before');
           return {
             left: rect.left,
             right: rect.right,
@@ -69,8 +72,13 @@ def read_button_state(page: Page) -> dict[str, Any]:
             borderColor: style.borderColor,
             background: style.backgroundColor,
             boxShadow: style.boxShadow,
+            outlineWidth: style.outlineWidth,
             backdropFilter:
               style.backdropFilter || style.webkitBackdropFilter || '',
+            navbarBackdropFilter:
+              materialStyle.backdropFilter ||
+              materialStyle.webkitBackdropFilter ||
+              '',
           };
         }
         """
@@ -88,11 +96,13 @@ def read_modal_state(page: Page) -> dict[str, Any]:
           const input = document.querySelector('.DocSearch-Input');
           const dropdown = document.querySelector('.DocSearch-Dropdown');
           const footer = document.querySelector('.DocSearch-Footer');
+          const navbar = document.querySelector('.navbar');
           if (!(button instanceof HTMLElement)) throw new Error('DocSearch button missing');
           if (!(container instanceof HTMLElement)) throw new Error('DocSearch container missing');
           if (!(modal instanceof HTMLElement)) throw new Error('DocSearch modal missing');
           if (!(form instanceof HTMLElement)) throw new Error('DocSearch form missing');
           if (!(input instanceof HTMLInputElement)) throw new Error('DocSearch input missing');
+          if (!(navbar instanceof HTMLElement)) throw new Error('Navbar missing');
 
           const read = element => {
             const rect = element.getBoundingClientRect();
@@ -128,6 +138,10 @@ def read_modal_state(page: Page) -> dict[str, Any]:
               fontSize: getComputedStyle(input).fontSize,
               fontWeight: getComputedStyle(input).fontWeight,
             },
+            navbarBackdropFilter:
+              getComputedStyle(navbar, '::before').backdropFilter ||
+              getComputedStyle(navbar, '::before').webkitBackdropFilter ||
+              '',
           };
         }
         """
@@ -161,7 +175,7 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     footer = state["footer"]
     viewport = state["viewport"]
 
-    assert 36.0 <= float(button["height"]) <= 45.0, (
+    assert 29.0 <= float(button["height"]) <= 35.0, (
         f"{theme}: search button height is unbalanced: {button['height']}"
     )
     assert float(button["width"]) >= 130.0, (
@@ -172,8 +186,12 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     )
     assert button["borderWidth"] != "0px", f"{theme}: search button border missing"
     assert button["transform"] == "none", f"{theme}: search button transform is not stable"
-    assert blur_radius(button["backdropFilter"]) >= 10.0, (
-        f"{theme}: search button glass blur missing: {button['backdropFilter']}"
+    assert blur_radius(button["backdropFilter"]) == 0.0, (
+        f"{theme}: search button adds a redundant blur: {button['backdropFilter']}"
+    )
+    assert blur_radius(state["navbarBackdropFilter"]) >= 16.0, (
+        f"{theme}: unified navbar glass blur missing: "
+        f"{state['navbarBackdropFilter']}"
     )
 
     assert blur_radius(container["backdropFilter"]) >= 12.0, (
@@ -230,6 +248,12 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     after_hover = read_button_state(page)
     assert_hover_stability(before_hover, after_hover, theme)
 
+    button.focus()
+    focused = read_button_state(page)
+    assert px(focused["outlineWidth"]) >= 2.0, (
+        f"{theme}: search button focus ring is missing"
+    )
+
     button.click()
     page.locator(".DocSearch-Modal").wait_for(state="visible")
     page.locator(".DocSearch-Input").wait_for(state="visible")
@@ -243,6 +267,7 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     result = {
         "beforeHover": before_hover,
         "afterHover": after_hover,
+        "focused": focused,
         "modal": modal_state,
     }
     (output_dir / f"docsearch-{theme}-metrics.json").write_text(

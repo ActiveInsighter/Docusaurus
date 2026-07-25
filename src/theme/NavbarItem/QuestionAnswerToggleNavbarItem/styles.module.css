@@ -1,0 +1,39 @@
+.desktopButton {
+  gap: 0.34rem;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.icon {
+  flex: 0 0 auto;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.mobileButton {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  border: 0;
+  font-family: var(--ifm-font-family-base);
+  text-align: left;
+  cursor: pointer;
+}
+
+.desktopButton:focus-visible,
+.mobileButton:focus-visible {
+  outline: 2px solid
+    color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 996px) {
+  .desktopButton {
+    display: none !important;
+  }
+}

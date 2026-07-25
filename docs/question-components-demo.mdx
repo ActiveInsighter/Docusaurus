@@ -1,0 +1,277 @@
+---
+title: 题目组件示例
+sidebar_label: 题目组件示例
+sidebar_position: 2
+slug: /question-components-demo
+description: Question 题目组件的单选、填空、判断与主观题使用示例。
+tags:
+  - MDX
+  - 题目组件
+---
+
+# 题目组件示例
+
+本页用于预览可复用的题目组件。题号直接写在题干中；右上角按钮依次控制答案、详细解答与复制。复制内容会跟随当前可见状态，顶部栏的“显示全部答案”仍只控制答案，不会自动展开解析。
+
+## 单选题
+
+<Question
+  type="single"
+  source="示例题库"
+  year={2026}
+  score={5}
+  difficulty="easy"
+  tags={['导数', '单调性']}>
+  <QuestionStem>
+
+**1.** 已知函数 $f(x)=x^2-2x+3$，则函数取得最小值时的 $x$ 为（　）。
+
+  </QuestionStem>
+  <QuestionOptions>
+    <QuestionOption>
+
+A. $x=-1$
+
+    </QuestionOption>
+    <QuestionOption>
+
+B. $x=0$
+
+    </QuestionOption>
+    <QuestionOption correct>
+
+C. $x=1$
+
+    </QuestionOption>
+    <QuestionOption>
+
+D. $x=2$
+
+    </QuestionOption>
+  </QuestionOptions>
+  <QuestionAnalysis>
+
+由 $f'(x)=2x-2$，令 $f'(x)=0$ 得 $x=1$。又因为 $f''(x)=2>0$，所以此处为极小值点，正确选项为 C。
+
+  </QuestionAnalysis>
+</Question>
+
+## 填空题
+
+<Question
+  type="fill"
+  source="高等数学基础练习"
+  year={2025}
+  score={4}
+  difficulty="medium"
+  tags={['定积分', '基本公式']}>
+  <QuestionStem>
+
+**2.** 计算 $\displaystyle\int_0^1 x\,\mathrm{d}x=$ <QuestionBlank>$\frac{1}{2}$</QuestionBlank>。
+
+  </QuestionStem>
+  <QuestionAnalysis>
+
+直接使用牛顿—莱布尼茨公式：
+
+$$
+\int_0^1 x\,\mathrm{d}x
+=\left.\frac{x^2}{2}\right|_0^1
+=\frac{1}{2}.
+$$
+
+  </QuestionAnalysis>
+</Question>
+
+## 判断题
+
+<Question
+  type="judge"
+  source="线性代数概念辨析"
+  score={2}
+  difficulty="easy"
+  tags={['矩阵', '可逆性']}>
+  <QuestionStem>
+
+**3.** 若方阵 $A$ 满足 $\det(A)\ne 0$，则 $A$ 可逆。<QuestionBlank>正确</QuestionBlank>
+
+  </QuestionStem>
+  <QuestionAnalysis>
+
+命题正确。方阵可逆、行列式非零与满秩三者等价：
+
+| 条件 | 等价结论 |
+| --- | --- |
+| $\det(A)\ne 0$ | $A^{-1}$ 存在 |
+| $\operatorname{rank}(A)=n$ | 线性方程组有唯一解 |
+
+  </QuestionAnalysis>
+</Question>
+
+## 主观题
+
+<Question
+  type="subjective"
+  source="算法设计示例"
+  score={10}
+  difficulty="hard"
+  tags={['双指针', '复杂度分析']}>
+  <QuestionStem>
+
+**4.** 请说明如何在线性时间内判断一个已按非递减顺序排列的整数数组中，是否存在两个数之和等于目标值 `target`，并写出核心 TypeScript 实现。
+
+  </QuestionStem>
+  <QuestionAnswer>
+
+在数组两端设置 `left` 与 `right` 指针。若当前两数之和偏小，则右移 `left`；若偏大，则左移 `right`；相等时返回 `true`。
+
+```ts
+function hasPairWithSum(values: number[], target: number): boolean {
+  let left = 0;
+  let right = values.length - 1;
+
+  while (left < right) {
+    const sum = values[left] + values[right];
+    if (sum === target) return true;
+    if (sum < target) left += 1;
+    else right -= 1;
+  }
+
+  return false;
+}
+```
+
+  </QuestionAnswer>
+  <QuestionAnalysis>
+
+数组已有序，所以每次比较都能排除一个端点，无需枚举全部数对。
+
+| 指标 | 复杂度 |
+| --- | --- |
+| 时间复杂度 | $O(n)$ |
+| 额外空间复杂度 | $O(1)$ |
+
+  </QuestionAnalysis>
+</Question>
+
+## 多选题
+
+<Question
+  type="multiple"
+  source="组件能力测试"
+  year={2026}
+  score={6}
+  difficulty="medium"
+  tags={['MDX', 'ReactNode', '响应式选项']}>
+  <QuestionStem>
+
+**5.** 关于题目子组件的内容传入方式，下列说法正确的是（　）。
+
+  </QuestionStem>
+  <QuestionOptions>
+    <QuestionOption correct>
+
+A. 题干、选项、答案和解析都可以直接包含 Markdown 与公式。
+
+    </QuestionOption>
+    <QuestionOption>
+
+B. 组件会在浏览器端重新解析 Markdown 字符串。
+
+    </QuestionOption>
+    <QuestionOption correct>
+
+C. 子内容可以继续嵌套其他已经注册的 MDX 组件。
+
+    </QuestionOption>
+    <QuestionOption>
+
+D. 选项只能包含不带格式的纯文本。
+
+    </QuestionOption>
+  </QuestionOptions>
+  <QuestionAnalysis>
+
+正确选项为 A、C。内容由 MDX 在构建阶段编译为 `ReactNode`，组件只负责渲染，不会在浏览器端再次解析 Markdown 字符串。
+
+  </QuestionAnalysis>
+</Question>
+
+## 长解析滚动测试
+
+<Question
+  type="subjective"
+  source="组件边界测试"
+  score={8}
+  difficulty="hard"
+  tags={['长内容', '滚动区域', '键盘访问']}>
+  <QuestionStem>
+
+**6.** 说明一个较长的题目解析区域应如何兼顾页面长度、公式、代码块与键盘访问。
+
+  </QuestionStem>
+  <QuestionAnswer>
+
+为解析区设置视口相关的最大高度，仅在内容超过阈值时出现内部滚动；保留完整 DOM 内容，并让滚动区域可以通过键盘获得焦点。
+
+  </QuestionAnswer>
+  <QuestionAnalysis>
+
+这道题用于验证长解析不会无限拉长正文。展开后应满足以下检查点：
+
+1. 解析仍然由用户逐题展开，不受“显示全部答案”控制。
+2. 内容较短时不出现多余的纵向滚动条。
+3. 内容超过最大高度后，滚动只发生在解析区域内部。
+4. 滚动容器使用 `overscroll-behavior: contain`，避免滚动链意外带动页面。
+5. 滚动条轨道预留稳定空间，出现滚动条时正文宽度不会突然变化。
+6. 键盘用户可以聚焦解析内容，并使用方向键、Page Up 与 Page Down 浏览。
+7. 折叠状态下内容保持 `inert`，不会进入 Tab 顺序。
+8. 公式仍由 KaTeX 渲染，例如
+   $$
+   \sum_{k=1}^{n}k=\frac{n(n+1)}{2}.
+   $$
+9. 较宽的行间公式只在自身区域横向滚动，不扩张题目容器。
+10. 代码块保留语法高亮和横向滚动：
+
+    ```ts
+    function sumTo(n: number): number {
+      return (n * (n + 1)) / 2;
+    }
+    ```
+
+11. 表格保持完整结构：
+
+    | 检查项 | 预期 |
+    | --- | --- |
+    | 默认状态 | 折叠 |
+    | 超长内容 | 内部滚动 |
+    | 暗色模式 | 清晰可读 |
+
+12. 图片继续遵守 `max-width: 100%`，不会撑开正文。
+13. 复制功能读取完整 DOM，因此未滚动到的解析内容也不会丢失。
+14. 收起解析后，页面会恢复到题目原本的紧凑高度。
+15. 再次展开时仍可从解析区顶部开始阅读。
+16. 在窄屏上最大高度会进一步降低，保留更多页面上下文。
+
+  </QuestionAnalysis>
+</Question>
+
+## API 速查
+
+```mdx
+<Question type="single" source="题库" tags={['知识点']}>
+  <QuestionStem>1. 题干，可包含 Markdown、公式和其他 MDX 组件。</QuestionStem>
+  <QuestionOptions>
+    <QuestionOption correct>A. 正确选项</QuestionOption>
+    <QuestionOption>B. 其他选项</QuestionOption>
+  </QuestionOptions>
+  <QuestionAnalysis>默认折叠的完整解析。</QuestionAnalysis>
+</Question>
+```
+
+- `Question`：`type` 支持 `single`、`multiple`、`fill`、`judge`、`subjective`，并接收 `source`、`year`、`score`、`difficulty`、`tags` 与可选 `copyText`；`number` 仍兼容旧文档，但不再单独显示。
+- `QuestionOption`：选项编号直接写在子内容前，例如 `A.`；使用 `correct` 标记正确项，显示答案时该项会变色。
+- `QuestionOptions`：默认按选项自然宽度在 4、2、1 列之间自动选择，也可用 `columns={1 | 2 | 4}` 设置最大列数。
+- `QuestionBlank`：答案可以作为子节点或通过 `answer` 传入；判断题会自动显示括号。
+- `QuestionAnalysis`：内容超过 `min(30rem, 68vh)` 后在解析区内部滚动；可通过 `--question-analysis-max-height` 覆盖阈值。
+- `copyText`：普通内容自动转换；复杂内容可分别使用 `question`、`answer`、`analysis`、`solution` 覆盖四种可见状态的复制文本。
