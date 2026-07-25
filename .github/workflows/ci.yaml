@@ -22,7 +22,9 @@ concurrency:
 
 env:
   NODE_VERSION: 24
-  CLOUDFLARE_PAGES_PROJECT: docusaurus-d92
+  # The Pages project is named "docusaurus". Its generated hostname is
+  # docusaurus-d92.pages.dev; the hostname prefix is not the project name.
+  CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'docusaurus' }}
 
 jobs:
   build:
@@ -50,10 +52,6 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # These commands are useful diagnostics, but they can require broader
-      # account-discovery/read permissions than a least-privilege Pages deploy
-      # token. Keep their output without allowing them to block the authoritative
-      # deployment command below.
       - name: Check Cloudflare authentication
         if: >-
           github.ref == 'refs/heads/main' &&
@@ -68,7 +66,6 @@ jobs:
         if: >-
           github.ref == 'refs/heads/main' &&
           (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

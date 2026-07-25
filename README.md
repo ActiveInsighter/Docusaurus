@@ -2,7 +2,7 @@
 
 基于 Docusaurus、React 和 TypeScript 构建的个人知识文档站，用于长期整理考研复习、计算机基础、算法与项目实践内容。
 
-生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus-d92`。Cloudflare Pages 仅接收构建产物，不再负责监听 Git 提交并重复构建。
+生产站点由 GitHub Actions 完成检查、构建，并通过 Wrangler 将 `build/` 直接部署到 Cloudflare Pages 项目 `docusaurus`。该项目的默认 Pages 域名是 `docusaurus-d92.pages.dev`；默认域名中的 `docusaurus-d92` 不是项目名。Cloudflare Pages 仅接收构建产物，不再负责监听 Git 提交并重复构建。
 
 ## 本地开发
 
@@ -40,7 +40,8 @@ npm run serve
 2. 执行 TypeScript 检查；
 3. 测试工作流 Run ID 索引逻辑；
 4. 构建生产站点；
-5. 使用 `cloudflare/wrangler-action` 将 `build/` 部署到 Cloudflare Pages。
+5. 验证 Cloudflare Pages 项目 `docusaurus` 可访问；
+6. 使用 Wrangler 将 `build/` 部署到该项目。
 
 部署需要以下 GitHub Actions Secrets：
 
@@ -49,11 +50,26 @@ CLOUDFLARE_ACCOUNT_ID
 CLOUDFLARE_API_TOKEN
 ```
 
-Cloudflare Pages 项目名在工作流中设置为：
+工作流默认使用项目名：
 
 ```text
-docusaurus-d92
+docusaurus
 ```
+
+如后续迁移到其他 Pages 项目，可通过仓库变量覆盖：
+
+```text
+CLOUDFLARE_PAGES_PROJECT
+```
+
+注意区分下面两个值：
+
+```text
+Pages 项目名：docusaurus
+默认 Pages 域名：docusaurus-d92.pages.dev
+```
+
+`wrangler pages deploy --project-name` 必须传项目名，不能传默认域名的前缀，否则 Wrangler 会提示项目不存在。
 
 为避免 Cloudflare Git 集成和 GitHub Actions 重复部署，应在 Cloudflare Pages 的分支控制中关闭自动生产部署，并将 Preview 分支设置为 `None`。完成该设置后，每个 `main` 版本只会由 GitHub Actions 发布一次。
 
@@ -146,7 +162,7 @@ GitHub Actions 使用以下命令部署已构建的静态文件：
 
 ```bash
 wrangler pages deploy build \
-  --project-name=docusaurus-d92 \
+  --project-name=docusaurus \
   --branch=main
 ```
 
