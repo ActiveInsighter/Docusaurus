@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-25T06:37:29.654Z",
+  "generated_at": "2026-07-25T06:38:34.723Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
@@ -27,23 +27,23 @@
     "workflow_file": "ci.yaml"
   },
   "latest_failed_run": {
-    "run_id": "30147601156",
-    "run_number": 12,
+    "run_id": "30147768422",
+    "run_number": 13,
     "run_attempt": 1,
     "workflow": "Verify documentation UI visuals",
     "event": "pull_request",
     "status": "completed",
     "conclusion": "failure",
     "branch": "fix/stable-navigation-docsearch-glass",
-    "head_sha": "85dada7060d8063cf2d57770046c80f9dd35c243",
+    "head_sha": "45269eb4a8bea601d8690f993e371d9555a3de5c",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T06:30:03Z",
-    "run_started_at": "2026-07-25T06:30:03Z",
-    "updated_at": "2026-07-25T06:32:54Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30147601156",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147601156/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147601156/logs",
+    "created_at": "2026-07-25T06:35:31Z",
+    "run_started_at": "2026-07-25T06:35:31Z",
+    "updated_at": "2026-07-25T06:38:17Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30147768422",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147768422/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147768422/logs",
     "workflow_key": "docs-ui-visual",
     "workflow_file": "navbar-visual.yml"
   },
@@ -75,15 +75,15 @@
       "run_attempt": 1,
       "workflow": "Verify documentation UI visuals",
       "event": "pull_request",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "branch": "fix/stable-navigation-docsearch-glass",
       "head_sha": "45269eb4a8bea601d8690f993e371d9555a3de5c",
       "actor": "ActiveInsighter",
       "triggering_actor": "ActiveInsighter",
       "created_at": "2026-07-25T06:35:31Z",
       "run_started_at": "2026-07-25T06:35:31Z",
-      "updated_at": "2026-07-25T06:35:35Z",
+      "updated_at": "2026-07-25T06:38:17Z",
       "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30147768422",
       "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147768422/jobs",
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30147768422/logs",
@@ -282,7 +282,7 @@
       "workflow": "Verify documentation UI visuals",
       "retained_run_count": 10,
       "latest_run_id": "30147768422",
-      "latest_failed_run_id": "30147601156"
+      "latest_failed_run_id": "30147768422"
     }
   ]
 }
