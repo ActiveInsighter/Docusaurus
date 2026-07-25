@@ -362,7 +362,7 @@ def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
         )
 
     before = read_target()
-    target.hover()
+    target.hover(force=True)
     page.wait_for_timeout(220)
     after = read_target()
 
