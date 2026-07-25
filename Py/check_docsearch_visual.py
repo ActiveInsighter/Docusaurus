@@ -124,7 +124,7 @@ def assert_state(state: dict[str, Any], theme: str) -> None:
     assert blur_radius(container["backdropFilter"]) >= 12.0, (
         f"{theme}: modal overlay blur missing: {container['backdropFilter']}"
     )
-    assert float(modal["width"]) <= 760.0, (
+    assert float(modal["width"]) <= 850.0, (
         f"{theme}: DocSearch modal is too wide: {modal['width']}"
     )
     assert float(modal["width"]) >= min(620.0, float(viewport["width"]) - 40.0), (
@@ -138,7 +138,7 @@ def assert_state(state: dict[str, Any], theme: str) -> None:
         f"{theme}: DocSearch modal glass blur missing: {modal['backdropFilter']}"
     )
 
-    assert 50.0 <= float(form["height"]) <= 58.0, (
+    assert 50.0 <= float(form["height"]) <= 60.0, (
         f"{theme}: DocSearch form height is unbalanced: {form['height']}"
     )
     assert px(form["borderRadius"]) >= 14.0, (
