@@ -1,0 +1,151 @@
+.material {
+  --navbar-material-height: clamp(6.5rem, 8vw, 7.5rem);
+  --navbar-soft-blur: 10px;
+  --navbar-strong-blur: 24px;
+  --navbar-soft-saturation: 145%;
+  --navbar-strong-saturation: 160%;
+  --navbar-tint-top: rgba(255, 255, 255, 0.52);
+  --navbar-tint-middle: rgba(255, 255, 255, 0.22);
+  --navbar-tint-lower: rgba(255, 255, 255, 0.07);
+  --navbar-strong-tint: rgba(255, 255, 255, 0.035);
+
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: calc(var(--ifm-z-index-fixed, 200) - 1);
+  width: 100%;
+  height: var(--navbar-material-height);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+:global([data-theme='dark']) .material {
+  --navbar-tint-top: rgba(7, 8, 10, 0.54);
+  --navbar-tint-middle: rgba(7, 8, 10, 0.25);
+  --navbar-tint-lower: rgba(7, 8, 10, 0.08);
+  --navbar-strong-tint: rgba(7, 8, 10, 0.045);
+}
+
+.softBlur,
+.strongBlur,
+.tint {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  pointer-events: none;
+}
+
+.softBlur {
+  background: linear-gradient(
+    to bottom,
+    var(--navbar-tint-middle) 0%,
+    color-mix(in srgb, var(--navbar-tint-lower) 72%, transparent) 58%,
+    transparent 100%
+  );
+  -webkit-backdrop-filter: blur(var(--navbar-soft-blur))
+    saturate(var(--navbar-soft-saturation));
+  backdrop-filter: blur(var(--navbar-soft-blur))
+    saturate(var(--navbar-soft-saturation));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 38%,
+    rgba(0, 0, 0, 0.78) 58%,
+    rgba(0, 0, 0, 0.32) 80%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 38%,
+    rgba(0, 0, 0, 0.78) 58%,
+    rgba(0, 0, 0, 0.32) 80%,
+    transparent 100%
+  );
+}
+
+.strongBlur {
+  background: linear-gradient(
+    to bottom,
+    var(--navbar-strong-tint) 0%,
+    transparent 72%
+  );
+  -webkit-backdrop-filter: blur(var(--navbar-strong-blur))
+    saturate(var(--navbar-strong-saturation));
+  backdrop-filter: blur(var(--navbar-strong-blur))
+    saturate(var(--navbar-strong-saturation));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.92) 18%,
+    rgba(0, 0, 0, 0.58) 38%,
+    rgba(0, 0, 0, 0.16) 60%,
+    transparent 72%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.92) 18%,
+    rgba(0, 0, 0, 0.58) 38%,
+    rgba(0, 0, 0, 0.16) 60%,
+    transparent 72%
+  );
+}
+
+.tint {
+  background: linear-gradient(
+    to bottom,
+    var(--navbar-tint-top) 0%,
+    var(--navbar-tint-middle) 30%,
+    var(--navbar-tint-lower) 58%,
+    transparent 100%
+  );
+}
+
+@supports not (
+  (-webkit-backdrop-filter: blur(1px)) or
+  (backdrop-filter: blur(1px))
+) {
+  .softBlur {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--md-page-bg) 82%, transparent) 0%,
+      color-mix(in srgb, var(--md-page-bg) 50%, transparent) 62%,
+      transparent 100%
+    );
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .strongBlur {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .softBlur {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--md-page-bg) 86%, transparent) 0%,
+      color-mix(in srgb, var(--md-page-bg) 58%, transparent) 65%,
+      transparent 100%
+    );
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .strongBlur {
+    display: none;
+  }
+
+  .tint {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 996px) {
+  .material {
+    --navbar-material-height: 6rem;
+    --navbar-soft-blur: 8px;
+    --navbar-strong-blur: 18px;
+  }
+}
