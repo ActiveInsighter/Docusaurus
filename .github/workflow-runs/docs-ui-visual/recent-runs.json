@@ -1,5 +1,24 @@
 [
   {
+    "run_id": "30166303621",
+    "run_number": 28,
+    "run_attempt": 1,
+    "workflow": "Verify documentation UI visuals",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "branch": "main",
+    "head_sha": "546a25261975159a83ac0a5e3ade28a9af6381d0",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-07-25T16:46:38Z",
+    "run_started_at": "2026-07-25T16:46:38Z",
+    "updated_at": "2026-07-25T16:46:41Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30166303621",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30166303621/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30166303621/logs"
+  },
+  {
     "run_id": "30151418374",
     "run_number": 27,
     "run_attempt": 1,
@@ -169,24 +188,5 @@
     "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150407062",
     "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150407062/jobs",
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150407062/logs"
-  },
-  {
-    "run_id": "30150288367",
-    "run_number": 18,
-    "run_attempt": 1,
-    "workflow": "Verify documentation UI visuals",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "failure",
-    "branch": "fix/full-height-sidebars-glass-controls",
-    "head_sha": "7db868deff6f4aebdc60c85287ea65912bbf4500",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-25T07:59:11Z",
-    "run_started_at": "2026-07-25T07:59:11Z",
-    "updated_at": "2026-07-25T07:59:52Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30150288367",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150288367/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30150288367/logs"
   }
 ]
