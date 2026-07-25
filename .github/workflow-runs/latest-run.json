@@ -15,5 +15,7 @@
   "updated_at": "2026-07-25T03:39:29Z",
   "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30142645921",
   "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142645921/jobs",
-  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142645921/logs"
+  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30142645921/logs",
+  "workflow_key": "update-content",
+  "workflow_file": "update-content.yml"
 }
