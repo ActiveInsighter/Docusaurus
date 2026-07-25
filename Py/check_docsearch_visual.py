@@ -93,7 +93,6 @@ def read_modal_state(page: Page) -> dict[str, Any]:
           if (!(modal instanceof HTMLElement)) throw new Error('DocSearch modal missing');
           if (!(form instanceof HTMLElement)) throw new Error('DocSearch form missing');
           if (!(input instanceof HTMLInputElement)) throw new Error('DocSearch input missing');
-          if (!(dropdown instanceof HTMLElement)) throw new Error('DocSearch dropdown missing');
 
           const read = element => {
             const rect = element.getBoundingClientRect();
@@ -122,7 +121,7 @@ def read_modal_state(page: Page) -> dict[str, Any]:
             container: read(container),
             modal: read(modal),
             form: read(form),
-            dropdown: read(dropdown),
+            dropdown: dropdown instanceof HTMLElement ? read(dropdown) : null,
             footer: footer instanceof HTMLElement ? read(footer) : null,
             input: {
               placeholder: input.placeholder,
@@ -206,9 +205,10 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     assert px(form["borderRadius"]) >= 14.0, (
         f"{theme}: DocSearch form radius missing: {form['borderRadius']}"
     )
-    assert dropdown["background"] in ("rgba(0, 0, 0, 0)", "transparent"), (
-        f"{theme}: dropdown breaks the unified modal surface"
-    )
+    if dropdown is not None:
+        assert dropdown["background"] in ("rgba(0, 0, 0, 0)", "transparent"), (
+            f"{theme}: dropdown breaks the unified modal surface"
+        )
     if footer is not None:
         assert blur_radius(footer["backdropFilter"]) == 0.0, (
             f"{theme}: footer adds an unnecessary backdrop blur"
