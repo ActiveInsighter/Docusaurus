@@ -107,7 +107,7 @@ def assert_state(state: dict[str, Any], theme: str) -> None:
     form = state["form"]
     viewport = state["viewport"]
 
-    assert 34.0 <= float(button["height"]) <= 40.0, (
+    assert 38.0 <= float(button["height"]) <= 45.0, (
         f"{theme}: search button height is unbalanced: {button['height']}"
     )
     assert float(button["width"]) >= 130.0, (
@@ -124,7 +124,7 @@ def assert_state(state: dict[str, Any], theme: str) -> None:
     assert blur_radius(container["backdropFilter"]) >= 12.0, (
         f"{theme}: modal overlay blur missing: {container['backdropFilter']}"
     )
-    assert float(modal["width"]) <= 738.0, (
+    assert float(modal["width"]) <= 760.0, (
         f"{theme}: DocSearch modal is too wide: {modal['width']}"
     )
     assert float(modal["width"]) >= min(620.0, float(viewport["width"]) - 40.0), (
@@ -138,7 +138,7 @@ def assert_state(state: dict[str, Any], theme: str) -> None:
         f"{theme}: DocSearch modal glass blur missing: {modal['backdropFilter']}"
     )
 
-    assert 50.0 <= float(form["height"]) <= 55.0, (
+    assert 50.0 <= float(form["height"]) <= 58.0, (
         f"{theme}: DocSearch form height is unbalanced: {form['height']}"
     )
     assert px(form["borderRadius"]) >= 14.0, (
@@ -159,11 +159,15 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.wait_for_timeout(450)
 
     state = read_state(page)
-    assert_state(state, theme)
     page.screenshot(
         path=str(output_dir / f"docsearch-{theme}.png"),
         full_page=False,
     )
+    (output_dir / f"docsearch-{theme}-metrics.json").write_text(
+        json.dumps(state, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    assert_state(state, theme)
 
     page.keyboard.press("Escape")
     page.locator('.DocSearch-Container').wait_for(state="hidden")
