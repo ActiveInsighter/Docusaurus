@@ -45,7 +45,7 @@ async function validateFile(filePath) {
   if (questionComponentPattern.test(content)) {
     throw new Error(`${filePath}: 不应包含 Question 题目组件`);
   }
-  if (/^\*\*(?:答案|解析)\*\*\s*$/gmu.test(content)) {
+  if (/^\*\*(?:答案|解析)[：:]\*\*[ \t]*$/gmu.test(content)) {
     throw new Error(`${filePath}: 答案或解析标签仍单独占行`);
   }
 
@@ -55,12 +55,52 @@ async function validateFile(filePath) {
     content,
     /^\s*<summary>查看答案与解析<\/summary>\s*$/gmu,
   );
+  const labelRows = countMatches(
+    content,
+    /^\s*<div className="exercise-label-row">\s*$/gmu,
+  );
+  const labelBodies = countMatches(
+    content,
+    /^\s*<div className="exercise-label-body">\s*$/gmu,
+  );
+  const blockAnswers = countMatches(
+    content,
+    /^\s*<strong>答案：<\/strong>\s*$/gmu,
+  );
+  const blockAnalyses = countMatches(
+    content,
+    /^\s*<strong>解析：<\/strong>\s*$/gmu,
+  );
+  const inlineAnswers = countMatches(
+    content,
+    /^\*\*答案[：:]\*\*[ \t]+\S/gmu,
+  );
+  const inlineAnalyses = countMatches(
+    content,
+    /^\*\*解析[：:]\*\*[ \t]+\S/gmu,
+  );
   if (
     closingDetails !== details ||
     summaries !== details
   ) {
     throw new Error(
       `${filePath}: 答案折叠区标签不平衡（details ${details}/${closingDetails}，summary ${summaries}）`,
+    );
+  }
+  if (
+    labelRows !== labelBodies ||
+    labelRows !== blockAnswers + blockAnalyses
+  ) {
+    throw new Error(
+      `${filePath}: 块级答案标签结构不平衡（row ${labelRows}，body ${labelBodies}，标签 ${blockAnswers + blockAnalyses}）`,
+    );
+  }
+  if (
+    inlineAnswers + blockAnswers !== details ||
+    inlineAnalyses + blockAnalyses !== details
+  ) {
+    throw new Error(
+      `${filePath}: 每道题应各有一个答案和解析（details ${details}，答案 ${inlineAnswers + blockAnswers}，解析 ${inlineAnalyses + blockAnalyses}）`,
     );
   }
 

@@ -154,19 +154,61 @@ function markerContent(lines, marker, end) {
   return cleanLines([marker.inline, ...lines.slice(marker.index + 1, end)]);
 }
 
+function leadingBlockEnd(contentLines) {
+  const firstLine = contentLines[0]?.trim() ?? '';
+
+  if (firstLine === '$$') {
+    const closingIndex = contentLines.findIndex(
+      (line, index) => index > 0 && line.trim() === '$$',
+    );
+    return closingIndex >= 0 ? closingIndex + 1 : contentLines.length;
+  }
+
+  if (firstLine.startsWith('```')) {
+    const fence = firstLine.match(/^`{3,}/u)?.[0] ?? '```';
+    const closingIndex = contentLines.findIndex(
+      (line, index) => index > 0 && line.trim().startsWith(fence),
+    );
+    return closingIndex >= 0 ? closingIndex + 1 : contentLines.length;
+  }
+
+  if (/^(?:#{1,6}\s|!\[)/u.test(firstLine)) return 1;
+
+  if (/^(?:>|\|)/u.test(firstLine)) {
+    const blockPattern = firstLine.startsWith('>') ? /^>/u : /^\|/u;
+    const firstNonBlock = contentLines.findIndex(
+      (line, index) => index > 0 && !blockPattern.test(line.trim()),
+    );
+    return firstNonBlock >= 0 ? firstNonBlock : contentLines.length;
+  }
+
+  return 0;
+}
+
 function renderLabeledContent(label, contentLines) {
   if (contentLines.length === 0) return [];
 
-  const [firstLine, ...remainingLines] = contentLines;
-  const trimmed = firstLine.trim();
-  const startsWithBlock =
-    trimmed === '$$' ||
-    trimmed.startsWith('```') ||
-    /^(?:>|#{1,6}\s|\||!\[)/u.test(trimmed);
+  const blockEnd = leadingBlockEnd(contentLines);
+  if (blockEnd > 0) {
+    const leadingBlock = contentLines.slice(0, blockEnd);
+    const remainingLines = trimBlankLines(contentLines.slice(blockEnd));
+    const output = [
+      '<div className="exercise-label-row">',
+      `<strong>${label}：</strong>`,
+      '<div className="exercise-label-body">',
+      '',
+      ...leadingBlock,
+      '',
+      '</div>',
+      '</div>',
+    ];
 
-  return startsWithBlock
-    ? [`**${label}：**`, '', ...contentLines]
-    : [`**${label}：** ${firstLine}`, ...remainingLines];
+    if (remainingLines.length > 0) output.push('', ...remainingLines);
+    return output;
+  }
+
+  const [firstLine, ...remainingLines] = contentLines;
+  return [`**${label}：** ${firstLine}`, ...remainingLines];
 }
 
 function renderAnswerDetails(answerLines, analysisLines) {

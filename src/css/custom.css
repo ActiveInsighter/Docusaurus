@@ -517,6 +517,36 @@ body {
   scrollbar-gutter: stable;
 }
 
+.exercise-label-row {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.35rem;
+  min-width: 0;
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+}
+
+.exercise-label-row > strong {
+  line-height: 1.72;
+  white-space: nowrap;
+}
+
+.exercise-label-body {
+  min-width: 0;
+}
+
+.exercise-label-body > :first-child {
+  margin-top: 0 !important;
+}
+
+.exercise-label-body > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.exercise-label-body > .katex-display:first-child {
+  text-align: left;
+}
+
 .choice-options {
   display: grid;
   gap: 0.28rem;
