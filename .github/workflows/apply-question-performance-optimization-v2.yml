@@ -1,4 +1,4 @@
-name: Apply verified question performance optimization v3
+name: Apply verified question performance optimization v4
 
 on:
   push:
@@ -41,6 +41,18 @@ jobs:
         run: |
           node scripts/apply-question-performance-optimization.mjs
           node scripts/update-layout-visual-assertions.mjs
+          node <<'NODE'
+          import {readFileSync, writeFileSync} from 'node:fs';
+          const path = 'Py/check_question_performance.py';
+          const source = readFileSync(path, 'utf8');
+          const broken = 'json.dumps(metrics, ensure_ascii=False, indent=2) + "\n",';
+          const fixed = 'json.dumps(metrics, ensure_ascii=False, indent=2) + "\\n",';
+          if (!source.includes(broken)) {
+            throw new Error('Generated performance test newline pattern was not found');
+          }
+          writeFileSync(path, source.replace(broken, fixed), 'utf8');
+          NODE
+          python -m py_compile Py/check_question_performance.py
 
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
@@ -89,6 +101,8 @@ jobs:
           rm -f .github/workflows/fix-optimize-runner.yml
           rm -f .github/question-optimization-run.json
           rm -f .github/question-optimization-v2-run.json
+          rm -f .github/question-optimization-v3-run.json
+          rm -f .github/question-optimization-v3-failure.log
           rm -f .github/temp-run-status.json
           rm -f scripts/apply-question-performance-optimization.mjs
           rm -f scripts/update-layout-visual-assertions.mjs
@@ -119,7 +133,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: docs-question-performance-v3-${{ github.run_id }}
+          name: docs-question-performance-v4-${{ github.run_id }}
           path: |
             artifacts/docs-ui-visual
             /tmp/docusaurus-serve.log
