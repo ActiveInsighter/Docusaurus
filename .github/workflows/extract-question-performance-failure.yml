@@ -25,31 +25,18 @@ jobs:
           GH_REPOSITORY: ${{ github.repository }}
           JOB_ID: "89748518012"
         run: |
-          python <<'PY'
-          import os
-          import urllib.request
-          from pathlib import Path
-
-          request = urllib.request.Request(
-              f"https://api.github.com/repos/{os.environ['GH_REPOSITORY']}/actions/jobs/{os.environ['JOB_ID']}/logs",
-              headers={
-                  "Accept": "application/vnd.github+json",
-                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
-                  "X-GitHub-Api-Version": "2022-11-28",
-              },
-          )
-          with urllib.request.urlopen(request) as response:
-              content = response.read().decode("utf-8", errors="replace")
-          lines = content.splitlines()
-          Path('.github/question-optimization-v3-failure.log').write_text(
-              "\n".join(lines[-220:]) + "\n",
-              encoding="utf-8",
-          )
-          PY
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "repos/${GH_REPOSITORY}/actions/jobs/${JOB_ID}/logs" \
+            > /tmp/question-performance-job.log
+          tail -n 240 /tmp/question-performance-job.log \
+            > .github/question-optimization-v3-failure.log
 
       - name: Commit failure details
         run: |
           rm .github/workflows/extract-question-performance-failure.yml
+          rm -f .github/extractor-run.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
