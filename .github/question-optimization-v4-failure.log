@@ -1,0 +1,170 @@
+2026-07-26T03:01:34.0590600Z  * [new branch]      fix/navbar-glass-layout-verified -> origin/fix/navbar-glass-layout-verified
+2026-07-26T03:01:34.0591176Z  * [new branch]      fix/navbar-gradient-material-best-practice -> origin/fix/navbar-gradient-material-best-practice
+2026-07-26T03:01:34.0591968Z  * [new branch]      fix/nonblocking-cloudflare-preflight -> origin/fix/nonblocking-cloudflare-preflight
+2026-07-26T03:01:34.0592402Z  * [new branch]      fix/reliable-run-index -> origin/fix/reliable-run-index
+2026-07-26T03:01:34.0592822Z  * [new branch]      fix/resolve-cloudflare-pages-project -> origin/fix/resolve-cloudflare-pages-project
+2026-07-26T03:01:34.0593337Z  * [new branch]      fix/sidebar-active-navbar-gradient -> origin/fix/sidebar-active-navbar-gradient
+2026-07-26T03:01:34.0593867Z  * [new branch]      fix/stable-navigation-docsearch-glass -> origin/fix/stable-navigation-docsearch-glass
+2026-07-26T03:01:34.0594290Z  * [new branch]      main                   -> origin/main
+2026-07-26T03:01:34.0622001Z [command]/usr/bin/git branch --list --remote origin/main
+2026-07-26T03:01:34.0640629Z   origin/main
+2026-07-26T03:01:34.0646530Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-07-26T03:01:34.0663804Z 8b0b99f614f89812768e6f8415058011b2907c61
+2026-07-26T03:01:34.0666052Z ##[endgroup]
+2026-07-26T03:01:34.0666511Z ##[group]Determining the checkout info
+2026-07-26T03:01:34.0667039Z ##[endgroup]
+2026-07-26T03:01:34.0670066Z [command]/usr/bin/git sparse-checkout disable
+2026-07-26T03:01:34.0696362Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-26T03:01:34.0715462Z ##[group]Checking out the ref
+2026-07-26T03:01:34.0718181Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-26T03:01:34.2629539Z Switched to a new branch 'main'
+2026-07-26T03:01:34.2630839Z branch 'main' set up to track 'origin/main'.
+2026-07-26T03:01:34.2640749Z ##[endgroup]
+2026-07-26T03:01:34.2672893Z [command]/usr/bin/git log -1 --format=%H
+2026-07-26T03:01:34.2692693Z 8b0b99f614f89812768e6f8415058011b2907c61
+2026-07-26T03:01:34.2871241Z ##[group]Run actions/setup-node@v7
+2026-07-26T03:01:34.2871453Z with:
+2026-07-26T03:01:34.2871631Z   node-version: 24
+2026-07-26T03:01:34.2871824Z   cache: npm
+2026-07-26T03:01:34.2872126Z   check-latest: false
+2026-07-26T03:01:34.2873868Z   token: ***
+2026-07-26T03:01:34.2874062Z   package-manager-cache: true
+2026-07-26T03:01:34.2874253Z env:
+2026-07-26T03:01:34.2874403Z   NODE_VERSION: 24
+2026-07-26T03:01:34.2874592Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:01:34.2874784Z ##[endgroup]
+2026-07-26T03:01:34.4097813Z Found in cache @ /opt/hostedtoolcache/node/24.18.0/x64
+2026-07-26T03:01:34.4100097Z ##[group]Environment details
+2026-07-26T03:01:36.0377289Z node: v24.18.0
+2026-07-26T03:01:36.0377566Z npm: 11.16.0
+2026-07-26T03:01:36.0377743Z yarn: 1.22.22
+2026-07-26T03:01:36.0378795Z ##[endgroup]
+2026-07-26T03:01:36.0390478Z [command]/opt/hostedtoolcache/node/24.18.0/x64/bin/npm config get cache
+2026-07-26T03:01:36.2801263Z /home/runner/.npm
+2026-07-26T03:01:36.4195383Z Cache hit for: node-cache-Linux-x64-npm-e0bbaf4ab174109f6cc7015d28bfdc80a53fd6b2f697ca11c90c3cb23bdd2564
+2026-07-26T03:01:37.6187265Z Received 134217728 of 143226387 (93.7%), 123.9 MBs/sec
+2026-07-26T03:01:37.7458031Z Received 143226387 of 143226387 (100.0%), 117.6 MBs/sec
+2026-07-26T03:01:37.7458439Z Cache Size: ~137 MB (143226387 B)
+2026-07-26T03:01:37.7535046Z [command]/usr/bin/tar -xf /home/runner/work/_temp/6afa64a4-b530-4f07-8a75-f64484f7fb58/cache.tzst -P -C /home/runner/work/Docusaurus/Docusaurus --use-compress-program unzstd
+2026-07-26T03:01:37.9348418Z Cache restored successfully
+2026-07-26T03:01:37.9493538Z Cache restored from key: node-cache-Linux-x64-npm-e0bbaf4ab174109f6cc7015d28bfdc80a53fd6b2f697ca11c90c3cb23bdd2564
+2026-07-26T03:01:37.9632083Z ##[group]Run actions/setup-python@v7
+2026-07-26T03:01:37.9632317Z with:
+2026-07-26T03:01:37.9632501Z   python-version: 3.12
+2026-07-26T03:01:37.9632683Z   cache: pip
+2026-07-26T03:01:37.9632922Z   cache-dependency-path: Py/requirements.txt
+2026-07-26T03:01:37.9633153Z   check-latest: false
+2026-07-26T03:01:37.9634819Z   token: ***
+2026-07-26T03:01:37.9634994Z   update-environment: true
+2026-07-26T03:01:37.9635202Z   allow-prereleases: false
+2026-07-26T03:01:37.9635445Z   freethreaded: false
+2026-07-26T03:01:37.9635614Z env:
+2026-07-26T03:01:37.9635776Z   NODE_VERSION: 24
+2026-07-26T03:01:37.9635963Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:01:37.9636165Z ##[endgroup]
+2026-07-26T03:01:38.0529251Z ##[group]Installed versions
+2026-07-26T03:01:38.1062388Z Successfully set up CPython (3.12.13)
+2026-07-26T03:01:38.1062806Z ##[endgroup]
+2026-07-26T03:01:38.1628350Z [command]/opt/hostedtoolcache/Python/3.12.13/x64/bin/pip cache dir
+2026-07-26T03:01:40.8643569Z /home/runner/.cache/pip
+2026-07-26T03:01:41.0121100Z Cache hit for: setup-python-Linux-x64-22.04-Ubuntu-python-3.12.13-pip-d3cd1878446bef287891b7b90675d266d3e4bc2201a8e64a97a2e0f31f7eb99f
+2026-07-26T03:01:42.0389462Z Received 101852527 of 101852527 (100.0%), 117.0 MBs/sec
+2026-07-26T03:01:42.0389998Z Cache Size: ~97 MB (101852527 B)
+2026-07-26T03:01:42.0436413Z [command]/usr/bin/tar -xf /home/runner/work/_temp/aae6b28f-cf46-47b5-80b6-310c0d9ea359/cache.tzst -P -C /home/runner/work/Docusaurus/Docusaurus --use-compress-program unzstd
+2026-07-26T03:01:42.1287874Z Cache restored successfully
+2026-07-26T03:01:42.1386880Z Cache restored from key: setup-python-Linux-x64-22.04-Ubuntu-python-3.12.13-pip-d3cd1878446bef287891b7b90675d266d3e4bc2201a8e64a97a2e0f31f7eb99f
+2026-07-26T03:01:42.1489453Z ##[group]Run node scripts/apply-question-performance-optimization.mjs
+2026-07-26T03:01:42.1489946Z [36;1mnode scripts/apply-question-performance-optimization.mjs[0m
+2026-07-26T03:01:42.1490575Z [36;1mnode scripts/update-layout-visual-assertions.mjs[0m
+2026-07-26T03:01:42.1490835Z [36;1mnode <<'NODE'[0m
+2026-07-26T03:01:42.1491070Z [36;1mimport {readFileSync, writeFileSync} from 'node:fs';[0m
+2026-07-26T03:01:42.1491356Z [36;1mconst path = 'Py/check_question_performance.py';[0m
+2026-07-26T03:01:42.1491631Z [36;1mconst source = readFileSync(path, 'utf8');[0m
+2026-07-26T03:01:42.1491937Z [36;1mconst broken = 'json.dumps(metrics, ensure_ascii=False, indent=2) + "\n",';[0m
+2026-07-26T03:01:42.1492307Z [36;1mconst fixed = 'json.dumps(metrics, ensure_ascii=False, indent=2) + "\\n",';[0m
+2026-07-26T03:01:42.1492759Z [36;1mif (!source.includes(broken)) {[0m
+2026-07-26T03:01:42.1493113Z [36;1m  throw new Error('Generated performance test newline pattern was not found');[0m
+2026-07-26T03:01:42.1493411Z [36;1m}[0m
+2026-07-26T03:01:42.1493637Z [36;1mwriteFileSync(path, source.replace(broken, fixed), 'utf8');[0m
+2026-07-26T03:01:42.1493894Z [36;1mNODE[0m
+2026-07-26T03:01:42.1494119Z [36;1mpython -m py_compile Py/check_question_performance.py[0m
+2026-07-26T03:01:42.1604812Z shell: /usr/bin/bash -e {0}
+2026-07-26T03:01:42.1605028Z env:
+2026-07-26T03:01:42.1605187Z   NODE_VERSION: 24
+2026-07-26T03:01:42.1605389Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:01:42.1605654Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.1605973Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-07-26T03:01:42.1606282Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.1606586Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.1606859Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.1607154Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-07-26T03:01:42.1607396Z ##[endgroup]
+2026-07-26T03:01:42.1929504Z file:///home/runner/work/Docusaurus/Docusaurus/scripts/apply-question-performance-optimization.mjs:14
+2026-07-26T03:01:42.1930390Z     throw new Error(`${label}: expected one match, found ${count}`);
+2026-07-26T03:01:42.1930764Z           ^
+2026-07-26T03:01:42.1930862Z 
+2026-07-26T03:01:42.1931155Z Error: update long analysis behavior documentation: expected one match, found 4
+2026-07-26T03:01:42.1931712Z     at replaceOnce (file:///home/runner/work/Docusaurus/Docusaurus/scripts/apply-question-performance-optimization.mjs:14:11)
+2026-07-26T03:01:42.1932308Z     at file:///home/runner/work/Docusaurus/Docusaurus/scripts/apply-question-performance-optimization.mjs:380:8
+2026-07-26T03:01:42.1932617Z 
+2026-07-26T03:01:42.1932691Z Node.js v24.18.0
+2026-07-26T03:01:42.1953835Z ##[error]Process completed with exit code 1.
+2026-07-26T03:01:42.2033613Z ##[group]Run actions/upload-artifact@v7
+2026-07-26T03:01:42.2033843Z with:
+2026-07-26T03:01:42.2034045Z   name: docs-question-performance-v4-30185484819
+2026-07-26T03:01:42.2034359Z   path: artifacts/docs-ui-visual
+/tmp/docusaurus-serve.log
+
+2026-07-26T03:01:42.2034627Z   if-no-files-found: warn
+2026-07-26T03:01:42.2034827Z   retention-days: 14
+2026-07-26T03:01:42.2035016Z   compression-level: 6
+2026-07-26T03:01:42.2035198Z   overwrite: false
+2026-07-26T03:01:42.2035378Z   include-hidden-files: false
+2026-07-26T03:01:42.2035573Z   archive: true
+2026-07-26T03:01:42.2035739Z env:
+2026-07-26T03:01:42.2035901Z   NODE_VERSION: 24
+2026-07-26T03:01:42.2036084Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:01:42.2036343Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.2036675Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-07-26T03:01:42.2037011Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.2037343Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.2037638Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:01:42.2037937Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-07-26T03:01:42.2038187Z ##[endgroup]
+2026-07-26T03:01:42.3079929Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-07-26T03:01:42.3081110Z The least common ancestor is /. This will be the root directory of the artifact
+2026-07-26T03:01:42.3094043Z ##[warning]No files were found with the provided path: artifacts/docs-ui-visual
+/tmp/docusaurus-serve.log. No artifacts will be uploaded.
+2026-07-26T03:01:42.3187008Z Post job cleanup.
+2026-07-26T03:01:42.3856311Z [command]/usr/bin/git version
+2026-07-26T03:01:42.3884754Z git version 2.54.0
+2026-07-26T03:01:42.3909249Z Temporarily overriding HOME='/home/runner/work/_temp/4abc7ff8-d0f3-4b91-bff0-9ce213191637' before making global git config changes
+2026-07-26T03:01:42.3910689Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-26T03:01:42.3918568Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Docusaurus/Docusaurus
+2026-07-26T03:01:42.3939801Z Removing SSH command configuration
+2026-07-26T03:01:42.3945173Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-26T03:01:42.3968092Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-26T03:01:42.4126449Z Removing HTTP extra header
+2026-07-26T03:01:42.4130784Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-26T03:01:42.4156675Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-26T03:01:42.4313258Z Removing includeIf entries pointing to credentials config files
+2026-07-26T03:01:42.4318878Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-26T03:01:42.4338965Z includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path
+2026-07-26T03:01:42.4339881Z includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path
+2026-07-26T03:01:42.4343437Z includeif.gitdir:/github/workspace/.git.path
+2026-07-26T03:01:42.4344684Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-26T03:01:42.4346186Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path
+2026-07-26T03:01:42.4361288Z /home/runner/work/_temp/git-credentials-025f2e9c-bab2-40a8-8dfc-bde26f0925e0.config
+2026-07-26T03:01:42.4368400Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-025f2e9c\-bab2\-40a8\-8dfc\-bde26f0925e0\.config
+2026-07-26T03:01:42.4389967Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path
+2026-07-26T03:01:42.4404778Z /home/runner/work/_temp/git-credentials-025f2e9c-bab2-40a8-8dfc-bde26f0925e0.config
+2026-07-26T03:01:42.4411159Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-025f2e9c\-bab2\-40a8\-8dfc\-bde26f0925e0\.config
+2026-07-26T03:01:42.4433408Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-07-26T03:01:42.4447303Z /github/runner_temp/git-credentials-025f2e9c-bab2-40a8-8dfc-bde26f0925e0.config
+2026-07-26T03:01:42.4452157Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-025f2e9c\-bab2\-40a8\-8dfc\-bde26f0925e0\.config
+2026-07-26T03:01:42.4474678Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-26T03:01:42.4490612Z /github/runner_temp/git-credentials-025f2e9c-bab2-40a8-8dfc-bde26f0925e0.config
+2026-07-26T03:01:42.4502406Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-025f2e9c\-bab2\-40a8\-8dfc\-bde26f0925e0\.config
+2026-07-26T03:01:42.4520824Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-26T03:01:42.4660310Z Removing credentials config '/home/runner/work/_temp/git-credentials-025f2e9c-bab2-40a8-8dfc-bde26f0925e0.config'
+2026-07-26T03:01:42.4766231Z Cleaning up orphan processes
