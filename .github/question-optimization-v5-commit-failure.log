@@ -1,0 +1,220 @@
+2026-07-26T03:08:25.7481894Z         "width": 300,
+2026-07-26T03:08:25.7481986Z         "height": 1000,
+2026-07-26T03:08:25.7482086Z         "position": "fixed",
+2026-07-26T03:08:25.7482203Z         "pointerEvents": "auto",
+2026-07-26T03:08:25.7482329Z         "background": "rgba(0, 0, 0, 0)",
+2026-07-26T03:08:25.7482448Z         "backgroundImage": "none",
+2026-07-26T03:08:25.7482541Z         "borderWidth": "0px",
+2026-07-26T03:08:25.7482672Z         "borderColor": "rgb(212, 212, 212)",
+2026-07-26T03:08:25.7482768Z         "boxShadow": "none",
+2026-07-26T03:08:25.7482885Z         "color": "rgb(212, 212, 212)",
+2026-07-26T03:08:25.7482980Z         "fontSize": "18px",
+2026-07-26T03:08:25.7483074Z         "fontWeight": "500",
+2026-07-26T03:08:25.7483176Z         "transform": "none",
+2026-07-26T03:08:25.7483300Z         "overflowX": "hidden",
+2026-07-26T03:08:25.7483397Z         "overflowY": "auto",
+2026-07-26T03:08:25.7483496Z         "clientWidth": 300,
+2026-07-26T03:08:25.7483588Z         "scrollWidth": 300,
+2026-07-26T03:08:25.7483862Z         "paddingLeft": "0px",
+2026-07-26T03:08:25.7483989Z         "paddingRight": "0px",
+2026-07-26T03:08:25.7484108Z         "backdropFilter": "none"
+2026-07-26T03:08:25.7484188Z       }
+2026-07-26T03:08:25.7484274Z     }
+2026-07-26T03:08:25.7484359Z   },
+2026-07-26T03:08:25.7484448Z   "mobile": {
+2026-07-26T03:08:25.7484542Z     "viewport": {
+2026-07-26T03:08:25.7484627Z       "width": 390,
+2026-07-26T03:08:25.7484719Z       "height": 844
+2026-07-26T03:08:25.7484804Z     },
+2026-07-26T03:08:25.7484894Z     "sidebar": {
+2026-07-26T03:08:25.7484979Z       "top": 0,
+2026-07-26T03:08:25.7485073Z       "bottom": 844,
+2026-07-26T03:08:25.7485196Z       "left": -116.14408874511719,
+2026-07-26T03:08:25.7485306Z       "right": 207.5434112548828,
+2026-07-26T03:08:25.7485545Z       "width": 323.6875,
+2026-07-26T03:08:25.7485643Z       "height": 844,
+2026-07-26T03:08:25.7485745Z       "position": "fixed"
+2026-07-26T03:08:25.7485828Z     },
+2026-07-26T03:08:25.7485914Z     "backdrop": {
+2026-07-26T03:08:25.7486000Z       "top": 0,
+2026-07-26T03:08:25.7486088Z       "bottom": 844,
+2026-07-26T03:08:25.7486178Z       "left": 0,
+2026-07-26T03:08:25.7486265Z       "right": 375,
+2026-07-26T03:08:25.7486348Z       "width": 375,
+2026-07-26T03:08:25.7486437Z       "height": 844,
+2026-07-26T03:08:25.7486531Z       "position": "fixed"
+2026-07-26T03:08:25.7486612Z     },
+2026-07-26T03:08:25.7486741Z     "topPointInsideSidebar": true,
+2026-07-26T03:08:25.7486824Z     "document": {
+2026-07-26T03:08:25.7486918Z       "clientWidth": 390,
+2026-07-26T03:08:25.7487012Z       "scrollWidth": 375
+2026-07-26T03:08:25.7487094Z     }
+2026-07-26T03:08:25.7487174Z   }
+2026-07-26T03:08:25.7487262Z }
+2026-07-26T03:08:30.0926815Z ##[group]Run rm -f .github/workflows/apply-question-performance-optimization.yml
+2026-07-26T03:08:30.0927843Z [36;1mrm -f .github/workflows/apply-question-performance-optimization.yml[0m
+2026-07-26T03:08:30.0928838Z [36;1mrm -f .github/workflows/apply-question-performance-optimization-v2.yml[0m
+2026-07-26T03:08:30.0929732Z [36;1mrm -f .github/workflows/optimize-doc-performance.yml[0m
+2026-07-26T03:08:30.0930670Z [36;1mrm -f .github/workflows/fix-optimize-runner.yml[0m
+2026-07-26T03:08:30.0931379Z [36;1mrm -f .github/question-optimization-run.json[0m
+2026-07-26T03:08:30.0932026Z [36;1mrm -f .github/question-optimization-v2-run.json[0m
+2026-07-26T03:08:30.0932684Z [36;1mrm -f .github/question-optimization-v3-run.json[0m
+2026-07-26T03:08:30.0933315Z [36;1mrm -f .github/question-optimization-v4-run.json[0m
+2026-07-26T03:08:30.0934220Z [36;1mrm -f .github/question-optimization-v3-failure.log[0m
+2026-07-26T03:08:30.0934972Z [36;1mrm -f .github/question-optimization-v4-failure.log[0m
+2026-07-26T03:08:30.0935579Z [36;1mrm -f .github/temp-run-status.json[0m
+2026-07-26T03:08:30.0936292Z [36;1mrm -f scripts/apply-question-performance-optimization.mjs[0m
+2026-07-26T03:08:30.0937034Z [36;1mrm -f scripts/update-layout-visual-assertions.mjs[0m
+2026-07-26T03:08:30.0937753Z [36;1mrm -f scripts/prepare-question-performance-patcher.mjs[0m
+2026-07-26T03:08:30.0938437Z [36;1mgit config user.name "github-actions[bot]"[0m
+2026-07-26T03:08:30.0939203Z [36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"[0m
+2026-07-26T03:08:30.0939941Z [36;1mgit add -A[0m
+2026-07-26T03:08:30.0940517Z [36;1mgit commit -m "perf: optimize long question pages and stabilize sidebar"[0m
+2026-07-26T03:08:30.0941184Z [36;1mfor attempt in 1 2 3 4; do[0m
+2026-07-26T03:08:30.0941616Z [36;1m  git pull --rebase origin main[0m
+2026-07-26T03:08:30.0942065Z [36;1m  if git push origin HEAD:main; then[0m
+2026-07-26T03:08:30.0942514Z [36;1m    exit 0[0m
+2026-07-26T03:08:30.0942824Z [36;1m  fi[0m
+2026-07-26T03:08:30.0943151Z [36;1m  sleep $((attempt * 3))[0m
+2026-07-26T03:08:30.0943561Z [36;1mdone[0m
+2026-07-26T03:08:30.0944136Z [36;1mexit 1[0m
+2026-07-26T03:08:30.1003501Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-07-26T03:08:30.1004148Z env:
+2026-07-26T03:08:30.1004358Z   NODE_VERSION: 24
+2026-07-26T03:08:30.1004605Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:08:30.1004974Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:08:30.1005412Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-07-26T03:08:30.1005859Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:08:30.1006237Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:08:30.1006628Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:08:30.1007015Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-07-26T03:08:30.1007348Z ##[endgroup]
+2026-07-26T03:08:30.5226851Z [main 9732e21] perf: optimize long question pages and stabilize sidebar
+2026-07-26T03:08:30.5227610Z  34 files changed, 2713 insertions(+), 2586 deletions(-)
+2026-07-26T03:08:30.5228253Z  delete mode 100644 .github/question-optimization-run.json
+2026-07-26T03:08:30.5228916Z  delete mode 100644 .github/question-optimization-v2-run.json
+2026-07-26T03:08:30.5229737Z  delete mode 100644 .github/question-optimization-v3-failure.log
+2026-07-26T03:08:30.5230757Z  delete mode 100644 .github/question-optimization-v3-run.json
+2026-07-26T03:08:30.5231855Z  delete mode 100644 .github/question-optimization-v4-failure.log
+2026-07-26T03:08:30.5232941Z  delete mode 100644 .github/question-optimization-v4-run.json
+2026-07-26T03:08:30.5233837Z  delete mode 100644 .github/temp-run-status.json
+2026-07-26T03:08:30.5234696Z  delete mode 100644 .github/workflows/apply-question-performance-optimization-v2.yml
+2026-07-26T03:08:30.5235931Z  delete mode 100644 .github/workflows/apply-question-performance-optimization.yml
+2026-07-26T03:08:30.5236713Z  delete mode 100644 .github/workflows/fix-optimize-runner.yml
+2026-07-26T03:08:30.5237398Z  delete mode 100644 .github/workflows/optimize-doc-performance.yml
+2026-07-26T03:08:30.5238190Z  create mode 100644 Py/check_question_performance.py
+2026-07-26T03:08:30.5238857Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-dark-metrics.json
+2026-07-26T03:08:30.5239632Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-dark-sidebar-hover.png
+2026-07-26T03:08:30.5240564Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-dark.png
+2026-07-26T03:08:30.5241262Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-light-metrics.json
+2026-07-26T03:08:30.5242052Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-light-sidebar-hover.png
+2026-07-26T03:08:30.5242792Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-light.png
+2026-07-26T03:08:30.5243459Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-metrics.json
+2026-07-26T03:08:30.5244647Z  create mode 100644 artifacts/docs-ui-visual/docs-ui-mobile-sidebar.png
+2026-07-26T03:08:30.5245534Z  create mode 100644 artifacts/docs-ui-visual/question-performance.json
+2026-07-26T03:08:30.5246427Z  create mode 100644 artifacts/docs-ui-visual/question-performance.png
+2026-07-26T03:08:30.5247335Z  delete mode 100644 scripts/apply-question-performance-optimization.mjs
+2026-07-26T03:08:30.5248183Z  create mode 100644 scripts/check-question-performance.mjs
+2026-07-26T03:08:30.5249026Z  delete mode 100644 scripts/prepare-question-performance-patcher.mjs
+2026-07-26T03:08:30.5249897Z  delete mode 100644 scripts/update-layout-visual-assertions.mjs
+2026-07-26T03:08:31.2480367Z From https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:31.2481192Z  * branch            main       -> FETCH_HEAD
+2026-07-26T03:08:31.2481962Z    1f4003f..f3fbad6  main       -> origin/main
+2026-07-26T03:08:31.2890966Z Rebasing (1/1)
+2026-07-26T03:08:31.2891916Z Successfully rebased and updated refs/heads/main.
+2026-07-26T03:08:32.7538605Z To https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:32.7540037Z  ! [remote rejected] HEAD -> main (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yaml` without `workflows` permission)
+2026-07-26T03:08:32.7541464Z error: failed to push some refs to 'https://github.com/ActiveInsighter/Docusaurus'
+2026-07-26T03:08:36.1202893Z From https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:36.1203597Z  * branch            main       -> FETCH_HEAD
+2026-07-26T03:08:36.1300564Z Current branch main is up to date.
+2026-07-26T03:08:37.4737704Z To https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:37.4738901Z  ! [remote rejected] HEAD -> main (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yaml` without `workflows` permission)
+2026-07-26T03:08:37.4740172Z error: failed to push some refs to 'https://github.com/ActiveInsighter/Docusaurus'
+2026-07-26T03:08:43.9939492Z From https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:43.9940119Z  * branch            main       -> FETCH_HEAD
+2026-07-26T03:08:43.9940687Z    f3fbad6..f1e19f5  main       -> origin/main
+2026-07-26T03:08:44.0277225Z Rebasing (1/1)
+2026-07-26T03:08:44.0277878Z Successfully rebased and updated refs/heads/main.
+2026-07-26T03:08:45.3016646Z To https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:45.3018361Z  ! [remote rejected] HEAD -> main (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yaml` without `workflows` permission)
+2026-07-26T03:08:45.3020424Z error: failed to push some refs to 'https://github.com/ActiveInsighter/Docusaurus'
+2026-07-26T03:08:54.6469394Z From https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:54.6470190Z  * branch            main       -> FETCH_HEAD
+2026-07-26T03:08:54.6568430Z Current branch main is up to date.
+2026-07-26T03:08:56.1976611Z To https://github.com/ActiveInsighter/Docusaurus
+2026-07-26T03:08:56.1979185Z  ! [remote rejected] HEAD -> main (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yaml` without `workflows` permission)
+2026-07-26T03:08:56.1981608Z error: failed to push some refs to 'https://github.com/ActiveInsighter/Docusaurus'
+2026-07-26T03:09:08.2031233Z ##[error]Process completed with exit code 1.
+2026-07-26T03:09:08.2133922Z ##[group]Run actions/upload-artifact@v7
+2026-07-26T03:09:08.2134256Z with:
+2026-07-26T03:09:08.2134522Z   name: docs-question-performance-v5-30185586338
+2026-07-26T03:09:08.2135140Z   path: artifacts/docs-ui-visual
+/tmp/docusaurus-serve.log
+
+2026-07-26T03:09:08.2135493Z   if-no-files-found: warn
+2026-07-26T03:09:08.2135723Z   retention-days: 14
+2026-07-26T03:09:08.2135934Z   compression-level: 6
+2026-07-26T03:09:08.2136157Z   overwrite: false
+2026-07-26T03:09:08.2136392Z   include-hidden-files: false
+2026-07-26T03:09:08.2136633Z   archive: true
+2026-07-26T03:09:08.2136827Z env:
+2026-07-26T03:09:08.2137005Z   NODE_VERSION: 24
+2026-07-26T03:09:08.2137228Z   CLOUDFLARE_PAGES_PROJECT: docusaurus
+2026-07-26T03:09:08.2137563Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:09:08.2137998Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-07-26T03:09:08.2138422Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:09:08.2138842Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:09:08.2139223Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-07-26T03:09:08.2139619Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-07-26T03:09:08.2139937Z ##[endgroup]
+2026-07-26T03:09:08.5272717Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-07-26T03:09:08.5276395Z The least common ancestor is /. This will be the root directory of the artifact
+2026-07-26T03:09:08.5277767Z With the provided path, there will be 11 files uploaded
+2026-07-26T03:09:08.5305304Z Artifact name is valid!
+2026-07-26T03:09:08.5306667Z Root directory input is valid!
+2026-07-26T03:09:08.8422142Z Uploading artifact: docs-question-performance-v5-30185586338.zip
+2026-07-26T03:09:08.8470980Z Beginning upload of artifact content to blob storage
+2026-07-26T03:09:09.6935848Z Uploaded bytes 1073625
+2026-07-26T03:09:09.7721373Z Finished uploading artifact content to blob storage!
+2026-07-26T03:09:09.7725225Z SHA256 digest of uploaded artifact is 8500cf45d69f2430da73f291a356cad456a1c6f8f33f5bcb07189988cc299afb
+2026-07-26T03:09:09.7726116Z Finalizing artifact upload
+2026-07-26T03:09:10.1117107Z Artifact docs-question-performance-v5-30185586338 successfully finalized. Artifact ID 8626939228
+2026-07-26T03:09:10.1118601Z Artifact docs-question-performance-v5-30185586338 has been successfully uploaded! Final size is 1073625 bytes. Artifact ID is 8626939228
+2026-07-26T03:09:10.1121757Z Artifact download URL: https://github.com/ActiveInsighter/Docusaurus/actions/runs/30185586338/artifacts/8626939228
+2026-07-26T03:09:10.1335320Z Post job cleanup.
+2026-07-26T03:09:10.2247856Z [command]/usr/bin/git version
+2026-07-26T03:09:10.2308749Z git version 2.54.0
+2026-07-26T03:09:10.2358434Z Temporarily overriding HOME='/home/runner/work/_temp/cbf348d1-9d5c-41f3-9219-ca9554835933' before making global git config changes
+2026-07-26T03:09:10.2359968Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-26T03:09:10.2365892Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Docusaurus/Docusaurus
+2026-07-26T03:09:10.2406824Z Removing SSH command configuration
+2026-07-26T03:09:10.2414628Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-26T03:09:10.2465468Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-26T03:09:10.2796136Z Removing HTTP extra header
+2026-07-26T03:09:10.2802406Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-26T03:09:10.2862273Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-26T03:09:10.3185707Z Removing includeIf entries pointing to credentials config files
+2026-07-26T03:09:10.3195015Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-26T03:09:10.3252400Z includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path
+2026-07-26T03:09:10.3269121Z includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path
+2026-07-26T03:09:10.3270078Z includeif.gitdir:/github/workspace/.git.path
+2026-07-26T03:09:10.3270840Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-26T03:09:10.3272583Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path
+2026-07-26T03:09:10.3297267Z /home/runner/work/_temp/git-credentials-59d04e13-6842-4919-9a24-c3da8f76b18e.config
+2026-07-26T03:09:10.3315665Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-59d04e13\-6842\-4919\-9a24\-c3da8f76b18e\.config
+2026-07-26T03:09:10.3368667Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path
+2026-07-26T03:09:10.3400460Z /home/runner/work/_temp/git-credentials-59d04e13-6842-4919-9a24-c3da8f76b18e.config
+2026-07-26T03:09:10.3411506Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Docusaurus/Docusaurus/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-59d04e13\-6842\-4919\-9a24\-c3da8f76b18e\.config
+2026-07-26T03:09:10.3466620Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-07-26T03:09:10.3498948Z /github/runner_temp/git-credentials-59d04e13-6842-4919-9a24-c3da8f76b18e.config
+2026-07-26T03:09:10.3510565Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-59d04e13\-6842\-4919\-9a24\-c3da8f76b18e\.config
+2026-07-26T03:09:10.3556587Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-07-26T03:09:10.3588766Z /github/runner_temp/git-credentials-59d04e13-6842-4919-9a24-c3da8f76b18e.config
+2026-07-26T03:09:10.3632236Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-59d04e13\-6842\-4919\-9a24\-c3da8f76b18e\.config
+2026-07-26T03:09:10.3680771Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-26T03:09:10.3964086Z Removing credentials config '/home/runner/work/_temp/git-credentials-59d04e13-6842-4919-9a24-c3da8f76b18e.config'
+2026-07-26T03:09:10.4126946Z Cleaning up orphan processes
+2026-07-26T03:09:10.4419516Z Terminate orphan process: pid (3201) (npm run serve --host 127.0.0.1 --port 3000)
+2026-07-26T03:09:10.4462103Z Terminate orphan process: pid (3214) (sh)
+2026-07-26T03:09:10.4489822Z Terminate orphan process: pid (3215) (MainThread)
