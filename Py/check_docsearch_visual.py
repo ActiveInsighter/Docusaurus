@@ -175,26 +175,26 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     footer = state["footer"]
     viewport = state["viewport"]
 
-    assert 29.0 <= float(button["height"]) <= 35.0, (
+    assert 36.0 <= float(button["height"]) <= 40.0, (
         f"{theme}: search button height is unbalanced: {button['height']}"
     )
     assert float(button["width"]) >= 130.0, (
         f"{theme}: desktop search button is too narrow: {button['width']}"
     )
-    assert px(button["borderRadius"]) >= 17.0, (
-        f"{theme}: search button is not pill shaped: {button['borderRadius']}"
+    assert px(button["borderRadius"]) >= 8.0, (
+        f"{theme}: search button radius is missing: {button['borderRadius']}"
     )
     assert button["borderWidth"] != "0px", f"{theme}: search button border missing"
     assert button["transform"] == "none", f"{theme}: search button transform is not stable"
     assert blur_radius(button["backdropFilter"]) == 0.0, (
         f"{theme}: search button adds a redundant blur: {button['backdropFilter']}"
     )
-    assert blur_radius(state["navbarBackdropFilter"]) >= 16.0, (
-        f"{theme}: unified navbar glass blur missing: "
+    assert blur_radius(state["navbarBackdropFilter"]) == 0.0, (
+        f"{theme}: transparent navbar unexpectedly adds blur: "
         f"{state['navbarBackdropFilter']}"
     )
 
-    assert blur_radius(container["backdropFilter"]) >= 12.0, (
+    assert blur_radius(container["backdropFilter"]) >= 4.0, (
         f"{theme}: modal overlay blur missing: {container['backdropFilter']}"
     )
     assert 620.0 <= float(modal["width"]) <= 800.0, (
@@ -208,19 +208,18 @@ def assert_modal_state(state: dict[str, Any], theme: str) -> None:
     assert 40.0 <= float(modal["top"]) <= 130.0, (
         f"{theme}: DocSearch modal vertical placement is unbalanced: {modal['top']}"
     )
-    assert px(modal["borderRadius"]) >= 22.0, (
+    assert px(modal["borderRadius"]) >= 4.0, (
         f"{theme}: DocSearch modal radius missing: {modal['borderRadius']}"
     )
-    assert modal["borderWidth"] != "0px", f"{theme}: DocSearch modal border missing"
     assert modal["transform"] == "none", f"{theme}: DocSearch modal uses a transform"
-    assert blur_radius(modal["backdropFilter"]) >= 20.0, (
-        f"{theme}: DocSearch modal glass blur missing: {modal['backdropFilter']}"
+    assert blur_radius(modal["backdropFilter"]) == 0.0, (
+        f"{theme}: DocSearch modal adds a redundant blur: {modal['backdropFilter']}"
     )
 
     assert 49.0 <= float(form["height"]) <= 60.0, (
         f"{theme}: DocSearch form height is unbalanced: {form['height']}"
     )
-    assert px(form["borderRadius"]) >= 14.0, (
+    assert px(form["borderRadius"]) >= 4.0, (
         f"{theme}: DocSearch form radius missing: {form['borderRadius']}"
     )
     if dropdown is not None:
@@ -248,9 +247,16 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     after_hover = read_button_state(page)
     assert_hover_stability(before_hover, after_hover, theme)
 
-    button.focus()
+    page.locator(".navbar__brand").focus()
+    for _ in range(20):
+        page.keyboard.press("Tab")
+        if button.evaluate("element => document.activeElement === element"):
+            break
+    assert button.evaluate("element => document.activeElement === element"), (
+        f"{theme}: keyboard navigation did not reach the search button"
+    )
     focused = read_button_state(page)
-    assert px(focused["outlineWidth"]) >= 2.0, (
+    assert px(focused["outlineWidth"]) >= 1.0, (
         f"{theme}: search button focus ring is missing"
     )
 

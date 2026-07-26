@@ -303,6 +303,11 @@ body {
   backdrop-filter: none;
 }
 
+.navbar .DocSearch-Button:focus-visible {
+  outline: 2px solid var(--ifm-color-primary) !important;
+  outline-offset: 2px !important;
+}
+
 :where(.theme-doc-sidebar-container, .theme-layout-navbar-sidebar)
   .menu__link {
   line-height: 1.45;
