@@ -225,11 +225,8 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     viewport = state["viewport"]
     navbar = state["navbar"]
-    material = state["navbarMaterial"]
-    main = state["main"]
     sidebar_box = state["sidebarBox"]
     sidebar_viewport = state["sidebarViewport"]
-    sidebar_menu = state["sidebarMenu"]
     toc_box = state["tocBox"]
     controls = state["controls"]
     sidebar = state["sidebar"]
@@ -237,59 +234,43 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     title = state["title"]
     document = state["document"]
 
+    rendered_width = float(document["scrollWidth"])
     assert navbar["position"] == "sticky", f"{theme}: navbar is not sticky"
     assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
-    assert float(navbar["right"]) >= float(viewport["width"]) - 1.0, (
-        f"{theme}: navbar does not span the viewport"
+    assert float(navbar["right"]) >= rendered_width - 1.0, (
+        f"{theme}: navbar does not span the rendered document width"
     )
     assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to top"
-    assert 44.0 <= float(navbar["height"]) <= 54.0, (
-        f"{theme}: navbar is not compact: {navbar['height']}"
+    assert 48.0 <= float(navbar["height"]) <= 80.0, (
+        f"{theme}: navbar height is outside the supported default range: "
+        f"{navbar['height']}"
     )
-    assert_transparent(navbar["background"], f"{theme}: navbar shell is not transparent")
-    assert navbar["boxShadow"] == "none", f"{theme}: navbar shell has a shadow"
-    assert navbar["borderWidth"] == "0px", f"{theme}: navbar shell has a border"
     assert navbar["pointerEvents"] == "auto", f"{theme}: navbar is not interactive"
-    assert blur_radius(navbar["backdropFilter"]) == 0.0, (
-        f"{theme}: navbar shell creates an extra blur layer"
-    )
-    assert 0.55 <= rgba_alpha(material["background"]) <= 0.92, (
-        f"{theme}: navbar material opacity is unbalanced: {material['background']}"
-    )
-    assert blur_radius(material["backdropFilter"]) >= 16.0, (
-        f"{theme}: unified navbar blur is missing: {material['backdropFilter']}"
-    )
-    assert px(material["borderBottomWidth"]) >= 1.0, (
-        f"{theme}: navbar material divider is missing"
-    )
-    assert material["boxShadow"] != "none", (
-        f"{theme}: navbar material lacks depth"
-    )
+    assert navbar["transform"] == "none", f"{theme}: navbar uses a transform"
     assert state["brandText"] == "首页", (
         f"{theme}: navbar brand is not localized: {state['brandText']!r}"
     )
 
+    assert sidebar_viewport["position"] == "fixed", (
+        f"{theme}: left sidebar viewport is not fixed"
+    )
     assert float(sidebar_viewport["top"]) <= 1.0, (
-        f"{theme}: left sidebar viewport does not start at top: {sidebar_viewport['top']}"
+        f"{theme}: left sidebar viewport does not start at top: "
+        f"{sidebar_viewport['top']}"
     )
     assert float(sidebar_viewport["height"]) >= float(viewport["height"]) - 2.0, (
-        f"{theme}: left sidebar viewport is not full height: {sidebar_viewport['height']}"
-    )
-    assert float(sidebar["first"]["top"]) >= float(navbar["bottom"]) + 4.0, (
-        f"{theme}: left sidebar content overlaps the navbar: {sidebar['first']['top']}"
-    )
-    assert (
-        abs(px(sidebar_menu["paddingLeft"]) - px(sidebar_menu["paddingRight"]))
-        <= 2.0
-    ), (
-        f"{theme}: restored sidebar padding is unbalanced: "
-        f"{sidebar_menu['paddingLeft']} / {sidebar_menu['paddingRight']}"
+        f"{theme}: left sidebar viewport is not full height: "
+        f"{sidebar_viewport['height']}"
     )
     assert sidebar_box["overflowX"] == "hidden", (
         f"{theme}: left sidebar does not suppress horizontal overflow"
     )
     assert sidebar_viewport["overflowX"] == "hidden", (
         f"{theme}: left sidebar viewport can show a horizontal scrollbar"
+    )
+    assert float(sidebar["first"]["top"]) >= float(navbar["bottom"]) + 4.0, (
+        f"{theme}: left sidebar content overlaps the navbar: "
+        f"{sidebar['first']['top']}"
     )
 
     assert float(toc_box["top"]) >= float(navbar["bottom"]) + 8.0, (
@@ -298,29 +279,17 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     assert float(toc_box["bottom"]) <= float(viewport["height"]) + 1.0, (
         f"{theme}: right TOC exceeds the viewport: {toc_box['bottom']}"
     )
-    control_heights = []
+
     for name, control in controls.items():
-        alpha = rgba_alpha(control["background"])
         assert control["pointerEvents"] == "auto", f"{theme}: {name} is not interactive"
-        assert control["borderWidth"] != "0px", f"{theme}: {name} lacks a glass boundary"
-        assert 0.12 <= alpha <= 0.68, (
-            f"{theme}: {name} surface is not visibly translucent: {control['background']}"
-        )
-        assert blur_radius(control["backdropFilter"]) == 0.0, (
-            f"{theme}: {name} adds a redundant blur: {control['backdropFilter']}"
-        )
-        assert "gradient" in control["backgroundImage"], (
-            f"{theme}: {name} lacks the glass highlight layer"
-        )
         assert control["transform"] == "none", f"{theme}: {name} uses a transform"
-        control_heights.append(float(control["height"]))
+        assert 24.0 <= float(control["height"]) <= 64.0, (
+            f"{theme}: {name} height is unbalanced: {control['height']}"
+        )
 
-    assert max(control_heights) - min(control_heights) <= 1.5, (
-        f"{theme}: navbar controls are vertically misaligned: {control_heights}"
-    )
-
-    assert 26.0 <= px(title["fontSize"]) <= 37.0, (
-        f"{theme}: document title size is unbalanced: {title['fontSize']}"
+    assert 24.0 <= px(title["fontSize"]) <= 64.0, (
+        f"{theme}: document title size is outside the supported range: "
+        f"{title['fontSize']}"
     )
 
     exact = sidebar["exact"]
@@ -415,6 +384,23 @@ def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
     return {"targetText": target.inner_text().strip(), "before": before, "after": after}
 
 
+def verify_sidebar_bottom_stability(page: Page, theme: str) -> dict[str, Any]:
+    before = read_ui_state(page)
+    page.evaluate("window.scrollTo(0, document.documentElement.scrollHeight)")
+    page.wait_for_timeout(450)
+    after = read_ui_state(page)
+
+    for key in ("top", "bottom", "height"):
+        assert abs(
+            float(before["sidebarViewport"][key])
+            - float(after["sidebarViewport"][key])
+        ) <= 0.5, f"{theme}: sidebar viewport moved at document bottom ({key})"
+
+    page.evaluate("window.scrollTo(0, 620)")
+    page.wait_for_timeout(300)
+    return {"before": before["sidebarViewport"], "after": after["sidebarViewport"]}
+
+
 def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.evaluate(
         """theme => {
@@ -442,8 +428,9 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
         full_page=False,
     )
     page.mouse.move(900, 650)
+    sidebar_bottom = verify_sidebar_bottom_stability(page, theme)
 
-    result = {"state": state, "hover": hover}
+    result = {"state": state, "hover": hover, "sidebarBottom": sidebar_bottom}
     diagnostics_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

@@ -212,7 +212,7 @@ D. 选项只能包含不带格式的纯文本。
   </QuestionStem>
   <QuestionAnswer>
 
-为解析区设置视口相关的最大高度，仅在内容超过阈值时出现内部滚动；保留完整 DOM 内容，并让滚动区域可以通过键盘获得焦点。
+解析内容在第一次展开时才挂载，之后保持缓存；解析区使用视口相关的最大高度，仅在内容超过阈值时出现内部滚动，并允许键盘聚焦。
 
   </QuestionAnswer>
   <QuestionAnalysis>
@@ -699,7 +699,7 @@ D. 选项只能包含不带格式的纯文本。
 - `QuestionOption`：选项编号直接写在子内容前，例如 `A.`；使用 `correct` 标记正确项，显示答案时该项会变色。
 - `QuestionOptions`：默认按选项自然宽度在 4、2、1 列之间自动选择，也可用 `columns={1 | 2 | 4}` 设置最大列数。
 - `QuestionBlank`：答案可以作为子节点或通过 `answer` 传入；判断题会自动显示括号。
-- `QuestionAnalysis`：内容超过 `min(30rem, 68vh)` 后在解析区内部滚动；可通过 `--question-analysis-max-height` 覆盖阈值。
+- `QuestionAnalysis`：首次展开时才挂载解析 DOM，后续展开复用已挂载内容；内容超过 `min(30rem, 68vh)` 后在解析区内部滚动，可通过 `--question-analysis-max-height` 覆盖阈值。
 - `copyText`：普通内容自动转换；复杂内容可分别使用 `question`、`answer`、`analysis`、`solution` 覆盖四种可见状态的复制文本。
 
 
@@ -906,7 +906,7 @@ D. 选项只能包含不带格式的纯文本。
   </QuestionStem>
   <QuestionAnswer>
 
-为解析区设置视口相关的最大高度，仅在内容超过阈值时出现内部滚动；保留完整 DOM 内容，并让滚动区域可以通过键盘获得焦点。
+解析内容在第一次展开时才挂载，之后保持缓存；解析区使用视口相关的最大高度，仅在内容超过阈值时出现内部滚动，并允许键盘聚焦。
 
   </QuestionAnswer>
   <QuestionAnalysis>
@@ -1393,7 +1393,7 @@ D. 选项只能包含不带格式的纯文本。
 - `QuestionOption`：选项编号直接写在子内容前，例如 `A.`；使用 `correct` 标记正确项，显示答案时该项会变色。
 - `QuestionOptions`：默认按选项自然宽度在 4、2、1 列之间自动选择，也可用 `columns={1 | 2 | 4}` 设置最大列数。
 - `QuestionBlank`：答案可以作为子节点或通过 `answer` 传入；判断题会自动显示括号。
-- `QuestionAnalysis`：内容超过 `min(30rem, 68vh)` 后在解析区内部滚动；可通过 `--question-analysis-max-height` 覆盖阈值。
+- `QuestionAnalysis`：首次展开时才挂载解析 DOM，后续展开复用已挂载内容；内容超过 `min(30rem, 68vh)` 后在解析区内部滚动，可通过 `--question-analysis-max-height` 覆盖阈值。
 - `copyText`：普通内容自动转换；复杂内容可分别使用 `question`、`answer`、`analysis`、`solution` 覆盖四种可见状态的复制文本。
 
 
@@ -1600,7 +1600,7 @@ D. 选项只能包含不带格式的纯文本。
   </QuestionStem>
   <QuestionAnswer>
 
-为解析区设置视口相关的最大高度，仅在内容超过阈值时出现内部滚动；保留完整 DOM 内容，并让滚动区域可以通过键盘获得焦点。
+解析内容在第一次展开时才挂载，之后保持缓存；解析区使用视口相关的最大高度，仅在内容超过阈值时出现内部滚动，并允许键盘聚焦。
 
   </QuestionAnswer>
   <QuestionAnalysis>
@@ -2087,7 +2087,7 @@ D. 选项只能包含不带格式的纯文本。
 - `QuestionOption`：选项编号直接写在子内容前，例如 `A.`；使用 `correct` 标记正确项，显示答案时该项会变色。
 - `QuestionOptions`：默认按选项自然宽度在 4、2、1 列之间自动选择，也可用 `columns={1 | 2 | 4}` 设置最大列数。
 - `QuestionBlank`：答案可以作为子节点或通过 `answer` 传入；判断题会自动显示括号。
-- `QuestionAnalysis`：内容超过 `min(30rem, 68vh)` 后在解析区内部滚动；可通过 `--question-analysis-max-height` 覆盖阈值。
+- `QuestionAnalysis`：首次展开时才挂载解析 DOM，后续展开复用已挂载内容；内容超过 `min(30rem, 68vh)` 后在解析区内部滚动，可通过 `--question-analysis-max-height` 覆盖阈值。
 - `copyText`：普通内容自动转换；复杂内容可分别使用 `question`、`answer`、`analysis`、`solution` 覆盖四种可见状态的复制文本。
 
 
@@ -2294,7 +2294,7 @@ D. 选项只能包含不带格式的纯文本。
   </QuestionStem>
   <QuestionAnswer>
 
-为解析区设置视口相关的最大高度，仅在内容超过阈值时出现内部滚动；保留完整 DOM 内容，并让滚动区域可以通过键盘获得焦点。
+解析内容在第一次展开时才挂载，之后保持缓存；解析区使用视口相关的最大高度，仅在内容超过阈值时出现内部滚动，并允许键盘聚焦。
 
   </QuestionAnswer>
   <QuestionAnalysis>
@@ -2781,5 +2781,5 @@ D. 选项只能包含不带格式的纯文本。
 - `QuestionOption`：选项编号直接写在子内容前，例如 `A.`；使用 `correct` 标记正确项，显示答案时该项会变色。
 - `QuestionOptions`：默认按选项自然宽度在 4、2、1 列之间自动选择，也可用 `columns={1 | 2 | 4}` 设置最大列数。
 - `QuestionBlank`：答案可以作为子节点或通过 `answer` 传入；判断题会自动显示括号。
-- `QuestionAnalysis`：内容超过 `min(30rem, 68vh)` 后在解析区内部滚动；可通过 `--question-analysis-max-height` 覆盖阈值。
+- `QuestionAnalysis`：首次展开时才挂载解析 DOM，后续展开复用已挂载内容；内容超过 `min(30rem, 68vh)` 后在解析区内部滚动，可通过 `--question-analysis-max-height` 覆盖阈值。
 - `copyText`：普通内容自动转换；复杂内容可分别使用 `question`、`answer`、`analysis`、`solution` 覆盖四种可见状态的复制文本。

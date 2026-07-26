@@ -6,7 +6,6 @@ import {
   useCallback,
   useEffect,
   useId,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
@@ -509,125 +508,43 @@ type QuestionOptionsProps = QuestionContentProps & {
   columns?: 'auto' | 1 | 2 | 4;
 };
 
-function measureNaturalOptionWidth(option: HTMLElement): number {
-  const clone = option.cloneNode(true) as HTMLElement;
-  clone.setAttribute('aria-hidden', 'true');
-  clone.querySelectorAll('[id]').forEach((element) => {
-    element.removeAttribute('id');
-  });
-  Object.assign(clone.style, {
-    inset: '0 auto auto 0',
-    maxWidth: 'none',
-    pointerEvents: 'none',
-    position: 'absolute',
-    visibility: 'hidden',
-    width: 'max-content',
-    zIndex: '-1',
-  });
-  option.parentElement?.appendChild(clone);
-
-  try {
-    return clone.getBoundingClientRect().width;
-  } finally {
-    clone.remove();
-  }
-}
-
 export function QuestionOptions({
   children,
   className,
   columns = 'auto',
   copyText,
 }: QuestionOptionsProps): ReactNode {
-  const optionsRef = useRef<HTMLDivElement>(null);
   const optionCount = Children.toArray(children).filter(
     (child) =>
       isValidElement<QuestionOptionProps>(child) &&
       child.type === QuestionOption,
   ).length;
-  const initialColumns =
+  const maximumColumns: 1 | 2 | 4 =
     columns === 'auto'
       ? optionCount >= 4
         ? 4
         : optionCount >= 2
           ? 2
           : 1
-      : columns;
-  const [resolvedColumns, setResolvedColumns] = useState<1 | 2 | 4>(
-    initialColumns,
-  );
-
-  useLayoutEffect(() => {
-    const root = optionsRef.current;
-    if (!root) {
-      return undefined;
-    }
-
-    let disposed = false;
-    const updateColumns = () => {
-      if (disposed) {
-        return;
-      }
-
-      const options = Array.from(
-        root.querySelectorAll<HTMLElement>(':scope > [data-question-option]'),
-      );
-      if (options.length === 0) {
-        setResolvedColumns(1);
-        return;
-      }
-
-      const rootWidth = root.getBoundingClientRect().width;
-      const rootStyle = getComputedStyle(root);
-      const gap = Number.parseFloat(rootStyle.columnGap) || 0;
-      const minimumOptionWidth =
-        (Number.parseFloat(rootStyle.fontSize) || 16) * 8;
-      const widestOption = Math.max(
-        minimumOptionWidth,
-        ...options.map(measureNaturalOptionWidth),
-      );
-      const maximumColumns = columns === 'auto' ? 4 : columns;
-      const candidates = ([4, 2, 1] as const).filter(
-        (candidate) =>
-          candidate <= maximumColumns && candidate <= options.length,
-      );
-      const nextColumns =
-        candidates.find(
-          (candidate) =>
-            widestOption * candidate + gap * (candidate - 1) <= rootWidth,
-        ) ?? 1;
-
-      setResolvedColumns((current) =>
-        current === nextColumns ? current : nextColumns,
-      );
-    };
-
-    updateColumns();
-    const resizeObserver =
-      typeof ResizeObserver === 'undefined'
-        ? null
-        : new ResizeObserver(updateColumns);
-    resizeObserver?.observe(root);
-    void document.fonts?.ready.then(updateColumns);
-
-    return () => {
-      disposed = true;
-      resizeObserver?.disconnect();
-    };
-  }, [children, columns]);
+      : columns === 4 && optionCount < 4
+        ? optionCount >= 2
+          ? 2
+          : 1
+        : columns === 2 && optionCount < 2
+          ? 1
+          : columns;
 
   return (
     <div
-      ref={optionsRef}
       className={clsx(
         styles.options,
-        resolvedColumns === 2 && styles.optionsTwoColumns,
-        resolvedColumns === 4 && styles.optionsFourColumns,
+        maximumColumns === 2 && styles.optionsTwoColumns,
+        maximumColumns === 4 && styles.optionsFourColumns,
         className,
       )}
       role="list"
       data-question-options
-      data-question-options-columns={resolvedColumns}
+      data-question-options-columns={maximumColumns}
       data-question-copy-text={copyText}>
       {children}
     </div>
@@ -782,6 +699,17 @@ export function QuestionAnalysis({
   const {analysisContentId, analysisExpanded} = useQuestionContext(
     'QuestionAnalysis',
   );
+  const [hasRenderedAnalysis, setHasRenderedAnalysis] = useState(
+    analysisExpanded,
+  );
+
+  useEffect(() => {
+    if (analysisExpanded) {
+      setHasRenderedAnalysis(true);
+    }
+  }, [analysisExpanded]);
+
+  const shouldRenderAnalysis = analysisExpanded || hasRenderedAnalysis;
 
   return (
     <section
@@ -790,19 +718,22 @@ export function QuestionAnalysis({
       data-expanded={analysisExpanded ? 'true' : 'false'}
       aria-label="详细解答"
       aria-hidden={!analysisExpanded}
+      hidden={!analysisExpanded}
       inert={!analysisExpanded}>
-      <div className={styles.analysisMotion}>
-        <div className={styles.analysisPanel}>
-          <div
-            id={analysisContentId}
-            className={styles.analysisContent}
-            tabIndex={analysisExpanded ? 0 : -1}
-            data-question-analysis-content
-            data-question-copy-text={copyText}>
-            {children}
+      {shouldRenderAnalysis && (
+        <div className={styles.analysisMotion}>
+          <div className={styles.analysisPanel}>
+            <div
+              id={analysisContentId}
+              className={styles.analysisContent}
+              tabIndex={analysisExpanded ? 0 : -1}
+              data-question-analysis-content
+              data-question-copy-text={copyText}>
+              {children}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
