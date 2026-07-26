@@ -91,17 +91,17 @@ title: 第十一章 无穷级数
 
   - B 错误。例如取 $\displaystyle u_n=1$，$\displaystyle v_n=\dfrac1{n^2}$，则
   $$
-  \displaystyle \sum_{n=1}^{\infty}|u_nv_n|=\sum_{n=1}^{\infty}\frac1{n^2}
+  \displaystyle \sum_{n=1}^{\infty}|u_nv_n|=\sum_{n=1}^{\infty}\dfrac1{n^2}
   $$
   收敛，但 $\displaystyle \sum u_n^2=\sum 1$ 发散。
   - C 错误。正项级数发散并不要求逐项满足 $\displaystyle u_n\ge\dfrac1n$。例如当 $\displaystyle n\ge2$ 时取
   $$
-  \displaystyle u_n=\frac1{n\ln n},
+  \displaystyle u_n=\dfrac1{n\ln n},
   $$
   则 $\displaystyle u_n<\dfrac1n$，但 $\displaystyle \sum u_n$ 仍发散。
   - D 错误。一般项之间可比较并不能直接判断任意项级数的敛散性。例如取
   $$
-  \displaystyle u_n=0,\qquad v_n=-\frac1n,
+  \displaystyle u_n=0,\qquad v_n=-\dfrac1n,
   $$
   则 $\displaystyle u_n\ge v_n$，且 $\displaystyle \sum u_n$ 收敛，但 $\displaystyle \sum v_n$ 发散。
 
@@ -171,7 +171,7 @@ title: 第十一章 无穷级数
 
   级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}(-1)^n\dfrac{n+a}{n+1}\cdot\frac1{\sqrt n}
+  \displaystyle \sum_{n=1}^{\infty}(-1)^n\dfrac{n+a}{n+1}\cdot\dfrac1{\sqrt n}
   $$
 
   </QuestionStem>
@@ -216,11 +216,11 @@ title: 第十一章 无穷级数
   其中，第一项是交错级数。因为 $\displaystyle n^{-1/2}$ 单调趋于 $\displaystyle 0$，故由莱布尼茨判别法知其收敛；第二项满足
   $$
   \displaystyle \sum_{n=1}^{\infty}\left|\dfrac{(-1)^n}{(n+1)\sqrt n}\right|
-  =\sum_{n=1}^{\infty}\frac1{(n+1)\sqrt n},
+  =\sum_{n=1}^{\infty}\dfrac1{(n+1)\sqrt n},
   $$
   而
   $$
-  \displaystyle \frac1{(n+1)\sqrt n}\sim\frac1{n^{3/2}},
+  \displaystyle \dfrac1{(n+1)\sqrt n}\sim\dfrac1{n^{3/2}},
   $$
   故第二项绝对收敛。因此原级数对任意常数 $\displaystyle a$ 都收敛。
 
@@ -230,8 +230,8 @@ title: 第十一章 无穷级数
   $$
   所以
   $$
-  \displaystyle \left|\dfrac{n+a}{n+1}\cdot\frac1{\sqrt n}\right|
-  \sim\frac1{\sqrt n}.
+  \displaystyle \left|\dfrac{n+a}{n+1}\cdot\dfrac1{\sqrt n}\right|
+  \sim\dfrac1{\sqrt n}.
   $$
   而级数 $\displaystyle \sum n^{-1/2}$ 发散，故原级数不绝对收敛。
 
@@ -473,7 +473,7 @@ title: 第十一章 无穷级数
   - A 错误。比值极限存在时可用比值法求收敛半径，但收敛半径存在并不保证系数比值极限一定存在。
   - B 错误。任何幂级数都存在收敛半径，收敛半径由柯西—阿达马公式
   $$
-  \displaystyle \frac1R=\limsup_{n\to\infty}\sqrt[n]{|a_n|}
+  \displaystyle \dfrac1R=\limsup_{n\to\infty}\sqrt[n]{|a_n|}
   $$
   确定，不要求 $\displaystyle \left|a_{n+1}/a_n\right|$ 的极限存在。
   - C 错误。逐项求导不改变收敛半径，但可能破坏端点收敛性。例如
@@ -577,7 +577,7 @@ title: 第十一章 无穷级数
   $$
   可得原级数的和为
   $$
-  \displaystyle S=\lim_{n\to\infty}S_n=\frac12.
+  \displaystyle S=\lim_{n\to\infty}S_n=\dfrac12.
   $$
   又有
   $$
@@ -585,7 +585,7 @@ title: 第十一章 无穷级数
   $$
   以及
   $$
-  \displaystyle u_2=S_2-S_1=\frac23-1=-\frac13.
+  \displaystyle u_2=S_2-S_1=\dfrac23-1=-\dfrac13.
   $$
 
   将所求级数拆开：
@@ -601,13 +601,13 @@ title: 第十一章 无穷级数
   $$
   代入数值，得
   $$
-  \displaystyle 3\cdot\frac12-2\cdot1-\left(-\frac13\right)
-  =-\frac16.
+  \displaystyle 3\cdot\dfrac12-2\cdot1-\left(-\dfrac13\right)
+  =-\dfrac16.
   $$
 
   因此填
   $$
-  \displaystyle -\frac16.
+  \displaystyle -\dfrac16.
   $$
 
   </QuestionAnalysis>
@@ -651,7 +651,7 @@ title: 第十一章 无穷级数
   又
   $$
   \displaystyle \sqrt{N+2}-\sqrt{N+1}
-  =\frac1{\sqrt{N+2}+\sqrt{N+1}}
+  =\dfrac1{\sqrt{N+2}+\sqrt{N+1}}
   \longrightarrow0.
   $$
   故
@@ -703,14 +703,14 @@ title: 第十一章 无穷级数
   当 $\displaystyle x=2$ 时，
   $$
   \displaystyle \sum_{n=1}^{\infty}\dfrac{2^{n-1}}{n2^n}
-  =\frac12\sum_{n=1}^{\infty}\frac1n,
+  =\dfrac12\sum_{n=1}^{\infty}\dfrac1n,
   $$
   发散。
 
   当 $\displaystyle x=-2$ 时，
   $$
   \displaystyle \sum_{n=1}^{\infty}\dfrac{(-2)^{n-1}}{n2^n}
-  =\frac12\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}n,
+  =\dfrac12\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}n,
   $$
   由莱布尼茨判别法知其收敛。
 
@@ -746,7 +746,7 @@ title: 第十一章 无穷级数
   $$
   逐项求导得
   $$
-  \displaystyle \sum_{n=1}^{\infty}nx^{n-1}=\frac1{(1-x)^2}.
+  \displaystyle \sum_{n=1}^{\infty}nx^{n-1}=\dfrac1{(1-x)^2}.
   $$
   两边同乘 $\displaystyle x$，有
   $$
@@ -852,12 +852,12 @@ title: 第十一章 无穷级数
   故原级数的一般项满足
   $$
   \displaystyle \dfrac{\sqrt{n^2+n}-\sqrt{n^2-n}}{n^p}
-  \sim\frac1{n^p}.
+  \sim\dfrac1{n^p}.
   $$
 
   原级数为正项级数，由极限比较判别法，它与 $\displaystyle p$-级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}\frac1{n^p}
+  \displaystyle \sum_{n=1}^{\infty}\dfrac1{n^p}
   $$
   具有相同的敛散性。后者当且仅当 $\displaystyle p>1$ 时收敛。
 
@@ -908,7 +908,7 @@ title: 第十一章 无穷级数
   $$
   可知幂级数 $\displaystyle \sum a_nx^n$ 的收敛半径为
   $$
-  \displaystyle R_1=\frac13.
+  \displaystyle R_1=\dfrac13.
   $$
   等价地，
   $$
@@ -944,11 +944,11 @@ title: 第十一章 无穷级数
   $$
   即
   $$
-  \displaystyle |x|<\frac1{\sqrt3}.
+  \displaystyle |x|<\dfrac1{\sqrt3}.
   $$
   故收敛半径为
   $$
-  \displaystyle R=\frac1{\sqrt3}.
+  \displaystyle R=\dfrac1{\sqrt3}.
   $$
 
   </QuestionAnalysis>
@@ -1004,7 +1004,7 @@ title: 第十一章 无穷级数
   \displaystyle \begin{aligned}
   2\int_1^{\sqrt{N+1}}te^{-t}\,dt
   &=2\left[-(t+1)e^{-t}\right]_1^{\sqrt{N+1}}\\
-  &=\frac4e-2\left(\sqrt{N+1}+1\right)e^{-\sqrt{N+1}}.
+  &=\dfrac4e-2\left(\sqrt{N+1}+1\right)e^{-\sqrt{N+1}}.
   \end{aligned}
   $$
 
@@ -1016,7 +1016,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \sum_{n=1}^{\infty}\int_n^{n+1}e^{-\sqrt x}\,dx
   =\lim_{N\to\infty}\int_1^{N+1}e^{-\sqrt x}\,dx
-  =\frac4e.
+  =\dfrac4e.
   $$
   因此原级数收敛。
 
@@ -1063,7 +1063,7 @@ title: 第十一章 无穷级数
   （Ⅲ）
   $$
   \displaystyle \dfrac{x}{x+2}
-  =\frac13+
+  =\dfrac13+
   \sum_{n=1}^{\infty}\dfrac{2(-1)^{n-1}}{3^{n+1}}(x-1)^n,
   \qquad -2<x<4.
   $$
@@ -1081,7 +1081,7 @@ title: 第十一章 无穷级数
   $$
   令 $\displaystyle u=x^2$，得
   $$
-  \displaystyle \frac1{\sqrt{1-x^2}}
+  \displaystyle \dfrac1{\sqrt{1-x^2}}
   =\sum_{n=0}^{\infty}\dfrac{(2n)!}{4^n(n!)^2}x^{2n},
   \qquad |x|<1.
   $$
@@ -1160,23 +1160,23 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \dfrac{x}{x+2}
   =\dfrac{1+t}{3+t}
-  =1-\frac2{3+t}.
+  =1-\dfrac2{3+t}.
   $$
   当 $\displaystyle |t|<3$ 时，利用几何级数得
   $$
   \displaystyle \begin{aligned}
-  \frac2{3+t}
-  &=\frac23\cdot\frac1{1+\dfrac t3}\\
-  &=\frac23\sum_{n=0}^{\infty}(-1)^n\left(\dfrac t3\right)^n.
+  \dfrac2{3+t}
+  &=\dfrac23\cdot\dfrac1{1+\dfrac t3}\\
+  &=\dfrac23\sum_{n=0}^{\infty}(-1)^n\left(\dfrac t3\right)^n.
   \end{aligned}
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   \dfrac{x}{x+2}
-  &=1-\frac23\sum_{n=0}^{\infty}(-1)^n
+  &=1-\dfrac23\sum_{n=0}^{\infty}(-1)^n
   \left(\dfrac{x-1}{3}\right)^n\\
-  &=\frac13+
+  &=\dfrac13+
   \sum_{n=1}^{\infty}\dfrac{2(-1)^{n-1}}{3^{n+1}}(x-1)^n.
   \end{aligned}
   $$
@@ -1305,7 +1305,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \dfrac{x-1}{4-x}
   =\dfrac{t}{3-t}
-  =\dfrac t3\cdot\frac1{1-\dfrac t3}.
+  =\dfrac t3\cdot\dfrac1{1-\dfrac t3}.
   $$
   当
   $$
@@ -1313,7 +1313,7 @@ title: 第十一章 无穷级数
   $$
   时，利用几何级数公式
   $$
-  \displaystyle \frac1{1-u}=\sum_{k=0}^{\infty}u^k,
+  \displaystyle \dfrac1{1-u}=\sum_{k=0}^{\infty}u^k,
   \qquad |u|<1,
   $$
   得
@@ -1336,7 +1336,7 @@ title: 第十一章 无穷级数
   $$
   比较同次幂系数可知，当 $\displaystyle n\ge1$ 时，
   $$
-  \displaystyle \dfrac{f^{(n)}(1)}{n!}=\frac1{3^n},
+  \displaystyle \dfrac{f^{(n)}(1)}{n!}=\dfrac1{3^n},
   $$
   所以
   $$
@@ -1480,7 +1480,7 @@ title: 第十一章 无穷级数
   下面求和函数。对 $\displaystyle n\ge1$，有
   $$
   \displaystyle \dfrac{n^2}{(n+1)!}
-  =\frac1{(n-1)!}-\frac1{n!}+\frac1{(n+1)!}.
+  =\dfrac1{(n-1)!}-\dfrac1{n!}+\dfrac1{(n+1)!}.
   $$
   因此
   $$
@@ -1504,7 +1504,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   \sum_{n=1}^{\infty}\dfrac{(-1)^nx^n}{(n+1)!}
-  &=-\frac1x\sum_{k=2}^{\infty}\dfrac{(-1)^kx^k}{k!}\\
+  &=-\dfrac1x\sum_{k=2}^{\infty}\dfrac{(-1)^kx^k}{k!}\\
   &=-\dfrac{e^{-x}-1+x}{x}\\
   &=\dfrac{1-x-e^{-x}}{x}.
   \end{aligned}
@@ -1552,7 +1552,7 @@ title: 第十一章 无穷级数
 
   先作部分分式分解：
   $$
-  \displaystyle \frac1{n(2n+1)}=\frac1n-\frac2{2n+1}.
+  \displaystyle \dfrac1{n(2n+1)}=\dfrac1n-\dfrac2{2n+1}.
   $$
   因此
   $$
@@ -1581,12 +1581,12 @@ title: 第十一章 无穷级数
   令 $\displaystyle x=1$，得
   $$
   \displaystyle \dfrac\pi4
-  =1-\frac13+\frac15-\frac17+\cdots.
+  =1-\dfrac13+\dfrac15-\dfrac17+\cdots.
   $$
   所以
   $$
   \displaystyle \sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{2n+1}
-  =\frac13-\frac15+\frac17-\cdots
+  =\dfrac13-\dfrac15+\dfrac17-\cdots
   =1-\dfrac\pi4.
   $$
 
@@ -1601,7 +1601,7 @@ title: 第十一章 无穷级数
 
   此外，原级数通项的绝对值满足
   $$
-  \displaystyle \frac1{n(2n+1)}\sim\frac1{2n^2},
+  \displaystyle \dfrac1{n(2n+1)}\sim\dfrac1{2n^2},
   $$
   故原级数本身绝对收敛，上述拆项与求和是合法的。
 
@@ -1630,7 +1630,7 @@ title: 第十一章 无穷级数
 
   （Ⅱ）设
   $$
-  \displaystyle u_{2n-1}=\frac1n,
+  \displaystyle u_{2n-1}=\dfrac1n,
   \qquad
   u_{2n}=\int_n^{n+1}\dfrac{dx}{x}
   \qquad(n=1,2,\cdots),
@@ -1711,12 +1711,12 @@ title: 第十一章 无穷级数
   $$
   因为
   $$
-  \displaystyle u_{2n-1}=\frac1n\longrightarrow0,
+  \displaystyle u_{2n-1}=\dfrac1n\longrightarrow0,
   $$
   且
   $$
   \displaystyle u_{2n}=\int_n^{n+1}\dfrac{dx}{x}
-  =\ln\left(1+\frac1n\right)\longrightarrow0,
+  =\ln\left(1+\dfrac1n\right)\longrightarrow0,
   $$
   所以
   $$
@@ -1728,24 +1728,24 @@ title: 第十一章 无穷级数
   \displaystyle \begin{aligned}
   v_{2n-1}+v_{2n}
   &=u_{2n-1}-u_{2n}\\
-  &=\frac1n-\int_n^{n+1}\dfrac{dx}{x}\\
-  &=\int_n^{n+1}\left(\frac1n-\frac1x\right)dx.
+  &=\dfrac1n-\int_n^{n+1}\dfrac{dx}{x}\\
+  &=\int_n^{n+1}\left(\dfrac1n-\dfrac1x\right)dx.
   \end{aligned}
   $$
   当 $\displaystyle x\in[n,n+1]$ 时，
   $$
-  \displaystyle 0\le \frac1n-\frac1x
+  \displaystyle 0\le \dfrac1n-\dfrac1x
   =\dfrac{x-n}{nx}
-  \le\frac1{n^2}.
+  \le\dfrac1{n^2}.
   $$
   因此
   $$
   \displaystyle 0\le v_{2n-1}+v_{2n}
-  \le\frac1{n^2}.
+  \le\dfrac1{n^2}.
   $$
   由于正项级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}\frac1{n^2}
+  \displaystyle \sum_{n=1}^{\infty}\dfrac1{n^2}
   $$
   收敛，由比较判别法可知
   $$
@@ -1841,7 +1841,7 @@ title: 第十一章 无穷级数
   $$
   证明级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}F\left(\frac1n\right)
+  \displaystyle \sum_{n=1}^{\infty}F\left(\dfrac1n\right)
   $$
   绝对收敛。
 
@@ -1850,7 +1850,7 @@ title: 第十一章 无穷级数
 
   级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}F\left(\frac1n\right)
+  \displaystyle \sum_{n=1}^{\infty}F\left(\dfrac1n\right)
   $$
   绝对收敛。
 
@@ -1882,7 +1882,7 @@ title: 第十一章 无穷级数
   取 $\displaystyle x=1/n$，则
   $$
   \displaystyle \begin{aligned}
-  \left|F\left(\frac1n\right)\right|
+  \left|F\left(\dfrac1n\right)\right|
   &=\left|\int_0^{2/n}f(u)\,du\right|\\
   &\le\int_0^{2/n}|f(u)|\,du\\
   &\le M\int_0^{2/n}u\,du\\
@@ -1892,11 +1892,11 @@ title: 第十一章 无穷级数
 
   因为 $\displaystyle p$-级数
   $$
-  \displaystyle \sum_{n=1}^{\infty}\frac1{n^2}
+  \displaystyle \sum_{n=1}^{\infty}\dfrac1{n^2}
   $$
   收敛，所以由比较判别法，
   $$
-  \displaystyle \sum_{n=1}^{\infty}\left|F\left(\frac1n\right)\right|
+  \displaystyle \sum_{n=1}^{\infty}\left|F\left(\dfrac1n\right)\right|
   $$
   收敛。
 
@@ -2120,7 +2120,7 @@ title: 第十一章 无穷级数
 
   （Ⅰ）证明：
   $$
-  \displaystyle \frac1{4n}<a_n^2<\frac1{2n+1}
+  \displaystyle \dfrac1{4n}<a_n^2<\dfrac1{2n+1}
   \qquad(n=2,3,4,\cdots);
   $$
 
@@ -2135,7 +2135,7 @@ title: 第十一章 无穷级数
 
   （Ⅰ）对任意整数 $\displaystyle n\ge2$，有
   $$
-  \displaystyle \frac1{4n}<a_n^2<\frac1{2n+1}.
+  \displaystyle \dfrac1{4n}<a_n^2<\dfrac1{2n+1}.
   $$
 
   （Ⅱ）
@@ -2163,19 +2163,19 @@ title: 第十一章 无穷级数
 
   当 $\displaystyle n=2$ 时，
   $$
-  \displaystyle a_2=\dfrac{1\cdot3}{2\cdot4}=\frac38,
+  \displaystyle a_2=\dfrac{1\cdot3}{2\cdot4}=\dfrac38,
   \qquad
-  a_2^2=\frac9{64}>\frac18=\frac1{4\cdot2}.
+  a_2^2=\dfrac9{64}>\dfrac18=\dfrac1{4\cdot2}.
   $$
 
   假设对某个 $\displaystyle n\ge2$ 有
   $$
-  \displaystyle a_n^2>\frac1{4n}.
+  \displaystyle a_n^2>\dfrac1{4n}.
   $$
   则
   $$
   \displaystyle a_{n+1}^2
-  >\frac1{4n}\left(\dfrac{2n+1}{2n+2}\right)^2.
+  >\dfrac1{4n}\left(\dfrac{2n+1}{2n+2}\right)^2.
   $$
   又因为
   $$
@@ -2188,12 +2188,12 @@ title: 第十一章 无穷级数
   故
   $$
   \displaystyle a_{n+1}^2
-  >\frac1{4n}\cdot\dfrac{n}{n+1}
-  =\frac1{4(n+1)}.
+  >\dfrac1{4n}\cdot\dfrac{n}{n+1}
+  =\dfrac1{4(n+1)}.
   $$
   由数学归纳法，
   $$
-  \displaystyle a_n^2>\frac1{4n}
+  \displaystyle a_n^2>\dfrac1{4n}
   \qquad(n\ge2).
   $$
 
@@ -2201,18 +2201,18 @@ title: 第十一章 无穷级数
 
   当 $\displaystyle n=2$ 时，
   $$
-  \displaystyle a_2^2=\frac9{64}<\frac15=\frac1{2\cdot2+1}.
+  \displaystyle a_2^2=\dfrac9{64}<\dfrac15=\dfrac1{2\cdot2+1}.
   $$
 
   假设对某个 $\displaystyle n\ge2$ 有
   $$
-  \displaystyle a_n^2<\frac1{2n+1}.
+  \displaystyle a_n^2<\dfrac1{2n+1}.
   $$
   则
   $$
   \displaystyle \begin{aligned}
   a_{n+1}^2
-  &<\frac1{2n+1}\left(\dfrac{2n+1}{2n+2}\right)^2\\
+  &<\dfrac1{2n+1}\left(\dfrac{2n+1}{2n+2}\right)^2\\
   &=\dfrac{2n+1}{4(n+1)^2}.
   \end{aligned}
   $$
@@ -2226,21 +2226,21 @@ title: 第十一章 无穷级数
   $$
   因此
   $$
-  \displaystyle \dfrac{2n+1}{4(n+1)^2}<\frac1{2n+3},
+  \displaystyle \dfrac{2n+1}{4(n+1)^2}<\dfrac1{2n+3},
   $$
   即
   $$
-  \displaystyle a_{n+1}^2<\frac1{2(n+1)+1}.
+  \displaystyle a_{n+1}^2<\dfrac1{2(n+1)+1}.
   $$
   由数学归纳法，
   $$
-  \displaystyle a_n^2<\frac1{2n+1}
+  \displaystyle a_n^2<\dfrac1{2n+1}
   \qquad(n\ge2).
   $$
 
   综上，
   $$
-  \displaystyle \boxed{\frac1{4n}<a_n^2<\frac1{2n+1}}
+  \displaystyle \boxed{\dfrac1{4n}<a_n^2<\dfrac1{2n+1}}
   \qquad(n\ge2).
   $$
 
@@ -2248,18 +2248,18 @@ title: 第十一章 无穷级数
 
   首先，由第（Ⅰ）问可知
   $$
-  \displaystyle 0<a_n^2<\frac1{2n+1},
+  \displaystyle 0<a_n^2<\dfrac1{2n+1},
   $$
   故 $\displaystyle a_n\to0$，并且对所有 $\displaystyle n\ge1$ 有 $\displaystyle 0<a_n<1$。
 
   当 $\displaystyle p>2$ 时，$\displaystyle p/2>1$，且
   $$
   \displaystyle a_n^p=(a_n^2)^{p/2}
-  <\left(\frac1{2n+1}\right)^{p/2}.
+  <\left(\dfrac1{2n+1}\right)^{p/2}.
   $$
   由于 $\displaystyle p$-级数
   $$
-  \displaystyle \sum_{n=2}^{\infty}\frac1{(2n+1)^{p/2}}
+  \displaystyle \sum_{n=2}^{\infty}\dfrac1{(2n+1)^{p/2}}
   $$
   收敛，故由比较判别法，
   $$
@@ -2269,11 +2269,11 @@ title: 第十一章 无穷级数
 
   当 $\displaystyle 0<p\le2$ 时，由于 $\displaystyle 0<a_n<1$，指数越小，幂值越大，所以
   $$
-  \displaystyle a_n^p\ge a_n^2>\frac1{4n}.
+  \displaystyle a_n^p\ge a_n^2>\dfrac1{4n}.
   $$
   而调和级数
   $$
-  \displaystyle \sum_{n=2}^{\infty}\frac1{4n}
+  \displaystyle \sum_{n=2}^{\infty}\dfrac1{4n}
   $$
   发散，故由比较判别法，
   $$
@@ -2289,7 +2289,7 @@ title: 第十一章 无穷级数
 
   当 $\displaystyle p<0$ 时，由 $\displaystyle a_n\to0^+$ 得
   $$
-  \displaystyle a_n^p=\frac1{a_n^{-p}}\to+\infty,
+  \displaystyle a_n^p=\dfrac1{a_n^{-p}}\to+\infty,
   $$
   通项仍不趋于零，级数发散。
 
@@ -2318,7 +2318,7 @@ title: 第十一章 无穷级数
   <QuestionAnswer>
 
   $$
-  \displaystyle \boxed{\sum_{n=1}^{\infty}a_n=\frac16}.
+  \displaystyle \boxed{\sum_{n=1}^{\infty}a_n=\dfrac16}.
   $$
 
   </QuestionAnswer>
@@ -2351,14 +2351,14 @@ title: 第十一章 无穷级数
   &=\int_0^1x(1-x)\,dx\\
   &=\int_0^1(x-x^2)\,dx\\
   &=\left[\dfrac{x^2}{2}-\dfrac{x^3}{3}\right]_0^1\\
-  &=\frac12-\frac13\\
-  &=\frac16.
+  &=\dfrac12-\dfrac13\\
+  &=\dfrac16.
   \end{aligned}
   $$
 
   故
   $$
-  \displaystyle \boxed{\sum_{n=1}^{\infty}a_n=\frac16}.
+  \displaystyle \boxed{\sum_{n=1}^{\infty}a_n=\dfrac16}.
   $$
 
   也可以先直接计算
@@ -2375,9 +2375,9 @@ title: 第十一章 无穷级数
 
   设有两条抛物线
   $$
-  \displaystyle y=nx^2+\frac1n
+  \displaystyle y=nx^2+\dfrac1n
   \quad\text{和}\quad
-  y=(n+1)x^2+\frac1{n+1},
+  y=(n+1)x^2+\dfrac1{n+1},
   $$
   记它们交点的横坐标的绝对值为 $\displaystyle a_n$。
 
@@ -2394,14 +2394,14 @@ title: 第十一章 无穷级数
 
   （Ⅰ）
   $$
-  \displaystyle \boxed{a_n=\frac1{\sqrt{n(n+1)}}},
+  \displaystyle \boxed{a_n=\dfrac1{\sqrt{n(n+1)}}},
   \qquad
-  \boxed{S_n=\frac4{3[n(n+1)]^{3/2}}}.
+  \boxed{S_n=\dfrac4{3[n(n+1)]^{3/2}}}.
   $$
 
   （Ⅱ）
   $$
-  \displaystyle \boxed{\sum_{n=1}^{\infty}\dfrac{S_n}{a_n}=\frac43}.
+  \displaystyle \boxed{\sum_{n=1}^{\infty}\dfrac{S_n}{a_n}=\dfrac43}.
   $$
 
   </QuestionAnswer>
@@ -2411,28 +2411,28 @@ title: 第十一章 无穷级数
 
   令两条抛物线的纵坐标相等，得
   $$
-  \displaystyle nx^2+\frac1n=(n+1)x^2+\frac1{n+1}.
+  \displaystyle nx^2+\dfrac1n=(n+1)x^2+\dfrac1{n+1}.
   $$
   整理得
   $$
-  \displaystyle x^2=\frac1n-\frac1{n+1}
-  =\frac1{n(n+1)}.
+  \displaystyle x^2=\dfrac1n-\dfrac1{n+1}
+  =\dfrac1{n(n+1)}.
   $$
   所以两个交点的横坐标为
   $$
-  \displaystyle x=\pm\frac1{\sqrt{n(n+1)}},
+  \displaystyle x=\pm\dfrac1{\sqrt{n(n+1)}},
   $$
   从而
   $$
-  \displaystyle \boxed{a_n=\frac1{\sqrt{n(n+1)}}}.
+  \displaystyle \boxed{a_n=\dfrac1{\sqrt{n(n+1)}}}.
   $$
 
   在区间 $\displaystyle [-a_n,a_n]$ 内，两函数之差为
   $$
   \displaystyle \begin{aligned}
-  &\left(nx^2+\frac1n\right)
-  -\left((n+1)x^2+\frac1{n+1}\right)\\
-  &=\frac1{n(n+1)}-x^2\\
+  &\left(nx^2+\dfrac1n\right)
+  -\left((n+1)x^2+\dfrac1{n+1}\right)\\
+  &=\dfrac1{n(n+1)}-x^2\\
   &=a_n^2-x^2\ge0.
   \end{aligned}
   $$
@@ -2444,12 +2444,12 @@ title: 第十一章 无穷级数
   &=2\int_0^{a_n}(a_n^2-x^2)\,dx\\
   &=2\left[a_n^2x-\dfrac{x^3}{3}\right]_0^{a_n}\\
   &=2\left(a_n^3-\dfrac{a_n^3}{3}\right)\\
-  &=\frac43a_n^3.
+  &=\dfrac43a_n^3.
   \end{aligned}
   $$
   代入 $\displaystyle a_n=1/\sqrt{n(n+1)}$，得
   $$
-  \displaystyle \boxed{S_n=\frac4{3[n(n+1)]^{3/2}}}.
+  \displaystyle \boxed{S_n=\dfrac4{3[n(n+1)]^{3/2}}}.
   $$
 
   **（Ⅱ）求级数的和：**
@@ -2457,29 +2457,29 @@ title: 第十一章 无穷级数
   由上式，
   $$
   \displaystyle \dfrac{S_n}{a_n}
-  =\frac43a_n^2
-  =\frac4{3n(n+1)}.
+  =\dfrac43a_n^2
+  =\dfrac4{3n(n+1)}.
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   \sum_{n=1}^{\infty}\dfrac{S_n}{a_n}
-  &=\frac43\sum_{n=1}^{\infty}\frac1{n(n+1)}\\
-  &=\frac43\sum_{n=1}^{\infty}\left(\frac1n-\frac1{n+1}\right).
+  &=\dfrac43\sum_{n=1}^{\infty}\dfrac1{n(n+1)}\\
+  &=\dfrac43\sum_{n=1}^{\infty}\left(\dfrac1n-\dfrac1{n+1}\right).
   \end{aligned}
   $$
   该级数为裂项相消级数，其前 $\displaystyle N$ 项和为
   $$
-  \displaystyle \sum_{n=1}^{N}\left(\frac1n-\frac1{n+1}\right)
-  =1-\frac1{N+1}.
+  \displaystyle \sum_{n=1}^{N}\left(\dfrac1n-\dfrac1{n+1}\right)
+  =1-\dfrac1{N+1}.
   $$
   令 $\displaystyle N\to\infty$，得
   $$
-  \displaystyle \sum_{n=1}^{\infty}\frac1{n(n+1)}=1.
+  \displaystyle \sum_{n=1}^{\infty}\dfrac1{n(n+1)}=1.
   $$
   所以
   $$
-  \displaystyle \boxed{\sum_{n=1}^{\infty}\dfrac{S_n}{a_n}=\frac43}.
+  \displaystyle \boxed{\sum_{n=1}^{\infty}\dfrac{S_n}{a_n}=\dfrac43}.
   $$
 
   </QuestionAnalysis>
@@ -2602,7 +2602,7 @@ title: 第十一章 无穷级数
   \displaystyle \boxed{
   b_n=-\dfrac{\pi(-1)^n}{n}
   +\dfrac{2\bigl(1-(-1)^n\bigr)}{\pi}
-  \left(\frac1n-\frac1{n^3}\right).
+  \left(\dfrac1n-\dfrac1{n^3}\right).
   }
   $$
 
@@ -2633,12 +2633,12 @@ title: 第十一章 无穷级数
 
   傅里叶系数为
   $$
-  \displaystyle a_0=\frac1\pi\int_{-\pi}^{\pi}f(x)\,dx,
+  \displaystyle a_0=\dfrac1\pi\int_{-\pi}^{\pi}f(x)\,dx,
   $$
   $$
-  \displaystyle a_n=\frac1\pi\int_{-\pi}^{\pi}f(x)\cos nx\,dx,
+  \displaystyle a_n=\dfrac1\pi\int_{-\pi}^{\pi}f(x)\cos nx\,dx,
   \qquad
-  b_n=\frac1\pi\int_{-\pi}^{\pi}f(x)\sin nx\,dx.
+  b_n=\dfrac1\pi\int_{-\pi}^{\pi}f(x)\sin nx\,dx.
   $$
 
   **（Ⅰ）计算傅里叶系数：**
@@ -2647,12 +2647,12 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   a_0
-  &=\frac1\pi
+  &=\dfrac1\pi
   \left[
   \int_{-\pi}^{0}(-1)\,dx
   +\int_0^\pi(1+x^2)\,dx
   \right]\\
-  &=\frac1\pi
+  &=\dfrac1\pi
   \left[-\pi+\pi+\dfrac{\pi^3}{3}\right]\\
   &=\dfrac{\pi^2}{3}.
   \end{aligned}
@@ -2671,7 +2671,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   a_n
-  &=\frac1\pi\int_0^\pi x^2\cos nx\,dx.
+  &=\dfrac1\pi\int_0^\pi x^2\cos nx\,dx.
   \end{aligned}
   $$
   两次分部积分可得
@@ -2688,7 +2688,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   b_n
-  &=\frac1\pi
+  &=\dfrac1\pi
   \left[
   \int_{-\pi}^{0}(-1)\sin nx\,dx
   +\int_0^\pi(1+x^2)\sin nx\,dx
@@ -2714,7 +2714,7 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   b_n
-  &=\frac1\pi
+  &=\dfrac1\pi
   \left[
   \dfrac{2(1-(-1)^n)}{n}
   -\dfrac{\pi^2(-1)^n}{n}
@@ -2722,7 +2722,7 @@ title: 第十一章 无穷级数
   \right]\\
   &=-\dfrac{\pi(-1)^n}{n}
   +\dfrac{2(1-(-1)^n)}{\pi}
-  \left(\frac1n-\frac1{n^3}\right).
+  \left(\dfrac1n-\dfrac1{n^3}\right).
   \end{aligned}
   $$
   因此傅里叶级数为
@@ -2735,7 +2735,7 @@ title: 第十一章 无穷级数
   +\left(
   -\dfrac{\pi(-1)^n}{n}
   +\dfrac{2(1-(-1)^n)}{\pi}
-  \left(\frac1n-\frac1{n^3}\right)
+  \left(\dfrac1n-\dfrac1{n^3}\right)
   \right)\sin nx
   \right].
   }
@@ -2842,7 +2842,7 @@ title: 第十一章 无穷级数
   $$
   只需计算正弦系数
   $$
-  \displaystyle b_n=\frac2\pi\int_0^\pi\sin ax\sin nx\,dx.
+  \displaystyle b_n=\dfrac2\pi\int_0^\pi\sin ax\sin nx\,dx.
   $$
 
   当 $\displaystyle a\ne n$ 时，利用积化和差公式
@@ -2854,10 +2854,10 @@ title: 第十一章 无穷级数
   $$
   \displaystyle \begin{aligned}
   b_n
-  &=\frac1\pi
+  &=\dfrac1\pi
   \int_0^\pi
   \left[\cos(a-n)x-\cos(a+n)x\right]dx\\
-  &=\frac1\pi
+  &=\dfrac1\pi
   \left[
   \dfrac{\sin(a-n)\pi}{a-n}
   -\dfrac{\sin(a+n)\pi}{a+n}
@@ -2875,7 +2875,7 @@ title: 第十一章 无穷级数
   \displaystyle \begin{aligned}
   b_n
   &=\dfrac{(-1)^n\sin\pi a}{\pi}
-  \left(\frac1{a-n}-\frac1{a+n}\right)\\
+  \left(\dfrac1{a-n}-\dfrac1{a+n}\right)\\
   &=\dfrac{2n(-1)^n\sin\pi a}{\pi(a^2-n^2)}\\
   &=\dfrac{2n(-1)^{n+1}\sin\pi a}{\pi(n^2-a^2)}.
   \end{aligned}

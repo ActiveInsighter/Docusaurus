@@ -130,8 +130,8 @@ title: 第三章 一元函数积分概念、计算及应用
   - （C）函数分段连续，仅在 $\displaystyle x=\pm\dfrac12$ 处可能有跳跃间断，故在闭区间上可积。
   - （D）当 $\displaystyle x\ne0$ 时，
   $$
-  \displaystyle \dfrac d{dx}\left(x\sin\frac1x\right)
-  =\sin\frac1x-\frac1x\cos\frac1x.
+  \displaystyle \dfrac d{dx}\left(x\sin\dfrac1x\right)
+  =\sin\dfrac1x-\dfrac1x\cos\dfrac1x.
   $$
   其中第二项在 $\displaystyle x\to0$ 时无界，因此该函数在 $\displaystyle [-1,2]$ 上无界。闭区间上的黎曼可积函数必须有界，所以其定积分不存在。
 
@@ -207,7 +207,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   得
   $$
-  \displaystyle \lim_{x\to0}\dfrac{\ln(1+x^2)-x^2}{x^4}=-\frac12=f(0).
+  \displaystyle \lim_{x\to0}\dfrac{\ln(1+x^2)-x^2}{x^4}=-\dfrac12=f(0).
   $$
   所以 $\displaystyle f$ 在 $\displaystyle x=0$ 连续，在区间上存在原函数。
   - （B）$\displaystyle \max\{|x|,1\}$ 是连续函数，故存在原函数。
@@ -217,7 +217,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   因而
   $$
-  \displaystyle \lim_{x\to0^+}f(x)=-\frac12.
+  \displaystyle \lim_{x\to0^+}f(x)=-\dfrac12.
   $$
   当 $\displaystyle x\to0^-$ 时，
   $$
@@ -225,7 +225,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   因而
   $$
-  \displaystyle \lim_{x\to0^-}f(x)=\frac12.
+  \displaystyle \lim_{x\to0^-}f(x)=\dfrac12.
   $$
   左、右极限不相等，函数在 $\displaystyle x=0$ 处发生跳跃，违反导函数的介值性，故不存在原函数。
   - （D）虽然 $\displaystyle g(x)$ 在 $\displaystyle x=1$ 处不连续，但它分段连续，故
@@ -358,17 +358,17 @@ title: 第三章 一元函数积分概念、计算及应用
 
   当 $\displaystyle \alpha\to0^+$ 时，对任意 $\displaystyle x>0$，有 $\displaystyle x^\alpha\to1$。由有界收敛定理，
   $$
-  \displaystyle I_1\to\frac12\int_0^\pi\cos x\,dx=0,
+  \displaystyle I_1\to\dfrac12\int_0^\pi\cos x\,dx=0,
   $$
   而
   $$
-  \displaystyle I_2\to\frac12\int_0^\pi\sin x\,dx=1.
+  \displaystyle I_2\to\dfrac12\int_0^\pi\sin x\,dx=1.
   $$
   所以当 $\displaystyle \alpha$ 充分小时，$\displaystyle I_1<I_2$。
 
   当 $\displaystyle \alpha\to+\infty$ 时，除 $\displaystyle x=1$ 外，
   $$
-  \displaystyle \frac1{1+x^\alpha}\to
+  \displaystyle \dfrac1{1+x^\alpha}\to
   \begin{cases}
   1,&0\le x<1,\\
   0,&1<x\le\pi.
@@ -448,8 +448,8 @@ title: 第三章 一元函数积分概念、计算及应用
   - （B）令 $\displaystyle u=x^2$，则
   $$
   \displaystyle \int_0^{+\infty}xe^{-x^2}\,dx
-  =\frac12\int_0^{+\infty}e^{-u}\,du
-  =\frac12,
+  =\dfrac12\int_0^{+\infty}e^{-u}\,du
+  =\dfrac12,
   $$
   故收敛。
   - （C）
@@ -461,7 +461,7 @@ title: 第三章 一元函数积分概念、计算及应用
   故收敛。
   - （D）当 $\displaystyle x\to0$ 时，$\displaystyle \sin x\sim x$，从而
   $$
-  \displaystyle \frac1{\sin x}\sim\frac1x.
+  \displaystyle \dfrac1{\sin x}\sim\dfrac1x.
   $$
   而 $\displaystyle\int_0^1\dfrac{dx}{x}$ 发散，因此在 $\displaystyle x=0$ 处分开的两个反常积分均不收敛。尽管其柯西主值可能存在，但通常意义下的反常积分发散。
 
@@ -511,7 +511,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   由于
   $$
-  \displaystyle \ln\sqrt{x^2+t^2}=\frac12\ln(x^2+t^2),
+  \displaystyle \ln\sqrt{x^2+t^2}=\dfrac12\ln(x^2+t^2),
   $$
   且函数关于 $\displaystyle t$ 为偶函数，只需先考虑 $\displaystyle t>0$。利用原函数
   $$
@@ -522,8 +522,8 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   f(t)
-  &=\frac12\int_0^1\ln(x^2+t^2)\,dx\\
-  &=\frac12\ln(1+t^2)-1+t\arctan\frac1t,
+  &=\dfrac12\int_0^1\ln(x^2+t^2)\,dx\\
+  &=\dfrac12\ln(1+t^2)-1+t\arctan\dfrac1t,
   \qquad t>0.
   \end{aligned}
   $$
@@ -533,19 +533,19 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   当 $\displaystyle t\to0^+$ 时，
   $$
-  \displaystyle \frac12\ln(1+t^2)\to0,
+  \displaystyle \dfrac12\ln(1+t^2)\to0,
   \qquad
-  t\arctan\frac1t\to0,
+  t\arctan\dfrac1t\to0,
   $$
   故 $\displaystyle f(t)\to-1=f(0)$。由偶对称性可知 $\displaystyle f$ 在 $\displaystyle t=0$ 处连续。
 
   再求单侧导数。由上式，当 $\displaystyle t>0$ 时，
   $$
-  \displaystyle f'(t)=\arctan\frac1t.
+  \displaystyle f'(t)=\arctan\dfrac1t.
   $$
   因此
   $$
-  \displaystyle f'_+(0)=\lim_{t\to0^+}\arctan\frac1t=\dfrac\pi2.
+  \displaystyle f'_+(0)=\lim_{t\to0^+}\arctan\dfrac1t=\dfrac\pi2.
   $$
   由于 $\displaystyle f(t)$ 是偶函数，
   $$
@@ -573,7 +573,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
       A.
       $$
-      \displaystyle \frac1x f(\ln x)+\frac1{x^2}f\left(\frac1x\right);
+      \displaystyle \dfrac1x f(\ln x)+\dfrac1{x^2}f\left(\dfrac1x\right);
       $$
 
     </QuestionOption>
@@ -581,7 +581,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
       B.
       $$
-      \displaystyle f(\ln x)+f\left(\frac1x\right);
+      \displaystyle f(\ln x)+f\left(\dfrac1x\right);
       $$
 
     </QuestionOption>
@@ -589,7 +589,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
       C.
       $$
-      \displaystyle \frac1x f(\ln x)-\frac1{x^2}f\left(\frac1x\right);
+      \displaystyle \dfrac1x f(\ln x)-\dfrac1{x^2}f\left(\dfrac1x\right);
       $$
 
     </QuestionOption>
@@ -597,7 +597,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
       D.
       $$
-      \displaystyle f(\ln x)-f\left(\frac1x\right).
+      \displaystyle f(\ln x)-f\left(\dfrac1x\right).
       $$
 
     </QuestionOption>
@@ -619,23 +619,23 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   本题中
   $$
-  \displaystyle \alpha(x)=\frac1x,
+  \displaystyle \alpha(x)=\dfrac1x,
   \qquad
   \beta(x)=\ln x,
   $$
   所以
   $$
-  \displaystyle \alpha'(x)=-\frac1{x^2},
+  \displaystyle \alpha'(x)=-\dfrac1{x^2},
   \qquad
-  \beta'(x)=\frac1x.
+  \beta'(x)=\dfrac1x.
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   F'(x)
-  &=f(\ln x)\cdot\frac1x
-  -f\left(\frac1x\right)\left(-\frac1{x^2}\right)\\
-  &=\frac1x f(\ln x)+\frac1{x^2}f\left(\frac1x\right).
+  &=f(\ln x)\cdot\dfrac1x
+  -f\left(\dfrac1x\right)\left(-\dfrac1{x^2}\right)\\
+  &=\dfrac1x f(\ln x)+\dfrac1{x^2}f\left(\dfrac1x\right).
   \end{aligned}
   $$
   故选（A）。
@@ -689,7 +689,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle -\frac12\csc x\cot x+\frac12\ln\left|\tan\dfrac{x}{2}\right|+C.
+  \displaystyle -\dfrac12\csc x\cot x+\dfrac12\ln\left|\tan\dfrac{x}{2}\right|+C.
   $$
 
   </QuestionAnswer>
@@ -742,7 +742,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionStem>
 
   $$
-  \displaystyle \int\left(\ln\ln x+\frac1{\ln x}\right)dx=\underline{\qquad}.
+  \displaystyle \int\left(\ln\ln x+\dfrac1{\ln x}\right)dx=\underline{\qquad}.
   $$
 
   </QuestionStem>
@@ -759,13 +759,13 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \dfrac{d}{dx}\bigl(x\ln\ln x\bigr)
-  &=\ln\ln x+x\cdot\frac1{\ln x}\cdot\frac1x\\
-  &=\ln\ln x+\frac1{\ln x}.
+  &=\ln\ln x+x\cdot\dfrac1{\ln x}\cdot\dfrac1x\\
+  &=\ln\ln x+\dfrac1{\ln x}.
   \end{aligned}
   $$
   故
   $$
-  \displaystyle \int\left(\ln\ln x+\frac1{\ln x}\right)dx
+  \displaystyle \int\left(\ln\ln x+\dfrac1{\ln x}\right)dx
   =x\ln\ln x+C.
   $$
   在实数范围内，原题中的 $\displaystyle \ln\ln x$ 要求 $\displaystyle x>1$。
@@ -853,7 +853,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \dfrac{d}{dx}\left(\dfrac{f^2}{2(f')^2}\right)
-  &=\frac12\left[2f f'(f')^{-2}-2f^2(f')^{-3}f''\right]\\
+  &=\dfrac12\left[2f f'(f')^{-2}-2f^2(f')^{-3}f''\right]\\
   &=\dfrac{f}{f'}-\dfrac{f^2f''}{(f')^3}.
   \end{aligned}
   $$
@@ -976,7 +976,7 @@ title: 第三章 一元函数积分概念、计算及应用
   注意
   $$
   \displaystyle \dfrac{d}{du}\left[u-\ln(1+e^u)\right]
-  =\frac1{1+e^u},
+  =\dfrac1{1+e^u},
   $$
   故
   $$
@@ -1025,8 +1025,8 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \int_0^1x\arcsin x\,dx
   &=\left.\dfrac{x^2}{2}\arcsin x\right|_0^1
-  -\frac12\int_0^1\dfrac{x^2}{\sqrt{1-x^2}}\,dx\\
-  &=\dfrac\pi4-\frac12\int_0^1\dfrac{x^2}{\sqrt{1-x^2}}\,dx.
+  -\dfrac12\int_0^1\dfrac{x^2}{\sqrt{1-x^2}}\,dx\\
+  &=\dfrac\pi4-\dfrac12\int_0^1\dfrac{x^2}{\sqrt{1-x^2}}\,dx.
   \end{aligned}
   $$
   令 $\displaystyle x=\sin t$，则
@@ -1038,7 +1038,7 @@ title: 第三章 一元函数积分概念、计算及应用
   故
   $$
   \displaystyle \int_0^1x\arcsin x\,dx
-  =\dfrac\pi4-\frac12\cdot\dfrac\pi4
+  =\dfrac\pi4-\dfrac12\cdot\dfrac\pi4
   =\dfrac\pi8.
   $$
 
@@ -1056,7 +1056,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \frac1n\left[x^n-\ln|1+x^n|\right]+C.
+  \displaystyle \dfrac1n\left[x^n-\ln|1+x^n|\right]+C.
   $$
 
   </QuestionAnswer>
@@ -1076,10 +1076,10 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int\dfrac{x^{2n-1}}{1+x^n}\,dx
-  &=\frac1n\int\dfrac{u}{1+u}\,du\\
-  &=\frac1n\int\left(1-\frac1{1+u}\right)du\\
-  &=\frac1n\left[u-\ln|1+u|\right]+C\\
-  &=\frac1n\left[x^n-\ln|1+x^n|\right]+C.
+  &=\dfrac1n\int\dfrac{u}{1+u}\,du\\
+  &=\dfrac1n\int\left(1-\dfrac1{1+u}\right)du\\
+  &=\dfrac1n\left[u-\ln|1+u|\right]+C\\
+  &=\dfrac1n\left[x^n-\ln|1+x^n|\right]+C.
   \end{aligned}
   $$
 
@@ -1165,7 +1165,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \int_0^a\arctan\sqrt{\dfrac{a-x}{a+x}}\,dx
   &=2a\int_0^{\frac\pi4}t\sin2t\,dt\\
-  &=2a\left[-\dfrac t2\cos2t+\frac14\sin2t\right]_0^{\frac\pi4}\\
+  &=2a\left[-\dfrac t2\cos2t+\dfrac14\sin2t\right]_0^{\frac\pi4}\\
   &=\dfrac a2.
   \end{aligned}
   $$
@@ -1244,7 +1244,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle -\frac12.
+  \displaystyle -\dfrac12.
   $$
 
   </QuestionAnswer>
@@ -1252,20 +1252,20 @@ title: 第三章 一元函数积分概念、计算及应用
 
   因为
   $$
-  \displaystyle f(x)f'(x)=\frac12\bigl[f^2(x)\bigr]',
+  \displaystyle f(x)f'(x)=\dfrac12\bigl[f^2(x)\bigr]',
   $$
   所以分部积分得
   $$
   \displaystyle \begin{aligned}
   \int_a^bxf(x)f'(x)\,dx
-  &=\frac12\int_a^bx\,d\bigl[f^2(x)\bigr]\\
-  &=\frac12\left[xf^2(x)\right]_a^b
-  -\frac12\int_a^bf^2(x)\,dx.
+  &=\dfrac12\int_a^bx\,d\bigl[f^2(x)\bigr]\\
+  &=\dfrac12\left[xf^2(x)\right]_a^b
+  -\dfrac12\int_a^bf^2(x)\,dx.
   \end{aligned}
   $$
   由 $\displaystyle f(a)=f(b)=0$ 及题设积分等于 $\displaystyle 1$，可得
   $$
-  \displaystyle \int_a^bxf(x)f'(x)\,dx=-\frac12.
+  \displaystyle \int_a^bxf(x)f'(x)\,dx=-\dfrac12.
   $$
 
   </QuestionAnalysis>
@@ -1287,7 +1287,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \frac12.
+  \displaystyle \dfrac12.
   $$
 
   </QuestionAnswer>
@@ -1317,7 +1317,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   从而
   $$
-  \displaystyle f'(0)=\frac12.
+  \displaystyle f'(0)=\dfrac12.
   $$
 
   </QuestionAnalysis>
@@ -1336,7 +1336,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \frac13.
+  \displaystyle \dfrac13.
   $$
 
   </QuestionAnswer>
@@ -1360,14 +1360,14 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   所以
   $$
-  \displaystyle I=\frac13.
+  \displaystyle I=\dfrac13.
   $$
 
   也可用洛必达法：对分子、分母求导一次，得到
   $$
   \displaystyle I=\lim_{x\to0}
   \dfrac{\displaystyle\int_0^{\tan^2x}\frac{\sin t}{t}\,dt}{3x^2}
-  =\frac13.
+  =\dfrac13.
   $$
 
   </QuestionAnalysis>
@@ -1399,14 +1399,14 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle u=x^2,
   \qquad
-  x\,dx=\frac12du.
+  x\,dx=\dfrac12du.
   $$
   则
   $$
   \displaystyle \begin{aligned}
   \int_0^1xf(x)\,dx
-  &=\frac12\int_0^1\left(\int_1^u e^{-t^2}\,dt\right)du\\
-  &=-\frac12\int_0^1\left(\int_u^1 e^{-t^2}\,dt\right)du.
+  &=\dfrac12\int_0^1\left(\int_1^u e^{-t^2}\,dt\right)du\\
+  &=-\dfrac12\int_0^1\left(\int_u^1 e^{-t^2}\,dt\right)du.
   \end{aligned}
   $$
   积分区域为
@@ -1417,9 +1417,9 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int_0^1xf(x)\,dx
-  &=-\frac12\int_0^1\left(\int_0^tdu\right)e^{-t^2}\,dt\\
-  &=-\frac12\int_0^1te^{-t^2}\,dt\\
-  &=-\frac14\left(1-e^{-1}\right)\\
+  &=-\dfrac12\int_0^1\left(\int_0^tdu\right)e^{-t^2}\,dt\\
+  &=-\dfrac12\int_0^1te^{-t^2}\,dt\\
+  &=-\dfrac14\left(1-e^{-1}\right)\\
   &=\dfrac{e^{-1}-1}{4}.
   \end{aligned}
   $$
@@ -1452,15 +1452,15 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   则
   $$
-  \displaystyle x^7dx=x^6(x\,dx)=\frac12u^3du.
+  \displaystyle x^7dx=x^6(x\,dx)=\dfrac12u^3du.
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   \int_0^{+\infty}x^7e^{-x^2}\,dx
-  &=\frac12\int_0^{+\infty}u^3e^{-u}\,du\\
-  &=\frac12\Gamma(4)\\
-  &=\frac12\cdot3!\\
+  &=\dfrac12\int_0^{+\infty}u^3e^{-u}\,du\\
+  &=\dfrac12\Gamma(4)\\
+  &=\dfrac12\cdot3!\\
   &=3.
   \end{aligned}
   $$
@@ -1512,7 +1512,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   I
   &=2\int_0^{+\infty}x^{-\frac12}e^{-x}\,dx\\
-  &=2\Gamma\left(\frac12\right)\\
+  &=2\Gamma\left(\dfrac12\right)\\
   &=2\sqrt\pi.
   \end{aligned}
   $$
@@ -1532,7 +1532,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \ln\dfrac{1+e}{e}
-  =\ln\left(1+\frac1e\right).
+  =\ln\left(1+\dfrac1e\right).
   $$
 
   </QuestionAnswer>
@@ -1542,7 +1542,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \dfrac{d}{dx}\ln\dfrac{xe^x}{1+xe^x}
-  &=\frac1x+1-\dfrac{(1+x)e^x}{1+xe^x}\\
+  &=\dfrac1x+1-\dfrac{(1+x)e^x}{1+xe^x}\\
   &=\dfrac{1+x}{x(1+xe^x)}.
   \end{aligned}
   $$
@@ -1621,8 +1621,8 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \kappa=\frac1{(1+y^2)^{\frac32}}
-  =\frac1{(1+2x)^{\frac32}}.
+  \displaystyle \kappa=\dfrac1{(1+y^2)^{\frac32}}
+  =\dfrac1{(1+2x)^{\frac32}}.
   $$
 
   </QuestionAnswer>
@@ -1646,11 +1646,11 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   代入得
   $$
-  \displaystyle \kappa=\frac1{(1+y^2)^{\frac32}}.
+  \displaystyle \kappa=\dfrac1{(1+y^2)^{\frac32}}.
   $$
   又因 $\displaystyle y^2=2x$，故也可写为
   $$
-  \displaystyle \kappa=\frac1{(1+2x)^{\frac32}}.
+  \displaystyle \kappa=\dfrac1{(1+2x)^{\frac32}}.
   $$
 
   </QuestionAnalysis>
@@ -1731,9 +1731,9 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \int\dfrac{x^4+1}{1+x^6}\,dx
-  =\frac23\arctan x
-  +\frac13\arctan(2x+\sqrt3)
-  +\frac13\arctan(2x-\sqrt3)+C.
+  =\dfrac23\arctan x
+  +\dfrac13\arctan(2x+\sqrt3)
+  +\dfrac13\arctan(2x-\sqrt3)+C.
   $$
 
   </QuestionAnswer>
@@ -1747,13 +1747,13 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \dfrac{x^4+1}{1+x^6}
   =\dfrac{2}{3(x^2+1)}
-  +\frac1{6(x^2+\sqrt3x+1)}
-  +\frac1{6(x^2-\sqrt3x+1)}.
+  +\dfrac1{6(x^2+\sqrt3x+1)}
+  +\dfrac1{6(x^2-\sqrt3x+1)}.
   $$
   又
   $$
   \displaystyle x^2\pm\sqrt3x+1
-  =\left(x\pm\dfrac{\sqrt3}{2}\right)^2+\frac14.
+  =\left(x\pm\dfrac{\sqrt3}{2}\right)^2+\dfrac14.
   $$
   所以
   $$
@@ -1767,9 +1767,9 @@ title: 第三章 一元函数积分概念、计算及应用
   分别积分，得到
   $$
   \displaystyle \int\dfrac{x^4+1}{1+x^6}\,dx
-  =\frac23\arctan x
-  +\frac13\arctan(2x+\sqrt3)
-  +\frac13\arctan(2x-\sqrt3)+C.
+  =\dfrac23\arctan x
+  +\dfrac13\arctan(2x+\sqrt3)
+  +\dfrac13\arctan(2x-\sqrt3)+C.
   $$
 
   </QuestionAnalysis>
@@ -1788,7 +1788,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \int\dfrac{dx}{\sin x\cos^3x}
-  =\ln|\tan x|+\frac12\tan^2x+C.
+  =\ln|\tan x|+\dfrac12\tan^2x+C.
   $$
 
   </QuestionAnswer>
@@ -1811,16 +1811,16 @@ title: 第三章 一元函数积分概念、计算及应用
   \dfrac{dx}{\sin x\cos^3x}
   &=\dfrac{\sec^4x}{\tan x}\,dx\\
   &=\dfrac{1+u^2}{u}\,du\\
-  &=\left(\frac1u+u\right)du.
+  &=\left(\dfrac1u+u\right)du.
   \end{aligned}
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   \int\dfrac{dx}{\sin x\cos^3x}
-  &=\int\left(\frac1u+u\right)du\\
-  &=\ln|u|+\frac12u^2+C\\
-  &=\ln|\tan x|+\frac12\tan^2x+C.
+  &=\int\left(\dfrac1u+u\right)du\\
+  &=\ln|u|+\dfrac12u^2+C\\
+  &=\ln|\tan x|+\dfrac12\tan^2x+C.
   \end{aligned}
   $$
 
@@ -1856,7 +1856,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \left(\dfrac{\sqrt{1+x^2}}x\right)'
   &=\dfrac{\dfrac{x}{\sqrt{1+x^2}}\cdot x-\sqrt{1+x^2}}{x^2}\\
   &=\dfrac{x^2-(1+x^2)}{x^2\sqrt{1+x^2}}\\
-  &=-\frac1{x^2\sqrt{1+x^2}}.
+  &=-\dfrac1{x^2\sqrt{1+x^2}}.
   \end{aligned}
   $$
   因此
@@ -1900,7 +1900,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int\dfrac{dx}{(x^2+a^2)\sqrt{a^2-x^2}}
-  &=\frac1{a^2}\int\dfrac{dt}{1+\sin^2t}.
+  &=\dfrac1{a^2}\int\dfrac{dt}{1+\sin^2t}.
   \end{aligned}
   $$
   再令
@@ -1914,9 +1914,9 @@ title: 第三章 一元函数积分概念、计算及应用
   于是
   $$
   \displaystyle \begin{aligned}
-  \frac1{a^2}\int\dfrac{dt}{1+\sin^2t}
-  &=\frac1{a^2}\int\dfrac{du}{1+2u^2}\\
-  &=\frac1{\sqrt2\,a^2}\arctan(\sqrt2u)+C.
+  \dfrac1{a^2}\int\dfrac{dt}{1+\sin^2t}
+  &=\dfrac1{a^2}\int\dfrac{du}{1+2u^2}\\
+  &=\dfrac1{\sqrt2\,a^2}\arctan(\sqrt2u)+C.
   \end{aligned}
   $$
   由
@@ -1964,17 +1964,17 @@ title: 第三章 一元函数积分概念、计算及应用
   则
   $$
   \displaystyle \left(\dfrac{x-1}{x+1}\right)^4
-  =\left(1-\frac2u\right)^4.
+  =\left(1-\dfrac2u\right)^4.
   $$
   展开得
   $$
-  \displaystyle \left(1-\frac2u\right)^4
-  =1-\frac8u+\dfrac{24}{u^2}-\dfrac{32}{u^3}+\dfrac{16}{u^4}.
+  \displaystyle \left(1-\dfrac2u\right)^4
+  =1-\dfrac8u+\dfrac{24}{u^2}-\dfrac{32}{u^3}+\dfrac{16}{u^4}.
   $$
   逐项积分：
   $$
   \displaystyle \begin{aligned}
-  \int\left(1-\frac8u+\dfrac{24}{u^2}-\dfrac{32}{u^3}+\dfrac{16}{u^4}\right)du
+  \int\left(1-\dfrac8u+\dfrac{24}{u^2}-\dfrac{32}{u^3}+\dfrac{16}{u^4}\right)du
   &=u-8\ln|u|-\dfrac{24}{u}\\
   &\quad+\dfrac{16}{u^2}-\dfrac{16}{3u^3}+C.
   \end{aligned}
@@ -2029,7 +2029,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \int_0^{\frac\pi2}\dfrac{dx}{1+\sin^2x}
   &=\int_0^{+\infty}\dfrac{dt}{1+2t^2}\\
-  &=\frac1{\sqrt2}\left.\arctan(\sqrt2t)\right|_0^{+\infty}\\
+  &=\dfrac1{\sqrt2}\left.\arctan(\sqrt2t)\right|_0^{+\infty}\\
   &=\dfrac{\pi}{2\sqrt2}.
   \end{aligned}
   $$
@@ -2095,7 +2095,7 @@ title: 第三章 一元函数积分概念、计算及应用
   -\dfrac{u^2}{2}\ln u
   +\dfrac{u^2}{4}
   \right]_1^e\\
-  &=\dfrac{e^2}{4}-\frac14\\
+  &=\dfrac{e^2}{4}-\dfrac14\\
   &=\dfrac{e^2-1}{4}.
   \end{aligned}
   $$
@@ -2188,7 +2188,7 @@ title: 第三章 一元函数积分概念、计算及应用
   J
   &=\int_{-1}^0(1+t)\,dt
   +\int_0^x(1-t)\,dt\\
-  &=\frac12+x-\dfrac{x^2}{2}.
+  &=\dfrac12+x-\dfrac{x^2}{2}.
   \end{aligned}
   $$
   因此
@@ -2251,27 +2251,27 @@ title: 第三章 一元函数积分概念、计算及应用
 
   （Ⅰ）利用倍角公式
   $$
-  \displaystyle \sin x\cos x=\frac12\sin2x,
+  \displaystyle \sin x\cos x=\dfrac12\sin2x,
   $$
   得
   $$
   \displaystyle \begin{aligned}
   J_n
   &=\int_0^{\frac\pi2}(\sin x\cos x)^n\,dx\\
-  &=\frac1{2^n}\int_0^{\frac\pi2}\sin^n2x\,dx.
+  &=\dfrac1{2^n}\int_0^{\frac\pi2}\sin^n2x\,dx.
   \end{aligned}
   $$
   令
   $$
   \displaystyle u=2x,
-  \qquad dx=\frac12\,du,
+  \qquad dx=\dfrac12\,du,
   $$
   则
   $$
   \displaystyle \begin{aligned}
   J_n
-  &=\frac1{2^{n+1}}\int_0^\pi\sin^nu\,du\\
-  &=\frac1{2^{n+1}}\cdot2\int_0^{\frac\pi2}\sin^nu\,du\\
+  &=\dfrac1{2^{n+1}}\int_0^\pi\sin^nu\,du\\
+  &=\dfrac1{2^{n+1}}\cdot2\int_0^{\frac\pi2}\sin^nu\,du\\
   &=\dfrac{I_n}{2^n}.
   \end{aligned}
   $$
@@ -2379,7 +2379,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   求无穷积分
   $$
-  \displaystyle J=\int_1^{+\infty}\left[\ln\left(1+\frac1x\right)-\frac1{1+x}\right]dx.
+  \displaystyle J=\int_1^{+\infty}\left[\ln\left(1+\dfrac1x\right)-\dfrac1{1+x}\right]dx.
   $$
 
   </QuestionStem>
@@ -2394,20 +2394,20 @@ title: 第三章 一元函数积分概念、计算及应用
 
   注意到
   $$
-  \displaystyle \dfrac d{dx}\left[x\ln\left(1+\frac1x\right)\right]
-  =\ln\left(1+\frac1x\right)-\frac1{x+1}.
+  \displaystyle \dfrac d{dx}\left[x\ln\left(1+\dfrac1x\right)\right]
+  =\ln\left(1+\dfrac1x\right)-\dfrac1{x+1}.
   $$
   因此对任意 $\displaystyle b>1$，有
   $$
   \displaystyle \begin{aligned}
-  \int_1^b\left[\ln\left(1+\frac1x\right)-\frac1{1+x}\right]dx
-  &=\left[x\ln\left(1+\frac1x\right)\right]_1^b\\
-  &=b\ln\left(1+\frac1b\right)-\ln2.
+  \int_1^b\left[\ln\left(1+\dfrac1x\right)-\dfrac1{1+x}\right]dx
+  &=\left[x\ln\left(1+\dfrac1x\right)\right]_1^b\\
+  &=b\ln\left(1+\dfrac1b\right)-\ln2.
   \end{aligned}
   $$
   又
   $$
-  \displaystyle \lim_{b\to+\infty}b\ln\left(1+\frac1b\right)=1,
+  \displaystyle \lim_{b\to+\infty}b\ln\left(1+\dfrac1b\right)=1,
   $$
   故
   $$
@@ -2446,21 +2446,21 @@ title: 第三章 一元函数积分概念、计算及应用
 
   当 $\displaystyle x\le0$ 时，
   $$
-  \displaystyle \int\sin2x\,dx=-\frac12\cos2x+C_1.
+  \displaystyle \int\sin2x\,dx=-\dfrac12\cos2x+C_1.
   $$
 
   当 $\displaystyle x>0$ 时，令
   $$
   \displaystyle u=2x+1,
-  \qquad dx=\frac12\,du,
+  \qquad dx=\dfrac12\,du,
   $$
   则
   $$
   \displaystyle \begin{aligned}
   \int\ln(2x+1)\,dx
-  &=\frac12\int\ln u\,du\\
-  &=\frac12(u\ln u-u)+C_2\\
-  &=\frac12\left[(2x+1)\ln(2x+1)-(2x+1)\right]+C_2.
+  &=\dfrac12\int\ln u\,du\\
+  &=\dfrac12(u\ln u-u)+C_2\\
+  &=\dfrac12\left[(2x+1)\ln(2x+1)-(2x+1)\right]+C_2.
   \end{aligned}
   $$
 
@@ -2470,9 +2470,9 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   原函数应在 $\displaystyle x=0$ 处连续。两段原函数在 $\displaystyle x=0$ 处的值分别为
   $$
-  \displaystyle -\frac12+C_1,
+  \displaystyle -\dfrac12+C_1,
   \qquad
-  -\frac12+C_2,
+  -\dfrac12+C_2,
   $$
   故必须有
   $$
@@ -2500,7 +2500,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \int_0^1f(x)\,dx=\dfrac\pi4-\frac12.
+  \displaystyle \int_0^1f(x)\,dx=\dfrac\pi4-\dfrac12.
   $$
 
   </QuestionAnswer>
@@ -2548,7 +2548,7 @@ title: 第三章 一元函数积分概念、计算及应用
   得到
   $$
   \displaystyle \int_0^1f(x)\,dx
-  =\frac12\int_0^1\arcsin v\,dv.
+  =\dfrac12\int_0^1\arcsin v\,dv.
   $$
   利用
   $$
@@ -2559,9 +2559,9 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int_0^1f(x)\,dx
-  &=\frac12\left[v\arcsin v+\sqrt{1-v^2}\right]_0^1\\
-  &=\frac12\left(\dfrac\pi2-1\right)\\
-  &=\dfrac\pi4-\frac12.
+  &=\dfrac12\left[v\arcsin v+\sqrt{1-v^2}\right]_0^1\\
+  &=\dfrac12\left(\dfrac\pi2-1\right)\\
+  &=\dfrac\pi4-\dfrac12.
   \end{aligned}
   $$
 
@@ -2573,7 +2573,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   设 $\displaystyle a>0$，$\displaystyle f(x)$ 在 $\displaystyle ( -\infty,+\infty)$ 上有连续导数，求极限
   $$
-  \displaystyle \lim_{a\to0^+}\frac1{4a^2}\int_{-a}^a[f(t+a)-f(t-a)]\,dt.
+  \displaystyle \lim_{a\to0^+}\dfrac1{4a^2}\int_{-a}^a[f(t+a)-f(t-a)]\,dt.
   $$
 
   </QuestionStem>
@@ -2613,7 +2613,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   因此
   $$
-  \displaystyle \lim_{a\to0^+}\frac1{4a^2}\int_{-a}^a[f(t+a)-f(t-a)]\,dt
+  \displaystyle \lim_{a\to0^+}\dfrac1{4a^2}\int_{-a}^a[f(t+a)-f(t-a)]\,dt
   =f'(0).
   $$
 
@@ -2691,8 +2691,8 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle F'(x)=
   \begin{cases}
-  \displaystyle \dfrac{f(x)}x-\frac2{x^3}\int_0^xtf(t)\,dt,&x\ne0,\\[4mm]
-  \displaystyle \frac13f'(0),&x=0.
+  \displaystyle \dfrac{f(x)}x-\dfrac2{x^3}\int_0^xtf(t)\,dt,&x\ne0,\\[4mm]
+  \displaystyle \dfrac13f'(0),&x=0.
   \end{cases}
   $$
   且 $\displaystyle F'(x)$ 在 $\displaystyle ( -\infty,+\infty)$ 上连续。
@@ -2709,13 +2709,13 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \int_0^xtf(t)\,dt
   &=\int_0^x\left[f'(0)t^2+t\,o(t)\right]dt\\
-  &=\frac13f'(0)x^3+o(x^3).
+  &=\dfrac13f'(0)x^3+o(x^3).
   \end{aligned}
   $$
   因此
   $$
-  \displaystyle F(x)=\frac1{x^2}\int_0^xtf(t)\,dt
-  =\frac13f'(0)x+o(x)\to0.
+  \displaystyle F(x)=\dfrac1{x^2}\int_0^xtf(t)\,dt
+  =\dfrac13f'(0)x+o(x)\to0.
   $$
   故要使 $\displaystyle F$ 在 $\displaystyle x=0$ 处连续，必须且只需取
   $$
@@ -2726,9 +2726,9 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   F'(x)
-  &=-\frac2{x^3}\int_0^xtf(t)\,dt
-  +\frac1{x^2}\cdot xf(x)\\
-  &=\dfrac{f(x)}x-\frac2{x^3}\int_0^xtf(t)\,dt.
+  &=-\dfrac2{x^3}\int_0^xtf(t)\,dt
+  +\dfrac1{x^2}\cdot xf(x)\\
+  &=\dfrac{f(x)}x-\dfrac2{x^3}\int_0^xtf(t)\,dt.
   \end{aligned}
   $$
   当 $\displaystyle x=0$ 时，利用导数定义，
@@ -2736,21 +2736,21 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   F'(0)
   &=\lim_{x\to0}\dfrac{F(x)-F(0)}x\\
-  &=\lim_{x\to0}\frac1{x^3}\int_0^xtf(t)\,dt\\
-  &=\frac13f'(0).
+  &=\lim_{x\to0}\dfrac1{x^3}\int_0^xtf(t)\,dt\\
+  &=\dfrac13f'(0).
   \end{aligned}
   $$
   最后考察 $\displaystyle F'(x)$ 在 $\displaystyle 0$ 处的连续性。由
   $$
   \displaystyle \dfrac{f(x)}x\to f'(0),
   \qquad
-  \frac1{x^3}\int_0^xtf(t)\,dt\to\frac13f'(0),
+  \dfrac1{x^3}\int_0^xtf(t)\,dt\to\dfrac13f'(0),
   $$
   得
   $$
   \displaystyle \lim_{x\to0}F'(x)
-  =f'(0)-\frac23f'(0)
-  =\frac13f'(0)
+  =f'(0)-\dfrac23f'(0)
+  =\dfrac13f'(0)
   =F'(0).
   $$
   在 $\displaystyle x\ne0$ 处，$\displaystyle F'(x)$ 由连续函数构成，因此连续。故 $\displaystyle F'(x)$ 在整个实数轴上连续。
@@ -2804,12 +2804,12 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   在 $\displaystyle x>0$ 时约去 $\displaystyle G^2(x)$，并结合 $\displaystyle G'(x)>0$，得到
   $$
-  \displaystyle G'(x)=\frac12\sqrt{x}.
+  \displaystyle G'(x)=\dfrac12\sqrt{x}.
   $$
   又因 $\displaystyle G(0)=0$，故
   $$
-  \displaystyle G(x)=\int_0^x\frac12\sqrt{t}\,dt
-  =\frac13x^{\frac32}.
+  \displaystyle G(x)=\int_0^x\dfrac12\sqrt{t}\,dt
+  =\dfrac13x^{\frac32}.
   $$
   于是
   $$
@@ -2847,7 +2847,7 @@ title: 第三章 一元函数积分概念、计算及应用
   最大值在 $\displaystyle x=e^2$ 处取得，且
   $$
   \displaystyle \max_{x\in[e,e^2]}f(x)
-  =\ln\left(1+\frac1e\right)+\frac1{e+1}.
+  =\ln\left(1+\dfrac1e\right)+\dfrac1{e+1}.
   $$
 
   </QuestionAnswer>
@@ -2875,7 +2875,7 @@ title: 第三章 一元函数积分概念、计算及应用
   则
   $$
   \displaystyle du=\dfrac{dt}{t},
-  \qquad v=-\frac1{t-1}.
+  \qquad v=-\dfrac1{t-1}.
   $$
   因此
   $$
@@ -2890,7 +2890,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   f(e^2)
   &=\left[-\dfrac{\ln t}{t-1}+\ln\dfrac{t-1}{t}\right]_e^{e^2}\\
-  &=\frac1{e-1}-\frac2{e^2-1}
+  &=\dfrac1{e-1}-\dfrac2{e^2-1}
   +\ln\dfrac{e^2-1}{e(e-1)}.
   \end{aligned}
   $$
@@ -2900,17 +2900,17 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   可化为
   $$
-  \displaystyle \frac1{e-1}-\frac2{e^2-1}=\frac1{e+1},
+  \displaystyle \dfrac1{e-1}-\dfrac2{e^2-1}=\dfrac1{e+1},
   $$
   以及
   $$
   \displaystyle \ln\dfrac{e^2-1}{e(e-1)}
   =\ln\dfrac{e+1}{e}
-  =\ln\left(1+\frac1e\right).
+  =\ln\left(1+\dfrac1e\right).
   $$
   所以
   $$
-  \displaystyle f(e^2)=\ln\left(1+\frac1e\right)+\frac1{e+1}.
+  \displaystyle f(e^2)=\ln\left(1+\dfrac1e\right)+\dfrac1{e+1}.
   $$
 
   </QuestionAnalysis>
@@ -3097,7 +3097,7 @@ title: 第三章 一元函数积分概念、计算及应用
   V
   &=\pi\int_0^1\left[(\sqrt{x})^2-(x^2)^2\right]dx\\
   &=\pi\int_0^1(x-x^4)\,dx\\
-  &=\pi\left(\frac12-\frac15\right)\\
+  &=\pi\left(\dfrac12-\dfrac15\right)\\
   &=\dfrac{3\pi}{10}.
   \end{aligned}
   $$
@@ -3185,7 +3185,7 @@ title: 第三章 一元函数积分概念、计算及应用
   V
   &=\pi\int_0^1\left[(1-z)^2+z^2\right]dz\\
   &=\pi\int_0^1(1-2z+2z^2)\,dz\\
-  &=\pi\left[z-z^2+\frac23z^3\right]_0^1\\
+  &=\pi\left[z-z^2+\dfrac23z^3\right]_0^1\\
   &=\dfrac{2\pi}{3}.
   \end{aligned}
   $$
@@ -3309,7 +3309,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   球的半径为 $\displaystyle 1$，比重为 $\displaystyle 1$，故球的重量为
   $$
-  \displaystyle G=\frac43\pi.
+  \displaystyle G=\dfrac43\pi.
   $$
 
   当球心高度为 $\displaystyle h$ 时，球浸入水中的部分是高为
@@ -3337,7 +3337,7 @@ title: 第三章 一元函数积分概念、计算及应用
   &=\int_0^1F(h)\,dh\\
   &=\int_0^1\left[\dfrac{4\pi}{3}-\dfrac{\pi}{3}(2-3h+h^3)\right]dh\\
   &=\dfrac{\pi}{3}\int_0^1(2+3h-h^3)\,dh\\
-  &=\dfrac{\pi}{3}\left(2+\frac32-\frac14\right)\\
+  &=\dfrac{\pi}{3}\left(2+\dfrac32-\dfrac14\right)\\
   &=\dfrac{13\pi}{12}.
   \end{aligned}
   $$
@@ -3435,7 +3435,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   F
   &=km\mu\int_0^l\dfrac{dx}{(l+a-x)^2}\\
-  &=km\mu\left(\frac1a-\frac1{a+l}\right)\\
+  &=km\mu\left(\dfrac1a-\dfrac1{a+l}\right)\\
   &=\dfrac{km\mu l}{a(a+l)}.
   \end{aligned}
   $$
@@ -3561,7 +3561,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   由题意
   $$
-  \displaystyle \dfrac{a^3}{12}=\frac1{12},
+  \displaystyle \dfrac{a^3}{12}=\dfrac1{12},
   $$
   所以
   $$
@@ -3578,11 +3578,11 @@ title: 第三章 一元函数积分概念、计算及应用
 
   将所围图形绕 $\displaystyle x$ 轴旋转。对
   $$
-  \displaystyle 0\le x\le\frac12,
+  \displaystyle 0\le x\le\dfrac12,
   $$
   截面为半径 $\displaystyle x^2$ 的圆；对
   $$
-  \displaystyle \frac12\le x\le1,
+  \displaystyle \dfrac12\le x\le1,
   $$
   截面为外半径 $\displaystyle x^2$、内半径 $\displaystyle 2x-1$ 的圆环。因此
   $$
@@ -3590,7 +3590,7 @@ title: 第三章 一元函数积分概念、计算及应用
   V
   &=\pi\int_0^{\frac12}x^4\,dx
   +\pi\int_{\frac12}^{1}\left[x^4-(2x-1)^2\right]dx\\
-  &=\pi\left(\frac1{160}+\dfrac{13}{480}\right)\\
+  &=\pi\left(\dfrac1{160}+\dfrac{13}{480}\right)\\
   &=\dfrac{\pi}{30}.
   \end{aligned}
   $$
@@ -3757,7 +3757,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   因此
   $$
-  \displaystyle \frac12\left[F^2(x)\right]'=\sin^4x,
+  \displaystyle \dfrac12\left[F^2(x)\right]'=\sin^4x,
   $$
   从而
   $$
@@ -3782,8 +3782,8 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \bar f
   &=\dfrac{1}{\frac\pi2}\int_0^{\frac\pi2}f(x)\,dx\\
-  &=\frac2\pi F\left(\dfrac\pi2\right)\\
-  &=\frac2\pi\sqrt{\dfrac{3\pi}{8}}\\
+  &=\dfrac2\pi F\left(\dfrac\pi2\right)\\
+  &=\dfrac2\pi\sqrt{\dfrac{3\pi}{8}}\\
   &=\sqrt{\dfrac{3}{2\pi}}.
   \end{aligned}
   $$
@@ -3800,7 +3800,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   经过点 $\displaystyle P(1,2)$，且在该点与圆
   $$
-  \displaystyle \left(x-\frac12\right)^2+\left(y-\frac52\right)^2=\frac12
+  \displaystyle \left(x-\dfrac12\right)^2+\left(y-\dfrac52\right)^2=\dfrac12
   $$
   相切，有相同的曲率半径和凹凸性，求常数 $\displaystyle a,b,c$。
 
@@ -3821,12 +3821,12 @@ title: 第三章 一元函数积分概念、计算及应用
 
   圆的方程为
   $$
-  \displaystyle \left(x-\frac12\right)^2+\left(y-\frac52\right)^2=\frac12.
+  \displaystyle \left(x-\dfrac12\right)^2+\left(y-\dfrac52\right)^2=\dfrac12.
   $$
   两边对 $\displaystyle x$ 求导，得
   $$
-  \displaystyle 2\left(x-\frac12\right)
-  +2\left(y-\frac52\right)y'=0,
+  \displaystyle 2\left(x-\dfrac12\right)
+  +2\left(y-\dfrac52\right)y'=0,
   $$
   因此
   $$
@@ -3843,11 +3843,11 @@ title: 第三章 一元函数积分概念、计算及应用
 
   再对圆的一阶导数关系求导：
   $$
-  \displaystyle 1+(y')^2+\left(y-\frac52\right)y''=0.
+  \displaystyle 1+(y')^2+\left(y-\dfrac52\right)y''=0.
   $$
   在点 $\displaystyle P(1,2)$ 处，代入 $\displaystyle y'=1$，得
   $$
-  \displaystyle 1+1-\frac12y''=0,
+  \displaystyle 1+1-\dfrac12y''=0,
   $$
   故圆在该点的二阶导数为
   $$
@@ -3901,7 +3901,7 @@ title: 第三章 一元函数积分概念、计算及应用
   （Ⅰ）
   $$
   \displaystyle \int_1^a\dfrac{f(x^2)}x\,dx
-  =\frac12\int_1^{a^2}\dfrac{f(x)}x\,dx;
+  =\dfrac12\int_1^{a^2}\dfrac{f(x)}x\,dx;
   $$
 
   （Ⅱ）又设
@@ -3940,8 +3940,8 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int_1^a\dfrac{f(x^2)}x\,dx
-  &=\frac12\int_1^{a^2}\dfrac{f(u)}u\,du\\
-  &=\frac12\int_1^{a^2}\dfrac{f(x)}x\,dx.
+  &=\dfrac12\int_1^{a^2}\dfrac{f(u)}u\,du\\
+  &=\dfrac12\int_1^{a^2}\dfrac{f(x)}x\,dx.
   \end{aligned}
   $$
   故结论成立。
@@ -4022,7 +4022,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   上恒有
   $$
-  \displaystyle f(x)>\frac12f(x_0)>0.
+  \displaystyle f(x)>\dfrac12f(x_0)>0.
   $$
   该区间的长度为正，因此
   $$
@@ -4052,7 +4052,7 @@ title: 第三章 一元函数积分概念、计算及应用
   证明
   $$
   \displaystyle I_n=\int_0^{\frac\pi2}\cos^nx\sin(nx)\,dx
-  =\frac1{2^{n+1}}
+  =\dfrac1{2^{n+1}}
   \left(2+\dfrac{2^2}{2}+\dfrac{2^3}{3}+\cdots+\dfrac{2^n}{n}\right),
   $$
   其中 $\displaystyle n$ 为自然数。
@@ -4061,7 +4061,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle I_n=\frac1{2^{n+1}}\sum_{k=1}^n\dfrac{2^k}{k}.
+  \displaystyle I_n=\dfrac1{2^{n+1}}\sum_{k=1}^n\dfrac{2^k}{k}.
   $$
 
   </QuestionAnswer>
@@ -4075,37 +4075,37 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   e^{inx}\cos^nx
-  &=\frac1{2^n}e^{inx}(e^{ix}+e^{-ix})^n\\
-  &=\frac1{2^n}\sum_{k=0}^n\binom nk e^{2ikx}.
+  &=\dfrac1{2^n}e^{inx}(e^{ix}+e^{-ix})^n\\
+  &=\dfrac1{2^n}\sum_{k=0}^n\binom nk e^{2ikx}.
   \end{aligned}
   $$
   比较虚部，得
   $$
   \displaystyle \cos^nx\sin(nx)
-  =\frac1{2^n}\sum_{k=1}^n\binom nk\sin(2kx).
+  =\dfrac1{2^n}\sum_{k=1}^n\binom nk\sin(2kx).
   $$
   因此
   $$
   \displaystyle \begin{aligned}
   I_n
-  &=\frac1{2^n}\sum_{k=1}^n\binom nk
+  &=\dfrac1{2^n}\sum_{k=1}^n\binom nk
   \int_0^{\frac\pi2}\sin(2kx)\,dx\\
-  &=\frac1{2^n}\sum_{k=1}^n\binom nk
+  &=\dfrac1{2^n}\sum_{k=1}^n\binom nk
   \dfrac{1-(-1)^k}{2k}\\
-  &=\frac1{2^n}
+  &=\dfrac1{2^n}
   \sum_{\substack{1\le k\le n\\k\text{ 为奇数}}}
-  \frac1k\binom nk.
+  \dfrac1k\binom nk.
   \end{aligned}
   $$
   记
   $$
   \displaystyle A_n=
   \sum_{\substack{1\le k\le n\\k\text{ 为奇数}}}
-  \frac1k\binom nk.
+  \dfrac1k\binom nk.
   $$
   下面证明
   $$
-  \displaystyle A_n=\frac12\sum_{j=1}^n\dfrac{2^j}{j}.
+  \displaystyle A_n=\dfrac12\sum_{j=1}^n\dfrac{2^j}{j}.
   $$
 
   由帕斯卡公式
@@ -4117,8 +4117,8 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   A_n-A_{n-1}
   &=\sum_{\substack{1\le k\le n\\k\text{ 为奇数}}}
-  \frac1k\binom{n-1}{k-1}\\
-  &=\frac1n
+  \dfrac1k\binom{n-1}{k-1}\\
+  &=\dfrac1n
   \sum_{\substack{1\le k\le n\\k\text{ 为奇数}}}
   \binom nk.
   \end{aligned}
@@ -4140,15 +4140,15 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle A_n
   =1+\sum_{j=2}^n\dfrac{2^{j-1}}j
-  =\frac12\sum_{j=1}^n\dfrac{2^j}{j}.
+  =\dfrac12\sum_{j=1}^n\dfrac{2^j}{j}.
   $$
   于是
   $$
   \displaystyle \begin{aligned}
   I_n
   &=\dfrac{A_n}{2^n}\\
-  &=\frac1{2^{n+1}}\sum_{j=1}^n\dfrac{2^j}{j}\\
-  &=\frac1{2^{n+1}}
+  &=\dfrac1{2^{n+1}}\sum_{j=1}^n\dfrac{2^j}{j}\\
+  &=\dfrac1{2^{n+1}}
   \left(2+\dfrac{2^2}{2}+\dfrac{2^3}{3}+\cdots+\dfrac{2^n}{n}\right).
   \end{aligned}
   $$
@@ -4184,11 +4184,11 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   因此
   $$
-  \displaystyle I=\frac12\int_0^{2\pi}\dfrac{\sin t}{\sqrt t}\,dt.
+  \displaystyle I=\dfrac12\int_0^{2\pi}\dfrac{\sin t}{\sqrt t}\,dt.
   $$
   将积分区间分成 $\displaystyle [0,\pi]$ 与 $\displaystyle [\pi,2\pi]$：
   $$
-  \displaystyle I=\frac12\left(
+  \displaystyle I=\dfrac12\left(
   \int_0^\pi\dfrac{\sin t}{\sqrt t}\,dt
   +
   \int_\pi^{2\pi}\dfrac{\sin t}{\sqrt t}\,dt
@@ -4209,10 +4209,10 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   于是
   $$
-  \displaystyle I=\frac12\int_0^\pi
+  \displaystyle I=\dfrac12\int_0^\pi
   \sin t
   \left(
-  \frac1{\sqrt t}-\frac1{\sqrt{t+\pi}}
+  \dfrac1{\sqrt t}-\dfrac1{\sqrt{t+\pi}}
   \right)dt.
   $$
   当 $\displaystyle 0<t<\pi$ 时，
@@ -4221,7 +4221,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   且
   $$
-  \displaystyle \frac1{\sqrt t}-\frac1{\sqrt{t+\pi}}>0.
+  \displaystyle \dfrac1{\sqrt t}-\dfrac1{\sqrt{t+\pi}}>0.
   $$
   因此被积函数在 $\displaystyle (0,\pi)$ 上恒为正，从而
   $$
@@ -4315,7 +4315,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \int_0^{\frac\pi2}\ln\sin2x\,dx
-  =\frac12\int_0^\pi\ln\sin t\,dt.
+  =\dfrac12\int_0^\pi\ln\sin t\,dt.
   $$
 
   再将区间分成两部分：
@@ -4381,7 +4381,7 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   2I
   &=\int_0^{\frac\pi2}\ln(\sin x\cos x)\,dx\\
-  &=\int_0^{\frac\pi2}\ln\left(\frac12\sin2x\right)dx\\
+  &=\int_0^{\frac\pi2}\ln\left(\dfrac12\sin2x\right)dx\\
   &=\int_0^{\frac\pi2}\ln\sin2x\,dx
   -\dfrac\pi2\ln2.
   \end{aligned}
@@ -4413,7 +4413,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   证明
   $$
-  \displaystyle \left|\int_n^{n+p}\sin(x^2)\,dx\right|\le\frac1n,
+  \displaystyle \left|\int_n^{n+p}\sin(x^2)\,dx\right|\le\dfrac1n,
   \qquad p>0.
   $$
 
@@ -4421,7 +4421,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \left|\int_n^{n+p}\sin(x^2)\,dx\right|\le\frac1n.
+  \displaystyle \left|\int_n^{n+p}\sin(x^2)\,dx\right|\le\dfrac1n.
   $$
 
   </QuestionAnswer>
@@ -4436,7 +4436,7 @@ title: 第三章 一元函数积分概念、计算及应用
   可写成
 
   $$
-  \displaystyle \sin(x^2)\,dx=-\frac1{2x}\,d(\cos x^2).
+  \displaystyle \sin(x^2)\,dx=-\dfrac1{2x}\,d(\cos x^2).
   $$
 
   因此分部积分得
@@ -4444,7 +4444,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \begin{aligned}
   \int_n^{n+p}\sin(x^2)\,dx
-  &=-\int_n^{n+p}\frac1{2x}\,d(\cos x^2)\\
+  &=-\int_n^{n+p}\dfrac1{2x}\,d(\cos x^2)\\
   &=\left.-\dfrac{\cos x^2}{2x}\right|_n^{n+p}
   -\int_n^{n+p}\dfrac{\cos x^2}{2x^2}\,dx.
   \end{aligned}
@@ -4456,12 +4456,12 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   \left|\int_n^{n+p}\sin(x^2)\,dx\right|
   &\le
-  \frac1{2(n+p)}+\frac1{2n}
+  \dfrac1{2(n+p)}+\dfrac1{2n}
   +\int_n^{n+p}\dfrac{dx}{2x^2}\\
   &=
-  \frac1{2(n+p)}+\frac1{2n}
-  +\frac12\left(\frac1n-\frac1{n+p}\right)\\
-  &=\frac1n.
+  \dfrac1{2(n+p)}+\dfrac1{2n}
+  +\dfrac12\left(\dfrac1n-\dfrac1{n+p}\right)\\
+  &=\dfrac1n.
   \end{aligned}
   $$
 
@@ -4608,7 +4608,7 @@ title: 第三章 一元函数积分概念、计算及应用
   S_2
   &=\left|\int_1^3a(x-1)(x-3)\,dx\right|\\
   &=|a|\left|\left[\dfrac{x^3}{3}-2x^2+3x\right]_1^3\right|\\
-  &=|a|\left|0-\frac43\right|\\
+  &=|a|\left|0-\dfrac43\right|\\
   &=\dfrac{4|a|}{3}.
   \end{aligned}
   $$
@@ -4633,7 +4633,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   $\displaystyle M$ 为正的常数，求证：
   $$
-  \displaystyle \left|\int_0^1f(x)\,dx-\frac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|
+  \displaystyle \left|\int_0^1f(x)\,dx-\dfrac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|
   \le\dfrac M{2n}.
   $$
 
@@ -4641,7 +4641,7 @@ title: 第三章 一元函数积分概念、计算及应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \left|\int_0^1f(x)\,dx-\frac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|
+  \displaystyle \left|\int_0^1f(x)\,dx-\dfrac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|
   \le\dfrac M{2n}.
   $$
 
@@ -4660,7 +4660,7 @@ title: 第三章 一元函数积分概念、计算及应用
   同时，
 
   $$
-  \displaystyle \frac1n\sum_{k=1}^nf\left(\dfrac kn\right)
+  \displaystyle \dfrac1n\sum_{k=1}^nf\left(\dfrac kn\right)
   =
   \sum_{k=1}^n
   \int_{\frac{k-1}{n}}^{\frac kn}
@@ -4671,7 +4671,7 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \begin{aligned}
-  &\left|\int_0^1f(x)\,dx-\frac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|\\
+  &\left|\int_0^1f(x)\,dx-\dfrac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|\\
   &\quad=
   \left|
   \sum_{k=1}^n
@@ -4709,13 +4709,13 @@ title: 第三章 一元函数积分概念、计算及应用
 
   $$
   \displaystyle \begin{aligned}
-  &\left|\int_0^1f(x)\,dx-\frac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|\\
+  &\left|\int_0^1f(x)\,dx-\dfrac1n\sum_{k=1}^nf\left(\dfrac kn\right)\right|\\
   &\quad\le
   M\sum_{k=1}^n
   \int_{\frac{k-1}{n}}^{\frac kn}
   \left(\dfrac kn-x\right)dx\\
   &\quad=
-  M\sum_{k=1}^n\frac1{2n^2}\\
+  M\sum_{k=1}^n\dfrac1{2n^2}\\
   &\quad=\dfrac M{2n}.
   \end{aligned}
   $$
@@ -4812,7 +4812,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \max_{[a,b]}|f(x)|
   \le
-  \frac1{b-a}\left|\int_a^bf(x)\,dx\right|
+  \dfrac1{b-a}\left|\int_a^bf(x)\,dx\right|
   +\int_a^b|f'(x)|\,dx.
   $$
 
@@ -4822,7 +4822,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \max_{[a,b]}|f(x)|
   \le
-  \frac1{b-a}\left|\int_a^bf(x)\,dx\right|
+  \dfrac1{b-a}\left|\int_a^bf(x)\,dx\right|
   +\int_a^b|f'(x)|\,dx.
   $$
 
@@ -4840,9 +4840,9 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle f(x)
   =
-  \frac1{b-a}\int_a^bf(t)\,dt
+  \dfrac1{b-a}\int_a^bf(t)\,dt
   +
-  \frac1{b-a}\int_a^b\bigl[f(x)-f(t)\bigr]dt.
+  \dfrac1{b-a}\int_a^b\bigl[f(x)-f(t)\bigr]dt.
   $$
 
   两边取绝对值，得
@@ -4851,9 +4851,9 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   |f(x)|
   &\le
-  \frac1{b-a}\left|\int_a^bf(t)\,dt\right|
+  \dfrac1{b-a}\left|\int_a^bf(t)\,dt\right|
   +
-  \frac1{b-a}\int_a^b|f(x)-f(t)|\,dt.
+  \dfrac1{b-a}\int_a^b|f(x)-f(t)|\,dt.
   \end{aligned}
   $$
 
@@ -4873,12 +4873,12 @@ title: 第三章 一元函数积分概念、计算及应用
   \displaystyle \begin{aligned}
   |f(x)|
   &\le
-  \frac1{b-a}\left|\int_a^bf(t)\,dt\right|
+  \dfrac1{b-a}\left|\int_a^bf(t)\,dt\right|
   +
-  \frac1{b-a}\int_a^b
+  \dfrac1{b-a}\int_a^b
   \left(\int_a^b|f'(u)|\,du\right)dt\\
   &=
-  \frac1{b-a}\left|\int_a^bf(t)\,dt\right|
+  \dfrac1{b-a}\left|\int_a^bf(t)\,dt\right|
   +
   \int_a^b|f'(u)|\,du.
   \end{aligned}
@@ -4889,7 +4889,7 @@ title: 第三章 一元函数积分概念、计算及应用
   $$
   \displaystyle \max_{[a,b]}|f(x)|
   \le
-  \frac1{b-a}\left|\int_a^bf(x)\,dx\right|
+  \dfrac1{b-a}\left|\int_a^bf(x)\,dx\right|
   +
   \int_a^b|f'(x)|\,dx.
   $$

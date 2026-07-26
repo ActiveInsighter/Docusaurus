@@ -317,12 +317,12 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   I
   &=\int_{-\frac{\pi}{2}}^0
   \dfrac{dt}{(\cos t-\sin t)^2}\\
-  &=\frac12\int_{-\frac{\pi}{2}}^0
+  &=\dfrac12\int_{-\frac{\pi}{2}}^0
   \sec^2\left(t+\dfrac{\pi}{4}\right)dt\\
-  &=\frac12\left.
+  &=\dfrac12\left.
   \tan\left(t+\dfrac{\pi}{4}\right)
   \right|_{-\frac{\pi}{2}}^0\\
-  &=\frac12\left(1-(-1)\right)=1.
+  &=\dfrac12\left(1-(-1)\right)=1.
   \end{aligned}
   $$
 
@@ -345,7 +345,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   <QuestionAnswer>
 
   $$
-  \displaystyle \frac12\ln\dfrac{1+b^2}{(a-1)^2}
+  \displaystyle \dfrac12\ln\dfrac{1+b^2}{(a-1)^2}
   =\ln\dfrac{\sqrt{1+b^2}}{|a-1|}.
   $$
 
@@ -354,7 +354,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
 
   注意到
   $$
-  \displaystyle d\left[\frac12\ln\bigl((x-1)^2+y^2\bigr)\right]
+  \displaystyle d\left[\dfrac12\ln\bigl((x-1)^2+y^2\bigr)\right]
   =\dfrac{(x-1)\,dx+y\,dy}{(x-1)^2+y^2}.
   $$
 
@@ -362,9 +362,9 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   $$
   \displaystyle \begin{aligned}
   I
-  &=\left.\frac12\ln\bigl((x-1)^2+y^2\bigr)\right|_{(a,0)}^{(0,b)}\\
-  &=\frac12\ln(1+b^2)-\frac12\ln(a-1)^2\\
-  &=\frac12\ln\dfrac{1+b^2}{(a-1)^2}.
+  &=\left.\dfrac12\ln\bigl((x-1)^2+y^2\bigr)\right|_{(a,0)}^{(0,b)}\\
+  &=\dfrac12\ln(1+b^2)-\dfrac12\ln(a-1)^2\\
+  &=\dfrac12\ln\dfrac{1+b^2}{(a-1)^2}.
   \end{aligned}
   $$
 
@@ -414,7 +414,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   第一部分为全微分：
   $$
   \displaystyle \dfrac{x\,dx+y\,dy}{x^2+y^2}
-  =d\left(\frac12\ln(x^2+y^2)\right).
+  =d\left(\dfrac12\ln(x^2+y^2)\right).
   $$
   由于 $\displaystyle L$ 是闭曲线，故
   $$
@@ -479,7 +479,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   <QuestionAnswer>
 
   $$
-  \displaystyle e^{a\pi}\sin(2a)-\left(2m+\frac32\right)\pi a^2.
+  \displaystyle e^{a\pi}\sin(2a)-\left(2m+\dfrac32\right)\pi a^2.
   $$
 
   </QuestionAnswer>
@@ -529,7 +529,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   &=a^2\int_0^\pi(1-\cos t)^2\,dt\\
   &=a^2\int_0^\pi\left(1-2\cos t+\cos^2t\right)dt\\
   &=a^2\left(\pi+\dfrac\pi2\right)\\
-  &=\frac32\pi a^2.
+  &=\dfrac32\pi a^2.
   \end{aligned}
   $$
 
@@ -537,8 +537,8 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   $$
   \displaystyle \begin{aligned}
   I
-  &=e^{a\pi}\sin(2a)-2m\pi a^2-\frac32\pi a^2\\
-  &=e^{a\pi}\sin(2a)-\left(2m+\frac32\right)\pi a^2.
+  &=e^{a\pi}\sin(2a)-2m\pi a^2-\dfrac32\pi a^2\\
+  &=e^{a\pi}\sin(2a)-\left(2m+\dfrac32\right)\pi a^2.
   \end{aligned}
   $$
 
@@ -729,14 +729,14 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   $$
   其中
   $$
-  \displaystyle \int_0^1(z+1)\,dz=\frac32,
+  \displaystyle \int_0^1(z+1)\,dz=\dfrac32,
   \qquad
   \int_{-\frac\pi2}^{\frac\pi2}\cos^2\theta\,d\theta=\dfrac\pi2,
   $$
   且令 $\displaystyle u=\sin\theta$，得
   $$
   \displaystyle \int_{-\frac\pi2}^{\frac\pi2}\cos\theta\sin^2\theta\,d\theta
-  =\int_{-1}^1u^2\,du=\frac23.
+  =\int_{-1}^1u^2\,du=\dfrac23.
   $$
   故
   $$
@@ -1086,7 +1086,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   因此
   $$
   \displaystyle f(x^2+y^2)(x\,dx+y\,dy)
-  =\frac12f(u)\,du.
+  =\dfrac12f(u)\,du.
   $$
   取 $\displaystyle f(u)$ 的一个原函数为 $\displaystyle F(u)$，即
   $$
@@ -1095,13 +1095,13 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   则
   $$
   \displaystyle f(x^2+y^2)(x\,dx+y\,dy)
-  =d\left[\frac12F(x^2+y^2)\right].
+  =d\left[\dfrac12F(x^2+y^2)\right].
   $$
   所以被积表达式在全平面上是某个函数的全微分，曲线积分只与起点、终点有关，而与路径无关。
 
   也可取原函数
   $$
-  \displaystyle U(x,y)=\frac12\int_0^{x^2+y^2}f(t)\,dt.
+  \displaystyle U(x,y)=\dfrac12\int_0^{x^2+y^2}f(t)\,dt.
   $$
 
   （Ⅱ）记
@@ -1314,7 +1314,7 @@ title: 第十章 多元函数积分学中的基本公式及其应用
   其中第一项为
   $$
   \displaystyle \dfrac{x\,dx+y\,dy}{x^2+y^2}
-  =d\left(\frac12\ln(x^2+y^2)\right),
+  =d\left(\dfrac12\ln(x^2+y^2)\right),
   $$
   第二项在局部等于 $\displaystyle d\theta$，但在去心平面 $\displaystyle D$ 内不存在单值的全局辐角函数。
 
@@ -1611,12 +1611,12 @@ title: 第十章 多元函数积分学中的基本公式及其应用
 
   也可从势函数看出：当 $\displaystyle r\ne0$ 时，
   $$
-  \displaystyle \nabla\left(\frac1r\right)
+  \displaystyle \nabla\left(\dfrac1r\right)
   =-\dfrac{\mathbf r}{r^3},
   $$
   从而
   $$
-  \displaystyle \mathbf E=-q\nabla\left(\frac1r\right).
+  \displaystyle \mathbf E=-q\nabla\left(\dfrac1r\right).
   $$
   因此 $\displaystyle \mathbf E$ 是梯度场，其旋度必为零。
 
