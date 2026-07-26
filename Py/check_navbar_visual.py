@@ -17,7 +17,7 @@ DOC_PATH = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Verify the unified glass navbar, restored Docusaurus sidebars, "
+            "Verify the transparent navbar, official Docusaurus sidebars, "
             "stable controls, and overflow-safe desktop/mobile layouts."
         )
     )
@@ -54,11 +54,6 @@ def px(value: str) -> float:
     return float(match.group(0)) if match is not None else 0.0
 
 
-def blur_radius(value: str) -> float:
-    match = re.search(r"blur\(([\d.]+)px\)", value)
-    return float(match.group(1)) if match is not None else 0.0
-
-
 def font_weight(value: str) -> float:
     aliases = {"normal": 400.0, "bold": 700.0}
     if value in aliases:
@@ -78,7 +73,9 @@ def read_ui_state(page: Page) -> dict[str, Any]:
           const inner = document.querySelector('.navbar__inner');
           const main = document.querySelector('.main-wrapper');
           const sidebar = document.querySelector('.theme-doc-sidebar-container');
-          const sidebarViewport = sidebar?.firstElementChild;
+          const sidebarViewport =
+            sidebar?.querySelector(':scope > [class*="sidebarViewport"]') ??
+            sidebar?.firstElementChild;
           const sidebarMenu = sidebar?.querySelector('.menu');
           const toc = document.querySelector('.theme-doc-toc-desktop');
           const tocContent = toc?.firstElementChild;
@@ -225,6 +222,7 @@ def read_ui_state(page: Page) -> dict[str, Any]:
 def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     viewport = state["viewport"]
     navbar = state["navbar"]
+    navbar_material = state["navbarMaterial"]
     sidebar_box = state["sidebarBox"]
     sidebar_viewport = state["sidebarViewport"]
     toc_box = state["tocBox"]
@@ -247,12 +245,33 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
     )
     assert navbar["pointerEvents"] == "auto", f"{theme}: navbar is not interactive"
     assert navbar["transform"] == "none", f"{theme}: navbar uses a transform"
+    assert_transparent(navbar["background"], f"{theme}: navbar is not transparent")
+    assert navbar["borderWidth"] == "0px", f"{theme}: navbar has a border"
+    assert navbar["boxShadow"] == "none", f"{theme}: navbar has a shadow"
+    assert navbar["backdropFilter"] in ("", "none"), (
+        f"{theme}: navbar still applies a backdrop filter: "
+        f"{navbar['backdropFilter']}"
+    )
+    assert_transparent(
+        navbar_material["background"],
+        f"{theme}: navbar pseudo-element is not transparent",
+    )
+    assert navbar_material["borderBottomWidth"] == "0px", (
+        f"{theme}: navbar pseudo-element has a border"
+    )
+    assert navbar_material["boxShadow"] == "none", (
+        f"{theme}: navbar pseudo-element has a shadow"
+    )
+    assert navbar_material["backdropFilter"] in ("", "none"), (
+        f"{theme}: navbar pseudo-element still applies a backdrop filter: "
+        f"{navbar_material['backdropFilter']}"
+    )
     assert state["brandText"] == "首页", (
         f"{theme}: navbar brand is not localized: {state['brandText']!r}"
     )
 
-    assert sidebar_viewport["position"] == "fixed", (
-        f"{theme}: left sidebar viewport is not fixed"
+    assert sidebar_viewport["position"] == "sticky", (
+        f"{theme}: left sidebar viewport is not sticky"
     )
     assert float(sidebar_viewport["top"]) <= 1.0, (
         f"{theme}: left sidebar viewport does not start at top: "
@@ -262,12 +281,13 @@ def assert_ui_state(state: dict[str, Any], theme: str) -> None:
         f"{theme}: left sidebar viewport is not full height: "
         f"{sidebar_viewport['height']}"
     )
-    assert sidebar_box["overflowX"] == "hidden", (
-        f"{theme}: left sidebar does not suppress horizontal overflow"
-    )
-    assert sidebar_viewport["overflowX"] == "hidden", (
-        f"{theme}: left sidebar viewport can show a horizontal scrollbar"
-    )
+    for name, element in (
+        ("left sidebar", sidebar_box),
+        ("left sidebar viewport", sidebar_viewport),
+    ):
+        assert int(element["scrollWidth"]) <= int(element["clientWidth"]) + 1, (
+            f"{theme}: {name} has horizontal overflow"
+        )
     assert float(sidebar["first"]["top"]) >= float(navbar["bottom"]) + 4.0, (
         f"{theme}: left sidebar content overlaps the navbar: "
         f"{sidebar['first']['top']}"
@@ -384,23 +404,6 @@ def verify_hover_stability(page: Page, theme: str) -> dict[str, Any]:
     return {"targetText": target.inner_text().strip(), "before": before, "after": after}
 
 
-def verify_sidebar_bottom_stability(page: Page, theme: str) -> dict[str, Any]:
-    before = read_ui_state(page)
-    page.evaluate("window.scrollTo(0, document.documentElement.scrollHeight)")
-    page.wait_for_timeout(450)
-    after = read_ui_state(page)
-
-    for key in ("top", "bottom", "height"):
-        assert abs(
-            float(before["sidebarViewport"][key])
-            - float(after["sidebarViewport"][key])
-        ) <= 0.5, f"{theme}: sidebar viewport moved at document bottom ({key})"
-
-    page.evaluate("window.scrollTo(0, 620)")
-    page.wait_for_timeout(300)
-    return {"before": before["sidebarViewport"], "after": after["sidebarViewport"]}
-
-
 def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
     page.evaluate(
         """theme => {
@@ -428,9 +431,8 @@ def capture_theme(page: Page, output_dir: Path, theme: str) -> dict[str, Any]:
         full_page=False,
     )
     page.mouse.move(900, 650)
-    sidebar_bottom = verify_sidebar_bottom_stability(page, theme)
 
-    result = {"state": state, "hover": hover, "sidebarBottom": sidebar_bottom}
+    result = {"state": state, "hover": hover}
     diagnostics_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

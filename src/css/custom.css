@@ -827,35 +827,3 @@ pre code,
     padding-inline: 0.72rem;
   }
 }
-
-/* Keep the desktop docs sidebar independent from the document's bottom
- * boundary. The outer column still reserves layout width; only its viewport
- * is fixed, so reaching the footer cannot nudge the menu vertically. */
-@media (min-width: 997px) {
-  .theme-doc-sidebar-container {
-    position: relative;
-    min-width: var(--doc-sidebar-width, 300px);
-    overflow-x: hidden;
-  }
-
-  .theme-doc-sidebar-container:not([class*='sidebarHidden'])
-    > :first-child {
-    position: fixed !important;
-    inset: 0 auto 0 0;
-    width: var(--doc-sidebar-width, 300px);
-    height: 100dvh !important;
-    max-height: 100dvh !important;
-    overflow-x: hidden;
-  }
-
-  .theme-doc-sidebar-container:not([class*='sidebarHidden'])
-    > :first-child
-    .menu {
-    height: 100%;
-    max-height: 100dvh;
-    padding-top: calc(var(--ifm-navbar-height) + 0.75rem);
-    padding-bottom: 1rem;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-  }
-}

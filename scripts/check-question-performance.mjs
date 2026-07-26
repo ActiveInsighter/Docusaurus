@@ -4,10 +4,10 @@ import {fileURLToPath} from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath) => fs.readFile(path.join(root, relativePath), 'utf8');
-const [component, styles, globalStyles] = await Promise.all([
+const [component, styles, sidebarStyles] = await Promise.all([
   read('src/components/Question/index.tsx'),
   read('src/components/Question/styles.module.css'),
-  read('src/css/custom.css'),
+  read('src/theme/DocRoot/Layout/Sidebar/styles.module.css'),
 ]);
 
 for (const [label, pattern] of [
@@ -40,8 +40,14 @@ if (!styles.includes('@container question-body (min-width: 48rem)')) {
 if (styles.includes('grid-template-rows')) {
   throw new Error('Analysis still animates layout through grid-template-rows');
 }
-if (!globalStyles.includes('Keep the desktop docs sidebar independent')) {
-  throw new Error('Stable desktop sidebar override is missing');
+for (const required of [
+  '.docSidebarContainerHidden',
+  'position: sticky !important',
+  'overflow-x: visible !important',
+]) {
+  if (!sidebarStyles.includes(required)) {
+    throw new Error(`Official desktop sidebar guard missing: ${required}`);
+  }
 }
 
-console.log('题目组件性能守卫通过：解析延迟挂载、CSS 分栏、无同步 DOM 测量、侧栏固定视口');
+console.log('题目组件性能守卫通过：解析延迟挂载、CSS 分栏、无同步 DOM 测量、官方 sticky 侧栏');
