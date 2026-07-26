@@ -11,15 +11,24 @@ const generatedMarker =
 const books = [
   {
     subject: '高等数学',
-    sourceFile: '李正元练习题-高等数学-第1至11章-完整版-美元公式版.md',
+    sourceFiles: [
+      '李正元练习题-高等数学-第1至5章-公式格式化.md',
+      '李正元练习题-高等数学-第6至11章-公式格式化.md',
+    ],
     sourceLabel: '李正元练习题·高等数学',
     position: 1,
   },
   {
-    subject: '概率论与数理统计',
-    sourceFile: '李正元练习题-概率论与数理统计-第1至7章-完整版-美元公式版.md',
-    sourceLabel: '李正元练习题·概率论与数理统计',
+    subject: '线性代数',
+    sourceFiles: ['李正元练习题-线性代数-公式格式化.md'],
+    sourceLabel: '李正元练习题·线性代数',
     position: 2,
+  },
+  {
+    subject: '概率论与数理统计',
+    sourceFiles: ['李正元练习题-概率论与数理统计-公式格式化.md'],
+    sourceLabel: '李正元练习题·概率论与数理统计',
+    position: 3,
   },
 ];
 
@@ -55,6 +64,9 @@ function cleanLines(lines) {
       value !== '<br/>' &&
       value !== '<br />' &&
       value !== '---' &&
+      value !== '<details>' &&
+      value !== '</details>' &&
+      !/^<summary>.*<\/summary>$/u.test(value) &&
       !/^<!--.*-->$/u.test(value)
     );
   });
@@ -172,6 +184,29 @@ function renderBlock(name, lines, indentation = '  ') {
     .map((line) => (line === '' ? '' : `${indentation}${line}`))
     .join('\n');
   return `${indentation}<${name}>\n\n${content}\n\n${indentation}</${name}>`;
+}
+
+function renderAnswerDetails(answerLines, analysisLines) {
+  if (answerLines.length === 0 && analysisLines.length === 0) return '';
+
+  const lines = ['  <details>', '  <summary>查看答案与解析</summary>'];
+
+  if (answerLines.length > 0) {
+    lines.push('', '  **答案**', '');
+    lines.push(
+      ...answerLines.map((line) => (line === '' ? '' : `  ${line}`)),
+    );
+  }
+
+  if (analysisLines.length > 0) {
+    lines.push('', '  **解析**', '');
+    lines.push(
+      ...analysisLines.map((line) => (line === '' ? '' : `  ${line}`)),
+    );
+  }
+
+  lines.push('', '  </details>');
+  return lines.join('\n');
 }
 
 function renderQuestion(question, sourceLabel) {
@@ -298,11 +333,8 @@ function renderQuestion(question, sourceLabel) {
     parts.push('  </QuestionOptions>');
   }
 
-  const renderedAnswer = renderBlock('QuestionAnswer', answerLines);
-  if (renderedAnswer) parts.push(renderedAnswer);
-
-  const renderedAnalysis = renderBlock('QuestionAnalysis', analysisLines);
-  if (renderedAnalysis) parts.push(renderedAnalysis);
+  const renderedDetails = renderAnswerDetails(answerLines, analysisLines);
+  if (renderedDetails) parts.push(renderedDetails);
 
   parts.push('</Question>');
   return parts.join('\n');
@@ -423,9 +455,13 @@ async function writeJson(filePath, value) {
 }
 
 async function convertBook(book) {
-  const sourcePath = path.join(sourceRoot, book.sourceFile);
   const outputDirectory = path.join(docsRoot, book.subject);
-  const content = await fs.readFile(sourcePath, 'utf8');
+  const contents = await Promise.all(
+    book.sourceFiles.map((sourceFile) =>
+      fs.readFile(path.join(sourceRoot, sourceFile), 'utf8'),
+    ),
+  );
+  const content = contents.join('\n\n');
   const chapters = splitChapters(content);
 
   await fs.mkdir(outputDirectory, {recursive: true});

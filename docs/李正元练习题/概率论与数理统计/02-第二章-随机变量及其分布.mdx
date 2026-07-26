@@ -17,7 +17,7 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle F(x)=\begin{cases}
   0,&x<0,\\
-  \dfrac12,&0\le x<1,\\
+  \frac12,&0\le x<1,\\
   1-e^{-x},&x\ge1,
   \end{cases}
   $$
@@ -33,12 +33,12 @@ title: 第二章 随机变量及其分布
     </QuestionOption>
     <QuestionOption>
 
-      B. $\displaystyle \dfrac12$；
+      B. $\displaystyle \frac12$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      C. $\displaystyle \dfrac12-e^{-1}$；
+      C. $\displaystyle \frac12-e^{-1}$；
 
     </QuestionOption>
     <QuestionOption>
@@ -47,12 +47,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （C）$\displaystyle \dfrac12-e^{-1}$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   分布函数在点 $\displaystyle x=1$ 处的跳跃大小就是随机变量在该点取得的概率，即
 
@@ -63,18 +65,18 @@ title: 第二章 随机变量及其分布
   由题给分布函数，
 
   $$
-  \displaystyle F(1)=1-e^{-1},\qquad F(1-)=\dfrac12.
+  \displaystyle F(1)=1-e^{-1},\qquad F(1-)=\frac12.
   $$
 
   因此
 
   $$
-  \displaystyle P\{X=1\}=1-e^{-1}-\dfrac12=\dfrac12-e^{-1}.
+  \displaystyle P\{X=1\}=1-e^{-1}-\frac12=\frac12-e^{-1}.
   $$
 
   故选（C）。选项（A）忽略了 $\displaystyle F(x)$ 在 $\displaystyle x=1$ 处的跳跃；（B）、（D）分别只取了跳跃前或跳跃后的函数值，均不是单点概率。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="2" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -86,12 +88,12 @@ title: 第二章 随机变量及其分布
   <QuestionOptions>
     <QuestionOption>
 
-      A. $\displaystyle p=\dfrac1{c-1}$；
+      A. $\displaystyle p=\frac1{c-1}$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      B. $\displaystyle p=\dfrac1{c+1}$；
+      B. $\displaystyle p=\frac1{c+1}$；
 
     </QuestionOption>
     <QuestionOption>
@@ -105,12 +107,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （B）$\displaystyle p=\dfrac1{c+1}$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   概率分布必须满足所有概率之和为 $\displaystyle 1$。由于
 
@@ -132,12 +136,12 @@ title: 第二章 随机变量及其分布
   \qquad
   p(c+1)=1,
   \qquad
-  p=\dfrac1{c+1}.
+  p=\frac1{c+1}.
   $$
 
   因为 $\displaystyle c>0$，所以所得 $\displaystyle p$ 自动满足 $\displaystyle 0<p<1$。故选（B）。选项（D）只给出了收敛条件，没有满足概率总和为 $\displaystyle 1$ 的归一化条件。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="3" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -168,12 +172,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （D）恰好有一个间断点。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设 $\displaystyle X$ 服从参数为 $\displaystyle \lambda>0$ 的指数分布，则
 
@@ -211,7 +217,7 @@ title: 第二章 随机变量及其分布
 
   故选（D）。由于 $\displaystyle Y$ 在 $\displaystyle [0,2)$ 上还含有连续分布部分，因此其分布函数不是阶梯函数。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="4" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -242,12 +248,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （A）可积函数。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   概率密度必须满足
 
@@ -259,7 +267,7 @@ title: 第二章 随机变量及其分布
 
   因此 $\displaystyle f(x)$ 在整个实数轴上一定可积。概率密度不要求单调、连续或可导，例如均匀分布的密度在区间端点处可以不连续，分段定义的密度也可能不可导。故选（A）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="5" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -271,12 +279,12 @@ title: 第二章 随机变量及其分布
   <QuestionOptions>
     <QuestionOption>
 
-      A. $\displaystyle \dfrac1{e-1}$；
+      A. $\displaystyle \frac1{e-1}$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      B. $\displaystyle \dfrac1{e+1}$；
+      B. $\displaystyle \frac1{e+1}$；
 
     </QuestionOption>
     <QuestionOption>
@@ -290,24 +298,26 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （B）$\displaystyle \dfrac1{e+1}$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   利用概率归一化条件，
 
   $$
   \displaystyle \sum_{k=0}^{\infty}P\{X=k\}
-  =a(1+e^{-1})\sum_{k=0}^{\infty}\dfrac1{k!}=1.
+  =a(1+e^{-1})\sum_{k=0}^{\infty}\frac1{k!}=1.
   $$
 
   由指数函数的幂级数展开，
 
   $$
-  \displaystyle \sum_{k=0}^{\infty}\dfrac1{k!}=e.
+  \displaystyle \sum_{k=0}^{\infty}\frac1{k!}=e.
   $$
 
   于是
@@ -319,12 +329,12 @@ title: 第二章 随机变量及其分布
   从而
 
   $$
-  \displaystyle a=\dfrac1{e+1}.
+  \displaystyle a=\frac1{e+1}.
   $$
 
   故选（B）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="6" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -355,12 +365,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （C）保持不变。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对 $\displaystyle X$ 标准化，令
 
@@ -378,7 +390,7 @@ title: 第二章 随机变量及其分布
 
   右端只与标准正态分布有关，与 $\displaystyle \sigma$ 无关。因此无论 $\displaystyle \sigma$ 如何变化，该概率都保持不变，故选（C）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="7" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -409,12 +421,14 @@ title: 第二章 随机变量及其分布
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （A）$\displaystyle p_1=p_2$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对两个随机变量分别标准化。对于 $\displaystyle X$，
 
@@ -442,7 +456,7 @@ title: 第二章 随机变量及其分布
 
   两者的大小与 $\displaystyle \mu$ 无关，故选（A）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="8" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -454,31 +468,33 @@ title: 第二章 随机变量及其分布
   <QuestionOptions>
     <QuestionOption>
 
-      A. $\displaystyle -\dfrac12f_X\left(-\dfrac{y-3}{2}\right)$；
+      A. $\displaystyle -\frac12f_X\left(-\dfrac{y-3}{2}\right)$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      B. $\displaystyle \dfrac12f_X\left(-\dfrac{y-3}{2}\right)$；
+      B. $\displaystyle \frac12f_X\left(-\dfrac{y-3}{2}\right)$；
 
     </QuestionOption>
     <QuestionOption>
 
-      C. $\displaystyle -\dfrac12f_X\left(-\dfrac{y+3}{2}\right)$；
+      C. $\displaystyle -\frac12f_X\left(-\dfrac{y+3}{2}\right)$；
 
     </QuestionOption>
     <QuestionOption>
 
-      D. $\displaystyle \dfrac12f_X\left(-\dfrac{y+3}{2}\right)$。
+      D. $\displaystyle \frac12f_X\left(-\dfrac{y+3}{2}\right)$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （B）$\displaystyle \dfrac12f_X\left(-\dfrac{y-3}{2}\right)$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   线性变换
 
@@ -498,18 +514,18 @@ title: 第二章 随机变量及其分布
   \displaystyle f_Y(y)
   =f_X\left(\dfrac{3-y}{2}\right)
   \left|\dfrac{d}{dy}\left(\dfrac{3-y}{2}\right)\right|
-  =\dfrac12f_X\left(\dfrac{3-y}{2}\right).
+  =\frac12f_X\left(\dfrac{3-y}{2}\right).
   $$
 
   即
 
   $$
-  \displaystyle f_Y(y)=\dfrac12f_X\left(-\dfrac{y-3}{2}\right).
+  \displaystyle f_Y(y)=\frac12f_X\left(-\dfrac{y-3}{2}\right).
   $$
 
   绝对值保证密度前的系数非负，因此（A）、（C）不可能；（D）的平移符号错误。故选（B）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="9" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -521,31 +537,33 @@ title: 第二章 随机变量及其分布
   <QuestionOptions>
     <QuestionOption correct>
 
-      A. $\displaystyle a=\dfrac35,b=-\dfrac25$；
+      A. $\displaystyle a=\frac35,b=-\frac25$；
 
     </QuestionOption>
     <QuestionOption>
 
-      B. $\displaystyle a=\dfrac23,b=\dfrac23$；
+      B. $\displaystyle a=\frac23,b=\frac23$；
 
     </QuestionOption>
     <QuestionOption>
 
-      C. $\displaystyle a=-\dfrac12,b=\dfrac32$；
+      C. $\displaystyle a=-\frac12,b=\frac32$；
 
     </QuestionOption>
     <QuestionOption>
 
-      D. $\displaystyle a=\dfrac12,b=-\dfrac32$。
+      D. $\displaystyle a=\frac12,b=-\frac32$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （A）$\displaystyle a=\dfrac35,b=-\dfrac25$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   任意两个分布函数的凸组合
 
@@ -578,17 +596,17 @@ title: 第二章 随机变量及其分布
   对选项（A），
 
   $$
-  \displaystyle a=\dfrac35,
+  \displaystyle a=\frac35,
   \qquad
-  -b=\dfrac25,
+  -b=\frac25,
   \qquad
-  \dfrac35+\dfrac25=1,
+  \frac35+\frac25=1,
   $$
 
   故
 
   $$
-  \displaystyle F(x)=\dfrac35F_1(x)+\dfrac25F_2(x)
+  \displaystyle F(x)=\frac35F_1(x)+\frac25F_2(x)
   $$
 
   是两个分布函数的凸组合，必为分布函数。
@@ -601,7 +619,7 @@ title: 第二章 随机变量及其分布
 
   不满足分布函数的极限条件。故选（A）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 填空题
@@ -612,12 +630,14 @@ title: 第二章 随机变量及其分布
   设离散型随机变量 $\displaystyle X$ 的概率函数为 $\displaystyle P\{X=i\}=p^{i+1}$，$\displaystyle i=0,1$，则 $\displaystyle p=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle \dfrac{\sqrt5-1}{2}$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   概率函数必须满足所有可能取值对应的概率之和为 $\displaystyle 1$，故
 
@@ -651,7 +671,7 @@ title: 第二章 随机变量及其分布
   \sum_iP\{X=i\}=1.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="2" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -671,7 +691,10 @@ title: 第二章 随机变量及其分布
   则随机变量 $\displaystyle |X|$ 的分布函数为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle F_{|X|}(y)=
@@ -682,8 +705,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   分布函数在各跳跃点的跳跃大小等于对应点的概率。由题给 $\displaystyle F(x)$ 可得
 
@@ -721,7 +743,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="3" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -730,12 +752,14 @@ title: 第二章 随机变量及其分布
   假设 $\displaystyle X$ 是在区间 $\displaystyle (0,1)$ 内取值的连续型随机变量，而 $\displaystyle Y=1-X$。已知 $\displaystyle P\{X\le0.29\}=0.75$，则满足 $\displaystyle P\{Y\le k\}=0.25$ 的常数 $\displaystyle k=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle 0.71$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由 $\displaystyle Y=1-X$，有
 
@@ -771,7 +795,7 @@ title: 第二章 随机变量及其分布
   k=0.71.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="4" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -780,12 +804,14 @@ title: 第二章 随机变量及其分布
   设 $\displaystyle f(x)=ke^{-x^2+2x-3}\,(-\infty<x<+\infty)$ 是一概率密度，则 $\displaystyle k=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle \dfrac{e^2}{\sqrt\pi}$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   概率密度必须满足归一化条件
 
@@ -825,7 +851,7 @@ title: 第二章 随机变量及其分布
   \displaystyle k=\dfrac{e^2}{\sqrt\pi}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="5" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -835,23 +861,25 @@ title: 第二章 随机变量及其分布
 
   $$
   \displaystyle f(x)=\begin{cases}
-  \dfrac13,&0\le x\le1,\\
-  \dfrac29,&3\le x\le6,\\
+  \frac13,&0\le x\le1,\\
+  \frac29,&3\le x\le6,\\
   0,&\text{其他},
   \end{cases}
   $$
 
-  若 $\displaystyle k$ 满足概率等式 $\displaystyle P\{|X|\ge|k|\}=\dfrac23$，则 $\displaystyle k$ 的取值范围是 $\displaystyle \underline{\qquad}$。
+  若 $\displaystyle k$ 满足概率等式 $\displaystyle P\{|X|\ge|k|\}=\frac23$，则 $\displaystyle k$ 的取值范围是 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle k\in[-3,-1]\cup[1,3].
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由密度的支撑集可知 $\displaystyle X\ge0$，故
 
@@ -868,24 +896,24 @@ title: 第二章 随机变量及其分布
   则题设条件化为
 
   $$
-  \displaystyle P\{X\ge t\}=\dfrac23.
+  \displaystyle P\{X\ge t\}=\frac23.
   $$
 
   区间 $\displaystyle [3,6]$ 上的总概率为
 
   $$
-  \displaystyle \int_3^6\dfrac29\,dx
-  =\dfrac29\times3
-  =\dfrac23.
+  \displaystyle \int_3^6\frac29\,dx
+  =\frac29\times3
+  =\frac23.
   $$
 
   当 $\displaystyle 1\le t\le3$ 时，区间 $\displaystyle (1,3)$ 上密度为 $\displaystyle 0$，而事件 $\displaystyle X\ge t$ 恰好保留 $\displaystyle [3,6]$ 上的全部概率，因此
 
   $$
-  \displaystyle P\{X\ge t\}=\dfrac23.
+  \displaystyle P\{X\ge t\}=\frac23.
   $$
 
-  当 $\displaystyle 0\le t<1$ 时，还会包含 $\displaystyle [t,1]$ 上的正概率，故概率大于 $\displaystyle \dfrac23$；当 $\displaystyle t>3$ 时，只保留 $\displaystyle [t,6]$ 的一部分，故概率小于 $\displaystyle \dfrac23$。所以
+  当 $\displaystyle 0\le t<1$ 时，还会包含 $\displaystyle [t,1]$ 上的正概率，故概率大于 $\displaystyle \frac23$；当 $\displaystyle t>3$ 时，只保留 $\displaystyle [t,6]$ 的一部分，故概率小于 $\displaystyle \frac23$。所以
 
   $$
   \displaystyle 1\le |k|\le3.
@@ -897,7 +925,7 @@ title: 第二章 随机变量及其分布
   \displaystyle k\in[-3,-1]\cup[1,3].
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="6" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -906,12 +934,14 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 服从正态分布 $\displaystyle N(\mu,1)$，已知 $\displaystyle P\{X\le3\}=0.975$，则 $\displaystyle P\{X\le-0.92\}=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle 0.025$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将 $\displaystyle X$ 标准化。因为 $\displaystyle X\sim N(\mu,1)$，所以
 
@@ -958,7 +988,7 @@ title: 第二章 随机变量及其分布
   =0.025.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="7" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -967,12 +997,14 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 服从正态分布 $\displaystyle N(\mu,\sigma^2)\, (\sigma>0)$，且二次方程 $\displaystyle y^2+4y+X=0$ 无实根的概率为 $\displaystyle 0.5$，则 $\displaystyle \mu=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle 4$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   方程
 
@@ -1010,7 +1042,7 @@ title: 第二章 随机变量及其分布
   \displaystyle \mu=4.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="8" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -1023,12 +1055,14 @@ title: 第二章 随机变量及其分布
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   按现有题面，积分值不能由已知条件唯一确定。若原题积分上下限应为 $\displaystyle -\infty$ 与 $\displaystyle +\infty$，则答案为 $\displaystyle a$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   按题面所给有限积分区间，令 $\displaystyle f(t)$ 为 $\displaystyle X$ 的概率密度，则
 
@@ -1090,7 +1124,7 @@ title: 第二章 随机变量及其分布
   =a.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 解答题
@@ -1101,7 +1135,10 @@ title: 第二章 随机变量及其分布
   袋中装有大小相同的10只球，编号为 $\displaystyle 0,1,2,\cdots,9$，从中任取一只，观察其号码，按“大于5”“等于5”“小于5”三种情况定义一个随机变量 $\displaystyle X$，并写出 $\displaystyle X$ 的分布律和分布函数。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   可定义
 
@@ -1130,21 +1167,20 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   号码小于 $\displaystyle 5$ 的球为 $\displaystyle 0,1,2,3,4$，共有 $\displaystyle 5$ 只；号码等于 $\displaystyle 5$ 的球有 $\displaystyle 1$ 只；号码大于 $\displaystyle 5$ 的球为 $\displaystyle 6,7,8,9$，共有 $\displaystyle 4$ 只。由于每只球被取到的概率相等，故
 
   $$
-  \displaystyle P\{X=-1\}=\dfrac5{10}=\dfrac12,
+  \displaystyle P\{X=-1\}=\frac5{10}=\frac12,
   $$
 
   $$
-  \displaystyle P\{X=0\}=\dfrac1{10},
+  \displaystyle P\{X=0\}=\frac1{10},
   $$
 
   $$
-  \displaystyle P\{X=1\}=\dfrac4{10}=\dfrac25.
+  \displaystyle P\{X=1\}=\frac4{10}=\frac25.
   $$
 
   由分布函数的定义
@@ -1157,7 +1193,7 @@ title: 第二章 随机变量及其分布
 
   题目只要求按三种情况定义随机变量，因此具体取值并不唯一；只要给三种情况赋予三个互不相同的实数，并据此正确写出分布律和分布函数即可。这里采用 $\displaystyle -1,0,1$ 的自然编码。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="2" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1166,14 +1202,16 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 在 $\displaystyle (0,1)$ 上服从均匀分布，现有一常数 $\displaystyle a$，任取 $\displaystyle X$ 的两个值，已知至少有一个大于 $\displaystyle a$ 的概率为 $\displaystyle 0.9$，问 $\displaystyle a$ 是多少？
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
-  \displaystyle a=\dfrac1{\sqrt{10}}.
+  \displaystyle a=\frac1{\sqrt{10}}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将两次独立观测记为 $\displaystyle X_1,X_2$，则 $\displaystyle X_1,X_2$ 相互独立，且都服从 $\displaystyle (0,1)$ 上的均匀分布。
 
@@ -1207,16 +1245,16 @@ title: 第二章 随机变量及其分布
   即
 
   $$
-  \displaystyle a^2=0.1=\dfrac1{10}.
+  \displaystyle a^2=0.1=\frac1{10}.
   $$
 
   由于 $\displaystyle a>0$，所以
 
   $$
-  \displaystyle a=\dfrac1{\sqrt{10}}.
+  \displaystyle a=\frac1{\sqrt{10}}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="3" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1225,7 +1263,10 @@ title: 第二章 随机变量及其分布
   将三封信随机地投入编号为 $\displaystyle 1,2,3,4$ 的四个邮筒，求没有信的邮筒数 $\displaystyle X$ 的概率函数。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle X$ 的概率函数为
 
@@ -1238,8 +1279,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   每封信均可投入四个邮筒中的任意一个，且各种投入方式等可能。三封信共有
 
@@ -1258,7 +1298,7 @@ title: 第二章 随机变量及其分布
   当 $\displaystyle X=3$ 时，只有一个邮筒收到全部三封信。先选择这个邮筒，共有 $\displaystyle 4$ 种方式，因此
 
   $$
-  \displaystyle P\{X=3\}=\dfrac4{64}=\dfrac1{16}.
+  \displaystyle P\{X=3\}=\frac4{64}=\frac1{16}.
   $$
 
   当 $\displaystyle X=1$ 时，恰有三个邮筒收到信。由于只有三封信，这等价于三封信分别进入三个不同的邮筒。第一封、第二封、第三封信依次有 $\displaystyle 4,3,2$ 种选择，因此有
@@ -1270,7 +1310,7 @@ title: 第二章 随机变量及其分布
   种方式，故
 
   $$
-  \displaystyle P\{X=1\}=\dfrac{24}{64}=\dfrac38.
+  \displaystyle P\{X=1\}=\dfrac{24}{64}=\frac38.
   $$
 
   当 $\displaystyle X=2$ 时，恰有两个邮筒收到信。可以用总概率减去其余两种情况：
@@ -1278,8 +1318,8 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle P\{X=2\}
   =1-P\{X=1\}-P\{X=3\}
-  =1-\dfrac38-\dfrac1{16}
-  =\dfrac9{16}.
+  =1-\frac38-\frac1{16}
+  =\frac9{16}.
   $$
 
   也可直接计数：先从四个邮筒中选两个，共有 $\displaystyle \binom42=6$ 种；三封信投入这两个邮筒且两个邮筒均非空的方式数为
@@ -1291,10 +1331,10 @@ title: 第二章 随机变量及其分布
   故共有 $\displaystyle 6\times6=36$ 种，概率同样为
 
   $$
-  \displaystyle \dfrac{36}{64}=\dfrac9{16}.
+  \displaystyle \dfrac{36}{64}=\frac9{16}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="4" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1303,7 +1343,10 @@ title: 第二章 随机变量及其分布
   向直线上掷一随机点，假设随机点落入区间 $\displaystyle ( -\infty,0]$、$\displaystyle (0,1]$ 和 $\displaystyle (1,+\infty)$ 的概率分别为 $\displaystyle 0.2,0.5$ 和 $\displaystyle 0.3$，并且随机点在区间 $\displaystyle (0,1]$ 上分布均匀。设随机点落入 $\displaystyle ( -\infty,0]$ 得0分，落入 $\displaystyle (1,+\infty)$ 得1分，而落入 $\displaystyle (0,1]$ 坐标为 $\displaystyle x$ 的点得 $\displaystyle x$ 分。试求得分 $\displaystyle X$ 的分布函数 $\displaystyle F(x)$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle F(x)=\begin{cases}
@@ -1313,8 +1356,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   得分随机变量 $\displaystyle X$ 的取值范围为 $\displaystyle [0,1]$。其中：
 
@@ -1361,7 +1403,7 @@ title: 第二章 随机变量及其分布
 
   可见分布函数分别在 $\displaystyle 0$ 和 $\displaystyle 1$ 处有大小为 $\displaystyle 0.2$ 和 $\displaystyle 0.3$ 的跳跃。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="5" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1370,14 +1412,16 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 服从 $\displaystyle [a,a+2]$ 上的均匀分布，对 $\displaystyle X$ 进行3次独立观测，求最多有一次观测值小于 $\displaystyle a+1$ 的概率。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
-  \displaystyle \dfrac12.
+  \displaystyle \frac12.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对任意一次观测，由于 $\displaystyle X$ 在长度为 $\displaystyle 2$ 的区间 $\displaystyle [a,a+2]$ 上均匀分布，而 $\displaystyle [a,a+1)$ 的长度为 $\displaystyle 1$，所以
 
@@ -1390,7 +1434,7 @@ title: 第二章 随机变量及其分布
   设三次独立观测中小于 $\displaystyle a+1$ 的次数为 $\displaystyle N$，则
 
   $$
-  \displaystyle N\sim B\left(3,\dfrac12\right).
+  \displaystyle N\sim B\left(3,\frac12\right).
   $$
 
   “最多有一次”即 $\displaystyle N\le1$，故
@@ -1399,14 +1443,14 @@ title: 第二章 随机变量及其分布
   \displaystyle \begin{aligned}
   P\{N\le1\}
   &=P\{N=0\}+P\{N=1\}\\
-  &=\binom30\left(\dfrac12\right)^0\left(\dfrac12\right)^3
-  +\binom31\left(\dfrac12\right)^1\left(\dfrac12\right)^2\\
-  &=\dfrac18+\dfrac38\\
-  &=\dfrac12.
+  &=\binom30\left(\frac12\right)^0\left(\frac12\right)^3
+  +\binom31\left(\frac12\right)^1\left(\frac12\right)^2\\
+  &=\frac18+\frac38\\
+  &=\frac12.
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="6" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1415,7 +1459,10 @@ title: 第二章 随机变量及其分布
   设某一设备由三大部件构成，设备运转时，各部件需调整的概率分别为 $\displaystyle 0.1,0.2,0.3$，若各部件的状态相互独立，求同时需调整的部件数 $\displaystyle X$ 的分布函数。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle X$ 的分布律为
 
@@ -1438,8 +1485,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设三个部件是否需要调整的指示变量分别为 $\displaystyle I_1,I_2,I_3$，则
 
@@ -1509,7 +1555,7 @@ title: 第二章 随机变量及其分布
 
   逐段累加即可得到答案中的阶梯形分布函数。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="7" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1520,7 +1566,10 @@ title: 第二章 随机变量及其分布
   （Ⅰ）$\displaystyle Y_1=e^X$；（Ⅱ）$\displaystyle Y_2=-2\ln X$；（Ⅲ）$\displaystyle Y_3=\dfrac1X$；（Ⅳ）$\displaystyle Y_4=X^2$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1558,8 +1607,7 @@ title: 第二章 随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由于 $\displaystyle X\sim U(0,1)$，其密度为
 
@@ -1589,15 +1637,15 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle x=\ln y,
   \qquad
-  \dfrac{dx}{dy}=\dfrac1y.
+  \dfrac{dx}{dy}=\frac1y.
   $$
 
   当 $\displaystyle 0<x<1$ 时，$\displaystyle 1<y<e$。因此
 
   $$
   \displaystyle f_{Y_1}(y)
-  =f_X(\ln y)\left|\dfrac1y\right|
-  =\dfrac1y,
+  =f_X(\ln y)\left|\frac1y\right|
+  =\frac1y,
   \qquad 1<y<e.
   $$
 
@@ -1612,7 +1660,7 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle x=e^{-y/2},
   \qquad
-  \dfrac{dx}{dy}=-\dfrac12e^{-y/2}.
+  \dfrac{dx}{dy}=-\frac12e^{-y/2}.
   $$
 
   当 $\displaystyle 0<x<1$ 时，$\displaystyle y>0$，故
@@ -1620,34 +1668,34 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle f_{Y_2}(y)
   =f_X\left(e^{-y/2}\right)
-  \left|-\dfrac12e^{-y/2}\right|
-  =\dfrac12e^{-y/2},
+  \left|-\frac12e^{-y/2}\right|
+  =\frac12e^{-y/2},
   \qquad y>0.
   $$
 
-  这正是参数为 $\displaystyle \dfrac12$ 的指数分布密度。
+  这正是参数为 $\displaystyle \frac12$ 的指数分布密度。
 
   （Ⅲ）由
 
   $$
-  \displaystyle y=\dfrac1x
+  \displaystyle y=\frac1x
   $$
 
   得
 
   $$
-  \displaystyle x=\dfrac1y,
+  \displaystyle x=\frac1y,
   \qquad
-  \dfrac{dx}{dy}=-\dfrac1{y^2}.
+  \dfrac{dx}{dy}=-\frac1{y^2}.
   $$
 
   当 $\displaystyle 0<x<1$ 时，$\displaystyle y>1$，所以
 
   $$
   \displaystyle f_{Y_3}(y)
-  =f_X\left(\dfrac1y\right)
-  \left|-\dfrac1{y^2}\right|
-  =\dfrac1{y^2},
+  =f_X\left(\frac1y\right)
+  \left|-\frac1{y^2}\right|
+  =\frac1{y^2},
   \qquad y>1.
   $$
 
@@ -1662,21 +1710,21 @@ title: 第二章 随机变量及其分布
   $$
   \displaystyle x=\sqrt y,
   \qquad
-  \dfrac{dx}{dy}=\dfrac1{2\sqrt y}.
+  \dfrac{dx}{dy}=\frac1{2\sqrt y}.
   $$
 
   当 $\displaystyle 0<x<1$ 时，$\displaystyle 0<y<1$，于是
 
   $$
   \displaystyle f_{Y_4}(y)
-  =f_X(\sqrt y)\dfrac1{2\sqrt y}
-  =\dfrac1{2\sqrt y},
+  =f_X(\sqrt y)\frac1{2\sqrt y}
+  =\frac1{2\sqrt y},
   \qquad 0<y<1.
   $$
 
   各密度均满足非负性，且在各自取值范围上的积分均等于 $\displaystyle 1$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="8" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1685,7 +1733,10 @@ title: 第二章 随机变量及其分布
   设 $\displaystyle f(x)$ 是非负随机变量的概率密度，求 $\displaystyle Y=\sqrt X$ 的概率密度。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle f_Y(y)=\begin{cases}
@@ -1696,8 +1747,7 @@ title: 第二章 随机变量及其分布
 
   在单点 $\displaystyle y=0$ 处密度函数的取值可任意指定，通常取 $\displaystyle f_Y(0)=0$。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   因为 $\displaystyle X$ 为非负随机变量，所以
 
@@ -1772,7 +1822,7 @@ title: 第二章 随机变量及其分布
 
   其中作了换元 $\displaystyle x=y^2$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="9" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1781,7 +1831,10 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 服从标准正态分布 $\displaystyle N(0,1)$，令 $\displaystyle Y=|X|$，求 $\displaystyle Y$ 的概率密度。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle f_Y(y)=\begin{cases}
@@ -1792,13 +1845,12 @@ title: 第二章 随机变量及其分布
 
   在 $\displaystyle y=0$ 处密度函数的取值不影响分布，通常取上述右侧表达式的值。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   标准正态随机变量 $\displaystyle X$ 的密度为
 
   $$
-  \displaystyle \varphi(x)=\dfrac1{\sqrt{2\pi}}e^{-x^2/2},
+  \displaystyle \varphi(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2},
   \qquad -\infty<x<+\infty.
   $$
 
@@ -1845,8 +1897,8 @@ title: 第二章 随机变量及其分布
   f_Y(y)
   &=2\Phi'(y)\\
   &=2\varphi(y)\\
-  &=\dfrac2{\sqrt{2\pi}}e^{-y^2/2}\\
-  &=\sqrt{\dfrac2\pi}e^{-y^2/2}.
+  &=\frac2{\sqrt{2\pi}}e^{-y^2/2}\\
+  &=\sqrt{\frac2\pi}e^{-y^2/2}.
   \end{aligned}
   $$
 
@@ -1858,7 +1910,7 @@ title: 第二章 随机变量及其分布
 
   该分布称为半正态分布。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="10" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1867,7 +1919,10 @@ title: 第二章 随机变量及其分布
   某个人参加跳高项目的及格选拔赛，规定一旦跳过指定高度就被认为及格而被入选，但是限制每人最多只能跳6次，若6次均未过竿，则认定其为落选。如果一位参试者在试跳指定高度的过竿率为 $\displaystyle 0.6$，求他在测试中所跳次数的概率分布。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   设测试中实际试跳次数为 $\displaystyle X$，则
 
@@ -1888,8 +1943,7 @@ title: 第二章 随机变量及其分布
   \end{array}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   每次试跳过竿的概率为
 
@@ -1946,7 +2000,7 @@ title: 第二章 随机变量及其分布
   =1.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="11" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -1955,7 +2009,10 @@ title: 第二章 随机变量及其分布
   设随机变量 $\displaystyle X$ 服从参数为 $\displaystyle \lambda$ 的指数分布，$\displaystyle G(x)$ 是区间 $\displaystyle [0,1]$ 上均匀分布的分布函数，证明随机变量 $\displaystyle Y=G(X)$ 的概率分布不是区间 $\displaystyle [0,1]$ 上的均匀分布。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle Y$ 的分布函数为
 
@@ -1976,8 +2033,7 @@ title: 第二章 随机变量及其分布
 
   故 $\displaystyle Y$ 不服从区间 $\displaystyle [0,1]$ 上的均匀分布。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   区间 $\displaystyle [0,1]$ 上均匀分布的分布函数为
 
@@ -2056,7 +2112,7 @@ title: 第二章 随机变量及其分布
 
   同时在点 $\displaystyle y=1$ 处还有概率质量 $\displaystyle e^{-\lambda}$。而区间 $\displaystyle [0,1]$ 上的均匀分布是连续型分布，其分布函数在 $\displaystyle [0,1]$ 上为 $\displaystyle y$，且任一点的概率均为 $\displaystyle 0$。故 $\displaystyle Y$ 不服从区间 $\displaystyle [0,1]$ 上的均匀分布。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="12" source="李正元练习题·概率论与数理统计" tags={['解答题']}>
@@ -2075,7 +2131,10 @@ title: 第二章 随机变量及其分布
   （Ⅰ）求分布函数 $\displaystyle F(x)$；（Ⅱ）令 $\displaystyle Y=F(X)$，求 $\displaystyle Y$ 的分布函数 $\displaystyle F_Y(y)$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -2106,8 +2165,7 @@ title: 第二章 随机变量及其分布
   \displaystyle Y=F(X)\sim U(0,1).
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   （Ⅰ）由分布函数的定义
 
@@ -2133,7 +2191,7 @@ title: 第二章 随机变量及其分布
   \displaystyle \begin{aligned}
   F(x)
   &=\int_0^1t\,dt+\int_1^x(2-t)\,dt\\
-  &=\dfrac12+\left(2x-\dfrac{x^2}{2}-\dfrac32\right)\\
+  &=\frac12+\left(2x-\dfrac{x^2}{2}-\frac32\right)\\
   &=2x-\dfrac{x^2}{2}-1.
   \end{aligned}
   $$
@@ -2159,7 +2217,7 @@ title: 第二章 随机变量及其分布
   在连接点处有
 
   $$
-  \displaystyle F(1-)=F(1)=\dfrac12,
+  \displaystyle F(1-)=F(1)=\frac12,
   \qquad
   F(2-)=F(2)=1,
   $$
@@ -2198,5 +2256,5 @@ title: 第二章 随机变量及其分布
 
   因此 $\displaystyle Y=F(X)$ 服从区间 $\displaystyle (0,1)$ 上的均匀分布。这也是概率积分变换的直接应用：当随机变量 $\displaystyle X$ 的分布函数连续时，$\displaystyle F(X)\sim U(0,1)$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>

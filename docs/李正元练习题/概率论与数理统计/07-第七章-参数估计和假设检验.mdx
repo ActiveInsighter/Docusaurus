@@ -18,36 +18,38 @@ title: 第七章 参数估计和假设检验
   <QuestionOptions>
     <QuestionOption>
 
-      A. $\displaystyle \dfrac1{n+1}\sum_{i=1}^{n}(X_i-\bar X)^2$；
+      A. $\displaystyle \frac1{n+1}\sum_{i=1}^{n}(X_i-\bar X)^2$；
 
     </QuestionOption>
     <QuestionOption>
 
-      B. $\displaystyle \dfrac1n\sum_{i=1}^{n}(X_i-\bar X)^2$；
+      B. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i-\bar X)^2$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      C. $\displaystyle \dfrac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$；
+      C. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$；
 
     </QuestionOption>
     <QuestionOption>
 
-      D. $\displaystyle \dfrac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)$。
+      D. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   记
 
   $$
-  \displaystyle S^2=\dfrac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
+  \displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
   $$
 
   由样本离差平方和的期望公式
@@ -59,7 +61,7 @@ title: 第七章 参数估计和假设检验
   可得
 
   $$
-  \displaystyle E(S^2)=\dfrac1{n-1}(n-1)\sigma^2=\sigma^2.
+  \displaystyle E(S^2)=\frac1{n-1}(n-1)\sigma^2=\sigma^2.
   $$
 
   因此 $\displaystyle S^2$ 是总体方差 $\displaystyle \sigma^2$ 的无偏估计量，故选 C。
@@ -78,19 +80,19 @@ title: 第七章 参数估计和假设检验
   是有偏估计量。
   - D 中
   $$
-  \displaystyle \dfrac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)
-  =\dfrac1n\sum_{i=1}^{n}X_i^2-\bar X^2
-  =\dfrac1n\sum_{i=1}^{n}(X_i-\bar X)^2,
+  \displaystyle \frac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)
+  =\frac1n\sum_{i=1}^{n}X_i^2-\bar X^2
+  =\frac1n\sum_{i=1}^{n}(X_i-\bar X)^2,
   $$
   与 B 相同，也不是无偏估计量。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="2" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
   <QuestionStem>
 
-  设 $\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，记 $\displaystyle EX=\mu,DX=\sigma^2$，$\displaystyle \bar X=\dfrac1n\sum_{i=1}^{n}X_i$，$\displaystyle S^2=\dfrac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$，$\displaystyle DS>0$，则
+  设 $\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，记 $\displaystyle EX=\mu,DX=\sigma^2$，$\displaystyle \bar X=\frac1n\sum_{i=1}^{n}X_i$，$\displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$，$\displaystyle DS>0$，则
 
   </QuestionStem>
   <QuestionOptions>
@@ -111,16 +113,18 @@ title: 第七章 参数估计和假设检验
     </QuestionOption>
     <QuestionOption>
 
-      D. $\displaystyle \dfrac1{n-1}\sum_{i=1}^{n}X_i^2$ 是 $\displaystyle EX^2$ 的无偏估计。
+      D. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}X_i^2$ 是 $\displaystyle EX^2$ 的无偏估计。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   B
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由样本方差的基本性质，若总体方差存在，则
 
@@ -145,12 +149,12 @@ title: 第七章 参数估计和假设检验
   所以 $\displaystyle \bar X^2$ 不是 $\displaystyle \mu^2$ 的无偏估计。
   - D：由于
   $$
-  \displaystyle E\left(\dfrac1{n-1}\sum_{i=1}^{n}X_i^2\right)
+  \displaystyle E\left(\frac1{n-1}\sum_{i=1}^{n}X_i^2\right)
   =\dfrac{n}{n-1}EX^2\ne EX^2,
   $$
   故不是 $\displaystyle EX^2$ 的无偏估计。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="3" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -181,12 +185,14 @@ title: 第七章 参数估计和假设检验
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   A
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   矩估计法用样本矩代替相应的总体矩。若只含一个未知参数 $\displaystyle \mu$，通常令
 
@@ -211,16 +217,16 @@ title: 第七章 参数估计和假设检验
   $$
   则
   $$
-  \displaystyle EX=\dfrac1\mu,
+  \displaystyle EX=\frac1\mu,
   $$
   所以矩估计量为
   $$
-  \displaystyle \hat\mu=\dfrac1{\bar X},
+  \displaystyle \hat\mu=\frac1{\bar X},
   $$
   而不是 $\displaystyle \bar X$。
   - C：该分布为参数为 $\displaystyle \mu$ 的几何分布，且
   $$
-  \displaystyle EX=\dfrac1\mu,
+  \displaystyle EX=\frac1\mu,
   $$
   故矩估计量也是 $\displaystyle 1/\bar X$。
   - D：若 $\displaystyle X\sim U(0,\mu)$，则
@@ -232,7 +238,7 @@ title: 第七章 参数估计和假设检验
   \displaystyle \hat\mu=2\bar X.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="4" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -263,29 +269,31 @@ title: 第七章 参数估计和假设检验
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   样本方差为
 
   $$
-  \displaystyle S^2=\dfrac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
+  \displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
   $$
 
   利用恒等式
 
   $$
-  \displaystyle S^2=\dfrac{n}{n-1}\left(\dfrac1n\sum_{i=1}^{n}X_i^2-\bar X^2\right),
+  \displaystyle S^2=\dfrac{n}{n-1}\left(\frac1n\sum_{i=1}^{n}X_i^2-\bar X^2\right),
   $$
 
   由大数定律，因 $\displaystyle EX^2<\infty$，有
 
   $$
-  \displaystyle \dfrac1n\sum_{i=1}^{n}X_i^2\xrightarrow{P}EX^2,
+  \displaystyle \frac1n\sum_{i=1}^{n}X_i^2\xrightarrow{P}EX^2,
   \qquad
   \bar X\xrightarrow{P}\mu.
   $$
@@ -308,12 +316,12 @@ title: 第七章 参数估计和假设检验
 
   - A：一般矩估计得到的总体标准差估计量为
   $$
-  \displaystyle \sqrt{\dfrac1n\sum_{i=1}^{n}(X_i-\bar X)^2},
+  \displaystyle \sqrt{\frac1n\sum_{i=1}^{n}(X_i-\bar X)^2},
   $$
   而不是分母为 $\displaystyle n-1$ 的 $\displaystyle S$。
   - B：题目只假设总体方差存在，并未指定总体分布，无法写出统一的似然函数，因此不能断言 $\displaystyle S$ 是最大似然估计量。即使总体正态，$\displaystyle \sigma$ 的最大似然估计量也通常为
   $$
-  \displaystyle \sqrt{\dfrac1n\sum_{i=1}^{n}(X_i-\bar X)^2},
+  \displaystyle \sqrt{\frac1n\sum_{i=1}^{n}(X_i-\bar X)^2},
   $$
   不是 $\displaystyle S$。
   - C：由 $\displaystyle DS>0$ 及詹森不等式，
@@ -322,7 +330,7 @@ title: 第七章 参数估计和假设检验
   $$
   因而 $\displaystyle S$ 一般不是 $\displaystyle \sigma$ 的无偏估计量。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 填空题
@@ -333,14 +341,16 @@ title: 第七章 参数估计和假设检验
   设 $\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，$\displaystyle a\sum_{i=1}^{n}X_i^2+b\bar X^2$ 是总体方差 $\displaystyle \sigma^2$ 的无偏估计量，则 $\displaystyle a=\underline{\qquad}$，$\displaystyle b=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
-  \displaystyle a=\dfrac1{n-1},\qquad b=-\dfrac{n}{n-1}.
+  \displaystyle a=\frac1{n-1},\qquad b=-\dfrac{n}{n-1}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设总体均值为 $\displaystyle EX=\mu$，则
 
@@ -396,7 +406,7 @@ title: 第七章 参数估计和假设检验
   因此
 
   $$
-  \displaystyle a=\dfrac1{n-1},
+  \displaystyle a=\frac1{n-1},
   \qquad
   b=-\dfrac{n}{n-1}.
   $$
@@ -404,11 +414,11 @@ title: 第七章 参数估计和假设检验
   此时原估计量正好为
 
   $$
-  \displaystyle \dfrac1{n-1}\sum_{i=1}^{n}X_i^2-\dfrac{n}{n-1}\bar X^2
-  =\dfrac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2=S^2.
+  \displaystyle \frac1{n-1}\sum_{i=1}^{n}X_i^2-\dfrac{n}{n-1}\bar X^2
+  =\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2=S^2.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="2" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -417,11 +427,14 @@ title: 第七章 参数估计和假设检验
   设总体 $\displaystyle X$ 服从 $\displaystyle (a,b)$ 上的均匀分布，$\displaystyle X_1,X_2,\cdots,X_n$ 是取自 $\displaystyle X$ 的简单随机样本，则未知参数 $\displaystyle a,b$ 的矩估计量为 $\displaystyle \hat a=\underline{\qquad}$，$\displaystyle \hat b=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   令
   $$
-  \displaystyle \overline{X^2}=\dfrac1n\sum_{i=1}^{n}X_i^2,
+  \displaystyle \overline{X^2}=\frac1n\sum_{i=1}^{n}X_i^2,
   $$
   则
   $$
@@ -430,8 +443,7 @@ title: 第七章 参数估计和假设检验
   \hat b=\bar X+\sqrt{3\left(\overline{X^2}-\bar X^2\right)}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   若 $\displaystyle X\sim U(a,b)$，则
 
@@ -491,7 +503,7 @@ title: 第七章 参数估计和假设检验
   \displaystyle \hat b=\bar X+\sqrt{3\left(\overline{X^2}-\bar X^2\right)}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 计算题与应用题
@@ -512,24 +524,26 @@ title: 第七章 参数估计和假设检验
   （Ⅱ）验证相应两个估计量的无偏性。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）参数 $\displaystyle p$ 的矩估计量和最大似然估计量相同，均为
 
   $$
-  \displaystyle \hat p=\bar X=\dfrac1n\sum_{i=1}^{n}X_i.
+  \displaystyle \hat p=\bar X=\frac1n\sum_{i=1}^{n}X_i.
   $$
 
   对于给定样本观测值，估计值为
 
   $$
-  \displaystyle \hat p=\bar x=\dfrac1n\sum_{i=1}^{n}x_i.
+  \displaystyle \hat p=\bar x=\frac1n\sum_{i=1}^{n}x_i.
   $$
 
   （Ⅱ）该估计量是 $\displaystyle p$ 的无偏估计量。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   （Ⅰ）先求矩估计量。由总体分布可得
 
@@ -585,7 +599,7 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle \hat p_{\mathrm{ML}}
-  =\dfrac1n\sum_{i=1}^{n}x_i
+  =\frac1n\sum_{i=1}^{n}x_i
   =\bar x.
   $$
 
@@ -595,13 +609,13 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle E(\hat p)=E(\bar X)
-  =\dfrac1n\sum_{i=1}^{n}EX_i
+  =\frac1n\sum_{i=1}^{n}EX_i
   =p.
   $$
 
   因此矩估计量和最大似然估计量均为 $\displaystyle p$ 的无偏估计量。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="2" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -626,16 +640,18 @@ title: 第七章 参数估计和假设检验
   求 $\displaystyle \alpha$ 的矩估计值和最大似然估计值。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
-  \displaystyle \hat\alpha_{\mathrm M}=\dfrac58,
+  \displaystyle \hat\alpha_{\mathrm M}=\frac58,
   \qquad
-  \hat\alpha_{\mathrm{ML}}=\dfrac58.
+  \hat\alpha_{\mathrm{ML}}=\frac58.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由于 $\displaystyle f(x;\alpha,\beta)$ 是概率密度，必须满足
 
@@ -659,14 +675,14 @@ title: 第七章 参数估计和假设检验
   &=\int_{-1}^{0}x\alpha\,dx+\int_{0}^{1}x\beta\,dx\\
   &=-\dfrac{\alpha}{2}+\dfrac{\beta}{2}
   =\dfrac{1-2\alpha}{2}
-  =\dfrac12-\alpha.
+  =\frac12-\alpha.
   \end{aligned}
   $$
 
   令 $\displaystyle EX=\bar X$，得到
 
   $$
-  \displaystyle \hat\alpha_{\mathrm M}=\dfrac12-\bar X.
+  \displaystyle \hat\alpha_{\mathrm M}=\frac12-\bar X.
   $$
 
   由给出的样本值，
@@ -679,15 +695,15 @@ title: 第七章 参数估计和假设检验
   故
 
   $$
-  \displaystyle \bar x=-\dfrac18.
+  \displaystyle \bar x=-\frac18.
   $$
 
   于是
 
   $$
   \displaystyle \hat\alpha_{\mathrm M}
-  =\dfrac12+\dfrac18
-  =\dfrac58.
+  =\frac12+\frac18
+  =\frac58.
   $$
 
   再求最大似然估计。样本中落在 $\displaystyle (-1,0)$ 内的观测值有 $\displaystyle 5$ 个，落在 $\displaystyle [0,1)$ 内的观测值有 $\displaystyle 3$ 个，因此
@@ -711,7 +727,7 @@ title: 第七章 参数估计和假设检验
   求导得
 
   $$
-  \displaystyle \ell'(\alpha)=\dfrac5\alpha-\dfrac3{1-\alpha}.
+  \displaystyle \ell'(\alpha)=\frac5\alpha-\frac3{1-\alpha}.
   $$
 
   令 $\displaystyle \ell'(\alpha)=0$，得到
@@ -723,18 +739,18 @@ title: 第七章 参数估计和假设检验
   故
 
   $$
-  \displaystyle \hat\alpha_{\mathrm{ML}}=\dfrac58.
+  \displaystyle \hat\alpha_{\mathrm{ML}}=\frac58.
   $$
 
   并且
 
   $$
-  \displaystyle \ell''(\alpha)=-\dfrac5{\alpha^2}-\dfrac3{(1-\alpha)^2}<0,
+  \displaystyle \ell''(\alpha)=-\frac5{\alpha^2}-\frac3{(1-\alpha)^2}<0,
   $$
 
   所以该驻点确为最大值点。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="3" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -752,7 +768,10 @@ title: 第七章 参数估计和假设检验
   $\displaystyle X_1,\cdots,X_n$ 为取自总体 $\displaystyle X$ 的简单随机样本，求 $\displaystyle \theta$ 的矩估计量，并问这个估计量是否为无偏估计量？
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \hat\theta_{\mathrm M}=\dfrac{2}{\pi}\bar X^2.
@@ -760,8 +779,7 @@ title: 第七章 参数估计和假设检验
 
   该估计量不是 $\displaystyle \theta$ 的无偏估计量，而是正偏估计量。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   瑞利分布的一阶矩为
 
@@ -814,7 +832,7 @@ title: 第七章 参数估计和假设检验
   $$
   \displaystyle \begin{aligned}
   E(\hat\theta_{\mathrm M})
-  &=\dfrac2\pi E(\bar X^2)\\
+  &=\frac2\pi E(\bar X^2)\\
   &=\theta+\dfrac{4-\pi}{\pi n}\theta\\
   &=\left(1+\dfrac{4-\pi}{\pi n}\right)\theta.
   \end{aligned}
@@ -833,7 +851,7 @@ title: 第七章 参数估计和假设检验
   =\dfrac{4-\pi}{\pi n}\theta.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="4" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -842,17 +860,19 @@ title: 第七章 参数估计和假设检验
   接连不断地、独立地对同一目标射击，直到命中为止，假定共进行了 $\displaystyle n\,(n\ge1)$ 轮这样的射击，各轮射击次数相应为 $\displaystyle k_1,k_2,\cdots,k_n$，试求命中率 $\displaystyle p$ 的最大似然估计值和矩估计值。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   最大似然估计值与矩估计值相同，均为
 
   $$
   \displaystyle \hat p=\dfrac{n}{\sum_{i=1}^{n}k_i}
-  =\dfrac1{\bar k}.
+  =\frac1{\bar k}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设一轮射击直到首次命中所需的射击次数为随机变量 $\displaystyle K$。每次射击相互独立，单次命中概率为 $\displaystyle p$，则 $\displaystyle K$ 服从几何分布：
 
@@ -901,25 +921,25 @@ title: 第七章 参数估计和假设检验
   再求矩估计。几何分布的数学期望为
 
   $$
-  \displaystyle EK=\dfrac1p.
+  \displaystyle EK=\frac1p.
   $$
 
   令总体一阶矩等于样本一阶矩：
 
   $$
-  \displaystyle \dfrac1p=\bar K=\dfrac1n\sum_{i=1}^{n}K_i,
+  \displaystyle \frac1p=\bar K=\frac1n\sum_{i=1}^{n}K_i,
   $$
 
   所以
 
   $$
-  \displaystyle \hat p_{\mathrm M}=\dfrac1{\bar K}
+  \displaystyle \hat p_{\mathrm M}=\frac1{\bar K}
   =\dfrac{n}{\sum_{i=1}^{n}K_i}.
   $$
 
   因此最大似然估计与矩估计相同。若所有 $\displaystyle k_i=1$，则估计值为边界值 $\displaystyle \hat p=1$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="5" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -928,7 +948,10 @@ title: 第七章 参数估计和假设检验
   设 $\displaystyle X$ 服从 $\displaystyle [a,b]$ 上的均匀分布，$\displaystyle X_1,\cdots,X_n$ 为简单随机样本，求 $\displaystyle a,b$ 的最大似然估计量。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   记
 
@@ -946,8 +969,7 @@ title: 第七章 参数估计和假设检验
   \hat b_{\mathrm{ML}}=X_{(n)}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   总体密度为
 
@@ -964,14 +986,14 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle L(a,b)
-  =\dfrac1{(b-a)^n}
+  =\frac1{(b-a)^n}
   \prod_{i=1}^{n}I\{a\le X_i\le b\}.
   $$
 
   利用次序统计量可写为
 
   $$
-  \displaystyle L(a,b)=\dfrac1{(b-a)^n}
+  \displaystyle L(a,b)=\frac1{(b-a)^n}
   I\{a\le X_{(1)},\ b\ge X_{(n)}\}.
   $$
 
@@ -999,7 +1021,7 @@ title: 第七章 参数估计和假设检验
   \hat b_{\mathrm{ML}}=X_{(n)}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="6" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1009,7 +1031,7 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle f(x;\theta,\beta)=\begin{cases}
-  \dfrac1{\sqrt\theta}e^{-\frac{x-\beta}{\sqrt\theta}},&x\ge\beta,\ \theta>0,\\
+  \frac1{\sqrt\theta}e^{-\frac{x-\beta}{\sqrt\theta}},&x\ge\beta,\ \theta>0,\\
   0,&\text{其他},
   \end{cases}
   $$
@@ -1017,12 +1039,15 @@ title: 第七章 参数估计和假设检验
   其中 $\displaystyle \theta,\beta$ 为未知参数，$\displaystyle X_1,\cdots,X_n$ 为简单随机样本，求 $\displaystyle \theta$ 和 $\displaystyle \beta$ 的矩估计量。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   记
 
   $$
-  \displaystyle \overline{X^2}=\dfrac1n\sum_{i=1}^{n}X_i^2,
+  \displaystyle \overline{X^2}=\frac1n\sum_{i=1}^{n}X_i^2,
   $$
 
   则
@@ -1036,8 +1061,7 @@ title: 第七章 参数估计和假设检验
   =\bar X-\sqrt{\overline{X^2}-\bar X^2}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
 
@@ -1048,7 +1072,7 @@ title: 第七章 参数估计和假设检验
   由题设密度可知，$\displaystyle Y$ 服从参数为 $\displaystyle 1/\sqrt\theta$ 的指数分布，即
 
   $$
-  \displaystyle f_Y(y)=\dfrac1{\sqrt\theta}e^{-y/\sqrt\theta},
+  \displaystyle f_Y(y)=\frac1{\sqrt\theta}e^{-y/\sqrt\theta},
   \qquad y\ge0.
   $$
 
@@ -1101,7 +1125,7 @@ title: 第七章 参数估计和假设检验
   $$
   \displaystyle \hat\theta_{\mathrm M}
   =\overline{X^2}-\bar X^2
-  =\dfrac1n\sum_{i=1}^{n}(X_i-\bar X)^2.
+  =\frac1n\sum_{i=1}^{n}(X_i-\bar X)^2.
   $$
 
   再由
@@ -1119,7 +1143,7 @@ title: 第七章 参数估计和假设检验
 
   这里根号内正是分母为 $\displaystyle n$ 的样本方差，必为非负数。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="7" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1137,15 +1161,17 @@ title: 第七章 参数估计和假设检验
   其中 $\displaystyle \alpha>0$ 为已知，$\displaystyle \theta>0$ 是未知参数，试根据来自 $\displaystyle X$ 的简单随机样本 $\displaystyle X_1,X_2,\cdots,X_n$，求 $\displaystyle \theta$ 的最大似然估计量。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \hat\theta_{\mathrm{ML}}
   =\dfrac{n}{\displaystyle\sum_{i=1}^{n}X_i^\alpha}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对样本观测值 $\displaystyle x_1,x_2,\ldots,x_n>0$，似然函数为
 
@@ -1200,7 +1226,7 @@ title: 第七章 参数估计和假设检验
   =\dfrac{n}{\displaystyle\sum_{i=1}^{n}X_i^\alpha}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="8" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1218,16 +1244,18 @@ title: 第七章 参数估计和假设检验
   其中 $\displaystyle \lambda>0$ 未知。现从这批器件中任取 $\displaystyle n$ 只在时刻 $\displaystyle t=0$ 时投入独立寿命试验，试验进行到预定时间 $\displaystyle T_0$ 结束，此时有 $\displaystyle k\,(0<k<n)$ 只器件失效，试求 $\displaystyle \lambda$ 的最大似然估计。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \hat\lambda_{\mathrm{ML}}
-  =\dfrac1{T_0}\ln\dfrac{n}{n-k}
-  =-\dfrac1{T_0}\ln\left(1-\dfrac kn\right).
+  =\frac1{T_0}\ln\dfrac{n}{n-k}
+  =-\frac1{T_0}\ln\left(1-\dfrac kn\right).
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   本题只给出在截止时刻 $\displaystyle T_0$ 前失效的器件数 $\displaystyle k$，因此把每只器件是否在 $\displaystyle T_0$ 前失效作为观测结果。
 
@@ -1287,19 +1315,19 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle \hat\lambda_{\mathrm{ML}}
-  =-\dfrac1{T_0}\ln\left(1-\dfrac kn\right)
-  =\dfrac1{T_0}\ln\dfrac{n}{n-k}.
+  =-\frac1{T_0}\ln\left(1-\dfrac kn\right)
+  =\frac1{T_0}\ln\dfrac{n}{n-k}.
   $$
 
   若另外记录了每只失效器件的具体失效时刻，则属于Ⅰ型截尾样本，似然函数及估计式会相应包含这些失效时刻；本题按题目给出的观测信息，仅利用失效总数 $\displaystyle k$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="9" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
   <QuestionStem>
 
-  设总体 $\displaystyle X$ 在区间 $\displaystyle [0,\theta]$ 上服从均匀分布，$\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，$\displaystyle \bar X=\dfrac1n\sum_{i=1}^{n}X_i$，$\displaystyle X_{(n)}=\max(X_1,\cdots,X_n)$。
+  设总体 $\displaystyle X$ 在区间 $\displaystyle [0,\theta]$ 上服从均匀分布，$\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，$\displaystyle \bar X=\frac1n\sum_{i=1}^{n}X_i$，$\displaystyle X_{(n)}=\max(X_1,\cdots,X_n)$。
 
   （Ⅰ）求 $\displaystyle \theta$ 的矩估计量和最大似然估计量；
 
@@ -1308,7 +1336,10 @@ title: 第七章 参数估计和假设检验
   （Ⅲ）应用切比雪夫不等式证明：$\displaystyle \hat\theta_1,\hat\theta_2$ 均为 $\displaystyle \theta$ 的一致性（相合性）估计。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1346,8 +1377,7 @@ title: 第七章 参数估计和假设检验
 
   （Ⅲ）$\displaystyle \hat\theta_1$ 与 $\displaystyle \hat\theta_2$ 均为 $\displaystyle \theta$ 的一致估计量。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   **（Ⅰ）矩估计量与最大似然估计量**
 
@@ -1546,7 +1576,7 @@ title: 第七章 参数估计和假设检验
 
   因此 $\displaystyle \hat\theta_1$ 和 $\displaystyle \hat\theta_2$ 均为 $\displaystyle \theta$ 的一致估计量。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="10" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1558,10 +1588,13 @@ title: 第七章 参数估计和假设检验
 
   （Ⅱ）若已知 $\displaystyle n=100$，求 $\displaystyle p$ 的极大似然估计值 $\displaystyle \hat p$；
 
-  （Ⅲ）在情况（Ⅱ）下，检验员从该批产品中再随机检测100个产品，试用中心极限定理近似计算其次品数大于3的概率（注：$\displaystyle \Phi(\dfrac57)=0.76$）。
+  （Ⅲ）在情况（Ⅱ）下，检验员从该批产品中再随机检测100个产品，试用中心极限定理近似计算其次品数大于3的概率（注：$\displaystyle \Phi(\frac57)=0.76$）。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1581,8 +1614,7 @@ title: 第七章 参数估计和假设检验
   \displaystyle P\{X>3\}\approx0.24.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设第 $\displaystyle i$ 位检验员检出的次品数为 $\displaystyle Y_i$，则
 
@@ -1621,7 +1653,7 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle \hat n=\dfrac{\bar Y}{p}
-  =\dfrac2{0.025}=80.
+  =\frac2{0.025}=80.
   $$
 
   **（Ⅱ）求 $\displaystyle p$ 的最大似然估计值**
@@ -1695,18 +1727,18 @@ title: 第七章 参数估计和假设检验
   而
 
   $$
-  \displaystyle \dfrac{3-2}{1.4}=\dfrac57.
+  \displaystyle \dfrac{3-2}{1.4}=\frac57.
   $$
 
   所以
 
   $$
   \displaystyle P(X>3)
-  \approx1-\Phi\left(\dfrac57\right)
+  \approx1-\Phi\left(\frac57\right)
   =1-0.76=0.24.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="11" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1715,7 +1747,10 @@ title: 第七章 参数估计和假设检验
   假设批量生产的某种配件的内径 $\displaystyle X$ 服从正态分布 $\displaystyle N(\mu,\sigma^2)$，今随机抽取16个配件，测得平均内径 $\displaystyle \bar x=3.05$ 毫米，样本标准差 $\displaystyle s=0.4$ 毫米，试求 $\displaystyle \mu$ 和 $\displaystyle \sigma^2$ 的 $\displaystyle 90\%$ 置信区间。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \mu\text{ 的 }90\%\text{ 置信区间约为 }(2.875,\,3.225)\ \text{毫米},
@@ -1725,8 +1760,7 @@ title: 第七章 参数估计和假设检验
   \displaystyle \sigma^2\text{ 的 }90\%\text{ 置信区间约为 }(0.0960,\,0.3305)\ \text{毫米}^2.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   总体服从正态分布，但总体均值和方差均未知，样本容量为
 
@@ -1844,7 +1878,7 @@ title: 第七章 参数估计和假设检验
   \displaystyle \boxed{\sigma^2\in(0.0960,\,0.3305)\ \text{毫米}^2}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="12" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1853,14 +1887,16 @@ title: 第七章 参数估计和假设检验
   在测量反应时间中假设反应时间服从正态分布，一心理学家估计的标准差是 $\displaystyle 0.05$ 秒。为了以 $\displaystyle 95\%$ 的置信度使他对平均反应时间的估计误差不超过 $\displaystyle 0.01$ 秒，应取的样本容量 $\displaystyle n$ 为多少？
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \boxed{n=97}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将总体标准差按题给估计值
 
@@ -1916,7 +1952,7 @@ title: 第七章 参数估计和假设检验
 
   若取 $\displaystyle n=96$，则尚不能保证误差不超过 $\displaystyle 0.01$ 秒，因此不能向下取整。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="13" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1925,12 +1961,14 @@ title: 第七章 参数估计和假设检验
   某装置的平均工作温度据制造厂家称低于 $\displaystyle 190^\circ\mathrm C$，今从一个由16台装置构成的随机样本测得工作温度的平均值和标准差分别为 $\displaystyle 195^\circ\mathrm C$ 和 $\displaystyle 8^\circ\mathrm C$，根据这些数据能否支持厂家结论？设 $\displaystyle \alpha=0.05$，并假定工作温度近似服从正态分布。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   不能支持厂家关于平均工作温度低于 $\displaystyle 190^\circ\mathrm C$ 的结论。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设装置工作温度总体的均值为 $\displaystyle \mu$。厂家声称
 
@@ -1974,8 +2012,8 @@ title: 第七章 参数估计和假设检验
 
   $$
   \displaystyle t=\dfrac{195-190}{8/\sqrt{16}}
-  =\dfrac5{8/4}
-  =\dfrac52
+  =\frac5{8/4}
+  =\frac52
   =2.5.
   $$
 
@@ -2027,5 +2065,5 @@ title: 第七章 参数估计和假设检验
 
   因此，依据该样本数据，厂家的结论不能得到支持。
 
-  </QuestionAnalysis>
+  </details>
 </Question>

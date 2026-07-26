@@ -6,15 +6,13 @@ import remarkMath from 'remark-math';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const docsRoot = path.join(projectRoot, 'docs', '李正元练习题');
-const expectedFiles = 18;
-const expectedQuestions = 527;
+const expectedFiles = 24;
+const expectedQuestions = 655;
 const componentNames = [
   'Question',
   'QuestionStem',
   'QuestionOptions',
   'QuestionOption',
-  'QuestionAnswer',
-  'QuestionAnalysis',
 ];
 const residualMarkerPattern =
   /^\s*(?:[-*+]\s+)?(?:\*\*)?(?:答案|参考答案|解析|解答)\s*[：:]/mu;
@@ -61,6 +59,23 @@ async function validateFile(filePath) {
     }
   }
 
+  const questions = countMatches(content, /^<Question\s/gmu);
+  const details = countMatches(content, /^\s*<details>\s*$/gmu);
+  const closingDetails = countMatches(content, /^\s*<\/details>\s*$/gmu);
+  const summaries = countMatches(
+    content,
+    /^\s*<summary>查看答案与解析<\/summary>\s*$/gmu,
+  );
+  if (
+    details !== questions ||
+    closingDetails !== questions ||
+    summaries !== questions
+  ) {
+    throw new Error(
+      `${filePath}: 每道题应有一个答案折叠区（题目 ${questions}，details ${details}/${closingDetails}，summary ${summaries}）`,
+    );
+  }
+
   try {
     await compile(stripFrontMatter(content), {
       remarkPlugins: [remarkMath],
@@ -70,7 +85,7 @@ async function validateFile(filePath) {
     throw error;
   }
 
-  return countMatches(content, /^<Question\s/gmu);
+  return questions;
 }
 
 const files = await findMdxFiles(docsRoot);

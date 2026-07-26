@@ -35,16 +35,16 @@ title: 第三章 多维随机变量及其分布
 
       D. $\displaystyle (X,Y)$。
 
-      <br /><br />
-
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由于 $\displaystyle X,Y$ 相互独立，且各自在 $\displaystyle (0,1)$ 上服从均匀分布，所以联合概率密度为
 
@@ -66,7 +66,7 @@ title: 第三章 多维随机变量及其分布
 
   不是均匀分布；$\displaystyle X-Y$ 与 $\displaystyle X+Y$ 的密度均为分段线性函数，也不是均匀分布。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="2" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -93,18 +93,18 @@ title: 第三章 多维随机变量及其分布
     </QuestionOption>
     <QuestionOption>
 
-      D. $\displaystyle \dfrac12[F_X(z)+F_Y(z)]$。
-
-      <br /><br />
+      D. $\displaystyle \frac12[F_X(z)+F_Y(z)]$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由最大值不超过 $\displaystyle z$ 等价于两个随机变量都不超过 $\displaystyle z$，有
 
@@ -125,7 +125,7 @@ title: 第三章 多维随机变量及其分布
 
   选项 B 是 $\displaystyle \min\{X,Y\}$ 的分布函数。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="3" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -136,11 +136,11 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle F_1(x)=\begin{cases}
   0,&x<0,\\
-  \dfrac12,&0\le x<1,\\
+  \frac12,&0\le x<1,\\
   1,&x\ge1,
   \end{cases}
   \qquad
-  f_2(x)=\dfrac1{\sqrt{2\pi}}e^{-x^2/2},\quad -\infty<x<+\infty,
+  f_2(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2},\quad -\infty<x<+\infty,
   $$
 
   则 $\displaystyle X_1+X_2$ 的分布函数 $\displaystyle F(x)=$
@@ -154,33 +154,33 @@ title: 第三章 多维随机变量及其分布
     </QuestionOption>
     <QuestionOption>
 
-      B. $\displaystyle \dfrac12F_1(x)+\dfrac12F_2(x)$；
+      B. $\displaystyle \frac12F_1(x)+\frac12F_2(x)$；
 
     </QuestionOption>
     <QuestionOption>
 
-      C. $\displaystyle \dfrac12F_1(x)+\dfrac12F_2(x-1)$；
+      C. $\displaystyle \frac12F_1(x)+\frac12F_2(x-1)$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      D. $\displaystyle \dfrac12F_2(x)+\dfrac12F_2(x-1)$。
-
-      <br /><br />
+      D. $\displaystyle \frac12F_2(x)+\frac12F_2(x-1)$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由 $\displaystyle F_1(x)$ 可知
 
   $$
-  \displaystyle P\{X_1=0\}=\dfrac12,\qquad P\{X_1=1\}=\dfrac12.
+  \displaystyle P\{X_1=0\}=\frac12,\qquad P\{X_1=1\}=\frac12.
   $$
 
   记标准正态分布函数为 $\displaystyle F_2(x)$。利用全概率公式及 $\displaystyle X_1,X_2$ 的独立性，
@@ -189,13 +189,13 @@ title: 第三章 多维随机变量及其分布
   \displaystyle \begin{aligned}
   F(x)
   &=P\{X_1+X_2\le x\}\\
-  &=\dfrac12P\{X_2\le x\mid X_1=0\}
-  +\dfrac12P\{X_2\le x-1\mid X_1=1\}\\
-  &=\dfrac12F_2(x)+\dfrac12F_2(x-1).
+  &=\frac12P\{X_2\le x\mid X_1=0\}
+  +\frac12P\{X_2\le x-1\mid X_1=1\}\\
+  &=\frac12F_2(x)+\frac12F_2(x-1).
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="4" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -224,28 +224,28 @@ title: 第三章 多维随机变量及其分布
 
       D. $\displaystyle (X,-Y)$ 未必服从正态分布。
 
-      <br /><br />
-
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   仅知道边缘随机变量 $\displaystyle X,Y$ 各自服从一维正态分布，并不能推出 $\displaystyle (X,Y)$ 服从二维正态分布。因此，$\displaystyle (X,-Y)$ 也未必服从二维正态分布，选项 D 正确。
 
   对于错误选项：只有在 $\displaystyle X,Y$ 联合正态时，任意线性组合才必为正态分布，因此 A 不一定成立；一般随机变量中“不相关”不能推出“独立”，故 B 错误；边缘分布均为正态分布不能保证联合分布为二维正态分布，故 C 错误。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="5" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
   <QuestionStem>
 
-  已知随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立且有相同的分布：$\displaystyle P\{X_i=-1\}=P\{X_i=1\}=\dfrac12\,(i=1,2)$，则
+  已知随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立且有相同的分布：$\displaystyle P\{X_i=-1\}=P\{X_i=1\}=\frac12\,(i=1,2)$，则
 
   </QuestionStem>
   <QuestionOptions>
@@ -268,40 +268,40 @@ title: 第三章 多维随机变量及其分布
 
       D. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 不独立且有不同的分布。
 
-      <br /><br />
-
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   A
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令 $\displaystyle W=X_1X_2$。由于 $\displaystyle X_1,X_2$ 均只取 $\displaystyle \pm1$，故 $\displaystyle W$ 也只取 $\displaystyle \pm1$，且
 
   $$
-  \displaystyle P\{W=1\}=P\{X_1=X_2\}=\dfrac12,
+  \displaystyle P\{W=1\}=P\{X_1=X_2\}=\frac12,
   \qquad
-  P\{W=-1\}=\dfrac12.
+  P\{W=-1\}=\frac12.
   $$
 
   因而 $\displaystyle W$ 与 $\displaystyle X_1$ 同分布。进一步，对任意 $\displaystyle a,b\in\{-1,1\}$，事件 $\displaystyle X_1=a,W=b$ 唯一确定 $\displaystyle X_2=ab$，所以
 
   $$
-  \displaystyle P\{X_1=a,W=b\}=P\{X_1=a,X_2=ab\}=\dfrac14.
+  \displaystyle P\{X_1=a,W=b\}=P\{X_1=a,X_2=ab\}=\frac14.
   $$
 
   同时
 
   $$
-  \displaystyle P\{X_1=a\}P\{W=b\}=\dfrac12\cdot\dfrac12=\dfrac14.
+  \displaystyle P\{X_1=a\}P\{W=b\}=\frac12\cdot\frac12=\frac14.
   $$
 
   因此 $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 相互独立且同分布。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="6" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -313,46 +313,46 @@ title: 第三章 多维随机变量及其分布
   <QuestionOptions>
     <QuestionOption>
 
-      A. $\displaystyle P\{X+Y\ge0\}=\dfrac14$；
+      A. $\displaystyle P\{X+Y\ge0\}=\frac14$；
 
     </QuestionOption>
     <QuestionOption>
 
-      B. $\displaystyle P\{X-Y\ge0\}=\dfrac14$；
+      B. $\displaystyle P\{X-Y\ge0\}=\frac14$；
 
     </QuestionOption>
     <QuestionOption>
 
-      C. $\displaystyle P\{\max(X,Y)\ge0\}=\dfrac14$；
+      C. $\displaystyle P\{\max(X,Y)\ge0\}=\frac14$；
 
     </QuestionOption>
     <QuestionOption correct>
 
-      D. $\displaystyle P\{\min(X,Y)\ge0\}=\dfrac14$。
-
-      <br /><br />
+      D. $\displaystyle P\{\min(X,Y)\ge0\}=\frac14$。
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   $\displaystyle (X,Y)$ 在边长为 $\displaystyle 2$ 的正方形上均匀分布，因此概率等于相应区域面积与正方形总面积之比，总面积为 $\displaystyle 4$。
 
   事件 $\displaystyle \min(X,Y)\ge0$ 等价于 $\displaystyle X\ge0,Y\ge0$，对应第一象限内的单位正方形，面积为 $\displaystyle 1$，故
 
   $$
-  \displaystyle P\{\min(X,Y)\ge0\}=\dfrac14.
+  \displaystyle P\{\min(X,Y)\ge0\}=\frac14.
   $$
 
   另外，由对称性，
 
   $$
-  \displaystyle P\{X+Y\ge0\}=P\{X-Y\ge0\}=\dfrac12,
+  \displaystyle P\{X+Y\ge0\}=P\{X-Y\ge0\}=\frac12,
   $$
 
   且
@@ -360,11 +360,11 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle P\{\max(X,Y)\ge0\}
   =1-P\{X<0,Y<0\}
-  =1-\dfrac14
-  =\dfrac34.
+  =1-\frac14
+  =\frac34.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="7" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
@@ -393,21 +393,21 @@ title: 第三章 多维随机变量及其分布
 
       D. $\displaystyle Y$ 关于 $\displaystyle X=1$ 的条件分布。
 
-      <br /><br />
-
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   圆域上的联合密度为常数
 
   $$
-  \displaystyle f_{X,Y}(x,y)=\dfrac1{\pi r^2},\qquad x^2+y^2\le r^2.
+  \displaystyle f_{X,Y}(x,y)=\frac1{\pi r^2},\qquad x^2+y^2\le r^2.
   $$
 
   对固定的 $\displaystyle X=1$，在题意默认 $\displaystyle r>1$ 时，$\displaystyle Y$ 的可取范围为
@@ -420,7 +420,7 @@ title: 第三章 多维随机变量及其分布
 
   $$
   \displaystyle f_{Y\mid X}(y\mid1)
-  =\dfrac1{2\sqrt{r^2-1}},
+  =\frac1{2\sqrt{r^2-1}},
   \qquad |y|<\sqrt{r^2-1},
   $$
 
@@ -434,7 +434,7 @@ title: 第三章 多维随机变量及其分布
 
   并非常数；$\displaystyle X+Y$ 的密度也不是均匀密度。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 填空题
@@ -442,12 +442,13 @@ title: 第三章 多维随机变量及其分布
 <Question type="fill" number="1" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
   <QuestionStem>
 
-  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立同分布，且都服从 $\displaystyle p=\dfrac23$ 的0-1分布，则随机变量 $\displaystyle Z=\max\{X,Y\}$ 的分布律为 $\displaystyle \underline{\qquad}$。
-
-  <br /><br />
+  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立同分布，且都服从 $\displaystyle p=\frac23$ 的0-1分布，则随机变量 $\displaystyle Z=\max\{X,Y\}$ 的分布律为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \begin{array}{c|cc}
@@ -456,30 +457,29 @@ title: 第三章 多维随机变量及其分布
   \end{array}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由0-1分布知
 
   $$
-  \displaystyle P\{X=1\}=P\{Y=1\}=\dfrac23,
+  \displaystyle P\{X=1\}=P\{Y=1\}=\frac23,
   \qquad
-  P\{X=0\}=P\{Y=0\}=\dfrac13.
+  P\{X=0\}=P\{Y=0\}=\frac13.
   $$
 
   因为 $\displaystyle Z=0$ 当且仅当 $\displaystyle X=0,Y=0$，由独立性得
 
   $$
-  \displaystyle P\{Z=0\}=\dfrac13\cdot\dfrac13=\dfrac19.
+  \displaystyle P\{Z=0\}=\frac13\cdot\frac13=\frac19.
   $$
 
   因此
 
   $$
-  \displaystyle P\{Z=1\}=1-P\{Z=0\}=\dfrac89.
+  \displaystyle P\{Z=1\}=1-P\{Z=0\}=\frac89.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="2" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -487,13 +487,14 @@ title: 第三章 多维随机变量及其分布
 
   假设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且 $\displaystyle P\{X=k\}=\dfrac ak$，$\displaystyle P\{Y=-k\}=\dfrac b{k^2}\,(k=1,2,3)$，则 $\displaystyle a=\underline{\qquad}$，$\displaystyle b=\underline{\qquad}$，$\displaystyle Z=X+Y$ 的分布律为 $\displaystyle \underline{\qquad}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
-  \displaystyle a=\dfrac6{11},\qquad b=\dfrac{36}{49},
+  \displaystyle a=\frac6{11},\qquad b=\dfrac{36}{49},
   $$
 
   且
@@ -505,25 +506,24 @@ title: 第三章 多维随机变量及其分布
   \end{array}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由概率总和为 $\displaystyle 1$，
 
   $$
-  \displaystyle a\left(1+\dfrac12+\dfrac13\right)=1,
+  \displaystyle a\left(1+\frac12+\frac13\right)=1,
   $$
 
   故
 
   $$
-  \displaystyle a=\dfrac6{11}.
+  \displaystyle a=\frac6{11}.
   $$
 
   同理，
 
   $$
-  \displaystyle b\left(1+\dfrac14+\dfrac19\right)=1,
+  \displaystyle b\left(1+\frac14+\frac19\right)=1,
   $$
 
   所以
@@ -558,7 +558,7 @@ title: 第三章 多维随机变量及其分布
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="3" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -566,26 +566,26 @@ title: 第三章 多维随机变量及其分布
 
   从数 $\displaystyle 1,2,3,4$ 中任取一个数，记为 $\displaystyle X$，再从 $\displaystyle 1,\cdots,X$ 中任取一个数，记为 $\displaystyle Y$，则 $\displaystyle P\{Y=2\}=\underline{\qquad}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle \dfrac{13}{48}$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   第一次从 $\displaystyle 1,2,3,4$ 中等可能选取，因此
 
   $$
-  \displaystyle P\{X=k\}=\dfrac14,\qquad k=1,2,3,4.
+  \displaystyle P\{X=k\}=\frac14,\qquad k=1,2,3,4.
   $$
 
   当 $\displaystyle X=1$ 时，$\displaystyle Y$ 不可能取 $\displaystyle 2$；当 $\displaystyle X=k\ge2$ 时，$\displaystyle Y$ 在 $\displaystyle 1,2,\ldots,k$ 中等可能取值，所以
 
   $$
-  \displaystyle P\{Y=2\mid X=k\}=\dfrac1k.
+  \displaystyle P\{Y=2\mid X=k\}=\frac1k.
   $$
 
   由全概率公式，
@@ -594,12 +594,12 @@ title: 第三章 多维随机变量及其分布
   \displaystyle \begin{aligned}
   P\{Y=2\}
   &=\sum_{k=2}^{4}P\{X=k\}P\{Y=2\mid X=k\}\\
-  &=\dfrac14\left(\dfrac12+\dfrac13+\dfrac14\right)\\
+  &=\frac14\left(\frac12+\frac13+\frac14\right)\\
   &=\dfrac{13}{48}.
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="4" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -617,10 +617,11 @@ title: 第三章 多维随机变量及其分布
 
   则随机变量 $\displaystyle X$ 的分布函数 $\displaystyle F_X(x)$ 为 $\displaystyle \underline{\qquad}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle F_X(x)=
@@ -631,8 +632,7 @@ title: 第三章 多维随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   随机变量 $\displaystyle X$ 的边缘分布函数由联合分布函数令另一个变量趋于正无穷得到，即
 
@@ -653,7 +653,7 @@ title: 第三章 多维随机变量及其分布
 
   同理可得 $\displaystyle F_Y(y)$ 也具有相同形式。事实上，该联合分布对应于 $\displaystyle X=Y$，且二者均服从 $\displaystyle (0,1)$ 上的均匀分布。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="5" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
@@ -661,15 +661,15 @@ title: 第三章 多维随机变量及其分布
 
   设 $\displaystyle (X,Y)\sim N(\mu,\mu;\sigma^2,\sigma^2;0)$，则 $\displaystyle P\{X<Y\}=\underline{\qquad}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $\displaystyle \dfrac12$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由题意，$\displaystyle X$ 与 $\displaystyle Y$ 的均值、方差相同，且相关系数为 $\displaystyle 0$。由于 $\displaystyle (X,Y)$ 服从二维正态分布，零相关等价于相互独立，因此 $\displaystyle X,Y$ 独立同分布。
 
@@ -688,10 +688,10 @@ title: 第三章 多维随机变量及其分布
   该正态分布关于原点对称，且连续型随机变量满足 $\displaystyle P\{Z=0\}=0$，故
 
   $$
-  \displaystyle P\{X<Y\}=P\{X-Y<0\}=P\{Z<0\}=\dfrac12.
+  \displaystyle P\{X<Y\}=P\{X-Y<0\}=P\{Z<0\}=\frac12.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 计算题与应用题
@@ -715,10 +715,11 @@ title: 第三章 多维随机变量及其分布
 
   试就放回与不放回两种情形，求出 $\displaystyle (X,Y)$ 的联合分布律。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   放回抽样时，
 
@@ -740,27 +741,26 @@ title: 第三章 多维随机变量及其分布
   \end{array}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   **（1）放回抽样**
 
   每次抽球后将球放回，所以两次抽取相互独立，且每次抽到红球、白球的概率分别为
 
   $$
-  \displaystyle P\{\text{红}\}=\dfrac6{10}=\dfrac35,
+  \displaystyle P\{\text{红}\}=\frac6{10}=\frac35,
   \qquad
-  P\{\text{白}\}=\dfrac4{10}=\dfrac25.
+  P\{\text{白}\}=\frac4{10}=\frac25.
   $$
 
   因而
 
   $$
   \displaystyle \begin{aligned}
-  P\{X=1,Y=1\}&=\dfrac35\cdot\dfrac35=\dfrac9{25},\\
-  P\{X=1,Y=0\}&=\dfrac35\cdot\dfrac25=\dfrac6{25},\\
-  P\{X=0,Y=1\}&=\dfrac25\cdot\dfrac35=\dfrac6{25},\\
-  P\{X=0,Y=0\}&=\dfrac25\cdot\dfrac25=\dfrac4{25}.
+  P\{X=1,Y=1\}&=\frac35\cdot\frac35=\frac9{25},\\
+  P\{X=1,Y=0\}&=\frac35\cdot\frac25=\frac6{25},\\
+  P\{X=0,Y=1\}&=\frac25\cdot\frac35=\frac6{25},\\
+  P\{X=0,Y=0\}&=\frac25\cdot\frac25=\frac4{25}.
   \end{aligned}
   $$
 
@@ -771,19 +771,19 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle \begin{aligned}
   P\{X=1,Y=1\}
-  &=\dfrac6{10}\cdot\dfrac5{9}=\dfrac13,\\
+  &=\frac6{10}\cdot\frac5{9}=\frac13,\\
   P\{X=1,Y=0\}
-  &=\dfrac6{10}\cdot\dfrac4{9}=\dfrac4{15},\\
+  &=\frac6{10}\cdot\frac4{9}=\frac4{15},\\
   P\{X=0,Y=1\}
-  &=\dfrac4{10}\cdot\dfrac6{9}=\dfrac4{15},\\
+  &=\frac4{10}\cdot\frac6{9}=\frac4{15},\\
   P\{X=0,Y=0\}
-  &=\dfrac4{10}\cdot\dfrac3{9}=\dfrac2{15}.
+  &=\frac4{10}\cdot\frac3{9}=\frac2{15}.
   \end{aligned}
   $$
 
   四个概率之和均为 $\displaystyle 1$，所得联合分布律正确。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="2" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -799,10 +799,11 @@ title: 第三章 多维随机变量及其分布
 
   其中 $\displaystyle a,b,c$ 为常数，且 $\displaystyle E(XY)=-0.1$，$\displaystyle P\{X\le0\mid Y\ge2\}=\dfrac58$，记 $\displaystyle Z=X+Y$。求：（Ⅰ）$\displaystyle a,b,c$ 之值；（Ⅱ）$\displaystyle Z$ 的概率分布；（Ⅲ）$\displaystyle P\{Z=X\}$ 与 $\displaystyle P\{Z=Y\}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -829,8 +830,7 @@ title: 第三章 多维随机变量及其分布
   P\{Z=Y\}=0.3.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   **（Ⅰ）求 $\displaystyle a,b,c$**
 
@@ -876,7 +876,7 @@ title: 第三章 多维随机变量及其分布
   因此
 
   $$
-  \displaystyle \dfrac{a+0.4}{a+c+0.5}=\dfrac58,
+  \displaystyle \dfrac{a+0.4}{a+c+0.5}=\frac58,
   $$
 
   化简得
@@ -939,7 +939,7 @@ title: 第三章 多维随机变量及其分布
   \displaystyle P\{Z=Y\}=P\{X=0\}=b+0.2+0=0.3.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="3" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -967,10 +967,11 @@ title: 第三章 多维随机变量及其分布
 
   （Ⅰ）求 $\displaystyle U$ 和 $\displaystyle V$ 的联合分布；（Ⅱ）求 $\displaystyle U$ 和 $\displaystyle V$ 的相关系数 $\displaystyle \rho$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -985,11 +986,10 @@ title: 第三章 多维随机变量及其分布
   （Ⅱ）
 
   $$
-  \displaystyle \rho_{UV}=\dfrac1{\sqrt3}.
+  \displaystyle \rho_{UV}=\frac1{\sqrt3}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   矩形 $\displaystyle G$ 的面积为
 
@@ -1000,7 +1000,7 @@ title: 第三章 多维随机变量及其分布
   因此联合密度为
 
   $$
-  \displaystyle f_{X,Y}(x,y)=\dfrac12,
+  \displaystyle f_{X,Y}(x,y)=\frac12,
   \qquad (x,y)\in G.
   $$
 
@@ -1019,13 +1019,13 @@ title: 第三章 多维随机变量及其分布
   其面积为
 
   $$
-  \displaystyle \int_0^1y\,dy=\dfrac12,
+  \displaystyle \int_0^1y\,dy=\frac12,
   $$
 
   故
 
   $$
-  \displaystyle P\{U=0,V=0\}=\dfrac{1/2}{2}=\dfrac14.
+  \displaystyle P\{U=0,V=0\}=\dfrac{1/2}{2}=\frac14.
   $$
 
   对于 $\displaystyle U=1,V=0$，对应
@@ -1038,33 +1038,33 @@ title: 第三章 多维随机变量及其分布
   其面积为
 
   $$
-  \displaystyle \int_0^1(2y-y)\,dy=\dfrac12,
+  \displaystyle \int_0^1(2y-y)\,dy=\frac12,
   $$
 
   因而
 
   $$
-  \displaystyle P\{U=1,V=0\}=\dfrac14.
+  \displaystyle P\{U=1,V=0\}=\frac14.
   $$
 
   剩余部分即为 $\displaystyle U=1,V=1$，故
 
   $$
-  \displaystyle P\{U=1,V=1\}=1-\dfrac14-\dfrac14=\dfrac12.
+  \displaystyle P\{U=1,V=1\}=1-\frac14-\frac14=\frac12.
   $$
 
   由于 $\displaystyle U,V$ 均为0-1型随机变量，
 
   $$
-  \displaystyle EU=P\{U=1\}=\dfrac34,
+  \displaystyle EU=P\{U=1\}=\frac34,
   \qquad
-  EV=P\{V=1\}=\dfrac12,
+  EV=P\{V=1\}=\frac12,
   $$
 
   且
 
   $$
-  \displaystyle E(UV)=P\{U=1,V=1\}=\dfrac12.
+  \displaystyle E(UV)=P\{U=1,V=1\}=\frac12.
   $$
 
   所以
@@ -1072,16 +1072,16 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle \operatorname{Cov}(U,V)
   =E(UV)-EU\,EV
-  =\dfrac12-\dfrac34\cdot\dfrac12
-  =\dfrac18.
+  =\frac12-\frac34\cdot\frac12
+  =\frac18.
   $$
 
   又
 
   $$
-  \displaystyle D(U)=\dfrac34\left(1-\dfrac34\right)=\dfrac3{16},
+  \displaystyle D(U)=\frac34\left(1-\frac34\right)=\frac3{16},
   \qquad
-  D(V)=\dfrac12\left(1-\dfrac12\right)=\dfrac14.
+  D(V)=\frac12\left(1-\frac12\right)=\frac14.
   $$
 
   因此相关系数为
@@ -1090,10 +1090,10 @@ title: 第三章 多维随机变量及其分布
   \displaystyle \rho_{UV}
   =\dfrac{\operatorname{Cov}(U,V)}{\sqrt{D(U)D(V)}}
   =\dfrac{1/8}{\sqrt{(3/16)(1/4)}}
-  =\dfrac1{\sqrt3}.
+  =\frac1{\sqrt3}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="4" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1107,10 +1107,11 @@ title: 第三章 多维随机变量及其分布
 
   内服从均匀分布，求边缘密度函数，并判断 $\displaystyle X,Y$ 的独立性。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle f_X(x)=
@@ -1131,8 +1132,7 @@ title: 第三章 多维随机变量及其分布
 
   $\displaystyle X$ 与 $\displaystyle Y$ 不独立。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   区域 $\displaystyle D$ 可写成
 
@@ -1210,19 +1210,19 @@ title: 第三章 多维随机变量及其分布
   例如取 $\displaystyle (x,y)=\left(\dfrac14,\dfrac34\right)$，该点不属于 $\displaystyle D$，故
 
   $$
-  \displaystyle f_{X,Y}\left(\dfrac14,\dfrac34\right)=0,
+  \displaystyle f_{X,Y}\left(\frac14,\frac34\right)=0,
   $$
 
   但
 
   $$
-  \displaystyle f_X\left(\dfrac14\right)f_Y\left(\dfrac34\right)
-  =\dfrac14\ne0.
+  \displaystyle f_X\left(\frac14\right)f_Y\left(\frac34\right)
+  =\frac14\ne0.
   $$
 
   因此 $\displaystyle X$ 与 $\displaystyle Y$ 不独立。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="5" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1239,10 +1239,11 @@ title: 第三章 多维随机变量及其分布
 
   （Ⅰ）试求 $\displaystyle X$ 的概率密度 $\displaystyle f_X(x)$；（Ⅱ）试求事件“$\displaystyle X$ 大于 $\displaystyle Y$”的概率 $\displaystyle P\{X>Y\}$；（Ⅲ）求条件概率 $\displaystyle P\{Y>1\mid X<0.5\}$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1265,8 +1266,7 @@ title: 第三章 多维随机变量及其分布
   \displaystyle P\{Y>1\mid X<0.5\}=\dfrac{13}{20}。
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   （Ⅰ）对 $\displaystyle y$ 积分可得 $\displaystyle X$ 的边缘密度：
 
@@ -1274,8 +1274,8 @@ title: 第三章 多维随机变量及其分布
   \displaystyle \begin{aligned}
   f_X(x)
   &=\int_{-\infty}^{+\infty}f(x,y)\,dy\\
-  &=\int_0^2\dfrac67\left(x^2+\dfrac{xy}{2}\right)dy\\
-  &=\dfrac67\left(2x^2+x\right),\qquad 0<x<1.
+  &=\int_0^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\\
+  &=\frac67\left(2x^2+x\right),\qquad 0<x<1.
   \end{aligned}
   $$
 
@@ -1299,9 +1299,9 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle \begin{aligned}
   P\{X>Y\}
-  &=\int_0^1\int_0^x\dfrac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
-  &=\dfrac67\int_0^1\left(x^3+\dfrac{x^3}{4}\right)dx\\
-  &=\dfrac67\cdot\dfrac54\cdot\dfrac14\\
+  &=\int_0^1\int_0^x\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
+  &=\frac67\int_0^1\left(x^3+\dfrac{x^3}{4}\right)dx\\
+  &=\frac67\cdot\frac54\cdot\frac14\\
   &=\dfrac{15}{56}.
   \end{aligned}
   $$
@@ -1319,9 +1319,9 @@ title: 第三章 多维随机变量及其分布
   \displaystyle \begin{aligned}
   P\{X<0.5\}
   &=\int_0^{1/2}f_X(x)\,dx\\
-  &=\dfrac67\int_0^{1/2}(2x^2+x)dx\\
-  &=\dfrac67\left(\dfrac1{12}+\dfrac18\right)\\
-  &=\dfrac5{28}.
+  &=\frac67\int_0^{1/2}(2x^2+x)dx\\
+  &=\frac67\left(\frac1{12}+\frac18\right)\\
+  &=\frac5{28}.
   \end{aligned}
   $$
 
@@ -1330,9 +1330,9 @@ title: 第三章 多维随机变量及其分布
   $$
   \displaystyle \begin{aligned}
   P\{Y>1,\ X<0.5\}
-  &=\int_0^{1/2}\int_1^2\dfrac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
-  &=\dfrac67\int_0^{1/2}\left(x^2+\dfrac{3x}{4}\right)dx\\
-  &=\dfrac67\left(\dfrac1{24}+\dfrac3{32}\right)\\
+  &=\int_0^{1/2}\int_1^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
+  &=\frac67\int_0^{1/2}\left(x^2+\dfrac{3x}{4}\right)dx\\
+  &=\frac67\left(\frac1{24}+\frac3{32}\right)\\
   &=\dfrac{13}{112}.
   \end{aligned}
   $$
@@ -1345,7 +1345,7 @@ title: 第三章 多维随机变量及其分布
   =\dfrac{13}{20}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="6" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1359,10 +1359,11 @@ title: 第三章 多维随机变量及其分布
 
   求 $\displaystyle X$ 的边缘密度 $\displaystyle f_X(x)$ 与在 $\displaystyle X=0$ 条件下，关于 $\displaystyle Y$ 的条件密度 $\displaystyle f_{Y\mid X}(y\mid0)$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle f_X(x)=\begin{cases}
@@ -1378,8 +1379,7 @@ title: 第三章 多维随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   区域 $\displaystyle D$ 由两组不等式
 
@@ -1484,7 +1484,7 @@ title: 第三章 多维随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="7" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1494,62 +1494,62 @@ title: 第三章 多维随机变量及其分布
 
   | $\displaystyle X\backslash Y$ | $\displaystyle -1$ | 1 |
   |---|---:|---:|
-  | $\displaystyle -1$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac16$ |
-  | $\displaystyle 0$ | $\displaystyle \dfrac26$ | $\displaystyle \dfrac16$ |
-  | $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle \dfrac16$ |
+  | $\displaystyle -1$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
+  | $\displaystyle 0$ | $\displaystyle \frac26$ | $\displaystyle \frac16$ |
+  | $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle \frac16$ |
 
   （Ⅰ）求 $\displaystyle Z=X-Y$ 的概率分布；（Ⅱ）记 $\displaystyle U_1=XY,V_1=\dfrac XY$，求 $\displaystyle (U_1,V_1)$ 的概率分布；（Ⅲ）记 $\displaystyle U_2=\max(X,Y),V_2=\min(X,Y)$，求 $\displaystyle (U_2,V_2)$ 的概率分布及 $\displaystyle U_2V_2$ 的概率分布。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）$\displaystyle Z=X-Y$ 的分布律为
 
   | $\displaystyle Z$ | $\displaystyle -2$ | $\displaystyle -1$ | 0 | 1 |
   |---|---:|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac13$ | $\displaystyle \dfrac13$ |
+  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac13$ |
 
   （Ⅱ）$\displaystyle (U_1,V_1)$ 的分布律为
 
   | $\displaystyle (U_1,V_1)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,0)$ | $\displaystyle (1,1)$ |
   |---|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac12$ | $\displaystyle \dfrac13$ |
+  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
 
   （Ⅲ）$\displaystyle (U_2,V_2)$ 的分布律为
 
   | $\displaystyle (U_2,V_2)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,-1)$ | $\displaystyle (1,-1)$ | $\displaystyle (1,0)$ | $\displaystyle (1,1)$ |
   |---|---:|---:|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac13$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac16$ |
+  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
 
   $\displaystyle U_2V_2$ 的分布律为
 
   | $\displaystyle U_2V_2$ | $\displaystyle -1$ | 0 | 1 |
   |---|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \dfrac16$ | $\displaystyle \dfrac12$ | $\displaystyle \dfrac13$ |
+  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   逐一列出 $\displaystyle (X,Y)$ 的所有可能取值及其变换结果：
 
   | $\displaystyle (X,Y)$ | 概率 | $\displaystyle X-Y$ | $\displaystyle (XY,X/Y)$ | $\displaystyle (\max(X,Y),\min(X,Y))$ |
   |---|---:|---:|---:|---:|
-  | $\displaystyle (-1,-1)$ | $\displaystyle \dfrac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (-1,-1)$ |
-  | $\displaystyle (-1,1)$ | $\displaystyle \dfrac16$ | $\displaystyle -2$ | $\displaystyle (-1,-1)$ | $\displaystyle (1,-1)$ |
-  | $\displaystyle (0,-1)$ | $\displaystyle \dfrac26$ | 1 | $\displaystyle (0,0)$ | $\displaystyle (0,-1)$ |
-  | $\displaystyle (0,1)$ | $\displaystyle \dfrac16$ | $\displaystyle -1$ | $\displaystyle (0,0)$ | $\displaystyle (1,0)$ |
-  | $\displaystyle (1,1)$ | $\displaystyle \dfrac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (1,1)$ |
+  | $\displaystyle (-1,-1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (-1,-1)$ |
+  | $\displaystyle (-1,1)$ | $\displaystyle \frac16$ | $\displaystyle -2$ | $\displaystyle (-1,-1)$ | $\displaystyle (1,-1)$ |
+  | $\displaystyle (0,-1)$ | $\displaystyle \frac26$ | 1 | $\displaystyle (0,0)$ | $\displaystyle (0,-1)$ |
+  | $\displaystyle (0,1)$ | $\displaystyle \frac16$ | $\displaystyle -1$ | $\displaystyle (0,0)$ | $\displaystyle (1,0)$ |
+  | $\displaystyle (1,1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (1,1)$ |
 
   （Ⅰ）将产生相同 $\displaystyle Z=X-Y$ 值的概率相加，得到
 
   $$
   \displaystyle \begin{aligned}
-  P\{Z=-2\}&=\dfrac16,\\
-  P\{Z=-1\}&=\dfrac16,\\
-  P\{Z=0\}&=\dfrac16+\dfrac16=\dfrac13,\\
-  P\{Z=1\}&=\dfrac26=\dfrac13.
+  P\{Z=-2\}&=\frac16,\\
+  P\{Z=-1\}&=\frac16,\\
+  P\{Z=0\}&=\frac16+\frac16=\frac13,\\
+  P\{Z=1\}&=\frac26=\frac13.
   \end{aligned}
   $$
 
@@ -1557,9 +1557,9 @@ title: 第三章 多维随机变量及其分布
 
   $$
   \displaystyle \begin{aligned}
-  P\{(U_1,V_1)=(-1,-1)\}&=\dfrac16,\\
-  P\{(U_1,V_1)=(0,0)\}&=\dfrac26+\dfrac16=\dfrac12,\\
-  P\{(U_1,V_1)=(1,1)\}&=\dfrac16+\dfrac16=\dfrac13.
+  P\{(U_1,V_1)=(-1,-1)\}&=\frac16,\\
+  P\{(U_1,V_1)=(0,0)\}&=\frac26+\frac16=\frac12,\\
+  P\{(U_1,V_1)=(1,1)\}&=\frac16+\frac16=\frac13.
   \end{aligned}
   $$
 
@@ -1573,13 +1573,13 @@ title: 第三章 多维随机变量及其分布
 
   $$
   \displaystyle \begin{aligned}
-  P\{U_2V_2=-1\}&=\dfrac16,\\
-  P\{U_2V_2=0\}&=\dfrac26+\dfrac16=\dfrac12,\\
-  P\{U_2V_2=1\}&=\dfrac16+\dfrac16=\dfrac13.
+  P\{U_2V_2=-1\}&=\frac16,\\
+  P\{U_2V_2=0\}&=\frac26+\frac16=\frac12,\\
+  P\{U_2V_2=1\}&=\frac16+\frac16=\frac13.
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="8" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1587,10 +1587,11 @@ title: 第三章 多维随机变量及其分布
 
   设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且都在 $\displaystyle [0,1]$ 上服从均匀分布，试求：（Ⅰ）$\displaystyle U=XY$ 的概率密度 $\displaystyle f_U(u)$；（Ⅱ）$\displaystyle V=|X-Y|$ 的概率密度 $\displaystyle f_V(v)$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1610,8 +1611,7 @@ title: 第三章 多维随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由于 $\displaystyle X,Y$ 独立且均服从 $\displaystyle [0,1]$ 上的均匀分布，故 $\displaystyle (X,Y)$ 在单位正方形上均匀分布，联合密度为1。
 
@@ -1682,7 +1682,7 @@ title: 第三章 多维随机变量及其分布
   \end{cases}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="9" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
@@ -1704,10 +1704,11 @@ title: 第三章 多维随机变量及其分布
 
   求：（Ⅰ）常数 $\displaystyle k_1,k_2$ 的值；（Ⅱ）$\displaystyle X_i,Y_i\,(i=1,2)$ 的边缘概率密度；（Ⅲ）$\displaystyle P\{X_i>2Y_i\}\,(i=1,2)$。
 
-  <br /><br />
-
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
 
@@ -1746,13 +1747,12 @@ title: 第三章 多维随机变量及其分布
   （Ⅲ）
 
   $$
-  \displaystyle P\{X_1>2Y_1\}=\dfrac13,
+  \displaystyle P\{X_1>2Y_1\}=\frac13,
   \qquad
-  P\{X_2>2Y_2\}=\dfrac23.
+  P\{X_2>2Y_2\}=\frac23.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   （Ⅰ）由概率密度归一化条件，
 
@@ -1835,7 +1835,7 @@ title: 第三章 多维随机变量及其分布
   P\{X_1>2Y_1\}
   &=\int_0^{+\infty}\int_{2y}^{+\infty}e^{-(x+y)}dx\,dy\\
   &=\int_0^{+\infty}e^{-3y}dy\\
-  &=\dfrac13.
+  &=\frac13.
   \end{aligned}
   $$
 
@@ -1846,9 +1846,9 @@ title: 第三章 多维随机变量及其分布
   P\{X_2>2Y_2\}
   &=\int_0^{+\infty}\int_{2y}^{+\infty}2e^{-(x+y)}dx\,dy\\
   &=2\int_0^{+\infty}e^{-3y}dy\\
-  &=\dfrac23.
+  &=\frac23.
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>

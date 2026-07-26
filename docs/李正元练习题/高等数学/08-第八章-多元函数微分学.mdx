@@ -65,12 +65,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   判断二元函数在原点的连续性，需要考察
   $$
@@ -86,7 +88,7 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \left|\dfrac{xy}{\sqrt{x^2+y^2}}\right|
   \le \dfrac{x^2+y^2}{2\sqrt{x^2+y^2}}
-  =\dfrac12\sqrt{x^2+y^2}\to0,
+  =\frac12\sqrt{x^2+y^2}\to0,
   $$
   故在原点连续。
 
@@ -100,18 +102,18 @@ title: 第八章 多元函数微分学
 
   对于（C），沿路径 $\displaystyle y=x$ 趋于原点时，
   $$
-  \displaystyle f(x,x)=\dfrac{x^2}{\sqrt{2x^4}}=\dfrac1{\sqrt2}\qquad(x\ne0),
+  \displaystyle f(x,x)=\dfrac{x^2}{\sqrt{2x^4}}=\frac1{\sqrt2}\qquad(x\ne0),
   $$
   其极限不等于 $\displaystyle 0$，故函数在原点不连续。
 
   对于（D），
   $$
-  \displaystyle \left|\sqrt{x^2+y^2}\sin\dfrac1{x^2+y^2}\right|
+  \displaystyle \left|\sqrt{x^2+y^2}\sin\frac1{x^2+y^2}\right|
   \le\sqrt{x^2+y^2}\to0,
   $$
   故在原点连续。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="2" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -146,12 +148,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   B
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   首先考察连续性。由基本不等式
   $$
@@ -160,7 +164,7 @@ title: 第八章 多元函数微分学
   可得
   $$
   \displaystyle 0\le \sqrt{|xy|}
-  \le\dfrac1{\sqrt2}\sqrt{x^2+y^2}\to0.
+  \le\frac1{\sqrt2}\sqrt{x^2+y^2}\to0.
   $$
   因此
   $$
@@ -185,13 +189,13 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \dfrac{|f(x,x)|}{\sqrt{x^2+x^2}}
   =\dfrac{|x|}{\sqrt2|x|}
-  =\dfrac1{\sqrt2},
+  =\frac1{\sqrt2},
   $$
   其极限不为零，因此函数在原点不可微。
 
   （A）错误，因为不满足可微的增量条件；（C）错误，因为两个偏导数均存在；（D）不是本题所考察的准确结论，且偏导函数在坐标轴上的一些非原点处甚至不存在。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="3" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -230,12 +234,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   记
   $$
@@ -243,7 +249,7 @@ title: 第八章 多元函数微分学
   $$
   当 $\displaystyle (x,y)\ne(0,0)$ 时，
   $$
-  \displaystyle f(x,y)=r^2\sin\dfrac1r.
+  \displaystyle f(x,y)=r^2\sin\frac1r.
   $$
   由
   $$
@@ -254,7 +260,7 @@ title: 第八章 多元函数微分学
   原点处的两个偏导数为
   $$
   \displaystyle f_x(0,0)=\lim_{h\to0}\dfrac{h^2\sin(1/|h|)}h
-  =\lim_{h\to0}h\sin\dfrac1{|h|}=0,
+  =\lim_{h\to0}h\sin\frac1{|h|}=0,
   $$
   同理
   $$
@@ -275,7 +281,7 @@ title: 第八章 多元函数微分学
 
   （A）错误。虽然原点处偏导数存在，但偏导函数在原点附近发生振荡，并不连续。例如在 $\displaystyle y=0,x\ne0$ 时，$\displaystyle f_x(x,0)$ 含有振荡项 $\displaystyle \cos(1/|x|)$。因此正确选项为（C）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="4" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -310,12 +316,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由于 $\displaystyle \varphi(x,y)$ 在原点连续且 $\displaystyle \varphi(0,0)=0$，故
   $$
@@ -347,7 +355,7 @@ title: 第八章 多元函数微分学
   $$
   因此（A）、（B）、（D）均错误，正确答案为（C）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="5" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -398,12 +406,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对于（A）、（B），函数在原点邻域内具有连续的二阶偏导数，由混合偏导数交换定理必有
   $$
@@ -444,7 +454,7 @@ title: 第八章 多元函数微分学
 
   对于（D），多出的一个因子 $\displaystyle y$ 使相应的一阶偏导沿坐标轴至少为二阶小量，最终两个混合偏导数均为零。因此正确选项为（C）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="6" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -500,12 +510,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   C
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设 $\displaystyle M_0=(x_0,y_0)$。固定 $\displaystyle y=y_0$，定义一元函数
   $$
@@ -535,7 +547,7 @@ title: 第八章 多元函数微分学
   $$
   因此（B）错误，正确答案为（C）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="7" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -587,12 +599,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   偏导数在一点不连续，并不能据此断定函数在该点是否可微。偏导数连续是可微的充分条件，而不是必要条件。因此（A）与（B）均不能必然成立。
 
@@ -609,7 +623,7 @@ title: 第八章 多元函数微分学
   $$
   因此（D）必然正确。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="single" number="8" source="李正元练习题·高等数学" tags={['选择题']}>
@@ -650,12 +664,14 @@ title: 第八章 多元函数微分学
 
     </QuestionOption>
   </QuestionOptions>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   D
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -699,7 +715,7 @@ title: 第八章 多元函数微分学
 
   因此法线与 $\displaystyle z$ 轴不垂直相交，选择（D）。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 填空题
@@ -714,15 +730,17 @@ title: 第八章 多元函数微分学
   其中 $\displaystyle f$ 是二元连续函数，则 $\displaystyle dz=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle dz=3x^2f(x^3,e^y)\,dx
   +e^y\left[\int_0^{x^3}f_y(t,e^y)\,dt\right]dy.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   把积分上限和被积函数中的参数分别求偏导。由变上限积分求导公式，
   $$
@@ -747,7 +765,7 @@ title: 第八章 多元函数微分学
 
   严格来说，题面只给出 $\displaystyle f$ 连续，还不足以保证上述关于 $\displaystyle y$ 的偏导存在。按本题通常意图，应补充 $\displaystyle f_y$ 存在且连续，或满足可在积分号下求导的相应条件。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="2" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -763,14 +781,16 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle dz\big|_{(1,2)}=-4\,dx-2\,dy.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   对隐函数方程两边求全微分，得
   $$
@@ -791,7 +811,7 @@ title: 第八章 多元函数微分学
   \displaystyle dz\big|_{(1,2)}=-4\,dx-2\,dy.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="3" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -803,20 +823,22 @@ title: 第八章 多元函数微分学
   $$
   其中 $\displaystyle f(u)$ 可微，则
   $$
-  \displaystyle \dfrac1x\dfrac{\partial z}{\partial x}+
-  \dfrac1y\dfrac{\partial z}{\partial y}
+  \displaystyle \frac1x\dfrac{\partial z}{\partial x}+
+  \frac1y\dfrac{\partial z}{\partial y}
   =\underline{\qquad}.
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \dfrac{f(x^2-y^2)}{y}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -838,14 +860,14 @@ title: 第八章 多元函数微分学
   因此
   $$
   \displaystyle \begin{aligned}
-  \dfrac1xz_x+\dfrac1yz_y
+  \frac1xz_x+\frac1yz_y
   &=2yf'(u)+\dfrac{f(u)}y-2yf'(u)\\
   &=\dfrac{f(u)}y
   =\dfrac{f(x^2-y^2)}y.
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="4" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -865,14 +887,16 @@ title: 第八章 多元函数微分学
   则 $\displaystyle \Phi'(1)=\underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle 302.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   逐层定义复合函数：
   $$
@@ -915,7 +939,7 @@ title: 第八章 多元函数微分学
   \end{aligned}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="5" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -934,14 +958,16 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle -1.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由隐函数求导公式，分别有
   $$
@@ -964,7 +990,7 @@ title: 第八章 多元函数微分学
   =-1.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="6" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -976,7 +1002,7 @@ title: 第八章 多元函数微分学
   $$
   在点
   $$
-  \displaystyle M_0\left(\dfrac1{\sqrt2},\dfrac12\right)
+  \displaystyle M_0\left(\frac1{\sqrt2},\frac12\right)
   $$
   处沿曲线
   $$
@@ -985,14 +1011,16 @@ title: 第八章 多元函数微分学
   在该点的内法线方向 $\displaystyle n$ 的方向导数为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \sqrt6.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -1009,7 +1037,7 @@ title: 第八章 多元函数微分学
 
   在点
   $$
-  \displaystyle M_0\left(\dfrac1{\sqrt2},\dfrac12\right)
+  \displaystyle M_0\left(\frac1{\sqrt2},\frac12\right)
   $$
   处，
   $$
@@ -1028,7 +1056,7 @@ title: 第八章 多元函数微分学
   =\sqrt6.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="7" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -1041,14 +1069,16 @@ title: 第八章 多元函数微分学
   上点 $\displaystyle M_0(1,2,0)$ 处的切平面方程为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle 2x+y-4=0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -1072,7 +1102,7 @@ title: 第八章 多元函数微分学
   \displaystyle 2x+y-4=0.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="8" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -1089,14 +1119,16 @@ title: 第八章 多元函数微分学
   则 $\displaystyle P$ 点的坐标为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle P(1,1,2).
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将曲面写成
   $$
@@ -1128,7 +1160,7 @@ title: 第八章 多元函数微分学
   \displaystyle P=(1,1,2).
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="fill" number="9" source="李正元练习题·高等数学" tags={['填空题']}>
@@ -1144,7 +1176,10 @@ title: 第八章 多元函数微分学
   在 $\displaystyle M_0(1,1,2)$ 处的切线方程为 $\displaystyle \underline{\qquad}$，法平面方程为 $\displaystyle \underline{\qquad}$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \dfrac{x-1}{1}=\dfrac{y-1}{-1},
@@ -1161,8 +1196,7 @@ title: 第八章 多元函数微分学
   \displaystyle x-y=0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -1207,7 +1241,7 @@ title: 第八章 多元函数微分学
   \displaystyle x-y=0.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 ## 计算题与证明题
@@ -1226,14 +1260,16 @@ title: 第八章 多元函数微分学
   求 $\displaystyle f(x,y)$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle f(x,y)=x(y^2-1)+(y-1)\sin x.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由
   $$
@@ -1290,7 +1326,7 @@ title: 第八章 多元函数微分学
   $$
   故结果满足全部条件。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="2" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1307,14 +1343,16 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle 0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   先观察函数的齐次性。对任意 $\displaystyle t>0$，有
   $$
@@ -1335,7 +1373,7 @@ title: 第八章 多元函数微分学
   对上式关于 $\displaystyle x$ 求偏导，得到
   $$
   \displaystyle \dfrac{\partial}{\partial x}(xu_x+yu_y)
-  =rac{\partial u}{\partial x}.
+  =\dfrac{\partial u}{\partial x}.
   $$
   即
   $$
@@ -1356,7 +1394,7 @@ title: 第八章 多元函数微分学
   y\dfrac{\partial^2u}{\partial x\partial y}=0}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="3" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1373,14 +1411,16 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle 0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将原方程写成
   $$
@@ -1433,7 +1473,7 @@ title: 第八章 多元函数微分学
 
   条件 $\displaystyle \varphi'(u)\ne1$ 保证上述分母不为零。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="4" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1460,7 +1500,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle u_{xx}''(x,2x)=-\dfrac{4x}{3},
@@ -1470,8 +1513,7 @@ title: 第八章 多元函数微分学
   u_{yy}''(x,2x)=-\dfrac{4x}{3}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由
   $$
@@ -1548,7 +1590,7 @@ title: 第八章 多元函数微分学
   u_{yy}''(x,2x)=-\dfrac{4x}{3}}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="5" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1556,7 +1598,7 @@ title: 第八章 多元函数微分学
 
   设
   $$
-  \displaystyle z=\dfrac1x f(xy)+y\varphi(x+y),
+  \displaystyle z=\frac1x f(xy)+y\varphi(x+y),
   $$
   且 $\displaystyle f,\varphi$ 具有二阶连续偏导数，求
   $$
@@ -1564,20 +1606,22 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \dfrac{\partial^2z}{\partial x\partial y}
   =yf''(xy)+\varphi'(x+y)+y\varphi''(x+y).
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   先对 $\displaystyle y$ 求偏导。对于第一项，
   $$
-  \displaystyle \dfrac{\partial}{\partial y}\left[\dfrac1x f(xy)\right]
-  =\dfrac1x f'(xy)\cdot x
+  \displaystyle \dfrac{\partial}{\partial y}\left[\frac1x f(xy)\right]
+  =\frac1x f'(xy)\cdot x
   =f'(xy).
   $$
   对于第二项，
@@ -1607,7 +1651,7 @@ title: 第八章 多元函数微分学
   }.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="6" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1623,7 +1667,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   令
   $$
@@ -1646,8 +1693,7 @@ title: 第八章 多元函数微分学
   $$
   处取值。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -1664,18 +1710,18 @@ title: 第八章 多元函数微分学
   又
   $$
   \displaystyle d\xi=d\left(\dfrac{x}{z}\right)
-  =\dfrac1z\,dx-\dfrac{x}{z^2}\,dz,
+  =\frac1z\,dx-\dfrac{x}{z^2}\,dz,
   $$
   $$
   \displaystyle d\eta=d\left(\dfrac{y}{z}\right)
-  =\dfrac1z\,dy-\dfrac{y}{z^2}\,dz.
+  =\frac1z\,dy-\dfrac{y}{z^2}\,dz.
   $$
   代入得
   $$
   \displaystyle \begin{aligned}
   du
-  &=f_\xi\left(\dfrac1z\,dx-\dfrac{x}{z^2}\,dz\right)
-  +f_\eta\left(\dfrac1z\,dy-\dfrac{y}{z^2}\,dz\right)\\
+  &=f_\xi\left(\frac1z\,dx-\dfrac{x}{z^2}\,dz\right)
+  +f_\eta\left(\frac1z\,dy-\dfrac{y}{z^2}\,dz\right)\\
   &=\dfrac{f_\xi}{z}\,dx+\dfrac{f_\eta}{z}\,dy
   -\dfrac{xf_\xi+yf_\eta}{z^2}\,dz.
   \end{aligned}
@@ -1684,7 +1730,7 @@ title: 第八章 多元函数微分学
   下面计算混合偏导数。先对 $\displaystyle y$ 求偏导：
   $$
   \displaystyle u_y=f_\eta\dfrac{\partial\eta}{\partial y}
-  =\dfrac1z f_\eta.
+  =\frac1z f_\eta.
   $$
   再对 $\displaystyle z$ 求偏导。注意
   $$
@@ -1696,9 +1742,9 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \begin{aligned}
   u_{yz}
-  &=\dfrac{\partial}{\partial z}\left(\dfrac1z f_\eta\right)\\
-  &=-\dfrac1{z^2}f_\eta
-  +\dfrac1z\left(f_{\eta\xi}\xi_z+f_{\eta\eta}\eta_z\right)\\
+  &=\dfrac{\partial}{\partial z}\left(\frac1z f_\eta\right)\\
+  &=-\frac1{z^2}f_\eta
+  +\frac1z\left(f_{\eta\xi}\xi_z+f_{\eta\eta}\eta_z\right)\\
   &=-\dfrac{f_\eta}{z^2}
   -\dfrac{xf_{\xi\eta}+yf_{\eta\eta}}{z^3}.
   \end{aligned}
@@ -1708,7 +1754,7 @@ title: 第八章 多元函数微分学
   \displaystyle f_{\eta\xi}=f_{\xi\eta}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="7" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1742,7 +1788,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
   $$
@@ -1754,8 +1803,7 @@ title: 第八章 多元函数微分学
   \displaystyle \left.\dfrac{\partial w}{\partial y}\right|_{(1,1,1)}=1.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   将方程写成
   $$
@@ -1824,7 +1872,7 @@ title: 第八章 多元函数微分学
   =1.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="8" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1846,7 +1894,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \dfrac{\partial z}{\partial x}
@@ -1861,8 +1912,7 @@ title: 第八章 多元函数微分学
   $$
   其中 $\displaystyle f$ 的各偏导数均在 $\displaystyle (x,y,u(x,y))$ 处取值。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -1935,7 +1985,7 @@ title: 第八章 多元函数微分学
   }.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="9" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -1947,7 +1997,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \dfrac{dy}{dx}
@@ -1958,8 +2011,7 @@ title: 第八章 多元函数微分学
   \displaystyle F_t+f_tF_y\ne0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   沿着由题设关系确定的曲线，$\displaystyle y=y(x)$，同时
   $$
@@ -2008,7 +2060,7 @@ title: 第八章 多元函数微分学
   }.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="10" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2021,15 +2073,17 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle x\dfrac{\partial f}{\partial x}
   +y\dfrac{\partial f}{\partial y}=0.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   在极坐标下，
   $$
@@ -2074,7 +2128,7 @@ title: 第八章 多元函数微分学
 
   几何上，这说明函数值沿每一条从原点出发的射线保持不变，因此梯度方向与径向向量 $\displaystyle (x,y)$ 正交。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="11" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2097,15 +2151,17 @@ title: 第八章 多元函数微分学
   为 $\displaystyle w$ 关于 $\displaystyle u,v$ 的偏导数满足的方程，其中 $\displaystyle z$ 对 $\displaystyle x,y$ 有连续的二阶偏导数。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   变换后的方程为
   $$
-  \displaystyle \boxed{\dfrac{\partial^2w}{\partial u^2}=\dfrac12}.
+  \displaystyle \boxed{\dfrac{\partial^2w}{\partial u^2}=\frac12}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由
   $$
@@ -2184,7 +2240,7 @@ title: 第八章 多元函数微分学
   $$
   对 $\displaystyle u$ 求两次偏导：
   $$
-  \displaystyle z_{uu}=\dfrac12-w_{uu}.
+  \displaystyle z_{uu}=\frac12-w_{uu}.
   $$
   原方程等价于
   $$
@@ -2192,14 +2248,14 @@ title: 第八章 多元函数微分学
   $$
   即
   $$
-  \displaystyle 4\left(\dfrac12-w_{uu}\right)=0.
+  \displaystyle 4\left(\frac12-w_{uu}\right)=0.
   $$
   整理得
   $$
-  \displaystyle \boxed{w_{uu}=\dfrac12}.
+  \displaystyle \boxed{w_{uu}=\frac12}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="12" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2223,7 +2279,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \boxed{
@@ -2235,8 +2294,7 @@ title: 第八章 多元函数微分学
   }.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由恒等关系
   $$
@@ -2294,7 +2352,7 @@ title: 第八章 多元函数微分学
 
   从几何上看，$\displaystyle (u_x,v_x)$ 与 $\displaystyle (u_y,v_y)$ 都垂直于非零向量 $\displaystyle (F_u,F_v)$，因而二者线性相关，所以其行列式为零。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="13" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2324,7 +2382,10 @@ title: 第八章 多元函数微分学
   （Ⅱ）$\displaystyle y=y(z,x)$。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）
   $$
@@ -2337,8 +2398,7 @@ title: 第八章 多元函数微分学
   $$
   其中 $\displaystyle \varphi,\psi$ 为由原函数确定的关于 $\displaystyle z$ 的函数。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   由
   $$
@@ -2399,7 +2459,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{y=\varphi(z)x+\psi(z)}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="14" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2407,7 +2467,7 @@ title: 第八章 多元函数微分学
 
   设
   $$
-  \displaystyle f(x,y)=2(y-x^2)^2-\dfrac17x^7-y^2.
+  \displaystyle f(x,y)=2(y-x^2)^2-\frac17x^7-y^2.
   $$
 
   （Ⅰ）求 $\displaystyle f(x,y)$ 的驻点；
@@ -2415,7 +2475,10 @@ title: 第八章 多元函数微分学
   （Ⅱ）求 $\displaystyle f(x,y)$ 的全部极值点，并指明是极大值点还是极小值点。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   （Ⅰ）驻点为
   $$
@@ -2428,8 +2491,7 @@ title: 第八章 多元函数微分学
   $$
   点 $\displaystyle (0,0)$ 不是极值点，函数无极大值点。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   先求一阶偏导数：
   $$
@@ -2517,7 +2579,7 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \begin{aligned}
   f(-2,8)
-  &=2(8-4)^2-\dfrac17(-2)^7-8^2\\
+  &=2(8-4)^2-\frac17(-2)^7-8^2\\
   &=32+\dfrac{128}{7}-64\\
   &=-\dfrac{96}{7}.
   \end{aligned}
@@ -2533,7 +2595,7 @@ title: 第八章 多元函数微分学
 
   沿曲线 $\displaystyle y=0$，有
   $$
-  \displaystyle f(x,0)=2x^4-\dfrac17x^7.
+  \displaystyle f(x,0)=2x^4-\frac17x^7.
   $$
   当 $\displaystyle x$ 充分接近 $\displaystyle 0$ 且 $\displaystyle x\ne0$ 时，
   $$
@@ -2544,8 +2606,8 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \begin{aligned}
   f(x,2x^2)
-  &=2x^4-4x^4-\dfrac17x^7\\
-  &=-2x^4-\dfrac17x^7<0
+  &=2x^4-4x^4-\frac17x^7\\
+  &=-2x^4-\frac17x^7<0
   \end{aligned}
   $$
   对充分小的非零 $\displaystyle x$ 成立。
@@ -2556,7 +2618,7 @@ title: 第八章 多元函数微分学
   $$
   所以 $\displaystyle (0,0)$ 不是极值点，而是鞍点。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="15" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2573,7 +2635,10 @@ title: 第八章 多元函数微分学
   上的最大值与最小值。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   最大值为
   $$
@@ -2581,7 +2646,7 @@ title: 第八章 多元函数微分学
   $$
   在点
   $$
-  \displaystyle \boxed{\left(\dfrac1{\sqrt2},\sqrt2\right)}
+  \displaystyle \boxed{\left(\frac1{\sqrt2},\sqrt2\right)}
   $$
   处取得。
 
@@ -2591,12 +2656,11 @@ title: 第八章 多元函数微分学
   $$
   在点
   $$
-  \displaystyle \boxed{\left(-\dfrac1{\sqrt2},-\sqrt2\right)}
+  \displaystyle \boxed{\left(-\frac1{\sqrt2},-\sqrt2\right)}
   $$
   处取得。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   区域
   $$
@@ -2638,18 +2702,18 @@ title: 第八章 多元函数微分学
   $$
   由前两式可得
   $$
-  \displaystyle x=\dfrac1\lambda,
+  \displaystyle x=\frac1\lambda,
   \qquad
-  y=\dfrac2\lambda.
+  y=\frac2\lambda.
   $$
   代入约束条件：
   $$
-  \displaystyle \dfrac1{\lambda^2}
-  +\dfrac{1}{4}\cdot\dfrac4{\lambda^2}=1,
+  \displaystyle \frac1{\lambda^2}
+  +\dfrac{1}{4}\cdot\frac4{\lambda^2}=1,
   $$
   即
   $$
-  \displaystyle \dfrac2{\lambda^2}=1.
+  \displaystyle \frac2{\lambda^2}=1.
   $$
   所以
   $$
@@ -2658,16 +2722,16 @@ title: 第八章 多元函数微分学
 
   当 $\displaystyle \lambda=\sqrt2$ 时，
   $$
-  \displaystyle (x,y)=\left(\dfrac1{\sqrt2},\sqrt2\right),
+  \displaystyle (x,y)=\left(\frac1{\sqrt2},\sqrt2\right),
   $$
   此时
   $$
-  \displaystyle z=2\cdot\dfrac1{\sqrt2}+\sqrt2=2\sqrt2.
+  \displaystyle z=2\cdot\frac1{\sqrt2}+\sqrt2=2\sqrt2.
   $$
 
   当 $\displaystyle \lambda=-\sqrt2$ 时，
   $$
-  \displaystyle (x,y)=\left(-\dfrac1{\sqrt2},-\sqrt2\right),
+  \displaystyle (x,y)=\left(-\frac1{\sqrt2},-\sqrt2\right),
   $$
   此时
   $$
@@ -2681,7 +2745,7 @@ title: 第八章 多元函数微分学
   \boxed{z_{\min}=-2\sqrt2}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="16" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2694,7 +2758,10 @@ title: 第八章 多元函数微分学
   证明：函数 $\displaystyle z$ 有无穷多个极大值点，而无极小值点。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   函数的全部驻点为
   $$
@@ -2719,8 +2786,7 @@ title: 第八章 多元函数微分学
   $$
   均为鞍点。因此函数有无穷多个极大值点，而没有极小值点。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   先求一阶偏导数：
   $$
@@ -2827,7 +2893,7 @@ title: 第八章 多元函数微分学
 
   由于可微函数的局部极值点必为驻点，而全部驻点只有上述两类，其中一类为极大值点，另一类为鞍点，所以函数没有极小值点。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="17" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2844,7 +2910,10 @@ title: 第八章 多元函数微分学
   在点 $\displaystyle (1,1)$ 处的值。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \boxed{
@@ -2853,8 +2922,7 @@ title: 第八章 多元函数微分学
   }.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -2928,7 +2996,7 @@ title: 第八章 多元函数微分学
   $$
   从而结果成立。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="18" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -2950,7 +3018,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   隐函数 $\displaystyle y=\varphi(x)$ 在 $\displaystyle x=a$ 处取得极值的必要条件为
   $$
@@ -2985,8 +3056,7 @@ title: 第八章 多元函数微分学
   $$
   故 $\displaystyle b=\varphi(a)$ 为极小值。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   因为 $\displaystyle f_y(a,b)\ne0$，由隐函数存在定理，在 $\displaystyle x=a$ 的某邻域内，方程
   $$
@@ -3070,7 +3140,7 @@ title: 第八章 多元函数微分学
   $$
   故 $\displaystyle \varphi(a)=b$ 是极小值。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="19" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3079,7 +3149,10 @@ title: 第八章 多元函数微分学
   建一容积为 $\displaystyle V_0$ 的无盖长方体水池，问其长、宽、高为何值时有最小的表面积。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   设水池的长、宽、高分别为 $\displaystyle x,y,h$，则表面积最小时
   $$
@@ -3099,8 +3172,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{S_{\min}=3\sqrt[3]{4V_0^2}}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设无盖长方体水池的长、宽、高分别为
   $$
@@ -3177,7 +3249,7 @@ title: 第八章 多元函数微分学
   $$
   因此上述尺寸使表面积取得全局最小值。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="20" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3186,7 +3258,10 @@ title: 第八章 多元函数微分学
   已知三角形的周长为 $\displaystyle 2p$，将它绕其一边旋转而构成一立体，求使立体体积最大的那个三角形。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   当作为旋转轴的边长为
   $$
@@ -3209,17 +3284,16 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{V_{\max}=\dfrac{\pi p^3}{12}}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设三角形的三边长分别为 $\displaystyle a,b,c$，其中以边 $\displaystyle c$ 为旋转轴，边 $\displaystyle c$ 上的高为 $\displaystyle h$。由三角形绕其一边旋转所得立体的体积公式，
   $$
-  \displaystyle V=\dfrac13\pi c h^2.
+  \displaystyle V=\frac13\pi c h^2.
   $$
 
   设三角形面积为 $\displaystyle \Delta$，则
   $$
-  \displaystyle \Delta=\dfrac12ch,
+  \displaystyle \Delta=\frac12ch,
   \qquad
   h^2=\dfrac{4\Delta^2}{c^2}.
   $$
@@ -3315,7 +3389,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{\dfrac{\pi p^3}{12}}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="21" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3324,7 +3398,10 @@ title: 第八章 多元函数微分学
   证明条件极值点的必要条件（8.9）式，并说明（8.9）式的几何意义。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   设目标函数为
   $$
@@ -3353,8 +3430,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{\nabla f(x_0,y_0)=-\lambda\nabla\varphi(x_0,y_0)}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设
   $$
@@ -3449,7 +3525,7 @@ title: 第八章 多元函数微分学
 
   条件极值点处二者的梯度平行，因而两条曲线在该点具有相同的切线，即目标函数的等值线与约束曲线相切。也就是说，沿约束曲线允许的切向方向移动时，目标函数的一阶变化率为零。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="22" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3462,19 +3538,21 @@ title: 第八章 多元函数微分学
   在 $\displaystyle M_0(2,1,3)$ 处沿与各坐标轴成等角方向的方向导数。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   取与三个坐标轴正向成等角的单位向量
   $$
-  \displaystyle \boldsymbol l=\dfrac1{\sqrt3}(1,1,1),
+  \displaystyle \boldsymbol l=\frac1{\sqrt3}(1,1,1),
   $$
   则所求方向导数为
   $$
   \displaystyle \boxed{\left.\dfrac{\partial u}{\partial l}\right|_{M_0}=4\sqrt3}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   函数
   $$
@@ -3514,11 +3592,11 @@ title: 第八章 多元函数微分学
   $$
   所以
   $$
-  \displaystyle \cos\alpha=\cos\beta=\cos\gamma=\dfrac1{\sqrt3},
+  \displaystyle \cos\alpha=\cos\beta=\cos\gamma=\frac1{\sqrt3},
   $$
   即
   $$
-  \displaystyle \boldsymbol l=\dfrac1{\sqrt3}(1,1,1).
+  \displaystyle \boldsymbol l=\frac1{\sqrt3}(1,1,1).
   $$
 
   方向导数为梯度与单位方向向量的内积：
@@ -3526,7 +3604,7 @@ title: 第八章 多元函数微分学
   \displaystyle \begin{aligned}
   \left.\dfrac{\partial u}{\partial l}\right|_{M_0}
   &=\nabla u(M_0)\cdot\boldsymbol l\\
-  &=(4,5,3)\cdot\dfrac1{\sqrt3}(1,1,1)\\
+  &=(4,5,3)\cdot\frac1{\sqrt3}(1,1,1)\\
   &=\dfrac{4+5+3}{\sqrt3}\\
   &=4\sqrt3.
   \end{aligned}
@@ -3539,7 +3617,7 @@ title: 第八章 多元函数微分学
 
   说明：若题目仅说“与各坐标轴成等角”，而未规定与各坐标轴正向成锐角，则还可能有分量绝对值均为 $\displaystyle 1/\sqrt3$ 的其他方向；教材通常约定取第一卦限方向 $\displaystyle (1,1,1)/\sqrt3$。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="23" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3552,7 +3630,10 @@ title: 第八章 多元函数微分学
   上具有下列性质的点 $\displaystyle (x,y,z)$ 的轨迹：过 $\displaystyle (x,y,z)$ 的切平面与 $\displaystyle Oxy$ 平面垂直。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   所求轨迹为
   $$
@@ -3565,8 +3646,7 @@ title: 第八章 多元函数微分学
 
   它是椭球面与平面 $\displaystyle y=2z$ 的交线。
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -3636,7 +3716,7 @@ title: 第八章 多元函数微分学
   \quad 0\le t<2\pi.}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="24" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3649,7 +3729,10 @@ title: 第八章 多元函数微分学
   上点 $\displaystyle M(3,4,12)$ 分别作垂直于 $\displaystyle x$ 轴与 $\displaystyle y$ 轴的平面，求过这两平面与球面的截线的公共点的两截线的切线方程，并求通过这两条切线的平面方程。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   垂直于 $\displaystyle x$ 轴的平面为
   $$
@@ -3682,8 +3765,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{3x+4y+12z-169=0}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   先验证点 $\displaystyle M(3,4,12)$ 在球面上：
   $$
@@ -3798,7 +3880,7 @@ title: 第八章 多元函数微分学
 
   这正是球面在点 $\displaystyle M$ 处的切平面，因为两条截线的切线均位于球面的切平面内。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="25" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3811,7 +3893,10 @@ title: 第八章 多元函数微分学
   的第一卦限部分求一点，使得该点处的切平面与三个坐标面所围成的四面体的体积最小。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   所求点为
   $$
@@ -3827,8 +3912,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{V_{\min}=\dfrac{\sqrt3}{2}abc}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   设椭球面第一卦限上的点为
   $$
@@ -3863,7 +3947,7 @@ title: 第八章 多元函数微分学
 
   因此切平面与三个坐标面所围成的四面体体积为
   $$
-  \displaystyle V=\dfrac16ABC
+  \displaystyle V=\frac16ABC
   =\dfrac{a^2b^2c^2}{6x_0y_0z_0}.
   $$
 
@@ -3903,19 +3987,19 @@ title: 第八章 多元函数微分学
   $$
   故
   $$
-  \displaystyle \dfrac13\ge(XYZ)^{2/3}.
+  \displaystyle \frac13\ge(XYZ)^{2/3}.
   $$
   从而
   $$
-  \displaystyle XYZ\le\dfrac1{3\sqrt3}.
+  \displaystyle XYZ\le\frac1{3\sqrt3}.
   $$
   等号成立当且仅当
   $$
-  \displaystyle X^2=Y^2=Z^2=\dfrac13.
+  \displaystyle X^2=Y^2=Z^2=\frac13.
   $$
   由于点在第一卦限，所以
   $$
-  \displaystyle X=Y=Z=\dfrac1{\sqrt3}.
+  \displaystyle X=Y=Z=\frac1{\sqrt3}.
   $$
   因此
   $$
@@ -3940,7 +4024,7 @@ title: 第八章 多元函数微分学
   $$
   \displaystyle \begin{aligned}
   V_{\min}
-  &=\dfrac16(\sqrt3a)(\sqrt3b)(\sqrt3c)\\
+  &=\frac16(\sqrt3a)(\sqrt3b)(\sqrt3c)\\
   &=\dfrac{3\sqrt3}{6}abc\\
   &=\dfrac{\sqrt3}{2}abc.
   \end{aligned}
@@ -3953,7 +4037,7 @@ title: 第八章 多元函数微分学
   \boxed{V_{\min}=\dfrac{\sqrt3}{2}abc}.
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="26" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -3969,7 +4053,10 @@ title: 第八章 多元函数微分学
   $$
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   $$
   \displaystyle \boxed{
@@ -3978,8 +4065,7 @@ title: 第八章 多元函数微分学
   xf_x(x,y)+yf_y(x,y)=nf(x,y)}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   下面分别证明必要性与充分性。
 
@@ -4082,7 +4168,7 @@ title: 第八章 多元函数微分学
   xf_x+yf_y=nf.}
   $$
 
-  </QuestionAnalysis>
+  </details>
 </Question>
 
 <Question type="subjective" number="27" source="李正元练习题·高等数学" tags={['计算题与证明题']}>
@@ -4095,7 +4181,10 @@ title: 第八章 多元函数微分学
   确定连续曲线，证明：在原点某邻域可用 $\displaystyle y=f(x)$ 的方程表示。
 
   </QuestionStem>
-  <QuestionAnswer>
+  <details>
+  <summary>查看答案与解析</summary>
+
+  **答案**
 
   在原点 $\displaystyle (0,0)$ 的某邻域内，原方程能够唯一确定一个连续可微函数
   $$
@@ -4106,8 +4195,7 @@ title: 第八章 多元函数微分学
   \displaystyle \boxed{f(0)=0}.
   $$
 
-  </QuestionAnswer>
-  <QuestionAnalysis>
+  **解析**
 
   令
   $$
@@ -4170,5 +4258,5 @@ title: 第八章 多元函数微分学
   $$
   即可。
 
-  </QuestionAnalysis>
+  </details>
 </Question>
