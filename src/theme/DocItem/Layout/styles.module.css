@@ -170,6 +170,15 @@
   }
 }
 
+/* Both expandable answer implementations use an internal max-height scroller:
+ * Docusaurus maps native <details> to @theme/Details, while QuestionAnalysis
+ * exposes a data attribute. At either vertical boundary, restore the browser's
+ * normal scroll chain so the same wheel/trackpad gesture continues on the page. */
+:global(.theme-doc-markdown details.alert.alert--info > div > div),
+:global([data-question-analysis-content]) {
+  overscroll-behavior-y: auto !important;
+}
+
 /* Native MDX details are used by the exercise pages. Their long answer area
  * gets the same compact scrollbar as both documentation sidebars. */
 :global(.theme-doc-markdown details.alert.alert--info > div > div) {
