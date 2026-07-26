@@ -78,6 +78,9 @@
   --md-scrollbar-track: var(--md-page-bg);
   --md-scrollbar-thumb: rgba(40, 75, 99, 0.22);
   --md-scrollbar-thumb-hover: rgba(40, 75, 99, 0.34);
+  --md-details-border: #c9ced2;
+  --md-details-icon: #68747d;
+  --md-details-max-height: min(24rem, 60vh);
 
   --ifm-color-primary: #284b63;
   --ifm-color-primary-dark: #244459;
@@ -202,6 +205,8 @@
   --md-scrollbar-track: var(--md-page-bg);
   --md-scrollbar-thumb: rgba(255, 255, 255, 0.18);
   --md-scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+  --md-details-border: rgba(255, 255, 255, 0.38);
+  --md-details-icon: rgba(255, 255, 255, 0.72);
   --ifm-color-primary: #7b97aa;
   --ifm-color-primary-dark: #6d8a9f;
   --ifm-color-primary-darker: #637f93;
@@ -409,6 +414,91 @@ body {
   border-left-width: 3px;
   margin-left: 0;
   padding-left: 1rem;
+}
+
+/* Docusaurus MDX details
+ * Keep the built-in accessible toggle and collapse animation, but remove the
+ * alert-like treatment so long answers stay visually part of the document.
+ */
+.theme-doc-markdown details.alert.alert--info {
+  --ifm-alert-background-color: transparent;
+  --ifm-alert-background-color-highlight: var(--md-code-bg);
+  --ifm-alert-border-color: var(--md-details-border);
+  --ifm-alert-border-width: 0;
+  --ifm-alert-border-left-width: 0;
+  --ifm-alert-foreground-color: var(--ifm-color-content);
+  --ifm-alert-padding-horizontal: 0;
+  --ifm-alert-padding-vertical: 0;
+  --ifm-alert-shadow: none;
+  --docusaurus-details-decoration-color: transparent;
+  --docusaurus-details-transition: transform 160ms ease;
+
+  margin-block: 1.1rem;
+  padding: 0 0 0 0.9rem;
+  border: 0;
+  border-left: 2px solid var(--md-details-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+}
+
+.theme-doc-markdown details.alert.alert--info > summary {
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0.28rem 0.25rem 0.28rem 1.45rem;
+  color: var(--ifm-color-content);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.theme-doc-markdown details.alert.alert--info > summary::before {
+  top: 50%;
+  left: 0.05rem;
+  width: 1rem;
+  height: 1rem;
+  border: 0;
+  background: var(--md-details-icon);
+  content: "";
+  opacity: 0.72;
+  transform: translateY(-50%) rotate(0deg);
+  transform-origin: 50% 50%;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m6 3.5 4.5 4.5L6 12.5' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 1rem 1rem no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m6 3.5 4.5 4.5L6 12.5' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 1rem 1rem no-repeat;
+}
+
+.theme-doc-markdown
+  details.alert.alert--info[data-collapsed="false"]
+  > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.theme-doc-markdown details.alert.alert--info > summary:hover::before {
+  opacity: 1;
+}
+
+.theme-doc-markdown details.alert.alert--info > summary:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+
+/* DetailsGeneric renders Collapsible > collapsibleContent as two nested divs. */
+.theme-doc-markdown details.alert.alert--info > div > div {
+  max-height: var(--md-details-max-height);
+  margin-top: 0;
+  padding: 0.35rem 0.7rem 0.2rem 0;
+  border-top: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 /* Markdown tables
@@ -698,6 +788,7 @@ pre code,
 @media (max-width: 996px) {
   :root {
     --ifm-font-size-base: 16px;
+    --md-details-max-height: min(20rem, 56vh);
   }
 
   .theme-code-block,
