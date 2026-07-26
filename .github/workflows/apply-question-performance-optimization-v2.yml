@@ -1,4 +1,4 @@
-name: Apply verified question performance optimization v4
+name: Apply verified question performance optimization v5
 
 on:
   push:
@@ -39,6 +39,7 @@ jobs:
 
       - name: Apply optimized implementation
         run: |
+          node scripts/prepare-question-performance-patcher.mjs
           node scripts/apply-question-performance-optimization.mjs
           node scripts/update-layout-visual-assertions.mjs
           node <<'NODE'
@@ -102,10 +103,13 @@ jobs:
           rm -f .github/question-optimization-run.json
           rm -f .github/question-optimization-v2-run.json
           rm -f .github/question-optimization-v3-run.json
+          rm -f .github/question-optimization-v4-run.json
           rm -f .github/question-optimization-v3-failure.log
+          rm -f .github/question-optimization-v4-failure.log
           rm -f .github/temp-run-status.json
           rm -f scripts/apply-question-performance-optimization.mjs
           rm -f scripts/update-layout-visual-assertions.mjs
+          rm -f scripts/prepare-question-performance-patcher.mjs
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
@@ -133,7 +137,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: docs-question-performance-v4-${{ github.run_id }}
+          name: docs-question-performance-v5-${{ github.run_id }}
           path: |
             artifacts/docs-ui-visual
             /tmp/docusaurus-serve.log
