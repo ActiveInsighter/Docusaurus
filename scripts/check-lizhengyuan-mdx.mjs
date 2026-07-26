@@ -8,14 +8,9 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const docsRoot = path.join(projectRoot, 'docs', '李正元练习题');
 const expectedFiles = 24;
 const expectedQuestions = 655;
-const componentNames = [
-  'Question',
-  'QuestionStem',
-  'QuestionOptions',
-  'QuestionOption',
-];
 const residualMarkerPattern =
   /^\s*(?:[-*+]\s+)?(?:\*\*)?(?:答案|参考答案|解析|解答)\s*[：:]/mu;
+const questionComponentPattern = /<\/?Question(?:\s|>|[A-Z])/u;
 
 async function findMdxFiles(directory) {
   const entries = await fs.readdir(directory, {withFileTypes: true});
@@ -43,23 +38,10 @@ async function validateFile(filePath) {
     throw new Error(`${filePath}: 仍有未转换的答案或解析标记`);
   }
 
-  for (const component of componentNames) {
-    const opens = countMatches(
-      content,
-      new RegExp(`<${component}(?:\\s|>)`, 'gu'),
-    );
-    const closes = countMatches(
-      content,
-      new RegExp(`</${component}>`, 'gu'),
-    );
-    if (opens !== closes) {
-      throw new Error(
-        `${filePath}: ${component} 标签不平衡（${opens} / ${closes}）`,
-      );
-    }
+  if (questionComponentPattern.test(content)) {
+    throw new Error(`${filePath}: 不应包含 Question 题目组件`);
   }
 
-  const questions = countMatches(content, /^<Question\s/gmu);
   const details = countMatches(content, /^\s*<details>\s*$/gmu);
   const closingDetails = countMatches(content, /^\s*<\/details>\s*$/gmu);
   const summaries = countMatches(
@@ -67,12 +49,11 @@ async function validateFile(filePath) {
     /^\s*<summary>查看答案与解析<\/summary>\s*$/gmu,
   );
   if (
-    details !== questions ||
-    closingDetails !== questions ||
-    summaries !== questions
+    closingDetails !== details ||
+    summaries !== details
   ) {
     throw new Error(
-      `${filePath}: 每道题应有一个答案折叠区（题目 ${questions}，details ${details}/${closingDetails}，summary ${summaries}）`,
+      `${filePath}: 答案折叠区标签不平衡（details ${details}/${closingDetails}，summary ${summaries}）`,
     );
   }
 
@@ -85,7 +66,7 @@ async function validateFile(filePath) {
     throw error;
   }
 
-  return questions;
+  return details;
 }
 
 const files = await findMdxFiles(docsRoot);
@@ -102,5 +83,5 @@ if (questionCount !== expectedQuestions) {
 }
 
 console.log(
-  `李正元练习题校验通过：${files.length} 个 MDX 文件，${questionCount} 个题目组件`,
+  `李正元练习题校验通过：${files.length} 个 MDX 文件，${questionCount} 个原生答案折叠区`,
 );

@@ -9,1846 +9,1707 @@ title: 第三章 多维随机变量及其分布
 
 ## 选择题
 
-<Question type="single" number="1" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+**1.**
 
-  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且都服从区间 $\displaystyle (0,1)$ 上的均匀分布，则下列服从相应区间或区域上均匀分布的是
+设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且都服从区间 $\displaystyle (0,1)$ 上的均匀分布，则下列服从相应区间或区域上均匀分布的是
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
+A. $\displaystyle X^2$；
 
-      A. $\displaystyle X^2$；
+B. $\displaystyle X-Y$；
 
-    </QuestionOption>
-    <QuestionOption>
+C. $\displaystyle X+Y$；
 
-      B. $\displaystyle X-Y$；
+D. $\displaystyle (X,Y)$。
 
-    </QuestionOption>
-    <QuestionOption>
+<details>
+<summary>查看答案与解析</summary>
 
-      C. $\displaystyle X+Y$；
+**答案**
 
-    </QuestionOption>
-    <QuestionOption correct>
+D
 
-      D. $\displaystyle (X,Y)$。
+**解析**
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+由于 $\displaystyle X,Y$ 相互独立，且各自在 $\displaystyle (0,1)$ 上服从均匀分布，所以联合概率密度为
 
-  **答案**
+$$
+\displaystyle f_{X,Y}(x,y)=
+\begin{cases}
+1,&0<x<1,\ 0<y<1,\\
+0,&\text{其他}.
+\end{cases}
+$$
 
-  D
+因而 $\displaystyle (X,Y)$ 在单位正方形 $\displaystyle (0,1)\times(0,1)$ 上服从均匀分布。
 
-  **解析**
+对于错误选项：$\displaystyle X^2$ 的密度为
 
-  由于 $\displaystyle X,Y$ 相互独立，且各自在 $\displaystyle (0,1)$ 上服从均匀分布，所以联合概率密度为
+$$
+\displaystyle f_{X^2}(u)=\dfrac{1}{2\sqrt{u}},\qquad 0<u<1,
+$$
 
-  $$
-  \displaystyle f_{X,Y}(x,y)=
-  \begin{cases}
-  1,&0<x<1,\ 0<y<1,\\
-  0,&\text{其他}.
-  \end{cases}
-  $$
+不是均匀分布；$\displaystyle X-Y$ 与 $\displaystyle X+Y$ 的密度均为分段线性函数，也不是均匀分布。
 
-  因而 $\displaystyle (X,Y)$ 在单位正方形 $\displaystyle (0,1)\times(0,1)$ 上服从均匀分布。
+</details>
 
-  对于错误选项：$\displaystyle X^2$ 的密度为
+---
 
-  $$
-  \displaystyle f_{X^2}(u)=\dfrac{1}{2\sqrt{u}},\qquad 0<u<1,
-  $$
+**2.**
 
-  不是均匀分布；$\displaystyle X-Y$ 与 $\displaystyle X+Y$ 的密度均为分段线性函数，也不是均匀分布。
+设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，其分布函数分别为 $\displaystyle F_X(x)$ 与 $\displaystyle F_Y(y)$，则 $\displaystyle Z=\max\{X,Y\}$ 的分布函数 $\displaystyle F_Z(z)$ 是
 
-  </details>
-</Question>
+A. $\displaystyle \max\{F_X(z),F_Y(z)\}$；
 
-<Question type="single" number="2" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+B. $\displaystyle F_X(z)+F_Y(z)-F_X(z)F_Y(z)$；
 
-  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，其分布函数分别为 $\displaystyle F_X(x)$ 与 $\displaystyle F_Y(y)$，则 $\displaystyle Z=\max\{X,Y\}$ 的分布函数 $\displaystyle F_Z(z)$ 是
+C. $\displaystyle F_X(z)F_Y(z)$；
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
+D. $\displaystyle \frac12[F_X(z)+F_Y(z)]$。
 
-      A. $\displaystyle \max\{F_X(z),F_Y(z)\}$；
+<details>
+<summary>查看答案与解析</summary>
 
-    </QuestionOption>
-    <QuestionOption>
+**答案**
 
-      B. $\displaystyle F_X(z)+F_Y(z)-F_X(z)F_Y(z)$；
+C
 
-    </QuestionOption>
-    <QuestionOption correct>
+**解析**
 
-      C. $\displaystyle F_X(z)F_Y(z)$；
+由最大值不超过 $\displaystyle z$ 等价于两个随机变量都不超过 $\displaystyle z$，有
 
-    </QuestionOption>
-    <QuestionOption>
+$$
+\displaystyle \begin{aligned}
+F_Z(z)
+&=P\{Z\le z\}\\
+&=P\{\max(X,Y)\le z\}\\
+&=P\{X\le z,\,Y\le z\}.
+\end{aligned}
+$$
 
-      D. $\displaystyle \frac12[F_X(z)+F_Y(z)]$。
+又因为 $\displaystyle X,Y$ 相互独立，所以
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+$$
+\displaystyle F_Z(z)=P\{X\le z\}P\{Y\le z\}=F_X(z)F_Y(z).
+$$
 
-  **答案**
+选项 B 是 $\displaystyle \min\{X,Y\}$ 的分布函数。
 
-  C
+</details>
 
-  **解析**
+---
 
-  由最大值不超过 $\displaystyle z$ 等价于两个随机变量都不超过 $\displaystyle z$，有
+**3.**
 
-  $$
-  \displaystyle \begin{aligned}
-  F_Z(z)
-  &=P\{Z\le z\}\\
-  &=P\{\max(X,Y)\le z\}\\
-  &=P\{X\le z,\,Y\le z\}.
-  \end{aligned}
-  $$
+设随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立，其分布函数分别为
 
-  又因为 $\displaystyle X,Y$ 相互独立，所以
+$$
+\displaystyle F_1(x)=\begin{cases}
+0,&x<0,\\
+\frac12,&0\le x<1,\\
+1,&x\ge1,
+\end{cases}
+\qquad
+f_2(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2},\quad -\infty<x<+\infty,
+$$
 
-  $$
-  \displaystyle F_Z(z)=P\{X\le z\}P\{Y\le z\}=F_X(z)F_Y(z).
-  $$
+则 $\displaystyle X_1+X_2$ 的分布函数 $\displaystyle F(x)=$
 
-  选项 B 是 $\displaystyle \min\{X,Y\}$ 的分布函数。
+A. $\displaystyle F_1(x)+F_2(x)$；
 
-  </details>
-</Question>
+B. $\displaystyle \frac12F_1(x)+\frac12F_2(x)$；
 
-<Question type="single" number="3" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+C. $\displaystyle \frac12F_1(x)+\frac12F_2(x-1)$；
 
-  设随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立，其分布函数分别为
+D. $\displaystyle \frac12F_2(x)+\frac12F_2(x-1)$。
 
-  $$
-  \displaystyle F_1(x)=\begin{cases}
-  0,&x<0,\\
-  \frac12,&0\le x<1,\\
-  1,&x\ge1,
-  \end{cases}
-  \qquad
-  f_2(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2},\quad -\infty<x<+\infty,
-  $$
+<details>
+<summary>查看答案与解析</summary>
 
-  则 $\displaystyle X_1+X_2$ 的分布函数 $\displaystyle F(x)=$
+**答案**
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
+D
 
-      A. $\displaystyle F_1(x)+F_2(x)$；
+**解析**
 
-    </QuestionOption>
-    <QuestionOption>
+由 $\displaystyle F_1(x)$ 可知
 
-      B. $\displaystyle \frac12F_1(x)+\frac12F_2(x)$；
+$$
+\displaystyle P\{X_1=0\}=\frac12,\qquad P\{X_1=1\}=\frac12.
+$$
 
-    </QuestionOption>
-    <QuestionOption>
+记标准正态分布函数为 $\displaystyle F_2(x)$。利用全概率公式及 $\displaystyle X_1,X_2$ 的独立性，
 
-      C. $\displaystyle \frac12F_1(x)+\frac12F_2(x-1)$；
+$$
+\displaystyle \begin{aligned}
+F(x)
+&=P\{X_1+X_2\le x\}\\
+&=\frac12P\{X_2\le x\mid X_1=0\}
++\frac12P\{X_2\le x-1\mid X_1=1\}\\
+&=\frac12F_2(x)+\frac12F_2(x-1).
+\end{aligned}
+$$
 
-    </QuestionOption>
-    <QuestionOption correct>
+</details>
 
-      D. $\displaystyle \frac12F_2(x)+\frac12F_2(x-1)$。
+---
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+**4.**
 
-  **答案**
+设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 都服从正态分布，则
 
-  D
+A. $\displaystyle X+Y$ 一定服从正态分布；
 
-  **解析**
+B. $\displaystyle X$ 和 $\displaystyle Y$ 不相关与独立等价；
 
-  由 $\displaystyle F_1(x)$ 可知
+C. $\displaystyle (X,Y)$ 一定服从正态分布；
 
-  $$
-  \displaystyle P\{X_1=0\}=\frac12,\qquad P\{X_1=1\}=\frac12.
-  $$
+D. $\displaystyle (X,-Y)$ 未必服从正态分布。
 
-  记标准正态分布函数为 $\displaystyle F_2(x)$。利用全概率公式及 $\displaystyle X_1,X_2$ 的独立性，
+<details>
+<summary>查看答案与解析</summary>
 
-  $$
-  \displaystyle \begin{aligned}
-  F(x)
-  &=P\{X_1+X_2\le x\}\\
-  &=\frac12P\{X_2\le x\mid X_1=0\}
-  +\frac12P\{X_2\le x-1\mid X_1=1\}\\
-  &=\frac12F_2(x)+\frac12F_2(x-1).
-  \end{aligned}
-  $$
+**答案**
 
-  </details>
-</Question>
+D
 
-<Question type="single" number="4" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+**解析**
 
-  设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 都服从正态分布，则
+仅知道边缘随机变量 $\displaystyle X,Y$ 各自服从一维正态分布，并不能推出 $\displaystyle (X,Y)$ 服从二维正态分布。因此，$\displaystyle (X,-Y)$ 也未必服从二维正态分布，选项 D 正确。
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
+对于错误选项：只有在 $\displaystyle X,Y$ 联合正态时，任意线性组合才必为正态分布，因此 A 不一定成立；一般随机变量中“不相关”不能推出“独立”，故 B 错误；边缘分布均为正态分布不能保证联合分布为二维正态分布，故 C 错误。
 
-      A. $\displaystyle X+Y$ 一定服从正态分布；
+</details>
 
-    </QuestionOption>
-    <QuestionOption>
+---
 
-      B. $\displaystyle X$ 和 $\displaystyle Y$ 不相关与独立等价；
+**5.**
 
-    </QuestionOption>
-    <QuestionOption>
+已知随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立且有相同的分布：$\displaystyle P\{X_i=-1\}=P\{X_i=1\}=\frac12\,(i=1,2)$，则
 
-      C. $\displaystyle (X,Y)$ 一定服从正态分布；
+A. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 独立且有相同的分布；
 
-    </QuestionOption>
-    <QuestionOption correct>
+B. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 独立且有不同的分布；
 
-      D. $\displaystyle (X,-Y)$ 未必服从正态分布。
+C. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 不独立且有相同的分布；
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+D. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 不独立且有不同的分布。
 
-  **答案**
+<details>
+<summary>查看答案与解析</summary>
 
-  D
+**答案**
 
-  **解析**
+A
 
-  仅知道边缘随机变量 $\displaystyle X,Y$ 各自服从一维正态分布，并不能推出 $\displaystyle (X,Y)$ 服从二维正态分布。因此，$\displaystyle (X,-Y)$ 也未必服从二维正态分布，选项 D 正确。
+**解析**
 
-  对于错误选项：只有在 $\displaystyle X,Y$ 联合正态时，任意线性组合才必为正态分布，因此 A 不一定成立；一般随机变量中“不相关”不能推出“独立”，故 B 错误；边缘分布均为正态分布不能保证联合分布为二维正态分布，故 C 错误。
+令 $\displaystyle W=X_1X_2$。由于 $\displaystyle X_1,X_2$ 均只取 $\displaystyle \pm1$，故 $\displaystyle W$ 也只取 $\displaystyle \pm1$，且
 
-  </details>
-</Question>
+$$
+\displaystyle P\{W=1\}=P\{X_1=X_2\}=\frac12,
+\qquad
+P\{W=-1\}=\frac12.
+$$
 
-<Question type="single" number="5" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+因而 $\displaystyle W$ 与 $\displaystyle X_1$ 同分布。进一步，对任意 $\displaystyle a,b\in\{-1,1\}$，事件 $\displaystyle X_1=a,W=b$ 唯一确定 $\displaystyle X_2=ab$，所以
 
-  已知随机变量 $\displaystyle X_1$ 与 $\displaystyle X_2$ 相互独立且有相同的分布：$\displaystyle P\{X_i=-1\}=P\{X_i=1\}=\frac12\,(i=1,2)$，则
+$$
+\displaystyle P\{X_1=a,W=b\}=P\{X_1=a,X_2=ab\}=\frac14.
+$$
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption correct>
+同时
 
-      A. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 独立且有相同的分布；
+$$
+\displaystyle P\{X_1=a\}P\{W=b\}=\frac12\cdot\frac12=\frac14.
+$$
 
-    </QuestionOption>
-    <QuestionOption>
+因此 $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 相互独立且同分布。
 
-      B. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 独立且有不同的分布；
+</details>
 
-    </QuestionOption>
-    <QuestionOption>
+---
 
-      C. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 不独立且有相同的分布；
+**6.**
 
-    </QuestionOption>
-    <QuestionOption>
+已知随机变量 $\displaystyle (X,Y)$ 在区域 $\displaystyle D=\{(x,y)\mid -1<x<1,-1<y<1\}$ 上服从均匀分布，则
 
-      D. $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 不独立且有不同的分布。
+A. $\displaystyle P\{X+Y\ge0\}=\frac14$；
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+B. $\displaystyle P\{X-Y\ge0\}=\frac14$；
 
-  **答案**
+C. $\displaystyle P\{\max(X,Y)\ge0\}=\frac14$；
 
-  A
+D. $\displaystyle P\{\min(X,Y)\ge0\}=\frac14$。
 
-  **解析**
+<details>
+<summary>查看答案与解析</summary>
 
-  令 $\displaystyle W=X_1X_2$。由于 $\displaystyle X_1,X_2$ 均只取 $\displaystyle \pm1$，故 $\displaystyle W$ 也只取 $\displaystyle \pm1$，且
+**答案**
 
-  $$
-  \displaystyle P\{W=1\}=P\{X_1=X_2\}=\frac12,
-  \qquad
-  P\{W=-1\}=\frac12.
-  $$
+D
 
-  因而 $\displaystyle W$ 与 $\displaystyle X_1$ 同分布。进一步，对任意 $\displaystyle a,b\in\{-1,1\}$，事件 $\displaystyle X_1=a,W=b$ 唯一确定 $\displaystyle X_2=ab$，所以
+**解析**
 
-  $$
-  \displaystyle P\{X_1=a,W=b\}=P\{X_1=a,X_2=ab\}=\frac14.
-  $$
+$\displaystyle (X,Y)$ 在边长为 $\displaystyle 2$ 的正方形上均匀分布，因此概率等于相应区域面积与正方形总面积之比，总面积为 $\displaystyle 4$。
 
-  同时
+事件 $\displaystyle \min(X,Y)\ge0$ 等价于 $\displaystyle X\ge0,Y\ge0$，对应第一象限内的单位正方形，面积为 $\displaystyle 1$，故
 
-  $$
-  \displaystyle P\{X_1=a\}P\{W=b\}=\frac12\cdot\frac12=\frac14.
-  $$
+$$
+\displaystyle P\{\min(X,Y)\ge0\}=\frac14.
+$$
 
-  因此 $\displaystyle X_1$ 与 $\displaystyle X_1X_2$ 相互独立且同分布。
+另外，由对称性，
 
-  </details>
-</Question>
+$$
+\displaystyle P\{X+Y\ge0\}=P\{X-Y\ge0\}=\frac12,
+$$
 
-<Question type="single" number="6" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+且
 
-  已知随机变量 $\displaystyle (X,Y)$ 在区域 $\displaystyle D=\{(x,y)\mid -1<x<1,-1<y<1\}$ 上服从均匀分布，则
+$$
+\displaystyle P\{\max(X,Y)\ge0\}
+=1-P\{X<0,Y<0\}
+=1-\frac14
+=\frac34.
+$$
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
+</details>
 
-      A. $\displaystyle P\{X+Y\ge0\}=\frac14$；
+---
 
-    </QuestionOption>
-    <QuestionOption>
+**7.**
 
-      B. $\displaystyle P\{X-Y\ge0\}=\frac14$；
+设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合概率分布服从 $\displaystyle G=\{(x,y)\mid x^2+y^2\le r^2\}$ 上的均匀分布，则下列服从相应区域上均匀分布的是
 
-    </QuestionOption>
-    <QuestionOption>
+A. 随机变量 $\displaystyle X$；
 
-      C. $\displaystyle P\{\max(X,Y)\ge0\}=\frac14$；
+B. 随机变量 $\displaystyle X+Y$；
 
-    </QuestionOption>
-    <QuestionOption correct>
+C. 随机变量 $\displaystyle Y$；
 
-      D. $\displaystyle P\{\min(X,Y)\ge0\}=\frac14$。
+D. $\displaystyle Y$ 关于 $\displaystyle X=1$ 的条件分布。
 
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
+<details>
+<summary>查看答案与解析</summary>
 
-  **答案**
+**答案**
 
-  D
+D
 
-  **解析**
+**解析**
 
-  $\displaystyle (X,Y)$ 在边长为 $\displaystyle 2$ 的正方形上均匀分布，因此概率等于相应区域面积与正方形总面积之比，总面积为 $\displaystyle 4$。
+圆域上的联合密度为常数
 
-  事件 $\displaystyle \min(X,Y)\ge0$ 等价于 $\displaystyle X\ge0,Y\ge0$，对应第一象限内的单位正方形，面积为 $\displaystyle 1$，故
+$$
+\displaystyle f_{X,Y}(x,y)=\frac1{\pi r^2},\qquad x^2+y^2\le r^2.
+$$
 
-  $$
-  \displaystyle P\{\min(X,Y)\ge0\}=\frac14.
-  $$
+对固定的 $\displaystyle X=1$，在题意默认 $\displaystyle r>1$ 时，$\displaystyle Y$ 的可取范围为
 
-  另外，由对称性，
+$$
+\displaystyle -\sqrt{r^2-1}\le Y\le\sqrt{r^2-1}.
+$$
 
-  $$
-  \displaystyle P\{X+Y\ge0\}=P\{X-Y\ge0\}=\frac12,
-  $$
+在该线段上，联合密度关于 $\displaystyle y$ 为常数，因此条件密度为
 
-  且
+$$
+\displaystyle f_{Y\mid X}(y\mid1)
+=\frac1{2\sqrt{r^2-1}},
+\qquad |y|<\sqrt{r^2-1},
+$$
 
-  $$
-  \displaystyle P\{\max(X,Y)\ge0\}
-  =1-P\{X<0,Y<0\}
-  =1-\frac14
-  =\frac34.
-  $$
+即服从相应区间上的均匀分布。
 
-  </details>
-</Question>
+而 $\displaystyle X$ 和 $\displaystyle Y$ 的边缘密度分别与圆的竖直、水平弦长成正比，例如
 
-<Question type="single" number="7" source="李正元练习题·概率论与数理统计" tags={['选择题']}>
-  <QuestionStem>
+$$
+\displaystyle f_X(x)=\dfrac{2\sqrt{r^2-x^2}}{\pi r^2},\qquad |x|<r,
+$$
 
-  设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合概率分布服从 $\displaystyle G=\{(x,y)\mid x^2+y^2\le r^2\}$ 上的均匀分布，则下列服从相应区域上均匀分布的是
+并非常数；$\displaystyle X+Y$ 的密度也不是均匀密度。
 
-  </QuestionStem>
-  <QuestionOptions>
-    <QuestionOption>
-
-      A. 随机变量 $\displaystyle X$；
-
-    </QuestionOption>
-    <QuestionOption>
-
-      B. 随机变量 $\displaystyle X+Y$；
-
-    </QuestionOption>
-    <QuestionOption>
-
-      C. 随机变量 $\displaystyle Y$；
-
-    </QuestionOption>
-    <QuestionOption correct>
-
-      D. $\displaystyle Y$ 关于 $\displaystyle X=1$ 的条件分布。
-
-    </QuestionOption>
-  </QuestionOptions>
-  <details>
-  <summary>查看答案与解析</summary>
-
-  **答案**
-
-  D
-
-  **解析**
-
-  圆域上的联合密度为常数
-
-  $$
-  \displaystyle f_{X,Y}(x,y)=\frac1{\pi r^2},\qquad x^2+y^2\le r^2.
-  $$
-
-  对固定的 $\displaystyle X=1$，在题意默认 $\displaystyle r>1$ 时，$\displaystyle Y$ 的可取范围为
-
-  $$
-  \displaystyle -\sqrt{r^2-1}\le Y\le\sqrt{r^2-1}.
-  $$
-
-  在该线段上，联合密度关于 $\displaystyle y$ 为常数，因此条件密度为
-
-  $$
-  \displaystyle f_{Y\mid X}(y\mid1)
-  =\frac1{2\sqrt{r^2-1}},
-  \qquad |y|<\sqrt{r^2-1},
-  $$
-
-  即服从相应区间上的均匀分布。
-
-  而 $\displaystyle X$ 和 $\displaystyle Y$ 的边缘密度分别与圆的竖直、水平弦长成正比，例如
-
-  $$
-  \displaystyle f_X(x)=\dfrac{2\sqrt{r^2-x^2}}{\pi r^2},\qquad |x|<r,
-  $$
-
-  并非常数；$\displaystyle X+Y$ 的密度也不是均匀密度。
-
-  </details>
-</Question>
+</details>
 
 ## 填空题
 
-<Question type="fill" number="1" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
-  <QuestionStem>
+**1.**
 
-  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立同分布，且都服从 $\displaystyle p=\frac23$ 的0-1分布，则随机变量 $\displaystyle Z=\max\{X,Y\}$ 的分布律为 $\displaystyle \underline{\qquad}$。
+设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立同分布，且都服从 $\displaystyle p=\frac23$ 的0-1分布，则随机变量 $\displaystyle Z=\max\{X,Y\}$ 的分布律为 $\displaystyle \underline{\qquad}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**答案**
 
-  **答案**
+$$
+\displaystyle \begin{array}{c|cc}
+Z&0&1\\ \hline
+P&\dfrac19&\dfrac89
+\end{array}
+$$
 
-  $$
-  \displaystyle \begin{array}{c|cc}
-  Z&0&1\\ \hline
-  P&\dfrac19&\dfrac89
-  \end{array}
-  $$
+**解析**
 
-  **解析**
+由0-1分布知
 
-  由0-1分布知
+$$
+\displaystyle P\{X=1\}=P\{Y=1\}=\frac23,
+\qquad
+P\{X=0\}=P\{Y=0\}=\frac13.
+$$
 
-  $$
-  \displaystyle P\{X=1\}=P\{Y=1\}=\frac23,
-  \qquad
-  P\{X=0\}=P\{Y=0\}=\frac13.
-  $$
+因为 $\displaystyle Z=0$ 当且仅当 $\displaystyle X=0,Y=0$，由独立性得
 
-  因为 $\displaystyle Z=0$ 当且仅当 $\displaystyle X=0,Y=0$，由独立性得
+$$
+\displaystyle P\{Z=0\}=\frac13\cdot\frac13=\frac19.
+$$
 
-  $$
-  \displaystyle P\{Z=0\}=\frac13\cdot\frac13=\frac19.
-  $$
+因此
 
-  因此
+$$
+\displaystyle P\{Z=1\}=1-P\{Z=0\}=\frac89.
+$$
 
-  $$
-  \displaystyle P\{Z=1\}=1-P\{Z=0\}=\frac89.
-  $$
+</details>
 
-  </details>
-</Question>
+---
 
-<Question type="fill" number="2" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
-  <QuestionStem>
+**2.**
 
-  假设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且 $\displaystyle P\{X=k\}=\dfrac ak$，$\displaystyle P\{Y=-k\}=\dfrac b{k^2}\,(k=1,2,3)$，则 $\displaystyle a=\underline{\qquad}$，$\displaystyle b=\underline{\qquad}$，$\displaystyle Z=X+Y$ 的分布律为 $\displaystyle \underline{\qquad}$。
+假设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且 $\displaystyle P\{X=k\}=\dfrac ak$，$\displaystyle P\{Y=-k\}=\dfrac b{k^2}\,(k=1,2,3)$，则 $\displaystyle a=\underline{\qquad}$，$\displaystyle b=\underline{\qquad}$，$\displaystyle Z=X+Y$ 的分布律为 $\displaystyle \underline{\qquad}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**答案**
 
-  **答案**
+$$
+\displaystyle a=\frac6{11},\qquad b=\dfrac{36}{49},
+$$
 
-  $$
-  \displaystyle a=\frac6{11},\qquad b=\dfrac{36}{49},
-  $$
+且
 
-  且
+$$
+\displaystyle \begin{array}{c|ccccc}
+Z&-2&-1&0&1&2\\ \hline
+P&\dfrac{24}{539}&\dfrac{66}{539}&\dfrac{251}{539}&\dfrac{126}{539}&\dfrac{72}{539}
+\end{array}
+$$
 
-  $$
-  \displaystyle \begin{array}{c|ccccc}
-  Z&-2&-1&0&1&2\\ \hline
-  P&\dfrac{24}{539}&\dfrac{66}{539}&\dfrac{251}{539}&\dfrac{126}{539}&\dfrac{72}{539}
-  \end{array}
-  $$
+**解析**
 
-  **解析**
+由概率总和为 $\displaystyle 1$，
 
-  由概率总和为 $\displaystyle 1$，
+$$
+\displaystyle a\left(1+\frac12+\frac13\right)=1,
+$$
 
-  $$
-  \displaystyle a\left(1+\frac12+\frac13\right)=1,
-  $$
+故
 
-  故
+$$
+\displaystyle a=\frac6{11}.
+$$
 
-  $$
-  \displaystyle a=\frac6{11}.
-  $$
+同理，
 
-  同理，
+$$
+\displaystyle b\left(1+\frac14+\frac19\right)=1,
+$$
 
-  $$
-  \displaystyle b\left(1+\frac14+\frac19\right)=1,
-  $$
+所以
 
-  所以
+$$
+\displaystyle b=\dfrac{36}{49}.
+$$
 
-  $$
-  \displaystyle b=\dfrac{36}{49}.
-  $$
+因而
 
-  因而
+$$
+\displaystyle \begin{array}{c|ccc}
+X&1&2&3\\ \hline
+P&\dfrac6{11}&\dfrac3{11}&\dfrac2{11}
+\end{array},
+\qquad
+\begin{array}{c|ccc}
+Y&-1&-2&-3\\ \hline
+P&\dfrac{36}{49}&\dfrac9{49}&\dfrac4{49}
+\end{array}.
+$$
 
-  $$
-  \displaystyle \begin{array}{c|ccc}
-  X&1&2&3\\ \hline
-  P&\dfrac6{11}&\dfrac3{11}&\dfrac2{11}
-  \end{array},
-  \qquad
-  \begin{array}{c|ccc}
-  Y&-1&-2&-3\\ \hline
-  P&\dfrac{36}{49}&\dfrac9{49}&\dfrac4{49}
-  \end{array}.
-  $$
+利用独立性逐项卷积：
 
-  利用独立性逐项卷积：
+$$
+\displaystyle \begin{aligned}
+P\{Z=-2\}&=P\{X=1,Y=-3\}=\dfrac{24}{539},\\
+P\{Z=-1\}&=P\{1,-2\}+P\{2,-3\}=\dfrac{66}{539},\\
+P\{Z=0\}&=P\{1,-1\}+P\{2,-2\}+P\{3,-3\}=\dfrac{251}{539},\\
+P\{Z=1\}&=P\{2,-1\}+P\{3,-2\}=\dfrac{126}{539},\\
+P\{Z=2\}&=P\{3,-1\}=\dfrac{72}{539}.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{Z=-2\}&=P\{X=1,Y=-3\}=\dfrac{24}{539},\\
-  P\{Z=-1\}&=P\{1,-2\}+P\{2,-3\}=\dfrac{66}{539},\\
-  P\{Z=0\}&=P\{1,-1\}+P\{2,-2\}+P\{3,-3\}=\dfrac{251}{539},\\
-  P\{Z=1\}&=P\{2,-1\}+P\{3,-2\}=\dfrac{126}{539},\\
-  P\{Z=2\}&=P\{3,-1\}=\dfrac{72}{539}.
-  \end{aligned}
-  $$
+</details>
 
-  </details>
-</Question>
+---
 
-<Question type="fill" number="3" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
-  <QuestionStem>
+**3.**
 
-  从数 $\displaystyle 1,2,3,4$ 中任取一个数，记为 $\displaystyle X$，再从 $\displaystyle 1,\cdots,X$ 中任取一个数，记为 $\displaystyle Y$，则 $\displaystyle P\{Y=2\}=\underline{\qquad}$。
+从数 $\displaystyle 1,2,3,4$ 中任取一个数，记为 $\displaystyle X$，再从 $\displaystyle 1,\cdots,X$ 中任取一个数，记为 $\displaystyle Y$，则 $\displaystyle P\{Y=2\}=\underline{\qquad}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**答案**
 
-  **答案**
+$\displaystyle \dfrac{13}{48}$
 
-  $\displaystyle \dfrac{13}{48}$
+**解析**
 
-  **解析**
+第一次从 $\displaystyle 1,2,3,4$ 中等可能选取，因此
 
-  第一次从 $\displaystyle 1,2,3,4$ 中等可能选取，因此
+$$
+\displaystyle P\{X=k\}=\frac14,\qquad k=1,2,3,4.
+$$
 
-  $$
-  \displaystyle P\{X=k\}=\frac14,\qquad k=1,2,3,4.
-  $$
+当 $\displaystyle X=1$ 时，$\displaystyle Y$ 不可能取 $\displaystyle 2$；当 $\displaystyle X=k\ge2$ 时，$\displaystyle Y$ 在 $\displaystyle 1,2,\ldots,k$ 中等可能取值，所以
 
-  当 $\displaystyle X=1$ 时，$\displaystyle Y$ 不可能取 $\displaystyle 2$；当 $\displaystyle X=k\ge2$ 时，$\displaystyle Y$ 在 $\displaystyle 1,2,\ldots,k$ 中等可能取值，所以
+$$
+\displaystyle P\{Y=2\mid X=k\}=\frac1k.
+$$
 
-  $$
-  \displaystyle P\{Y=2\mid X=k\}=\frac1k.
-  $$
+由全概率公式，
 
-  由全概率公式，
+$$
+\displaystyle \begin{aligned}
+P\{Y=2\}
+&=\sum_{k=2}^{4}P\{X=k\}P\{Y=2\mid X=k\}\\
+&=\frac14\left(\frac12+\frac13+\frac14\right)\\
+&=\dfrac{13}{48}.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{Y=2\}
-  &=\sum_{k=2}^{4}P\{X=k\}P\{Y=2\mid X=k\}\\
-  &=\frac14\left(\frac12+\frac13+\frac14\right)\\
-  &=\dfrac{13}{48}.
-  \end{aligned}
-  $$
+</details>
 
-  </details>
-</Question>
+---
 
-<Question type="fill" number="4" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
-  <QuestionStem>
+**4.**
 
-  设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合分布函数为
+设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合分布函数为
 
-  $$
-  \displaystyle F(x,y)=\begin{cases}
-  0,&\min\{x,y\}<0,\\
-  \min\{x,y\},&0\le \min\{x,y\}<1,\\
-  1,&\min\{x,y\}\ge1,
-  \end{cases}
-  $$
+$$
+\displaystyle F(x,y)=\begin{cases}
+0,&\min\{x,y\}<0,\\
+\min\{x,y\},&0\le \min\{x,y\}<1,\\
+1,&\min\{x,y\}\ge1,
+\end{cases}
+$$
 
-  则随机变量 $\displaystyle X$ 的分布函数 $\displaystyle F_X(x)$ 为 $\displaystyle \underline{\qquad}$。
+则随机变量 $\displaystyle X$ 的分布函数 $\displaystyle F_X(x)$ 为 $\displaystyle \underline{\qquad}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**答案**
 
-  **答案**
+$$
+\displaystyle F_X(x)=
+\begin{cases}
+0,&x<0,\\
+x,&0\le x<1,\\
+1,&x\ge1.
+\end{cases}
+$$
 
-  $$
-  \displaystyle F_X(x)=
-  \begin{cases}
-  0,&x<0,\\
-  x,&0\le x<1,\\
-  1,&x\ge1.
-  \end{cases}
-  $$
+**解析**
 
-  **解析**
+随机变量 $\displaystyle X$ 的边缘分布函数由联合分布函数令另一个变量趋于正无穷得到，即
 
-  随机变量 $\displaystyle X$ 的边缘分布函数由联合分布函数令另一个变量趋于正无穷得到，即
+$$
+\displaystyle F_X(x)=\lim_{y\to+\infty}F(x,y).
+$$
 
-  $$
-  \displaystyle F_X(x)=\lim_{y\to+\infty}F(x,y).
-  $$
+当 $\displaystyle y\to+\infty$ 时，$\displaystyle \min\{x,y\}=x$，于是
 
-  当 $\displaystyle y\to+\infty$ 时，$\displaystyle \min\{x,y\}=x$，于是
+$$
+\displaystyle F_X(x)=
+\begin{cases}
+0,&x<0,\\
+x,&0\le x<1,\\
+1,&x\ge1.
+\end{cases}
+$$
 
-  $$
-  \displaystyle F_X(x)=
-  \begin{cases}
-  0,&x<0,\\
-  x,&0\le x<1,\\
-  1,&x\ge1.
-  \end{cases}
-  $$
+同理可得 $\displaystyle F_Y(y)$ 也具有相同形式。事实上，该联合分布对应于 $\displaystyle X=Y$，且二者均服从 $\displaystyle (0,1)$ 上的均匀分布。
 
-  同理可得 $\displaystyle F_Y(y)$ 也具有相同形式。事实上，该联合分布对应于 $\displaystyle X=Y$，且二者均服从 $\displaystyle (0,1)$ 上的均匀分布。
+</details>
 
-  </details>
-</Question>
+---
 
-<Question type="fill" number="5" source="李正元练习题·概率论与数理统计" tags={['填空题']}>
-  <QuestionStem>
+**5.**
 
-  设 $\displaystyle (X,Y)\sim N(\mu,\mu;\sigma^2,\sigma^2;0)$，则 $\displaystyle P\{X<Y\}=\underline{\qquad}$。
+设 $\displaystyle (X,Y)\sim N(\mu,\mu;\sigma^2,\sigma^2;0)$，则 $\displaystyle P\{X<Y\}=\underline{\qquad}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**答案**
 
-  **答案**
+$\displaystyle \dfrac12$
 
-  $\displaystyle \dfrac12$
+**解析**
 
-  **解析**
+由题意，$\displaystyle X$ 与 $\displaystyle Y$ 的均值、方差相同，且相关系数为 $\displaystyle 0$。由于 $\displaystyle (X,Y)$ 服从二维正态分布，零相关等价于相互独立，因此 $\displaystyle X,Y$ 独立同分布。
 
-  由题意，$\displaystyle X$ 与 $\displaystyle Y$ 的均值、方差相同，且相关系数为 $\displaystyle 0$。由于 $\displaystyle (X,Y)$ 服从二维正态分布，零相关等价于相互独立，因此 $\displaystyle X,Y$ 独立同分布。
+令
 
-  令
+$$
+\displaystyle Z=X-Y.
+$$
 
-  $$
-  \displaystyle Z=X-Y.
-  $$
+则
 
-  则
+$$
+\displaystyle Z\sim N(0,2\sigma^2).
+$$
 
-  $$
-  \displaystyle Z\sim N(0,2\sigma^2).
-  $$
+该正态分布关于原点对称，且连续型随机变量满足 $\displaystyle P\{Z=0\}=0$，故
 
-  该正态分布关于原点对称，且连续型随机变量满足 $\displaystyle P\{Z=0\}=0$，故
+$$
+\displaystyle P\{X<Y\}=P\{X-Y<0\}=P\{Z<0\}=\frac12.
+$$
 
-  $$
-  \displaystyle P\{X<Y\}=P\{X-Y<0\}=P\{Z<0\}=\frac12.
-  $$
-
-  </details>
-</Question>
+</details>
 
 ## 计算题与应用题
 
-<Question type="subjective" number="1" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
-
-  袋中有大小相同的10个球，其中6个红球，4个白球，现随机地抽取两次，每次取一个，定义两个随机变量 $\displaystyle X,Y$ 如下：
-
-  $$
-  \displaystyle X=\begin{cases}
-  1,&\text{第一次抽到红球},\\
-  0,&\text{第一次抽到白球},
-  \end{cases}
-  \qquad
-  Y=\begin{cases}
-  1,&\text{第二次抽到红球},\\
-  0,&\text{第二次抽到白球}。
-  \end{cases}
-  $$
-
-  试就放回与不放回两种情形，求出 $\displaystyle (X,Y)$ 的联合分布律。
-
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
-
-  **答案**
-
-  放回抽样时，
-
-  $$
-  \displaystyle \begin{array}{c|cc}
-  X\backslash Y&0&1\\ \hline
-  0&\dfrac4{25}&\dfrac6{25}\\[1mm]
-  1&\dfrac6{25}&\dfrac9{25}
-  \end{array}
-  $$
-
-  不放回抽样时，
+**1.**
+
+袋中有大小相同的10个球，其中6个红球，4个白球，现随机地抽取两次，每次取一个，定义两个随机变量 $\displaystyle X,Y$ 如下：
+
+$$
+\displaystyle X=\begin{cases}
+1,&\text{第一次抽到红球},\\
+0,&\text{第一次抽到白球},
+\end{cases}
+\qquad
+Y=\begin{cases}
+1,&\text{第二次抽到红球},\\
+0,&\text{第二次抽到白球}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle \begin{array}{c|cc}
-  X\backslash Y&0&1\\ \hline
-  0&\dfrac2{15}&\dfrac4{15}\\[1mm]
-  1&\dfrac4{15}&\dfrac13
-  \end{array}
-  $$
+试就放回与不放回两种情形，求出 $\displaystyle (X,Y)$ 的联合分布律。
+<details>
+<summary>查看答案与解析</summary>
+
+**答案**
+
+放回抽样时，
 
-  **解析**
+$$
+\displaystyle \begin{array}{c|cc}
+X\backslash Y&0&1\\ \hline
+0&\dfrac4{25}&\dfrac6{25}\\[1mm]
+1&\dfrac6{25}&\dfrac9{25}
+\end{array}
+$$
 
-  **（1）放回抽样**
+不放回抽样时，
 
-  每次抽球后将球放回，所以两次抽取相互独立，且每次抽到红球、白球的概率分别为
+$$
+\displaystyle \begin{array}{c|cc}
+X\backslash Y&0&1\\ \hline
+0&\dfrac2{15}&\dfrac4{15}\\[1mm]
+1&\dfrac4{15}&\dfrac13
+\end{array}
+$$
 
-  $$
-  \displaystyle P\{\text{红}\}=\frac6{10}=\frac35,
-  \qquad
-  P\{\text{白}\}=\frac4{10}=\frac25.
-  $$
+**解析**
 
-  因而
+**（1）放回抽样**
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X=1,Y=1\}&=\frac35\cdot\frac35=\frac9{25},\\
-  P\{X=1,Y=0\}&=\frac35\cdot\frac25=\frac6{25},\\
-  P\{X=0,Y=1\}&=\frac25\cdot\frac35=\frac6{25},\\
-  P\{X=0,Y=0\}&=\frac25\cdot\frac25=\frac4{25}.
-  \end{aligned}
-  $$
+每次抽球后将球放回，所以两次抽取相互独立，且每次抽到红球、白球的概率分别为
 
-  **（2）不放回抽样**
+$$
+\displaystyle P\{\text{红}\}=\frac6{10}=\frac35,
+\qquad
+P\{\text{白}\}=\frac4{10}=\frac25.
+$$
 
-  此时第二次抽球的概率受第一次抽球结果影响。由乘法公式，
+因而
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X=1,Y=1\}
-  &=\frac6{10}\cdot\frac5{9}=\frac13,\\
-  P\{X=1,Y=0\}
-  &=\frac6{10}\cdot\frac4{9}=\frac4{15},\\
-  P\{X=0,Y=1\}
-  &=\frac4{10}\cdot\frac6{9}=\frac4{15},\\
-  P\{X=0,Y=0\}
-  &=\frac4{10}\cdot\frac3{9}=\frac2{15}.
-  \end{aligned}
-  $$
+$$
+\displaystyle \begin{aligned}
+P\{X=1,Y=1\}&=\frac35\cdot\frac35=\frac9{25},\\
+P\{X=1,Y=0\}&=\frac35\cdot\frac25=\frac6{25},\\
+P\{X=0,Y=1\}&=\frac25\cdot\frac35=\frac6{25},\\
+P\{X=0,Y=0\}&=\frac25\cdot\frac25=\frac4{25}.
+\end{aligned}
+$$
 
-  四个概率之和均为 $\displaystyle 1$，所得联合分布律正确。
+**（2）不放回抽样**
 
-  </details>
-</Question>
+此时第二次抽球的概率受第一次抽球结果影响。由乘法公式，
 
-<Question type="subjective" number="2" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+$$
+\displaystyle \begin{aligned}
+P\{X=1,Y=1\}
+&=\frac6{10}\cdot\frac5{9}=\frac13,\\
+P\{X=1,Y=0\}
+&=\frac6{10}\cdot\frac4{9}=\frac4{15},\\
+P\{X=0,Y=1\}
+&=\frac4{10}\cdot\frac6{9}=\frac4{15},\\
+P\{X=0,Y=0\}
+&=\frac4{10}\cdot\frac3{9}=\frac2{15}.
+\end{aligned}
+$$
 
-  设二维随机变量 $\displaystyle (X,Y)$ 的联合分布为
+四个概率之和均为 $\displaystyle 1$，所得联合分布律正确。
 
-  | $\displaystyle X\backslash Y$ | 1 | 2 | 3 |
-  |---|---:|---:|---:|
-  | $\displaystyle -1$ | $\displaystyle 0.1$ | $\displaystyle a$ | $\displaystyle 0.2$ |
-  | $\displaystyle 0$ | $\displaystyle b$ | $\displaystyle 0.2$ | $\displaystyle 0$ |
-  | $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle 0.1$ | $\displaystyle c$ |
+</details>
 
-  其中 $\displaystyle a,b,c$ 为常数，且 $\displaystyle E(XY)=-0.1$，$\displaystyle P\{X\le0\mid Y\ge2\}=\dfrac58$，记 $\displaystyle Z=X+Y$。求：（Ⅰ）$\displaystyle a,b,c$ 之值；（Ⅱ）$\displaystyle Z$ 的概率分布；（Ⅲ）$\displaystyle P\{Z=X\}$ 与 $\displaystyle P\{Z=Y\}$。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**2.**
 
-  **答案**
+设二维随机变量 $\displaystyle (X,Y)$ 的联合分布为
 
-  （Ⅰ）
+| $\displaystyle X\backslash Y$ | 1 | 2 | 3 |
+|---|---:|---:|---:|
+| $\displaystyle -1$ | $\displaystyle 0.1$ | $\displaystyle a$ | $\displaystyle 0.2$ |
+| $\displaystyle 0$ | $\displaystyle b$ | $\displaystyle 0.2$ | $\displaystyle 0$ |
+| $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle 0.1$ | $\displaystyle c$ |
 
-  $$
-  \displaystyle a=b=0.1,
-  \qquad
-  c=0.2.
-  $$
+其中 $\displaystyle a,b,c$ 为常数，且 $\displaystyle E(XY)=-0.1$，$\displaystyle P\{X\le0\mid Y\ge2\}=\dfrac58$，记 $\displaystyle Z=X+Y$。求：（Ⅰ）$\displaystyle a,b,c$ 之值；（Ⅱ）$\displaystyle Z$ 的概率分布；（Ⅲ）$\displaystyle P\{Z=X\}$ 与 $\displaystyle P\{Z=Y\}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）
+**答案**
 
-  $$
-  \displaystyle \begin{array}{c|ccccc}
-  Z&0&1&2&3&4\\ \hline
-  P&0.1&0.2&0.4&0.1&0.2
-  \end{array}
-  $$
+（Ⅰ）
 
-  （Ⅲ）
+$$
+\displaystyle a=b=0.1,
+\qquad
+c=0.2.
+$$
 
-  $$
-  \displaystyle P\{Z=X\}=0,
-  \qquad
-  P\{Z=Y\}=0.3.
-  $$
+（Ⅱ）
 
-  **解析**
+$$
+\displaystyle \begin{array}{c|ccccc}
+Z&0&1&2&3&4\\ \hline
+P&0.1&0.2&0.4&0.1&0.2
+\end{array}
+$$
 
-  **（Ⅰ）求 $\displaystyle a,b,c$**
+（Ⅲ）
 
-  由联合分布律中全部概率之和为 $\displaystyle 1$，有
+$$
+\displaystyle P\{Z=X\}=0,
+\qquad
+P\{Z=Y\}=0.3.
+$$
 
-  $$
-  \displaystyle 0.1+a+0.2+b+0.2+0.1+c=1,
-  $$
+**解析**
 
-  即
+**（Ⅰ）求 $\displaystyle a,b,c$**
 
-  $$
-  \displaystyle a+b+c=0.4.\tag{1}
-  $$
+由联合分布律中全部概率之和为 $\displaystyle 1$，有
 
-  根据数学期望定义，
+$$
+\displaystyle 0.1+a+0.2+b+0.2+0.1+c=1,
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  E(XY)
-  &=(-1)\cdot1\cdot0.1+(-1)\cdot2\cdot a
-  +(-1)\cdot3\cdot0.2\\
-  &\quad+1\cdot2\cdot0.1+1\cdot3\cdot c\\
-  &=-0.5-2a+3c.
-  \end{aligned}
-  $$
+即
 
-  由 $\displaystyle E(XY)=-0.1$，得
+$$
+\displaystyle a+b+c=0.4.\tag{1}
+$$
 
-  $$
-  \displaystyle -2a+3c=0.4.\tag{2}
-  $$
+根据数学期望定义，
 
-  又
+$$
+\displaystyle \begin{aligned}
+E(XY)
+&=(-1)\cdot1\cdot0.1+(-1)\cdot2\cdot a
++(-1)\cdot3\cdot0.2\\
+&\quad+1\cdot2\cdot0.1+1\cdot3\cdot c\\
+&=-0.5-2a+3c.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X\le0,Y\ge2\}&=a+0.2+0.2=a+0.4,\\
-  P\{Y\ge2\}&=a+0.2+0.1+0.2+c=a+c+0.5.
-  \end{aligned}
-  $$
+由 $\displaystyle E(XY)=-0.1$，得
 
-  因此
+$$
+\displaystyle -2a+3c=0.4.\tag{2}
+$$
 
-  $$
-  \displaystyle \dfrac{a+0.4}{a+c+0.5}=\frac58,
-  $$
+又
 
-  化简得
+$$
+\displaystyle \begin{aligned}
+P\{X\le0,Y\ge2\}&=a+0.2+0.2=a+0.4,\\
+P\{Y\ge2\}&=a+0.2+0.1+0.2+c=a+c+0.5.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle 3a-5c=-0.7.\tag{3}
-  $$
+因此
 
-  联立（2）（3）可得
+$$
+\displaystyle \dfrac{a+0.4}{a+c+0.5}=\frac58,
+$$
 
-  $$
-  \displaystyle a=0.1,
-  \qquad
-  c=0.2.
-  $$
+化简得
 
-  再代入（1），得到
+$$
+\displaystyle 3a-5c=-0.7.\tag{3}
+$$
 
-  $$
-  \displaystyle b=0.1.
-  $$
+联立（2）（3）可得
 
-  **（Ⅱ）求 $\displaystyle Z=X+Y$ 的分布律**
+$$
+\displaystyle a=0.1,
+\qquad
+c=0.2.
+$$
 
-  按照相同的 $\displaystyle X+Y$ 值合并联合分布表中的概率：
+再代入（1），得到
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{Z=0\}&=P\{X=-1,Y=1\}=0.1,\\
-  P\{Z=1\}&=P\{-1,2\}+P\{0,1\}=0.1+0.1=0.2,\\
-  P\{Z=2\}&=P\{-1,3\}+P\{0,2\}+P\{1,1\}=0.2+0.2+0=0.4,\\
-  P\{Z=3\}&=P\{0,3\}+P\{1,2\}=0+0.1=0.1,\\
-  P\{Z=4\}&=P\{1,3\}=0.2.
-  \end{aligned}
-  $$
+$$
+\displaystyle b=0.1.
+$$
 
-  **（Ⅲ）求两个事件的概率**
+**（Ⅱ）求 $\displaystyle Z=X+Y$ 的分布律**
 
-  因为
+按照相同的 $\displaystyle X+Y$ 值合并联合分布表中的概率：
 
-  $$
-  \displaystyle Z=X\iff X+Y=X\iff Y=0,
-  $$
+$$
+\displaystyle \begin{aligned}
+P\{Z=0\}&=P\{X=-1,Y=1\}=0.1,\\
+P\{Z=1\}&=P\{-1,2\}+P\{0,1\}=0.1+0.1=0.2,\\
+P\{Z=2\}&=P\{-1,3\}+P\{0,2\}+P\{1,1\}=0.2+0.2+0=0.4,\\
+P\{Z=3\}&=P\{0,3\}+P\{1,2\}=0+0.1=0.1,\\
+P\{Z=4\}&=P\{1,3\}=0.2.
+\end{aligned}
+$$
 
-  而 $\displaystyle Y$ 只能取 $\displaystyle 1,2,3$，所以
+**（Ⅲ）求两个事件的概率**
 
-  $$
-  \displaystyle P\{Z=X\}=0.
-  $$
+因为
 
-  同理，
+$$
+\displaystyle Z=X\iff X+Y=X\iff Y=0,
+$$
 
-  $$
-  \displaystyle Z=Y\iff X=0.
-  $$
+而 $\displaystyle Y$ 只能取 $\displaystyle 1,2,3$，所以
 
-  故
+$$
+\displaystyle P\{Z=X\}=0.
+$$
 
-  $$
-  \displaystyle P\{Z=Y\}=P\{X=0\}=b+0.2+0=0.3.
-  $$
+同理，
 
-  </details>
-</Question>
+$$
+\displaystyle Z=Y\iff X=0.
+$$
 
-<Question type="subjective" number="3" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+故
 
-  假设二维随机变量 $\displaystyle (X,Y)$ 在矩形区域
+$$
+\displaystyle P\{Z=Y\}=P\{X=0\}=b+0.2+0=0.3.
+$$
 
-  $$
-  \displaystyle G=\{(x,y)\mid 0\le x\le2,\ 0\le y\le1\}
-  $$
+</details>
 
-  上服从均匀分布。记
+---
 
-  $$
-  \displaystyle U=\begin{cases}
-  0,&X\le Y,\\
-  1,&X>Y,
-  \end{cases}
-  \qquad
-  V=\begin{cases}
-  0,&X\le2Y,\\
-  1,&X>2Y。
-  \end{cases}
-  $$
+**3.**
 
-  （Ⅰ）求 $\displaystyle U$ 和 $\displaystyle V$ 的联合分布；（Ⅱ）求 $\displaystyle U$ 和 $\displaystyle V$ 的相关系数 $\displaystyle \rho$。
+假设二维随机变量 $\displaystyle (X,Y)$ 在矩形区域
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+$$
+\displaystyle G=\{(x,y)\mid 0\le x\le2,\ 0\le y\le1\}
+$$
 
-  **答案**
+上服从均匀分布。记
 
-  （Ⅰ）
+$$
+\displaystyle U=\begin{cases}
+0,&X\le Y,\\
+1,&X>Y,
+\end{cases}
+\qquad
+V=\begin{cases}
+0,&X\le2Y,\\
+1,&X>2Y。
+\end{cases}
+$$
 
-  $$
-  \displaystyle \begin{array}{c|cc}
-  U\backslash V&0&1\\ \hline
-  0&\dfrac14&0\\[1mm]
-  1&\dfrac14&\dfrac12
-  \end{array}
-  $$
+（Ⅰ）求 $\displaystyle U$ 和 $\displaystyle V$ 的联合分布；（Ⅱ）求 $\displaystyle U$ 和 $\displaystyle V$ 的相关系数 $\displaystyle \rho$。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）
+**答案**
 
-  $$
-  \displaystyle \rho_{UV}=\frac1{\sqrt3}.
-  $$
+（Ⅰ）
 
-  **解析**
+$$
+\displaystyle \begin{array}{c|cc}
+U\backslash V&0&1\\ \hline
+0&\dfrac14&0\\[1mm]
+1&\dfrac14&\dfrac12
+\end{array}
+$$
 
-  矩形 $\displaystyle G$ 的面积为
+（Ⅱ）
 
-  $$
-  \displaystyle S_G=2,
-  $$
+$$
+\displaystyle \rho_{UV}=\frac1{\sqrt3}.
+$$
 
-  因此联合密度为
+**解析**
 
-  $$
-  \displaystyle f_{X,Y}(x,y)=\frac12,
-  \qquad (x,y)\in G.
-  $$
+矩形 $\displaystyle G$ 的面积为
 
-  由于在 $\displaystyle y\ge0$ 时，$\displaystyle x\le y$ 必然推出 $\displaystyle x\le2y$，所以事件 $\displaystyle \{U=0,V=1\}$ 不可能发生，即
+$$
+\displaystyle S_G=2,
+$$
 
-  $$
-  \displaystyle P\{U=0,V=1\}=0.
-  $$
+因此联合密度为
 
-  对于 $\displaystyle U=0,V=0$，对应区域为
+$$
+\displaystyle f_{X,Y}(x,y)=\frac12,
+\qquad (x,y)\in G.
+$$
 
-  $$
-  \displaystyle 0\le x\le y\le1,
-  $$
+由于在 $\displaystyle y\ge0$ 时，$\displaystyle x\le y$ 必然推出 $\displaystyle x\le2y$，所以事件 $\displaystyle \{U=0,V=1\}$ 不可能发生，即
 
-  其面积为
+$$
+\displaystyle P\{U=0,V=1\}=0.
+$$
 
-  $$
-  \displaystyle \int_0^1y\,dy=\frac12,
-  $$
+对于 $\displaystyle U=0,V=0$，对应区域为
 
-  故
+$$
+\displaystyle 0\le x\le y\le1,
+$$
 
-  $$
-  \displaystyle P\{U=0,V=0\}=\dfrac{1/2}{2}=\frac14.
-  $$
+其面积为
 
-  对于 $\displaystyle U=1,V=0$，对应
+$$
+\displaystyle \int_0^1y\,dy=\frac12,
+$$
 
-  $$
-  \displaystyle y<x\le2y,
-  \qquad 0\le y\le1.
-  $$
+故
 
-  其面积为
+$$
+\displaystyle P\{U=0,V=0\}=\dfrac{1/2}{2}=\frac14.
+$$
 
-  $$
-  \displaystyle \int_0^1(2y-y)\,dy=\frac12,
-  $$
+对于 $\displaystyle U=1,V=0$，对应
 
-  因而
+$$
+\displaystyle y<x\le2y,
+\qquad 0\le y\le1.
+$$
 
-  $$
-  \displaystyle P\{U=1,V=0\}=\frac14.
-  $$
+其面积为
 
-  剩余部分即为 $\displaystyle U=1,V=1$，故
+$$
+\displaystyle \int_0^1(2y-y)\,dy=\frac12,
+$$
 
-  $$
-  \displaystyle P\{U=1,V=1\}=1-\frac14-\frac14=\frac12.
-  $$
+因而
 
-  由于 $\displaystyle U,V$ 均为0-1型随机变量，
+$$
+\displaystyle P\{U=1,V=0\}=\frac14.
+$$
 
-  $$
-  \displaystyle EU=P\{U=1\}=\frac34,
-  \qquad
-  EV=P\{V=1\}=\frac12,
-  $$
+剩余部分即为 $\displaystyle U=1,V=1$，故
 
-  且
+$$
+\displaystyle P\{U=1,V=1\}=1-\frac14-\frac14=\frac12.
+$$
 
-  $$
-  \displaystyle E(UV)=P\{U=1,V=1\}=\frac12.
-  $$
+由于 $\displaystyle U,V$ 均为0-1型随机变量，
 
-  所以
+$$
+\displaystyle EU=P\{U=1\}=\frac34,
+\qquad
+EV=P\{V=1\}=\frac12,
+$$
 
-  $$
-  \displaystyle \operatorname{Cov}(U,V)
-  =E(UV)-EU\,EV
-  =\frac12-\frac34\cdot\frac12
-  =\frac18.
-  $$
+且
 
-  又
+$$
+\displaystyle E(UV)=P\{U=1,V=1\}=\frac12.
+$$
 
-  $$
-  \displaystyle D(U)=\frac34\left(1-\frac34\right)=\frac3{16},
-  \qquad
-  D(V)=\frac12\left(1-\frac12\right)=\frac14.
-  $$
+所以
 
-  因此相关系数为
+$$
+\displaystyle \operatorname{Cov}(U,V)
+=E(UV)-EU\,EV
+=\frac12-\frac34\cdot\frac12
+=\frac18.
+$$
 
-  $$
-  \displaystyle \rho_{UV}
-  =\dfrac{\operatorname{Cov}(U,V)}{\sqrt{D(U)D(V)}}
-  =\dfrac{1/8}{\sqrt{(3/16)(1/4)}}
-  =\frac1{\sqrt3}.
-  $$
+又
 
-  </details>
-</Question>
+$$
+\displaystyle D(U)=\frac34\left(1-\frac34\right)=\frac3{16},
+\qquad
+D(V)=\frac12\left(1-\frac12\right)=\frac14.
+$$
 
-<Question type="subjective" number="4" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+因此相关系数为
 
-  设二维随机变量 $\displaystyle (X,Y)$ 在区域
+$$
+\displaystyle \rho_{UV}
+=\dfrac{\operatorname{Cov}(U,V)}{\sqrt{D(U)D(V)}}
+=\dfrac{1/8}{\sqrt{(3/16)(1/4)}}
+=\frac1{\sqrt3}.
+$$
 
-  $$
-  \displaystyle D=\{(x,y)\mid 0\le y\le1,\ y\le x\le y+1\}
-  $$
+</details>
 
-  内服从均匀分布，求边缘密度函数，并判断 $\displaystyle X,Y$ 的独立性。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**4.**
 
-  **答案**
+设二维随机变量 $\displaystyle (X,Y)$ 在区域
 
-  $$
-  \displaystyle f_X(x)=
-  \begin{cases}
-  x,&0\le x\le1,\\
-  2-x,&1<x\le2,\\
-  0,&\text{其他},
-  \end{cases}
-  $$
+$$
+\displaystyle D=\{(x,y)\mid 0\le y\le1,\ y\le x\le y+1\}
+$$
 
-  $$
-  \displaystyle f_Y(y)=
-  \begin{cases}
-  1,&0\le y\le1,\\
-  0,&\text{其他}.
-  \end{cases}
-  $$
+内服从均匀分布，求边缘密度函数，并判断 $\displaystyle X,Y$ 的独立性。
+<details>
+<summary>查看答案与解析</summary>
 
-  $\displaystyle X$ 与 $\displaystyle Y$ 不独立。
+**答案**
 
-  **解析**
+$$
+\displaystyle f_X(x)=
+\begin{cases}
+x,&0\le x\le1,\\
+2-x,&1<x\le2,\\
+0,&\text{其他},
+\end{cases}
+$$
 
-  区域 $\displaystyle D$ 可写成
+$$
+\displaystyle f_Y(y)=
+\begin{cases}
+1,&0\le y\le1,\\
+0,&\text{其他}.
+\end{cases}
+$$
 
-  $$
-  \displaystyle 0\le y\le1,
-  \qquad
-  y\le x\le y+1.
-  $$
+$\displaystyle X$ 与 $\displaystyle Y$ 不独立。
 
-  它是一个面积为
+**解析**
 
-  $$
-  \displaystyle S_D=\int_0^1[(y+1)-y]dy=1
-  $$
+区域 $\displaystyle D$ 可写成
 
-  的平行四边形，因此联合密度为
+$$
+\displaystyle 0\le y\le1,
+\qquad
+y\le x\le y+1.
+$$
 
-  $$
-  \displaystyle f_{X,Y}(x,y)=
-  \begin{cases}
-  1,&(x,y)\in D,\\
-  0,&\text{其他}.
-  \end{cases}
-  $$
+它是一个面积为
 
-  对固定的 $\displaystyle x$，由
+$$
+\displaystyle S_D=\int_0^1[(y+1)-y]dy=1
+$$
 
-  $$
-  \displaystyle 0\le y\le1,
-  \qquad
-  x-1\le y\le x
-  $$
+的平行四边形，因此联合密度为
 
-  可知
+$$
+\displaystyle f_{X,Y}(x,y)=
+\begin{cases}
+1,&(x,y)\in D,\\
+0,&\text{其他}.
+\end{cases}
+$$
 
-  $$
-  \displaystyle \max\{0,x-1\}\le y\le\min\{1,x\}.
-  $$
+对固定的 $\displaystyle x$，由
 
-  因而
+$$
+\displaystyle 0\le y\le1,
+\qquad
+x-1\le y\le x
+$$
 
-  $$
-  \displaystyle f_X(x)=\int_{-\infty}^{+\infty}f_{X,Y}(x,y)dy
-  =
-  \begin{cases}
-  x,&0\le x\le1,\\
-  2-x,&1<x\le2,\\
-  0,&\text{其他}.
-  \end{cases}
-  $$
+可知
 
-  对固定的 $\displaystyle y\in[0,1]$，变量 $\displaystyle x$ 的取值区间长度为
+$$
+\displaystyle \max\{0,x-1\}\le y\le\min\{1,x\}.
+$$
 
-  $$
-  \displaystyle (y+1)-y=1,
-  $$
+因而
 
-  所以
+$$
+\displaystyle f_X(x)=\int_{-\infty}^{+\infty}f_{X,Y}(x,y)dy
+=
+\begin{cases}
+x,&0\le x\le1,\\
+2-x,&1<x\le2,\\
+0,&\text{其他}.
+\end{cases}
+$$
 
-  $$
-  \displaystyle f_Y(y)=\int_{-\infty}^{+\infty}f_{X,Y}(x,y)dx
-  =
-  \begin{cases}
-  1,&0\le y\le1,\\
-  0,&\text{其他}.
-  \end{cases}
-  $$
+对固定的 $\displaystyle y\in[0,1]$，变量 $\displaystyle x$ 的取值区间长度为
 
-  若 $\displaystyle X,Y$ 独立，则应在所有点上满足
+$$
+\displaystyle (y+1)-y=1,
+$$
 
-  $$
-  \displaystyle f_{X,Y}(x,y)=f_X(x)f_Y(y).
-  $$
+所以
 
-  例如取 $\displaystyle (x,y)=\left(\dfrac14,\dfrac34\right)$，该点不属于 $\displaystyle D$，故
+$$
+\displaystyle f_Y(y)=\int_{-\infty}^{+\infty}f_{X,Y}(x,y)dx
+=
+\begin{cases}
+1,&0\le y\le1,\\
+0,&\text{其他}.
+\end{cases}
+$$
 
-  $$
-  \displaystyle f_{X,Y}\left(\frac14,\frac34\right)=0,
-  $$
+若 $\displaystyle X,Y$ 独立，则应在所有点上满足
 
-  但
+$$
+\displaystyle f_{X,Y}(x,y)=f_X(x)f_Y(y).
+$$
 
-  $$
-  \displaystyle f_X\left(\frac14\right)f_Y\left(\frac34\right)
-  =\frac14\ne0.
-  $$
+例如取 $\displaystyle (x,y)=\left(\dfrac14,\dfrac34\right)$，该点不属于 $\displaystyle D$，故
 
-  因此 $\displaystyle X$ 与 $\displaystyle Y$ 不独立。
+$$
+\displaystyle f_{X,Y}\left(\frac14,\frac34\right)=0,
+$$
 
-  </details>
-</Question>
+但
 
-<Question type="subjective" number="5" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+$$
+\displaystyle f_X\left(\frac14\right)f_Y\left(\frac34\right)
+=\frac14\ne0.
+$$
 
-  设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合密度为
+因此 $\displaystyle X$ 与 $\displaystyle Y$ 不独立。
 
-  $$
-  \displaystyle f(x,y)=\begin{cases}
-  \dfrac67\left(x^2+\dfrac{xy}{2}\right),&0<x<1,\ 0<y<2,\\
-  0,&\text{若不然}。
-  \end{cases}
-  $$
+</details>
 
-  （Ⅰ）试求 $\displaystyle X$ 的概率密度 $\displaystyle f_X(x)$；（Ⅱ）试求事件“$\displaystyle X$ 大于 $\displaystyle Y$”的概率 $\displaystyle P\{X>Y\}$；（Ⅲ）求条件概率 $\displaystyle P\{Y>1\mid X<0.5\}$。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**5.**
 
-  **答案**
+设随机变量 $\displaystyle X$ 和 $\displaystyle Y$ 的联合密度为
 
-  （Ⅰ）
+$$
+\displaystyle f(x,y)=\begin{cases}
+\dfrac67\left(x^2+\dfrac{xy}{2}\right),&0<x<1,\ 0<y<2,\\
+0,&\text{若不然}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle f_X(x)=\begin{cases}
-  \dfrac67(2x^2+x),&0<x<1,\\
-  0,&\text{其他}；
-  \end{cases}
-  $$
+（Ⅰ）试求 $\displaystyle X$ 的概率密度 $\displaystyle f_X(x)$；（Ⅱ）试求事件“$\displaystyle X$ 大于 $\displaystyle Y$”的概率 $\displaystyle P\{X>Y\}$；（Ⅲ）求条件概率 $\displaystyle P\{Y>1\mid X<0.5\}$。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）
+**答案**
 
-  $$
-  \displaystyle P\{X>Y\}=\dfrac{15}{56}；
-  $$
+（Ⅰ）
 
-  （Ⅲ）
+$$
+\displaystyle f_X(x)=\begin{cases}
+\dfrac67(2x^2+x),&0<x<1,\\
+0,&\text{其他}；
+\end{cases}
+$$
 
-  $$
-  \displaystyle P\{Y>1\mid X<0.5\}=\dfrac{13}{20}。
-  $$
+（Ⅱ）
 
-  **解析**
+$$
+\displaystyle P\{X>Y\}=\dfrac{15}{56}；
+$$
 
-  （Ⅰ）对 $\displaystyle y$ 积分可得 $\displaystyle X$ 的边缘密度：
+（Ⅲ）
 
-  $$
-  \displaystyle \begin{aligned}
-  f_X(x)
-  &=\int_{-\infty}^{+\infty}f(x,y)\,dy\\
-  &=\int_0^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\\
-  &=\frac67\left(2x^2+x\right),\qquad 0<x<1.
-  \end{aligned}
-  $$
+$$
+\displaystyle P\{Y>1\mid X<0.5\}=\dfrac{13}{20}。
+$$
 
-  因此
+**解析**
 
-  $$
-  \displaystyle f_X(x)=\begin{cases}
-  \dfrac67(2x^2+x),&0<x<1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+（Ⅰ）对 $\displaystyle y$ 积分可得 $\displaystyle X$ 的边缘密度：
 
-  （Ⅱ）在联合密度的支撑区域内，事件 $\displaystyle X>Y$ 对应于
+$$
+\displaystyle \begin{aligned}
+f_X(x)
+&=\int_{-\infty}^{+\infty}f(x,y)\,dy\\
+&=\int_0^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\\
+&=\frac67\left(2x^2+x\right),\qquad 0<x<1.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle 0<x<1,\qquad 0<y<x.
-  $$
+因此
 
-  故
+$$
+\displaystyle f_X(x)=\begin{cases}
+\dfrac67(2x^2+x),&0<x<1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X>Y\}
-  &=\int_0^1\int_0^x\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
-  &=\frac67\int_0^1\left(x^3+\dfrac{x^3}{4}\right)dx\\
-  &=\frac67\cdot\frac54\cdot\frac14\\
-  &=\dfrac{15}{56}.
-  \end{aligned}
-  $$
+（Ⅱ）在联合密度的支撑区域内，事件 $\displaystyle X>Y$ 对应于
 
-  （Ⅲ）由条件概率公式，
+$$
+\displaystyle 0<x<1,\qquad 0<y<x.
+$$
 
-  $$
-  \displaystyle P\{Y>1\mid X<0.5\}
-  =\dfrac{P\{Y>1,\ X<0.5\}}{P\{X<0.5\}}.
-  $$
+故
 
-  分母为
+$$
+\displaystyle \begin{aligned}
+P\{X>Y\}
+&=\int_0^1\int_0^x\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
+&=\frac67\int_0^1\left(x^3+\dfrac{x^3}{4}\right)dx\\
+&=\frac67\cdot\frac54\cdot\frac14\\
+&=\dfrac{15}{56}.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X<0.5\}
-  &=\int_0^{1/2}f_X(x)\,dx\\
-  &=\frac67\int_0^{1/2}(2x^2+x)dx\\
-  &=\frac67\left(\frac1{12}+\frac18\right)\\
-  &=\frac5{28}.
-  \end{aligned}
-  $$
+（Ⅲ）由条件概率公式，
 
-  分子为
+$$
+\displaystyle P\{Y>1\mid X<0.5\}
+=\dfrac{P\{Y>1,\ X<0.5\}}{P\{X<0.5\}}.
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{Y>1,\ X<0.5\}
-  &=\int_0^{1/2}\int_1^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
-  &=\frac67\int_0^{1/2}\left(x^2+\dfrac{3x}{4}\right)dx\\
-  &=\frac67\left(\frac1{24}+\frac3{32}\right)\\
-  &=\dfrac{13}{112}.
-  \end{aligned}
-  $$
+分母为
 
-  所以
+$$
+\displaystyle \begin{aligned}
+P\{X<0.5\}
+&=\int_0^{1/2}f_X(x)\,dx\\
+&=\frac67\int_0^{1/2}(2x^2+x)dx\\
+&=\frac67\left(\frac1{12}+\frac18\right)\\
+&=\frac5{28}.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle P\{Y>1\mid X<0.5\}
-  =\dfrac{13/112}{5/28}
-  =\dfrac{13}{20}.
-  $$
+分子为
 
-  </details>
-</Question>
+$$
+\displaystyle \begin{aligned}
+P\{Y>1,\ X<0.5\}
+&=\int_0^{1/2}\int_1^2\frac67\left(x^2+\dfrac{xy}{2}\right)dy\,dx\\
+&=\frac67\int_0^{1/2}\left(x^2+\dfrac{3x}{4}\right)dx\\
+&=\frac67\left(\frac1{24}+\frac3{32}\right)\\
+&=\dfrac{13}{112}.
+\end{aligned}
+$$
 
-<Question type="subjective" number="6" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+所以
 
-  设二维连续型随机变量 $\displaystyle (X,Y)$ 在区域 $\displaystyle D$ 上服从均匀分布，其中
+$$
+\displaystyle P\{Y>1\mid X<0.5\}
+=\dfrac{13/112}{5/28}
+=\dfrac{13}{20}.
+$$
 
-  $$
-  \displaystyle D=\{(x,y)\mid |x+y|\le1,\ |x-y|\le1\},
-  $$
+</details>
 
-  求 $\displaystyle X$ 的边缘密度 $\displaystyle f_X(x)$ 与在 $\displaystyle X=0$ 条件下，关于 $\displaystyle Y$ 的条件密度 $\displaystyle f_{Y\mid X}(y\mid0)$。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**6.**
 
-  **答案**
+设二维连续型随机变量 $\displaystyle (X,Y)$ 在区域 $\displaystyle D$ 上服从均匀分布，其中
 
-  $$
-  \displaystyle f_X(x)=\begin{cases}
-  1-|x|,&|x|\le1,\\
-  0,&\text{其他},
-  \end{cases}
-  $$
+$$
+\displaystyle D=\{(x,y)\mid |x+y|\le1,\ |x-y|\le1\},
+$$
 
-  $$
-  \displaystyle f_{Y\mid X}(y\mid0)=\begin{cases}
-  \dfrac12,&|y|\le1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+求 $\displaystyle X$ 的边缘密度 $\displaystyle f_X(x)$ 与在 $\displaystyle X=0$ 条件下，关于 $\displaystyle Y$ 的条件密度 $\displaystyle f_{Y\mid X}(y\mid0)$。
+<details>
+<summary>查看答案与解析</summary>
 
-  **解析**
+**答案**
 
-  区域 $\displaystyle D$ 由两组不等式
+$$
+\displaystyle f_X(x)=\begin{cases}
+1-|x|,&|x|\le1,\\
+0,&\text{其他},
+\end{cases}
+$$
 
-  $$
-  \displaystyle -1\le x+y\le1,
-  \qquad
-  -1\le x-y\le1
-  $$
+$$
+\displaystyle f_{Y\mid X}(y\mid0)=\begin{cases}
+\dfrac12,&|y|\le1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  确定，是以
+**解析**
 
-  $$
-  \displaystyle (1,0),\quad(0,1),\quad(-1,0),\quad(0,-1)
-  $$
+区域 $\displaystyle D$ 由两组不等式
 
-  为顶点的菱形，面积为
+$$
+\displaystyle -1\le x+y\le1,
+\qquad
+-1\le x-y\le1
+$$
 
-  $$
-  \displaystyle S_D=\dfrac{2\times2}{2}=2.
-  $$
+确定，是以
 
-  因而联合密度为
+$$
+\displaystyle (1,0),\quad(0,1),\quad(-1,0),\quad(0,-1)
+$$
 
-  $$
-  \displaystyle f_{X,Y}(x,y)=\begin{cases}
-  \dfrac12,&(x,y)\in D,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+为顶点的菱形，面积为
 
-  对固定的 $\displaystyle x$，由原不等式可得
+$$
+\displaystyle S_D=\dfrac{2\times2}{2}=2.
+$$
 
-  $$
-  \displaystyle -1-x\le y\le1-x,
-  \qquad
-  x-1\le y\le x+1.
-  $$
+因而联合密度为
 
-  因此，当 $\displaystyle -1\le x<0$ 时，
+$$
+\displaystyle f_{X,Y}(x,y)=\begin{cases}
+\dfrac12,&(x,y)\in D,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle -1-x\le y\le x+1,
-  $$
+对固定的 $\displaystyle x$，由原不等式可得
 
-  截线长度为
+$$
+\displaystyle -1-x\le y\le1-x,
+\qquad
+x-1\le y\le x+1.
+$$
 
-  $$
-  \displaystyle 2(1+x).
-  $$
+因此，当 $\displaystyle -1\le x<0$ 时，
 
-  当 $\displaystyle 0\le x\le1$ 时，
+$$
+\displaystyle -1-x\le y\le x+1,
+$$
 
-  $$
-  \displaystyle x-1\le y\le1-x,
-  $$
+截线长度为
 
-  截线长度为
+$$
+\displaystyle 2(1+x).
+$$
 
-  $$
-  \displaystyle 2(1-x).
-  $$
+当 $\displaystyle 0\le x\le1$ 时，
 
-  所以
+$$
+\displaystyle x-1\le y\le1-x,
+$$
 
-  $$
-  \displaystyle f_X(x)=\begin{cases}
-  1+x,&-1\le x<0,\\
-  1-x,&0\le x\le1,\\
-  0,&\text{其他},
-  \end{cases}
-  $$
+截线长度为
 
-  即
+$$
+\displaystyle 2(1-x).
+$$
 
-  $$
-  \displaystyle f_X(x)=\begin{cases}
-  1-|x|,&|x|\le1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+所以
 
-  当 $\displaystyle X=0$ 时，区域截线为
+$$
+\displaystyle f_X(x)=\begin{cases}
+1+x,&-1\le x<0,\\
+1-x,&0\le x\le1,\\
+0,&\text{其他},
+\end{cases}
+$$
 
-  $$
-  \displaystyle -1\le y\le1.
-  $$
+即
 
-  又
+$$
+\displaystyle f_X(x)=\begin{cases}
+1-|x|,&|x|\le1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle f_X(0)=1,
-  $$
+当 $\displaystyle X=0$ 时，区域截线为
 
-  故条件密度为
+$$
+\displaystyle -1\le y\le1.
+$$
 
-  $$
-  \displaystyle f_{Y\mid X}(y\mid0)
-  =\dfrac{f_{X,Y}(0,y)}{f_X(0)}
-  =\begin{cases}
-  \dfrac12,&|y|\le1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+又
 
-  </details>
-</Question>
+$$
+\displaystyle f_X(0)=1,
+$$
 
-<Question type="subjective" number="7" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+故条件密度为
 
-  已知 $\displaystyle (X,Y)$ 的概率分布为
+$$
+\displaystyle f_{Y\mid X}(y\mid0)
+=\dfrac{f_{X,Y}(0,y)}{f_X(0)}
+=\begin{cases}
+\dfrac12,&|y|\le1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  | $\displaystyle X\backslash Y$ | $\displaystyle -1$ | 1 |
-  |---|---:|---:|
-  | $\displaystyle -1$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
-  | $\displaystyle 0$ | $\displaystyle \frac26$ | $\displaystyle \frac16$ |
-  | $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle \frac16$ |
+</details>
 
-  （Ⅰ）求 $\displaystyle Z=X-Y$ 的概率分布；（Ⅱ）记 $\displaystyle U_1=XY,V_1=\dfrac XY$，求 $\displaystyle (U_1,V_1)$ 的概率分布；（Ⅲ）记 $\displaystyle U_2=\max(X,Y),V_2=\min(X,Y)$，求 $\displaystyle (U_2,V_2)$ 的概率分布及 $\displaystyle U_2V_2$ 的概率分布。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**7.**
 
-  **答案**
+已知 $\displaystyle (X,Y)$ 的概率分布为
 
-  （Ⅰ）$\displaystyle Z=X-Y$ 的分布律为
+| $\displaystyle X\backslash Y$ | $\displaystyle -1$ | 1 |
+|---|---:|---:|
+| $\displaystyle -1$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
+| $\displaystyle 0$ | $\displaystyle \frac26$ | $\displaystyle \frac16$ |
+| $\displaystyle 1$ | $\displaystyle 0$ | $\displaystyle \frac16$ |
 
-  | $\displaystyle Z$ | $\displaystyle -2$ | $\displaystyle -1$ | 0 | 1 |
-  |---|---:|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac13$ |
+（Ⅰ）求 $\displaystyle Z=X-Y$ 的概率分布；（Ⅱ）记 $\displaystyle U_1=XY,V_1=\dfrac XY$，求 $\displaystyle (U_1,V_1)$ 的概率分布；（Ⅲ）记 $\displaystyle U_2=\max(X,Y),V_2=\min(X,Y)$，求 $\displaystyle (U_2,V_2)$ 的概率分布及 $\displaystyle U_2V_2$ 的概率分布。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）$\displaystyle (U_1,V_1)$ 的分布律为
+**答案**
 
-  | $\displaystyle (U_1,V_1)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,0)$ | $\displaystyle (1,1)$ |
-  |---|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
+（Ⅰ）$\displaystyle Z=X-Y$ 的分布律为
 
-  （Ⅲ）$\displaystyle (U_2,V_2)$ 的分布律为
+| $\displaystyle Z$ | $\displaystyle -2$ | $\displaystyle -1$ | 0 | 1 |
+|---|---:|---:|---:|---:|
+| $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac13$ |
 
-  | $\displaystyle (U_2,V_2)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,-1)$ | $\displaystyle (1,-1)$ | $\displaystyle (1,0)$ | $\displaystyle (1,1)$ |
-  |---|---:|---:|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
+（Ⅱ）$\displaystyle (U_1,V_1)$ 的分布律为
 
-  $\displaystyle U_2V_2$ 的分布律为
+| $\displaystyle (U_1,V_1)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,0)$ | $\displaystyle (1,1)$ |
+|---|---:|---:|---:|
+| $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
 
-  | $\displaystyle U_2V_2$ | $\displaystyle -1$ | 0 | 1 |
-  |---|---:|---:|---:|
-  | $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
+（Ⅲ）$\displaystyle (U_2,V_2)$ 的分布律为
 
-  **解析**
+| $\displaystyle (U_2,V_2)$ | $\displaystyle (-1,-1)$ | $\displaystyle (0,-1)$ | $\displaystyle (1,-1)$ | $\displaystyle (1,0)$ | $\displaystyle (1,1)$ |
+|---|---:|---:|---:|---:|---:|
+| $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac13$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ | $\displaystyle \frac16$ |
 
-  逐一列出 $\displaystyle (X,Y)$ 的所有可能取值及其变换结果：
+$\displaystyle U_2V_2$ 的分布律为
 
-  | $\displaystyle (X,Y)$ | 概率 | $\displaystyle X-Y$ | $\displaystyle (XY,X/Y)$ | $\displaystyle (\max(X,Y),\min(X,Y))$ |
-  |---|---:|---:|---:|---:|
-  | $\displaystyle (-1,-1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (-1,-1)$ |
-  | $\displaystyle (-1,1)$ | $\displaystyle \frac16$ | $\displaystyle -2$ | $\displaystyle (-1,-1)$ | $\displaystyle (1,-1)$ |
-  | $\displaystyle (0,-1)$ | $\displaystyle \frac26$ | 1 | $\displaystyle (0,0)$ | $\displaystyle (0,-1)$ |
-  | $\displaystyle (0,1)$ | $\displaystyle \frac16$ | $\displaystyle -1$ | $\displaystyle (0,0)$ | $\displaystyle (1,0)$ |
-  | $\displaystyle (1,1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (1,1)$ |
+| $\displaystyle U_2V_2$ | $\displaystyle -1$ | 0 | 1 |
+|---|---:|---:|---:|
+| $\displaystyle P$ | $\displaystyle \frac16$ | $\displaystyle \frac12$ | $\displaystyle \frac13$ |
 
-  （Ⅰ）将产生相同 $\displaystyle Z=X-Y$ 值的概率相加，得到
+**解析**
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{Z=-2\}&=\frac16,\\
-  P\{Z=-1\}&=\frac16,\\
-  P\{Z=0\}&=\frac16+\frac16=\frac13,\\
-  P\{Z=1\}&=\frac26=\frac13.
-  \end{aligned}
-  $$
+逐一列出 $\displaystyle (X,Y)$ 的所有可能取值及其变换结果：
 
-  （Ⅱ）因为 $\displaystyle Y$ 只取 $\displaystyle \pm1$，所以比值 $\displaystyle X/Y$ 始终有定义。合并相同取值后，
+| $\displaystyle (X,Y)$ | 概率 | $\displaystyle X-Y$ | $\displaystyle (XY,X/Y)$ | $\displaystyle (\max(X,Y),\min(X,Y))$ |
+|---|---:|---:|---:|---:|
+| $\displaystyle (-1,-1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (-1,-1)$ |
+| $\displaystyle (-1,1)$ | $\displaystyle \frac16$ | $\displaystyle -2$ | $\displaystyle (-1,-1)$ | $\displaystyle (1,-1)$ |
+| $\displaystyle (0,-1)$ | $\displaystyle \frac26$ | 1 | $\displaystyle (0,0)$ | $\displaystyle (0,-1)$ |
+| $\displaystyle (0,1)$ | $\displaystyle \frac16$ | $\displaystyle -1$ | $\displaystyle (0,0)$ | $\displaystyle (1,0)$ |
+| $\displaystyle (1,1)$ | $\displaystyle \frac16$ | 0 | $\displaystyle (1,1)$ | $\displaystyle (1,1)$ |
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{(U_1,V_1)=(-1,-1)\}&=\frac16,\\
-  P\{(U_1,V_1)=(0,0)\}&=\frac26+\frac16=\frac12,\\
-  P\{(U_1,V_1)=(1,1)\}&=\frac16+\frac16=\frac13.
-  \end{aligned}
-  $$
+（Ⅰ）将产生相同 $\displaystyle Z=X-Y$ 值的概率相加，得到
 
-  （Ⅲ）由上表可直接得到 $\displaystyle (U_2,V_2)$ 的联合分布。又由于
+$$
+\displaystyle \begin{aligned}
+P\{Z=-2\}&=\frac16,\\
+P\{Z=-1\}&=\frac16,\\
+P\{Z=0\}&=\frac16+\frac16=\frac13,\\
+P\{Z=1\}&=\frac26=\frac13.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle U_2V_2=\max(X,Y)\min(X,Y)=XY,
-  $$
+（Ⅱ）因为 $\displaystyle Y$ 只取 $\displaystyle \pm1$，所以比值 $\displaystyle X/Y$ 始终有定义。合并相同取值后，
 
-  因而
+$$
+\displaystyle \begin{aligned}
+P\{(U_1,V_1)=(-1,-1)\}&=\frac16,\\
+P\{(U_1,V_1)=(0,0)\}&=\frac26+\frac16=\frac12,\\
+P\{(U_1,V_1)=(1,1)\}&=\frac16+\frac16=\frac13.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{U_2V_2=-1\}&=\frac16,\\
-  P\{U_2V_2=0\}&=\frac26+\frac16=\frac12,\\
-  P\{U_2V_2=1\}&=\frac16+\frac16=\frac13.
-  \end{aligned}
-  $$
+（Ⅲ）由上表可直接得到 $\displaystyle (U_2,V_2)$ 的联合分布。又由于
 
-  </details>
-</Question>
+$$
+\displaystyle U_2V_2=\max(X,Y)\min(X,Y)=XY,
+$$
 
-<Question type="subjective" number="8" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+因而
 
-  设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且都在 $\displaystyle [0,1]$ 上服从均匀分布，试求：（Ⅰ）$\displaystyle U=XY$ 的概率密度 $\displaystyle f_U(u)$；（Ⅱ）$\displaystyle V=|X-Y|$ 的概率密度 $\displaystyle f_V(v)$。
+$$
+\displaystyle \begin{aligned}
+P\{U_2V_2=-1\}&=\frac16,\\
+P\{U_2V_2=0\}&=\frac26+\frac16=\frac12,\\
+P\{U_2V_2=1\}&=\frac16+\frac16=\frac13.
+\end{aligned}
+$$
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+</details>
 
-  **答案**
+---
 
-  （Ⅰ）
+**8.**
 
-  $$
-  \displaystyle f_U(u)=\begin{cases}
-  -\ln u,&0<u<1,\\
-  0,&\text{其他}；
-  \end{cases}
-  $$
+设随机变量 $\displaystyle X$ 与 $\displaystyle Y$ 相互独立，且都在 $\displaystyle [0,1]$ 上服从均匀分布，试求：（Ⅰ）$\displaystyle U=XY$ 的概率密度 $\displaystyle f_U(u)$；（Ⅱ）$\displaystyle V=|X-Y|$ 的概率密度 $\displaystyle f_V(v)$。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）
+**答案**
 
-  $$
-  \displaystyle f_V(v)=\begin{cases}
-  2(1-v),&0<v<1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+（Ⅰ）
 
-  **解析**
+$$
+\displaystyle f_U(u)=\begin{cases}
+-\ln u,&0<u<1,\\
+0,&\text{其他}；
+\end{cases}
+$$
 
-  由于 $\displaystyle X,Y$ 独立且均服从 $\displaystyle [0,1]$ 上的均匀分布，故 $\displaystyle (X,Y)$ 在单位正方形上均匀分布，联合密度为1。
+（Ⅱ）
 
-  （Ⅰ）显然 $\displaystyle 0\le U=XY\le1$。当 $\displaystyle 0<u<1$ 时，
+$$
+\displaystyle f_V(v)=\begin{cases}
+2(1-v),&0<v<1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle F_U(u)=P\{XY\le u\}.
-  $$
+**解析**
 
-  在单位正方形内，对 $\displaystyle 0<x\le u$，恒有 $\displaystyle xy\le u$；对 $\displaystyle u<x\le1$，需有 $\displaystyle 0<y\le u/x$。所以
+由于 $\displaystyle X,Y$ 独立且均服从 $\displaystyle [0,1]$ 上的均匀分布，故 $\displaystyle (X,Y)$ 在单位正方形上均匀分布，联合密度为1。
 
-  $$
-  \displaystyle \begin{aligned}
-  F_U(u)
-  &=\int_0^u1\,dx+\int_u^1\dfrac ux\,dx\\
-  &=u+u\int_u^1\dfrac{dx}{x}\\
-  &=u-u\ln u.
-  \end{aligned}
-  $$
+（Ⅰ）显然 $\displaystyle 0\le U=XY\le1$。当 $\displaystyle 0<u<1$ 时，
 
-  因此
+$$
+\displaystyle F_U(u)=P\{XY\le u\}.
+$$
 
-  $$
-  \displaystyle f_U(u)=F_U'(u)=-\ln u,
-  \qquad 0<u<1.
-  $$
+在单位正方形内，对 $\displaystyle 0<x\le u$，恒有 $\displaystyle xy\le u$；对 $\displaystyle u<x\le1$，需有 $\displaystyle 0<y\le u/x$。所以
 
-  从而
+$$
+\displaystyle \begin{aligned}
+F_U(u)
+&=\int_0^u1\,dx+\int_u^1\dfrac ux\,dx\\
+&=u+u\int_u^1\dfrac{dx}{x}\\
+&=u-u\ln u.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle f_U(u)=\begin{cases}
-  -\ln u,&0<u<1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+因此
 
-  （Ⅱ）显然 $\displaystyle 0\le V=|X-Y|\le1$。当 $\displaystyle 0\le v\le1$ 时，事件
+$$
+\displaystyle f_U(u)=F_U'(u)=-\ln u,
+\qquad 0<u<1.
+$$
 
-  $$
-  \displaystyle |X-Y|>v
-  $$
+从而
 
-  对应于单位正方形中直线 $\displaystyle y=x+v$ 上方和直线 $\displaystyle y=x-v$ 下方的两个全等直角三角形，每个三角形的直角边长为 $\displaystyle 1-v$。故
+$$
+\displaystyle f_U(u)=\begin{cases}
+-\ln u,&0<u<1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle P\{|X-Y|>v\}=(1-v)^2.
-  $$
+（Ⅱ）显然 $\displaystyle 0\le V=|X-Y|\le1$。当 $\displaystyle 0\le v\le1$ 时，事件
 
-  因此
+$$
+\displaystyle |X-Y|>v
+$$
 
-  $$
-  \displaystyle F_V(v)=P\{|X-Y|\le v\}=1-(1-v)^2=2v-v^2.
-  $$
+对应于单位正方形中直线 $\displaystyle y=x+v$ 上方和直线 $\displaystyle y=x-v$ 下方的两个全等直角三角形，每个三角形的直角边长为 $\displaystyle 1-v$。故
 
-  于是
+$$
+\displaystyle P\{|X-Y|>v\}=(1-v)^2.
+$$
 
-  $$
-  \displaystyle f_V(v)=F_V'(v)=2(1-v),
-  \qquad 0<v<1.
-  $$
+因此
 
-  即
+$$
+\displaystyle F_V(v)=P\{|X-Y|\le v\}=1-(1-v)^2=2v-v^2.
+$$
 
-  $$
-  \displaystyle f_V(v)=\begin{cases}
-  2(1-v),&0<v<1,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+于是
 
-  </details>
-</Question>
+$$
+\displaystyle f_V(v)=F_V'(v)=2(1-v),
+\qquad 0<v<1.
+$$
 
-<Question type="subjective" number="9" source="李正元练习题·概率论与数理统计" tags={['计算题与应用题']}>
-  <QuestionStem>
+即
 
-  设二维随机变量 $\displaystyle (X_1,Y_1)$ 与 $\displaystyle (X_2,Y_2)$ 的联合概率密度分别为
+$$
+\displaystyle f_V(v)=\begin{cases}
+2(1-v),&0<v<1,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle f_1(x,y)=\begin{cases}
-  k_1e^{-(x+y)},&x>0,y>0,\\
-  0,&\text{其他},
-  \end{cases}
-  \qquad
-  f_2(x,y)=\begin{cases}
-  k_2e^{-(x+y)},&x>y>0,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+</details>
 
-  求：（Ⅰ）常数 $\displaystyle k_1,k_2$ 的值；（Ⅱ）$\displaystyle X_i,Y_i\,(i=1,2)$ 的边缘概率密度；（Ⅲ）$\displaystyle P\{X_i>2Y_i\}\,(i=1,2)$。
+---
 
-  </QuestionStem>
-  <details>
-  <summary>查看答案与解析</summary>
+**9.**
 
-  **答案**
+设二维随机变量 $\displaystyle (X_1,Y_1)$ 与 $\displaystyle (X_2,Y_2)$ 的联合概率密度分别为
 
-  （Ⅰ）
+$$
+\displaystyle f_1(x,y)=\begin{cases}
+k_1e^{-(x+y)},&x>0,y>0,\\
+0,&\text{其他},
+\end{cases}
+\qquad
+f_2(x,y)=\begin{cases}
+k_2e^{-(x+y)},&x>y>0,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  $$
-  \displaystyle k_1=1,\qquad k_2=2.
-  $$
+求：（Ⅰ）常数 $\displaystyle k_1,k_2$ 的值；（Ⅱ）$\displaystyle X_i,Y_i\,(i=1,2)$ 的边缘概率密度；（Ⅲ）$\displaystyle P\{X_i>2Y_i\}\,(i=1,2)$。
+<details>
+<summary>查看答案与解析</summary>
 
-  （Ⅱ）
+**答案**
 
-  $$
-  \displaystyle f_{X_1}(x)=\begin{cases}
-  e^{-x},&x>0,\\
-  0,&\text{其他},
-  \end{cases}
-  \qquad
-  f_{Y_1}(y)=\begin{cases}
-  e^{-y},&y>0,\\
-  0,&\text{其他},
-  \end{cases}
-  $$
+（Ⅰ）
 
-  $$
-  \displaystyle f_{X_2}(x)=\begin{cases}
-  2e^{-x}(1-e^{-x}),&x>0,\\
-  0,&\text{其他},
-  \end{cases}
-  $$
+$$
+\displaystyle k_1=1,\qquad k_2=2.
+$$
 
-  $$
-  \displaystyle f_{Y_2}(y)=\begin{cases}
-  2e^{-2y},&y>0,\\
-  0,&\text{其他}。
-  \end{cases}
-  $$
+（Ⅱ）
 
-  （Ⅲ）
+$$
+\displaystyle f_{X_1}(x)=\begin{cases}
+e^{-x},&x>0,\\
+0,&\text{其他},
+\end{cases}
+\qquad
+f_{Y_1}(y)=\begin{cases}
+e^{-y},&y>0,\\
+0,&\text{其他},
+\end{cases}
+$$
 
-  $$
-  \displaystyle P\{X_1>2Y_1\}=\frac13,
-  \qquad
-  P\{X_2>2Y_2\}=\frac23.
-  $$
+$$
+\displaystyle f_{X_2}(x)=\begin{cases}
+2e^{-x}(1-e^{-x}),&x>0,\\
+0,&\text{其他},
+\end{cases}
+$$
 
-  **解析**
+$$
+\displaystyle f_{Y_2}(y)=\begin{cases}
+2e^{-2y},&y>0,\\
+0,&\text{其他}。
+\end{cases}
+$$
 
-  （Ⅰ）由概率密度归一化条件，
+（Ⅲ）
 
-  $$
-  \displaystyle \int_0^{+\infty}\int_0^{+\infty}k_1e^{-(x+y)}dx\,dy=1.
-  $$
+$$
+\displaystyle P\{X_1>2Y_1\}=\frac13,
+\qquad
+P\{X_2>2Y_2\}=\frac23.
+$$
 
-  因为
+**解析**
 
-  $$
-  \displaystyle \int_0^{+\infty}e^{-x}dx=1,
-  $$
+（Ⅰ）由概率密度归一化条件，
 
-  故
+$$
+\displaystyle \int_0^{+\infty}\int_0^{+\infty}k_1e^{-(x+y)}dx\,dy=1.
+$$
 
-  $$
-  \displaystyle k_1=1.
-  $$
+因为
 
-  对第二个联合密度，
+$$
+\displaystyle \int_0^{+\infty}e^{-x}dx=1,
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  1
-  &=\int_0^{+\infty}\int_y^{+\infty}k_2e^{-(x+y)}dx\,dy\\
-  &=k_2\int_0^{+\infty}e^{-2y}dy\\
-  &=\dfrac{k_2}{2},
-  \end{aligned}
-  $$
+故
 
-  所以
+$$
+\displaystyle k_1=1.
+$$
 
-  $$
-  \displaystyle k_2=2.
-  $$
+对第二个联合密度，
 
-  （Ⅱ）对 $\displaystyle (X_1,Y_1)$，
+$$
+\displaystyle \begin{aligned}
+1
+&=\int_0^{+\infty}\int_y^{+\infty}k_2e^{-(x+y)}dx\,dy\\
+&=k_2\int_0^{+\infty}e^{-2y}dy\\
+&=\dfrac{k_2}{2},
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  f_{X_1}(x)
-  &=\int_0^{+\infty}e^{-(x+y)}dy
-  =e^{-x},\qquad x>0,\\
-  f_{Y_1}(y)
-  &=\int_0^{+\infty}e^{-(x+y)}dx
-  =e^{-y},\qquad y>0.
-  \end{aligned}
-  $$
+所以
 
-  对 $\displaystyle (X_2,Y_2)$，当 $\displaystyle x>0$ 时，必须有 $\displaystyle 0<y<x$，故
+$$
+\displaystyle k_2=2.
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  f_{X_2}(x)
-  &=\int_0^x2e^{-(x+y)}dy\\
-  &=2e^{-x}(1-e^{-x}).
-  \end{aligned}
-  $$
+（Ⅱ）对 $\displaystyle (X_1,Y_1)$，
 
-  当 $\displaystyle y>0$ 时，必须有 $\displaystyle x>y$，故
+$$
+\displaystyle \begin{aligned}
+f_{X_1}(x)
+&=\int_0^{+\infty}e^{-(x+y)}dy
+=e^{-x},\qquad x>0,\\
+f_{Y_1}(y)
+&=\int_0^{+\infty}e^{-(x+y)}dx
+=e^{-y},\qquad y>0.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  f_{Y_2}(y)
-  &=\int_y^{+\infty}2e^{-(x+y)}dx\\
-  &=2e^{-2y}.
-  \end{aligned}
-  $$
+对 $\displaystyle (X_2,Y_2)$，当 $\displaystyle x>0$ 时，必须有 $\displaystyle 0<y<x$，故
 
-  （Ⅲ）对于第一组随机变量，事件 $\displaystyle X_1>2Y_1$ 对应区域
+$$
+\displaystyle \begin{aligned}
+f_{X_2}(x)
+&=\int_0^x2e^{-(x+y)}dy\\
+&=2e^{-x}(1-e^{-x}).
+\end{aligned}
+$$
 
-  $$
-  \displaystyle y>0,\qquad x>2y.
-  $$
+当 $\displaystyle y>0$ 时，必须有 $\displaystyle x>y$，故
 
-  因此
+$$
+\displaystyle \begin{aligned}
+f_{Y_2}(y)
+&=\int_y^{+\infty}2e^{-(x+y)}dx\\
+&=2e^{-2y}.
+\end{aligned}
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X_1>2Y_1\}
-  &=\int_0^{+\infty}\int_{2y}^{+\infty}e^{-(x+y)}dx\,dy\\
-  &=\int_0^{+\infty}e^{-3y}dy\\
-  &=\frac13.
-  \end{aligned}
-  $$
+（Ⅲ）对于第一组随机变量，事件 $\displaystyle X_1>2Y_1$ 对应区域
 
-  对于第二组随机变量，事件 $\displaystyle X_2>2Y_2$ 已经包含在其支撑条件 $\displaystyle X_2>Y_2>0$ 内，故
+$$
+\displaystyle y>0,\qquad x>2y.
+$$
 
-  $$
-  \displaystyle \begin{aligned}
-  P\{X_2>2Y_2\}
-  &=\int_0^{+\infty}\int_{2y}^{+\infty}2e^{-(x+y)}dx\,dy\\
-  &=2\int_0^{+\infty}e^{-3y}dy\\
-  &=\frac23.
-  \end{aligned}
-  $$
+因此
 
-  </details>
-</Question>
+$$
+\displaystyle \begin{aligned}
+P\{X_1>2Y_1\}
+&=\int_0^{+\infty}\int_{2y}^{+\infty}e^{-(x+y)}dx\,dy\\
+&=\int_0^{+\infty}e^{-3y}dy\\
+&=\frac13.
+\end{aligned}
+$$
+
+对于第二组随机变量，事件 $\displaystyle X_2>2Y_2$ 已经包含在其支撑条件 $\displaystyle X_2>Y_2>0$ 内，故
+
+$$
+\displaystyle \begin{aligned}
+P\{X_2>2Y_2\}
+&=\int_0^{+\infty}\int_{2y}^{+\infty}2e^{-(x+y)}dx\,dy\\
+&=2\int_0^{+\infty}e^{-3y}dy\\
+&=\frac23.
+\end{aligned}
+$$
+
+</details>

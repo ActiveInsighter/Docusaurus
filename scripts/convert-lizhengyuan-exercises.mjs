@@ -15,19 +15,16 @@ const books = [
       '李正元练习题-高等数学-第1至5章-公式格式化.md',
       '李正元练习题-高等数学-第6至11章-公式格式化.md',
     ],
-    sourceLabel: '李正元练习题·高等数学',
     position: 1,
   },
   {
     subject: '线性代数',
     sourceFiles: ['李正元练习题-线性代数-公式格式化.md'],
-    sourceLabel: '李正元练习题·线性代数',
     position: 2,
   },
   {
     subject: '概率论与数理统计',
     sourceFiles: ['李正元练习题-概率论与数理统计-公式格式化.md'],
-    sourceLabel: '李正元练习题·概率论与数理统计',
     position: 3,
   },
 ];
@@ -91,12 +88,6 @@ function sectionLabel(line) {
     .trim();
 }
 
-function questionType(section) {
-  if (section.includes('选择')) return 'single';
-  if (section.includes('填空')) return 'fill';
-  return 'subjective';
-}
-
 function safeFilePart(value) {
   return value
     .replace(/[<>:"/\\|?*]/g, '')
@@ -139,22 +130,6 @@ function parseOptions(stemLines) {
   };
 }
 
-function correctOptionLabels(answer) {
-  const parenthesized = [...answer.matchAll(/[（(]([A-H])[）)]/g)].map(
-    (match) => match[1],
-  );
-  if (parenthesized.length > 0) return new Set(parenthesized);
-
-  const shortAnswer = answer
-    .replace(/\*\*/g, '')
-    .replace(/^(?:故选|选)\s*/u, '')
-    .trim();
-  if (/^[A-H](?:\s*[,，、]\s*[A-H])*[。.]?$/u.test(shortAnswer)) {
-    return new Set(shortAnswer.match(/[A-H]/g));
-  }
-  return new Set();
-}
-
 function findMarker(lines, pattern, start = 0) {
   for (let index = start; index < lines.length; index += 1) {
     const match = lines[index].match(pattern);
@@ -178,39 +153,25 @@ function markerContent(lines, marker, end) {
   return cleanLines([marker.inline, ...lines.slice(marker.index + 1, end)]);
 }
 
-function renderBlock(name, lines, indentation = '  ') {
-  if (lines.length === 0) return '';
-  const content = lines
-    .map((line) => (line === '' ? '' : `${indentation}${line}`))
-    .join('\n');
-  return `${indentation}<${name}>\n\n${content}\n\n${indentation}</${name}>`;
-}
-
 function renderAnswerDetails(answerLines, analysisLines) {
   if (answerLines.length === 0 && analysisLines.length === 0) return '';
 
-  const lines = ['  <details>', '  <summary>查看答案与解析</summary>'];
+  const lines = ['<details>', '<summary>查看答案与解析</summary>'];
 
   if (answerLines.length > 0) {
-    lines.push('', '  **答案**', '');
-    lines.push(
-      ...answerLines.map((line) => (line === '' ? '' : `  ${line}`)),
-    );
+    lines.push('', '**答案**', '', ...answerLines);
   }
 
   if (analysisLines.length > 0) {
-    lines.push('', '  **解析**', '');
-    lines.push(
-      ...analysisLines.map((line) => (line === '' ? '' : `  ${line}`)),
-    );
+    lines.push('', '**解析**', '', ...analysisLines);
   }
 
-  lines.push('', '  </details>');
+  lines.push('', '</details>');
   return lines.join('\n');
 }
 
-function renderQuestion(question, sourceLabel) {
-  const {number, section, rawLines} = question;
+function renderQuestion(question) {
+  const {number, rawLines} = question;
   const startMatch = rawLines[0].match(questionPattern);
   const bodyLines = [startMatch?.[2] ?? '', ...rawLines.slice(1)];
   // A question may itself begin with “证明：”; the stripped first line is
@@ -300,43 +261,19 @@ function renderQuestion(question, sourceLabel) {
       }),
     );
   }
-  const type = questionType(section);
-  const parsedOptions = type === 'single' ? parseOptions(stemLines) : null;
-  const answerText = answerLines.join('\n');
-  const correctLabels = correctOptionLabels(answerText);
-  const tags = section ? ` tags={['${section.replaceAll("'", "\\'")}']}` : '';
-
-  const parts = [
-    `<Question type="${type}" number="${number}" source="${sourceLabel}"${tags}>`,
-  ];
-
-  const renderedStem = renderBlock(
-    'QuestionStem',
-    parsedOptions?.stem ?? stemLines,
-  );
-  if (renderedStem) parts.push(renderedStem);
+  const parsedOptions = parseOptions(stemLines);
+  const parts = [`**${number}.**`, '', ...(parsedOptions?.stem ?? stemLines)];
 
   if (parsedOptions) {
-    parts.push('  <QuestionOptions>');
+    parts.push('');
     for (const option of parsedOptions.options) {
-      const correct = correctLabels.has(option.label) ? ' correct' : '';
-      parts.push(`    <QuestionOption${correct}>`);
-      parts.push('');
-      parts.push(
-        ...option.lines.map((line) =>
-          line === '' ? '' : `      ${line}`,
-        ),
-      );
-      parts.push('');
-      parts.push('    </QuestionOption>');
+      parts.push(...option.lines, '');
     }
-    parts.push('  </QuestionOptions>');
   }
 
   const renderedDetails = renderAnswerDetails(answerLines, analysisLines);
   if (renderedDetails) parts.push(renderedDetails);
 
-  parts.push('</Question>');
   return parts.join('\n');
 }
 
@@ -502,9 +439,11 @@ async function convertBook(book) {
       ...[...grouped.entries()].flatMap(([section, sectionQuestions]) => [
         `## ${section}`,
         '',
-        ...sectionQuestions.flatMap((question) => [
-          renderQuestion(question, book.sourceLabel),
-          '',
+        ...sectionQuestions.flatMap((question, questionIndex) => [
+          renderQuestion(question),
+          ...(questionIndex < sectionQuestions.length - 1
+            ? ['', '---', '']
+            : ['']),
         ]),
       ]),
     ].join('\n');
