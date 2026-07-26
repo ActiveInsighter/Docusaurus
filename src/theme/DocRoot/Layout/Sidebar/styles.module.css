@@ -1,0 +1,66 @@
+:root {
+  --doc-sidebar-width: 300px;
+  --doc-sidebar-hidden-width: 30px;
+}
+
+.docSidebarContainer {
+  display: none;
+}
+
+@media (min-width: 997px) {
+  .docSidebarContainer {
+    display: block;
+    width: var(--doc-sidebar-width);
+    margin-top: calc(-1 * var(--ifm-navbar-height));
+    border-right: 1px solid var(--ifm-toc-border-color);
+    will-change: width;
+    transition: width var(--ifm-transition-fast) ease;
+    clip-path: inset(0);
+
+    /* Undo the old fixed-position experiment in global CSS. */
+    position: static !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  .docSidebarContainerHidden {
+    width: var(--doc-sidebar-hidden-width);
+    cursor: pointer;
+  }
+
+  .sidebarViewport {
+    top: 0;
+    position: sticky;
+    height: 100%;
+    max-height: 100vh;
+  }
+
+  /* The previous global selector also matched the collapsed state because it
+   * relied on a generated class-name substring. Restore the upstream viewport
+   * geometry explicitly so the 300px grey overlay cannot reappear. */
+  :global(.theme-doc-sidebar-container > :first-child) {
+    position: sticky !important;
+    inset: auto !important;
+    top: 0 !important;
+    width: auto !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    overflow-x: visible !important;
+  }
+
+  :global(.theme-doc-sidebar-container > :first-child .menu) {
+    height: auto !important;
+    max-height: none !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    overflow-y: auto !important;
+    overscroll-behavior: auto !important;
+  }
+
+  @supports (scrollbar-gutter: stable) {
+    :global(.theme-doc-sidebar-container > :first-child .menu) {
+      padding: 0.5rem 0 0.5rem 0.5rem !important;
+      scrollbar-gutter: stable;
+    }
+  }
+}
