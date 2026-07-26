@@ -453,6 +453,16 @@ def verify_mobile_sidebar(page: Page, output_dir: Path) -> dict[str, Any]:
     backdrop = page.locator(".navbar-sidebar__backdrop")
     sidebar.wait_for(state="visible")
     backdrop.wait_for(state="visible")
+    page.wait_for_function(
+        """
+        () => {
+          const sidebar = document.querySelector('.navbar-sidebar');
+          if (!(sidebar instanceof HTMLElement)) return false;
+          const rect = sidebar.getBoundingClientRect();
+          return Math.abs(rect.left) <= 1 && rect.right >= 20;
+        }
+        """
+    )
 
     state = page.evaluate(
         """

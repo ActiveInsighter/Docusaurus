@@ -6,40 +6,37 @@ import remarkMath from 'remark-math';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const docsRoot = path.join(projectRoot, 'docs', '408模拟选择题');
-const expectedFiles = 52;
-const expectedCategoryFiles = 11;
+const expectedFiles = 26;
+const expectedCategoryFiles = 5;
 const expectedQuestions = 600;
 const expectedMissingImages = 26;
-const expectedBooks = {
-  '01-王道': {
-    name: '王道',
-    questions: 320,
-    subjects: {
-      '01-数据结构': {name: '数据结构', files: 8, questions: 88},
-      '02-计算机组成原理': {
-        name: '计算机组成原理',
-        files: 7,
-        questions: 88,
-      },
-      '03-操作系统': {name: '操作系统', files: 5, questions: 80},
-      '04-计算机网络': {name: '计算机网络', files: 6, questions: 64},
-    },
+const expectedSubjects = {
+  '01-数据结构': {
+    name: '数据结构',
+    files: 8,
+    questions: 165,
+    byBook: {王道: 88, 竟成: 77},
   },
-  '02-竟成': {
-    name: '竟成',
-    questions: 280,
-    subjects: {
-      '01-数据结构': {name: '数据结构', files: 8, questions: 77},
-      '02-计算机组成原理': {
-        name: '计算机组成原理',
-        files: 7,
-        questions: 77,
-      },
-      '03-操作系统': {name: '操作系统', files: 5, questions: 70},
-      '04-计算机网络': {name: '计算机网络', files: 6, questions: 56},
-    },
+  '02-计算机组成原理': {
+    name: '计算机组成原理',
+    files: 7,
+    questions: 165,
+    byBook: {王道: 88, 竟成: 77},
+  },
+  '03-操作系统': {
+    name: '操作系统',
+    files: 5,
+    questions: 150,
+    byBook: {王道: 80, 竟成: 70},
+  },
+  '04-计算机网络': {
+    name: '计算机网络',
+    files: 6,
+    questions: 120,
+    byBook: {王道: 64, 竟成: 56},
   },
 };
+const expectedBookTotals = {王道: 320, 竟成: 280};
 const subjectQuestionRanges = {
   数据结构: [1, 11],
   计算机组成原理: [12, 22],
@@ -125,19 +122,19 @@ if (categoryFiles.length !== expectedCategoryFiles) {
   );
 }
 
-const actualBookDirectories = (
+const actualSubjectDirectories = (
   await fs.readdir(docsRoot, {withFileTypes: true})
 )
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
   .sort();
-const expectedBookDirectories = Object.keys(expectedBooks).sort();
+const expectedSubjectDirectories = Object.keys(expectedSubjects).sort();
 if (
-  JSON.stringify(actualBookDirectories) !==
-  JSON.stringify(expectedBookDirectories)
+  JSON.stringify(actualSubjectDirectories) !==
+  JSON.stringify(expectedSubjectDirectories)
 ) {
   throw new Error(
-    `书目目录异常：${actualBookDirectories.join('、') || '无'}`,
+    `科目目录异常：${actualSubjectDirectories.join('、') || '无'}`,
   );
 }
 
@@ -147,25 +144,25 @@ const seenTags = new Set();
 const paperQuestions = new Map();
 const actualCounts = new Map();
 const actualFileCounts = new Map();
+const actualSourceCounts = new Map();
 
 for (const filePath of files) {
   const relativePath = path.relative(docsRoot, filePath);
   const pathParts = relativePath.split(path.sep);
-  if (pathParts.length !== 3) {
-    throw new Error(`${relativePath}: 应位于“书/科目/章节”三级路径中`);
+  if (pathParts.length !== 2) {
+    throw new Error(`${relativePath}: 应位于“科目/章节”两级路径中`);
   }
 
-  const [bookDirectory, subjectDirectory, fileName] = pathParts;
-  const bookConfig = expectedBooks[bookDirectory];
-  const subjectConfig = bookConfig?.subjects[subjectDirectory];
-  if (!bookConfig || !subjectConfig) {
-    throw new Error(`${relativePath}: 书目或科目目录不符合预期`);
+  const [subjectDirectory, fileName] = pathParts;
+  const subjectConfig = expectedSubjects[subjectDirectory];
+  if (!subjectConfig) {
+    throw new Error(`${relativePath}: 科目目录不符合预期`);
   }
   if (!/^\d{2}-第\d+章-.+\.mdx$/u.test(fileName)) {
     throw new Error(`${relativePath}: 章节文件名不符合编号命名规则`);
   }
 
-  const groupKey = `${bookDirectory}/${subjectDirectory}`;
+  const groupKey = subjectDirectory;
   actualFileCounts.set(groupKey, (actualFileCounts.get(groupKey) ?? 0) + 1);
 
   const content = await fs.readFile(filePath, 'utf8');
@@ -215,9 +212,6 @@ for (const filePath of files) {
       throw new Error(`${relativePath}: 题目标记格式异常：${tag}`);
     }
     const [, book, paper, prefix, questionNumberText] = tagMatch;
-    if (book !== bookConfig.name) {
-      throw new Error(`${relativePath}: 题目标记 ${tag} 放入了错误书目`);
-    }
     if (
       (book === '王道' &&
         (!paper.startsWith('卷') || prefix !== 'Q')) ||
@@ -242,6 +236,11 @@ for (const filePath of files) {
     const paperKey = `${book}·${paper}`;
     if (!paperQuestions.has(paperKey)) paperQuestions.set(paperKey, []);
     paperQuestions.get(paperKey).push(questionNumber);
+    const sourceKey = `${subjectDirectory}/${book}`;
+    actualSourceCounts.set(
+      sourceKey,
+      (actualSourceCounts.get(sourceKey) ?? 0) + 1,
+    );
   });
 
   try {
@@ -258,29 +257,39 @@ for (const filePath of files) {
   actualCounts.set(groupKey, (actualCounts.get(groupKey) ?? 0) + details);
 }
 
-for (const [bookDirectory, bookConfig] of Object.entries(expectedBooks)) {
-  let bookQuestionCount = 0;
-  for (const [subjectDirectory, subjectConfig] of Object.entries(
-    bookConfig.subjects,
-  )) {
-    const groupKey = `${bookDirectory}/${subjectDirectory}`;
-    const fileCount = actualFileCounts.get(groupKey) ?? 0;
-    const questionCount = actualCounts.get(groupKey) ?? 0;
-    if (fileCount !== subjectConfig.files) {
-      throw new Error(
-        `${bookConfig.name} · ${subjectConfig.name} 应有 ${subjectConfig.files} 个章节文件，实际为 ${fileCount} 个`,
-      );
-    }
-    if (questionCount !== subjectConfig.questions) {
-      throw new Error(
-        `${bookConfig.name} · ${subjectConfig.name} 应有 ${subjectConfig.questions} 道题，实际为 ${questionCount} 道`,
-      );
-    }
-    bookQuestionCount += questionCount;
-  }
-  if (bookQuestionCount !== bookConfig.questions) {
+for (const [subjectDirectory, subjectConfig] of Object.entries(
+  expectedSubjects,
+)) {
+  const fileCount = actualFileCounts.get(subjectDirectory) ?? 0;
+  const questionCount = actualCounts.get(subjectDirectory) ?? 0;
+  if (fileCount !== subjectConfig.files) {
     throw new Error(
-      `${bookConfig.name} 应有 ${bookConfig.questions} 道题，实际为 ${bookQuestionCount} 道`,
+      `${subjectConfig.name} 应有 ${subjectConfig.files} 个章节文件，实际为 ${fileCount} 个`,
+    );
+  }
+  if (questionCount !== subjectConfig.questions) {
+    throw new Error(
+      `${subjectConfig.name} 应有 ${subjectConfig.questions} 道题，实际为 ${questionCount} 道`,
+    );
+  }
+  for (const [book, expectedCount] of Object.entries(subjectConfig.byBook)) {
+    const actualCount =
+      actualSourceCounts.get(`${subjectDirectory}/${book}`) ?? 0;
+    if (actualCount !== expectedCount) {
+      throw new Error(
+        `${subjectConfig.name} · ${book} 应有 ${expectedCount} 道题，实际为 ${actualCount} 道`,
+      );
+    }
+  }
+}
+
+for (const [book, expectedCount] of Object.entries(expectedBookTotals)) {
+  const actualCount = [...actualSourceCounts.entries()]
+    .filter(([key]) => key.endsWith(`/${book}`))
+    .reduce((sum, [, count]) => sum + count, 0);
+  if (actualCount !== expectedCount) {
+    throw new Error(
+      `${book} 应有 ${expectedCount} 道题，实际为 ${actualCount} 道`,
     );
   }
 }
@@ -308,5 +317,5 @@ if (totalMissingImages !== expectedMissingImages) {
 }
 
 console.log(
-  `408模拟选择题校验通过：${files.length} 个章节文件，王道 320 题，竟成 280 题，共 ${totalQuestions} 个原生答案折叠区，${totalMissingImages} 个缺图提示`,
+  `408模拟选择题校验通过：4 个科目目录，${files.length} 个章节文件，王道 320 题，竟成 280 题，共 ${totalQuestions} 个原生答案折叠区，${totalMissingImages} 个缺图提示`,
 );

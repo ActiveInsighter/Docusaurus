@@ -33,25 +33,29 @@ const subjects = [
   {
     name: '数据结构',
     position: 1,
-    expectedQuestions: {王道: 88, 竟成: 77},
+    expectedQuestions: 165,
+    expectedByBook: {王道: 88, 竟成: 77},
     expectedChapters: 8,
   },
   {
     name: '计算机组成原理',
     position: 2,
-    expectedQuestions: {王道: 88, 竟成: 77},
+    expectedQuestions: 165,
+    expectedByBook: {王道: 88, 竟成: 77},
     expectedChapters: 7,
   },
   {
     name: '操作系统',
     position: 3,
-    expectedQuestions: {王道: 80, 竟成: 70},
+    expectedQuestions: 150,
+    expectedByBook: {王道: 80, 竟成: 70},
     expectedChapters: 5,
   },
   {
     name: '计算机网络',
     position: 4,
-    expectedQuestions: {王道: 64, 竟成: 56},
+    expectedQuestions: 120,
+    expectedByBook: {王道: 64, 竟成: 56},
     expectedChapters: 6,
   },
 ];
@@ -531,9 +535,17 @@ async function clearGeneratedDocs() {
     }
   }
 
-  for (const book of books) {
-    const directoryName =
-      `${String(book.position).padStart(2, '0')}-${book.name}`;
+  const generatedDirectoryNames = [
+    ...books.map(
+      (book) => `${String(book.position).padStart(2, '0')}-${book.name}`,
+    ),
+    ...subjects.map(
+      (subject) =>
+        `${String(subject.position).padStart(2, '0')}-${subject.name}`,
+    ),
+  ];
+
+  for (const directoryName of generatedDirectoryNames) {
     const directoryPath = path.join(docsRoot, directoryName);
     if (
       path.dirname(directoryPath) !== docsRoot ||
@@ -563,105 +575,104 @@ async function main() {
   let totalQuestions = 0;
   let totalFiles = 0;
 
-  for (const book of books) {
-    const bookRoot = path.join(
+  for (const subject of subjects) {
+    const subjectRoot = path.join(
       docsRoot,
-      `${String(book.position).padStart(2, '0')}-${book.name}`,
+      `${String(subject.position).padStart(2, '0')}-${subject.name}`,
     );
-    await fs.mkdir(bookRoot, {recursive: true});
-    await writeJson(path.join(bookRoot, '_category_.json'), {
-      label: book.name,
-      position: book.position,
+    await fs.mkdir(subjectRoot, {recursive: true});
+    await writeJson(path.join(subjectRoot, '_category_.json'), {
+      label: subject.name,
+      position: subject.position,
       collapsible: true,
       collapsed: true,
     });
 
-    let bookQuestionCount = 0;
-    for (const subject of subjects) {
-      const subjectRoot = path.join(
-        bookRoot,
-        `${String(subject.position).padStart(2, '0')}-${subject.name}`,
-      );
-      await fs.mkdir(subjectRoot, {recursive: true});
-      await writeJson(path.join(subjectRoot, '_category_.json'), {
-        label: subject.name,
-        position: subject.position,
-        collapsible: true,
-        collapsed: true,
-      });
-
-      const subjectQuestions = questions.filter(
-        (question) =>
-          question.book === book.name && question.subject === subject.name,
-      );
-      if (subjectQuestions.length !== subject.expectedQuestions[book.name]) {
-        throw new Error(
-          `${book.name} · ${subject.name} 应有 ${subject.expectedQuestions[book.name]} 道题，实际为 ${subjectQuestions.length} 道`,
-        );
-      }
-
-      const chapters = new Map();
-      for (const question of subjectQuestions) {
-        const key = question.chapter.number;
-        if (!chapters.has(key)) chapters.set(key, []);
-        chapters.get(key).push(question);
-      }
-      if (chapters.size !== subject.expectedChapters) {
-        throw new Error(
-          `${book.name} · ${subject.name} 应有 ${subject.expectedChapters} 个章节，实际为 ${chapters.size} 个`,
-        );
-      }
-
-      for (const [chapterNumber, chapterQuestions] of [...chapters.entries()].sort(
-        ([left], [right]) => left - right,
-      )) {
-        chapterQuestions.sort(
-          (left, right) => left.sourceLine - right.sourceLine,
-        );
-        const chapter = chapterQuestions[0].chapter;
-        const title = `${book.name} · ${subject.name} · ${chapter.label}`;
-        const fileName =
-          `${String(chapterNumber).padStart(2, '0')}-` +
-          `${safeFileSegment(chapter.label)}.mdx`;
-        const body = [
-          '---',
-          `sidebar_position: ${chapterNumber}`,
-          `title: ${title}`,
-          '---',
-          '',
-          generatedMarker,
-          '',
-          `# ${title}`,
-          '',
-          ...sanitizeMdxLines(renderChapterPage(chapterQuestions)),
-          '',
-        ].join('\n');
-        await fs.writeFile(path.join(subjectRoot, fileName), body, 'utf8');
-        totalFiles += 1;
-      }
-
-      bookQuestionCount += subjectQuestions.length;
-      console.log(
-        `${book.name} · ${subject.name}: ${subjectQuestions.length} 道题，${chapters.size} 个章节文件`,
+    const subjectQuestions = questions.filter(
+      (question) => question.subject === subject.name,
+    );
+    if (subjectQuestions.length !== subject.expectedQuestions) {
+      throw new Error(
+        `${subject.name} 应有 ${subject.expectedQuestions} 道题，实际为 ${subjectQuestions.length} 道`,
       );
     }
 
+    for (const book of books) {
+      const bookQuestionCount = subjectQuestions.filter(
+        (question) => question.book === book.name,
+      ).length;
+      if (bookQuestionCount !== subject.expectedByBook[book.name]) {
+        throw new Error(
+          `${subject.name} · ${book.name} 应有 ${subject.expectedByBook[book.name]} 道题，实际为 ${bookQuestionCount} 道`,
+        );
+      }
+    }
+
+    const chapters = new Map();
+    for (const question of subjectQuestions) {
+      const key = question.chapter.number;
+      if (!chapters.has(key)) chapters.set(key, []);
+      chapters.get(key).push(question);
+    }
+    if (chapters.size !== subject.expectedChapters) {
+      throw new Error(
+        `${subject.name} 应有 ${subject.expectedChapters} 个章节，实际为 ${chapters.size} 个`,
+      );
+    }
+
+    for (const [chapterNumber, chapterQuestions] of [...chapters.entries()].sort(
+      ([left], [right]) => left - right,
+    )) {
+      chapterQuestions.sort(
+        (left, right) => left.sourceLine - right.sourceLine,
+      );
+      const chapter = chapterQuestions[0].chapter;
+      const title = `408模拟选择题 · ${subject.name} · ${chapter.label}`;
+      const fileName =
+        `${String(chapterNumber).padStart(2, '0')}-` +
+        `${safeFileSegment(chapter.label)}.mdx`;
+      const body = [
+        '---',
+        `sidebar_position: ${chapterNumber}`,
+        `title: ${title}`,
+        '---',
+        '',
+        generatedMarker,
+        '',
+        `# ${title}`,
+        '',
+        ...sanitizeMdxLines(renderChapterPage(chapterQuestions)),
+        '',
+      ].join('\n');
+      await fs.writeFile(path.join(subjectRoot, fileName), body, 'utf8');
+      totalFiles += 1;
+    }
+
+    totalQuestions += subjectQuestions.length;
+    console.log(
+      `${subject.name}: ${subjectQuestions.length} 道题（王道 ${subject.expectedByBook.王道}，竟成 ${subject.expectedByBook.竟成}），${chapters.size} 个章节文件`,
+    );
+  }
+
+  for (const book of books) {
+    const bookQuestionCount = questions.filter(
+      (question) => question.book === book.name,
+    ).length;
     if (bookQuestionCount !== book.expectedQuestions) {
       throw new Error(
         `${book.name} 应有 ${book.expectedQuestions} 道题，实际为 ${bookQuestionCount} 道`,
       );
     }
-    totalQuestions += bookQuestionCount;
   }
 
-  if (totalFiles !== 52 || totalQuestions !== 600) {
+  if (totalFiles !== 26 || totalQuestions !== 600) {
     throw new Error(
       `生成结果异常：${totalFiles} 个 MDX 文件，${totalQuestions} 道题`,
     );
   }
 
   console.log(
-    `408模拟选择题: 共 ${totalQuestions} 道题，按书、科目和章节生成 ${totalFiles} 个 MDX 文件`,
+    `408模拟选择题: 共 ${totalQuestions} 道题，按科目和章节生成 ${totalFiles} 个 MDX 文件`,
   );
 }
 
