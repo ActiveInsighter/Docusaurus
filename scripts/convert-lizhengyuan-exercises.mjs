@@ -1,6 +1,7 @@
 import {promises as fs} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {formatChoiceOptionRows} from './choice-option-layout.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceRoot = path.join(projectRoot, 'sources', '李正元练习题');
@@ -170,6 +171,37 @@ function renderAnswerDetails(answerLines, analysisLines) {
   return lines.join('\n');
 }
 
+function ensureBlankLinesAroundBlocks(lines) {
+  const output = [];
+  let mathBlockOpen = false;
+  let codeBlockOpen = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const isMathFence = trimmed === '$$';
+    const isCodeFence = trimmed.startsWith('```');
+
+    if (
+      (isMathFence && !mathBlockOpen) ||
+      (isCodeFence && !codeBlockOpen)
+    ) {
+      if (output.at(-1)?.trim() !== '') output.push('');
+    }
+
+    output.push(line);
+
+    if (isMathFence) {
+      mathBlockOpen = !mathBlockOpen;
+      if (!mathBlockOpen) output.push('');
+    } else if (isCodeFence) {
+      codeBlockOpen = !codeBlockOpen;
+      if (!codeBlockOpen) output.push('');
+    }
+  }
+
+  return trimBlankLines(output);
+}
+
 function renderQuestion(question) {
   const {number, rawLines} = question;
   const startMatch = rawLines[0].match(questionPattern);
@@ -262,13 +294,23 @@ function renderQuestion(question) {
     );
   }
   const parsedOptions = parseOptions(stemLines);
-  const parts = [`**${number}.**`, '', ...(parsedOptions?.stem ?? stemLines)];
+  const renderedStem = parsedOptions?.stem ?? stemLines;
+  const firstStemLine = renderedStem[0] ?? '';
+  const startsWithBlock =
+    firstStemLine.trim() === '$$' ||
+    firstStemLine.trim().startsWith('```');
+  const parts = ensureBlankLinesAroundBlocks(
+    startsWithBlock
+      ? [`${number}. 题目如下：`, ...renderedStem]
+      : [
+          firstStemLine ? `${number}. ${firstStemLine}` : `${number}.`,
+          ...renderedStem.slice(1),
+        ],
+  );
 
   if (parsedOptions) {
     parts.push('');
-    for (const option of parsedOptions.options) {
-      parts.push(...option.lines, '');
-    }
+    parts.push(...formatChoiceOptionRows(parsedOptions.options));
   }
 
   const renderedDetails = renderAnswerDetails(answerLines, analysisLines);
