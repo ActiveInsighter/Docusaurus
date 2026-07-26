@@ -17,7 +17,7 @@
     transition: width var(--ifm-transition-fast) ease;
     clip-path: inset(0);
 
-    /* Undo the old fixed-position experiment in global CSS. */
+    /* Keep the container on the official Docusaurus layout path. */
     position: static !important;
     min-width: 0 !important;
     overflow: visible !important;
@@ -33,12 +33,14 @@
     position: sticky;
     height: 100%;
     max-height: 100vh;
+    isolation: isolate;
   }
 
-  /* The previous global selector also matched the collapsed state because it
-   * relied on a generated class-name substring. Restore the upstream viewport
-   * geometry explicitly so the 300px grey overlay cannot reappear. */
-  :global(.theme-doc-sidebar-container > :first-child) {
+  /* The old global fixed-position rule has higher specificity and also matched
+   * the collapsed state. Override it with local CSS-module classes so the
+   * official 30px collapsed rail and its centered expand icon are preserved. */
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport {
     position: sticky !important;
     inset: auto !important;
     top: 0 !important;
@@ -48,17 +50,52 @@
     overflow-x: visible !important;
   }
 
-  :global(.theme-doc-sidebar-container > :first-child .menu) {
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport
+    :global(.menu) {
     height: auto !important;
     max-height: none !important;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
     overflow-y: auto !important;
-    overscroll-behavior: auto !important;
+    overscroll-behavior-y: none !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--md-scrollbar-thumb) transparent;
+  }
+
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport
+    :global(.menu::-webkit-scrollbar) {
+    width: 5px;
+    height: 5px;
+  }
+
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport
+    :global(.menu::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport
+    :global(.menu::-webkit-scrollbar-thumb) {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--md-scrollbar-thumb);
+    background-clip: padding-box;
+  }
+
+  .docSidebarContainer.docSidebarContainer
+    > .sidebarViewport.sidebarViewport
+    :global(.menu::-webkit-scrollbar-thumb:hover) {
+    background: var(--md-scrollbar-thumb-hover);
+    background-clip: padding-box;
   }
 
   @supports (scrollbar-gutter: stable) {
-    :global(.theme-doc-sidebar-container > :first-child .menu) {
+    .docSidebarContainer.docSidebarContainer
+      > .sidebarViewport.sidebarViewport
+      :global(.menu) {
       padding: 0.5rem 0 0.5rem 0.5rem !important;
       scrollbar-gutter: stable;
     }
