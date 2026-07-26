@@ -1,4 +1,4 @@
-name: Apply verified question performance optimization v5
+name: Finalize verified question performance optimization
 
 on:
   push:
@@ -42,6 +42,7 @@ jobs:
           node scripts/prepare-question-performance-patcher.mjs
           node scripts/apply-question-performance-optimization.mjs
           node scripts/update-layout-visual-assertions.mjs
+
           node <<'NODE'
           import {readFileSync, writeFileSync} from 'node:fs';
           const path = 'Py/check_question_performance.py';
@@ -53,7 +54,14 @@ jobs:
           }
           writeFileSync(path, source.replace(broken, fixed), 'utf8');
           NODE
+
           python -m py_compile Py/check_question_performance.py
+
+          # The workflow token may update source files but cannot write workflow files.
+          # Restore them to HEAD; the new source-level guards remain available through
+          # package.json and the checked-in test scripts.
+          git checkout HEAD -- .github/workflows/ci.yaml
+          git checkout HEAD -- .github/workflows/navbar-visual.yml
 
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
@@ -96,29 +104,41 @@ jobs:
       - name: Commit verified implementation
         shell: bash
         run: |
-          rm -f .github/workflows/apply-question-performance-optimization.yml
-          rm -f .github/workflows/apply-question-performance-optimization-v2.yml
-          rm -f .github/workflows/optimize-doc-performance.yml
-          rm -f .github/workflows/fix-optimize-runner.yml
+          rm -rf /tmp/docs-question-performance-artifact
+          mkdir -p /tmp/docs-question-performance-artifact
+          cp -R artifacts/docs-ui-visual/. /tmp/docs-question-performance-artifact/
+
+          rm -rf artifacts
           rm -f .github/question-optimization-run.json
           rm -f .github/question-optimization-v2-run.json
           rm -f .github/question-optimization-v3-run.json
           rm -f .github/question-optimization-v4-run.json
+          rm -f .github/question-optimization-v5-run.json
           rm -f .github/question-optimization-v3-failure.log
           rm -f .github/question-optimization-v4-failure.log
+          rm -f .github/question-optimization-v5-commit-failure.log
           rm -f .github/temp-run-status.json
           rm -f scripts/apply-question-performance-optimization.mjs
           rm -f scripts/update-layout-visual-assertions.mjs
           rm -f scripts/prepare-question-performance-patcher.mjs
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
+
+          if git diff --cached --name-only | grep -q '^.github/workflows/'; then
+            echo "Refusing to commit workflow changes with a token that lacks workflows permission."
+            git diff --cached -- .github/workflows
+            exit 1
+          fi
+
           git commit -m "perf: optimize long question pages and stabilize sidebar"
           for attempt in 1 2 3 4; do
             git pull --rebase origin main
             if git push origin HEAD:main; then
               exit 0
             fi
+            git rebase --abort || true
             sleep $((attempt * 3))
           done
           exit 1
@@ -137,9 +157,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: docs-question-performance-v5-${{ github.run_id }}
+          name: docs-question-performance-final-${{ github.run_id }}
           path: |
-            artifacts/docs-ui-visual
+            /tmp/docs-question-performance-artifact
             /tmp/docusaurus-serve.log
           if-no-files-found: warn
           retention-days: 14
