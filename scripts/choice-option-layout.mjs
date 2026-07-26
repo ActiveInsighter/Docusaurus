@@ -1,4 +1,4 @@
-const inlineRowWidth = 104;
+const inlineRowWidth = 92;
 const separator = ' &emsp;&emsp; ';
 
 function displayWidth(value) {
@@ -61,5 +61,12 @@ export function formatChoiceOptionRows(options) {
         .join(separator),
     );
   }
-  return rows;
+
+  return [
+    '<div className="choice-options">',
+    ...rows.map(
+      (row) => `<div className="choice-option-row">${row}</div>`,
+    ),
+    '</div>',
+  ];
 }

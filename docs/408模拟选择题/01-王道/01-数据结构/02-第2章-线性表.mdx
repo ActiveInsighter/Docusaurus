@@ -1,0 +1,59 @@
+---
+sidebar_position: 2
+title: 王道 · 数据结构 · 第2章 线性表
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 王道 · 数据结构 · 第2章 线性表
+
+## 2.3 线性表的链式表示
+
+### 2.3.2 单链表上基本操作的实现
+
+1. **【王道·卷七-Q01】** 一个带头结点的单链表，头指针为 $\displaystyle L$，尾指针 $\displaystyle r$ 指向最后一个结点，要保证插入的先后顺序与对应结点在链中的顺序相反，则插入 $\displaystyle p$ 结点的操作为（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle L\rightarrow next = p; p\rightarrow next = L\rightarrow next$</div>
+<div className="choice-option-row">B. $\displaystyle p\rightarrow next = L\rightarrow next; L\rightarrow next = p$</div>
+<div className="choice-option-row">C. $\displaystyle r\rightarrow next = p; r = p$</div>
+<div className="choice-option-row">D. $\displaystyle p\rightarrow next = r$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 要使结点在链中的顺序与插入顺序相反，应采用头插法，把新结点 $\displaystyle p$ 插入头结点 $\displaystyle L$ 之后。正确操作顺序为：先令 $\displaystyle p\rightarrow next$ 指向原来的第一个数据结点，再令 $\displaystyle L\rightarrow next$ 指向 $\displaystyle p$，即选项 B。A 先修改 $\displaystyle L\rightarrow next$，随后再令 $\displaystyle p\rightarrow next=L\rightarrow next$，会使 $\displaystyle p$ 指向自身；C 是尾插法，得到的链表顺序与插入顺序相同；D 只修改了一个指针，既没有将 $\displaystyle p$ 正确接入链表，也没有更新头结点或尾结点的链接关系。
+
+</details>
+
+---
+
+### 2.3.5 静态链表
+
+2. **【王道·卷六-Q01】** 静态链表结点的类型定义如下，假设 $\displaystyle S$ 表示静态链表的数组。
+
+```c
+typedef struct node{
+DataType data;
+int link;
+} SListNode;
+```
+
+若逻辑上第 $\displaystyle k$ 个结点的下标是i，则逻辑上第 $\displaystyle k+1$ 个结点的数据是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle S[i + 1].data$ &emsp;&emsp; B. $\displaystyle S[k + 1].link.data$</div>
+<div className="choice-option-row">C. $\displaystyle S[S[i].link].data$ &emsp;&emsp; D. $\displaystyle S[S[k].link].data$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 静态链表利用数组下标代替指针。已知逻辑上第 $\displaystyle k$ 个结点位于数组下标 $\displaystyle i$，则 `S[i].link` 保存其直接后继结点的数组下标。因此第 $\displaystyle k+1$ 个结点为 `S[S[i].link]`，其数据域为 `S[S[i].link].data`，选择 C。A 错在静态链表的逻辑相邻结点不一定存放在连续下标中；B 的表达式本身不符合结构体访问规则；D 将逻辑序号 $\displaystyle k$ 错当成了数组下标。
+
+</details>

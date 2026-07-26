@@ -1,0 +1,177 @@
+---
+sidebar_position: 1
+title: 王道 · 数据结构 · 第1章 绪论
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 王道 · 数据结构 · 第1章 绪论
+
+## 1.2 算法和算法评价
+
+### 1.2.1 算法的基本概念
+
+1. **【王道·卷一-Q01】** 在下列选项中，不属于算法的主要特征的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 有穷性 &emsp;&emsp; B. 可行性 &emsp;&emsp; C. 确定性 &emsp;&emsp; D. 可读性</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 算法的基本特征通常包括有穷性、确定性、可行性以及输入和输出。可读性是评价算法或程序质量的重要指标，但不是算法成立所必需的基本特征。因此，A、B、C 均属于算法的主要特征，D 不属于。
+
+</details>
+
+---
+
+### 1.2.2 算法效率的度量
+
+2. **【王道·卷一-Q02】** 设 $\displaystyle n$ 是描述问题规模的正整数，则下列程序段的时间复杂度是（  ）。
+
+```c
+for(i=1;i<=n;i++){
+for(j=2*i;j<=n;j++){
+y += i*j;
+}
+}
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle O(n)$ &emsp;&emsp; B. $\displaystyle O(n^{2})$ &emsp;&emsp; C. $\displaystyle O(n\log_{2}n)$ &emsp;&emsp; D. $\displaystyle O(\log_{2}n)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 当 $\displaystyle 2i\le n$ 时，内层循环从 $\displaystyle j=2i$ 执行到 $\displaystyle j=n$，执行次数为 $\displaystyle n-2i+1$；当 $\displaystyle i>n/2$ 时，内层循环不执行。因此总执行次数为
+
+$$
+\displaystyle
+\begin{aligned}
+T(n)
+&=\sum_{i=1}^{\lfloor n/2\rfloor}(n-2i+1)\\
+&=\Theta(n^2)
+\end{aligned}
+$$
+
+故时间复杂度为 $\displaystyle O(n^2)$。A、C、D 均低估了内层语句的总执行次数。
+
+</details>
+
+---
+
+3. **【王道·卷二-Q01】** 设二叉树共有 $\displaystyle n$ 个结点，则下列程序段的时间复杂度是（  ）。
+
+```c
+int maxFunc(TreeNode* root){
+if (root == NULL) return 0;
+return max(maxFunc(root->left), maxFunc(root->right)) + 1;
+}
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle O(\log_{2}n)$ &emsp;&emsp; B. $\displaystyle O(n)$ &emsp;&emsp; C. $\displaystyle O(n\log_{2}n)$ &emsp;&emsp; D. $\displaystyle O(2^{n})$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 函数对每个非空结点恰好访问一次，并在该结点处完成常数次比较和加法操作。设左右子树的结点数分别为 $\displaystyle n_L$ 和 $\displaystyle n_R$，则
+
+$$
+\displaystyle
+T(n)=T(n_L)+T(n_R)+O(1)
+$$
+
+将整棵树的所有结点累加后可得 $\displaystyle T(n)=\Theta(n)$。A 只考虑了平衡二叉树的递归深度，却忽略了所有结点都要被访问；C 多乘了一个对数因子；D 将递归调用误认为会对同一批结点反复展开，实际上每个结点只处理一次。
+
+</details>
+
+---
+
+4. **【王道·卷三-Q01】** 设 $\displaystyle n$ 是描述问题规模的正整数，则如下程序片段的时间复杂度是（  ）。
+
+```c
+i = 2;
+while (i < n / 3)
+i = i * 3;
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle O(\log_{2}n)$ &emsp;&emsp; B. $\displaystyle O(n)$ &emsp;&emsp; C. $\displaystyle O(\sqrt[3]{n})$ &emsp;&emsp; D. $\displaystyle O(n^{3})$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 循环执行 $\displaystyle k$ 次后，变量 $\displaystyle i$ 的值为
+
+$$
+\displaystyle
+i=2\times 3^k
+$$
+
+循环终止时有 $\displaystyle 2\times 3^k\ge n/3$，因此
+
+$$
+\displaystyle
+k\ge \log_3\dfrac{n}{6}
+$$
+
+故循环次数为 $\displaystyle \Theta(\log n)$。对数的底数只影响常数因子，因此 $\displaystyle O(\log_3 n)=O(\log_2 n)$，选择 A。B、C、D 都是多项式量级，与变量按倍数增长的规律不符。
+
+</details>
+
+---
+
+5. **【王道·卷四-Q01】** 设 $\displaystyle n$ 是描述问题规模的正整数，则下列程序段的时间复杂度是（  ）。
+
+```c
+i = n * n;
+while (i != 1)
+i = i / 2;
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle O(\log_{2}n)$ &emsp;&emsp; B. $\displaystyle O(n)$ &emsp;&emsp; C. $\displaystyle O(\sqrt{n})$ &emsp;&emsp; D. $\displaystyle O(n^{2})$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 变量 $\displaystyle i$ 初值为 $\displaystyle n^2$，每轮循环都通过整数除法缩小为原来的一半。执行 $\displaystyle k$ 次后，其数量级约为
+
+$$
+\displaystyle
+\dfrac{n^2}{2^k}
+$$
+
+当该值降至 1 时停止，因此
+
+$$
+\displaystyle
+2^k\approx n^2
+$$
+
+从而
+
+$$
+\displaystyle
+k=\Theta(\log_2 n^2)=\Theta(2\log_2 n)=\Theta(\log n)
+$$
+
+所以选择 A。B、C、D 都高估了循环次数。
+
+</details>

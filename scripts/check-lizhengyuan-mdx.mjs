@@ -32,14 +32,21 @@ function stripFrontMatter(content) {
   return content.replace(/^---\n[\s\S]*?\n---\n/u, '');
 }
 
+function stripAnswerDetails(content) {
+  return content.replace(/<details>[\s\S]*?<\/details>/gu, '');
+}
+
 async function validateFile(filePath) {
   const content = await fs.readFile(filePath, 'utf8');
-  if (residualMarkerPattern.test(content)) {
+  if (residualMarkerPattern.test(stripAnswerDetails(content))) {
     throw new Error(`${filePath}: 仍有未转换的答案或解析标记`);
   }
 
   if (questionComponentPattern.test(content)) {
     throw new Error(`${filePath}: 不应包含 Question 题目组件`);
+  }
+  if (/^\*\*(?:答案|解析)\*\*\s*$/gmu.test(content)) {
+    throw new Error(`${filePath}: 答案或解析标签仍单独占行`);
   }
 
   const details = countMatches(content, /^\s*<details>\s*$/gmu);

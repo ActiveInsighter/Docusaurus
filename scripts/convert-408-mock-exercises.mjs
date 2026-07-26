@@ -14,14 +14,52 @@ const docsRoot = path.join(projectRoot, 'docs', '408模拟选择题');
 const generatedMarker =
   '{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}';
 
-const subjects = [
-  {name: '数据结构', position: 1, expectedQuestions: 165},
-  {name: '计算机组成原理', position: 2, expectedQuestions: 165},
-  {name: '操作系统', position: 3, expectedQuestions: 150},
-  {name: '计算机网络', position: 4, expectedQuestions: 120},
+const books = [
+  {
+    name: '王道',
+    position: 1,
+    expectedQuestions: 320,
+    paperPattern: /^卷[一二三四五六七八]$/u,
+  },
+  {
+    name: '竟成',
+    position: 2,
+    expectedQuestions: 280,
+    paperPattern: /^模拟[一二三四五六七]$/u,
+  },
 ];
 
-const questionPattern = /^(\d+)[.、]\s+(.*)$/u;
+const subjects = [
+  {
+    name: '数据结构',
+    position: 1,
+    expectedQuestions: {王道: 88, 竟成: 77},
+    expectedChapters: 8,
+  },
+  {
+    name: '计算机组成原理',
+    position: 2,
+    expectedQuestions: {王道: 88, 竟成: 77},
+    expectedChapters: 7,
+  },
+  {
+    name: '操作系统',
+    position: 3,
+    expectedQuestions: {王道: 80, 竟成: 70},
+    expectedChapters: 5,
+  },
+  {
+    name: '计算机网络',
+    position: 4,
+    expectedQuestions: {王道: 64, 竟成: 56},
+    expectedChapters: 6,
+  },
+];
+
+const questionPattern =
+  /^(\d+)[.、]\s+(\*\*【([^】]+)】\*\*\s*.*)$/u;
+const tagPattern =
+  /^(王道|竟成)·(卷[一二三四五六七八]|模拟[一二三四五六七])-(Q?)(\d{2})$/u;
 const optionPattern = /^\s*([A-D])[.、]\s*(.*)$/u;
 const answerPattern = /^\s*[-*+]\s+答案[：:]\s*(.*)$/u;
 const analysisPattern = /^\s*[-*+]\s+(?:解析|解答)[：:]\s*(.*)$/u;
@@ -99,7 +137,9 @@ function ensureBlankLinesAroundBlocks(lines) {
 
 function markerContent(lines, markerIndex, pattern, end) {
   const inline = lines[markerIndex].match(pattern)?.[1] ?? '';
-  return cleanContentLines([inline, ...lines.slice(markerIndex + 1, end)]);
+  return ensureBlankLinesAroundBlocks(
+    cleanContentLines([inline, ...lines.slice(markerIndex + 1, end)]),
+  );
 }
 
 function parseOptions(lines) {
@@ -132,34 +172,44 @@ function parseOptions(lines) {
   };
 }
 
+function renderLabeledContent(label, lines) {
+  const [firstLine, ...remainingLines] = lines;
+  if (firstLine === undefined) {
+    throw new Error(`${label}内容为空`);
+  }
+
+  const firstTrimmed = firstLine.trim();
+  const startsBlock =
+    firstTrimmed === '$$' || firstTrimmed.startsWith('```');
+
+  if (startsBlock) {
+    return [`**${label}：**`, '', firstLine, ...remainingLines];
+  }
+
+  return [`**${label}：** ${firstLine}`, ...remainingLines];
+}
+
 function renderDetails(answerLines, analysisLines) {
   return [
     '<details>',
     '<summary>查看答案与解析</summary>',
     '',
-    '**答案**',
+    ...renderLabeledContent('答案', answerLines),
     '',
-    ...answerLines,
-    '',
-    '**解析**',
-    '',
-    ...analysisLines,
+    ...renderLabeledContent('解析', analysisLines),
     '',
     '</details>',
   ];
 }
 
-function renderQuestion(block) {
+function renderQuestion(block, displayNumber) {
   const questionMatch = stripBreakTags(block[0]).match(questionPattern);
   if (!questionMatch) throw new Error(`无法识别题目：${block[0]}`);
 
   const answerIndex = block.findIndex((line) => answerPattern.test(line));
   const analysisIndex = block.findIndex((line) => analysisPattern.test(line));
-  if (
-    answerIndex < 1 ||
-    analysisIndex <= answerIndex
-  ) {
-    throw new Error(`题目 ${questionMatch[1]} 缺少答案或解析`);
+  if (answerIndex < 1 || analysisIndex <= answerIndex) {
+    throw new Error(`题目 ${questionMatch[3]} 缺少答案或解析`);
   }
 
   const promptLines = [
@@ -170,11 +220,11 @@ function renderQuestion(block) {
   const stemLines = parsedOptions?.stem ?? cleanContentLines(promptLines);
   const [firstStemLine = '题目如下：', ...remainingStemLines] = stemLines;
   const renderedStem = ensureBlankLinesAroundBlocks([
-    `${questionMatch[1]}. ${firstStemLine}`,
+    `${displayNumber}. ${firstStemLine}`,
     ...remainingStemLines,
   ]);
   const renderedOptions = parsedOptions
-    ? formatChoiceOptionRows(parsedOptions.options)
+    ? ensureBlankLinesAroundBlocks(formatChoiceOptionRows(parsedOptions.options))
     : [];
   const answerLines = markerContent(
     block,
@@ -197,11 +247,150 @@ function renderQuestion(block) {
   ];
 }
 
-function promoteHeading(line) {
-  if (/^#####\s+/u.test(line)) return line.replace(/^#####/u, '####');
-  if (/^####\s+/u.test(line)) return line.replace(/^####/u, '###');
-  if (/^###\s+/u.test(line)) return line.replace(/^###/u, '##');
-  return line;
+function parseKnowledgeHeading(line) {
+  const match = line.match(/^#{3,5}\s+(.+?)\s*$/u);
+  if (!match) return null;
+
+  const normalizedTitle = match[1].replace(/^\*(?=\d)/u, '');
+  const chapterMatch = normalizedTitle.match(/^第(\d+)章\s+(.+)$/u);
+  if (chapterMatch) {
+    return {
+      type: 'chapter',
+      number: Number(chapterMatch[1]),
+      label: `第${chapterMatch[1]}章 ${chapterMatch[2]}`,
+      title: chapterMatch[2],
+    };
+  }
+
+  const subsectionMatch = normalizedTitle.match(
+    /^(\d+\.\d+\.\d+)\s+(.+)$/u,
+  );
+  if (subsectionMatch) {
+    return {
+      type: 'subsection',
+      number: subsectionMatch[1],
+      label: `${subsectionMatch[1]} ${subsectionMatch[2]}`,
+    };
+  }
+
+  const sectionMatch = normalizedTitle.match(/^(\d+\.\d+)\s+(.+)$/u);
+  if (sectionMatch) {
+    return {
+      type: 'section',
+      number: sectionMatch[1],
+      label: `${sectionMatch[1]} ${sectionMatch[2]}`,
+    };
+  }
+
+  if (line.startsWith('##### ')) {
+    return {
+      type: 'subsection',
+      number: null,
+      label: normalizedTitle,
+    };
+  }
+
+  return null;
+}
+
+function parseQuestionTag(tag, sourceLine) {
+  const match = tag.match(tagPattern);
+  if (!match) {
+    throw new Error(`第 ${sourceLine} 行题目标记格式异常：${tag}`);
+  }
+
+  const [, book, paper, prefix, questionNumber] = match;
+  const bookConfig = books.find((candidate) => candidate.name === book);
+  if (!bookConfig?.paperPattern.test(paper)) {
+    throw new Error(`第 ${sourceLine} 行书名与试卷不匹配：${tag}`);
+  }
+  if ((book === '王道' && prefix !== 'Q') || (book === '竟成' && prefix !== '')) {
+    throw new Error(`第 ${sourceLine} 行题号前缀异常：${tag}`);
+  }
+
+  return {
+    tag,
+    book,
+    paper,
+    questionNumber: Number(questionNumber),
+  };
+}
+
+function parseQuestions(lines) {
+  const questions = [];
+  let subject = null;
+  let chapter = null;
+  let section = null;
+  let subsection = null;
+
+  for (let index = 0; index < lines.length;) {
+    const line = lines[index];
+    const subjectMatch = line.match(/^##\s+(.+?)\s*$/u);
+    const subjectConfig = subjectMatch
+      ? subjects.find((candidate) => candidate.name === subjectMatch[1])
+      : null;
+
+    if (subjectConfig) {
+      subject = subjectConfig.name;
+      chapter = null;
+      section = null;
+      subsection = null;
+      index += 1;
+      continue;
+    }
+
+    const knowledgeHeading = parseKnowledgeHeading(line);
+    if (knowledgeHeading?.type === 'chapter') {
+      chapter = knowledgeHeading;
+      section = null;
+      subsection = null;
+      index += 1;
+      continue;
+    }
+    if (knowledgeHeading?.type === 'section') {
+      section = knowledgeHeading;
+      subsection = null;
+      index += 1;
+      continue;
+    }
+    if (knowledgeHeading?.type === 'subsection') {
+      subsection = knowledgeHeading;
+      index += 1;
+      continue;
+    }
+
+    const questionMatch = stripBreakTags(line).match(questionPattern);
+    if (!questionMatch) {
+      index += 1;
+      continue;
+    }
+    if (!subject || !chapter || !section) {
+      throw new Error(`第 ${index + 1} 行题目缺少科目、章或节上下文`);
+    }
+
+    let end = index + 1;
+    while (
+      end < lines.length &&
+      !questionPattern.test(stripBreakTags(lines[end])) &&
+      !headingPattern.test(lines[end])
+    ) {
+      end += 1;
+    }
+
+    const tag = parseQuestionTag(questionMatch[3], index + 1);
+    questions.push({
+      ...tag,
+      sourceLine: index + 1,
+      subject,
+      chapter: {...chapter},
+      section: {...section},
+      subsection: subsection ? {...subsection} : null,
+      block: lines.slice(index, end),
+    });
+    index = end;
+  }
+
+  return questions;
 }
 
 function escapeInlineMdxText(line) {
@@ -256,7 +445,12 @@ function sanitizeMdxLines(lines) {
     const isCodeFence = trimmed.startsWith('```');
     const isGeneratedTag =
       /^<\/?details>$/u.test(trimmed) ||
-      /^<summary>.*<\/summary>$/u.test(trimmed);
+      /^<summary>.*<\/summary>$/u.test(trimmed) ||
+      /^<div className="choice-options">$/u.test(trimmed) ||
+      /^<\/div>$/u.test(trimmed);
+    const choiceRowMatch = line.match(
+      /^(\s*<div className="choice-option-row">)(.*)(<\/div>\s*)$/u,
+    );
 
     if (isMathFence) {
       mathBlockOpen = !mathBlockOpen;
@@ -266,6 +460,12 @@ function sanitizeMdxLines(lines) {
     if (isCodeFence) {
       codeBlockOpen = !codeBlockOpen;
       output.push(line);
+      continue;
+    }
+    if (choiceRowMatch) {
+      output.push(
+        `${choiceRowMatch[1]}${escapeInlineMdxText(choiceRowMatch[2])}${choiceRowMatch[3]}`,
+      );
       continue;
     }
 
@@ -279,46 +479,80 @@ function sanitizeMdxLines(lines) {
   return output;
 }
 
-function convertSubject(lines) {
+function safeFileSegment(value) {
+  return value
+    .replace(/[\\/:*?"<>|]/gu, '-')
+    .replace(/\s+/gu, '-')
+    .replace(/-+/gu, '-')
+    .replace(/^-|-$/gu, '');
+}
+
+function renderChapterPage(questions) {
   const output = [];
-  let questionCount = 0;
+  let previousSection = null;
+  let previousSubsection = null;
 
-  for (let index = 0; index < lines.length;) {
-    if (!questionPattern.test(lines[index])) {
-      const cleaned = stripBreakTags(lines[index]);
-      output.push(promoteHeading(cleaned));
-      index += 1;
-      continue;
+  questions.forEach((question, index) => {
+    if (question.section.label !== previousSection) {
+      if (output.length > 0) output.push('');
+      output.push(`## ${question.section.label}`, '');
+      previousSection = question.section.label;
+      previousSubsection = null;
     }
 
-    let end = index + 1;
-    while (
-      end < lines.length &&
-      !questionPattern.test(lines[end]) &&
-      !headingPattern.test(lines[end])
-    ) {
-      end += 1;
+    const subsectionLabel = question.subsection?.label ?? null;
+    if (subsectionLabel && subsectionLabel !== previousSubsection) {
+      output.push(`### ${subsectionLabel}`, '');
+      previousSubsection = subsectionLabel;
     }
 
-    output.push(...renderQuestion(lines.slice(index, end)), '', '---', '');
-    questionCount += 1;
-    index = end;
-  }
+    output.push(...renderQuestion(question.block, index + 1));
+    if (index < questions.length - 1) {
+      output.push('', '---', '');
+    }
+  });
 
-  return {
-    lines: compactBlankLines(output),
-    questionCount,
-  };
+  return compactBlankLines(output);
 }
 
 async function writeJson(filePath, value) {
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
+async function clearGeneratedDocs() {
+  await fs.mkdir(docsRoot, {recursive: true});
+  const entries = await fs.readdir(docsRoot, {withFileTypes: true});
+
+  for (const entry of entries) {
+    const entryPath = path.join(docsRoot, entry.name);
+    if (entry.isFile() && entry.name.endsWith('.mdx')) {
+      const content = await fs.readFile(entryPath, 'utf8');
+      if (content.includes(generatedMarker)) await fs.rm(entryPath);
+    }
+  }
+
+  for (const book of books) {
+    const directoryName =
+      `${String(book.position).padStart(2, '0')}-${book.name}`;
+    const directoryPath = path.join(docsRoot, directoryName);
+    if (
+      path.dirname(directoryPath) !== docsRoot ||
+      path.basename(directoryPath) !== directoryName
+    ) {
+      throw new Error(`拒绝清理超出 408 生成目录的路径：${directoryPath}`);
+    }
+    await fs.rm(directoryPath, {recursive: true, force: true});
+  }
+}
+
 async function main() {
   const source = normalizeNewlines(await fs.readFile(sourcePath, 'utf8'));
-  const lines = source.split('\n');
-  await fs.mkdir(docsRoot, {recursive: true});
+  const questions = parseQuestions(source.split('\n'));
+  if (questions.length !== 600) {
+    throw new Error(`应解析 600 道题，实际为 ${questions.length} 道`);
+  }
+
+  await clearGeneratedDocs();
   await writeJson(path.join(docsRoot, '_category_.json'), {
     label: '408模拟选择题',
     position: 4,
@@ -327,49 +561,108 @@ async function main() {
   });
 
   let totalQuestions = 0;
-  for (const subject of subjects) {
-    const heading = `## ${subject.name}`;
-    const start = lines.findIndex((line) => line.trim() === heading);
-    if (start < 0) throw new Error(`未找到科目标题：${heading}`);
+  let totalFiles = 0;
 
-    let end = lines.length;
-    for (let index = start + 1; index < lines.length; index += 1) {
-      if (
-        lines[index].startsWith('## ') &&
-        subjects.some((candidate) => lines[index].trim() === `## ${candidate.name}`)
-      ) {
-        end = index;
-        break;
+  for (const book of books) {
+    const bookRoot = path.join(
+      docsRoot,
+      `${String(book.position).padStart(2, '0')}-${book.name}`,
+    );
+    await fs.mkdir(bookRoot, {recursive: true});
+    await writeJson(path.join(bookRoot, '_category_.json'), {
+      label: book.name,
+      position: book.position,
+      collapsible: true,
+      collapsed: true,
+    });
+
+    let bookQuestionCount = 0;
+    for (const subject of subjects) {
+      const subjectRoot = path.join(
+        bookRoot,
+        `${String(subject.position).padStart(2, '0')}-${subject.name}`,
+      );
+      await fs.mkdir(subjectRoot, {recursive: true});
+      await writeJson(path.join(subjectRoot, '_category_.json'), {
+        label: subject.name,
+        position: subject.position,
+        collapsible: true,
+        collapsed: true,
+      });
+
+      const subjectQuestions = questions.filter(
+        (question) =>
+          question.book === book.name && question.subject === subject.name,
+      );
+      if (subjectQuestions.length !== subject.expectedQuestions[book.name]) {
+        throw new Error(
+          `${book.name} · ${subject.name} 应有 ${subject.expectedQuestions[book.name]} 道题，实际为 ${subjectQuestions.length} 道`,
+        );
       }
-    }
 
-    const converted = convertSubject(lines.slice(start + 1, end));
-    if (converted.questionCount !== subject.expectedQuestions) {
-      throw new Error(
-        `${subject.name} 应有 ${subject.expectedQuestions} 道题，实际为 ${converted.questionCount} 道`,
+      const chapters = new Map();
+      for (const question of subjectQuestions) {
+        const key = question.chapter.number;
+        if (!chapters.has(key)) chapters.set(key, []);
+        chapters.get(key).push(question);
+      }
+      if (chapters.size !== subject.expectedChapters) {
+        throw new Error(
+          `${book.name} · ${subject.name} 应有 ${subject.expectedChapters} 个章节，实际为 ${chapters.size} 个`,
+        );
+      }
+
+      for (const [chapterNumber, chapterQuestions] of [...chapters.entries()].sort(
+        ([left], [right]) => left - right,
+      )) {
+        chapterQuestions.sort(
+          (left, right) => left.sourceLine - right.sourceLine,
+        );
+        const chapter = chapterQuestions[0].chapter;
+        const title = `${book.name} · ${subject.name} · ${chapter.label}`;
+        const fileName =
+          `${String(chapterNumber).padStart(2, '0')}-` +
+          `${safeFileSegment(chapter.label)}.mdx`;
+        const body = [
+          '---',
+          `sidebar_position: ${chapterNumber}`,
+          `title: ${title}`,
+          '---',
+          '',
+          generatedMarker,
+          '',
+          `# ${title}`,
+          '',
+          ...sanitizeMdxLines(renderChapterPage(chapterQuestions)),
+          '',
+        ].join('\n');
+        await fs.writeFile(path.join(subjectRoot, fileName), body, 'utf8');
+        totalFiles += 1;
+      }
+
+      bookQuestionCount += subjectQuestions.length;
+      console.log(
+        `${book.name} · ${subject.name}: ${subjectQuestions.length} 道题，${chapters.size} 个章节文件`,
       );
     }
 
-    const body = [
-      '---',
-      `sidebar_position: ${subject.position}`,
-      `title: 408模拟选择题 · ${subject.name}`,
-      '---',
-      '',
-      generatedMarker,
-      '',
-      `# 408模拟选择题 · ${subject.name}`,
-      '',
-      ...sanitizeMdxLines(converted.lines),
-      '',
-    ].join('\n');
-    const fileName = `${String(subject.position).padStart(2, '0')}-${subject.name}.mdx`;
-    await fs.writeFile(path.join(docsRoot, fileName), body, 'utf8');
-    totalQuestions += converted.questionCount;
-    console.log(`${subject.name}: ${converted.questionCount} 道题`);
+    if (bookQuestionCount !== book.expectedQuestions) {
+      throw new Error(
+        `${book.name} 应有 ${book.expectedQuestions} 道题，实际为 ${bookQuestionCount} 道`,
+      );
+    }
+    totalQuestions += bookQuestionCount;
   }
 
-  console.log(`408模拟选择题: 共 ${totalQuestions} 道题，生成 ${subjects.length} 个 MDX 文件`);
+  if (totalFiles !== 52 || totalQuestions !== 600) {
+    throw new Error(
+      `生成结果异常：${totalFiles} 个 MDX 文件，${totalQuestions} 道题`,
+    );
+  }
+
+  console.log(
+    `408模拟选择题: 共 ${totalQuestions} 道题，按书、科目和章节生成 ${totalFiles} 个 MDX 文件`,
+  );
 }
 
 await main();

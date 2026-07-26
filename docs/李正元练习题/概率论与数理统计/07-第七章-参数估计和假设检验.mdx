@@ -11,18 +11,16 @@ title: 第七章 参数估计和假设检验
 
 1. 设 $\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的一个简单随机样本，$\displaystyle DX=\sigma^2$，$\displaystyle \bar X$ 是样本均值，则 $\displaystyle \sigma^2$ 的无偏估计量是
 
-A. $\displaystyle \frac1{n+1}\sum_{i=1}^{n}(X_i-\bar X)^2$； &emsp;&emsp; B. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i-\bar X)^2$；
-C. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$； &emsp;&emsp; D. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)$。
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \frac1{n+1}\sum_{i=1}^{n}(X_i-\bar X)^2$； &emsp;&emsp; B. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i-\bar X)^2$；</div>
+<div className="choice-option-row">C. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$； &emsp;&emsp; D. $\displaystyle \frac1n\sum_{i=1}^{n}(X_i^2-\bar X^2)$。</div>
+</div>
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：** C
 
-C
-
-**解析**
-
-记
+**解析：** 记
 
 $$
 \displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
@@ -68,18 +66,16 @@ $$
 
 2. 设 $\displaystyle X_1,X_2,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，记 $\displaystyle EX=\mu,DX=\sigma^2$，$\displaystyle \bar X=\frac1n\sum_{i=1}^{n}X_i$，$\displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2$，$\displaystyle DS>0$，则
 
-A. $\displaystyle S$ 是 $\displaystyle \sigma$ 的无偏估计； &emsp;&emsp; B. $\displaystyle S^2$ 是 $\displaystyle \sigma^2$ 的无偏估计；
-C. $\displaystyle \bar X^2$ 是 $\displaystyle \mu^2$ 的无偏估计； &emsp;&emsp; D. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}X_i^2$ 是 $\displaystyle EX^2$ 的无偏估计。
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle S$ 是 $\displaystyle \sigma$ 的无偏估计； &emsp;&emsp; B. $\displaystyle S^2$ 是 $\displaystyle \sigma^2$ 的无偏估计；</div>
+<div className="choice-option-row">C. $\displaystyle \bar X^2$ 是 $\displaystyle \mu^2$ 的无偏估计； &emsp;&emsp; D. $\displaystyle \frac1{n-1}\sum_{i=1}^{n}X_i^2$ 是 $\displaystyle EX^2$ 的无偏估计。</div>
+</div>
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：** B
 
-B
-
-**解析**
-
-由样本方差的基本性质，若总体方差存在，则
+**解析：** 由样本方差的基本性质，若总体方差存在，则
 
 $$
 \displaystyle E(S^2)=\sigma^2,
@@ -113,18 +109,16 @@ $$
 
 3. 设 $\displaystyle \bar X$ 是从总体 $\displaystyle X$ 中取出的简单随机样本 $\displaystyle X_1,\cdots,X_n$ 的样本均值，则 $\displaystyle \bar X$ 是 $\displaystyle \mu$ 的矩估计，如果
 
-A. $\displaystyle X\sim N(\mu,\sigma^2)$； &emsp;&emsp; B. $\displaystyle X$ 服从参数为 $\displaystyle \mu$ 的指数分布；
-C. $\displaystyle P\{X=m\}=\mu(1-\mu)^{m-1},m=1,2,\cdots$； &emsp;&emsp; D. $\displaystyle X$ 服从 $\displaystyle [0,\mu]$ 上的均匀分布。
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle X\sim N(\mu,\sigma^2)$； &emsp;&emsp; B. $\displaystyle X$ 服从参数为 $\displaystyle \mu$ 的指数分布；</div>
+<div className="choice-option-row">C. $\displaystyle P\{X=m\}=\mu(1-\mu)^{m-1},m=1,2,\cdots$； &emsp;&emsp; D. $\displaystyle X$ 服从 $\displaystyle [0,\mu]$ 上的均匀分布。</div>
+</div>
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：** A
 
-A
-
-**解析**
-
-矩估计法用样本矩代替相应的总体矩。若只含一个未知参数 $\displaystyle \mu$，通常令
+**解析：** 矩估计法用样本矩代替相应的总体矩。若只含一个未知参数 $\displaystyle \mu$，通常令
 
 $$
 \displaystyle \bar X=EX,
@@ -174,18 +168,16 @@ $$
 
 4. 假设总体 $\displaystyle X$ 的方差 $\displaystyle DX=\sigma^2$ 存在 $\displaystyle (\sigma>0)$，$\displaystyle X_1,\cdots,X_n$ 是取自总体 $\displaystyle X$ 的简单随机样本，其方差为 $\displaystyle S^2$，且 $\displaystyle DS>0$，则
 
-A. $\displaystyle S$ 是 $\displaystyle \sigma$ 的矩估计量； &emsp;&emsp; B. $\displaystyle S$ 是 $\displaystyle \sigma$ 的最大似然估计量；
-C. $\displaystyle S$ 是 $\displaystyle \sigma$ 的无偏估计量； &emsp;&emsp; D. $\displaystyle S$ 是 $\displaystyle \sigma$ 的相合（一致）估计量。
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle S$ 是 $\displaystyle \sigma$ 的矩估计量； &emsp;&emsp; B. $\displaystyle S$ 是 $\displaystyle \sigma$ 的最大似然估计量；</div>
+<div className="choice-option-row">C. $\displaystyle S$ 是 $\displaystyle \sigma$ 的无偏估计量； &emsp;&emsp; D. $\displaystyle S$ 是 $\displaystyle \sigma$ 的相合（一致）估计量。</div>
+</div>
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：** D
 
-D
-
-**解析**
-
-样本方差为
+**解析：** 样本方差为
 
 $$
 \displaystyle S^2=\frac1{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
@@ -245,15 +237,13 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle a=\frac1{n-1},\qquad b=-\dfrac{n}{n-1}.
 $$
 
-**解析**
-
-设总体均值为 $\displaystyle EX=\mu$，则
+**解析：** 设总体均值为 $\displaystyle EX=\mu$，则
 
 $$
 \displaystyle E(X_i^2)=\sigma^2+\mu^2,
@@ -327,9 +317,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-令
+**答案：** 令
 $$
 \displaystyle \overline{X^2}=\frac1n\sum_{i=1}^{n}X_i^2,
 $$
@@ -340,9 +328,7 @@ $$
 \hat b=\bar X+\sqrt{3\left(\overline{X^2}-\bar X^2\right)}.
 $$
 
-**解析**
-
-若 $\displaystyle X\sim U(a,b)$，则
+**解析：** 若 $\displaystyle X\sim U(a,b)$，则
 
 $$
 \displaystyle EX=\dfrac{a+b}{2},
@@ -418,9 +404,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-（Ⅰ）参数 $\displaystyle p$ 的矩估计量和最大似然估计量相同，均为
+**答案：** （Ⅰ）参数 $\displaystyle p$ 的矩估计量和最大似然估计量相同，均为
 
 $$
 \displaystyle \hat p=\bar X=\frac1n\sum_{i=1}^{n}X_i.
@@ -434,9 +418,7 @@ $$
 
 （Ⅱ）该估计量是 $\displaystyle p$ 的无偏估计量。
 
-**解析**
-
-（Ⅰ）先求矩估计量。由总体分布可得
+**解析：** （Ⅰ）先求矩估计量。由总体分布可得
 
 $$
 \displaystyle EX=0\cdot(1-p)+1\cdot p=p.
@@ -532,7 +514,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \hat\alpha_{\mathrm M}=\frac58,
@@ -540,9 +522,7 @@ $$
 \hat\alpha_{\mathrm{ML}}=\frac58.
 $$
 
-**解析**
-
-由于 $\displaystyle f(x;\alpha,\beta)$ 是概率密度，必须满足
+**解析：** 由于 $\displaystyle f(x;\alpha,\beta)$ 是概率密度，必须满足
 
 $$
 \displaystyle \int_{-\infty}^{+\infty}f(x;\alpha,\beta)\,dx
@@ -657,7 +637,7 @@ $\displaystyle X_1,\cdots,X_n$ 为取自总体 $\displaystyle X$ 的简单随机
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \hat\theta_{\mathrm M}=\dfrac{2}{\pi}\bar X^2.
@@ -665,9 +645,7 @@ $$
 
 该估计量不是 $\displaystyle \theta$ 的无偏估计量，而是正偏估计量。
 
-**解析**
-
-瑞利分布的一阶矩为
+**解析：** 瑞利分布的一阶矩为
 
 $$
 \displaystyle EX=\sqrt{\dfrac{\pi\theta}{2}}.
@@ -745,18 +723,14 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-最大似然估计值与矩估计值相同，均为
+**答案：** 最大似然估计值与矩估计值相同，均为
 
 $$
 \displaystyle \hat p=\dfrac{n}{\sum_{i=1}^{n}k_i}
 =\frac1{\bar k}.
 $$
 
-**解析**
-
-设一轮射击直到首次命中所需的射击次数为随机变量 $\displaystyle K$。每次射击相互独立，单次命中概率为 $\displaystyle p$，则 $\displaystyle K$ 服从几何分布：
+**解析：** 设一轮射击直到首次命中所需的射击次数为随机变量 $\displaystyle K$。每次射击相互独立，单次命中概率为 $\displaystyle p$，则 $\displaystyle K$ 服从几何分布：
 
 $$
 \displaystyle P\{K=k\}=(1-p)^{k-1}p,
@@ -829,9 +803,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-记
+**答案：** 记
 
 $$
 \displaystyle X_{(1)}=\min\{X_1,\ldots,X_n\},
@@ -847,9 +819,7 @@ $$
 \hat b_{\mathrm{ML}}=X_{(n)}.
 $$
 
-**解析**
-
-总体密度为
+**解析：** 总体密度为
 
 $$
 \displaystyle f(x;a,b)=
@@ -917,9 +887,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-记
+**答案：** 记
 
 $$
 \displaystyle \overline{X^2}=\frac1n\sum_{i=1}^{n}X_i^2,
@@ -936,9 +904,7 @@ $$
 =\bar X-\sqrt{\overline{X^2}-\bar X^2}.
 $$
 
-**解析**
-
-令
+**解析：** 令
 
 $$
 \displaystyle Y=X-\beta.
@@ -1036,16 +1002,14 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \hat\theta_{\mathrm{ML}}
 =\dfrac{n}{\displaystyle\sum_{i=1}^{n}X_i^\alpha}.
 $$
 
-**解析**
-
-对样本观测值 $\displaystyle x_1,x_2,\ldots,x_n>0$，似然函数为
+**解析：** 对样本观测值 $\displaystyle x_1,x_2,\ldots,x_n>0$，似然函数为
 
 $$
 \displaystyle L(\theta)
@@ -1116,7 +1080,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \hat\lambda_{\mathrm{ML}}
@@ -1124,9 +1088,7 @@ $$
 =-\frac1{T_0}\ln\left(1-\dfrac kn\right).
 $$
 
-**解析**
-
-本题只给出在截止时刻 $\displaystyle T_0$ 前失效的器件数 $\displaystyle k$，因此把每只器件是否在 $\displaystyle T_0$ 前失效作为观测结果。
+**解析：** 本题只给出在截止时刻 $\displaystyle T_0$ 前失效的器件数 $\displaystyle k$，因此把每只器件是否在 $\displaystyle T_0$ 前失效作为观测结果。
 
 单只器件在 $\displaystyle T_0$ 前失效的概率为
 
@@ -1204,9 +1166,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-（Ⅰ）
+**答案：** （Ⅰ）
 
 $$
 \displaystyle \hat\theta_{\mathrm M}=2\bar X,
@@ -1242,9 +1202,7 @@ $$
 
 （Ⅲ）$\displaystyle \hat\theta_1$ 与 $\displaystyle \hat\theta_2$ 均为 $\displaystyle \theta$ 的一致估计量。
 
-**解析**
-
-**（Ⅰ）矩估计量与最大似然估计量**
+**解析：** **（Ⅰ）矩估计量与最大似然估计量**
 
 由于
 
@@ -1455,9 +1413,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
-
-（Ⅰ）
+**答案：** （Ⅰ）
 
 $$
 \displaystyle \hat n=80.
@@ -1475,9 +1431,7 @@ $$
 \displaystyle P\{X>3\}\approx0.24.
 $$
 
-**解析**
-
-设第 $\displaystyle i$ 位检验员检出的次品数为 $\displaystyle Y_i$，则
+**解析：** 设第 $\displaystyle i$ 位检验员检出的次品数为 $\displaystyle Y_i$，则
 
 $$
 \displaystyle Y_i\sim B(n,p),
@@ -1607,7 +1561,7 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \mu\text{ 的 }90\%\text{ 置信区间约为 }(2.875,\,3.225)\ \text{毫米},
@@ -1617,9 +1571,7 @@ $$
 \displaystyle \sigma^2\text{ 的 }90\%\text{ 置信区间约为 }(0.0960,\,0.3305)\ \text{毫米}^2.
 $$
 
-**解析**
-
-总体服从正态分布，但总体均值和方差均未知，样本容量为
+**解析：** 总体服从正态分布，但总体均值和方差均未知，样本容量为
 
 $$
 \displaystyle n=16,
@@ -1743,15 +1695,13 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：**
 
 $$
 \displaystyle \boxed{n=97}.
 $$
 
-**解析**
-
-将总体标准差按题给估计值
+**解析：** 将总体标准差按题给估计值
 
 $$
 \displaystyle \sigma=0.05
@@ -1813,13 +1763,9 @@ $$
 <details>
 <summary>查看答案与解析</summary>
 
-**答案**
+**答案：** 不能支持厂家关于平均工作温度低于 $\displaystyle 190^\circ\mathrm C$ 的结论。
 
-不能支持厂家关于平均工作温度低于 $\displaystyle 190^\circ\mathrm C$ 的结论。
-
-**解析**
-
-设装置工作温度总体的均值为 $\displaystyle \mu$。厂家声称
+**解析：** 设装置工作温度总体的均值为 $\displaystyle \mu$。厂家声称
 
 $$
 \displaystyle \mu<190.

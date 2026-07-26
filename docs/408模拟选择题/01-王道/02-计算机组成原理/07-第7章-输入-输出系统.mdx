@@ -1,0 +1,115 @@
+---
+sidebar_position: 7
+title: 王道 · 计算机组成原理 · 第7章 输入/输出系统
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 王道 · 计算机组成原理 · 第7章 输入/输出系统
+
+## 7.2 I/O接口
+
+### 7.2.2 I/O接口的基本结构
+
+1. **【王道·卷一-Q21】** 主机和外设之间的正确连接通路是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. CPU和主存 - I/O总线 - I/O接口(外设控制器) - 通信总线(电缆) - 外设</div>
+<div className="choice-option-row">B. CPU和主存 - I/O接口(外设控制器) - I/O总线 - 通信总线(电缆) - 外设</div>
+<div className="choice-option-row">C. CPU和主存 - I/O总线 - 通信总线(电缆) - I/O接口(外设控制器) - 外设</div>
+<div className="choice-option-row">D. CPU和主存 - I/O接口(外设控制器) - 通信总线(电缆) - I/O总线 - 外设</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** I/O 接口位于主机与外设之间，负责地址译码、数据缓冲、控制命令传送、状态检测以及信号格式转换。正确的数据通路为：
+
+$$
+\displaystyle
+\text{CPU和主存}\rightarrow\text{I/O总线}\rightarrow\text{I/O接口}\rightarrow\text{通信总线}\rightarrow\text{外设}
+$$
+
+其中，I/O 总线属于主机内部总线，用于连接 CPU、主存与 I/O 接口；通信总线或电缆位于接口和外设之间。因此选择 A，其余选项均将接口、I/O 总线或通信总线的位置颠倒。
+
+</details>
+
+---
+
+## 7.3 I/O方式
+
+### 7.3.2 程序中断方式
+
+2. **【王道·卷七-Q22】** 在下列关于各种 I/O 控制方式的说法中，错误的是（  ）。
+I. 在中断周期中，置“0”允许中断触发器是由关中断指令完成的
+II. 中断服务程序的最后一条指令是无条件转移指令
+III. CPU通过中断来控制DMA接口的传输工作
+IV. 程序中断和DMA方式都由硬件和软件结合来实现数据的传输
+
+<div className="choice-options">
+<div className="choice-option-row">A. I、II、IV &emsp;&emsp; B. III、IV &emsp;&emsp; C. I、II、III &emsp;&emsp; D. I、II、III、IV</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** - I 错误。CPU 响应中断后，硬件执行中断隐指令，自动将中断允许标志置为 0，实现关中断；这不是由程序中的关中断指令完成的。
+- II 错误。中断服务程序最后应执行专用的中断返回指令，以恢复断点和程序状态，而不是普通的无条件转移指令。
+- III 错误。DMA 的数据传送由 DMA 控制器直接控制，CPU 只负责传送前的初始化，并在整批数据传输结束后通过中断获知结果，不能说 CPU 通过中断控制 DMA 的具体传输过程。
+- IV 正确。程序中断方式由硬件完成中断请求、响应等操作，由软件中断服务程序完成数据处理；DMA 方式由软件进行初始化和结束处理，由 DMA 硬件完成成批数据传送，二者均体现软硬件结合。
+
+因此错误的是 I、II、III，选择 C。
+
+</details>
+
+---
+
+### 7.3.3 DMA方式
+
+3. **【王道·卷三-Q15】** 现代计算机通常采用以存储器为中心的工作方式来提高系统性能，在下列 $\displaystyle I/O$ 控制方式中，（  ）可以实现以存储器为中心的工作方式。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 中断方式 &emsp;&emsp; B. 程序查询方式 &emsp;&emsp; C. DMA方式 &emsp;&emsp; D. 无条件查询方式</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** “以存储器为中心”要求外设能够在尽量少占用 CPU 的情况下，直接与主存交换成批数据。DMA（Direct Memory Access，直接存储器访问）方式由 DMA 控制器暂时取得系统总线控制权，使数据直接在 I/O 设备与主存之间传送，CPU 只负责传送前的初始化和传送结束后的处理，因此选择 C。
+
+- A：中断方式仍由 CPU 执行中断服务程序，通常以字或少量数据为单位在接口与主存之间搬运数据。
+- B：程序查询方式需要 CPU 不断查询设备状态并亲自完成数据传送，CPU 占用率高。
+- C：DMA 方式实现外设与主存之间的直接成批传送，符合以存储器为中心的思想。
+- D：无条件传送方式只适用于能够随时交换数据的简单设备，仍需 CPU 执行传送指令。
+
+</details>
+
+---
+
+4. **【王道·卷八-Q22】** DMA方式的接口电路中有程序中断部件，其作用包括（  ）。
+I. 实现数据传输 II. 向CPU提出总线使用权 III. 向CPU提出传输结束
+IV. 检查数据是否出错
+
+<div className="choice-options">
+<div className="choice-option-row">A. 仅III &emsp;&emsp; B. III和IV &emsp;&emsp; C. I、III和IV &emsp;&emsp; D. I和II</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** DMA 接口中的程序中断部件，主要在一批数据传送结束或传送过程中检测到错误时，向 CPU 发出中断请求。因此其作用包括：
+
+- III：通知 CPU 本次 DMA 传输已经结束；
+- IV：在检测到数据校验错误、设备故障等异常时请求 CPU 处理。
+
+I“实现数据传输”由 DMA 控制器中的地址寄存器、字计数器、数据缓冲寄存器及控制逻辑等完成，并非程序中断部件的职责。II“向 CPU 提出总线使用权”属于 DMA 请求与总线仲裁逻辑的功能，也不属于程序中断部件。因此选择 B。
+
+</details>

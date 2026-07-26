@@ -1,0 +1,309 @@
+---
+sidebar_position: 2
+title: 竟成 · 计算机网络 · 第2章 物理层
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 竟成 · 计算机网络 · 第2章 物理层
+
+## 2.1 通信基础
+
+### 2.1.2 信道的极限容量
+
+1. **【竟成·模拟一-34】** 某无噪声信道的带宽为1MHz，采用8种相位的PSK调制。若实际数据传输速率为该信道理论最大数据传输速率的50%，传输一个24KB的数据块，单向传播时延为20ms。忽略处理时延和确认时间，则总时延是（注：K=$\displaystyle 10^3$，M=$\displaystyle 10^6$）（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 28ms &emsp;&emsp; B. 84ms &emsp;&emsp; C. 86ms &emsp;&emsp; D. 148ms</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 无噪声理想低通信道采用奈奎斯特公式：
+
+$$
+\displaystyle
+C_{\max}=2W\log_2 M
+$$
+
+其中：
+
+$$
+\displaystyle
+W=1\mathrm{MHz}=10^6\mathrm{Hz},\qquad M=8
+$$
+
+因此理论最大数据传输速率为：
+
+$$
+\displaystyle
+C_{\max}=2\times10^6\times\log_2 8
+=2\times10^6\times3
+=6\mathrm{Mb/s}
+$$
+
+实际数据传输速率为理论最大值的 50%，即：
+
+$$
+\displaystyle
+R=3\mathrm{Mb/s}
+$$
+
+数据块大小为 24KB，题目规定 $\displaystyle K=10^3$，所以：
+
+$$
+\displaystyle
+L=24\times10^3\times8=192000\mathrm{bit}
+$$
+
+发送时延为：
+
+$$
+\displaystyle
+T_t=\dfrac{192000}{3\times10^6}\mathrm{s}
+=0.064\mathrm{s}=64\mathrm{ms}
+$$
+
+加上单向传播时延 20ms，总时延为：
+
+$$
+\displaystyle
+T=64+20=84\mathrm{ms}
+$$
+
+因此选择 B。A 忽略了大部分发送时延；C、D 均不符合发送时延与传播时延之和。
+
+</details>
+
+---
+
+2. **【竟成·模拟六-34】** 下列有关奈奎斯特定理和香农定理的说法中，错误的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 奈奎斯特定理适用于无噪声理想低通环境，香农定理适用于有噪声信道</div>
+<div className="choice-option-row">B. 奈奎斯特定理和香农定理都定义了理想状态下的最大数据传输速率</div>
+<div className="choice-option-row">C. 在有噪声的环境中，影响信道的最大传输速率的因素主要是信道带宽和信噪比</div>
+<div className="choice-option-row">D. 在无噪声理想低通环境中，影响信道的最大传输速率的因素主要是信道带宽和码元波形种类</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** A 正确。奈奎斯特定理讨论无噪声理想低通信道中的码元传输极限；香农定理则考虑信道中存在高斯白噪声时的信息传输容量。
+
+B 错误。奈奎斯特公式建立在无噪声理想低通条件下，而香农公式恰恰把噪声因素纳入模型。因此不能笼统地说两者都定义了“理想无噪声状态”下的最大数据传输速率。
+
+C 正确。香农公式为：
+
+$$
+\displaystyle
+C=W\log_2(1+S/N)
+$$
+
+可见有噪声信道的容量主要由带宽 $\displaystyle W$ 和信噪比 $\displaystyle S/N$ 决定。
+
+D 正确。奈奎斯特公式为：
+
+$$
+\displaystyle
+C=2W\log_2 M
+$$
+
+其中 $\displaystyle M$ 是码元可取的离散状态数，即码元波形种类数，所以无噪声理想低通信道的极限速率主要取决于信道带宽和码元状态数。
+
+</details>
+
+---
+
+3. **【竟成·模拟七-34】** 链路的带宽约为10kHz，信噪比为30dB，信号采用64个幅值的ASK调制，信道的极限码元传输速率约为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 16.67Baud &emsp;&emsp; B. 20Baud &emsp;&emsp; C. 16.67kBaud &emsp;&emsp; D. 20kBaud</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 信噪比为 30dB，先换算为普通比值：
+
+$$
+\displaystyle
+10\log_{10}(S/N)=30
+$$
+
+所以：
+
+$$
+\displaystyle
+S/N=10^3=1000
+$$
+
+根据香农公式，信道极限数据传输速率约为：
+
+$$
+\displaystyle
+\begin{aligned}
+C&=W\log_2(1+S/N)\\
+&=10\times10^3\log_2(1001)\\
+&\approx 10\times10^3\times9.97\\
+&\approx99.7\mathrm{kb/s}
+\end{aligned}
+$$
+
+64 个幅值表示每个码元携带：
+
+$$
+\displaystyle
+\log_2 64=6\mathrm{bit}
+$$
+
+因此由香农容量限制得到的最大码元传输速率约为：
+
+$$
+\displaystyle
+B=\dfrac{99.7\mathrm{kb/s}}{6\mathrm{bit/Baud}}
+\approx16.62\mathrm{kBaud}
+$$
+
+奈奎斯特定理给出的码元速率上限为：
+
+$$
+\displaystyle
+2W=20\mathrm{kBaud}
+$$
+
+实际极限应同时满足两种限制，因此取较小者，约为 $\displaystyle 16.67\mathrm{kBaud}$，选择 C。D 只考虑了奈奎斯特限制，没有考虑信噪比造成的香农容量约束；A、B 的单位数量级错误。
+
+</details>
+
+---
+
+### 2.1.3 编码与调制
+
+4. **【竟成·模拟三-34】** 若采用编码方案1和编码方案2获得的结果均如下图所示，方案1对应的比特流为10100010，方案2对应的比特流为10010110，方案1和方案2的编码方案分别为（）。
+> **题图缺失：** 第3套第34题图（原引用：`images/jc_03_q34.png`）
+
+<div className="choice-options">
+<div className="choice-option-row">A. NRZ、NRZI &emsp;&emsp; B. NRZI、NRZ &emsp;&emsp; C. RZ、NRZI &emsp;&emsp; D. NRZI、RZ</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 先按每个码元区间直接观察电平。图中 8 个码元的电平依次为：
+
+$$
+\displaystyle
+\text{高、低、低、高、低、高、高、低}
+$$
+
+若采用 NRZ 编码，并约定高电平表示 1、低电平表示 0，则得到：
+
+$$
+\displaystyle
+10010110
+$$
+
+这正好对应方案 2，因此方案 2 是 NRZ。
+
+再观察相邻码元边界是否发生电平跳变。按题目采用的 NRZI 规则，数据 0 使电平翻转，数据 1 保持电平不变。以图中初始高电平为基准，各码元依次得到：
+
+$$
+\displaystyle
+10100010
+$$
+
+这正好对应方案 1，因此方案 1 是 NRZI。
+
+所以方案 1、方案 2 分别为 NRZI、NRZ，选择 B。图中每个码元并非都在码元结束前回到零电平，因此 C、D 中的 RZ 不成立。
+
+</details>
+
+---
+
+5. **【竟成·模拟五-34】** 采用曼彻斯特编码和差分曼彻斯特编码（上一个码元的后半个码元为低电平）的编码波形图如下图所示，其表示的比特流分别为（）。
+> **题图缺失：** 第5套第34题图（原引用：`images/jc_05_q34.png`）
+
+<div className="choice-options">
+<div className="choice-option-row">A. 10000001、01111110 &emsp;&emsp; B. 11000001、01111110</div>
+<div className="choice-option-row">C. 01111110、11000001 &emsp;&emsp; D. 01110001、11000001</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 对曼彻斯特编码，每个码元中点都发生跳变。本题采用的约定是：
+
+- 码元中点由低电平跳变到高电平表示 0；
+- 码元中点由高电平跳变到低电平表示 1。
+
+从左到右观察 8 个码元，中点跳变方向依次为：
+
+$$
+\displaystyle
+\text{低到高、高到低、高到低、高到低、高到低、高到低、高到低、低到高}
+$$
+
+因而曼彻斯特编码对应的比特流为：
+
+$$
+\displaystyle
+01111110
+$$
+
+对差分曼彻斯特编码，码元中点的跳变仅用于同步，码元开始处是否跳变表示数据。本题已知上一个码元的后半个码元为低电平，并采用：
+
+- 码元开始处有跳变表示 0；
+- 码元开始处无跳变表示 1。
+
+逐个判断 8 个码元开始处，结果为：
+
+$$
+\displaystyle
+11000001
+$$
+
+因此两种编码分别表示 01111110、11000001，选择 C。A、B 的差分曼彻斯特结果不符合码元起始边界的跳变情况；D 对曼彻斯特波形中间若干码元的跳变方向判断错误。
+
+</details>
+
+---
+
+## 2.3 物理层设备
+
+### 2.3.2 集线器
+
+6. **【竟成·模拟一-33】** 下列关于集线器的描述中，正确的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 集线器可连接不同速率的以太网段进行正常工作 &emsp;&emsp; B. 集线器连接的多个网段必须工作在半双工模式</div>
+<div className="choice-option-row">C. 集线器通过隔离冲突域减少广播风暴 &emsp;&emsp; D. 集线器能够识别MAC地址并过滤无效帧</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 集线器本质上是一个多端口中继器，工作在物理层。它收到某个端口传来的比特信号后，会将信号再生并转发到其他所有端口，不检查帧的内容，也不识别 MAC 地址。
+
+集线器连接的所有站点共享同一条逻辑信道，处于同一个冲突域中。为了使用 CSMA/CD 检测冲突，各端口必须采用半双工方式工作，不能同时发送和接收，因此 B 正确。
+
+各错误选项分析如下：
+
+- A 项：普通集线器各端口属于同一共享介质，通常必须采用相同速率；它不能像交换机那样在不同速率端口之间缓存和转换帧。
+- C 项：集线器不隔离冲突域，也不隔离广播域，反而使所有端口共同处于一个冲突域中。
+- D 项：识别 MAC 地址并有选择地转发帧是交换机或网桥的功能；集线器只处理物理比特信号。
+
+</details>

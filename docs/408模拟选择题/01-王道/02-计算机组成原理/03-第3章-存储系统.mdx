@@ -1,0 +1,588 @@
+---
+sidebar_position: 3
+title: 王道 · 计算机组成原理 · 第3章 存储系统
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 王道 · 计算机组成原理 · 第3章 存储系统
+
+## 3.2 主存储器
+
+### 3.2.3 多模块存储器
+
+1. **【王道·卷八-Q15】** 有一个八体低位交叉存储器，每个存储体的容量为 $\displaystyle 256M\times64$ 位，若每个存储体的存储周期为 $\displaystyle 80ns$，采用轮流启动的方式，则该存储器能提供的最大带宽是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 426.67MB/s &emsp;&emsp; B. 800MB/s &emsp;&emsp; C. 213.33MB/s &emsp;&emsp; D. 400MB/s</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 八体低位交叉存储器采用轮流启动时，相邻存储体的启动时间间隔为：
+
+$$
+\displaystyle
+\Delta t=\dfrac{80ns}{8}=10ns
+$$
+
+每次访问一个存储体可传送 64 位，即：
+
+$$
+\displaystyle
+64\text{位}=8B
+$$
+
+稳定流水传输时，每 $\displaystyle 10ns$ 可输出 8B，因此最大带宽为：
+
+$$
+\displaystyle
+\dfrac{8B}{10ns}=8\times10^8B/s=800MB/s
+$$
+
+所以选择 B。
+
+也可用公式：
+
+$$
+\displaystyle
+B_{\max}=\dfrac{mW}{T}=\dfrac{8\times8B}{80ns}=800MB/s
+$$
+
+其中 $\displaystyle m=8$ 为存储体数，$\displaystyle W=8B$ 为每体一次传输的数据量，$\displaystyle T=80ns$ 为存储周期。
+
+</details>
+
+---
+
+## 3.3 主存储器与CPU的连接
+
+### 3.3.2 主存容量的扩展
+
+2. **【王道·卷一-Q15】** 某DDR3 SDRAM芯片内部的核心频率为133.25MHz，通过芯片内部的 $\displaystyle I/O$ 缓冲可以实现预取功能，芯片总线上每秒传输数据的次数达到芯片内部核心频率的8倍。存储器总线在时钟信号CLK的上升沿与下降沿共进行两次数据传输，每次传输8B，则下列说法中错误的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 芯片内部的I/O缓冲采用8位预取技术 &emsp;&emsp; B. 存储器总线每秒传输 $\displaystyle 1066M$ 次数据</div>
+<div className="choice-option-row">C. 存储器总线的时钟频率为 $\displaystyle 1066\mathrm{MHz}$ &emsp;&emsp; D. 存储器总线的带宽约为 $\displaystyle 8.5GB/s$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 芯片总线的数据传输率为核心频率的 8 倍：
+
+$$
+\displaystyle
+133.25MHz\times8=1066MT/s
+$$
+
+因而：
+
+- I/O 缓冲采用 8n 预取，A 正确；
+- 每秒传输约 $\displaystyle 1066M$ 次数据，B 正确。
+
+DDR 在时钟上升沿和下降沿各传输一次数据，因此每个总线时钟周期完成两次传输。总线实际时钟频率为：
+
+$$
+\displaystyle
+f_{CLK}=\dfrac{1066MHz}{2}=533MHz
+$$
+
+所以 C 将“有效数据传输率”误写成“时钟频率”，错误。
+
+每次传输 8B，带宽为：
+
+$$
+\displaystyle
+1066\times10^6\times8B/s\approx8.528GB/s
+$$
+
+约为 $\displaystyle 8.5GB/s$，D 正确。因此选择 C。
+
+</details>
+
+---
+
+3. **【王道·卷一-Q16】** 假定用若干 $\displaystyle 8K\times 8$ 位的芯片组成一个 $\displaystyle 32K\times 32$ 位的存储器，存储字长为32位，内存按字编址，则地址 $\displaystyle 41F0H$ 所在芯片的最大地址是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 0000H &emsp;&emsp; B. 4FFFH &emsp;&emsp; C. 5FFFH &emsp;&emsp; D. 7FFFH</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 目标存储器为 $\displaystyle 32K\times32$ 位，单片为 $\displaystyle 8K\times8$ 位：
+
+- 位扩展倍数为 $\displaystyle 32/8=4$，即每组需 4 片并行组成 32 位字长；
+- 字扩展倍数为 $\displaystyle 32K/8K=4$，共形成 4 个地址区间。
+
+每个地址区间包含 $\displaystyle 8K=2^{13}=2000H$ 个字地址，因此 4 组地址范围依次为：
+
+$$
+\displaystyle
+\begin{aligned}
+&0000H\sim1FFFH\\
+&2000H\sim3FFFH\\
+&4000H\sim5FFFH\\
+&6000H\sim7FFFH
+\end{aligned}
+$$
+
+地址 $\displaystyle 41F0H$ 落在第三组 $\displaystyle 4000H\sim5FFFH$ 中，因此与该地址对应的芯片组的最大地址为 $\displaystyle 5FFFH$。选择 C。
+
+</details>
+
+---
+
+4. **【王道·卷二-Q15】** 某计算机的字长为64位，采用64位定长指令字，存储器总线的宽度为64位，若用8个 $\displaystyle 64M\times 8$ 位的DRAM芯片扩展构成一个 $\displaystyle 64M\times 64$ 位的内存条，支持突发传输方式，则下列说法中正确的是（  ）。
+I. 在该内存条中，所有芯片行缓冲的总大小为 $\displaystyle 64KB$
+II. 采用多模块交叉编址方式
+III. 每代DRAM芯片如果地址引脚数增加1个，那么容量至少增加4倍
+IV. 该计算机的主存数据寄存器(MDR)的宽度为8位
+
+<div className="choice-options">
+<div className="choice-option-row">A. I、III &emsp;&emsp; B. I、II、III &emsp;&emsp; C. II、III &emsp;&emsp; D. I、II、III、IV</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 逐项判断：
+
+**I 正确。** 单片容量为 $\displaystyle 64M\times8$ 位，其中 $\displaystyle 64M=2^{26}$。DRAM 通常将 26 位地址均分为 13 位行地址和 13 位列地址。选中一行后，单片行缓冲可保存：
+
+$$
+\displaystyle
+2^{13}\times8\text{位}=8KB
+$$
+
+8 片并行，所有芯片行缓冲总大小为：
+
+$$
+\displaystyle
+8\times8KB=64KB
+$$
+
+**II 错误。** 8 个芯片同时接收同一地址，每片提供 8 位，合起来构成一个 64 位存储字。这属于位扩展，而不是多模块交叉编址。交叉编址要求不同模块存放连续地址并轮流启动。
+
+**III 正确。** DRAM 的行地址和列地址复用同一组地址引脚。若地址引脚增加 1 根，则行地址和列地址通常都可各增加 1 位，存储单元数扩大为：
+
+$$
+\displaystyle
+2\times2=4
+$$
+
+即容量至少扩大 4 倍。
+
+**IV 错误。** MDR 的宽度通常与一次主存读写的数据宽度或存储器总线宽度一致，本题应为 64 位，而不是单个芯片的 8 位。
+
+因此正确的是 I、III，选择 A。
+
+</details>
+
+---
+
+## 3.4 外部存储器
+
+### 3.4.1 磁盘存储器
+
+5. **【王道·卷三-Q16】** 下列关于磁盘术语的说法中，错误的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 沿磁道方向单位长度记录的二进制信息位称为位密度，可以采用固定位密度方式，这样磁盘不同柱面的磁道上存储的信息量是不一样的</div>
+<div className="choice-option-row">B. 沿磁盘半径方向单位长度的磁道数称为道密度，道密度是相邻磁道间距的倒数</div>
+<div className="choice-option-row">C. 传输一个扇区数据的时间只取决于扇区大小和磁盘所允许的最大转速</div>
+<div className="choice-option-row">D. 磁盘控制器是指用来控制磁盘读/写以及控制磁盘和主存之间传输数据的部件</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 逐项判断：
+
+- A 正确。位密度是沿磁道圆周方向单位长度上记录的位数。采用固定位密度时，外圈磁道周长更长，因此可记录的信息量更多。
+- B 正确。道密度是沿半径方向单位长度内的磁道数，等于相邻磁道间距的倒数。
+- C 错误。一个扇区的传输时间不仅与扇区大小和转速有关，还与每条磁道包含的扇区数、磁盘实际数据传输率等有关，不能只由题述两个因素决定。
+- D 正确。磁盘控制器负责控制磁盘的读写操作，并协调磁盘与主存之间的数据传送。
+
+因此选择 C。
+
+</details>
+
+---
+
+6. **【王道·卷三-Q22】** 假设磁盘采用DMA方式与主机交换信息，其数据传输率为 $\displaystyle 8Mb/s$，平均传输的数据块大小为4KB，若忽略预处理时间，则该磁盘机向CPU发出中断请求的时间间隔最少是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 500\mu s$ &emsp;&emsp; B. $\displaystyle 512\mu s$ &emsp;&emsp; C. $\displaystyle 4000\mu s$ &emsp;&emsp; D. $\displaystyle 4096\mu s$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** DMA 每传送完一个数据块，才向 CPU 发出一次中断请求。因此最小中断间隔等于传送一个平均数据块所需的时间。
+
+数据块大小为：
+
+$$
+\displaystyle
+4KB=4\times1024B=4096B=32768b
+$$
+
+数据传输率为 $\displaystyle 8Mb/s=8\times10^6b/s$，故传输时间为：
+
+$$
+\displaystyle
+t=\dfrac{32768}{8\times10^6}s=0.004096s=4096\mu s
+$$
+
+所以选择 D。
+
+DMA 方式虽然减少了 CPU 对每个字节或字的干预，但每完成一个数据块仍需通过中断通知 CPU，因此中断间隔由块传输时间决定。
+
+</details>
+
+---
+
+7. **【王道·卷五-Q15】** 磁盘阵列(RAID)做不到的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 让多个磁盘并行工作 &emsp;&emsp; B. 加快数据的输入/输出 &emsp;&emsp; C. 提高存储器的可靠性 &emsp;&emsp; D. 减少数据冗余</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** RAID 的基本思想是将多个独立磁盘组织成一个逻辑磁盘，通过并行访问、数据条带化、镜像或校验信息等方式改善性能与可靠性。
+
+- A 正确。RAID 可将数据分散到多个磁盘上，使多个磁盘并行读写。
+- B 正确。采用条带化后，多块磁盘可同时传输数据，从而提高 I/O 吞吐率。
+- C 正确。RAID 1、RAID 5 等通过镜像或校验信息提供数据恢复能力，可提高可靠性。
+- D 错误。多数具有容错能力的 RAID 恰恰需要增加冗余数据，而不是减少数据冗余。RAID 0 虽然没有冗余，但也不能提供可靠性提升。
+
+因此选择 D。
+
+</details>
+
+---
+
+8. **【王道·卷六-Q14】** 一个磁盘的转速为 $\displaystyle 6000rpm$（转/分），平均寻道时间为 $\displaystyle 5ms$，平均数据传输率为 $\displaystyle 4096000B/s$，不考虑排队等待时间，则读一个 $\displaystyle 512B$ 扇区的平均时间约为（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 5.125ms$ &emsp;&emsp; B. $\displaystyle 10.125ms$ &emsp;&emsp; C. $\displaystyle 15.125ms$ &emsp;&emsp; D. $\displaystyle 20.125ms$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 读取一个扇区的平均访问时间由三部分组成：
+
+$$
+\displaystyle
+T=T_{寻道}+T_{旋转延迟}+T_{传输}
+$$
+
+磁盘转速为 $\displaystyle 6000rpm$，即每秒转数为：
+
+$$
+\displaystyle
+\dfrac{6000}{60}=100\text{转/秒}
+$$
+
+因此旋转一周所需时间为：
+
+$$
+\displaystyle
+\dfrac{1}{100}s=10ms
+$$
+
+平均旋转延迟为半周时间：
+
+$$
+\displaystyle
+T_{旋转延迟}=\dfrac{10}{2}=5ms
+$$
+
+传输一个 $\displaystyle 512B$ 扇区所需时间为：
+
+$$
+\displaystyle
+T_{传输}=\dfrac{512}{4096000}s=0.000125s=0.125ms
+$$
+
+所以平均访问时间为：
+
+$$
+\displaystyle
+T=5+5+0.125=10.125ms
+$$
+
+因此选择 B。
+
+</details>
+
+---
+
+### 3.4.2 固态硬盘
+
+9. **【王道·卷四-Q15】** 在下列关于固态硬盘的说法中，错误的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 固态硬盘的写速度慢，读速度快 &emsp;&emsp; B. 固态硬盘支持随机访问</div>
+<div className="choice-option-row">C. 固态硬盘重复写同一个块可能会缩短寿命 &emsp;&emsp; D. 磨损均衡机制的目的是加快硬盘读/写速度</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 固态硬盘通常采用闪存作为存储介质，没有机械磁头和旋转盘片，因此支持快速随机访问。不过，闪存单元可擦写次数有限，写入前通常还需要先擦除相应块。
+
+- A 正确。相较于读取，闪存写入尤其是擦除操作通常更慢，因此一般表现为读快、写相对较慢。
+- B 正确。固态硬盘可直接按地址访问闪存页，不需要机械寻道和旋转等待，支持随机访问。
+- C 正确。若持续擦写同一物理块，会更快耗尽该块的擦写寿命。
+- D 错误。磨损均衡的主要目的是将写操作尽量均匀地分布到各闪存块，避免少数块过早损坏，从而延长固态硬盘的使用寿命；提高读写速度并不是其根本目的。
+
+因此选择 D。
+
+</details>
+
+---
+
+## 3.5 高速缓冲存储器
+
+### 3.5.2 Cache的基本工作原理
+
+10. **【王道·卷四-Q16】** 对于存储器层次结构，在下列描述中，属于Cache-主存和主存-辅存这两个层次结构的不同点的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 一个必须考虑慢速存储器和快速存储器之间的映射问题，另一个不需要</div>
+<div className="choice-option-row">B. 二者的引入目的不同，一个是加快速度，另一个是增加系统的存储容量</div>
+<div className="choice-option-row">C. 一个需要考虑将哪一块从快速存储器中替换出来，另一个不需要考虑替换</div>
+<div className="choice-option-row">D. 当在快速存储器中找不到信息时，一个从慢速存储器中找，另一个直接从其他层次找</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** Cache—主存层次与主存—辅存层次都利用程序的局部性，将近期可能访问的信息保存在较快的存储层中，但二者的主要目的不同。
+
+- Cache—主存层次主要用于弥补 CPU 与主存之间的速度差距，提高访存速度。
+- 主存—辅存层次通过虚拟存储器机制，为程序提供比实际主存更大的逻辑地址空间，主要目的是扩大可用存储容量。
+
+逐项判断：
+
+- A 错误。两个层次都需要建立快、慢存储器之间的映射关系。
+- B 正确。二者的主要引入目的分别是提高速度和扩大容量。
+- C 错误。Cache 需要替换算法，虚拟存储器在主存页框不足时也需要页面置换算法。
+- D 错误。快速层未命中时，二者都需要到相应的较慢层查找并调入信息。
+
+因此选择 B。
+
+</details>
+
+---
+
+11. **【王道·卷六-Q16】** 在下列关于Cache与TLB的描述中，说法错误的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. TLB与Cache中保存的数据是不同的 &emsp;&emsp; B. TLB缺失后，有可能直接在Cache中找到页表内容</div>
+<div className="choice-option-row">C. TLB缺失会导致程序执行出错，但Cache缺失不会 &emsp;&emsp; D. TLB和Cache的命中率都与程序的局部性有关</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** TLB 是页表项的高速缓存，保存虚拟页号到物理页框号等地址转换信息；Cache 保存的是主存中指令或数据块的副本。
+
+- A 正确。TLB 保存页表项，Cache 保存普通存储数据或指令，二者内容和作用不同。
+- B 正确。TLB 未命中后，处理器需要访问主存中的页表。由于页表本身也位于主存，其页表项可能恰好已缓存在 Cache 中，因此可能直接命中 Cache。
+- C 错误。TLB 未命中并不等于地址转换失败，更不会必然导致程序出错；系统只需进行页表查询并将结果填入 TLB。只有查页表后发现页面不在主存时，才会产生缺页异常。Cache 未命中同样只是需要从下一级存储器取数。
+- D 正确。页表项和数据、指令访问都具有时间局部性和空间局部性，因此 TLB 与 Cache 的命中率都受程序局部性影响。
+
+因此选择 C。
+
+</details>
+
+---
+
+12. **【王道·卷七-Q14】** 某计算机的存储系统由Cache—主存系统构成，Cache的存取周期为 $\displaystyle 10\mathrm{ms}$，主存的存取周期为 $\displaystyle 50\mathrm{ms}$。当CPU执行一段程序时，Cache完成存取的次数为4800次，主存完成存取的次数为200次，则该Cache—主存系统的效率是（  ）。（设Cache和主存不能同时访问。）
+
+<div className="choice-options">
+<div className="choice-option-row">A. 0.833 &emsp;&emsp; B. 0.856 &emsp;&emsp; C. 0.958 &emsp;&emsp; D. 0.862</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 总访存次数为：
+
+$$
+\displaystyle
+4800+200=5000
+$$
+
+Cache 命中率为：
+
+$$
+\displaystyle
+h=\dfrac{4800}{5000}=0.96
+$$
+
+因为 Cache 和主存不能同时访问，所以：
+
+- 命中时耗时为 $\displaystyle 10ms$；
+- 未命中时先访问 Cache，再访问主存，耗时为 $\displaystyle 10+50=60ms$。
+
+平均访问时间为：
+
+$$
+\displaystyle
+T_a=0.96\times10+0.04\times60=12ms
+$$
+
+Cache—主存系统效率定义为理想 Cache 访问时间与实际平均访问时间之比：
+
+$$
+\displaystyle
+e=\dfrac{10}{12}=0.833
+$$
+
+因此选择 A。
+
+</details>
+
+---
+
+### 3.5.4 Cache中主存块的替换算法
+
+13. **【王道·卷二-Q17】** Cache缺失会导致系统需要额外的时间开销去获取数据，通常以时钟周期为单位来衡量Cache缺失的开销，下列关于Cache缺失引起的开销的说法中，正确的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 若Cache1比Cache2的缺失率高，则Cache1的总缺失开销一定比Cache2的大</div>
+<div className="choice-option-row">B. 提高Cache的关联度一定能降低Cache的缺失率</div>
+<div className="choice-option-row">C. 无论是直接映射还是组相联映射，都可能发生刚被替换出的数据又被访问的情况，导致缺失率为 $\displaystyle 100\%$</div>
+<div className="choice-option-row">D. Cache缺失所引起的时间开销只和Cache本身的结构有关</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** Cache 的总缺失开销不仅取决于缺失率，还取决于访存次数和单次缺失代价，可概括为：
+
+$$
+\displaystyle
+\text{总缺失开销}=\text{访存次数}\times\text{缺失率}\times\text{单次缺失代价}
+$$
+
+- A 错误。即使 Cache1 缺失率更高，如果访问次数更少或单次缺失代价更低，其总缺失开销仍可能更小。
+- B 错误。提高关联度通常能减少冲突缺失，但并不保证缺失率一定降低；缺失率还受容量、块大小、替换算法及访问序列影响，结果也可能不变。
+- C 正确。若访问序列反复访问会映射到同一组而该组容纳不下的若干块，就可能发生“刚换出又访问”的抖动现象。直接映射和组相联映射都可能因此每次访问均不命中，使缺失率达到 $\displaystyle 100\%$。
+- D 错误。缺失代价还取决于下一级存储器的访问时间、总线宽度、块大小和传输方式等，并非只由 Cache 本身结构决定。
+
+因此选择 C。
+
+</details>
+
+---
+
+14. **【王道·卷七-Q16】** 在下列关于Cache和虚拟存储器的说法中，错误的有（  ）。
+I. 当Cache失效（不命中）时，处理器将切换进程，以更新Cache中的内容
+II. 当虚拟存储器失效（如缺页）时，处理器将切换进程，以更新主存中的内容
+III. Cache和虚拟存储器由硬件和OS共同实现，对应用程序员均是透明的
+IV. 虚拟存储器的容量等于主存和辅存的容量之和
+
+<div className="choice-options">
+<div className="choice-option-row">A. I和IV &emsp;&emsp; B. III和IV &emsp;&emsp; C. I、II和III &emsp;&emsp; D. I、III和IV</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 逐项判断：
+
+- I 错误。Cache 不命中时，通常由硬件自动从下一级存储器取回相应块并更新 Cache，不需要切换进程。
+- II 正确。发生缺页时，需要由操作系统从辅存调入所需页面。由于磁盘 I/O 耗时较长，当前进程通常会阻塞，处理器可切换执行其他就绪进程。
+- III 错误。虚拟存储器由硬件和操作系统共同实现；而 Cache 的查找、映射、替换和填充主要由硬件完成，通常不由操作系统参与。二者对应用程序员一般都透明，但前半句不正确，因此该项整体错误。
+- IV 错误。虚拟存储器的容量由虚拟地址空间、辅存可用空间以及系统结构共同限制，并不等于主存容量与辅存容量的简单相加。
+
+因此错误的是 I、III、IV，选择 D。
+
+</details>
+
+---
+
+## 3.6 虚拟存储器
+
+### 3.6.2 页式虚拟存储器
+
+15. **【王道·卷五-Q17】** 某虚拟存储系统采用页式存储管理，只有 $\displaystyle a$、$\displaystyle b$ 和 $\displaystyle c$ 三个页框，页面访问顺序为 0,1,2,4,2,3,0,2,1,3,2,3,0,1,4。若采用 FIFO 算法，则命中率为（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 20% &emsp;&emsp; B. 26.7% &emsp;&emsp; C. 15% &emsp;&emsp; D. 50%</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 系统有 3 个页框，采用 FIFO 算法。命中时不改变页面进入内存的先后顺序。逐次访问如下：
+
+| 访问页面 | 页框内容（从最早进入到最晚进入） | 是否命中 |
+| -------: | -------------------------------- | -------- |
+|        0 | 0                                | 否       |
+|        1 | 0，1                             | 否       |
+|        2 | 0，1，2                          | 否       |
+|        4 | 1，2，4                          | 否       |
+|        2 | 1，2，4                          | 是       |
+|        3 | 2，4，3                          | 否       |
+|        0 | 4，3，0                          | 否       |
+|        2 | 3，0，2                          | 否       |
+|        1 | 0，2，1                          | 否       |
+|        3 | 2，1，3                          | 否       |
+|        2 | 2，1，3                          | 是       |
+|        3 | 2，1，3                          | 是       |
+|        0 | 1，3，0                          | 否       |
+|        1 | 1，3，0                          | 是       |
+|        4 | 3，0，4                          | 否       |
+
+共访问 15 次，其中命中 4 次，因此命中率为：
+
+$$
+\displaystyle
+\dfrac{4}{15}\times100\%\approx26.7\%
+$$
+
+因此选择 B。
+
+</details>

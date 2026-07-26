@@ -1,0 +1,264 @@
+---
+sidebar_position: 1
+title: 竟成 · 计算机网络 · 第1章 计算机网络体系结构
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 竟成 · 计算机网络 · 第1章 计算机网络体系结构
+
+## 1.1 计算机网络概述
+
+### 1.1.4 电路交换、报文交换与分组交换
+
+1. **【竟成·模拟三-35】** 要传输的数据长度一共X比特，传输路径由n段链路构成，每段链路的传播时延为D秒，数据传输速率为B(bps)，忽略链路的处理时延和排队时延。电路交换时，建立电路的时间为S秒；分组交换时，分组的长度为P比特（假设X是P的整数倍），要使分组传输的时延和电路交换的时延相等，则电路建立的时间S为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. nP/B &emsp;&emsp; B. (n-1)P/B &emsp;&emsp; C. nX/B &emsp;&emsp; D. (n-1)X/B</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 电路交换的总时延为：
+
+$$
+\displaystyle
+T_c=S+\dfrac{X}{B}+nD
+$$
+
+分组交换中，源主机发送全部分组需要 $\displaystyle X/B$，最后一个分组还要在后续 $\displaystyle n-1$ 段链路中继续存储转发，因此总时延为：
+
+$$
+\displaystyle
+T_p=\dfrac{X}{B}+(n-1)\dfrac{P}{B}+nD
+$$
+
+令二者相等：
+
+$$
+\displaystyle
+\begin{aligned}
+S+\dfrac{X}{B}+nD
+&=\dfrac{X}{B}+(n-1)\dfrac{P}{B}+nD\\
+S&=(n-1)\dfrac{P}{B}
+\end{aligned}
+$$
+
+因此选择 B。传播时延和发送整个报文的时间在等式两边均相同，最终只剩分组在后续链路上的流水转发开销。
+
+</details>
+
+---
+
+2. **【竟成·模拟四-34】** 下列有关数据报交换方式和虚电路交换方式的叙述中，错误的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 数据交换方式不保证分组的按序到达，虚电路交换方式的分组按序到达目的节点</div>
+<div className="choice-option-row">B. 数据交换方式的中间结点对每个分组都需要进行路由选择，虚电路交换方式只需要在建立虚电路时确认虚电路的路由</div>
+<div className="choice-option-row">C. 数据交换方式和虚电路交换方式的中间结点故障时都能重新选择路由进行传输</div>
+<div className="choice-option-row">D. 数据交换方式中的转发依据是目的IP地址，虚电路交换方式的转发依据是虚电路号</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 数据报交换中，每个分组独立携带完整目的地址，中间结点可分别为每个分组选择路由。因此某个中间结点或链路发生故障后，后续分组有可能改走其他路径。
+
+虚电路交换在通信前建立固定的逻辑路径，后续分组根据虚电路号沿既定路径转发。若该路径上的中间结点发生故障，原虚电路通常会失效，需要重新建立虚电路，不能直接保证在原虚电路上重新选路继续传输。因此 C 错误。
+
+A 正确：数据报可能乱序，虚电路中的分组通常沿同一路径按序到达。B 正确：数据报逐分组路由，虚电路主要在建立阶段确定路径。D 正确：数据报依据目的地址转发，虚电路依据虚电路标识转发。
+
+</details>
+
+---
+
+3. **【竟成·模拟六-35】** 主机甲和主机乙通过一条链路进行连接，链路中只有一个路由器进行连接，每段链路的传输速率均为10kbps，忽略所有的传播时延、分组头开销和分组拆装时间。主机甲采用10kb的分组大小向乙发送了一个大小为20kb的报文，花费了t秒。在t秒内，主机甲采用报文交换的方式能传输的报文大小为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 10kb &emsp;&emsp; B. 15kb &emsp;&emsp; C. 20kb &emsp;&emsp; D. 25kb</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 甲到乙之间有一个路由器，因此共经过两段链路。采用分组交换时，20kb 报文被拆成两个 10kb 分组。每个分组在一段链路上的发送时延为：
+
+$$
+\displaystyle
+\dfrac{10\mathrm{kb}}{10\mathrm{kb/s}}=1\mathrm{s}
+$$
+
+利用流水传输：第一个分组在第 $\displaystyle 2\mathrm{s}$ 到达乙，第二个分组在第 $\displaystyle 3\mathrm{s}$ 到达乙，因此：
+
+$$
+\displaystyle
+t=3\mathrm{s}
+$$
+
+若采用报文交换，设报文大小为 $\displaystyle L$。整个报文必须在路由器处完整接收后再发送，因此经过两段链路的总时延为：
+
+$$
+\displaystyle
+2\times \dfrac{L}{10\mathrm{kb/s}}=3\mathrm{s}
+$$
+
+解得：
+
+$$
+\displaystyle
+L=15\mathrm{kb}
+$$
+
+因此选择 B。报文交换不能像分组交换那样在不同链路上形成分组级流水。
+
+</details>
+
+---
+
+## 1.2 计算机网络体系结构与参考模型
+
+### 1.2.1 计算机网络分层结构
+
+4. **【竟成·模拟七-33】** 在网络体系结构中，各层的PDU由SDU和PCI构成，OSI参考模型自下而上的第一层、第二层、第三层的SDU分别为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 比特流、数据帧、数据分组 &emsp;&emsp; B. 数据帧、数据分组、报文段</div>
+<div className="choice-option-row">C. 比特流、数据分组、报文段 &emsp;&emsp; D. 报文段、数据分组、数据帧</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 第 $\displaystyle n$ 层从第 $\displaystyle n+1$ 层接收的服务数据单元 SDU，本质上就是上一层交下来的 PDU。该层再为 SDU 添加本层协议控制信息 PCI，形成自己的 PDU：
+
+$$
+\displaystyle
+\mathrm{PDU}_n=\mathrm{SDU}_n+\mathrm{PCI}_n
+$$
+
+OSI 参考模型自下而上前三层依次是物理层、数据链路层、网络层：
+
+1. 物理层接收数据链路层的 PDU，因此其 SDU 是数据帧。
+2. 数据链路层接收网络层的 PDU，因此其 SDU 是数据分组。
+3. 网络层接收传输层的 PDU，因此其 SDU 是报文段。
+
+所以三者依次为“数据帧、数据分组、报文段”，选择 B。A、C 将物理层自身传送的比特流误当成了物理层 SDU；D 的层次顺序颠倒。
+
+</details>
+
+---
+
+### 1.2.2 计算机网络协议、服务、接口的概念
+
+5. **【竟成·模拟三-33】** 下列有关协议的要素的说法中，正确的是（）。
+I. 有关TCP报文的结构的说明，描述了协议要素中的语法
+II. 对于比特流的每一位的含义的解释，描述了协议要素中的语义
+III. 通信双方的通信顺序，描述了协议要素中的时序
+
+<div className="choice-options">
+<div className="choice-option-row">A. I、II &emsp;&emsp; B. I、III &emsp;&emsp; C. II、III &emsp;&emsp; D. I、II、III</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** I 正确。TCP 报文段中各字段的长度、排列顺序和编码格式属于报文结构规范，描述的是协议的语法。
+
+II 正确。解释各比特或各字段所代表的含义，以及接收方应据此采取的动作，属于协议的语义。
+
+III 正确。通信双方何时发送、何时应答、各事件按何种顺序发生，属于协议的时序。
+
+因此 I、II、III 均正确，选择 D。
+
+</details>
+
+---
+
+6. **【竟成·模拟四-33】** 下列有关网络体系结构概念的叙述中，错误的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 协议是不同结点对等实体之间通信的规则</div>
+<div className="choice-option-row">B. 面向连接的服务一定可靠</div>
+<div className="choice-option-row">C. 在网络分层体系结构中，第n层的实体是n-1层的用户，是n+1层的服务提供者</div>
+<div className="choice-option-row">D. 网络体系结构中，主要描述的是网络的层次、各层的功能、协议等，不关心协议的内部实现细节</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** A 正确。协议约束的是不同结点中同一层对等实体之间的通信，包括语法、语义和时序等规则。
+
+B 错误。面向连接只表示通信前需要建立连接、通信后释放连接，并不必然意味着可靠。可靠性还需要通过确认、序号、超时重传、差错检测等机制保证。因此“面向连接”和“可靠”是两个不同维度的概念。
+
+C 正确。第 $\displaystyle n$ 层使用第 $\displaystyle n-1$ 层提供的服务，因此它是第 $\displaystyle n-1$ 层的用户；同时第 $\displaystyle n$ 层又向第 $\displaystyle n+1$ 层提供服务，因此它是第 $\displaystyle n+1$ 层的服务提供者。
+
+D 正确。网络体系结构是抽象的功能与协议规范，不涉及各层功能的具体代码、电路或算法实现细节。
+
+</details>
+
+---
+
+### 1.2.3 OSI参考模型和TCP/IP模型
+
+7. **【竟成·模拟五-33】** 下列选项中，关于OSI参考模型和TCP/IP参考模型提供的服务，说法正确的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. OSI模型的网络层提供无连接服务和面向连接的服务，其传输层提供面向连接的服务</div>
+<div className="choice-option-row">B. TCP/IP模型的网络层提供无连接服务和面向连接的服务，其传输层只提供面向连接的服务</div>
+<div className="choice-option-row">C. OSI模型的网络层只提供无连接的服务，其传输层只提供面向连接的服务</div>
+<div className="choice-option-row">D. TCP/IP模型的网络层只提供无连接的服务，其传输层只提供面向连接的服务</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** OSI 参考模型的网络层既可提供面向连接的虚电路服务，也可提供无连接的数据报服务；其传输层主要提供面向连接的可靠传输服务，因此 A 正确。
+
+TCP/IP 参考模型的网际层以 IP 为核心，只提供无连接、尽最大努力交付的数据报服务；传输层则同时具有面向连接的 TCP 和无连接的 UDP。因此：
+
+- B 错在 TCP/IP 网际层不提供面向连接服务，且传输层并非只提供面向连接服务。
+- C 错在 OSI 网络层并非只提供无连接服务。
+- D 前半句正确，但后半句忽略了无连接的 UDP 服务。
+
+</details>
+
+---
+
+8. **【竟成·模拟六-33】** 下列有关TCP/IP参考模型和OSI模型说法中，正确的是（）。
+I. TCP/IP参考模型自下而上分别是物理层、数据链路层、网络层、传输层、应用层
+II. OSI参考模型自下而上分别是物理层、数据链路层、网络层、传输层、会话层、表示层、应用层
+III. TCP/IP参考模型将表示层和会话层合并到了应用层
+
+<div className="choice-options">
+<div className="choice-option-row">A. I、II &emsp;&emsp; B. I、III &emsp;&emsp; C. II、III &emsp;&emsp; D. I、II、III</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** I 错误。经典 TCP/IP 参考模型自下而上通常划分为网络接口层、网际层、传输层和应用层，共四层。题干所列的物理层、数据链路层、网络层、传输层、应用层属于教学中常用的五层协议体系结构，不是经典 TCP/IP 四层参考模型的严格表述。
+
+II 正确。OSI 参考模型自下而上依次为物理层、数据链路层、网络层、传输层、会话层、表示层和应用层，共七层。
+
+III 正确。TCP/IP 模型没有单独设置会话层和表示层，这两层的相关功能由应用层协议或应用程序负责实现，可理解为合并到了应用层。
+
+因此正确的是 II、III，选择 C。
+
+</details>

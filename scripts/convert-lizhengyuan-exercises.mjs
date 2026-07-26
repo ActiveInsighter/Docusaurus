@@ -154,17 +154,32 @@ function markerContent(lines, marker, end) {
   return cleanLines([marker.inline, ...lines.slice(marker.index + 1, end)]);
 }
 
+function renderLabeledContent(label, contentLines) {
+  if (contentLines.length === 0) return [];
+
+  const [firstLine, ...remainingLines] = contentLines;
+  const trimmed = firstLine.trim();
+  const startsWithBlock =
+    trimmed === '$$' ||
+    trimmed.startsWith('```') ||
+    /^(?:>|#{1,6}\s|\||!\[)/u.test(trimmed);
+
+  return startsWithBlock
+    ? [`**${label}：**`, '', ...contentLines]
+    : [`**${label}：** ${firstLine}`, ...remainingLines];
+}
+
 function renderAnswerDetails(answerLines, analysisLines) {
   if (answerLines.length === 0 && analysisLines.length === 0) return '';
 
   const lines = ['<details>', '<summary>查看答案与解析</summary>'];
 
   if (answerLines.length > 0) {
-    lines.push('', '**答案**', '', ...answerLines);
+    lines.push('', ...renderLabeledContent('答案', answerLines));
   }
 
   if (analysisLines.length > 0) {
-    lines.push('', '**解析**', '', ...analysisLines);
+    lines.push('', ...renderLabeledContent('解析', analysisLines));
   }
 
   lines.push('', '</details>');

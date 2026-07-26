@@ -1,0 +1,748 @@
+---
+sidebar_position: 2
+title: 竟成 · 计算机组成原理 · 第2章 数据的表示和运算
+---
+
+{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}
+
+# 竟成 · 计算机组成原理 · 第2章 数据的表示和运算
+
+## 2.1 数制与编码
+
+### 2.1.2 定点数的编码表示
+
+1. **【竟成·模拟七-14】** 一个8位的二进制整数由2个“0”和6个“1”组成，采用补码或者移码表示，则下列说法中正确的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 若采用移码表示，偏置值为127，则此整数最小为-64</div>
+<div className="choice-option-row">B. 若采用移码表示，偏置值为128，则此整数最大为123</div>
+<div className="choice-option-row">C. 若采用补码表示，则此整数最小为-96</div>
+<div className="choice-option-row">D. 若采用补码表示，则此整数最大为252</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 该8位编码中恰有2个 $\displaystyle 0$ 和6个 $\displaystyle 1$。
+
+**判断 A：**移码偏置值为127时，真值等于无符号编码值减去127。要使真值最小，应使编码值最小，即把两个 $\displaystyle 0$ 放在最高两位：
+
+$$
+\displaystyle
+00111111_2=63
+$$
+
+因此最小真值为：
+
+$$
+\displaystyle
+63-127=-64
+$$
+
+A 正确。
+
+**判断 B：**偏置值为128时，要使真值最大，应使编码值最大，即把两个 $\displaystyle 0$ 放在最低两位：
+
+$$
+\displaystyle
+11111100_2=252
+$$
+
+最大真值为：
+
+$$
+\displaystyle
+252-128=124
+$$
+
+不是123，B错误。
+
+**判断 C：**补码表示的最小值应为符号位为 $\displaystyle 1$ 时数值最小的编码。将两个 $\displaystyle 0$ 放在次高位和第三高位，得到：
+
+$$
+\displaystyle
+10011111_2=159
+$$
+
+对应真值为：
+
+$$
+\displaystyle
+159-256=-97
+$$
+
+不是 $\displaystyle -96$，C错误。
+
+**判断 D：**补码表示的最大正数必须符号位为 $\displaystyle 0$。另一个 $\displaystyle 0$ 放在最低位时编码最大：
+
+$$
+\displaystyle
+01111110_2=126
+$$
+
+最大值是126，不是252，D错误。
+
+</details>
+
+---
+
+### 2.1.4 C语言中的整数类型及类型转换
+
+2. **【竟成·模拟一-13】** 某C语言编译器规定short类型为16位，int类型为32位，long long类型为64位，float采用IEEE754单精度浮点数表示。则执行下列C语言代码段后，t的值是（）。
+
+```c
+short s = -1;
+unsigned int u = s;
+float f = u;
+long long t = f;
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 2^{31}$ &emsp;&emsp; B. $\displaystyle 2^{31}-1$ &emsp;&emsp; C. $\displaystyle 2^{32}$ &emsp;&emsp; D. $\displaystyle 2^{32}-1$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 第一步，`short s = -1`。16位补码为全 $\displaystyle 1$：
+
+$$
+\displaystyle
+s=FFFFH
+$$
+
+第二步，将有符号整数 $\displaystyle -1$ 转换为32位 `unsigned int`。C语言按模 $\displaystyle 2^{32}$ 转换：
+
+$$
+\displaystyle
+u=2^{32}-1
+$$
+
+第三步，将 $\displaystyle u$ 转换为IEEE 754单精度浮点数。单精度浮点数只有24位有效精度，而 $\displaystyle 2^{32}-1$ 需要32位有效二进制位，不能精确表示。按就近舍入，$\displaystyle 2^{32}-1$ 会舍入为：
+
+$$
+\displaystyle
+f=2^{32}
+$$
+
+第四步，将 $\displaystyle f$ 转换为64位 `long long`。$\displaystyle 2^{32}$ 在64位有符号整数范围内，可准确转换，因此：
+
+$$
+\displaystyle
+t=2^{32}
+$$
+
+故选择 C。
+
+- D：是变量 $\displaystyle u$ 的整数值，但转换成单精度浮点数时发生了舍入。
+- A、B：与32位无符号转换及浮点舍入结果均不符。
+
+</details>
+
+---
+
+3. **【竟成·模拟四-13】** 以下C语言程序段，在执行完成后，输出的y的值为（）。
+
+```c
+int x = 131071;
+unsigned short y = x;
+printf("%u", y);
+```
+
+<div className="choice-options">
+<div className="choice-option-row">A. 131071 &emsp;&emsp; B. 65536 &emsp;&emsp; C. 65535 &emsp;&emsp; D. 32767</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** `unsigned short`为16位，表示范围为：
+
+$$
+\displaystyle
+0\sim 2^{16}-1=65535
+$$
+
+将32位 `int` 转换为16位 `unsigned short` 时，只保留低16位，相当于对 $\displaystyle 2^{16}$ 取模：
+
+$$
+\displaystyle
+\begin{aligned}
+y
+&=131071\bmod 65536\\
+&=65535
+\end{aligned}
+$$
+
+也可从十六进制观察：
+
+$$
+\displaystyle
+131071=0001FFFFH
+$$
+
+截断高16位后得到：
+
+$$
+\displaystyle
+y=FFFFH=65535
+$$
+
+故选择 C。
+
+- A：超出了16位无符号整数的表示范围。
+- B、D：均不是保留低16位后的结果。
+
+</details>
+
+---
+
+## 2.2 运算方法和运算电路
+
+### 2.2.2 定点数的移位运算
+
+4. **【竟成·模拟二-13】** 对于一个4位二进制补码$\displaystyle x_1x_2x_3x_4$，其算术左移一位发生溢出的条件是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle x_1=1$ &emsp;&emsp; B. $\displaystyle x_1=x_2$ &emsp;&emsp; C. $\displaystyle x_1\ne x_2$ &emsp;&emsp; D. $\displaystyle x_2=1$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 对4位补码 $\displaystyle x_1x_2x_3x_4$ 进行算术左移一位时，最高位 $\displaystyle x_1$ 被移出，原次高位 $\displaystyle x_2$ 成为新的符号位，最低位补 $\displaystyle 0$：
+
+$$
+\displaystyle
+x_1x_2x_3x_4\longrightarrow x_2x_3x_4\,0
+$$
+
+补码左移一位在数值上相当于乘以 $\displaystyle 2$。若原符号位 $\displaystyle x_1$ 与左移后的新符号位 $\displaystyle x_2$ 不同，说明结果的符号发生异常变化，即发生溢出。因此溢出条件为：
+
+$$
+\displaystyle
+x_1\ne x_2
+$$
+
+故选择 C。
+
+- A、D：单独判断某一位是否为 $\displaystyle 1$ 不能确定是否溢出。
+- B：$\displaystyle x_1=x_2$ 时，新旧符号一致，恰好表示未溢出。
+
+</details>
+
+---
+
+### 2.2.3 定点数的加减运算
+
+5. **【竟成·模拟三-13】** 某计算机字长为8位，其CPU中有一个8位整数加减运算器。已知带符号数x=-69、y=38，若要在该运算器中完成x-y的运算，则该运算器的两个输入端信息和输入的低位进位信息分别为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 10111011、11011001、1 &emsp;&emsp; B. 11000101、00100110、1</div>
+<div className="choice-option-row">C. 11000101、11011001、0 &emsp;&emsp; D. 11000110、00100110、0</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 8 位加减运算器通常利用同一个加法器完成减法：
+
+$$
+\displaystyle
+x-y=x+\overline{y}+1
+$$
+
+其中，减数各位取反后送入加法器第二输入端，并令最低位进位输入为 $\displaystyle 1$。
+
+首先求 $\displaystyle x=-69$ 的 8 位补码：
+
+$$
+\displaystyle
+\begin{aligned}
+69&=01000101_2\\
+[-69]_{补}&=10111011_2
+\end{aligned}
+$$
+
+再求 $\displaystyle y=38$ 的二进制表示及其按位取反结果：
+
+$$
+\displaystyle
+\begin{aligned}
+[38]_{补}&=00100110_2\\
+\overline{[38]_{补}}&=11011001_2
+\end{aligned}
+$$
+
+因而两个输入端分别为 $\displaystyle 10111011$ 和 $\displaystyle 11011001$，低位进位为 $\displaystyle 1$，故选择 A。
+
+- B：第一个输入并不是 $\displaystyle -69$ 的补码，且第二输入未对减数取反。
+- C：两个数据输入正确，但低位进位应为 $\displaystyle 1$，否则只能得到 $\displaystyle x-y-1$。
+- D：两个输入均不符合补码减法器的输入规则。
+
+</details>
+
+---
+
+6. **【竟成·模拟七-15】** 已知整数A、B的机器数分别是BCH和71H，如果在8位加法器中计算A-B，那么运算后的溢出标志OF、符号标志SF、进/借位标志CF分别是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 1、0、0 &emsp;&emsp; B. 1、0、1 &emsp;&emsp; C. 0、1、1 &emsp;&emsp; D. 0、0、0</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 将两个 8 位机器数按补码解释：
+
+$$
+\displaystyle
+\begin{aligned}
+A&=\mathrm{BCH}=10111100_2=-68\\
+B&=\mathrm{71H}=01110001_2=113
+\end{aligned}
+$$
+
+减法由加法器按下式完成：
+
+$$
+\displaystyle
+A-B=A+\overline{B}+1
+$$
+
+其中：
+
+$$
+\displaystyle
+\overline{B}+1=10001111_2
+$$
+
+因此：
+
+$$
+\displaystyle
+\begin{aligned}
+10111100+10001111
+&=(1)01001011
+\end{aligned}
+$$
+
+8 位结果为 $\displaystyle 01001011$，最高位为 $\displaystyle 0$，所以：
+
+$$
+\displaystyle
+SF=0
+$$
+
+从有符号数角度看，实际数学结果为：
+
+$$
+\displaystyle
+-68-113=-181
+$$
+
+该数超出 8 位补码的表示范围 $\displaystyle [-128,127]$。负数减正数却得到正的机器结果，故发生有符号溢出：
+
+$$
+\displaystyle
+OF=1
+$$
+
+本次加法器最高位产生进位，即 $\displaystyle C_{out}=1$。减法控制信号 $\displaystyle Sub=1$，进/借位标志为：
+
+$$
+\displaystyle
+CF=Sub\oplus C_{out}=1\oplus1=0
+$$
+
+因此 $\displaystyle OF=1$、$\displaystyle SF=0$、$\displaystyle CF=0$，选择 A。
+
+- B：减法没有发生借位，因此 $\displaystyle CF$ 不应为 $\displaystyle 1$。
+- C、D：均错误地判定为未发生有符号溢出。
+
+</details>
+
+---
+
+### 2.2.4 定点数的乘除运算
+
+7. **【竟成·模拟一-14】** 计算机字长为32位，在进行32位补码整数除法运算时，除数寄存器Y的初始值为FFFFFFFFH，余数寄存器R的初始值为FFFFFFFFH，余数/商寄存器Q的初始值为80000000H，则除法结果是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 2^{31}$ &emsp;&emsp; B. $\displaystyle -2^{31}$ &emsp;&emsp; C. 发生溢出 &emsp;&emsp; D. 除0异常</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 32 位补码中：
+
+$$
+\displaystyle
+\begin{aligned}
+Y&=\mathrm{FFFFFFFFH}=-1\\
+Q&=\mathrm{80000000H}=-2^{31}
+\end{aligned}
+$$
+
+余数寄存器 $\displaystyle R=\mathrm{FFFFFFFFH}$ 是被除数符号扩展后的高位部分，因此被除数为 $\displaystyle -2^{31}$。所求商为：
+
+$$
+\displaystyle
+\dfrac{-2^{31}}{-1}=2^{31}
+$$
+
+但 32 位补码整数的表示范围为：
+
+$$
+\displaystyle
+-2^{31}\le x\le 2^{31}-1
+$$
+
+正数 $\displaystyle 2^{31}$ 超出最大可表示值 $\displaystyle 2^{31}-1$，因此发生除法溢出，选择 C。
+
+- A：这是数学上的商，但无法用 32 位有符号补码表示。
+- B：商的符号应为正。
+- D：除数为 $\displaystyle -1$，并非 $\displaystyle 0$。
+
+</details>
+
+---
+
+8. **【竟成·模拟三-14】** 假定一次ALU运算用时1个时钟周期，一次移位用时1个时钟周期，辅助位与MQ最低位相同时需要先(ACC)+0后再右移，则最快的32位Booth乘法（补码一位乘法，包括一位符号位）所需的时钟周期数大约为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 32 &emsp;&emsp; B. 63 &emsp;&emsp; C. 64 &emsp;&emsp; D. 65</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** Booth 一位乘法每轮检查乘数寄存器最低位与辅助位的组合：
+
+- $\displaystyle 01$：部分积加被乘数；
+- $\displaystyle 10$：部分积减被乘数；
+- $\displaystyle 00$ 或 $\displaystyle 11$：部分积加 $\displaystyle 0$。
+
+题目特别规定，即使辅助位与 MQ 最低位相同，也必须先执行 $\displaystyle (ACC)+0$，再进行算术右移。因此每轮都固定需要：
+
+$$
+\displaystyle
+1\text{ 次 ALU 运算}+1\text{ 次移位}=2\text{ 个时钟周期}
+$$
+
+32 位 Booth 乘法需要进行 32 轮，故最快也需要：
+
+$$
+\displaystyle
+32\times2=64
+$$
+
+因此选择 C。
+
+- A：只计算了移位或 ALU 运算中的一种。
+- B：少计算了一个时钟周期。
+- D：多计算了题目忽略的其他操作时间。
+
+</details>
+
+---
+
+## 2.3 浮点数的表示与运算
+
+### 2.3.1 IEEE754标准的浮点数
+
+9. **【竟成·模拟二-14】** 如果浮点数的尾数改为用补码表示，则下列选项（）是规格化尾数形式（提示：以下各选项中，首位均为符号位）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 1.1111111 &emsp;&emsp; B. 0.0000000 &emsp;&emsp; C. 0.0101010 &emsp;&emsp; D. 1.0110110</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 当浮点数尾数采用补码表示时，规格化尾数要求符号位与最高数值位不同：
+
+- 正数应为 $\displaystyle 0.1\cdots$；
+- 负数应为 $\displaystyle 1.0\cdots$。
+
+这是因为若符号位与最高数值位相同，则还可以继续左移尾数、减小阶码，说明当前形式尚未规格化。
+
+逐项判断：
+
+- A：$\displaystyle 1.1111111$ 的符号位和最高数值位均为 $\displaystyle 1$，未规格化。
+- B：$\displaystyle 0.0000000$ 表示 $\displaystyle 0$，不作为一般规格化尾数。
+- C：$\displaystyle 0.0101010$ 的符号位和最高数值位均为 $\displaystyle 0$，未规格化。
+- D：$\displaystyle 1.0110110$ 的符号位为 $\displaystyle 1$，最高数值位为 $\displaystyle 0$，满足负数补码规格化形式。
+
+因此选择 D。
+
+</details>
+
+---
+
+10. **【竟成·模拟五-13】** IEEE754单精度浮点格式表示的数中，最小的正数是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 1.0\times 2^{-126}$ &emsp;&emsp; B. $\displaystyle 1.0\times 2^{-127}$ &emsp;&emsp; C. $\displaystyle 1.0\times 2^{-149}$ &emsp;&emsp; D. $\displaystyle 1.0\times 2^{-150}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** IEEE 754 单精度浮点数由 1 位符号位、8 位阶码和 23 位尾数字段组成。
+
+题目问的是“最小的正数”，并未限定为规格化数，因此应考虑非规格化数。非规格化数的阶码字段全为 0，其实际阶码固定为
+$\displaystyle -126$，且有效数没有隐藏的整数位 1，而是形如 $\displaystyle 0.f$。
+
+最小正非规格化数的尾数字段只有最低位为 1，即：
+
+$$
+\displaystyle
+0.000\cdots001_2\times 2^{-126}
+=2^{-23}\times2^{-126}
+=2^{-149}
+$$
+
+因此，IEEE 754 单精度格式能够表示的最小正数为 $\displaystyle 2^{-149}$，选择 C。
+
+- A：$\displaystyle 2^{-126}$ 是最小正规格化数。
+- B、D：均不符合单精度浮点数的阶码和尾数位数规定。
+
+</details>
+
+---
+
+### 2.3.2 浮点数的加减运算
+
+11. **【竟成·模拟一-15】** IEEE754双精度浮点格式表示的数中，最大的非规格化数与最大的负规格化数作和的结果是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle -2^{-1075}-2^{-1023}$ &emsp;&emsp; B. $\displaystyle -2^{-1074}-2^{-1022}$ &emsp;&emsp; C. $\displaystyle 2^{-1074}$ &emsp;&emsp; D. $\displaystyle -2^{-1074}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** IEEE 754 双精度浮点数的尾数字段为 52 位，最小规格化实际阶码为 $\displaystyle -1022$。
+
+最大的正非规格化数为：
+
+$$
+\displaystyle
+\begin{aligned}
+x
+&=0.111\cdots111_2\times2^{-1022}\\
+&=(1-2^{-52})\times2^{-1022}\\
+&=2^{-1022}-2^{-1074}
+\end{aligned}
+$$
+
+“最大的负规格化数”是指最接近 0 的负规格化数，因此：
+
+$$
+\displaystyle
+y=-1.0\times2^{-1022}=-2^{-1022}
+$$
+
+两者相加：
+
+$$
+\displaystyle
+\begin{aligned}
+x+y
+&=(2^{-1022}-2^{-1074})-2^{-1022}\\
+&=-2^{-1074}
+\end{aligned}
+$$
+
+所以选择 D。该结果恰好是绝对值最小的负非规格化数。
+
+</details>
+
+---
+
+12. **【竟成·模拟七-13】** 对于IEEE 754单精度浮点数加减运算，若运算结果直接取阶大的数，则两操作数的阶码之差的绝对值大于等于（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 24 &emsp;&emsp; B. 25 &emsp;&emsp; C. 126 &emsp;&emsp; D. 128</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** IEEE 754 单精度浮点数具有 23 位显式尾数和 1 位隐藏位，因此有效数精度为 24 位。
+
+对阶时，阶码较小数的尾数需要右移。当阶码差达到 25 时，较小数的最大有效尾数右移后也小于大数最低有效位权值的一半，即不足半个 ulp，在就近舍入规则下不会改变最终结果。
+
+因此，当：
+
+$$
+\displaystyle
+|\Delta E|\ge 25
+$$
+
+时，可直接取阶码较大的操作数，选择 B。
+
+阶码差为 24 时，较小数仍可能影响最低有效位的舍入，不能一概忽略。
+
+</details>
+
+---
+
+### 2.3.4 数据的宽度和存储
+
+13. **【竟成·模拟五-14】** 某计算机采用大端存储方式并按照字节编址，int型数组a在内存中连续存储，其在该计算机内存中首地址为12340000H，若a[1]中存储的数为00011234H，则12340005H中的存储内容为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 12H &emsp;&emsp; B. 21H &emsp;&emsp; C. 01H &emsp;&emsp; D. 10H</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** `int` 型数据占 4B。数组首地址为 12340000H，因此第二个元素 $\displaystyle a[1]$ 的起始地址为：
+
+$$
+\displaystyle
+12340000H+4=12340004H
+$$
+
+$\displaystyle a[1]$ 的值为 00011234H，按字节拆分为：
+
+```text
+00H  01H  12H  34H
+```
+
+大端方式将最高有效字节存放在最低地址，因此各地址内容为：
+
+| 地址      | 内容 |
+| --------- | ---- |
+| 12340004H | 00H  |
+| 12340005H | 01H  |
+| 12340006H | 12H  |
+| 12340007H | 34H  |
+
+所以 12340005H 中存放 01H，选择 C。
+
+</details>
+
+---
+
+14. **【竟成·模拟六-13】** 某32位计算机按字节编址，采用小端方式存放数据，有一个IEEE754单精度浮点格式表示的数，其值为$\displaystyle (-4.25)\times2^{17}$，存放在FFFFC000H开始的连续存储单元中，则存储单元FFFFC002H中存放的是（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. C9H &emsp;&emsp; B. 08H &emsp;&emsp; C. 00H &emsp;&emsp; D. 20H</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 先将数值规格化：
+
+$$
+\displaystyle
+4.25=(100.01)_2=(1.0001)_2\times2^2
+$$
+
+因此：
+
+$$
+\displaystyle
+(-4.25)\times2^{17}=-(1.0001)_2\times2^{19}
+$$
+
+IEEE 754 单精度格式中：
+
+- 符号位为 1；
+- 阶码真值为 19，移码为 $\displaystyle 19+127=146=(10010010)_2$；
+- 尾数字段为 00010000000000000000000。
+
+组合得到 32 位机器码：
+
+```text
+1 10010010 00010000000000000000000
+```
+
+写成十六进制为：
+
+```text
+C9 08 00 00
+```
+
+小端方式按“低有效字节存低地址”存放，因此：
+
+| 地址      | 内容 |
+| --------- | ---- |
+| FFFFC000H | 00H  |
+| FFFFC001H | 00H  |
+| FFFFC002H | 08H  |
+| FFFFC003H | C9H  |
+
+所以 FFFFC002H 中存放 08H，选择 B。
+
+</details>
+
+---
+
+15. **【竟成·模拟六-14】** 假设某计算机采用小端方式存储，按字节编址。某一维数组有100个元素，类型为float，存放在地址以C0001000H开始的连续区域中，则最后一个数组元素的最高有效位(MSB)所在的地址应为（）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. C0001100H &emsp;&emsp; B. C0001403H &emsp;&emsp; C. C000118FH &emsp;&emsp; D. C0001193H</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 一个 `float` 元素占 4B，最后一个元素为 $\displaystyle a[99]$，其首地址为：
+
+$$
+\displaystyle
+\begin{aligned}
+\mathrm{C0001000H}+99\times4
+&=\mathrm{C0001000H}+396\\
+&=\mathrm{C0001000H}+\mathrm{18CH}\\
+&=\mathrm{C000118CH}
+\end{aligned}
+$$
+
+小端方式中，最低有效字节位于最低地址，最高有效字节位于最高地址。因此该 4B 元素的 MSB 所在地址为：
+
+$$
+\displaystyle
+\mathrm{C000118CH}+3=\mathrm{C000118FH}
+$$
+
+所以选择 C。
+
+</details>
