@@ -1,19 +1,19 @@
 {
-  "run_id": "30206345605",
-  "run_number": 30,
+  "run_id": "30207504690",
+  "run_number": 31,
   "run_attempt": 1,
   "workflow": "Verify documentation UI visuals",
   "event": "push",
   "status": "completed",
   "conclusion": "failure",
   "branch": "main",
-  "head_sha": "e87492b34b0eef473292a0b79a557fb472ecd983",
+  "head_sha": "5974aa713c359302d82c979c8a1fb7afc1a054f9",
   "actor": "ActiveInsighter",
   "triggering_actor": "ActiveInsighter",
-  "created_at": "2026-07-26T14:34:04Z",
-  "run_started_at": "2026-07-26T14:34:04Z",
-  "updated_at": "2026-07-26T14:38:06Z",
-  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30206345605",
-  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30206345605/jobs",
-  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30206345605/logs"
+  "created_at": "2026-07-26T15:06:41Z",
+  "run_started_at": "2026-07-26T15:06:41Z",
+  "updated_at": "2026-07-26T15:10:33Z",
+  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30207504690",
+  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30207504690/jobs",
+  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30207504690/logs"
 }
