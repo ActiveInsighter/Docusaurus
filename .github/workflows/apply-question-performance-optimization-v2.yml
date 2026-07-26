@@ -1,4 +1,4 @@
-name: Apply verified question performance optimization v2
+name: Apply verified question performance optimization v3
 
 on:
   push:
@@ -88,6 +88,7 @@ jobs:
           rm -f .github/workflows/optimize-doc-performance.yml
           rm -f .github/workflows/fix-optimize-runner.yml
           rm -f .github/question-optimization-run.json
+          rm -f .github/question-optimization-v2-run.json
           rm -f .github/temp-run-status.json
           rm -f scripts/apply-question-performance-optimization.mjs
           rm -f scripts/update-layout-visual-assertions.mjs
@@ -118,7 +119,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: docs-question-performance-v2-${{ github.run_id }}
+          name: docs-question-performance-v3-${{ github.run_id }}
           path: |
             artifacts/docs-ui-visual
             /tmp/docusaurus-serve.log
