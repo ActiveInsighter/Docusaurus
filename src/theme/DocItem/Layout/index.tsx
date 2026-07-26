@@ -1,5 +1,6 @@
 import React, {
   type ReactNode,
+  type WheelEvent,
   useCallback,
   useEffect,
   useState,
@@ -68,6 +69,26 @@ function useDesktopTOCCollapse() {
   return {collapsed, toggle};
 }
 
+function stopTocScrollChaining(event: WheelEvent<HTMLDivElement>) {
+  const element = event.currentTarget;
+  const hasOverflow = element.scrollHeight > element.clientHeight + 1;
+
+  if (!hasOverflow || event.deltaY === 0) {
+    return;
+  }
+
+  const atTop = element.scrollTop <= 0;
+  const atBottom =
+    element.scrollTop + element.clientHeight >= element.scrollHeight - 1;
+  const scrollingPastTop = event.deltaY < 0 && atTop;
+  const scrollingPastBottom = event.deltaY > 0 && atBottom;
+
+  if (scrollingPastTop || scrollingPastBottom) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}
+
 export default function DocItemLayout({children}: Props): ReactNode {
   const docTOC = useDocTOC();
   const {metadata} = useDoc();
@@ -76,7 +97,12 @@ export default function DocItemLayout({children}: Props): ReactNode {
   const hasDesktopToc = Boolean(docTOC.desktop);
 
   return (
-    <div className="row">
+    <div
+      className={clsx(
+        'row',
+        styles.docRow,
+        hasDesktopToc && tocCollapsed && styles.docRowTocCollapsed,
+      )}>
       <div
         className={clsx(
           'col',
@@ -126,7 +152,8 @@ export default function DocItemLayout({children}: Props): ReactNode {
             <div
               id="doc-page-table-of-contents"
               className={styles.tocContent}
-              hidden={tocCollapsed}>
+              hidden={tocCollapsed}
+              onWheel={stopTocScrollChaining}>
               {docTOC.desktop}
             </div>
           </div>
