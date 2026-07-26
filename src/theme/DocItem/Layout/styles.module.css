@@ -34,6 +34,7 @@
     flex: 0 0 26.5%;
     max-width: 26.5%;
     min-width: 0;
+    align-self: stretch;
     padding-left: 0.25rem;
     padding-right: 0.15rem;
   }
@@ -46,12 +47,16 @@
     padding: 0;
   }
 
-  /* Keep Docusaurus' TOC as the only scroll container. The toggle is sticky
-   * beside it, avoiding the nested-scroll boundary jump seen at scrollTop=0. */
+  /* The column provides the full document-height containing block. Keep the
+   * whole panel sticky, while the Docusaurus TOC itself remains the only
+   * overflow container. This avoids both page-following and nested scrolling. */
   .tocPanel {
-    position: relative;
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 1rem);
     display: grid;
     grid-template-columns: 2rem minmax(0, 1fr);
+    width: 100%;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 2rem);
     align-items: flex-start;
     gap: 0.4rem;
     min-width: 0;
@@ -64,12 +69,12 @@
     right: max(0.65rem, env(safe-area-inset-right));
     display: block;
     width: 2rem;
+    max-height: none;
   }
 
   .tocToggle {
-    position: sticky;
+    position: static;
     z-index: 1;
-    top: calc(var(--ifm-navbar-height) + 1rem);
     display: inline-flex;
     flex: 0 0 2rem;
     width: 2rem;
@@ -91,7 +96,6 @@
   }
 
   .tocColumnCollapsed .tocToggle {
-    position: static;
     box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
   }
 
@@ -124,6 +128,7 @@
 
   .tocContent {
     min-width: 0;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 2rem);
   }
 
   .tocContent[hidden] {
@@ -131,6 +136,12 @@
   }
 
   .tocContent :global(.theme-doc-toc-desktop) {
+    position: static !important;
+    inset: auto !important;
+    top: auto !important;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 2rem);
+    overflow-x: hidden;
+    overflow-y: auto;
     overscroll-behavior-y: contain;
     scrollbar-gutter: stable;
     scrollbar-width: thin;
