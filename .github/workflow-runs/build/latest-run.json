@@ -4,7 +4,7 @@
   "run_attempt": 1,
   "workflow": "Build and deploy Docusaurus",
   "event": "push",
-  "status": "queued",
+  "status": "in_progress",
   "conclusion": null,
   "branch": "main",
   "head_sha": "ba359a684307ea0e0829b374241ed33d5baf9e43",
@@ -12,7 +12,7 @@
   "triggering_actor": "ActiveInsighter",
   "created_at": "2026-07-26T02:51:27Z",
   "run_started_at": "2026-07-26T02:51:27Z",
-  "updated_at": "2026-07-26T02:51:30Z",
+  "updated_at": "2026-07-26T02:51:33Z",
   "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30185219044",
   "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30185219044/jobs",
   "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30185219044/logs"
