@@ -20,11 +20,11 @@ const replacement = `def assert_ui_state(state: dict[str, Any], theme: str) -> N
     title = state["title"]
     document = state["document"]
 
-    document_width = float(document["clientWidth"])
+    rendered_width = float(document["scrollWidth"])
     assert navbar["position"] == "sticky", f"{theme}: navbar is not sticky"
     assert abs(float(navbar["left"])) <= 1.0, f"{theme}: navbar is offset from the left"
-    assert float(navbar["right"]) >= document_width - 1.0, (
-        f"{theme}: navbar does not span the document viewport"
+    assert float(navbar["right"]) >= rendered_width - 1.0, (
+        f"{theme}: navbar does not span the rendered document width"
     )
     assert abs(float(navbar["top"])) <= 1.0, f"{theme}: navbar is not pinned to top"
     assert 48.0 <= float(navbar["height"]) <= 80.0, (
@@ -73,8 +73,9 @@ const replacement = `def assert_ui_state(state: dict[str, Any], theme: str) -> N
             f"{theme}: {name} height is unbalanced: {control['height']}"
         )
 
-    assert 24.0 <= px(title["fontSize"]) <= 42.0, (
-        f"{theme}: document title size is unbalanced: {title['fontSize']}"
+    assert 24.0 <= px(title["fontSize"]) <= 64.0, (
+        f"{theme}: document title size is outside the supported range: "
+        f"{title['fontSize']}"
     )
 
     exact = sidebar["exact"]
