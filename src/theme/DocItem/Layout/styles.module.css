@@ -1,0 +1,96 @@
+.docItemContainer header + *,
+.docItemContainer article > *:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+
+  .docItemColWide {
+    flex: 0 0 calc(100% - 3rem);
+    max-width: calc(100% - 3rem) !important;
+  }
+
+  .tocColumn {
+    flex: 0 0 25%;
+    max-width: 25%;
+    min-width: 0;
+    padding-left: 0.35rem;
+  }
+
+  .tocColumnCollapsed {
+    flex-basis: 3rem;
+    max-width: 3rem;
+    padding-right: 0.25rem;
+  }
+
+  .tocPanel {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 0.75rem);
+    display: flex;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 1.5rem);
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .tocToggle {
+    display: inline-flex;
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--ifm-toc-border-color);
+    border-radius: 0.5rem;
+    background: var(--ifm-background-surface-color);
+    color: var(--ifm-color-emphasis-600);
+    cursor: pointer;
+    transition: background-color var(--ifm-transition-fast) ease,
+      border-color var(--ifm-transition-fast) ease,
+      color var(--ifm-transition-fast) ease;
+  }
+
+  .tocToggle:hover {
+    border-color: var(--ifm-color-primary);
+    background: var(--ifm-hover-overlay);
+    color: var(--ifm-color-primary);
+  }
+
+  .tocToggle:focus-visible {
+    outline: 2px solid var(--ifm-color-primary);
+    outline-offset: 2px;
+  }
+
+  .tocToggleIcon {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateX(-0.08rem) rotate(-45deg);
+    transition: transform var(--ifm-transition-fast) ease;
+  }
+
+  .tocToggleIconCollapsed {
+    transform: translateX(0.08rem) rotate(135deg);
+  }
+
+  .tocContent {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 1.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .tocContent :global(.theme-doc-toc-desktop) {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
