@@ -49,6 +49,14 @@ jobs:
       - name: Validate math MDX files individually
         run: node scripts/validate-math-mdx.mjs
 
+      - name: Upload MDX validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdx-validation-report
+          path: mdx-validation.txt
+          if-no-files-found: error
+
       - name: Test workflow run index
         run: npm run test:workflow-runs
 
