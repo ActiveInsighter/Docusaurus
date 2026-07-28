@@ -14,8 +14,9 @@ sample() {
   local node_max=0
   local rss
 
-  # Node 24 may expose a process name other than exactly "node" on hosted
-  # runners. Match both the command name and the complete build command line.
+  # Keep this awk program compatible with Ubuntu's default mawk. Match both
+  # executable names and complete build command lines, while excluding the
+  # monitor itself.
   while read -r rss; do
     [[ -z "${rss}" ]] && continue
     node_total=$((node_total + rss))
@@ -26,20 +27,15 @@ sample() {
         {
           rss = $1
           comm = $2
-          $1 = ""
-          $2 = ""
-          args = $0
-        }
-        (
-          comm == "node" ||
-          comm == "npm" ||
-          args ~ /npm run build/ ||
-          args ~ /docusaurus build/ ||
-          args ~ /node .*docusaurus/
-        ) &&
-        args !~ /awk/ &&
-        args !~ /diagnose-build-resources/ {
-          print rss
+          line = $0
+
+          if (line ~ /awk/ || line ~ /diagnose-build-resources/) {
+            next
+          }
+
+          if (comm == "node" || comm == "npm" || line ~ /npm run build/ || line ~ /docusaurus build/ || line ~ /node .*docusaurus/) {
+            print rss
+          }
         }
       ' || true
   )
