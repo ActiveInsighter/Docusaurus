@@ -54,46 +54,75 @@ jobs:
         run: |
           set -o pipefail
 
-          print_cgroup_memory() {
-            echo "--- cgroup memory ---"
-            for name in \
-              memory.current \
-              memory.peak \
-              memory.max \
-              memory.high \
-              memory.events \
-              memory.swap.current \
-              memory.swap.max; do
-              file="/sys/fs/cgroup/${name}"
-              if [[ -r "${file}" ]]; then
-                echo "${name}:"
-                cat "${file}"
+          file_value() {
+            local file="$1"
+            if [[ -r "${file}" ]]; then
+              cat "${file}"
+            else
+              printf 'na'
+            fi
+          }
+
+          event_value() {
+            local key="$1"
+            local file="/sys/fs/cgroup/memory.events"
+            if [[ -r "${file}" ]]; then
+              awk -v key="${key}" '$1 == key {print $2}' "${file}"
+            else
+              printf 'na'
+            fi
+          }
+
+          print_resource_line() {
+            local mem_available_kb mem_free_kb
+            local cgroup_current cgroup_peak cgroup_max cgroup_high
+            local cgroup_oom cgroup_oom_kill cgroup_high_events cgroup_max_events
+            local disk_available_kb node_rss_total_kb=0 node_rss_max_kb=0 rss
+
+            mem_available_kb="$(awk '/MemAvailable:/ {print $2}' /proc/meminfo)"
+            mem_free_kb="$(awk '/MemFree:/ {print $2}' /proc/meminfo)"
+            cgroup_current="$(file_value /sys/fs/cgroup/memory.current)"
+            cgroup_peak="$(file_value /sys/fs/cgroup/memory.peak)"
+            cgroup_max="$(file_value /sys/fs/cgroup/memory.max)"
+            cgroup_high="$(file_value /sys/fs/cgroup/memory.high)"
+            cgroup_oom="$(event_value oom)"
+            cgroup_oom_kill="$(event_value oom_kill)"
+            cgroup_high_events="$(event_value high)"
+            cgroup_max_events="$(event_value max)"
+            disk_available_kb="$(df -Pk . | awk 'NR == 2 {print $4}')"
+
+            while read -r rss; do
+              [[ -z "${rss}" ]] && continue
+              node_rss_total_kb=$((node_rss_total_kb + rss))
+              if ((rss > node_rss_max_kb)); then
+                node_rss_max_kb="${rss}"
               fi
-            done
+            done < <(ps -C node -o rss= 2>/dev/null || true)
+
+            printf 'RESOURCE ts=%s mem_available_kb=%s mem_free_kb=%s cgroup_current_bytes=%s cgroup_peak_bytes=%s cgroup_max=%s cgroup_high=%s cgroup_oom=%s cgroup_oom_kill=%s cgroup_high_events=%s cgroup_max_events=%s node_rss_total_kb=%s node_rss_max_kb=%s disk_available_kb=%s\n' \
+              "$(date -Iseconds)" \
+              "${mem_available_kb}" \
+              "${mem_free_kb}" \
+              "${cgroup_current}" \
+              "${cgroup_peak}" \
+              "${cgroup_max}" \
+              "${cgroup_high}" \
+              "${cgroup_oom}" \
+              "${cgroup_oom_kill}" \
+              "${cgroup_high_events}" \
+              "${cgroup_max_events}" \
+              "${node_rss_total_kb}" \
+              "${node_rss_max_kb}" \
+              "${disk_available_kb}"
           }
 
-          print_snapshot() {
-            echo "timestamp: $(date -Iseconds)"
-            echo "--- system memory ---"
-            free -m
-            echo "--- workspace disk ---"
-            df -h .
-            print_cgroup_memory
-            echo "--- highest RSS processes ---"
-            ps -eo pid,ppid,rss,vsz,%mem,%cpu,etime,comm,args --sort=-rss | head -n 20
-          }
-
-          echo "===== initial resource snapshot ====="
-          uname -a
-          echo "logical CPUs: $(nproc)"
-          print_snapshot
+          echo "RESOURCE_META kernel=$(uname -r) logical_cpus=$(nproc)"
+          print_resource_line
 
           (
             while true; do
-              echo "::group::resource snapshot $(date -Iseconds)"
-              print_snapshot
-              echo "::endgroup::"
-              sleep 20
+              sleep 10
+              print_resource_line
             done
           ) &
           MONITOR_PID=$!
@@ -101,8 +130,7 @@ jobs:
           cleanup() {
             kill "${MONITOR_PID}" 2>/dev/null || true
             wait "${MONITOR_PID}" 2>/dev/null || true
-            echo "===== final resource snapshot ====="
-            print_snapshot || true
+            print_resource_line || true
           }
           trap cleanup EXIT INT TERM
 
