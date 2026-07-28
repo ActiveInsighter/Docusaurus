@@ -1,19 +1,19 @@
 {
-  "run_id": "30352834805",
-  "run_number": 200,
+  "run_id": "30353028590",
+  "run_number": 201,
   "run_attempt": 1,
   "workflow": "Build and deploy Docusaurus",
   "event": "pull_request",
   "status": "completed",
   "conclusion": "cancelled",
   "branch": "diagnose/validate-mdx-fixes",
-  "head_sha": "eccbca1019de96d01cea84a5e19736bd821bbe97",
+  "head_sha": "6f183cede04d83496f2fefeee8f8ece155aa653e",
   "actor": "ActiveInsighter",
   "triggering_actor": "ActiveInsighter",
-  "created_at": "2026-07-28T10:57:38Z",
-  "run_started_at": "2026-07-28T10:57:38Z",
-  "updated_at": "2026-07-28T11:00:56Z",
-  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30352834805",
-  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30352834805/jobs",
-  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30352834805/logs"
+  "created_at": "2026-07-28T11:00:31Z",
+  "run_started_at": "2026-07-28T11:00:31Z",
+  "updated_at": "2026-07-28T11:03:25Z",
+  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30353028590",
+  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30353028590/jobs",
+  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30353028590/logs"
 }
