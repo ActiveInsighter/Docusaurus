@@ -2,7 +2,10 @@
 
 set -uo pipefail
 
-npm ci --no-audit --no-fund --silent >/dev/null 2>&1
+if [[ "${SKIP_NPM_CI:-0}" != "1" ]]; then
+  npm ci --no-audit --no-fund --silent >/dev/null 2>&1
+fi
+
 echo "META ts=$(date -Iseconds) node=$(node --version) npm=$(npm --version) cpus=$(nproc)"
 echo "PHASE ts=$(date -Iseconds) name=build-start"
 
@@ -29,7 +32,7 @@ sample() {
 sample
 (
   while true; do
-    sleep 10
+    sleep "${RESOURCE_SAMPLE_SECONDS:-10}"
     sample
   done
 ) &
