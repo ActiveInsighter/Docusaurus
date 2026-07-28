@@ -1,0 +1,1 @@
+Trigger a clean PR-scoped minimal resource diagnostic.
