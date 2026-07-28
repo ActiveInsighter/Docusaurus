@@ -6,7 +6,25 @@ if [[ "${SKIP_NPM_CI:-0}" != "1" ]]; then
   npm ci --no-audit --no-fund --silent >/dev/null 2>&1
 fi
 
+# Diagnostic branch only: Docusaurus v4 defaults Rspack persistent cache to
+# enabled. Disable it for this cold ephemeral runner benchmark so we can
+# measure the cache-generation cost independently from minification.
+python3 - <<'PY'
+from pathlib import Path
+
+path = Path('docusaurus.config.ts')
+source = path.read_text(encoding='utf-8')
+needle = '      ssgWorkerThreads: false,\n'
+replacement = '      rspackPersistentCache: false,\n      ssgWorkerThreads: false,\n'
+if 'rspackPersistentCache:' not in source:
+    if needle not in source:
+        raise SystemExit('Unable to locate Docusaurus faster configuration')
+    source = source.replace(needle, replacement, 1)
+path.write_text(source, encoding='utf-8')
+PY
+
 echo "META ts=$(date -Iseconds) node=$(node --version) npm=$(npm --version) cpus=$(nproc)"
+echo "CONFIG rspack_persistent_cache=false"
 echo "PHASE ts=$(date -Iseconds) name=build-start"
 
 sample() {
@@ -65,6 +83,8 @@ cleanup() {
   wait "${MONITOR_PID}" 2>/dev/null || true
   sample || true
   echo "PHASE ts=$(date -Iseconds) name=build-end exit_code=${exit_code}"
+  echo "DISK_USAGE"
+  du -sh node_modules/.cache build 2>/dev/null || true
 
   if (( exit_code != 0 )); then
     echo "BUILD_LOG_TAIL lines=${BUILD_LOG_TAIL_LINES:-40}"
