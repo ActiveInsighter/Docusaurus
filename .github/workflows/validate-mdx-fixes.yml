@@ -29,11 +29,24 @@ jobs:
         run: python3 scripts/fix-math-mdx.py
 
       - name: Compile every math MDX file
+        id: validate
+        continue-on-error: true
         run: node scripts/validate-math-mdx.mjs
+
+      - name: Diagnose details parser failures
+        if: steps.validate.outcome == 'failure'
+        run: node scripts/diagnose-mdx-details.mjs
 
       - name: Upload validation report
         if: always()
         uses: actions/upload-artifact@v6
         with:
           name: mdx-fix-validation
-          path: mdx-validation.txt
+          path: |
+            mdx-validation.txt
+            mdx-details-diagnostic.txt
+          if-no-files-found: ignore
+
+      - name: Fail when validation failed
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
