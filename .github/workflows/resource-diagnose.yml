@@ -6,6 +6,11 @@ on:
       - main
     paths:
       - ".github/workflows/resource-diagnose.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/diagnostics/resource-telemetry-pr.txt"
   workflow_dispatch:
 
 permissions:
