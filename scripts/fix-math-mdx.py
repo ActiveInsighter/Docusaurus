@@ -35,10 +35,52 @@ def brace_balance(source: str):
     return balance
 
 
-def fix_inline_math(line: str):
-    if line.strip() != '$$':
-        line = re.sub(r'\$\$([^\n$]+?)\$\$', lambda match: '$' + match.group(1) + '$', line)
+def normalize_display_math(lines):
+    output = []
+    compact_block = False
 
+    for line in lines:
+        stripped = line.strip()
+        indent = line[: len(line) - len(line.lstrip())]
+
+        if compact_block:
+            if stripped.endswith('$$'):
+                body = line[: line.rfind('$$')].rstrip()
+                if body:
+                    output.append(body)
+                output.append(indent + '$$')
+                compact_block = False
+            else:
+                output.append(line)
+            continue
+
+        if stripped == '$$':
+            output.append(line)
+            continue
+
+        if stripped.startswith('$$'):
+            body = stripped[2:]
+            if body.endswith('$$'):
+                body = body[:-2].strip()
+                output.append(indent + '$$')
+                if body:
+                    output.append(indent + body)
+                output.append(indent + '$$')
+            else:
+                output.append(indent + '$$')
+                if body:
+                    output.append(indent + body)
+                compact_block = True
+            continue
+
+        # A double-dollar pair embedded in ordinary prose is inline math, not a block.
+        line = re.sub(r'\$\$([^\n$]+?)\$\$', lambda match: '$' + match.group(1) + '$', line)
+        output.append(line)
+
+    return output
+
+
+def fix_inline_math(line: str):
     output = []
     i = 0
     while i < len(line):
@@ -72,8 +114,7 @@ changed_lines = 0
 
 for path in sorted(root.rglob('*.mdx')):
     original = path.read_text(encoding='utf-8')
-    lines = original.splitlines()
-
+    lines = normalize_display_math(original.splitlines())
     lines = [fix_inline_math(line) for line in lines]
 
     in_block = False
@@ -123,7 +164,11 @@ for path in sorted(root.rglob('*.mdx')):
         previous = start - 1
         while previous >= 0 and not lines[previous].strip():
             previous -= 1
-        if previous >= 0 and re.match(r'^\s*[-*+]\s+', lines[previous]):
+        in_list_context = previous >= 0 and (
+            re.match(r'^\s*[-*+]\s+', lines[previous])
+            or re.match(r'^\s{2,}\S', lines[previous])
+        )
+        if in_list_context:
             for index in range(start, end + 1):
                 if not lines[index].startswith('  '):
                     lines[index] = '  ' + lines[index]
