@@ -1,0 +1,6906 @@
+---
+title: "二、多元函数导数的计算"
+sidebar_position: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+# 二、多元函数导数的计算
+
+## 小题
+
+### （一）数值型
+
+1. **【1987-45-4 分】** 已知 $\displaystyle z=\arctan \dfrac{x+y}{x-y}$，求 $\displaystyle dz$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz=\dfrac{-y\,dx+x\,dy}{x^{2}+y^{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\dfrac{x+y}{x-y},\qquad z=\arctan u.
+$$
+
+先求中间变量的偏导数：
+
+$$
+\displaystyle \dfrac{\partial u}{\partial x}
+=\dfrac{(x-y)-(x+y)}{(x-y)^{2}}
+=-\dfrac{2y}{(x-y)^{2}},
+$$
+
+$$
+\displaystyle \dfrac{\partial u}{\partial y}
+=\dfrac{(x-y)+(x+y)}{(x-y)^{2}}
+=\dfrac{2x}{(x-y)^{2}}.
+$$
+
+又
+
+$$
+\displaystyle 1+u^{2}
+=1+\left(\dfrac{x+y}{x-y}\right)^{2}
+=\dfrac{2(x^{2}+y^{2})}{(x-y)^{2}}.
+$$
+
+因此
+
+$$
+\displaystyle \dfrac{\partial z}{\partial x}
+=\dfrac{1}{1+u^{2}}\dfrac{\partial u}{\partial x}
+=-\dfrac{y}{x^{2}+y^{2}},
+$$
+
+$$
+\displaystyle \dfrac{\partial z}{\partial y}
+=\dfrac{1}{1+u^{2}}\dfrac{\partial u}{\partial y}
+=\dfrac{x}{x^{2}+y^{2}}.
+$$
+
+故全微分为
+
+$$
+\boxed{\displaystyle dz
+=\dfrac{\partial z}{\partial x}\,dx
++\dfrac{\partial z}{\partial y}\,dy
+=\dfrac{-y\,dx+x\,dy}{x^{2}+y^{2}}}.
+$$
+
+本题关键是使用复合函数求导法则，并先将 $\displaystyle 1+u^{2}$ 通分化简。
+
+</details>
+
+---
+
+2. **【1988-5-4 分】** 已知 $\displaystyle u=e^{\frac{x}{y}}$，求 $\displaystyle \frac{\partial^{2}u}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle
+\frac{\partial^{2}u}{\partial x\partial y}
+=-\frac{x+y}{y^{3}}e^{\frac{x}{y}}
+}\qquad (y\ne0).
+$$
+
+</div>
+</div>
+
+**解析：** 先对 $\displaystyle x$ 求偏导：
+
+$$
+\displaystyle
+\frac{\partial u}{\partial x}
+=\frac{1}{y}e^{\frac{x}{y}}.
+$$
+
+再对 $\displaystyle y$ 求偏导。由乘积求导法则，
+
+$$
+\begin{aligned}
+\displaystyle
+\frac{\partial^{2}u}{\partial x\partial y}
+&=\frac{\partial}{\partial y}
+\left(\frac{1}{y}e^{\frac{x}{y}}\right)\\
+&=-\frac{1}{y^{2}}e^{\frac{x}{y}}
++\frac{1}{y}e^{\frac{x}{y}}
+\left(-\frac{x}{y^{2}}\right)\\
+&=-\left(\frac{1}{y^{2}}+\frac{x}{y^{3}}\right)e^{\frac{x}{y}}\\
+&=-\frac{x+y}{y^{3}}e^{\frac{x}{y}}.
+\end{aligned}
+$$
+
+函数及其偏导数要求 $\displaystyle y\ne0$。
+
+</details>
+
+---
+
+3. **【1989-5-5 分】** 已知 $\displaystyle z=a^{\sqrt{x^{2}-y^{2}}}$，其中 $\displaystyle a>0$，$\displaystyle a\ne1$，求 $\displaystyle dz$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz
+=\dfrac{a^{\sqrt{x^{2}-y^{2}}}\ln a}{\sqrt{x^{2}-y^{2}}}
+(x\,dx-y\,dy).
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\sqrt{x^{2}-y^{2}},
+\qquad z=a^{u}.
+$$
+
+则
+
+$$
+\displaystyle dz=a^{u}\ln a\,du.
+$$
+
+而
+
+$$
+\begin{aligned}
+\displaystyle du
+&=\dfrac{1}{2\sqrt{x^{2}-y^{2}}}\,d(x^{2}-y^{2})\\
+&=\dfrac{x\,dx-y\,dy}{\sqrt{x^{2}-y^{2}}}.
+\end{aligned}
+$$
+
+故
+
+$$
+\boxed{\displaystyle dz
+=\dfrac{a^{\sqrt{x^{2}-y^{2}}}\ln a}{\sqrt{x^{2}-y^{2}}}
+(x\,dx-y\,dy)}.
+$$
+
+在实数范围内使用上述微分公式时，应取 $\displaystyle x^{2}-y^{2}>0$；边界处需另行讨论可微性。
+
+</details>
+
+---
+
+4. **【1991-45-3 分】** 设 $\displaystyle z=e^{\sin xy}$，则 $\displaystyle dz=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz=e^{\sin(xy)}\cos(xy)(y\,dx+x\,dy).
+$$
+
+</div>
+</div>
+
+**解析：** 这是二重复合函数。令
+
+$$
+\displaystyle u=xy,\qquad v=\sin u,\qquad z=e^{v}.
+$$
+
+则
+
+$$
+\displaystyle dz=e^{v}\,dv,
+\qquad
+\displaystyle dv=\cos u\,du,
+$$
+
+且
+
+$$
+\displaystyle du=y\,dx+x\,dy.
+$$
+
+因此
+
+$$
+\boxed{\displaystyle dz
+=e^{\sin(xy)}\cos(xy)(y\,dx+x\,dy)}.
+$$
+
+等价地，
+
+$$
+\displaystyle z_{x}=y e^{\sin(xy)}\cos(xy),
+\qquad
+z_{y}=x e^{\sin(xy)}\cos(xy).
+$$
+
+</details>
+
+---
+
+5. **【1994-45-5 分】** 已知
+
+$$
+\displaystyle f(x,y)=x^{2}\arctan\dfrac{y}{x}-y^{2}\arctan\dfrac{x}{y},
+$$
+
+求 $\displaystyle \dfrac{\partial^{2}f}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{\partial^{2}f}{\partial x\partial y}
+=\dfrac{x^{2}-y^{2}}{x^{2}+y^{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 先对 $\displaystyle x$ 求偏导。注意
+
+$$
+\displaystyle \dfrac{\partial}{\partial x}
+\arctan\dfrac{y}{x}
+=-\dfrac{y}{x^{2}+y^{2}},
+$$
+
+$$
+\displaystyle \dfrac{\partial}{\partial x}
+\arctan\dfrac{x}{y}
+=\dfrac{y}{x^{2}+y^{2}}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle f_{x}
+&=2x\arctan\dfrac{y}{x}
++x^{2}\left(-\dfrac{y}{x^{2}+y^{2}}\right)
+-y^{2}\dfrac{y}{x^{2}+y^{2}}\\
+&=2x\arctan\dfrac{y}{x}
+-\dfrac{x^{2}y+y^{3}}{x^{2}+y^{2}}\\
+&=2x\arctan\dfrac{y}{x}-y.
+\end{aligned}
+$$
+
+再对 $\displaystyle y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle f_{xy}
+&=2x\cdot\dfrac{x}{x^{2}+y^{2}}-1\\
+&=\dfrac{2x^{2}-(x^{2}+y^{2})}{x^{2}+y^{2}}\\
+&=\dfrac{x^{2}-y^{2}}{x^{2}+y^{2}}.
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle \dfrac{\partial^{2}f}{\partial x\partial y}
+=\dfrac{x^{2}-y^{2}}{x^{2}+y^{2}}}.
+$$
+
+本题先求 $\displaystyle f_{x}$ 后会出现显著约简，比分别对原式连续使用商法则更简洁。
+
+</details>
+
+---
+
+6. **【1994-12-3 分】** 设
+
+$$
+\displaystyle u=e^{-x}\sin\dfrac{x}{y},
+$$
+
+则 $\displaystyle \dfrac{\partial^{2}u}{\partial x\partial y}$ 在 $\displaystyle \left(2,\dfrac{1}{\pi}\right)$ 点处的值为 ______。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{\partial^{2}u}{\partial x\partial y}
+\right|_{\left(2,\frac{1}{\pi}\right)}
+=\dfrac{\pi^{2}}{e^{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle s=\dfrac{x}{y}.
+$$
+
+先对 $\displaystyle x$ 求偏导：
+
+$$
+\displaystyle u_{x}
+=e^{-x}\left(-\sin s+\dfrac{1}{y}\cos s\right).
+$$
+
+再对 $\displaystyle y$ 求偏导。由于
+
+$$
+\displaystyle s_{y}=-\dfrac{x}{y^{2}},
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle u_{xy}
+&=e^{-x}\left[
+\dfrac{x}{y^{2}}\cos s
++\dfrac{x}{y^{3}}\sin s
+-\dfrac{1}{y^{2}}\cos s
+\right]\\
+&=e^{-x}\left[
+\dfrac{x-1}{y^{2}}\cos\dfrac{x}{y}
++\dfrac{x}{y^{3}}\sin\dfrac{x}{y}
+\right].
+\end{aligned}
+$$
+
+在点 $\displaystyle \left(2,\dfrac{1}{\pi}\right)$，有
+
+$$
+\displaystyle \dfrac{x}{y}=2\pi,
+\qquad
+\cos2\pi=1,
+\qquad
+\sin2\pi=0.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle u_{xy}
+&=e^{-2}\cdot\dfrac{2-1}{(1/\pi)^{2}}\\
+&=\dfrac{\pi^{2}}{e^{2}}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\boxed{\displaystyle \left.u_{xy}\right|_{\left(2,\frac{1}{\pi}\right)}
+=\dfrac{\pi^{2}}{e^{2}}}.
+$$
+
+</details>
+
+---
+
+7. **【1998-34-5 分】** 设
+
+$$
+\displaystyle z=(x^{2}+y^{2})e^{-\arctan\frac{y}{x}},
+$$
+
+求 $\displaystyle dz$ 与 $\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz=e^{-\arctan\frac{y}{x}}
+\left[(2x+y)\,dx+(2y-x)\,dy\right],
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}
+=e^{-\arctan\frac{y}{x}}
+\dfrac{y^{2}-x^{2}-xy}{x^{2}+y^{2}}.
+$$
+
+**解析：** 记
+
+$$
+\displaystyle \theta=\arctan\dfrac{y}{x}.
+$$
+
+则
+
+$$
+\displaystyle \theta_{x}=-\dfrac{y}{x^{2}+y^{2}},
+\qquad
+\theta_{y}=\dfrac{x}{x^{2}+y^{2}}.
+$$
+
+对 $\displaystyle z=(x^{2}+y^{2})e^{-\theta}$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{x}
+&=2x e^{-\theta}-(x^{2}+y^{2})e^{-\theta}\theta_{x}\\
+&=e^{-\theta}(2x+y),
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\displaystyle z_{y}
+&=2y e^{-\theta}-(x^{2}+y^{2})e^{-\theta}\theta_{y}\\
+&=e^{-\theta}(2y-x).
+\end{aligned}
+$$
+
+因此
+
+$$
+\boxed{\displaystyle dz=e^{-\arctan\frac{y}{x}}
+\left[(2x+y)\,dx+(2y-x)\,dy\right]}.
+$$
+
+再由 $\displaystyle z_{x}=e^{-\theta}(2x+y)$ 对 $\displaystyle y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+&=e^{-\theta}
+-e^{-\theta}\theta_{y}(2x+y)\\
+&=e^{-\theta}
+\left[1-\dfrac{x(2x+y)}{x^{2}+y^{2}}\right]\\
+&=e^{-\theta}
+\dfrac{y^{2}-x^{2}-xy}{x^{2}+y^{2}}.
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}
+=e^{-\arctan\frac{y}{x}}
+\dfrac{y^{2}-x^{2}-xy}{x^{2}+y^{2}}}.
+$$
+
+</details>
+
+---
+
+8. **【2005-34-4 分】** 设二元函数
+
+$$
+\displaystyle z=x e^{x+y}+(x+1)\ln(1+y),
+$$
+
+则 $\displaystyle dz\big|_{(1,0)}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz\big|_{(1,0)}=2e\,dx+(e+2)\,dy.
+$$
+
+</div>
+</div>
+
+**解析：** 分别求偏导数：
+
+$$
+\begin{aligned}
+\displaystyle z_{x}
+&=e^{x+y}+x e^{x+y}+\ln(1+y)\\
+&=(x+1)e^{x+y}+\ln(1+y),
+\end{aligned}
+$$
+
+$$
+\displaystyle z_{y}
+=x e^{x+y}+\dfrac{x+1}{1+y}.
+$$
+
+在点 $\displaystyle (1,0)$ 处，
+
+$$
+\displaystyle z_{x}(1,0)=2e,
+$$
+
+$$
+\displaystyle z_{y}(1,0)=e+2.
+$$
+
+因此
+
+$$
+\boxed{\displaystyle dz\big|_{(1,0)}
+=z_{x}(1,0)\,dx+z_{y}(1,0)\,dy
+=2e\,dx+(e+2)\,dy}.
+$$
+
+</details>
+
+---
+
+9. **【2008-2-4 分】** 设
+
+$$
+\displaystyle z=\left(\dfrac{y}{x}\right)^{\frac{x}{y}},
+$$
+
+则 $\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,2)}=$ ______。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,2)}
+=\dfrac{\sqrt{2}}{2}(\ln2-1).
+$$
+
+</div>
+</div>
+
+**解析：** 对幂指函数采用对数求导。取对数得
+
+$$
+\displaystyle \ln z=\dfrac{x}{y}\ln\dfrac{y}{x}.
+$$
+
+将 $\displaystyle y$ 视为常数，对 $\displaystyle x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{1}{z}z_{x}
+&=\dfrac{1}{y}\ln\dfrac{y}{x}
++\dfrac{x}{y}\left(-\dfrac{1}{x}\right)\\
+&=\dfrac{1}{y}\left(\ln\dfrac{y}{x}-1\right).
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle z_{x}
+=\dfrac{z}{y}\left(\ln\dfrac{y}{x}-1\right).
+$$
+
+在点 $\displaystyle (1,2)$ 处，
+
+$$
+\displaystyle z(1,2)=2^{\frac{1}{2}}=\sqrt{2}.
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle z_{x}(1,2)
+&=\dfrac{\sqrt{2}}{2}(\ln2-1).
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,2)}
+=\dfrac{\sqrt{2}}{2}(\ln2-1)}.
+$$
+
+本题不能把 $\displaystyle y/x$ 仅看作底数而忽略指数 $\displaystyle x/y$ 对 $\displaystyle x$ 的依赖；对数求导可同时处理两部分。
+
+</details>
+
+---
+
+10. **【2008-23-4 分】** 设函数 $f$ 连续，若
+
+$$
+\displaystyle F(u,v)=\iint_{D_{uv}}\dfrac{f(x^{2}+y^{2})}{\sqrt{x^{2}+y^{2}}}\,dx\,dy,
+$$
+
+其中区域 $D_{uv}$ 为图中阴影部分，则 $\displaystyle \dfrac{\partial F}{\partial u}=$（　）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle vf(u^{2})$ &emsp;&emsp; B. $\displaystyle \dfrac{v}{u}f(u^{2})$ &emsp;&emsp; C. $\displaystyle vf(u)$ &emsp;&emsp; D. $\displaystyle \dfrac{v}{u}f(u)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 由图可知，区域 $D_{uv}$ 在极坐标下可表示为
+
+$$
+\displaystyle 1\le r\le u,\qquad 0\le\theta\le v.
+$$
+
+令
+
+$$
+\displaystyle x=r\cos\theta,\qquad y=r\sin\theta,
+$$
+
+则
+
+$$
+\displaystyle x^{2}+y^{2}=r^{2},\qquad dx\,dy=r\,dr\,d\theta.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle F(u,v)
+&=\int_{0}^{v}\int_{1}^{u}
+\dfrac{f(r^{2})}{r}\cdot r\,dr\,d\theta\\
+&=\int_{0}^{v}\int_{1}^{u}f(r^{2})\,dr\,d\theta\\
+&=v\int_{1}^{u}f(r^{2})\,dr.
+\end{aligned}
+$$
+
+由变上限积分求导公式，
+
+$$
+\boxed{\displaystyle \dfrac{\partial F}{\partial u}=vf(u^{2})}.
+$$
+
+故选 A。选项 B 多出了因子 $\displaystyle 1/u$；选项 C、D 则把 $\displaystyle r=u$ 时的 $r^{2}$ 错写成了 $u$。
+
+</details>
+
+---
+
+11. **【2009-3-4 分】** 设
+
+$$
+\displaystyle z=(x+e^{y})^{x},
+$$
+
+则 $\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,0)}=$ ______。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 1+2\ln2.
+$$
+
+</div>
+</div>
+
+**解析：** 底数和指数都含有变量 $x$，采用对数求导。由
+
+$$
+\displaystyle \ln z=x\ln(x+e^{y}),
+$$
+
+将 $y$ 看作常数，对 $x$ 求偏导，得
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{z_{x}}{z}
+&=\ln(x+e^{y})+x\dfrac{1}{x+e^{y}}.
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle z_{x}=(x+e^{y})^{x}
+\left[\ln(x+e^{y})+\dfrac{x}{x+e^{y}}\right].
+$$
+
+在点 $\displaystyle (1,0)$ 处，
+
+$$
+\displaystyle z(1,0)=(1+1)^{1}=2,
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle z_{x}(1,0)
+&=2\left(\ln2+\dfrac12\right)\\
+&=1+2\ln2.
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,0)}=1+2\ln2}.
+$$
+
+</details>
+
+---
+
+12. **【2011-1-4 分】** 设函数
+
+$$
+\displaystyle F(x,y)=\int_{0}^{xy}\dfrac{\sin t}{1+t^{2}}\,dt,
+$$
+
+则
+
+$$
+\displaystyle \left.\dfrac{\partial^{2}F}{\partial x^{2}}\right|_{\substack{x=0\\y=2}}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 4.
+$$
+
+</div>
+</div>
+
+**解析：** 记
+
+$$
+\displaystyle h(t)=\dfrac{\sin t}{1+t^{2}}.
+$$
+
+由变上限积分求导公式，
+
+$$
+\displaystyle F_{x}(x,y)=y h(xy)
+=y\dfrac{\sin(xy)}{1+x^{2}y^{2}}.
+$$
+
+再次对 $x$ 求偏导，
+
+$$
+\displaystyle F_{xx}(x,y)=y^{2}h'(xy).
+$$
+
+而
+
+$$
+\begin{aligned}
+\displaystyle h'(t)
+&=\dfrac{(1+t^{2})\cos t-2t\sin t}{(1+t^{2})^{2}},
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle h'(0)=1.
+$$
+
+在 $\displaystyle x=0,\,y=2$ 处，
+
+$$
+\boxed{\displaystyle F_{xx}(0,2)=2^{2}h'(0)=4}.
+$$
+
+</details>
+
+---
+
+13. **【2011-3-4 分】** 设函数
+
+$$
+\displaystyle z=\left(1+\dfrac{x}{y}\right)^{\frac{x}{y}},
+$$
+
+则 $\displaystyle dz\big|_{(1,1)}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz\big|_{(1,1)}=(1+2\ln2)(dx-dy).
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\dfrac{x}{y},
+\qquad z=(1+u)^{u}.
+$$
+
+取对数，得
+
+$$
+\displaystyle \ln z=u\ln(1+u).
+$$
+
+微分两端：
+
+$$
+\displaystyle \dfrac{dz}{z}
+=\left[\ln(1+u)+\dfrac{u}{1+u}\right]du.
+$$
+
+又
+
+$$
+\displaystyle du=\dfrac{1}{y}\,dx-\dfrac{x}{y^{2}}\,dy.
+$$
+
+在点 $\displaystyle (1,1)$ 处，
+
+$$
+\displaystyle u=1,
+\qquad z=2,
+\qquad du=dx-dy.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle dz\big|_{(1,1)}
+&=2\left(\ln2+\dfrac12\right)(dx-dy)\\
+&=(1+2\ln2)(dx-dy).
+\end{aligned}
+$$
+
+因此
+
+$$
+\boxed{\displaystyle dz\big|_{(1,1)}=(1+2\ln2)(dx-dy)}.
+$$
+
+</details>
+
+---
+
+14. **【2016-23-4 分】** 已知函数
+
+$$
+\displaystyle f(x,y)=\dfrac{e^{x}}{x-y},
+$$
+
+则（　）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle f_{x}'-f_{y}'=0$ &emsp;&emsp; B. $\displaystyle f_{x}'+f_{y}'=0$ &emsp;&emsp; C. $\displaystyle f_{x}'-f_{y}'=f$ &emsp;&emsp; D. $\displaystyle f_{x}'+f_{y}'=f$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 分别求偏导数。对 $x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle f_{x}'
+&=\dfrac{e^{x}}{x-y}-\dfrac{e^{x}}{(x-y)^{2}}.
+\end{aligned}
+$$
+
+对 $y$ 求偏导时，注意
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}(x-y)^{-1}=(x-y)^{-2},
+$$
+
+故
+
+$$
+\displaystyle f_{y}'=\dfrac{e^{x}}{(x-y)^{2}}.
+$$
+
+两式相加，得
+
+$$
+\begin{aligned}
+\displaystyle f_{x}'+f_{y}'
+&=\dfrac{e^{x}}{x-y}\\
+&=f(x,y).
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle f_{x}'+f_{y}'=f},
+$$
+
+故选 D。
+
+</details>
+
+---
+
+15. **【2017-23-4 分】** 设函数 $f(x,y)$ 具有一阶连续偏导数，且
+
+$$
+\displaystyle df(x,y)=ye^{y}\,dx+x(1+y)e^{y}\,dy,
+$$
+
+$\displaystyle f(0,0)=0$，则 $\displaystyle f(x,y)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f(x,y)=xye^{y}.
+$$
+
+</div>
+</div>
+
+**解析：** 由全微分的定义，
+
+$$
+\displaystyle f_{x}(x,y)=ye^{y},
+\qquad
+f_{y}(x,y)=x(1+y)e^{y}.
+$$
+
+先由 $\displaystyle f_{x}=ye^{y}$ 对 $x$ 积分：
+
+$$
+\displaystyle f(x,y)=xye^{y}+\varphi(y),
+$$
+
+其中 $\displaystyle \varphi(y)$ 只与 $y$ 有关。
+
+再对 $y$ 求偏导：
+
+$$
+\displaystyle f_{y}=x(1+y)e^{y}+\varphi'(y).
+$$
+
+与题设比较可得
+
+$$
+\displaystyle \varphi'(y)=0,
+$$
+
+所以 $\displaystyle \varphi(y)=C$。由 $\displaystyle f(0,0)=0$，得
+
+$$
+\displaystyle C=0.
+$$
+
+因此
+
+$$
+\boxed{\displaystyle f(x,y)=xye^{y}}.
+$$
+
+也可以直接观察到
+
+$$
+\displaystyle d(xye^{y})=ye^{y}\,dx+x(1+y)e^{y}\,dy.
+$$
+
+</details>
+
+---
+
+16. **【2020-1-4 分】** 设函数
+
+$$
+\displaystyle f(x,y)=\int_{0}^{xy}e^{xt^{2}}\,dt,
+$$
+
+则
+
+$$
+\displaystyle \left.\dfrac{\partial^{2}f}{\partial x\partial y}\right|_{(1,1)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 4e.
+$$
+
+</div>
+</div>
+
+**解析：** 先对 $y$ 求偏导。被积函数中的 $x$ 对 $y$ 而言为常数，因此由变上限积分求导公式，
+
+$$
+\begin{aligned}
+\displaystyle f_{y}(x,y)
+&=e^{x(xy)^{2}}\dfrac{\partial(xy)}{\partial y}\\
+&=xe^{x^{3}y^{2}}.
+\end{aligned}
+$$
+
+再对 $x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle f_{yx}(x,y)
+&=e^{x^{3}y^{2}}
++x e^{x^{3}y^{2}}\cdot3x^{2}y^{2}\\
+&=e^{x^{3}y^{2}}\left(1+3x^{3}y^{2}\right).
+\end{aligned}
+$$
+
+由于被积函数及其有关偏导连续，混合偏导数相等，故
+
+$$
+\displaystyle f_{xy}=f_{yx}.
+$$
+
+在点 $\displaystyle (1,1)$ 处，
+
+$$
+\boxed{\displaystyle f_{xy}(1,1)=e(1+3)=4e}.
+$$
+
+</details>
+
+---
+
+17. **【2020-23-4 分】** 设
+
+$$
+\displaystyle z=\arctan\bigl[xy+\sin(x+y)\bigr],
+$$
+
+则 $\displaystyle dz\big|_{(0,\pi)}=$ ______。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dz\big|_{(0,\pi)}=(\pi-1)\,dx-dy.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle g(x,y)=xy+\sin(x+y),
+\qquad z=\arctan g.
+$$
+
+则
+
+$$
+\displaystyle dz=\dfrac{1}{1+g^{2}}\,dg,
+$$
+
+其中
+
+$$
+\displaystyle dg=\bigl[y+\cos(x+y)\bigr]dx
++\bigl[x+\cos(x+y)\bigr]dy.
+$$
+
+在点 $\displaystyle (0,\pi)$ 处，
+
+$$
+\displaystyle g(0,\pi)=\sin\pi=0,
+$$
+
+$$
+\displaystyle g_{x}(0,\pi)=\pi+\cos\pi=\pi-1,
+$$
+
+$$
+\displaystyle g_{y}(0,\pi)=0+\cos\pi=-1.
+$$
+
+所以
+
+$$
+\boxed{\displaystyle dz\big|_{(0,\pi)}=(\pi-1)\,dx-dy}.
+$$
+
+</details>
+
+---
+
+18. **【2021-23-5 分】** 设函数 $f(x,y)$ 可微，且
+
+$$
+\displaystyle f(x+1,e^{x})=x(x+1)^{2},
+$$
+
+$$
+\displaystyle f(x,x^{2})=2x^{2}\ln x,
+$$
+
+则 $\displaystyle df(1,1)=$（　）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle dx+dy$ &emsp;&emsp; B. $\displaystyle dx-dy$ &emsp;&emsp; C. $\displaystyle dy$ &emsp;&emsp; D. $\displaystyle -dy$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 设
+
+$$
+\displaystyle f_{x}(1,1)=A,
+\qquad
+f_{y}(1,1)=B.
+$$
+
+对第一个恒等式
+
+$$
+\displaystyle f(x+1,e^{x})=x(x+1)^{2}
+$$
+
+两边对 $x$ 求导：
+
+$$
+\displaystyle f_{x}(x+1,e^{x})
++e^{x}f_{y}(x+1,e^{x})
+=(x+1)^{2}+2x(x+1).
+$$
+
+令 $\displaystyle x=0$，对应点为 $\displaystyle (1,1)$，得
+
+$$
+\displaystyle A+B=1. \tag{1}
+$$
+
+对第二个恒等式
+
+$$
+\displaystyle f(x,x^{2})=2x^{2}\ln x
+$$
+
+两边对 $x$ 求导：
+
+$$
+\displaystyle f_{x}(x,x^{2})+2x f_{y}(x,x^{2})
+=4x\ln x+2x.
+$$
+
+令 $\displaystyle x=1$，得
+
+$$
+\displaystyle A+2B=2. \tag{2}
+$$
+
+联立（1）（2），解得
+
+$$
+\displaystyle A=0,
+\qquad B=1.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle df(1,1)
+&=f_{x}(1,1)\,dx+f_{y}(1,1)\,dy\\
+&=dy.
+\end{aligned}
+$$
+
+所以
+
+$$
+\boxed{\displaystyle df(1,1)=dy},
+$$
+
+故选 C。
+
+</details>
+
+---
+
+19. **【2022-23-5 分】** 已知 $f(x)$ 连续，令
+
+$$
+\displaystyle F(x,y)=\int_{0}^{x-y}(x-y-t)f(t)\,dt,
+$$
+
+则（　）
+
+A. $\displaystyle \dfrac{\partial F}{\partial x}=\dfrac{\partial F}{\partial y},\quad
+\dfrac{\partial^{2}F}{\partial x^{2}}=\dfrac{\partial^{2}F}{\partial y^{2}}$
+
+B. $\displaystyle \dfrac{\partial F}{\partial x}=\dfrac{\partial F}{\partial y},\quad
+\dfrac{\partial^{2}F}{\partial x^{2}}=-\dfrac{\partial^{2}F}{\partial y^{2}}$
+
+C. $\displaystyle \dfrac{\partial F}{\partial x}=-\dfrac{\partial F}{\partial y},\quad
+\dfrac{\partial^{2}F}{\partial x^{2}}=\dfrac{\partial^{2}F}{\partial y^{2}}$
+
+D. $\displaystyle \dfrac{\partial F}{\partial x}=-\dfrac{\partial F}{\partial y},\quad
+\dfrac{\partial^{2}F}{\partial x^{2}}=-\dfrac{\partial^{2}F}{\partial y^{2}}$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C
+
+**解析：** 令
+
+$$
+\displaystyle s=x-y,
+$$
+
+并记
+
+$$
+\displaystyle H(s)=\int_{0}^{s}(s-t)f(t)\,dt.
+$$
+
+则
+
+$$
+\displaystyle F(x,y)=H(x-y).
+$$
+
+由莱布尼茨公式，
+
+$$
+\begin{aligned}
+\displaystyle H'(s)
+&=(s-s)f(s)+\int_{0}^{s}f(t)\,dt\\
+&=\int_{0}^{s}f(t)\,dt,
+\end{aligned}
+$$
+
+从而
+
+$$
+\displaystyle H''(s)=f(s).
+$$
+
+利用复合函数求导，
+
+$$
+\displaystyle F_{x}=H'(x-y),
+\qquad
+F_{y}=-H'(x-y),
+$$
+
+故
+
+$$
+\displaystyle F_{x}=-F_{y}.
+$$
+
+再求二阶偏导：
+
+$$
+\displaystyle F_{xx}=H''(x-y)=f(x-y),
+$$
+
+$$
+\displaystyle F_{yy}=H''(x-y)=f(x-y).
+$$
+
+所以
+
+$$
+\boxed{\displaystyle F_{x}=-F_{y},\qquad F_{xx}=F_{yy}},
+$$
+
+故选 C。
+
+</details>
+
+---
+
+20. **【2023-3-5 分】** 已知函数 $f(x,y)$ 满足
+
+$$
+\displaystyle df(x,y)=\dfrac{x\,dy-y\,dx}{x^{2}+y^{2}},
+$$
+
+且 $\displaystyle f(1,1)=\dfrac{\pi}{4}$，则 $\displaystyle f(\sqrt{3},3)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{\pi}{3}.
+$$
+
+</div>
+</div>
+
+**解析：** 注意到
+
+$$
+\begin{aligned}
+\displaystyle d\!\left(\arctan\dfrac{y}{x}\right)
+&=\dfrac{1}{1+(y/x)^{2}}\,d\!\left(\dfrac{y}{x}\right)\\
+&=\dfrac{x\,dy-y\,dx}{x^{2}+y^{2}}.
+\end{aligned}
+$$
+
+因此在点 $\displaystyle (1,1)$ 所在的第一象限内，
+
+$$
+\displaystyle f(x,y)=\arctan\dfrac{y}{x}+C.
+$$
+
+由 $\displaystyle f(1,1)=\dfrac{\pi}{4}$ 得
+
+$$
+\displaystyle \dfrac{\pi}{4}+C=\dfrac{\pi}{4},
+$$
+
+故 $\displaystyle C=0$。于是
+
+$$
+\begin{aligned}
+\displaystyle f(\sqrt{3},3)
+&=\arctan\dfrac{3}{\sqrt{3}}\\
+&=\arctan\sqrt{3}\\
+&=\dfrac{\pi}{3}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+21. **【2024-1-5 分】** 已知 $f(u,v)$ 存在二阶连续的偏导数，且
+
+$$
+\displaystyle df(1,1)=3\,du+4\,dv.
+$$
+
+若 $\displaystyle y=f(\cos x,1+x^{2})$，则
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 0.
+$$
+
+</div>
+</div>
+
+**解析：** 由全微分的定义可知
+
+$$
+\displaystyle f_{u}(1,1)=3,
+\qquad
+f_{v}(1,1)=4.
+$$
+
+令
+
+$$
+\displaystyle u=\cos x,
+\qquad
+v=1+x^{2},
+$$
+
+则由复合函数求导法则，
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=f_{u}(u,v)(-\sin x)+f_{v}(u,v)\cdot2x.
+$$
+
+当 $\displaystyle x=0$ 时，$\displaystyle (u,v)=(1,1)$，且
+
+$$
+\displaystyle -\sin0=0,
+\qquad
+2\cdot0=0.
+$$
+
+因此
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}
+=3\cdot0+4\cdot0=0.
+$$
+
+</details>
+
+### （二）抽象型
+
+1. **【1987-1-3 分】** 设函数 $f,g$ 连续可微，
+
+$$
+\displaystyle u=f(x,xy),
+\qquad
+v=g(x+xy),
+$$
+
+求 $\displaystyle \dfrac{\partial u}{\partial x}$，$\displaystyle \dfrac{\partial v}{\partial x}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{\partial u}{\partial x}
+=f_{1}(x,xy)+y f_{2}(x,xy),
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \dfrac{\partial v}{\partial x}
+=(1+y)g'(x+xy).
+$$
+
+**解析：** 对 $\displaystyle u=f(x,xy)$，令
+
+$$
+\displaystyle \xi=x,
+\qquad
+\eta=xy.
+$$
+
+在求关于 $x$ 的偏导数时，将 $y$ 视为常数，因此
+
+$$
+\displaystyle \xi_{x}=1,
+\qquad
+\eta_{x}=y.
+$$
+
+由复合函数求导法则，
+
+$$
+\displaystyle u_{x}
+=f_{1}(\xi,\eta)\xi_{x}+f_{2}(\xi,\eta)\eta_{x}
+=f_{1}(x,xy)+y f_{2}(x,xy).
+$$
+
+同理，令 $\displaystyle s=x+xy=x(1+y)$，则
+
+$$
+\displaystyle s_{x}=1+y,
+$$
+
+所以
+
+$$
+\displaystyle v_{x}=g'(s)s_{x}=(1+y)g'(x+xy).
+$$
+
+</details>
+
+---
+
+2. **【1989-12-5 分】** 设
+
+$$
+\displaystyle z=f(2x-y)+g(x,xy),
+$$
+
+其中函数 $f(t)$ 二阶可导，$g(u,v)$ 具有连续的二阶偏导数，求
+
+$$
+\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}
+=-2f''(2x-y)+xg_{12}(x,xy)+g_{2}(x,xy)+xyg_{22}(x,xy).
+$$
+
+</div>
+</div>
+
+**解析：** 先对 $x$ 求偏导：
+
+$$
+\displaystyle z_{x}
+=2f'(2x-y)+g_{1}(x,xy)+y g_{2}(x,xy).
+$$
+
+再对 $y$ 求偏导。第一项为
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}\left[2f'(2x-y)\right]
+=-2f''(2x-y).
+$$
+
+对于第二项，因 $g_{1}$ 的两个自变量为 $x$ 与 $xy$，故
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}g_{1}(x,xy)
+=xg_{12}(x,xy).
+$$
+
+对于第三项，利用乘积法则：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial}{\partial y}\left[y g_{2}(x,xy)\right]
+&=g_{2}(x,xy)+y\cdot xg_{22}(x,xy)\\
+&=g_{2}(x,xy)+xyg_{22}(x,xy).
+\end{aligned}
+$$
+
+合并即得结论。
+
+</details>
+
+---
+
+3. **【1992-45-5 分】** 设
+
+$$
+\displaystyle z=\sin(xy)+\varphi\!\left(x,\dfrac{x}{y}\right),
+$$
+
+其中 $\varphi(u,v)$ 具有二阶偏导数，求
+
+$$
+\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令 $\displaystyle u=x$，$\displaystyle v=\dfrac{x}{y}$，则
+
+$$
+\boxed{
+\displaystyle z_{xy}
+=\cos(xy)-xy\sin(xy)
+-\dfrac{x}{y^{2}}\varphi_{12}
+-\dfrac{1}{y^{2}}\varphi_{2}
+-\dfrac{x}{y^{3}}\varphi_{22}
+},
+$$
+
+其中各阶偏导数均在 $\displaystyle \left(x,\dfrac{x}{y}\right)$ 处取值。
+
+**解析：** 先对 $x$ 求偏导：
+
+$$
+\displaystyle z_{x}
+=y\cos(xy)+\varphi_{1}\!\left(x,\dfrac{x}{y}\right)
++\dfrac{1}{y}\varphi_{2}\!\left(x,\dfrac{x}{y}\right).
+$$
+
+再对 $y$ 求偏导。首先
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}[y\cos(xy)]
+=\cos(xy)-xy\sin(xy).
+$$
+
+由于
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}\left(\dfrac{x}{y}\right)
+=-\dfrac{x}{y^{2}},
+$$
+
+故
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}\varphi_{1}
+=-\dfrac{x}{y^{2}}\varphi_{12}.
+$$
+
+又
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial}{\partial y}\left(\dfrac{1}{y}\varphi_{2}\right)
+&=-\dfrac{1}{y^{2}}\varphi_{2}
++\dfrac{1}{y}\varphi_{22}\left(-\dfrac{x}{y^{2}}\right)\\
+&=-\dfrac{1}{y^{2}}\varphi_{2}-\dfrac{x}{y^{3}}\varphi_{22}.
+\end{aligned}
+$$
+
+三部分相加即得答案。
+
+</details>
+
+---
+
+4. **【1992-12-5 分】** 设
+
+$$
+\displaystyle z=f(e^{x}\sin y,x^{2}+y^{2}),
+$$
+
+其中 $f$ 具有二阶连续偏导数，求
+
+$$
+\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令
+
+$$
+\displaystyle u=e^{x}\sin y,
+\qquad
+v=x^{2}+y^{2},
+$$
+
+则
+
+$$
+\boxed{
+\begin{aligned}
+\displaystyle z_{xy}
+={}&e^{2x}\sin y\cos y\,f_{11}
++2e^{x}(y\sin y+x\cos y)f_{12}\\
+&+4xyf_{22}+e^{x}\cos y\,f_{1},
+\end{aligned}}
+$$
+
+其中 $f$ 的各阶偏导数均在 $\displaystyle (u,v)=(e^{x}\sin y,x^{2}+y^{2})$ 处取值。
+
+**解析：** 有
+
+$$
+\displaystyle u_{x}=e^{x}\sin y,
+\quad
+u_{y}=e^{x}\cos y,
+\quad
+u_{xy}=e^{x}\cos y,
+$$
+
+$$
+\displaystyle v_{x}=2x,
+\qquad
+v_{y}=2y.
+$$
+
+先对 $x$ 求偏导：
+
+$$
+\displaystyle z_{x}=f_{1}u_{x}+f_{2}v_{x}.
+$$
+
+再对 $y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&(f_{11}u_{y}+f_{12}v_{y})u_{x}+f_{1}u_{xy}\\
+&+(f_{21}u_{y}+f_{22}v_{y})v_{x}.
+\end{aligned}
+$$
+
+由二阶连续偏导数条件，$\displaystyle f_{21}=f_{12}$。代入各导数并整理，得到上述结果。
+
+</details>
+
+---
+
+5. **【1995-45-3 分】** 设
+
+$$
+\displaystyle z=xyf\!\left(\dfrac{y}{x}\right),
+$$
+
+$f(u)$ 可导，则
+
+$$
+\displaystyle xz_{x}+yz_{y}=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 2xyf\!\left(\dfrac{y}{x}\right)=2z.
+$$
+
+</div>
+</div>
+
+**解析：** 函数
+
+$$
+\displaystyle z(x,y)=xyf\!\left(\dfrac{y}{x}\right)
+$$
+
+满足
+
+$$
+\begin{aligned}
+\displaystyle z(tx,ty)
+&=(tx)(ty)f\!\left(\dfrac{ty}{tx}\right)\\
+&=t^{2}xyf\!\left(\dfrac{y}{x}\right)\\
+&=t^{2}z(x,y).
+\end{aligned}
+$$
+
+因此 $z$ 是二次齐次函数。由欧拉公式，
+
+$$
+\displaystyle xz_{x}+yz_{y}=2z,
+$$
+
+即
+
+$$
+\displaystyle xz_{x}+yz_{y}=2xyf\!\left(\dfrac{y}{x}\right).
+$$
+
+</details>
+
+---
+
+6. **【1995-12-5 分】** 设
+
+$$
+\displaystyle u=f(x,y,z),
+$$
+
+且
+
+$$
+\displaystyle \varphi(x^{2},e^{y},z)=0,
+\qquad
+ y=\sin x,
+$$
+
+其中 $f,\varphi$ 都具有一阶连续偏导数，且 $\displaystyle \dfrac{\partial\varphi}{\partial z}\ne0$，求
+
+$$
+\displaystyle \dfrac{du}{dx}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{du}{dx}
+=f_{x}+f_{y}\cos x
+-f_{z}\dfrac{2x\varphi_{1}+e^{y}\cos x\,\varphi_{2}}{\varphi_{3}}
+},
+$$
+
+</div>
+</div>
+
+其中 $\displaystyle y=\sin x$，各偏导数均在相应自变量处取值。
+
+**解析：** 由于 $\displaystyle u=f(x,y,z)$，而 $y,z$ 均为 $x$ 的函数，因此
+
+$$
+\displaystyle \dfrac{du}{dx}
+=f_{x}+f_{y}\dfrac{dy}{dx}+f_{z}\dfrac{dz}{dx}.
+$$
+
+由 $\displaystyle y=\sin x$ 得
+
+$$
+\displaystyle \dfrac{dy}{dx}=\cos x.
+$$
+
+对隐式关系
+
+$$
+\displaystyle \varphi(x^{2},e^{y},z)=0
+$$
+
+关于 $x$ 求导，得
+
+$$
+\displaystyle 2x\varphi_{1}+e^{y}\dfrac{dy}{dx}\varphi_{2}
++\dfrac{dz}{dx}\varphi_{3}=0.
+$$
+
+故
+
+$$
+\displaystyle \dfrac{dz}{dx}
+=-\dfrac{2x\varphi_{1}+e^{y}\cos x\,\varphi_{2}}{\varphi_{3}}.
+$$
+
+代回全导数公式即可。
+
+</details>
+
+---
+
+7. **【1996-4-5 分】** 设函数 $\displaystyle z=f(u)$，且
+
+$$
+\displaystyle u=\varphi(u)+\int_{y}^{x}p(t)\,dt,
+$$
+
+其中 $f(u),\varphi(u)$ 可微，$p(t),\varphi'(u)$ 连续，且 $\displaystyle \varphi'(u)\ne1$，求
+
+$$
+\displaystyle p(y)\dfrac{\partial z}{\partial x}
++p(x)\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 0.
+$$
+
+</div>
+</div>
+
+**解析：** 对方程
+
+$$
+\displaystyle u-\varphi(u)=\int_{y}^{x}p(t)\,dt
+$$
+
+分别关于 $x,y$ 求偏导。
+
+关于 $x$ 求偏导：
+
+$$
+\displaystyle [1-\varphi'(u)]u_{x}=p(x),
+$$
+
+所以
+
+$$
+\displaystyle u_{x}=\dfrac{p(x)}{1-\varphi'(u)}.
+$$
+
+关于 $y$ 求偏导：
+
+$$
+\displaystyle [1-\varphi'(u)]u_{y}=-p(y),
+$$
+
+所以
+
+$$
+\displaystyle u_{y}=-\dfrac{p(y)}{1-\varphi'(u)}.
+$$
+
+又因 $\displaystyle z=f(u)$，故
+
+$$
+\displaystyle z_{x}=f'(u)u_{x},
+\qquad
+z_{y}=f'(u)u_{y}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle p(y)z_{x}+p(x)z_{y}
+&=\dfrac{f'(u)p(x)p(y)}{1-\varphi'(u)}
+-\dfrac{f'(u)p(x)p(y)}{1-\varphi'(u)}\\
+&=0.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+8. **【1997-34-5 分】** 设 $\displaystyle u=f(x,y,z)$ 有连续偏导函数，$y=y(x)$ 和 $z=z(x)$ 分别由方程
+
+$$
+\displaystyle e^{xy}-y=0
+$$
+
+和
+
+$$
+\displaystyle e^{z}-xz=0
+$$
+
+所确定，求
+
+$$
+\displaystyle \dfrac{du}{dx}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{du}{dx}
+=f_{x}
++f_{y}\dfrac{y e^{xy}}{1-xe^{xy}}
++f_{z}\dfrac{z}{e^{z}-x}
+}.
+$$
+
+</div>
+</div>
+
+利用 $\displaystyle e^{xy}=y$，也可写成
+
+$$
+\displaystyle \dfrac{du}{dx}
+=f_{x}+f_{y}\dfrac{y^{2}}{1-xy}
++f_{z}\dfrac{z}{e^{z}-x}.
+$$
+
+**解析：** 由复合函数求导法则，
+
+$$
+\displaystyle \dfrac{du}{dx}
+=f_{x}+f_{y}y'+f_{z}z'.
+$$
+
+对 $\displaystyle e^{xy}-y=0$ 关于 $x$ 求导：
+
+$$
+\displaystyle e^{xy}(y+xy')-y'=0.
+$$
+
+整理得
+
+$$
+\displaystyle (1-xe^{xy})y'=y e^{xy},
+$$
+
+所以
+
+$$
+\displaystyle y'=\dfrac{y e^{xy}}{1-xe^{xy}}.
+$$
+
+再对 $\displaystyle e^{z}-xz=0$ 关于 $x$ 求导：
+
+$$
+\displaystyle e^{z}z'-z-xz'=0.
+$$
+
+故
+
+$$
+\displaystyle (e^{z}-x)z'=z,
+$$
+
+从而
+
+$$
+\displaystyle z'=\dfrac{z}{e^{z}-x}.
+$$
+
+将 $y'$ 与 $z'$ 代入 $\displaystyle du/dx$ 即得结论。
+
+</details>
+
+---
+
+9. **【1998-1-3 分】** 设
+
+$$
+\displaystyle z=\dfrac{1}{x}f(xy)+y\varphi(x+y),
+$$
+
+其中 $\displaystyle f,\varphi$ 具有二阶连续导数，求 $\displaystyle \dfrac{\partial^2z}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial^2z}{\partial x\partial y}
+=yf''(xy)+\varphi'(x+y)+y\varphi''(x+y)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 先对 $\displaystyle x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=-\dfrac{1}{x^2}f(xy)
++\dfrac{y}{x}f'(xy)
++y\varphi'(x+y).
+\end{aligned}
+$$
+
+再对 $\displaystyle y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&-\dfrac{1}{x^2}f'(xy)\cdot x
++\dfrac{1}{x}f'(xy)
++\dfrac{y}{x}f''(xy)\cdot x\\
+&+\varphi'(x+y)+y\varphi''(x+y).
+\end{aligned}
+$$
+
+其中前两项相消，因此
+
+$$
+\displaystyle z_{xy}
+=yf''(xy)+\varphi'(x+y)+y\varphi''(x+y).
+$$
+
+</details>
+
+---
+
+10. **【2000-3-3 分】** 设
+
+$$
+\displaystyle z=f\left(xy,\dfrac{x}{y}\right)+g\left(\dfrac{y}{x}\right),
+$$
+
+其中 $\displaystyle f,g$ 均可微，求 $\displaystyle \dfrac{\partial z}{\partial x}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 设 $\displaystyle u=xy$，$\displaystyle v=\dfrac{x}{y}$，$\displaystyle w=\dfrac{y}{x}$，则
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial z}{\partial x}
+=yf_u(u,v)+\dfrac{1}{y}f_v(u,v)-\dfrac{y}{x^2}g'(w)
+}
+$$
+
+即
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial z}{\partial x}
+=yf_u\left(xy,\dfrac{x}{y}\right)
++\dfrac{1}{y}f_v\left(xy,\dfrac{x}{y}\right)
+-\dfrac{y}{x^2}g'\left(\dfrac{y}{x}\right)
+}
+$$
+
+**解析：** 由链式法则，
+
+$$
+\displaystyle u_x=y,\qquad v_x=\dfrac{1}{y},\qquad w_x=-\dfrac{y}{x^2}.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=f_u(u,v)u_x+f_v(u,v)v_x+g'(w)w_x\\
+&=yf_u(u,v)+\dfrac{1}{y}f_v(u,v)-\dfrac{y}{x^2}g'(w).
+\end{aligned}
+$$
+
+</details>
+
+---
+
+11. **【2000-1-5 分】** 设
+
+$$
+\displaystyle z=f\left(xy,\dfrac{x}{y}\right)+g\left(\dfrac{y}{x}\right),
+$$
+
+其中 $\displaystyle f$ 具有二阶连续偏导数，$\displaystyle g$ 具有二阶连续导数，求 $\displaystyle \dfrac{\partial^2z}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 设 $\displaystyle u=xy$，$\displaystyle v=\dfrac{x}{y}$，$\displaystyle w=\dfrac{y}{x}$，则
+
+$$
+\boxed{
+\begin{aligned}
+\displaystyle z_{xy}={}&f_u(u,v)+xyf_{uu}(u,v)
+-\dfrac{1}{y^2}f_v(u,v)
+-\dfrac{x}{y^3}f_{vv}(u,v)\\
+&-\dfrac{1}{x^2}g'(w)-\dfrac{y}{x^3}g''(w)
+\end{aligned}
+}
+$$
+
+**解析：** 由上一题，
+
+$$
+\displaystyle z_x=yf_u(u,v)+\dfrac{1}{y}f_v(u,v)-\dfrac{y}{x^2}g'(w).
+$$
+
+注意
+
+$$
+\displaystyle u_y=x,\qquad v_y=-\dfrac{x}{y^2},\qquad w_y=\dfrac{1}{x}.
+$$
+
+逐项对 $\displaystyle y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial}{\partial y}[yf_u]
+&=f_u+y\left(f_{uu}u_y+f_{uv}v_y\right)\\
+&=f_u+xyf_{uu}-\dfrac{x}{y}f_{uv},
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial}{\partial y}\left(\dfrac{1}{y}f_v\right)
+&=-\dfrac{1}{y^2}f_v
++\dfrac{1}{y}\left(f_{vu}u_y+f_{vv}v_y\right)\\
+&=-\dfrac{1}{y^2}f_v+\dfrac{x}{y}f_{uv}
+-\dfrac{x}{y^3}f_{vv},
+\end{aligned}
+$$
+
+以及
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}\left[-\dfrac{y}{x^2}g'(w)\right]
+=-\dfrac{1}{x^2}g'(w)-\dfrac{y}{x^3}g''(w).
+$$
+
+两项中的 $\displaystyle f_{uv}$ 相消，故得到答案。
+
+</details>
+
+---
+
+12. **【2001-34-5 分】** 设 $\displaystyle u=f(x,y,z)$，$\displaystyle z=z(x)$ 分别由
+
+$$
+\displaystyle e^{xy}-xy=2
+$$
+
+和
+
+$$
+\displaystyle e^x=\int_0^{x-z}\dfrac{\sin t}{t}\,dt
+$$
+
+确定，求 $\displaystyle \dfrac{du}{dx}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{du}{dx}
+=f_x-\dfrac{y}{x}f_y
++\left[1-\dfrac{e^x(x-z)}{\sin(x-z)}\right]f_z
+}
+$$
+
+</div>
+</div>
+
+其中各偏导数均在 $\displaystyle (x,y,z)$ 处取值。
+
+**解析：** 第一式确定 $\displaystyle y=y(x)$，第二式确定 $\displaystyle z=z(x)$。
+
+对
+
+$$
+\displaystyle e^{xy}-xy=2
+$$
+
+两边求导，得
+
+$$
+\displaystyle (e^{xy}-1)(y+xy')=0.
+$$
+
+由原方程可知 $\displaystyle xy\ne0$，从而 $\displaystyle e^{xy}-1\ne0$，故
+
+$$
+\displaystyle y'=-\dfrac{y}{x}.
+$$
+
+再对
+
+$$
+\displaystyle e^x=\int_0^{x-z}\dfrac{\sin t}{t}\,dt
+$$
+
+两边求导：
+
+$$
+\displaystyle e^x
+=\dfrac{\sin(x-z)}{x-z}(1-z').
+$$
+
+于是
+
+$$
+\displaystyle z'=1-\dfrac{e^x(x-z)}{\sin(x-z)}.
+$$
+
+由多元复合函数求导法则，
+
+$$
+\displaystyle \dfrac{du}{dx}=f_x+f_yy'+f_zz'.
+$$
+
+代入 $\displaystyle y'$ 与 $\displaystyle z'$ 即得答案。
+
+</details>
+
+---
+
+13. **【2001-4-3 分】** 设
+
+$$
+\displaystyle z=e^{-x}-f(x-2y),
+$$
+
+且当 $\displaystyle y=0$ 时，$\displaystyle z=x^2$，求 $\displaystyle \dfrac{\partial z}{\partial x}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial z}{\partial x}
+=-e^{-x}+e^{-(x-2y)}+2(x-2y)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle y=0$ 时，
+
+$$
+\displaystyle e^{-x}-f(x)=x^2,
+$$
+
+所以
+
+$$
+\displaystyle f(x)=e^{-x}-x^2.
+$$
+
+将自变量改记为 $\displaystyle u$，有
+
+$$
+\displaystyle f'(u)=-e^{-u}-2u.
+$$
+
+对原式关于 $\displaystyle x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=-e^{-x}-f'(x-2y)\\
+&=-e^{-x}+e^{-(x-2y)}+2(x-2y).
+\end{aligned}
+$$
+
+</details>
+
+---
+
+14. **【2004-3-4 分】** 函数 $\displaystyle f(u,v)$ 由关系式
+
+$$
+\displaystyle f[xg(y),y]=x+g(y)
+$$
+
+确定，其中 $\displaystyle g(y)$ 可微且 $\displaystyle g(y)\ne0$，求 $\displaystyle \dfrac{\partial^2f}{\partial u\partial v}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial^2f}{\partial u\partial v}
+=-\dfrac{g'(v)}{[g(v)]^2}
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=xg(y),\qquad v=y.
+$$
+
+由于 $\displaystyle g(v)\ne0$，有
+
+$$
+\displaystyle x=\dfrac{u}{g(v)}.
+$$
+
+因此原关系可改写为
+
+$$
+\displaystyle f(u,v)=\dfrac{u}{g(v)}+g(v).
+$$
+
+先对 $\displaystyle u$ 求偏导：
+
+$$
+\displaystyle f_u(u,v)=\dfrac{1}{g(v)}.
+$$
+
+再对 $\displaystyle v$ 求偏导，得到
+
+$$
+\displaystyle f_{uv}(u,v)
+=-\dfrac{g'(v)}{[g(v)]^2}.
+$$
+
+</details>
+
+---
+
+15. **【2005-12-4 分】** 设
+
+$$
+\displaystyle u(x,y)=\varphi(x+y)+\varphi(x-y)
++\int_{x-y}^{x+y}\psi(t)\,dt,
+$$
+
+其中 $\displaystyle \varphi$ 具有二阶导数，$\displaystyle \psi$ 具有一阶导数，则必有（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \dfrac{\partial^2u}{\partial x^2}=-\dfrac{\partial^2u}{\partial y^2}$</div>
+<div className="choice-option-row">B. $\displaystyle \dfrac{\partial^2u}{\partial x^2}=\dfrac{\partial^2u}{\partial y^2}$</div>
+<div className="choice-option-row">C. $\displaystyle \dfrac{\partial^2u}{\partial x\partial y}=\dfrac{\partial^2u}{\partial y^2}$</div>
+<div className="choice-option-row">D. $\displaystyle \dfrac{\partial^2u}{\partial x\partial y}=\dfrac{\partial^2u}{\partial x^2}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B。
+
+**解析：** 取 $\displaystyle \Psi'(t)=\psi(t)$，则
+
+$$
+\displaystyle \int_{x-y}^{x+y}\psi(t)\,dt
+=\Psi(x+y)-\Psi(x-y).
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle u(x,y)
+={}&[\varphi(x+y)+\Psi(x+y)]\\
+&+[\varphi(x-y)-\Psi(x-y)].
+\end{aligned}
+$$
+
+记
+
+$$
+\displaystyle F(s)=\varphi(s)+\Psi(s),\qquad
+G(t)=\varphi(t)-\Psi(t),
+$$
+
+则
+
+$$
+\displaystyle u(x,y)=F(x+y)+G(x-y).
+$$
+
+于是
+
+$$
+\displaystyle u_{xx}=F''(x+y)+G''(x-y),
+$$
+
+$$
+\displaystyle u_{yy}=F''(x+y)+G''(x-y).
+$$
+
+故
+
+$$
+\displaystyle u_{xx}=u_{yy}.
+$$
+
+</details>
+
+---
+
+16. **【2006-3-4 分】** 设函数 $\displaystyle f(u)$ 可微，且 $\displaystyle f'(0)=\dfrac12$。若
+
+$$
+\displaystyle z=f(4x^2-y^2),
+$$
+
+求点 $\displaystyle (1,2)$ 处的全微分 $\displaystyle \left.dz\right|_{(1,2)}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \left.dz\right|_{(1,2)}=4\,dx-2\,dy
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=4x^2-y^2,
+$$
+
+则
+
+$$
+\displaystyle dz=f'(u)\,du
+=f'(u)(8x\,dx-2y\,dy).
+$$
+
+在 $\displaystyle (1,2)$ 处，
+
+$$
+\displaystyle u=4\cdot1^2-2^2=0.
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \left.dz\right|_{(1,2)}
+&=f'(0)(8\,dx-4\,dy)\\
+&=\dfrac12(8\,dx-4\,dy)\\
+&=4\,dx-2\,dy.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+17. **【2007-234-4 分】** 设 $\displaystyle f(u,v)$ 是二元可微函数，
+
+$$
+\displaystyle z=f\left(\dfrac{y}{x},\dfrac{x}{y}\right),
+$$
+
+求
+
+$$
+\displaystyle x\dfrac{\partial z}{\partial x}
+-y\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 设 $\displaystyle u=\dfrac{y}{x}$，$\displaystyle v=\dfrac{x}{y}$，则
+
+$$
+\boxed{
+\displaystyle xz_x-yz_y=-2u f_u(u,v)+2v f_v(u,v)
+}
+$$
+
+即
+
+$$
+\boxed{
+\displaystyle xz_x-yz_y
+=-\dfrac{2y}{x}f_u\left(\dfrac{y}{x},\dfrac{x}{y}\right)
++\dfrac{2x}{y}f_v\left(\dfrac{y}{x},\dfrac{x}{y}\right)
+}
+$$
+
+**解析：** 由链式法则，
+
+$$
+\displaystyle z_x
+=-\dfrac{y}{x^2}f_u+\dfrac{1}{y}f_v,
+$$
+
+$$
+\displaystyle z_y
+=\dfrac{1}{x}f_u-\dfrac{x}{y^2}f_v.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle xz_x-yz_y
+&=\left(-\dfrac{y}{x}f_u+\dfrac{x}{y}f_v\right)
+-\left(\dfrac{y}{x}f_u-\dfrac{x}{y}f_v\right)\\
+&=-\dfrac{2y}{x}f_u+\dfrac{2x}{y}f_v.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+18. **【2007-1-4 分】** 设 $\displaystyle f(u,v)$ 是二元可微函数，
+
+$$
+\displaystyle z=f(x^y,y^x),
+$$
+
+则 $\displaystyle \dfrac{\partial z}{\partial x}=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令 $\displaystyle u=x^y$，$\displaystyle v=y^x$，则
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial z}{\partial x}
+=yx^{y-1}f_u(x^y,y^x)
++y^x\ln y\,f_v(x^y,y^x)
+}
+$$
+
+**解析：** 由链式法则，
+
+$$
+\displaystyle z_x=f_u(u,v)u_x+f_v(u,v)v_x.
+$$
+
+当 $\displaystyle y$ 固定时，
+
+$$
+\displaystyle u_x=\dfrac{\partial}{\partial x}x^y=yx^{y-1},
+$$
+
+且
+
+$$
+\displaystyle v_x=\dfrac{\partial}{\partial x}y^x=y^x\ln y.
+$$
+
+因此
+
+$$
+\displaystyle z_x
+=yx^{y-1}f_u(x^y,y^x)
++y^x\ln y\,f_v(x^y,y^x).
+$$
+
+</details>
+
+---
+
+19. **【2009-1-4 分】** 设函数 $\displaystyle f(u,v)$ 具有二阶连续偏导数，
+
+$$
+\displaystyle z=f(x,xy),
+$$
+
+求 $\displaystyle \dfrac{\partial^2z}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial^2z}{\partial x\partial y}
+=x f_{uv}(x,xy)+f_v(x,xy)+xy f_{vv}(x,xy)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x,\qquad v=xy.
+$$
+
+先对 $\displaystyle x$ 求偏导：
+
+$$
+\displaystyle z_x=f_u(u,v)+y f_v(u,v).
+$$
+
+再对 $\displaystyle y$ 求偏导。由于
+
+$$
+\displaystyle u_y=0,\qquad v_y=x,
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+&=x f_{uv}(u,v)+f_v(u,v)+xy f_{vv}(u,v).
+\end{aligned}
+$$
+
+代回 $\displaystyle u=x$，$\displaystyle v=xy$ 即得结论。
+
+</details>
+
+---
+
+20. **【2012-2-4 分】** 设
+
+$$
+\displaystyle z=f\left(\ln x+\dfrac1y\right),
+$$
+
+其中函数 $\displaystyle f(u)$ 可微，求
+
+$$
+\displaystyle x\dfrac{\partial z}{\partial x}
++y^2\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 0}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\ln x+\dfrac1y.
+$$
+
+由链式法则，
+
+$$
+\displaystyle z_x=f'(u)\dfrac1x,
+$$
+
+$$
+\displaystyle z_y=f'(u)\left(-\dfrac1{y^2}\right).
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle xz_x+y^2z_y
+&=f'(u)-f'(u)\\
+&=0.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+21. **【2013-2-4 分】** 设
+
+$$
+\displaystyle z=\dfrac{y}{x}f(xy),
+$$
+
+其中函数 $\displaystyle f$ 可微，则
+
+$$
+\displaystyle \dfrac{x}{y}\dfrac{\partial z}{\partial x}
++\dfrac{\partial z}{\partial y}=(\quad).
+$$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 2y f'(xy)$ &emsp;&emsp; B. $\displaystyle -2y f'(xy)$</div>
+<div className="choice-option-row">C. $\displaystyle \dfrac2x f(xy)$ &emsp;&emsp; D. $\displaystyle -\dfrac2x f(xy)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{A}}
+$$
+
+</div>
+</div>
+
+**解析：** 分别求偏导：
+
+$$
+\displaystyle z_x
+=-\dfrac{y}{x^2}f(xy)+\dfrac{y^2}{x}f'(xy),
+$$
+
+$$
+\displaystyle z_y
+=\dfrac1x f(xy)+y f'(xy).
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{x}{y}z_x+z_y
+&=\left[-\dfrac1x f(xy)+y f'(xy)\right]
++\left[\dfrac1x f(xy)+y f'(xy)\right]\\
+&=2y f'(xy).
+\end{aligned}
+$$
+
+故选 A。
+
+</details>
+
+---
+
+22. **【2015-2-4 分】** 设函数 $\displaystyle f(u,v)$ 满足
+
+$$
+\displaystyle f\left(x+y,\dfrac{y}{x}\right)=x^2-y^2,
+$$
+
+则 $\displaystyle \left.f_u\right|_{(1,1)}$ 与 $\displaystyle \left.f_v\right|_{(1,1)}$ 依次是（ ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \dfrac12,0$ &emsp;&emsp; B. $\displaystyle 0,\dfrac12$ &emsp;&emsp; C. $\displaystyle -\dfrac12,0$ &emsp;&emsp; D. $\displaystyle 0,-\dfrac12$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{D}}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x+y,\qquad v=\dfrac{y}{x}.
+$$
+
+当 $\displaystyle (u,v)=(1,1)$ 时，
+
+$$
+\displaystyle x+y=1,\qquad \dfrac{y}{x}=1,
+$$
+
+故
+
+$$
+\displaystyle x=y=\dfrac12.
+$$
+
+对原等式分别关于 $\displaystyle x,y$ 求偏导：
+
+$$
+\displaystyle f_u-\dfrac{y}{x^2}f_v=2x,
+$$
+
+$$
+\displaystyle f_u+\dfrac1x f_v=-2y.
+$$
+
+在 $\displaystyle x=y=\dfrac12$ 处，得到
+
+$$
+\displaystyle f_u-2f_v=1,
+$$
+
+$$
+\displaystyle f_u+2f_v=-1.
+$$
+
+联立解得
+
+$$
+\displaystyle f_u(1,1)=0,
+\qquad
+f_v(1,1)=-\dfrac12.
+$$
+
+故选 D。
+
+</details>
+
+---
+
+23. **【2016-13-4 分】** 设函数 $\displaystyle f(u,v)$ 可微，$\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle (x+1)z-y^2=x^2f(x-z,y)
+$$
+
+确定，求 $\displaystyle \left.dz\right|_{(0,1)}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \left.dz\right|_{(0,1)}=-dx+2dy
+}
+$$
+
+</div>
+</div>
+
+**解析：** 先由原方程求对应的 $\displaystyle z$ 值。在 $\displaystyle (x,y)=(0,1)$ 处，
+
+$$
+\displaystyle z-1=0,
+$$
+
+故 $\displaystyle z=1$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=(x+1)z-y^2-x^2f(x-z,y).
+$$
+
+由 $\displaystyle F(x,y,z)=0$，有
+
+$$
+\displaystyle dz=-\dfrac{F_x}{F_z}dx-\dfrac{F_y}{F_z}dy.
+$$
+
+在 $\displaystyle (x,y,z)=(0,1,1)$ 处，含 $\displaystyle x$ 或 $\displaystyle x^2$ 的项均消失，因此
+
+$$
+\displaystyle F_x=1,
+\qquad
+F_y=-2,
+\qquad
+F_z=1.
+$$
+
+于是
+
+$$
+\displaystyle dz=-dx+2dy.
+$$
+
+</details>
+
+---
+
+24. **【2019-2-4 分】** 设函数 $\displaystyle f(u)$ 可导，
+
+$$
+\displaystyle z=yf\left(\dfrac{y^2}{x}\right),
+$$
+
+求
+
+$$
+\displaystyle 2x\dfrac{\partial z}{\partial x}
++y\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle 2xz_x+yz_y=z
+=yf\left(\dfrac{y^2}{x}\right)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\dfrac{y^2}{x}.
+$$
+
+则
+
+$$
+\displaystyle z_x
+=yf'(u)\left(-\dfrac{y^2}{x^2}\right),
+$$
+
+$$
+\displaystyle z_y
+=f(u)+yf'(u)\dfrac{2y}{x}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle 2xz_x+yz_y
+&=-\dfrac{2y^3}{x}f'(u)
++yf(u)+\dfrac{2y^3}{x}f'(u)\\
+&=yf(u)\\
+&=z.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+25. **【2019-1-4 分】** 设函数 $\displaystyle f(u)$ 可导，
+
+$$
+\displaystyle z=f(\sin y-\sin x)+xy,
+$$
+
+求
+
+$$
+\displaystyle \dfrac1{\cos x}\dfrac{\partial z}{\partial x}
++\dfrac1{\cos y}\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{y}{\cos x}+\dfrac{x}{\cos y}
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\sin y-\sin x.
+$$
+
+则
+
+$$
+\displaystyle z_x=-f'(u)\cos x+y,
+$$
+
+$$
+\displaystyle z_y=f'(u)\cos y+x.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{z_x}{\cos x}+\dfrac{z_y}{\cos y}
+&=-f'(u)+\dfrac{y}{\cos x}
++f'(u)+\dfrac{x}{\cos y}\\
+&=\dfrac{y}{\cos x}+\dfrac{x}{\cos y}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+26. **【2022-1-5 分】** 设 $\displaystyle f(u)$ 可导，
+
+$$
+\displaystyle z=xyf\left(\dfrac{y}{x}\right).
+$$
+
+若
+
+$$
+\displaystyle x\dfrac{\partial z}{\partial x}
++y\dfrac{\partial z}{\partial y}
+=xy(\ln y-\ln x),
+$$
+
+则（ ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle f(1)=\dfrac12,\ f'(1)=0$ &emsp;&emsp; B. $\displaystyle f(1)=0,\ f'(1)=\dfrac12$</div>
+<div className="choice-option-row">C. $\displaystyle f(1)=1,\ f'(1)=0$ &emsp;&emsp; D. $\displaystyle f(1)=0,\ f'(1)=1$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{B}}
+$$
+
+</div>
+</div>
+
+**解析：** 函数
+
+$$
+\displaystyle z=xyf\left(\dfrac{y}{x}\right)
+$$
+
+是关于 $\displaystyle x,y$ 的二次齐次函数，因此由欧拉公式，
+
+$$
+\displaystyle xz_x+yz_y=2z
+=2xyf\left(\dfrac{y}{x}\right).
+$$
+
+又由题设，
+
+$$
+\displaystyle 2xyf\left(\dfrac{y}{x}\right)
+=xy(\ln y-\ln x)
+=xy\ln\dfrac{y}{x}.
+$$
+
+令 $\displaystyle u=\dfrac{y}{x}$，则
+
+$$
+\displaystyle 2f(u)=\ln u,
+$$
+
+即
+
+$$
+\displaystyle f(u)=\dfrac12\ln u.
+$$
+
+故
+
+$$
+\displaystyle f(1)=0,
+\qquad
+f'(u)=\dfrac1{2u},
+\qquad
+f'(1)=\dfrac12.
+$$
+
+故选 B。
+
+</details>
+
+### （三）隐函数求导
+
+1. **【1988-4-4 分】** 已知 $\displaystyle u+e^{u}=xy$，求 $\displaystyle \dfrac{\partial^{2}u}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial^{2}u}{\partial x\partial y}
+=\dfrac{1}{1+e^{u}}-\dfrac{xye^{u}}{(1+e^{u})^{3}}
+}
+$$
+
+</div>
+</div>
+
+**解析：** 由隐函数方程
+
+$$
+\displaystyle u+e^{u}=xy
+$$
+
+两边对 $x$ 求偏导，得
+
+$$
+\displaystyle (1+e^{u})u_{x}=y,
+$$
+
+故
+
+$$
+\displaystyle u_{x}=\dfrac{y}{1+e^{u}}.
+$$
+
+再对 $y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle u_{xy}
+&=\dfrac{\partial}{\partial y}\left(\dfrac{y}{1+e^{u}}\right)\\
+&=\dfrac{1}{1+e^{u}}-\dfrac{ye^{u}u_{y}}{(1+e^{u})^{2}}.
+\end{aligned}
+$$
+
+又由原方程对 $y$ 求偏导可得
+
+$$
+\displaystyle u_{y}=\dfrac{x}{1+e^{u}}.
+$$
+
+因此
+
+$$
+\displaystyle u_{xy}
+=\dfrac{1}{1+e^{u}}-\dfrac{xye^{u}}{(1+e^{u})^{3}}.
+$$
+
+</details>
+
+---
+
+2. **【1990-5-5 分】** 设
+
+$$
+\displaystyle x^{2}+z^{2}=y\varphi\left(\dfrac{z}{y}\right),
+$$
+
+其中 $\varphi$ 为可微函数，求 $\displaystyle \dfrac{\partial z}{\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial z}{\partial y}
+=\dfrac{\varphi\left(\dfrac{z}{y}\right)-\dfrac{z}{y}\varphi'\left(\dfrac{z}{y}\right)}{2z-\varphi'\left(\dfrac{z}{y}\right)}
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle s=\dfrac{z}{y}$。在求 $z_y$ 时把 $x$ 看作常数。原方程两边对 $y$ 求偏导：
+
+$$
+\displaystyle 2zz_{y}=\varphi(s)+y\varphi'(s)s_{y}.
+$$
+
+而
+
+$$
+\displaystyle s_{y}=\dfrac{yz_{y}-z}{y^{2}}=\dfrac{z_{y}-s}{y}.
+$$
+
+所以
+
+$$
+\displaystyle 2zz_{y}=\varphi(s)+\varphi'(s)(z_{y}-s).
+$$
+
+整理得
+
+$$
+\displaystyle [2z-\varphi'(s)]z_{y}=\varphi(s)-s\varphi'(s),
+$$
+
+代回 $\displaystyle s=\dfrac{z}{y}$ 即得答案。
+
+</details>
+
+---
+
+3. **【1991-5-5 分】** 已知
+
+$$
+\displaystyle xy=xf(z)+yg(z),
+\qquad
+xf'(z)+yg'(z)\ne0,
+$$
+
+其中 $\displaystyle z=z(x,y)$ 是 $x,y$ 的函数，求证：
+
+$$
+\displaystyle [x-g(z)]\dfrac{\partial z}{\partial x}=[y-f(z)]\dfrac{\partial z}{\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle [x-g(z)]z_{x}=[y-f(z)]z_{y}}
+$$
+
+</div>
+</div>
+
+**解析：** 将原方程写为
+
+$$
+\displaystyle xy-xf(z)-yg(z)=0.
+$$
+
+两边对 $x$ 求偏导：
+
+$$
+\displaystyle y-f(z)-[xf'(z)+yg'(z)]z_{x}=0,
+$$
+
+故
+
+$$
+\displaystyle [xf'(z)+yg'(z)]z_{x}=y-f(z).
+$$
+
+两边对 $y$ 求偏导：
+
+$$
+\displaystyle x-g(z)-[xf'(z)+yg'(z)]z_{y}=0,
+$$
+
+故
+
+$$
+\displaystyle [xf'(z)+yg'(z)]z_{y}=x-g(z).
+$$
+
+由于 $\displaystyle xf'(z)+yg'(z)\ne0$，将上面两式交叉相乘，得
+
+$$
+\displaystyle [x-g(z)]z_{x}=[y-f(z)]z_{y}.
+$$
+
+</details>
+
+---
+
+4. **【1991-12-3 分】** 由方程
+
+$$
+\displaystyle xyz+\sqrt{x^{2}+y^{2}+z^{2}}=\sqrt{2}
+$$
+
+所确定的函数 $\displaystyle z=z(x,y)$ 在点 $\displaystyle (1,0,-1)$ 处的全微分 $\displaystyle dz=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle dz=dx-\sqrt{2}\,dy}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle F(x,y,z)=xyz+\sqrt{x^{2}+y^{2}+z^{2}}-\sqrt{2}.
+$$
+
+由隐函数全微分公式，
+
+$$
+\displaystyle dz=-\dfrac{F_{x}}{F_{z}}dx-\dfrac{F_{y}}{F_{z}}dy.
+$$
+
+计算偏导：
+
+$$
+\displaystyle F_{x}=yz+\dfrac{x}{\sqrt{x^{2}+y^{2}+z^{2}}},
+$$
+
+$$
+\displaystyle F_{y}=xz+\dfrac{y}{\sqrt{x^{2}+y^{2}+z^{2}}},
+$$
+
+$$
+\displaystyle F_{z}=xy+\dfrac{z}{\sqrt{x^{2}+y^{2}+z^{2}}}.
+$$
+
+在点 $\displaystyle (1,0,-1)$ 处，
+
+$$
+\displaystyle F_{x}=\dfrac{1}{\sqrt{2}},
+\qquad
+F_{y}=-1,
+\qquad
+F_{z}=-\dfrac{1}{\sqrt{2}}.
+$$
+
+因此
+
+$$
+\displaystyle dz
+=-\dfrac{1/\sqrt{2}}{-1/\sqrt{2}}dx
+-\dfrac{-1}{-1/\sqrt{2}}dy
+=dx-\sqrt{2}\,dy.
+$$
+
+</details>
+
+---
+
+5. **【1993-45-5 分】** 设 $\displaystyle z=f(x,y)$ 是由方程
+
+$$
+\displaystyle z-y-x+xe^{z-y-x}=0
+$$
+
+所确定的二元函数，求 $\displaystyle dz$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令 $\displaystyle w=z-y-x$，则
+
+$$
+\boxed{
+\displaystyle dz=dy+\dfrac{1+(x-1)e^{z-y-x}}{1+xe^{z-y-x}}\,dx
+}
+$$
+
+**解析：** 令 $\displaystyle w=z-y-x$，则原方程化为
+
+$$
+\displaystyle w+xe^{w}=0.
+$$
+
+两边取全微分：
+
+$$
+\displaystyle dw+e^{w}dx+xe^{w}dw=0.
+$$
+
+即
+
+$$
+\displaystyle (1+xe^{w})dw+e^{w}dx=0.
+$$
+
+由于
+
+$$
+\displaystyle dw=dz-dy-dx,
+$$
+
+所以
+
+$$
+\displaystyle dz-dy-dx=-\dfrac{e^{w}}{1+xe^{w}}dx.
+$$
+
+从而
+
+$$
+\begin{aligned}
+\displaystyle dz
+&=dy+\left(1-\dfrac{e^{w}}{1+xe^{w}}\right)dx\\
+&=dy+\dfrac{1+(x-1)e^{w}}{1+xe^{w}}dx.
+\end{aligned}
+$$
+
+代回 $\displaystyle w=z-y-x$ 即得。
+
+</details>
+
+---
+
+6. **【1999-1-5 分】** 设 $\displaystyle y=y(x)$，$\displaystyle z=z(x)$ 是由方程
+
+$$
+\displaystyle z=xf(x+y)
+$$
+
+和
+
+$$
+\displaystyle F(x,y,z)=0
+$$
+
+所确定的函数，其中 $f$ 和 $F$ 分别具有一阶连续导数和一阶连续偏导数，求 $\displaystyle \dfrac{dz}{dx}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 设 $\displaystyle s=x+y$，则
+
+$$
+\boxed{
+\displaystyle \dfrac{dz}{dx}
+=\dfrac{[f(s)+xf'(s)]F_{y}-xf'(s)F_{x}}{F_{y}+xf'(s)F_{z}}
+}
+$$
+
+其中 $\displaystyle F_x,F_y,F_z$ 均在 $\displaystyle (x,y,z)$ 处取值。
+
+**解析：** 由
+
+$$
+\displaystyle z=xf(x+y)
+$$
+
+对 $x$ 求导，得
+
+$$
+\displaystyle z'=f(s)+xf'(s)(1+y').
+$$
+
+即
+
+$$
+\displaystyle z'=f(s)+xf'(s)+xf'(s)y'.
+$$
+
+又由
+
+$$
+\displaystyle F(x,y,z)=0
+$$
+
+对 $x$ 求导，得
+
+$$
+\displaystyle F_x+F_y y'+F_z z'=0.
+$$
+
+将 $z'$ 的表达式代入：
+
+$$
+\displaystyle [F_y+xf'(s)F_z]y'+F_x+[f(s)+xf'(s)]F_z=0.
+$$
+
+故
+
+$$
+\displaystyle y'
+=-\dfrac{F_x+[f(s)+xf'(s)]F_z}{F_y+xf'(s)F_z}.
+$$
+
+再代回 $z'$，整理得
+
+$$
+\displaystyle z'
+=\dfrac{[f(s)+xf'(s)]F_y-xf'(s)F_x}{F_y+xf'(s)F_z}.
+$$
+
+</details>
+
+---
+
+7. **【1999-4-3 分】** 设
+
+$$
+\displaystyle f(x,y,z)=e^x yz^2,
+$$
+
+其中 $\displaystyle z=z(x,y)$ 是由
+
+$$
+\displaystyle x+y+z+xyz=0
+$$
+
+确定的隐函数，则 $\displaystyle f'_x(0,1,-1)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 1}
+$$
+
+</div>
+</div>
+
+**解析：** 这里应把 $f$ 看成复合函数
+
+$$
+\displaystyle f(x,y,z(x,y))=e^x y[z(x,y)]^2.
+$$
+
+先由隐式方程对 $x$ 求偏导：
+
+$$
+\displaystyle 1+z_x+yz+xyz_x=0,
+$$
+
+因此
+
+$$
+\displaystyle z_x=-\dfrac{1+yz}{1+xy}.
+$$
+
+在点 $\displaystyle (0,1,-1)$ 处，
+
+$$
+\displaystyle z_x(0,1)=0.
+$$
+
+再对复合函数求偏导：
+
+$$
+\displaystyle f'_x=e^x yz^2+2e^x yzz_x.
+$$
+
+代入 $\displaystyle (x,y,z)=(0,1,-1)$ 及 $\displaystyle z_x=0$，得
+
+$$
+\displaystyle f'_x(0,1,-1)=1.
+$$
+
+</details>
+
+---
+
+8. **【2004-2-4 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle z=e^{2x-3z}+2y
+$$
+
+确定，则
+
+$$
+\displaystyle 3\dfrac{\partial z}{\partial x}+\dfrac{\partial z}{\partial y}=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 2}
+$$
+
+</div>
+</div>
+
+**解析：** 记
+
+$$
+\displaystyle E=e^{2x-3z}.
+$$
+
+对原方程关于 $x$ 求偏导：
+
+$$
+\displaystyle z_x=E(2-3z_x),
+$$
+
+所以
+
+$$
+\displaystyle (1+3E)z_x=2E,
+\qquad
+z_x=\dfrac{2E}{1+3E}.
+$$
+
+对原方程关于 $y$ 求偏导：
+
+$$
+\displaystyle z_y=-3Ez_y+2,
+$$
+
+所以
+
+$$
+\displaystyle z_y=\dfrac{2}{1+3E}.
+$$
+
+因此
+
+$$
+\displaystyle 3z_x+z_y
+=\dfrac{6E+2}{1+3E}=2.
+$$
+
+</details>
+
+---
+
+9. **【2005-1-4 分】** 设有三元方程
+
+$$
+\displaystyle xy-z\ln y+e^{xz}=1.
+$$
+
+根据隐函数存在定理，存在点 $\displaystyle (0,1,1)$ 的一个邻域，在此邻域内该方程（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. 只能确定一个具有连续偏导数的隐函数 $\displaystyle z=z(x,y)$</div>
+<div className="choice-option-row">B. 可以确定两个具有连续偏导数的隐函数 $\displaystyle y=y(x,z)$ 和 $\displaystyle z=z(x,y)$</div>
+<div className="choice-option-row">C. 可以确定两个具有连续偏导数的隐函数 $\displaystyle x=x(y,z)$ 和 $\displaystyle z=z(x,y)$</div>
+<div className="choice-option-row">D. 可以确定两个具有连续偏导数的隐函数 $\displaystyle x=x(y,z)$ 和 $\displaystyle y=y(x,z)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{D}}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle F(x,y,z)=xy-z\ln y+e^{xz}-1.
+$$
+
+分别计算三个偏导：
+
+$$
+\displaystyle F_x=y+ze^{xz},
+$$
+
+$$
+\displaystyle F_y=x-\dfrac{z}{y},
+$$
+
+$$
+\displaystyle F_z=-\ln y+xe^{xz}.
+$$
+
+在点 $\displaystyle (0,1,1)$ 处，
+
+$$
+\displaystyle F_x=2\ne0,
+\qquad
+F_y=-1\ne0,
+\qquad
+F_z=0.
+$$
+
+由隐函数存在定理：
+
+- 因 $\displaystyle F_x\ne0$，可确定 $\displaystyle x=x(y,z)$；
+- 因 $\displaystyle F_y\ne0$，可确定 $\displaystyle y=y(x,z)$；
+- 因 $\displaystyle F_z=0$，不能由该定理保证确定 $\displaystyle z=z(x,y)$。
+
+故选 D。
+
+</details>
+
+---
+
+10. **【2010-12-4 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle F\left(\dfrac{y}{x},\dfrac{z}{x}\right)=0
+$$
+
+确定，其中 $F$ 为可微函数，且 $\displaystyle F'_2\ne0$，则
+
+$$
+\displaystyle x\dfrac{\partial z}{\partial x}+y\dfrac{\partial z}{\partial y}=(\ \ ).
+$$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle x$ &emsp;&emsp; B. $\displaystyle z$ &emsp;&emsp; C. $\displaystyle -x$ &emsp;&emsp; D. $\displaystyle -z$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{B}}
+$$
+
+</div>
+</div>
+
+即
+
+$$
+\boxed{\displaystyle xz_x+yz_y=z}
+$$
+
+**解析：** 令
+
+$$
+\displaystyle p=\dfrac{y}{x},
+\qquad
+q=\dfrac{z}{x}.
+$$
+
+原方程为 $\displaystyle F(p,q)=0$。
+
+对 $x$ 求偏导：
+
+$$
+\displaystyle F_1\left(-\dfrac{y}{x^2}\right)+F_2\left(\dfrac{xz_x-z}{x^2}\right)=0.
+$$
+
+两边乘以 $\displaystyle x^2$：
+
+$$
+\displaystyle -yF_1+(xz_x-z)F_2=0.
+$$
+
+对 $y$ 求偏导：
+
+$$
+\displaystyle F_1\dfrac{1}{x}+F_2\dfrac{z_y}{x}=0,
+$$
+
+即
+
+$$
+\displaystyle F_1+F_2z_y=0.
+$$
+
+由此 $\displaystyle F_1=-F_2z_y$。代入前式：
+
+$$
+\displaystyle yF_2z_y+(xz_x-z)F_2=0.
+$$
+
+由于 $\displaystyle F_2\ne0$，故
+
+$$
+\displaystyle xz_x+yz_y=z.
+$$
+
+</details>
+
+---
+
+11. **【2013-3-4 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle (z+y)^x=xy
+$$
+
+确定，则
+
+$$
+\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(1,2)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 2(1-\ln 2)}
+$$
+
+</div>
+</div>
+
+**解析：** 在点 $\displaystyle (x,y)=(1,2)$ 处，由原方程得
+
+$$
+\displaystyle (z+2)^1=2,
+$$
+
+故 $\displaystyle z=0$。
+
+对原方程两边取对数：
+
+$$
+\displaystyle x\ln(z+y)=\ln x+\ln y.
+$$
+
+把 $y$ 看作常数，对 $x$ 求偏导：
+
+$$
+\displaystyle \ln(z+y)+\dfrac{x}{z+y}z_x=\dfrac{1}{x}.
+$$
+
+代入 $\displaystyle (x,y,z)=(1,2,0)$，得
+
+$$
+\displaystyle \ln 2+\dfrac{1}{2}z_x=1.
+$$
+
+因此
+
+$$
+\displaystyle \left.z_x\right|_{(1,2)}=2(1-\ln 2).
+$$
+
+</details>
+
+---
+
+12. **【2014-2-4 分】** 设 $\displaystyle z=z(x,y)$ 是由方程
+
+$$
+\displaystyle e^{2yz}+x+y^2+z=\dfrac{7}{4}
+$$
+
+确定的函数，则
+
+$$
+\displaystyle \left.dz\right|_{(\frac12,\frac12)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle \left.dz\right|_{(\frac12,\frac12)}=-\dfrac12\,dx-\dfrac12\,dy}
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=y=\dfrac12$ 时，原方程化为
+
+$$
+\displaystyle e^z+\dfrac12+\dfrac14+z=\dfrac74,
+$$
+
+即
+
+$$
+\displaystyle e^z+z=1.
+$$
+
+显然 $\displaystyle z=0$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=e^{2yz}+x+y^2+z-\dfrac74.
+$$
+
+则
+
+$$
+\displaystyle F_x=1,
+$$
+
+$$
+\displaystyle F_y=2ze^{2yz}+2y,
+$$
+
+$$
+\displaystyle F_z=2ye^{2yz}+1.
+$$
+
+在 $\displaystyle \left(\dfrac12,\dfrac12,0\right)$ 处，
+
+$$
+\displaystyle F_x=1,
+\qquad
+F_y=1,
+\qquad
+F_z=2.
+$$
+
+由 $\displaystyle dF=0$，得
+
+$$
+\displaystyle F_xdx+F_ydy+F_zdz=0,
+$$
+
+故
+
+$$
+\displaystyle dz=-\dfrac{F_x}{F_z}dx-\dfrac{F_y}{F_z}dy
+=-\dfrac12dx-\dfrac12dy.
+$$
+
+</details>
+
+---
+
+13. **【2015-23-4 分】** 若函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle e^{x+2y+3z}+xyz=1
+$$
+
+确定，则
+
+$$
+\displaystyle \left.dz\right|_{(0,0)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle \left.dz\right|_{(0,0)}=-\dfrac13\,dx-\dfrac23\,dy}
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=y=0$ 时，原方程为
+
+$$
+\displaystyle e^{3z}=1,
+$$
+
+故 $\displaystyle z=0$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=e^{x+2y+3z}+xyz-1.
+$$
+
+则
+
+$$
+\displaystyle F_x=e^{x+2y+3z}+yz,
+$$
+
+$$
+\displaystyle F_y=2e^{x+2y+3z}+xz,
+$$
+
+$$
+\displaystyle F_z=3e^{x+2y+3z}+xy.
+$$
+
+在 $\displaystyle (0,0,0)$ 处，
+
+$$
+\displaystyle F_x=1,
+\qquad
+F_y=2,
+\qquad
+F_z=3.
+$$
+
+由隐函数全微分公式，
+
+$$
+\displaystyle dz=-\dfrac{F_x}{F_z}dx-\dfrac{F_y}{F_z}dy
+=-\dfrac13dx-\dfrac23dy.
+$$
+
+</details>
+
+---
+
+14. **【2015-1-4 分】** 若函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle e^z+xyz+x+\cos x=2
+$$
+
+确定，则
+
+$$
+\displaystyle \left.dz\right|_{(0,1)}=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle \left.dz\right|_{(0,1)}=-dx}
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle (x,y)=(0,1)$ 处，原方程为
+
+$$
+\displaystyle e^z+1=2,
+$$
+
+故 $\displaystyle z=0$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=e^z+xyz+x+\cos x-2.
+$$
+
+则
+
+$$
+\displaystyle F_x=yz+1-\sin x,
+$$
+
+$$
+\displaystyle F_y=xz,
+$$
+
+$$
+\displaystyle F_z=e^z+xy.
+$$
+
+在 $\displaystyle (0,1,0)$ 处，
+
+$$
+\displaystyle F_x=1,
+\qquad
+F_y=0,
+\qquad
+F_z=1.
+$$
+
+因此
+
+$$
+\displaystyle dz=-\dfrac{F_x}{F_z}dx-\dfrac{F_y}{F_z}dy=-dx.
+$$
+
+</details>
+
+---
+
+15. **【2018-2-4 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle \ln z+e^{z-1}=xy
+$$
+
+确定，则
+
+$$
+\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(2,\frac12)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle \dfrac14}
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle \left(x,y\right)=\left(2,\dfrac12\right)$ 处，$\displaystyle xy=1$。由
+
+$$
+\displaystyle \ln z+e^{z-1}=1
+$$
+
+可知 $\displaystyle z=1$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=\ln z+e^{z-1}-xy.
+$$
+
+则
+
+$$
+\displaystyle F_x=-y,
+\qquad
+F_z=\dfrac1z+e^{z-1}.
+$$
+
+由隐函数求导公式，
+
+$$
+\displaystyle z_x=-\dfrac{F_x}{F_z}
+=\dfrac{y}{\frac1z+e^{z-1}}.
+$$
+
+代入 $\displaystyle \left(x,y,z\right)=\left(2,\dfrac12,1\right)$，得
+
+$$
+\displaystyle \left.z_x\right|_{(2,\frac12)}
+=\dfrac{\frac12}{1+1}
+=\dfrac14.
+$$
+
+</details>
+
+---
+
+16. **【2021-2-5 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle (x+1)z+y\ln z-\arctan(2xy)=1
+$$
+
+确定，则
+
+$$
+\displaystyle \left.\dfrac{\partial z}{\partial x}\right|_{(0,2)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{1}
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle (x,y)=(0,2)$ 处，原方程为
+
+$$
+\displaystyle z+2\ln z=1.
+$$
+
+可知 $\displaystyle z=1$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=(x+1)z+y\ln z-\arctan(2xy)-1.
+$$
+
+则
+
+$$
+\displaystyle F_x=z-\dfrac{2y}{1+4x^2y^2},
+$$
+
+$$
+\displaystyle F_z=x+1+\dfrac{y}{z}.
+$$
+
+在 $\displaystyle (0,2,1)$ 处，
+
+$$
+\displaystyle F_x=1-4=-3,
+\qquad
+F_z=1+2=3.
+$$
+
+因此
+
+$$
+\displaystyle \left.z_x\right|_{(0,2)}
+=-\dfrac{F_x}{F_z}
+=1.
+$$
+
+</details>
+
+---
+
+17. **【2023-2-5 分】** 设函数 $\displaystyle z=z(x,y)$ 由
+
+$$
+\displaystyle e^z+xz=2x-y
+$$
+
+确定，则
+
+$$
+\displaystyle \left.\dfrac{\partial^2z}{\partial x^2}\right|_{(1,1)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle -\dfrac32}
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle (x,y)=(1,1)$ 处，原方程为
+
+$$
+\displaystyle e^z+z=1,
+$$
+
+故 $\displaystyle z=0$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=e^z+xz-2x+y.
+$$
+
+先求一阶偏导。由
+
+$$
+\displaystyle F_x+F_zz_x=0,
+$$
+
+其中
+
+$$
+\displaystyle F_x=z-2,
+\qquad
+F_z=e^z+x,
+$$
+
+得
+
+$$
+\displaystyle z_x=\dfrac{2-z}{e^z+x}.
+$$
+
+在 $\displaystyle (1,1,0)$ 处，
+
+$$
+\displaystyle z_x=1.
+$$
+
+再对 $x$ 求导，利用二阶隐函数求导公式：
+
+$$
+\displaystyle F_{xx}+2F_{xz}z_x+F_{zz}z_x^2+F_zz_{xx}=0.
+$$
+
+这里
+
+$$
+\displaystyle F_{xx}=0,
+\qquad
+F_{xz}=1,
+\qquad
+F_{zz}=e^z.
+$$
+
+代入 $\displaystyle (x,y,z)=(1,1,0)$ 及 $\displaystyle z_x=1$，得
+
+$$
+\displaystyle 0+2+1+2z_{xx}=0.
+$$
+
+故
+
+$$
+\displaystyle \left.z_{xx}\right|_{(1,1)}=-\dfrac32.
+$$
+
+</details>
+
+---
+
+18. **【2024-3-5 分】** 设函数 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle z+e^x-y\ln(1+z^2)=0
+$$
+
+确定，求
+
+$$
+\displaystyle \left.\left(\dfrac{\partial^2z}{\partial x^2}+\dfrac{\partial^2z}{\partial y^2}\right)\right|_{(0,0)}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle -1-2\ln 2}
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle (x,y)=(0,0)$ 处，原方程为
+
+$$
+\displaystyle z+1=0,
+$$
+
+故 $\displaystyle z=-1$。
+
+令
+
+$$
+\displaystyle F(x,y,z)=z+e^x-y\ln(1+z^2).
+$$
+
+有
+
+$$
+\displaystyle F_x=e^x,
+\qquad
+F_y=-\ln(1+z^2),
+$$
+
+$$
+\displaystyle F_z=1-\dfrac{2yz}{1+z^2}.
+$$
+
+在 $\displaystyle (0,0,-1)$ 处，
+
+$$
+\displaystyle F_z=1,
+\qquad
+z_x=-\dfrac{F_x}{F_z}=-1,
+\qquad
+z_y=-\dfrac{F_y}{F_z}=\ln2.
+$$
+
+对 $x$ 再求偏导：
+
+$$
+\displaystyle F_{xx}+2F_{xz}z_x+F_{zz}z_x^2+F_zz_{xx}=0.
+$$
+
+在该点，
+
+$$
+\displaystyle F_{xx}=1,
+\qquad
+F_{xz}=0,
+\qquad
+F_{zz}=0,
+$$
+
+所以
+
+$$
+\displaystyle z_{xx}=-1.
+$$
+
+对 $y$ 再求偏导：
+
+$$
+\displaystyle F_{yy}+2F_{yz}z_y+F_{zz}z_y^2+F_zz_{yy}=0.
+$$
+
+其中
+
+$$
+\displaystyle F_{yy}=0,
+$$
+
+$$
+\displaystyle F_{yz}=-\dfrac{2z}{1+z^2}.
+$$
+
+在 $\displaystyle z=-1$ 时，$\displaystyle F_{yz}=1$，且 $\displaystyle F_{zz}=0$，故
+
+$$
+\displaystyle z_{yy}=-2F_{yz}z_y=-2\ln2.
+$$
+
+因此
+
+$$
+\displaystyle \left.(z_{xx}+z_{yy})\right|_{(0,0)}=-1-2\ln2.
+$$
+
+</details>
+
+---
+
+19. **【2025-2-5 分】** 设函数 $\displaystyle z=z(x,y)$ 由
+
+$$
+\displaystyle z+\ln z-\int_y^x e^{-t^2}\,dt=0
+$$
+
+确定，则
+
+$$
+\displaystyle \dfrac{\partial z}{\partial x}+\dfrac{\partial z}{\partial y}=（\ \ ）
+$$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \dfrac{z}{z+1}(e^{-x^2}-e^{-y^2})$ &emsp;&emsp; B. $\displaystyle \dfrac{z}{z+1}(e^{-x^2}+e^{-y^2})$</div>
+<div className="choice-option-row">C. $\displaystyle -\dfrac{z}{z+1}(e^{-x^2}-e^{-y^2})$ &emsp;&emsp; D. $\displaystyle -\dfrac{z}{z+1}(e^{-x^2}+e^{-y^2})$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\text{A}}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle F(x,y,z)=z+\ln z-\int_y^x e^{-t^2}\,dt.
+$$
+
+由变上、下限积分求导公式，
+
+$$
+\displaystyle F_x=-e^{-x^2},
+\qquad
+F_y=e^{-y^2},
+$$
+
+且
+
+$$
+\displaystyle F_z=1+\dfrac1z=\dfrac{z+1}{z}.
+$$
+
+因此
+
+$$
+\displaystyle z_x=-\dfrac{F_x}{F_z}
+=\dfrac{z}{z+1}e^{-x^2},
+$$
+
+$$
+\displaystyle z_y=-\dfrac{F_y}{F_z}
+=-\dfrac{z}{z+1}e^{-y^2}.
+$$
+
+相加得
+
+$$
+\displaystyle z_x+z_y
+=\dfrac{z}{z+1}\left(e^{-x^2}-e^{-y^2}\right).
+$$
+
+故选 A。
+
+</details>
+
+---
+
+20. **【2025-3-5 分】** 已知函数 $\displaystyle z=z(x,y)$ 由
+
+$$
+\displaystyle z+\ln z-\int_y^x xe^{-t^2}\,dt=1
+$$
+
+确定，则
+
+$$
+\displaystyle \left.\dfrac{\partial^2z}{\partial x^2}\right|_{(1,1)}=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle \dfrac{1}{8e^2}}
+$$
+
+</div>
+</div>
+
+**解析：** 积分变量为 $t$，故积分中的 $x$ 关于 $t$ 为常量。记
+
+$$
+\displaystyle I(x,y)=\int_y^x e^{-t^2}\,dt,
+$$
+
+则原方程可写为
+
+$$
+\displaystyle z+\ln z-xI(x,y)=1.
+$$
+
+在 $\displaystyle (x,y)=(1,1)$ 处，$\displaystyle I(1,1)=0$，于是
+
+$$
+\displaystyle z+\ln z=1,
+$$
+
+故 $\displaystyle z=1$。
+
+令
+
+$$
+\displaystyle H(x,y)=xI(x,y).
+$$
+
+则
+
+$$
+\displaystyle H_x=I(x,y)+xe^{-x^2}.
+$$
+
+在 $\displaystyle (1,1)$ 处，
+
+$$
+\displaystyle H_x=e^{-1}.
+$$
+
+对方程关于 $x$ 求偏导：
+
+$$
+\displaystyle \left(1+\dfrac1z\right)z_x=H_x.
+$$
+
+故在 $\displaystyle (1,1,z=1)$ 处，
+
+$$
+\displaystyle z_x=\dfrac{1}{2e}.
+$$
+
+再求一次偏导。由于
+
+$$
+\displaystyle H_{xx}
+=\dfrac{\partial}{\partial x}\left(I+xe^{-x^2}\right)
+=e^{-x^2}+e^{-x^2}-2x^2e^{-x^2}
+=2(1-x^2)e^{-x^2},
+$$
+
+所以 $\displaystyle H_{xx}(1,1)=0$。
+
+另一方面，
+
+$$
+\displaystyle \dfrac{d}{dx}\left[\left(1+\dfrac1z\right)z_x\right]
+=\left(1+\dfrac1z\right)z_{xx}-\dfrac{z_x^2}{z^2}.
+$$
+
+因此在 $\displaystyle z=1$ 处，
+
+$$
+\displaystyle 2z_{xx}-z_x^2=0.
+$$
+
+于是
+
+$$
+\displaystyle z_{xx}=\dfrac{z_x^2}{2}
+=\dfrac12\left(\dfrac{1}{2e}\right)^2
+=\dfrac{1}{8e^2}.
+$$
+
+</details>
+
+## 大题
+
+### （一）数值型
+
+1. **【1996-5-7 分】** 设
+
+$$
+\displaystyle f(x,y)=\int_0^{xy}e^{-t^2}\,dt,
+$$
+
+求
+
+$$
+\displaystyle \dfrac{x}{y}\dfrac{\partial^2f}{\partial x^2}
+-2\dfrac{\partial^2f}{\partial x\partial y}
++\dfrac{y}{x}\dfrac{\partial^2f}{\partial y^2}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle -2e^{-x^2y^2}}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle s=xy.
+$$
+
+由变上限积分求导公式，
+
+$$
+\displaystyle f_x=e^{-s^2}s_x
+=ye^{-x^2y^2},
+$$
+
+$$
+\displaystyle f_y=e^{-s^2}s_y
+=xe^{-x^2y^2}.
+$$
+
+继续求二阶偏导数：
+
+$$
+\begin{aligned}
+\displaystyle f_{xx}
+&=\dfrac{\partial}{\partial x}
+\left(ye^{-x^2y^2}\right)\\
+&=-2xy^3e^{-x^2y^2},
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\displaystyle f_{xy}
+&=\dfrac{\partial}{\partial y}
+\left(ye^{-x^2y^2}\right)\\
+&=e^{-x^2y^2}-2x^2y^2e^{-x^2y^2}\\
+&=\left(1-2x^2y^2\right)e^{-x^2y^2},
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\displaystyle f_{yy}
+&=\dfrac{\partial}{\partial y}
+\left(xe^{-x^2y^2}\right)\\
+&=-2x^3ye^{-x^2y^2}.
+\end{aligned}
+$$
+
+代入所求式：
+
+$$
+\begin{aligned}
+&\displaystyle \dfrac{x}{y}f_{xx}-2f_{xy}+\dfrac{y}{x}f_{yy}\\
+={}&\displaystyle -2x^2y^2e^{-x^2y^2}
+-2\left(1-2x^2y^2\right)e^{-x^2y^2}
+-2x^2y^2e^{-x^2y^2}\\
+={}&\displaystyle -2e^{-x^2y^2}.
+\end{aligned}
+$$
+
+本题的关键是先由积分上限 $$xy$$ 求出一阶偏导，再注意混合偏导中还要对上限导数因子 $y$ 求导。
+
+</details>
+
+---
+
+2. **【2000-4-6 分】** 已知
+
+$$
+\displaystyle z=u^v,\qquad
+u=\ln\sqrt{x^2+y^2},\qquad
+v=\arctan\dfrac{y}{x},
+$$
+
+求 $\displaystyle dz$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle
+dz=\dfrac{u^v}{x^2+y^2}
+\left[
+\left(\dfrac{vx}{u}-y\ln u\right)dx
++
+\left(\dfrac{vy}{u}+x\ln u\right)dy
+\right]
+}
+$$
+
+</div>
+</div>
+
+其中
+
+$$
+\displaystyle u=\ln\sqrt{x^2+y^2},
+\qquad
+v=\arctan\dfrac{y}{x}.
+$$
+
+**解析：** 对幂指函数
+
+$$
+\displaystyle z=u^v
+$$
+
+取对数：
+
+$$
+\displaystyle \ln z=v\ln u.
+$$
+
+两边求全微分：
+
+$$
+\displaystyle \dfrac{dz}{z}=\ln u\,dv+\dfrac{v}{u}\,du,
+$$
+
+故
+
+$$
+\displaystyle dz=u^v\left(\ln u\,dv+\dfrac{v}{u}\,du\right).
+$$
+
+先求 $u$ 的全微分：
+
+$$
+\begin{aligned}
+\displaystyle u
+&=\dfrac12\ln(x^2+y^2),\\
+\displaystyle du
+&=\dfrac{x\,dx+y\,dy}{x^2+y^2}.
+\end{aligned}
+$$
+
+再求 $v$ 的全微分：
+
+$$
+\begin{aligned}
+\displaystyle v
+&=\arctan\dfrac{y}{x},\\
+\displaystyle dv
+&=\dfrac{x\,dy-y\,dx}{x^2+y^2}.
+\end{aligned}
+$$
+
+代入得
+
+$$
+\begin{aligned}
+\displaystyle dz
+&=u^v\left[
+\ln u\,\dfrac{x\,dy-y\,dx}{x^2+y^2}
++\dfrac{v}{u}\,\dfrac{x\,dx+y\,dy}{x^2+y^2}
+\right]\\
+&=\dfrac{u^v}{x^2+y^2}
+\left[
+\left(\dfrac{vx}{u}-y\ln u\right)dx
++
+\left(\dfrac{vy}{u}+x\ln u\right)dy
+\right].
+\end{aligned}
+$$
+
+这里采用对数求导，可把 $u^v$ 的微分统一写成底函数与指数函数微分的组合。
+
+</details>
+
+### （二）抽象型
+
+1. **【1987-2-7 分】** 设
+
+$$
+\displaystyle z=f(u,x,y),\qquad u=xe^y,
+$$
+
+其中 $f$ 有二阶连续偏导数，求
+
+$$
+\displaystyle \dfrac{\partial^2z}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 记 $f$ 的三个自变量依次为 $u,x,y$，则
+
+$$
+\boxed{
+\displaystyle
+z_{xy}
+=e^yf_u+xe^{2y}f_{uu}+xe^yf_{ux}+e^yf_{uy}+f_{xy}
+}
+$$
+
+其中各偏导数均在点 $\displaystyle (u,x,y)=(xe^y,x,y)$ 处取值。
+
+**解析：** 由复合函数求导法则，先对 $x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=f_u u_x+f_x\\
+&=e^yf_u+f_x.
+\end{aligned}
+$$
+
+再对 $y$ 求偏导。对第一项，
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial}{\partial y}(e^yf_u)
+&=e^yf_u+e^y\dfrac{\partial f_u}{\partial y}\\
+&=e^yf_u+e^y\left(f_{uu}u_y+f_{uy}\right).
+\end{aligned}
+$$
+
+由于
+
+$$
+\displaystyle u_y=xe^y=u,
+$$
+
+所以
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}(e^yf_u)
+=e^yf_u+xe^{2y}f_{uu}+e^yf_{uy}.
+$$
+
+对第二项，
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{\partial f_x}{\partial y}
+&=f_{xu}u_y+f_{xy}\\
+&=xe^yf_{xu}+f_{xy}.
+\end{aligned}
+$$
+
+因二阶连续偏导数存在，
+
+$$
+\displaystyle f_{xu}=f_{ux}.
+$$
+
+故
+
+$$
+\displaystyle z_{xy}
+=e^yf_u+xe^{2y}f_{uu}+xe^yf_{ux}+e^yf_{uy}+f_{xy}.
+$$
+
+注意：$f(u,x,y)$ 的第二、第三个自变量本身也是 $x,y$，因此链式法则中不仅有由 $u=xe^y$ 产生的项，还保留 $f_x,f_y$ 的直接变化项。
+
+</details>
+
+---
+
+2. **【1988-12-6 分】** 设
+
+$$
+\displaystyle u=yf\left(\dfrac{x}{y}\right)+xg\left(\dfrac{y}{x}\right),
+$$
+
+其中 $f,g$ 具有二阶连续导数，求
+
+$$
+\displaystyle x\dfrac{\partial^2u}{\partial x^2}
++y\dfrac{\partial^2u}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 0}
+$$
+
+</div>
+</div>
+
+**解析：** 先观察函数的齐次性。对任意 $\lambda>0$，
+
+$$
+\begin{aligned}
+\displaystyle u(\lambda x,\lambda y)
+&=\lambda y f\left(\dfrac{\lambda x}{\lambda y}\right)
++\lambda x g\left(\dfrac{\lambda y}{\lambda x}\right)\\
+&=\lambda\left[
+ y f\left(\dfrac{x}{y}\right)
++x g\left(\dfrac{y}{x}\right)
+\right]\\
+&=\lambda u(x,y).
+\end{aligned}
+$$
+
+因此 $u$ 是关于 $x,y$ 的一阶齐次函数。由欧拉齐次函数定理，
+
+$$
+\displaystyle xu_x+yu_y=u.
+$$
+
+对上式关于 $x$ 求偏导：
+
+$$
+\displaystyle u_x+xu_{xx}+yu_{yx}=u_x.
+$$
+
+消去两边的 $u_x$，并利用
+
+$$
+\displaystyle u_{yx}=u_{xy},
+$$
+
+得到
+
+$$
+\displaystyle xu_{xx}+yu_{xy}=0.
+$$
+
+所以所求结果为
+
+$$
+\boxed{\displaystyle 0}.
+$$
+
+若直接逐项求二阶偏导，计算较长；识别一阶齐次结构并使用欧拉定理是本题的核心。
+
+</details>
+
+---
+
+3. **【1993-2-6 分】** 设
+
+$$
+\displaystyle z=x^3f\left(xy,\dfrac{y}{x}\right),
+$$
+
+$f$ 具有连续二阶偏导数，求
+
+$$
+\displaystyle \dfrac{\partial z}{\partial y},
+\qquad
+\dfrac{\partial^2z}{\partial y^2},
+\qquad
+\dfrac{\partial^2z}{\partial x\partial y}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令
+
+$$
+\displaystyle u=xy,\qquad v=\dfrac{y}{x},
+$$
+
+则
+
+$$
+\boxed{
+\displaystyle z_y=x^4f_u+x^2f_v
+}
+$$
+
+$$
+\boxed{
+\displaystyle z_{yy}=x^5f_{uu}+2x^3f_{uv}+xf_{vv}
+}
+$$
+
+$$
+\boxed{
+\displaystyle z_{xy}
+=4x^3f_u+x^4y f_{uu}+2xf_v-yf_{vv}
+}
+$$
+
+其中各偏导数均在 $\displaystyle (u,v)=\left(xy,\dfrac{y}{x}\right)$ 处取值。
+
+**解析：** 记
+
+$$
+\displaystyle u=xy,\qquad v=\dfrac{y}{x}.
+$$
+
+则
+
+$$
+\displaystyle u_y=x,\qquad v_y=\dfrac1x,
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle z_y
+&=x^3\left(f_u u_y+f_v v_y\right)\\
+&=x^3\left(xf_u+\dfrac1x f_v\right)\\
+&=x^4f_u+x^2f_v.
+\end{aligned}
+$$
+
+再对 $y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{yy}
+&=x^4\left(f_{uu}u_y+f_{uv}v_y\right)
++x^2\left(f_{vu}u_y+f_{vv}v_y\right)\\
+&=x^4\left(xf_{uu}+\dfrac1x f_{uv}\right)
++x^2\left(xf_{vu}+\dfrac1x f_{vv}\right).
+\end{aligned}
+$$
+
+因 $f$ 有连续二阶偏导数，
+
+$$
+\displaystyle f_{vu}=f_{uv},
+$$
+
+故
+
+$$
+\displaystyle z_{yy}=x^5f_{uu}+2x^3f_{uv}+xf_{vv}.
+$$
+
+下面由
+
+$$
+\displaystyle z_y=x^4f_u+x^2f_v
+$$
+
+对 $x$ 求偏导。注意
+
+$$
+\displaystyle u_x=y,
+\qquad
+v_x=-\dfrac{y}{x^2}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&4x^3f_u
++x^4\left(yf_{uu}-\dfrac{y}{x^2}f_{uv}\right)\\
+&+2xf_v
++x^2\left(yf_{vu}-\dfrac{y}{x^2}f_{vv}\right).
+\end{aligned}
+$$
+
+利用 $\displaystyle f_{uv}=f_{vu}$，中间的混合偏导项相消，得到
+
+$$
+\displaystyle z_{xy}
+=4x^3f_u+x^4y f_{uu}+2xf_v-yf_{vv}.
+$$
+
+本题中 $z_{xy}$ 的两个 $f_{uv}$ 项恰好相消，是化简时容易遗漏的关键步骤。
+
+</details>
+
+---
+
+4. **【1996-12-6 分】** 设变换 $\displaystyle \begin{cases}u=x-2y,\\ v=x+ay\end{cases}$ 可把方程 $\displaystyle 6\dfrac{\partial^{2}z}{\partial x^{2}}+\dfrac{\partial^{2}z}{\partial x\partial y}-\dfrac{\partial^{2}z}{\partial y^{2}}=0$ 简化为 $\displaystyle \dfrac{\partial^{2}z}{\partial u\partial v}=0$，求常数 $a$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle a=3}
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle u=x-2y,\qquad v=x+ay,
+$$
+
+可得微分算子
+
+$$
+\displaystyle \dfrac{\partial}{\partial x}
+=\dfrac{\partial}{\partial u}+\dfrac{\partial}{\partial v},
+\qquad
+\dfrac{\partial}{\partial y}
+=-2\dfrac{\partial}{\partial u}+a\dfrac{\partial}{\partial v}.
+$$
+
+于是
+
+$$
+\displaystyle z_{xx}=z_{uu}+2z_{uv}+z_{vv},
+$$
+
+$$
+\displaystyle z_{xy}=-2z_{uu}+(a-2)z_{uv}+az_{vv},
+$$
+
+$$
+\displaystyle z_{yy}=4z_{uu}-4az_{uv}+a^{2}z_{vv}.
+$$
+
+代入原方程，得
+
+$$
+\begin{aligned}
+\displaystyle 6z_{xx}+z_{xy}-z_{yy}
+&=(10+5a)z_{uv}+(6+a-a^{2})z_{vv}.
+\end{aligned}
+$$
+
+要使方程只含混合偏导数，必须有
+
+$$
+\displaystyle 6+a-a^{2}=0,
+$$
+
+即
+
+$$
+\displaystyle a=3\quad\text{或}\quad a=-2.
+$$
+
+当 $\displaystyle a=-2$ 时，$\displaystyle v=x-2y=u$，变量变换退化，不能采用。因此
+
+$$
+\boxed{\displaystyle a=3}.
+$$
+
+此时原方程化为
+
+$$
+\displaystyle 25z_{uv}=0,
+$$
+
+即 $\displaystyle z_{uv}=0$。
+
+</details>
+
+---
+
+5. **【2001-1-6 分】** 设函数 $\displaystyle z=f(x,y)$ 在点 $(1,1)$ 处可微，且 $\displaystyle f(1,1)=1$，$\displaystyle f_x(1,1)=2$，$\displaystyle f_y(1,1)=3$，$\displaystyle \varphi(x)=f(x,f(x,x))$，求 $\displaystyle \left.\dfrac{d}{dx}\varphi^{3}(x)\right|_{x=1}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle 51}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle h(x)=f(x,x),
+$$
+
+则 $\displaystyle \varphi(x)=f(x,h(x))$。由已知条件，
+
+$$
+\displaystyle h(1)=f(1,1)=1,
+$$
+
+且
+
+$$
+\displaystyle h'(1)=f_x(1,1)+f_y(1,1)=2+3=5.
+$$
+
+再由复合函数求导法则，
+
+$$
+\displaystyle \varphi'(x)=f_x(x,h(x))+f_y(x,h(x))h'(x),
+$$
+
+所以
+
+$$
+\displaystyle \varphi(1)=f(1,1)=1,
+\qquad
+\varphi'(1)=2+3\times5=17.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \left.\dfrac{d}{dx}\varphi^{3}(x)\right|_{x=1}
+&=\left.3\varphi^{2}(x)\varphi'(x)\right|_{x=1}\\
+&=3\times1^{2}\times17\\
+&=51.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+6. **【2003-34-8 分】** 设 $\displaystyle f(u,v)$ 具有二阶连续偏导数，且满足 $\displaystyle f_{uu}+f_{vv}=1$，又 $\displaystyle g(x,y)=f\left(xy,\dfrac{1}{2}(x^{2}-y^{2})\right)$，求 $\displaystyle g_{xx}+g_{yy}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{\displaystyle g_{xx}+g_{yy}=x^{2}+y^{2}}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=xy,
+\qquad
+v=\dfrac{1}{2}(x^{2}-y^{2}),
+$$
+
+则
+
+$$
+\displaystyle u_x=y,\quad u_y=x,\quad u_{xx}=u_{yy}=0,
+$$
+
+$$
+\displaystyle v_x=x,\quad v_y=-y,\quad v_{xx}=1,\quad v_{yy}=-1.
+$$
+
+由二阶复合函数求导公式，
+
+$$
+\displaystyle g_{xx}
+=f_{uu}u_x^{2}+2f_{uv}u_xv_x+f_{vv}v_x^{2}
++f_u u_{xx}+f_v v_{xx},
+$$
+
+$$
+\displaystyle g_{yy}
+=f_{uu}u_y^{2}+2f_{uv}u_yv_y+f_{vv}v_y^{2}
++f_u u_{yy}+f_v v_{yy}.
+$$
+
+两式相加，得
+
+$$
+\begin{aligned}
+\displaystyle g_{xx}+g_{yy}
+={}&(x^{2}+y^{2})f_{uu}
++2(xy-xy)f_{uv}\\
+&+(x^{2}+y^{2})f_{vv}
++(1-1)f_v\\
+={}&(x^{2}+y^{2})(f_{uu}+f_{vv}).
+\end{aligned}
+$$
+
+由 $\displaystyle f_{uu}+f_{vv}=1$，故
+
+$$
+\boxed{\displaystyle g_{xx}+g_{yy}=x^{2}+y^{2}}.
+$$
+
+</details>
+
+---
+
+7. **【2004-2-10 分】** 设 $\displaystyle z=f(x^{2}-y^{2},e^{xy})$，其中 $f$ 具有连续二阶偏导数，求 $\displaystyle z_x$，$\displaystyle z_y$，$\displaystyle z_{xy}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令
+
+$$
+\displaystyle u=x^{2}-y^{2},
+\qquad
+v=e^{xy},
+$$
+
+则
+
+$$
+\boxed{\displaystyle z_x=2x f_u+y e^{xy}f_v},
+$$
+
+$$
+\boxed{\displaystyle z_y=-2y f_u+x e^{xy}f_v},
+$$
+
+$$
+\boxed{
+\displaystyle z_{xy}
+=-4xy f_{uu}
++2(x^{2}-y^{2})e^{xy}f_{uv}
++xy e^{2xy}f_{vv}
++(1+xy)e^{xy}f_v
+}.
+$$
+
+其中各偏导数均在 $\displaystyle (u,v)=(x^{2}-y^{2},e^{xy})$ 处取值。
+
+**解析：** 由链式法则，
+
+$$
+\displaystyle u_x=2x,\quad u_y=-2y,
+\qquad
+v_x=ye^{xy},\quad v_y=xe^{xy}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=f_u u_x+f_v v_x\\
+&=2x f_u+y e^{xy}f_v,
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\displaystyle z_y
+&=f_u u_y+f_v v_y\\
+&=-2y f_u+x e^{xy}f_v.
+\end{aligned}
+$$
+
+再对 $z_x$ 关于 $y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&2x\left(f_{uu}u_y+f_{uv}v_y\right)
++(1+xy)e^{xy}f_v\\
+&+ye^{xy}\left(f_{vu}u_y+f_{vv}v_y\right).
+\end{aligned}
+$$
+
+代入 $\displaystyle u_y=-2y$、$\displaystyle v_y=xe^{xy}$，并利用 $\displaystyle f_{uv}=f_{vu}$，得
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&-4xy f_{uu}
++2(x^{2}-y^{2})e^{xy}f_{uv}\\
+&+xy e^{2xy}f_{vv}
++(1+xy)e^{xy}f_v.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+8. **【2005-34-8 分】** 设 $\displaystyle f(u)$ 具有二阶连续导数，且 $\displaystyle g(x,y)=f\left(\dfrac{y}{x}\right)+y f\left(\dfrac{x}{y}\right)$，求 $\displaystyle x^{2}g_{xx}-y^{2}g_{yy}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle x^{2}g_{xx}-y^{2}g_{yy}
+=2\dfrac{y}{x}f'\left(\dfrac{y}{x}\right)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 将
+
+$$
+\displaystyle g(x,y)=g_1(x,y)+g_2(x,y),
+$$
+
+其中
+
+$$
+\displaystyle g_1=f\left(\dfrac{y}{x}\right),
+\qquad
+g_2=yf\left(\dfrac{x}{y}\right).
+$$
+
+先计算 $g_1$。令 $\displaystyle r=\dfrac{y}{x}$，则
+
+$$
+\displaystyle r_x=-\dfrac{r}{x},
+\qquad
+r_{xx}=\dfrac{2r}{x^{2}},
+\qquad
+r_y=\dfrac{1}{x},
+\qquad
+r_{yy}=0.
+$$
+
+因此
+
+$$
+\displaystyle (g_1)_{xx}
+=f''(r)\dfrac{r^{2}}{x^{2}}+f'(r)\dfrac{2r}{x^{2}},
+$$
+
+$$
+\displaystyle (g_1)_{yy}=f''(r)\dfrac{1}{x^{2}}.
+$$
+
+注意 $\displaystyle y=rx$，所以
+
+$$
+\begin{aligned}
+\displaystyle x^{2}(g_1)_{xx}-y^{2}(g_1)_{yy}
+&=r^{2}f''(r)+2rf'(r)-r^{2}f''(r)\\
+&=2rf'(r).
+\end{aligned}
+$$
+
+再计算 $g_2$。令 $\displaystyle s=\dfrac{x}{y}$，则
+
+$$
+\displaystyle (g_2)_x=f'(s),
+\qquad
+(g_2)_{xx}=\dfrac{1}{y}f''(s).
+$$
+
+另一方面，
+
+$$
+\displaystyle (g_2)_y=f(s)-sf'(s),
+$$
+
+故
+
+$$
+\displaystyle (g_2)_{yy}=\dfrac{s^{2}}{y}f''(s).
+$$
+
+由 $\displaystyle x=sy$，得
+
+$$
+\begin{aligned}
+\displaystyle x^{2}(g_2)_{xx}-y^{2}(g_2)_{yy}
+&=\dfrac{x^{2}}{y}f''(s)-ys^{2}f''(s)\\
+&=0.
+\end{aligned}
+$$
+
+综上，
+
+$$
+\begin{aligned}
+\displaystyle x^{2}g_{xx}-y^{2}g_{yy}
+&=2rf'(r)\\
+&=2\dfrac{y}{x}f'\left(\dfrac{y}{x}\right).
+\end{aligned}
+$$
+
+</details>
+
+---
+
+9. **【2009-2-10 分】** 设 $\displaystyle z=f(x+y,x-y,xy)$，其中 $f$ 具有二阶连续偏导数，求 $\displaystyle dz$ 与 $\displaystyle \dfrac{\partial^{2}z}{\partial x\partial y}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 令
+
+$$
+\displaystyle u=x+y,\qquad v=x-y,\qquad w=xy,
+$$
+
+则
+
+$$
+\boxed{
+\displaystyle dz=\bigl(f_u+f_v+yf_w\bigr)\,dx+\bigl(f_u-f_v+xf_w\bigr)\,dy
+}
+$$
+
+且
+
+$$
+\boxed{
+\displaystyle z_{xy}=f_{uu}-f_{vv}+(x+y)f_{uw}+(x-y)f_{vw}+xyf_{ww}+f_w
+}
+$$
+
+其中各偏导数均在点 $\displaystyle (u,v,w)=(x+y,x-y,xy)$ 处取值。
+
+**解析：** 由复合函数全微分公式，
+
+$$
+\displaystyle du=dx+dy,\qquad dv=dx-dy,\qquad dw=y\,dx+x\,dy.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle dz
+&=f_u\,du+f_v\,dv+f_w\,dw\\
+&=f_u(dx+dy)+f_v(dx-dy)+f_w(y\,dx+x\,dy)\\
+&=\bigl(f_u+f_v+yf_w\bigr)dx
+ +\bigl(f_u-f_v+xf_w\bigr)dy.
+\end{aligned}
+$$
+
+先求
+
+$$
+\displaystyle z_x=f_u+f_v+yf_w.
+$$
+
+对 $y$ 再求偏导。由于
+
+$$
+\displaystyle u_y=1,\qquad v_y=-1,\qquad w_y=x,
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \frac{\partial f_u}{\partial y}
+&=f_{uu}-f_{uv}+xf_{uw},\\
+\displaystyle \frac{\partial f_v}{\partial y}
+&=f_{vu}-f_{vv}+xf_{vw},\\
+\displaystyle \frac{\partial (yf_w)}{\partial y}
+&=f_w+y\bigl(f_{wu}-f_{wv}+xf_{ww}\bigr).
+\end{aligned}
+$$
+
+因 $f$ 具有二阶连续偏导数，混合偏导可交换，即
+
+$$
+\displaystyle f_{uv}=f_{vu},\qquad f_{uw}=f_{wu},\qquad f_{vw}=f_{wv}.
+$$
+
+合并得
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+&=f_{uu}-f_{vv}+xf_{uw}+xf_{vw}
++f_w+yf_{uw}-yf_{vw}+xyf_{ww}\\
+&=f_{uu}-f_{vv}+(x+y)f_{uw}+(x-y)f_{vw}+xyf_{ww}+f_w.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+10. **【2010-2-11 分】** 设函数 $\displaystyle u=f(x,y)$ 具有二阶连续偏导数，且满足
+
+$$
+\displaystyle 4u_{xx}+12u_{xy}+5u_{yy}=0.
+$$
+
+确定 $a,b$ 的值，使该方程在变换 $\displaystyle \xi=x+ay$，$\displaystyle \eta=x+by$ 下化简为 $\displaystyle u_{\xi\eta}=0$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle (a,b)=\left(-2,-\dfrac25\right)
+\quad\text{或}\quad
+(a,b)=\left(-\dfrac25,-2\right)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 将 $u$ 看成 $\displaystyle u=u(\xi,\eta)$。由
+
+$$
+\displaystyle \xi_x=1,\quad \eta_x=1,
+\qquad
+\xi_y=a,\quad \eta_y=b,
+$$
+
+可得微分算子
+
+$$
+\displaystyle \frac{\partial}{\partial x}
+=\frac{\partial}{\partial \xi}+\frac{\partial}{\partial \eta},
+\qquad
+\frac{\partial}{\partial y}
+=a\frac{\partial}{\partial \xi}+b\frac{\partial}{\partial \eta}.
+$$
+
+因此
+
+$$
+\displaystyle u_{xx}=u_{\xi\xi}+2u_{\xi\eta}+u_{\eta\eta},
+$$
+
+$$
+\displaystyle u_{xy}=a u_{\xi\xi}+(a+b)u_{\xi\eta}+b u_{\eta\eta},
+$$
+
+$$
+\displaystyle u_{yy}=a^{2}u_{\xi\xi}+2ab u_{\xi\eta}+b^{2}u_{\eta\eta}.
+$$
+
+代入原方程，$u_{\xi\xi}$ 与 $u_{\eta\eta}$ 的系数分别为
+
+$$
+\displaystyle 4+12a+5a^{2},
+\qquad
+4+12b+5b^{2}.
+$$
+
+要使方程只含混合偏导数，必须有
+
+$$
+\displaystyle 5a^{2}+12a+4=0,
+\qquad
+5b^{2}+12b+4=0.
+$$
+
+解二次方程
+
+$$
+\displaystyle 5t^{2}+12t+4=(5t+2)(t+2)=0,
+$$
+
+得
+
+$$
+\displaystyle t=-2\quad\text{或}\quad t=-\dfrac25.
+$$
+
+为保证变换可逆，应取 $a\ne b$，故 $a,b$ 分别取上述两个根。此时混合偏导项系数为
+
+$$
+\begin{aligned}
+\displaystyle 8+12(a+b)+10ab
+&=8+12\left(-\dfrac{12}{5}\right)+10\cdot\dfrac45\\
+&=-\dfrac{64}{5}\ne0.
+\end{aligned}
+$$
+
+所以原方程确实可化为
+
+$$
+\displaystyle u_{\xi\eta}=0.
+$$
+
+</details>
+
+---
+
+11. **【2011-3-10 分】** 已知函数 $\displaystyle f(u,v)$ 具有二阶连续偏导数，$\displaystyle f(1,1)=2$，且 $(1,1)$ 是 $f(u,v)$ 的极值点，令
+
+$$
+\displaystyle z=f\bigl(x+y,f(x,y)\bigr),
+$$
+
+求 $\displaystyle \left.\dfrac{\partial^{2}z}{\partial x\partial y}\right|_{(1,1)}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \left.z_{xy}\right|_{(1,1)}
+=f_{uu}(2,2)+f_v(2,2)f_{xy}(1,1)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 由 $(1,1)$ 是 $f$ 的极值点且 $f$ 可微，得
+
+$$
+\displaystyle f_x(1,1)=f_y(1,1)=0.
+$$
+
+令
+
+$$
+\displaystyle U=x+y,\qquad V=f(x,y),
+$$
+
+则 $\displaystyle z=f(U,V)$。先对 $x$ 求偏导：
+
+$$
+\displaystyle z_x=f_u(U,V)+f_v(U,V)V_x.
+$$
+
+再对 $y$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&f_{uu}(U,V)U_y+f_{uv}(U,V)V_y\\
+&+\bigl[f_{vu}(U,V)U_y+f_{vv}(U,V)V_y\bigr]V_x
++f_v(U,V)V_{xy}.
+\end{aligned}
+$$
+
+在 $\displaystyle (x,y)=(1,1)$ 处，
+
+$$
+\displaystyle U=2,\qquad V=f(1,1)=2,
+$$
+
+并且
+
+$$
+\displaystyle U_y=1,
+\qquad
+V_x=f_x(1,1)=0,
+\qquad
+V_y=f_y(1,1)=0.
+$$
+
+故
+
+$$
+\displaystyle \left.z_{xy}\right|_{(1,1)}
+=f_{uu}(2,2)+f_v(2,2)f_{xy}(1,1).
+$$
+
+</details>
+
+---
+
+12. **【2011-12-10 分】** 设函数 $\displaystyle z=f\bigl(xy,yg(x)\bigr)$，其中 $f$ 具有二阶连续偏导数，函数 $g(x)$ 可导且在 $x=1$ 处取得极值，$\displaystyle g(1)=1$，求
+
+$$
+\displaystyle \left.\dfrac{\partial^{2}z}{\partial x\partial y}\right|_{x=1}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \left.z_{xy}\right|_{x=1}
+=f_u(y,y)+y f_{uu}(y,y)+y f_{uv}(y,y)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=xy,
+\qquad
+v=yg(x),
+\qquad
+z=f(u,v).
+$$
+
+因 $g$ 在 $x=1$ 处取得极值且可导，故
+
+$$
+\displaystyle g'(1)=0.
+$$
+
+先对 $x$ 求偏导：
+
+$$
+\begin{aligned}
+\displaystyle z_x
+&=f_u u_x+f_v v_x\\
+&=y f_u+y g'(x)f_v.
+\end{aligned}
+$$
+
+再对 $y$ 求偏导。注意
+
+$$
+\displaystyle u_y=x,
+\qquad
+v_y=g(x),
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle z_{xy}
+={}&f_u+y\bigl(xf_{uu}+g(x)f_{uv}\bigr)\\
+&+g'(x)f_v
++y g'(x)\bigl(xf_{vu}+g(x)f_{vv}\bigr).
+\end{aligned}
+$$
+
+当 $x=1$ 时，
+
+$$
+\displaystyle g(1)=1,
+\qquad
+g'(1)=0,
+\qquad
+u=y,
+\qquad
+v=y.
+$$
+
+故含 $g'(1)$ 的各项均为零，从而
+
+$$
+\displaystyle \left.z_{xy}\right|_{x=1}
+=f_u(y,y)+y f_{uu}(y,y)+y f_{uv}(y,y).
+$$
+
+</details>
+
+---
+
+13. **【2017-12-10 分】** 设函数 $\displaystyle f(u,v)$ 具有二阶连续偏导数，
+
+$$
+\displaystyle y=f(e^x,\cos x),
+$$
+
+求 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}$ 与 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle \left.y'\right|_{x=0}=f_u(1,1)
+}
+$$
+
+</div>
+</div>
+
+$$
+\boxed{
+\displaystyle \left.y''\right|_{x=0}
+=f_{uu}(1,1)+f_u(1,1)-f_v(1,1)
+}
+$$
+
+**解析：** 令
+
+$$
+\displaystyle u=e^x,
+\qquad
+v=\cos x,
+\qquad
+y=f(u,v).
+$$
+
+由复合函数求导法则，
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=f_u u'+f_v v'\\
+&=e^x f_u-\sin x\,f_v.
+\end{aligned}
+$$
+
+当 $x=0$ 时，$\displaystyle u=v=1$，且 $\displaystyle \sin0=0$，故
+
+$$
+\displaystyle \left.y'\right|_{x=0}=f_u(1,1).
+$$
+
+继续求导：
+
+$$
+\begin{aligned}
+\displaystyle y''
+={}&e^x f_u
++e^x\bigl(f_{uu}u'+f_{uv}v'\bigr)\\
+&-\cos x\,f_v
+-\sin x\bigl(f_{vu}u'+f_{vv}v'\bigr).
+\end{aligned}
+$$
+
+代入 $\displaystyle u'=e^x$、$\displaystyle v'=-\sin x$，得
+
+$$
+\begin{aligned}
+\displaystyle y''
+={}&e^x f_u+e^{2x}f_{uu}
+-2e^x\sin x\,f_{uv}\\
+&+\sin^{2}x\,f_{vv}-\cos x\,f_v.
+\end{aligned}
+$$
+
+在 $x=0$ 处，$\displaystyle e^0=1$、$\displaystyle \sin0=0$、$\displaystyle \cos0=1$，所以
+
+$$
+\displaystyle \left.y''\right|_{x=0}
+=f_{uu}(1,1)+f_u(1,1)-f_v(1,1).
+$$
+
+</details>
+
+---
+
+14. **【2019-3-10 分】** 设函数 $\displaystyle f(u,v)$ 具有二阶连续偏导数，函数
+
+$$
+\displaystyle g(x,y)=xy-f(x+y,x-y),
+$$
+
+求
+
+$$
+\displaystyle \dfrac{\partial^2 g}{\partial x^2}
++\dfrac{\partial^2 g}{\partial x\partial y}
++\dfrac{\partial^2 g}{\partial y^2}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle 1-3f_{uu}(x+y,x-y)-f_{vv}(x+y,x-y)
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x+y,\qquad v=x-y,
+$$
+
+则
+
+$$
+\displaystyle g(x,y)=xy-f(u,v).
+$$
+
+由复合函数求导法则，
+
+$$
+\displaystyle g_x=y-f_u-f_v,
+$$
+
+$$
+\displaystyle g_y=x-f_u+f_v.
+$$
+
+继续求二阶偏导数：
+
+$$
+\begin{aligned}
+\displaystyle g_{xx}
+&=-\left(f_{uu}+2f_{uv}+f_{vv}\right),\\
+\displaystyle g_{xy}
+&=1-f_{uu}+f_{vv},\\
+\displaystyle g_{yy}
+&=-f_{uu}+2f_{uv}-f_{vv}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle g_{xx}+g_{xy}+g_{yy}
+&=-f_{uu}-2f_{uv}-f_{vv}
++1-f_{uu}+f_{vv}\\
+&\quad-f_{uu}+2f_{uv}-f_{vv}\\
+&=1-3f_{uu}-f_{vv}.
+\end{aligned}
+$$
+
+其中各偏导数均在点 $\displaystyle (u,v)=(x+y,x-y)$ 处取值，故
+
+$$
+\displaystyle g_{xx}+g_{xy}+g_{yy}
+=1-3f_{uu}(x+y,x-y)-f_{vv}(x+y,x-y).
+$$
+
+</details>
+
+---
+
+15. **【2019-2-11 分】** 已知函数 $\displaystyle u(x,y)$ 满足
+
+$$
+\displaystyle 2\dfrac{\partial^2u}{\partial x^2}
+-2\dfrac{\partial^2u}{\partial y^2}
++3\dfrac{\partial u}{\partial x}
++3\dfrac{\partial u}{\partial y}=0,
+$$
+
+求 $\displaystyle a,b$ 的值，使得在变换
+
+$$
+\displaystyle u(x,y)=v(x,y)e^{ax+by}
+$$
+
+之下，上述等式可化为函数 $\displaystyle v(x,y)$ 的不含一阶偏导数的等式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle a=-\dfrac34,\qquad b=\dfrac34
+}
+$$
+
+</div>
+</div>
+
+变换后的方程为
+
+$$
+\boxed{
+\displaystyle v_{xx}-v_{yy}=0
+}
+$$
+
+**解析：** 令
+
+$$
+\displaystyle u=v e^{ax+by}.
+$$
+
+则
+
+$$
+\displaystyle u_x=e^{ax+by}(v_x+av),
+$$
+
+$$
+\displaystyle u_y=e^{ax+by}(v_y+bv),
+$$
+
+并且
+
+$$
+\displaystyle u_{xx}=e^{ax+by}(v_{xx}+2av_x+a^2v),
+$$
+
+$$
+\displaystyle u_{yy}=e^{ax+by}(v_{yy}+2bv_y+b^2v).
+$$
+
+代入原方程并约去非零因子 $\displaystyle e^{ax+by}$，得
+
+$$
+\begin{aligned}
+\displaystyle 0={}&2v_{xx}-2v_{yy}
++(4a+3)v_x+(-4b+3)v_y\\
+&+\left(2a^2-2b^2+3a+3b\right)v.
+\end{aligned}
+$$
+
+要使方程中不含一阶偏导数，必须有
+
+$$
+\displaystyle 4a+3=0,
+\qquad
+-4b+3=0.
+$$
+
+所以
+
+$$
+\displaystyle a=-\dfrac34,
+\qquad
+b=\dfrac34.
+$$
+
+此时
+
+$$
+\displaystyle 2a^2-2b^2+3a+3b=0,
+$$
+
+故变换后的方程为
+
+$$
+\displaystyle 2v_{xx}-2v_{yy}=0,
+$$
+
+即
+
+$$
+\displaystyle v_{xx}-v_{yy}=0.
+$$
+
+</details>
+
+---
+
+16. **【2024-2-12 分】** 已知函数 $\displaystyle f(u,v)$ 具有二阶连续偏导数，且函数
+
+$$
+\displaystyle g(x,y)=f(2x+y,3x-y)
+$$
+
+满足
+
+$$
+\displaystyle \dfrac{\partial^2g}{\partial x^2}
++\dfrac{\partial^2g}{\partial x\partial y}
+-6\dfrac{\partial^2g}{\partial y^2}=1.
+$$
+
+（1）求 $\displaystyle \dfrac{\partial^2f}{\partial u\partial v}$；
+
+（2）若
+
+$$
+\displaystyle \dfrac{\partial f(u,0)}{\partial u}=ue^{-u},
+\qquad
+f(0,v)=\dfrac{v^2}{50}-1,
+$$
+
+求 $\displaystyle f(u,v)$ 的表达式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\boxed{
+\displaystyle f_{uv}=\dfrac1{25}
+}
+$$
+
+（2）
+
+$$
+\boxed{
+\displaystyle f(u,v)=\dfrac{uv}{25}-(u+1)e^{-u}+\dfrac{v^2}{50}
+}
+$$
+
+**解析：** 令
+
+$$
+\displaystyle u=2x+y,
+\qquad
+v=3x-y.
+$$
+
+则微分算子满足
+
+$$
+\displaystyle \dfrac{\partial}{\partial x}
+=2\dfrac{\partial}{\partial u}
++3\dfrac{\partial}{\partial v},
+$$
+
+$$
+\displaystyle \dfrac{\partial}{\partial y}
+=\dfrac{\partial}{\partial u}
+-\dfrac{\partial}{\partial v}.
+$$
+
+于是
+
+$$
+\displaystyle g_{xx}=4f_{uu}+12f_{uv}+9f_{vv},
+$$
+
+$$
+\displaystyle g_{xy}=2f_{uu}+f_{uv}-3f_{vv},
+$$
+
+$$
+\displaystyle g_{yy}=f_{uu}-2f_{uv}+f_{vv}.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle g_{xx}+g_{xy}-6g_{yy}
+&=(4+2-6)f_{uu}\\
+&\quad+(12+1+12)f_{uv}\\
+&\quad+(9-3-6)f_{vv}\\
+&=25f_{uv}.
+\end{aligned}
+$$
+
+由题设可得
+
+$$
+\displaystyle 25f_{uv}=1,
+$$
+
+故
+
+$$
+\displaystyle f_{uv}=\dfrac1{25}.
+$$
+
+由 $\displaystyle f_{uv}=\dfrac1{25}$ 对 $v$ 积分，得
+
+$$
+\displaystyle f_u(u,v)=\dfrac{v}{25}+A(u).
+$$
+
+利用条件 $\displaystyle f_u(u,0)=ue^{-u}$，得
+
+$$
+\displaystyle A(u)=ue^{-u}.
+$$
+
+因此
+
+$$
+\displaystyle f_u(u,v)=\dfrac{v}{25}+ue^{-u}.
+$$
+
+再对 $u$ 积分：
+
+$$
+\begin{aligned}
+\displaystyle f(u,v)
+&=\dfrac{uv}{25}+\int ue^{-u}\,du+B(v)\\
+&=\dfrac{uv}{25}-(u+1)e^{-u}+B(v).
+\end{aligned}
+$$
+
+令 $\displaystyle u=0$，由
+
+$$
+\displaystyle f(0,v)=\dfrac{v^2}{50}-1
+$$
+
+可得
+
+$$
+\displaystyle -1+B(v)=\dfrac{v^2}{50}-1,
+$$
+
+所以
+
+$$
+\displaystyle B(v)=\dfrac{v^2}{50}.
+$$
+
+故
+
+$$
+\displaystyle f(u,v)=\dfrac{uv}{25}-(u+1)e^{-u}+\dfrac{v^2}{50}.
+$$
+
+</details>
+
+---
+
+17. **【2025-1-12 分】** 已知函数 $\displaystyle f(u)$ 在区间 $\displaystyle (0,+\infty)$ 内具有二阶导数，记
+
+$$
+\displaystyle g(x,y)=f\left(\dfrac{x}{y}\right).
+$$
+
+若 $\displaystyle g(x,y)$ 满足
+
+$$
+\displaystyle x^2\dfrac{\partial^2g}{\partial x^2}
++xy\dfrac{\partial^2g}{\partial x\partial y}
++y^2\dfrac{\partial^2g}{\partial y^2}=1,
+$$
+
+且
+
+$$
+\displaystyle g(x,x)=1,
+\qquad
+\left.\dfrac{\partial g}{\partial x}\right|_{(x,x)}=\dfrac2x,
+$$
+
+求 $\displaystyle f(u)$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\displaystyle f(u)=\dfrac12(\ln u)^2+2\ln u+1,
+\qquad u>0
+}
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle s=\dfrac{x}{y},
+\qquad
+g(x,y)=f(s).
+$$
+
+有
+
+$$
+\displaystyle g_x=\dfrac1y f'(s),
+$$
+
+$$
+\displaystyle g_y=-\dfrac{s}{y}f'(s).
+$$
+
+继续求二阶偏导数：
+
+$$
+\displaystyle g_{xx}=\dfrac1{y^2}f''(s),
+$$
+
+$$
+\displaystyle g_{xy}=-\dfrac1{y^2}\left[sf''(s)+f'(s)\right],
+$$
+
+$$
+\displaystyle g_{yy}=\dfrac1{y^2}\left[s^2f''(s)+2sf'(s)\right].
+$$
+
+由于 $\displaystyle x=sy$，代入题设方程得
+
+$$
+\begin{aligned}
+\displaystyle 1
+&=x^2g_{xx}+xyg_{xy}+y^2g_{yy}\\
+&=s^2f''(s)-s\left[sf''(s)+f'(s)\right]\\
+&\quad+s^2f''(s)+2sf'(s)\\
+&=s^2f''(s)+sf'(s).
+\end{aligned}
+$$
+
+将自变量重新记为 $\displaystyle u$，得到常微分方程
+
+$$
+\displaystyle u^2f''(u)+uf'(u)=1.
+$$
+
+注意到
+
+$$
+\displaystyle \left[uf'(u)\right]'=uf''(u)+f'(u),
+$$
+
+故原方程可写为
+
+$$
+\displaystyle \left[uf'(u)\right]'=\dfrac1u.
+$$
+
+积分得
+
+$$
+\displaystyle uf'(u)=\ln u+C_1,
+$$
+
+即
+
+$$
+\displaystyle f'(u)=\dfrac{\ln u+C_1}{u}.
+$$
+
+由 $\displaystyle g(x,x)=f(1)=1$。
+
+又因为
+
+$$
+\displaystyle g_x(x,y)=\dfrac1y f'\left(\dfrac{x}{y}\right),
+$$
+
+所以在 $\displaystyle (x,x)$ 处，
+
+$$
+\displaystyle \left.g_x\right|_{(x,x)}=\dfrac1x f'(1)=\dfrac2x.
+$$
+
+因此
+
+$$
+\displaystyle f'(1)=2,
+$$
+
+从而 $\displaystyle C_1=2$。
+
+于是
+
+$$
+\displaystyle f'(u)=\dfrac{\ln u+2}{u}.
+$$
+
+再次积分：
+
+$$
+\displaystyle f(u)=\dfrac12(\ln u)^2+2\ln u+C_2.
+$$
+
+由 $\displaystyle f(1)=1$，得 $\displaystyle C_2=1$。故
+
+$$
+\displaystyle f(u)=\dfrac12(\ln u)^2+2\ln u+1.
+$$
+
+</details>
+
+### （三）隐函数求导
+
+1. **【2002-34-7 分】** 设函数 $\displaystyle u=f(x,y,z)$ 有连续偏导数，且 $\displaystyle z=z(x,y)$ 由方程
+
+$$
+\displaystyle xe^x-ye^y=ze^z
+$$
+
+所确定，求 $\displaystyle du$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\boxed{
+\begin{aligned}
+\displaystyle du={}&\left[f_x+f_z\dfrac{(1+x)e^x}{(1+z)e^z}\right]dx\\
+&+\left[f_y-f_z\dfrac{(1+y)e^y}{(1+z)e^z}\right]dy
+\end{aligned}
+}
+$$
+
+</div>
+</div>
+
+**解析：** 对隐式方程
+
+$$
+\displaystyle xe^x-ye^y=ze^z
+$$
+
+两边求全微分，得
+
+$$
+\displaystyle (1+x)e^x\,dx-(1+y)e^y\,dy=(1+z)e^z\,dz.
+$$
+
+因此
+
+$$
+\displaystyle dz
+=\dfrac{(1+x)e^x}{(1+z)e^z}\,dx
+-\dfrac{(1+y)e^y}{(1+z)e^z}\,dy.
+$$
+
+又因为
+
+$$
+\displaystyle u=f(x,y,z),
+$$
+
+所以
+
+$$
+\displaystyle du=f_x\,dx+f_y\,dy+f_z\,dz.
+$$
+
+代入 $\displaystyle dz$，得到
+
+$$
+\begin{aligned}
+\displaystyle du={}&f_x\,dx+f_y\,dy\\
+&+f_z\left[
+\dfrac{(1+x)e^x}{(1+z)e^z}\,dx
+-\dfrac{(1+y)e^y}{(1+z)e^z}\,dy
+\right].
+\end{aligned}
+$$
+
+整理得
+
+$$
+\begin{aligned}
+\displaystyle du={}&\left[f_x+f_z\dfrac{(1+x)e^x}{(1+z)e^z}\right]dx\\
+&+\left[f_y-f_z\dfrac{(1+y)e^y}{(1+z)e^z}\right]dy.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+2. **【2008-34-10 分】** 设 $\displaystyle z=z(x,y)$ 是由方程
+
+$$
+\displaystyle x^2+y^2-z=\varphi(x+y+z)
+$$
+
+所确定的函数，其中 $\displaystyle \varphi$ 具有二阶导数且 $\displaystyle \varphi'\ne-1$：
+
+（Ⅰ）求 $\displaystyle dz$；
+
+（Ⅱ）记
+
+$$
+\displaystyle u(x,y)=\dfrac{1}{x-y}\left(\dfrac{\partial z}{\partial x}-\dfrac{\partial z}{\partial y}\right),
+$$
+
+求 $\displaystyle \dfrac{\partial u}{\partial x}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （Ⅰ）
+
+$$
+\boxed{
+\displaystyle dz=
+\dfrac{2x-\varphi'(x+y+z)}{1+\varphi'(x+y+z)}\,dx
++
+\dfrac{2y-\varphi'(x+y+z)}{1+\varphi'(x+y+z)}\,dy
+}
+$$
+
+（Ⅱ）
+
+$$
+\boxed{
+\displaystyle \dfrac{\partial u}{\partial x}
+=-\dfrac{2(2x+1)\varphi''(x+y+z)}{\left[1+\varphi'(x+y+z)\right]^3}
+}
+$$
+
+**解析：** 记
+
+$$
+\displaystyle s=x+y+z.
+$$
+
+原方程为
+
+$$
+\displaystyle x^2+y^2-z=\varphi(s).
+$$
+
+（Ⅰ）对方程两边求全微分，得
+
+$$
+\displaystyle 2x\,dx+2y\,dy-dz
+=\varphi'(s)(dx+dy+dz).
+$$
+
+将含 $\displaystyle dz$ 的项移到一边：
+
+$$
+\displaystyle \left[1+\varphi'(s)\right]dz
+=\left[2x-\varphi'(s)\right]dx
++\left[2y-\varphi'(s)\right]dy.
+$$
+
+由于 $\displaystyle \varphi'(s)\ne-1$，故
+
+$$
+\displaystyle dz=
+\dfrac{2x-\varphi'(s)}{1+\varphi'(s)}\,dx
++
+\dfrac{2y-\varphi'(s)}{1+\varphi'(s)}\,dy.
+$$
+
+即
+
+$$
+\displaystyle z_x=\dfrac{2x-\varphi'(s)}{1+\varphi'(s)},
+\qquad
+z_y=\dfrac{2y-\varphi'(s)}{1+\varphi'(s)}.
+$$
+
+（Ⅱ）先计算两偏导数之差：
+
+$$
+\begin{aligned}
+\displaystyle z_x-z_y
+&=\dfrac{2x-\varphi'(s)}{1+\varphi'(s)}
+-\dfrac{2y-\varphi'(s)}{1+\varphi'(s)}\\
+&=\dfrac{2(x-y)}{1+\varphi'(s)}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle u(x,y)
+=\dfrac{1}{x-y}(z_x-z_y)
+=\dfrac{2}{1+\varphi'(s)}.
+$$
+
+对 $\displaystyle x$ 求偏导：
+
+$$
+\displaystyle u_x
+=-\dfrac{2\varphi''(s)}{\left[1+\varphi'(s)\right]^2}s_x.
+$$
+
+又因为
+
+$$
+\begin{aligned}
+\displaystyle s_x
+&=1+z_x\\
+&=1+\dfrac{2x-\varphi'(s)}{1+\varphi'(s)}\\
+&=\dfrac{2x+1}{1+\varphi'(s)}.
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle \dfrac{\partial u}{\partial x}
+=-\dfrac{2(2x+1)\varphi''(s)}{\left[1+\varphi'(s)\right]^3}.
+$$
+
+代回 $\displaystyle s=x+y+z$，得
+
+$$
+\displaystyle \dfrac{\partial u}{\partial x}
+=-\dfrac{2(2x+1)\varphi''(x+y+z)}{\left[1+\varphi'(x+y+z)\right]^3}.
+$$
+
+</details>
