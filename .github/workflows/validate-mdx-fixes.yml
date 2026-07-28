@@ -1,0 +1,39 @@
+name: Validate temporary MDX fixes
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Apply temporary MDX repairs
+        run: python3 scripts/fix-math-mdx.py
+
+      - name: Compile every math MDX file
+        run: node scripts/validate-math-mdx.mjs
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: mdx-fix-validation
+          path: mdx-validation.txt
