@@ -1,1 +1,1 @@
-Trigger a clean PR-scoped minimal resource diagnostic.
+Trigger the compact ten-minute resource diagnostic.
