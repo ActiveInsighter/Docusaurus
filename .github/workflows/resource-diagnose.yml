@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - ".github/workflows/resource-diagnose.yml"
+      - ".github/diagnostics/resource-telemetry-pr.txt"
   workflow_dispatch:
 
 permissions:
@@ -21,7 +22,7 @@ jobs:
         run: |
           set -o pipefail
 
-          git clone --depth 1 --branch diagnose/build-resource-telemetry \
+          git clone --depth 1 --branch main \
             https://github.com/ActiveInsighter/Docusaurus.git repo >/dev/null 2>&1
           cd repo
 
