@@ -207,7 +207,13 @@ const config: Config = {
 
   future: {
     v4: true,
-    faster: true,
+    faster: {
+      // Keep the faster bundler, but avoid worker-thread memory spikes when
+      // statically rendering the large KaTeX-heavy math question bank.
+      ssgWorkerThreads: false,
+      // Do not retain every compiled MDX module in memory during the build.
+      mdxCrossCompilerCache: false,
+    },
   },
 
   url: 'https://docusaurus-d92.pages.dev',
