@@ -212,9 +212,12 @@ const config: Config = {
   future: {
     v4: true,
     faster: {
-      // The question bank contains tens of thousands of formulas. Keep the
-      // cross-compiler cache enabled, but avoid worker-thread memory pressure
-      // while statically rendering the KaTeX-heavy production build.
+      // Hosted Actions runners are ephemeral, so generating a multi-GB
+      // persistent Rspack cache on every cold build adds memory and disk cost
+      // without providing reuse on the next run.
+      rspackPersistentCache: false,
+      // Keep MDX cross-compiler reuse, but avoid SSG worker-thread memory
+      // pressure while rendering the KaTeX-heavy question bank.
       ssgWorkerThreads: false,
       mdxCrossCompilerCache: true,
     },
