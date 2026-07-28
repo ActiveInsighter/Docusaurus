@@ -1,1 +1,1 @@
-This temporary file triggers a pull-request build with resource telemetry enabled.
+Trigger the PR-scoped minimal resource diagnostic after the workflow was added to main.
