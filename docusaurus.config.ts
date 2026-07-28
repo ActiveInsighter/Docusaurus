@@ -196,6 +196,10 @@ const quartzDarkCodeTheme: PrismTheme = {
 };
 
 const katexOptions = {
+  // The question bank contains tens of thousands of formulas. HTML output
+  // keeps the rendered appearance while avoiding a second MathML tree per
+  // formula during the production build.
+  output: 'html' as const,
   strict: (errorCode: string) =>
     errorCode === 'unicodeTextInMathMode' ? 'ignore' : 'warn',
 };

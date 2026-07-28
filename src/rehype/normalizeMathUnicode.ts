@@ -13,17 +13,32 @@ type VFileLike = {
 };
 
 const ROMAN_NUMERAL_REPLACEMENTS: ReadonlyArray<readonly [string, string]> = [
+  ['①', '(1)'],
+  ['②', '(2)'],
+  ['③', '(3)'],
+  ['④', '(4)'],
+  ['⑤', '(5)'],
+  ['⑥', '(6)'],
+  ['⑦', '(7)'],
+  ['⑧', '(8)'],
+  ['⑨', '(9)'],
+  ['⑩', '(10)'],
+  ['Ⅳ', 'IV'],
   ['Ⅲ', 'III'],
   ['Ⅱ', 'II'],
   ['Ⅰ', 'I'],
 ];
 
 function normalizeValue(value: string): string {
-  return ROMAN_NUMERAL_REPLACEMENTS.reduce(
+  const normalized = ROMAN_NUMERAL_REPLACEMENTS.reduce(
     (result, [unicodeNumeral, asciiNumeral]) =>
       result.replaceAll(unicodeNumeral, asciiNumeral),
     value,
   );
+
+  // A literal `\\u200b` is interpreted by KaTeX as the text-mode accent
+  // command `\\u`; remove it as well as actual zero-width spaces.
+  return normalized.replaceAll('\\u200b', '').replaceAll('\u200b', '');
 }
 
 function classNames(node: HastNode): string[] {
