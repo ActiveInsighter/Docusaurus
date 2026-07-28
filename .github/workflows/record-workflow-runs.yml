@@ -6,6 +6,7 @@ on:
       - Build and deploy Docusaurus
       - Update generated docs
       - Verify documentation UI visuals
+      - Diagnose build resources
     types:
       - completed
   workflow_dispatch:
