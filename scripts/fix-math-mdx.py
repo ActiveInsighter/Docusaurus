@@ -37,45 +37,25 @@ def brace_balance(source: str):
 
 def normalize_display_math(lines):
     output = []
-    compact_block = False
 
     for line in lines:
-        stripped = line.strip()
-        indent = line[: len(line) - len(line.lstrip())]
-
-        if compact_block:
-            if stripped.endswith('$$'):
-                body = line[: line.rfind('$$')].rstrip()
-                if body:
-                    output.append(body)
-                output.append(indent + '$$')
-                compact_block = False
-            else:
-                output.append(line)
-            continue
-
-        if stripped == '$$':
+        positions = [index for index, width in unescaped_dollars(line) if width == 2]
+        if not positions:
             output.append(line)
             continue
 
-        if stripped.startswith('$$'):
-            body = stripped[2:]
-            if body.endswith('$$'):
-                body = body[:-2].strip()
-                output.append(indent + '$$')
-                if body:
-                    output.append(indent + body)
-                output.append(indent + '$$')
-            else:
-                output.append(indent + '$$')
-                if body:
-                    output.append(indent + body)
-                compact_block = True
-            continue
+        indent = line[: len(line) - len(line.lstrip())]
+        cursor = 0
+        for position in positions:
+            segment = line[cursor:position].rstrip()
+            if segment:
+                output.append(segment)
+            output.append(indent + '$$')
+            cursor = position + 2
 
-        # A double-dollar pair embedded in ordinary prose is inline math, not a block.
-        line = re.sub(r'\$\$([^\n$]+?)\$\$', lambda match: '$' + match.group(1) + '$', line)
-        output.append(line)
+        remainder = line[cursor:].strip()
+        if remainder:
+            output.append(indent + remainder)
 
     return output
 
