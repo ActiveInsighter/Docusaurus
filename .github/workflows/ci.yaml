@@ -49,8 +49,64 @@ jobs:
       - name: Test workflow run index
         run: npm run test:workflow-runs
 
-      - name: Build site
-        run: npm run build
+      - name: Build site with resource telemetry
+        shell: bash
+        run: |
+          set -o pipefail
+
+          print_cgroup_memory() {
+            echo "--- cgroup memory ---"
+            for name in \
+              memory.current \
+              memory.peak \
+              memory.max \
+              memory.high \
+              memory.events \
+              memory.swap.current \
+              memory.swap.max; do
+              file="/sys/fs/cgroup/${name}"
+              if [[ -r "${file}" ]]; then
+                echo "${name}:"
+                cat "${file}"
+              fi
+            done
+          }
+
+          print_snapshot() {
+            echo "timestamp: $(date -Iseconds)"
+            echo "--- system memory ---"
+            free -m
+            echo "--- workspace disk ---"
+            df -h .
+            print_cgroup_memory
+            echo "--- highest RSS processes ---"
+            ps -eo pid,ppid,rss,vsz,%mem,%cpu,etime,comm,args --sort=-rss | head -n 20
+          }
+
+          echo "===== initial resource snapshot ====="
+          uname -a
+          echo "logical CPUs: $(nproc)"
+          print_snapshot
+
+          (
+            while true; do
+              echo "::group::resource snapshot $(date -Iseconds)"
+              print_snapshot
+              echo "::endgroup::"
+              sleep 20
+            done
+          ) &
+          MONITOR_PID=$!
+
+          cleanup() {
+            kill "${MONITOR_PID}" 2>/dev/null || true
+            wait "${MONITOR_PID}" 2>/dev/null || true
+            echo "===== final resource snapshot ====="
+            print_snapshot || true
+          }
+          trap cleanup EXIT INT TERM
+
+          /usr/bin/time -v npm run build
 
       - name: Check Cloudflare authentication
         if: >-
