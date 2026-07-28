@@ -238,8 +238,8 @@ $\displaystyle f(x,y)=O(x^2+y^2)$。
 
 由连续性以及右端趋于 $\displaystyle 0$，可得 $\displaystyle f(0,0)=0$。于是
 
-$\displaystyle \dfrac{f(x,y)-f(0,0)}{\sqrt{x^2+y^2}}
-=O\!\left(\sqrt{x^2+y^2}\right)\to0$。
+$$\displaystyle \dfrac{f(x,y)-f(0,0)}{\sqrt{x^2+y^2}}
+=O\!\left(\sqrt{x^2+y^2}\right)\to0$$。
 
 故 $\displaystyle f$ 在原点可微，且全微分为 $\displaystyle 0$，所以 B 正确。
 
@@ -279,11 +279,11 @@ $\displaystyle f(x,y)=ax+by+o\!\left(\sqrt{x^2+y^2}\right)$。
 
 又 $\displaystyle n=(a,b,-1)$，所以
 
-$\displaystyle \begin{aligned}
+$$\displaystyle \begin{aligned}
 n\cdot(x,y,f(x,y))
 &=ax+by-f(x,y)\\
 &=o\!\left(\sqrt{x^2+y^2}\right).
-\end{aligned}$
+\end{aligned}$$
 
 因此
 
@@ -364,11 +364,11 @@ $\displaystyle \lim_{(x,y)\to(0,0)}f(x,y)=0$，
 
 **解析：** 先考察关于 $\displaystyle x$ 的偏导数。因为 $\displaystyle f(0,1)=0$，所以
 
-$\displaystyle \begin{aligned}
+$$\displaystyle \begin{aligned}
 f_x'(0,1)
 &=\lim_{h\to0}\dfrac{\ln(1+|h\sin1|)}h\\
 &=\lim_{h\to0}\dfrac{\ln(1+|h|\sin1)}{|h|}\cdot\dfrac{|h|}h.
-\end{aligned}$
+\end{aligned}$$
 
 第一个因子趋于 $\displaystyle \sin1>0$，而第二个因子的左右极限分别为 $\displaystyle 1$ 与 $\displaystyle -1$，故 $\displaystyle f_x'(0,1)$ 不存在。
 
@@ -416,8 +416,8 @@ $\displaystyle |f(x,y)|\le x^2+y^2$，
 
 从而
 
-$\displaystyle 0\le\dfrac{|f(x,y)-f(0,0)-f_x'(0,0)x-f_y'(0,0)y|}{\sqrt{x^2+y^2}}
-\le\sqrt{x^2+y^2}\to0$。
+$$\displaystyle 0\le\dfrac{|f(x,y)-f(0,0)-f_x'(0,0)x-f_y'(0,0)y|}{\sqrt{x^2+y^2}}
+\le\sqrt{x^2+y^2}\to0$$。
 
 因此 $\displaystyle f(x,y)$ 在 $\displaystyle (0,0)$ 处可微。
 

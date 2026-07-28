@@ -242,6 +242,12 @@ const config: Config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      // The published question package references optional figure assets
+      // that are not included in the source bundle. Keep the text and answer
+      // content buildable while reporting those missing figures as warnings.
+      onBrokenMarkdownImages: 'warn',
+    },
   },
 
   presets: [
