@@ -1,9 +1,10 @@
-import {readdir, readFile} from 'node:fs/promises';
+import {readdir, readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {compile} from '@mdx-js/mdx';
 import remarkMath from 'remark-math';
 
 const root = path.resolve('docs/数学真题');
+const reportPath = path.resolve('mdx-validation.txt');
 
 async function walk(dir) {
   const entries = await readdir(dir, {withFileTypes: true});
@@ -26,6 +27,7 @@ function stripFrontmatter(source) {
 }
 
 const files = (await walk(root)).sort();
+const report = [];
 let failures = 0;
 
 for (const file of files) {
@@ -41,10 +43,13 @@ for (const file of files) {
     const relative = path.relative(process.cwd(), file);
     const line = error?.line ?? error?.position?.start?.line ?? 'unknown';
     const column = error?.column ?? error?.position?.start?.column ?? 'unknown';
-    console.error(`INVALID_MDX file=${relative} line=${line} column=${column}`);
-    console.error(error?.reason ?? error?.message ?? String(error));
+    const reason = error?.reason ?? error?.message ?? String(error);
+    report.push(`INVALID_MDX file=${relative} line=${line} column=${column}`);
+    report.push(reason);
   }
 }
 
-console.log(`MDX_VALIDATION files=${files.length} failures=${failures}`);
-if (failures > 0) process.exit(1);
+report.push(`MDX_VALIDATION files=${files.length} failures=${failures}`);
+await writeFile(reportPath, `${report.join('\n')}\n`, 'utf8');
+console.log(report.join('\n'));
+if (failures > 0) process.exitCode = 1;
