@@ -256,6 +256,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // Diagnostic branch only: isolate one question-bank module to
+          // distinguish aggregate build cost from a single-document problem.
+          path: 'docs/数学真题/01-高数1-7/04-模块四导数的应用',
           numberPrefixParser: false,
           remarkPlugins: [remarkMath],
           rehypePlugins: [
