@@ -227,7 +227,9 @@ const config: Config = {
   organizationName: 'ActiveInsighter',
   projectName: 'Docusaurus',
 
-  onBrokenLinks: 'throw',
+  // Diagnostic branch only: the reduced docs tree omits the full site's
+  // overview page, so keep the timing test focused on the selected module.
+  onBrokenLinks: 'warn',
 
   i18n: {
     defaultLocale: 'zh-Hans',
