@@ -212,11 +212,11 @@ const config: Config = {
   future: {
     v4: true,
     faster: {
-      // Keep the faster bundler, but avoid worker-thread memory spikes when
-      // statically rendering the large KaTeX-heavy math question bank.
-      ssgWorkerThreads: false,
-      // Do not retain every compiled MDX module in memory during the build.
-      mdxCrossCompilerCache: false,
+      // The question bank contains tens of thousands of formulas. Keep the
+      // default parallel SSG and MDX cross-compiler cache enabled so the
+      // KaTeX-heavy production build does not fall back to serial processing.
+      ssgWorkerThreads: true,
+      mdxCrossCompilerCache: true,
     },
   },
 
