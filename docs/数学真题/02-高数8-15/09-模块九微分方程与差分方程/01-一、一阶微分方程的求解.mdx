@@ -263,11 +263,8 @@ $\displaystyle \dfrac{dx}{du}=\dfrac{u^{3}}{u^{3}+1}=1-\dfrac1{u^{3}+1}$。
 
 初始条件 $\displaystyle y(1)=0$ 对应 $\displaystyle u=1$。故
 
-$$
-\displaystyle x-1=\int_{1}^{u}\dfrac{t^{3}}{t^{3}+1}\,dt
-=u-1-\int_{1}^{u}\dfrac{dt}{t^{3}+1}
-$$
-。
+$\displaystyle x-1=\int_{1}^{u}\dfrac{t^{3}}{t^{3}+1}\,dt
+=u-1-\int_{1}^{u}\dfrac{dt}{t^{3}+1}$。
 
 代入 $\displaystyle u=x+y$，得到
 
@@ -1194,11 +1191,8 @@ $\displaystyle z=y+r=y+\sqrt{x^{2}+y^{2}}$，
 
 则
 
-$$
-\displaystyle z'=y'+\dfrac{x+yy'}{r}
-=\dfrac{y'(r+y)+x}{r}
-$$
-。
+$\displaystyle z'=y'+\dfrac{x+yy'}{r}
+=\dfrac{y'(r+y)+x}{r}$。
 
 代入 $\displaystyle y'=-\dfrac{x}{y+r}$，得
 
@@ -1218,12 +1212,10 @@ $\displaystyle y=\dfrac{C^{2}-x^{2}}{2C}$。
 
 2. **【1999-2-7 分】** 求初值问题
 
-$$
-\displaystyle \begin{cases}
+$\displaystyle \begin{cases}
 \left(y+\sqrt{x^{2}+y^{2}}\right)dx-x\,dy=0,\quad x>0,\\[2mm]
 y\big|_{x=1}=0
-\end{cases}
-$$
+\end{cases}$
 
 的解。
 
@@ -1417,12 +1409,10 @@ $\displaystyle y=e^{x}-e^{x+e^{-x}-1/2}=e^{x}\left[1-e^{e^{-x}-\frac12}\right]$�
 
 4. **【1996-3-8 分】** 设 $\displaystyle y(x)$ 是
 
-$$
-\displaystyle \begin{cases}
+$\displaystyle \begin{cases}
 y'+ay=f(x),\\[1mm]
 y\big|_{x=0}=0
-\end{cases}
-$$
+\end{cases}$
 
 的解，其中 $\displaystyle a$ 为正常数。若 $\displaystyle |f(x)|\le k$（$\displaystyle k$ 为常数），证明：当 $\displaystyle x\ge0$ 时，有
 
@@ -1457,16 +1447,14 @@ $\displaystyle y(x)=e^{-ax}\int_0^x e^{at}f(t)\,dt$。
 
 当 $\displaystyle x\ge0$ 时，由 $\displaystyle |f(t)|\le k$，有
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 |y(x)|
 &=e^{-ax}\left|\int_0^x e^{at}f(t)\,dt\right|\\
 &\le e^{-ax}\int_0^x e^{at}|f(t)|\,dt\\
 &\le ke^{-ax}\int_0^x e^{at}\,dt\\
 &=ke^{-ax}\cdot\dfrac{e^{ax}-1}{a}\\
 &=\dfrac{k}{a}\left(1-e^{-ax}\right).
-\end{aligned}
-$$
+\end{aligned}$
 
 故结论成立。
 
@@ -1476,27 +1464,22 @@ $$
 
 5. **【1999-3-6 分】** 设有微分方程 $\displaystyle y'-2y=\varphi(x)$，其中
 
-$$
-\displaystyle \varphi(x)=
+$\displaystyle \varphi(x)=
 \begin{cases}
 2,&x\le1,\\
 0,&x>1.
-\end{cases}
-$$
+\end{cases}$
 
 试求在 $\displaystyle (-\infty,+\infty)$ 内的连续函数 $\displaystyle y=y(x)$，使之在 $\displaystyle (-\infty,1)$ 和 $\displaystyle (1,+\infty)$ 内都满足所给方程，且满足条件 $\displaystyle y(0)=0$。
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle y(x)=
+**答案：** $\displaystyle y(x)=
 \begin{cases}
 e^{2x}-1,&x\le1,\\[1mm]
 \left(1-e^{-2}\right)e^{2x},&x>1.
-\end{cases}
-$$
+\end{cases}$
 
 **解析：** 当 $\displaystyle x<1$ 时，方程为
 
@@ -1536,13 +1519,11 @@ $\displaystyle C_2=1-e^{-2}$。
 
 因此
 
-$$
-\displaystyle y(x)=
+$\displaystyle y(x)=
 \begin{cases}
 e^{2x}-1,&x\le1,\\[1mm]
 \left(1-e^{-2}\right)e^{2x},&x>1.
-\end{cases}
-$$
+\end{cases}$
 
 该函数在 $\displaystyle x=1$ 处连续，并分别在 $\displaystyle (-\infty,1)$、$\displaystyle (1,+\infty)$ 内满足原微分方程。
 
@@ -1589,29 +1570,21 @@ $\displaystyle y=x+Cx^2$。
 
 该曲线与 $\displaystyle x$ 轴之间的图形绕 $\displaystyle x$ 轴旋转所得体积为
 
-$$
-\displaystyle V(C)=\pi\int_1^2y^2\,dx
-=\pi\int_1^2\left(x+Cx^2\right)^2dx
-$$
-。
+$\displaystyle V(C)=\pi\int_1^2y^2\,dx
+=\pi\int_1^2\left(x+Cx^2\right)^2dx$。
 
 展开可得
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 \dfrac{V(C)}{\pi}
 &=\int_1^2\left(x^2+2Cx^3+C^2x^4\right)dx\\
 &=\dfrac73+\dfrac{15}{2}C+\dfrac{31}{5}C^2.
-\end{aligned}
-$$
+\end{aligned}$
 
 这是关于 $\displaystyle C$ 的开口向上的二次函数。令其导数为零：
 
-$$
-\displaystyle \dfrac{d}{dC}\left(\dfrac{V(C)}{\pi}\right)
-=\dfrac{15}{2}+\dfrac{62}{5}C=0
-$$
-，
+$\displaystyle \dfrac{d}{dC}\left(\dfrac{V(C)}{\pi}\right)
+=\dfrac{15}{2}+\dfrac{62}{5}C=0$，
 
 解得
 
@@ -1623,14 +1596,12 @@ $\displaystyle y=x-\dfrac{75}{124}x^2$。
 
 代回体积表达式，得
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 \dfrac{V_{\min}}{\pi}
 &=\int_1^2x^2\left(1-\dfrac{75}{124}x\right)^2dx\\
 &=\dfrac73-\dfrac{\left(\frac{15}{4}\right)^2}{\frac{31}{5}}\\
 &=\dfrac{97}{1488}.
-\end{aligned}
-$$
+\end{aligned}$
 
 故
 
@@ -1693,22 +1664,17 @@ $\displaystyle C=\dfrac{1}{e^T-1}\int_0^Te^tf(t)\,dt$。
 
 取上述 $\displaystyle C$，下面验证所得解确为周期解。由 $\displaystyle f(t+T)=f(t)$，有
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 y(x+T)
 &=e^{-(x+T)}\left[C+\int_0^{x+T}e^tf(t)\,dt\right]\\
 &=e^{-(x+T)}\left[C+\int_0^Te^tf(t)\,dt
 +\int_T^{x+T}e^tf(t)\,dt\right].
-\end{aligned}
-$$
+\end{aligned}$
 
 作代换 $\displaystyle t=u+T$，则
 
-$$
-\displaystyle \int_T^{x+T}e^tf(t)\,dt
-=e^T\int_0^xe^uf(u)\,du
-$$
-。
+$\displaystyle \int_T^{x+T}e^tf(t)\,dt
+=e^T\int_0^xe^uf(u)\,du$。
 
 又由 $\displaystyle C(e^T-1)=\int_0^Te^tf(t)\,dt$，得到
 
@@ -1716,13 +1682,11 @@ $\displaystyle C+\int_0^Te^tf(t)\,dt=Ce^T$。
 
 故
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 y(x+T)
 &=e^{-(x+T)}e^T\left[C+\int_0^xe^uf(u)\,du\right]\\
 &=y(x).
-\end{aligned}
-$$
+\end{aligned}$
 
 因此周期解存在。
 
@@ -1762,11 +1726,8 @@ $\displaystyle y'-xy=\dfrac{1}{2\sqrt{x}}e^{\frac{x^2}{2}}$
 
 （2）设平面区域
 
-$$
-\displaystyle D=\{(x,y)\mid1\le x\le2,
-0\le y\le y(x)\}
-$$
-，
+$\displaystyle D=\{(x,y)\mid1\le x\le2,
+0\le y\le y(x)\}$，
 
 求 $\displaystyle D$ 绕 $\displaystyle x$ 轴旋转所得旋转体的体积。
 
@@ -1815,14 +1776,12 @@ $\displaystyle [y(x)]^2=xe^{x^2}$，
 
 故
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 V
 &=\pi\int_1^2xe^{x^2}\,dx\\
 &=\dfrac{\pi}{2}\int_1^2e^{x^2}\,d(x^2)\\
 &=\dfrac{\pi}{2}\left(e^4-e\right).
-\end{aligned}
-$$
+\end{aligned}$
 
 因此所求体积为
 
@@ -1964,13 +1923,11 @@ $\displaystyle L=\int_1^e\sqrt{1+[y'(x)]^2}\,dx$。
 
 又
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 1+[y'(x)]^2
 &=1+\dfrac{(x^2-1)^2}{4x^2}\\
 &=\dfrac{(x^2+1)^2}{4x^2}。
-\end{aligned}
-$$
+\end{aligned}$
 
 由于 $\displaystyle x\in[1,e]$，故
 
@@ -1978,15 +1935,13 @@ $\displaystyle \sqrt{1+[y'(x)]^2}=\dfrac{x^2+1}{2x}$。
 
 因此
 
-$$
-\displaystyle \begin{aligned}
+$\displaystyle \begin{aligned}
 L
 &=\int_1^e\dfrac{x^2+1}{2x}\,dx\\
 &=\int_1^e\left(\dfrac{x}{2}+\dfrac{1}{2x}\right)dx\\
 &=\left[\dfrac{x^2}{4}+\dfrac12\ln x\right]_1^e\\
 &=\dfrac{e^2+1}{4}。
-\end{aligned}
-$$
+\end{aligned}$
 
 故所求弧长为
 

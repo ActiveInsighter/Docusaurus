@@ -13,42 +13,34 @@ toc_max_heading_level: 4
 
 1. **【1988-45-1分】**
 
-$$
-\displaystyle
+$$\displaystyle
 \begin{pmatrix}
 0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 1 & 0 & 0 & 0
-\end{pmatrix}^{-1}=
-$$
+\end{pmatrix}^{-1}=$$
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle
+**答案：** $$\displaystyle
 \begin{pmatrix}
 0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 1 & 0 & 0 & 0
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
 **解析：** 记
 
-$$
-\displaystyle P=
+$$\displaystyle P=
 \begin{pmatrix}
 0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 1 & 0 & 0 & 0
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 矩阵$P$表示将向量各分量的次序完全颠倒。连续作两次相同置换后，各分量恢复原位，因此
 
@@ -60,8 +52,7 @@ $\displaystyle P^{-1}=P$，
 
 即
 
-$$
-\displaystyle
+$$\displaystyle
 \begin{pmatrix}
 0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 \\
@@ -74,9 +65,7 @@ $$
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 1 & 0 & 0 & 0
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 </details>
 
@@ -84,8 +73,7 @@ $$
 
 2. **【1989-12-3分】** 设矩阵
 
-$$
-\displaystyle
+$$\displaystyle
 A=\begin{pmatrix}
 3 & 0 & 0 \\
 1 & 4 & 0 \\
@@ -96,53 +84,41 @@ E=\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 则$\displaystyle (A-2E)^{-1}=$
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle
+**答案：** $$\displaystyle
 \begin{pmatrix}
 1 & 0 & 0 \\
 -\dfrac{1}{2} & \dfrac{1}{2} & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
 **解析：** 先计算
 
-$$
-\displaystyle A-2E=
+$$\displaystyle A-2E=
 \begin{pmatrix}
 1 & 0 & 0 \\
 1 & 2 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 对该下三角矩阵作初等行变换，或直接设其逆矩阵为下三角矩阵求解，可得
 
-$$
-\displaystyle (A-2E)^{-1}=
+$$\displaystyle (A-2E)^{-1}=
 \begin{pmatrix}
 1 & 0 & 0 \\
 -\dfrac{1}{2} & \dfrac{1}{2} & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 验证：
 
-$$
-\displaystyle
+$$\displaystyle
 \begin{pmatrix}
 1 & 0 & 0 \\
 1 & 2 & 0 \\
@@ -153,9 +129,7 @@ $$
 -\dfrac{1}{2} & \dfrac{1}{2} & 0 \\
 0 & 0 & 1
 \end{pmatrix}
-=E
-$$
-。
+=E$$。
 
 </details>
 
@@ -163,54 +137,42 @@ $$
 
 3. **【1991-12-3分】** 设四阶方阵
 
-$$
-\displaystyle
+$$\displaystyle
 A=\begin{pmatrix}
 5 & 2 & 0 & 0 \\
 2 & 1 & 0 & 0 \\
 0 & 0 & 1 & -2 \\
 0 & 0 & 1 & 1
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 则$\displaystyle A^{-1}=$
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle
+**答案：** $$\displaystyle
 A^{-1}=
 \begin{pmatrix}
 1 & -2 & 0 & 0 \\
 -2 & 5 & 0 & 0 \\
 0 & 0 & \dfrac{1}{3} & \dfrac{2}{3} \\
 0 & 0 & -\dfrac{1}{3} & \dfrac{1}{3}
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
 **解析：** 矩阵$A$为分块对角矩阵，可写成
 
-$$
-\displaystyle A=
+$$\displaystyle A=
 \begin{pmatrix}
 A_1 & O \\
 O & A_2
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 其中
 
-$$
-\displaystyle
+$$\displaystyle
 A_1=\begin{pmatrix}5&2\\2&1\end{pmatrix},
 \qquad
-A_2=\begin{pmatrix}1&-2\\1&1\end{pmatrix}
-$$
-。
+A_2=\begin{pmatrix}1&-2\\1&1\end{pmatrix}$$。
 
 因为
 
@@ -218,11 +180,8 @@ $\displaystyle |A_1|=5\cdot1-2\cdot2=1$，
 
 所以
 
-$$
-\displaystyle A_1^{-1}=
-\begin{pmatrix}1&-2\\-2&5\end{pmatrix}
-$$
-。
+$$\displaystyle A_1^{-1}=
+\begin{pmatrix}1&-2\\-2&5\end{pmatrix}$$。
 
 又因为
 
@@ -230,16 +189,12 @@ $\displaystyle |A_2|=1\cdot1-(-2)\cdot1=3$，
 
 所以
 
-$$
-\displaystyle A_2^{-1}=
-\dfrac{1}{3}\begin{pmatrix}1&2\\-1&1\end{pmatrix}
-$$
-。
+$$\displaystyle A_2^{-1}=
+\dfrac{1}{3}\begin{pmatrix}1&2\\-1&1\end{pmatrix}$$。
 
 因此
 
-$$
-\displaystyle A^{-1}=
+$$\displaystyle A^{-1}=
 \begin{pmatrix}
 A_1^{-1} & O \\
 O & A_2^{-1}
@@ -250,9 +205,7 @@ O & A_2^{-1}
 -2 & 5 & 0 & 0 \\
 0 & 0 & \dfrac{1}{3} & \dfrac{2}{3} \\
 0 & 0 & -\dfrac{1}{3} & \dfrac{1}{3}
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 </details>
 
@@ -260,26 +213,21 @@ $$
 
 4. **【1994-45-3分】** 设
 
-$$
-\displaystyle
+$$\displaystyle
 A=\begin{pmatrix}
 0 & a_1 & 0 & \cdots & 0 \\
 0 & 0 & a_2 & \cdots & 0 \\
 \vdots & \vdots & \vdots & & \vdots \\
 0 & 0 & 0 & \cdots & a_{n-1} \\
 a_n & 0 & 0 & \cdots & 0
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 其中$\displaystyle a_i\neq0\ (i=1,2,\cdots,n)$，则$\displaystyle A^{-1}=$
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle
+**答案：** $$\displaystyle
 A^{-1}=
 \begin{pmatrix}
 0 & 0 & 0 & \cdots & \dfrac{1}{a_n} \\
@@ -287,50 +235,40 @@ A^{-1}=
 0 & \dfrac{1}{a_2} & 0 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \ddots & \vdots \\
 0 & 0 & \cdots & \dfrac{1}{a_{n-1}} & 0
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 **解析：** 设$\displaystyle y=Ax$，其中
 
-$$
-\displaystyle
+$$\displaystyle
 x=(x_1,x_2,\cdots,x_n)^T,
 \qquad
-y=(y_1,y_2,\cdots,y_n)^T
-$$
-。
+y=(y_1,y_2,\cdots,y_n)^T$$。
 
 由矩阵乘法得
 
-$$
-\displaystyle
+$$\displaystyle
 \begin{cases}
 y_1=a_1x_2,\\
 y_2=a_2x_3,\\
 \quad\vdots\\
 y_{n-1}=a_{n-1}x_n,\\
 y_n=a_nx_1.
-\end{cases}
-$$
+\end{cases}$$
 
 由于所有$\displaystyle a_i\neq0$，可反解为
 
-$$
-\displaystyle
+$$\displaystyle
 \begin{cases}
 x_1=\dfrac{1}{a_n}y_n,\\
 x_2=\dfrac{1}{a_1}y_1,\\
 x_3=\dfrac{1}{a_2}y_2,\\
 \quad\vdots\\
 x_n=\dfrac{1}{a_{n-1}}y_{n-1}.
-\end{cases}
-$$
+\end{cases}$$
 
 因此$\displaystyle x=A^{-1}y$中的系数矩阵即为
 
-$$
-\displaystyle
+$$\displaystyle
 A^{-1}=
 \begin{pmatrix}
 0 & 0 & 0 & \cdots & \dfrac{1}{a_n} \\
@@ -338,9 +276,7 @@ A^{-1}=
 0 & \dfrac{1}{a_2} & 0 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \ddots & \vdots \\
 0 & 0 & \cdots & \dfrac{1}{a_{n-1}} & 0
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 </details>
 
@@ -388,34 +324,25 @@ $\displaystyle Y=\begin{pmatrix}O & B^{-1} \\ A^{-1} & O\end{pmatrix}$。
 
 利用分块矩阵乘法，得
 
-$$
-\displaystyle
+$$\displaystyle
 XY=
 \begin{pmatrix}O&A\\B&O\end{pmatrix}
 \begin{pmatrix}O&B^{-1}\\A^{-1}&O\end{pmatrix}
 =
 \begin{pmatrix}AA^{-1}&O\\O&BB^{-1}\end{pmatrix}
 =
-\begin{pmatrix}E&O\\O&E\end{pmatrix}
-$$
-。
+\begin{pmatrix}E&O\\O&E\end{pmatrix}$$。
 
 同理，
 
-$$
-\displaystyle
+$$\displaystyle
 YX=
-\begin{pmatrix}E&O\\O&E\end{pmatrix}
-$$
-。
+\begin{pmatrix}E&O\\O&E\end{pmatrix}$$。
 
 故
 
-$$
-\displaystyle X^{-1}=Y=
-\begin{pmatrix}O & B^{-1} \\ A^{-1} & O\end{pmatrix}
-$$
-。
+$$\displaystyle X^{-1}=Y=
+\begin{pmatrix}O & B^{-1} \\ A^{-1} & O\end{pmatrix}$$。
 
 需要注意：右上角应为$\displaystyle B^{-1}$，左下角应为$\displaystyle A^{-1}$，位置不能直接照抄原矩阵中的$A,B$。
 
@@ -440,24 +367,18 @@ $\displaystyle A^{-1}+B^{-1}=B^{-1}(A+B)A^{-1}$。
 
 事实上，
 
-$$
-\displaystyle B^{-1}(A+B)A^{-1}
+$$\displaystyle B^{-1}(A+B)A^{-1}
 =B^{-1}AA^{-1}+B^{-1}BA^{-1}
-=B^{-1}+A^{-1}
-$$
-。
+=B^{-1}+A^{-1}$$。
 
 因此
 
-$$
-\displaystyle
+$$\displaystyle
 (A^{-1}+B^{-1})^{-1}
 =
 \left[B^{-1}(A+B)A^{-1}\right]^{-1}
 =
-A(A+B)^{-1}B
-$$
-。
+A(A+B)^{-1}B$$。
 
 故选C。
 
@@ -469,25 +390,20 @@ A选项只是原矩阵本身；B选项忽略了逆矩阵及乘法次序；D选�
 
 4. **【2000-2-3分】** 设
 
-$$
-\displaystyle
+$$\displaystyle
 A=\begin{pmatrix}
 1 & 0 & 0 & 0 \\
 -2 & 3 & 0 & 0 \\
 0 & -4 & 5 & 0 \\
 0 & 0 & -6 & 7
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 $E$为4阶单位矩阵，且$\displaystyle B=(E+A)^{-1}(E-A)$，则$\displaystyle (E+B)^{-1}=$
 
 <details>
 <summary>查看答案与解析</summary>
 
-**答案：**
-$$
-\displaystyle
+**答案：** $$\displaystyle
 (E+B)^{-1}
 =\dfrac{1}{2}(E+A)
 =
@@ -496,8 +412,7 @@ $$
 -1 & 2 & 0 & 0 \\
 0 & -2 & 3 & 0 \\
 0 & 0 & -3 & 4
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
 **解析：** 由
 
@@ -509,13 +424,10 @@ $\displaystyle E=(E+A)^{-1}(E+A)$，
 
 可得
 
-$$
-\displaystyle
+$$\displaystyle
 E+B
 =(E+A)^{-1}\big[(E+A)+(E-A)\big]
-=2(E+A)^{-1}
-$$
-。
+=2(E+A)^{-1}$$。
 
 因此
 
@@ -523,22 +435,18 @@ $\displaystyle (E+B)^{-1}=\dfrac{1}{2}(E+A)$。
 
 又
 
-$$
-\displaystyle
+$$\displaystyle
 E+A=
 \begin{pmatrix}
 2 & 0 & 0 & 0 \\
 -2 & 4 & 0 & 0 \\
 0 & -4 & 6 & 0 \\
 0 & 0 & -6 & 8
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 所以
 
-$$
-\displaystyle
+$$\displaystyle
 (E+B)^{-1}
 =
 \begin{pmatrix}
@@ -546,9 +454,7 @@ $$
 -1 & 2 & 0 & 0 \\
 0 & -2 & 3 & 0 \\
 0 & 0 & -3 & 4
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 本题不需要先求出$B$的具体矩阵，直接对$E+B$作代数化简更简洁。
 
@@ -600,20 +506,16 @@ $\displaystyle (A-E)^{-1}=\dfrac{1}{2}(A+2E)$。
 
 **解析：** 先计算
 
-$$
-\displaystyle
+$$\displaystyle
 A^2=
 \begin{pmatrix}1 & -1 \\ 2 & 3\end{pmatrix}
 \begin{pmatrix}1 & -1 \\ 2 & 3\end{pmatrix}
 =
-\begin{pmatrix}-1 & -4 \\ 8 & 7\end{pmatrix}
-$$
-。
+\begin{pmatrix}-1 & -4 \\ 8 & 7\end{pmatrix}$$。
 
 于是
 
-$$
-\displaystyle
+$$\displaystyle
 B=A^2-3A+2E
 =
 \begin{pmatrix}-1 & -4 \\ 8 & 7\end{pmatrix}
@@ -622,9 +524,7 @@ B=A^2-3A+2E
 +
 \begin{pmatrix}2 & 0 \\ 0 & 2\end{pmatrix}
 =
-\begin{pmatrix}-2 & -1 \\ 2 & 0\end{pmatrix}
-$$
-。
+\begin{pmatrix}-2 & -1 \\ 2 & 0\end{pmatrix}$$。
 
 其行列式为
 
@@ -632,16 +532,13 @@ $\displaystyle |B|=(-2)\cdot0-(-1)\cdot2=2\neq0$，
 
 故$B$可逆。由二阶矩阵求逆公式，
 
-$$
-\displaystyle
+$$\displaystyle
 B^{-1}
 =
 \dfrac{1}{2}
 \begin{pmatrix}0 & 1 \\ -2 & -2\end{pmatrix}
 =
-\begin{pmatrix}0 & \dfrac{1}{2} \\ -1 & -1\end{pmatrix}
-$$
-。
+\begin{pmatrix}0 & \dfrac{1}{2} \\ -1 & -1\end{pmatrix}$$。
 
 </details>
 
@@ -680,27 +577,21 @@ $\displaystyle (A-E)^{-1}=\dfrac{1}{2}(B-2E)$。
 
 计算
 
-$$
-\displaystyle B-2E=
+$$\displaystyle B-2E=
 \begin{pmatrix}
 0 & 0 & 2 \\
 0 & 2 & 0 \\
 2 & 0 & 0
-\end{pmatrix}
-$$
-，
+\end{pmatrix}$$，
 
 故
 
-$$
-\displaystyle (A-E)^{-1}=
+$$\displaystyle (A-E)^{-1}=
 \begin{pmatrix}
 0 & 0 & 1 \\
 0 & 1 & 0 \\
 1 & 0 & 0
-\end{pmatrix}
-$$
-。
+\end{pmatrix}$$。
 
 本题的关键是把原矩阵等式整理成“某矩阵乘积等于单位矩阵的常数倍”的形式，而不必先求$A$。
 
