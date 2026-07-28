@@ -1,1 +1,1 @@
-Trigger the PR-scoped minimal resource diagnostic after the workflow was added to main.
+Trigger the reopened PR-scoped minimal resource diagnostic.
