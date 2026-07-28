@@ -1,0 +1,86 @@
+name: Diagnose build resources
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/resource-diagnose.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - name: Run quiet monitored build
+        shell: bash
+        run: |
+          set -o pipefail
+
+          git clone --depth 1 --branch diagnose/build-resource-telemetry \
+            https://github.com/ActiveInsighter/Docusaurus.git repo >/dev/null 2>&1
+          cd repo
+
+          echo "META ts=$(date -Iseconds) node=$(node --version) npm=$(npm --version) cpus=$(nproc)"
+          npm ci --no-audit --no-fund --silent >/dev/null 2>&1
+          echo "PHASE ts=$(date -Iseconds) name=build-start"
+
+          event_value() {
+            local key="$1"
+            if [[ -r /sys/fs/cgroup/memory.events ]]; then
+              awk -v key="${key}" '$1 == key {print $2}' /sys/fs/cgroup/memory.events
+            else
+              printf 'na'
+            fi
+          }
+
+          file_value() {
+            if [[ -r "$1" ]]; then cat "$1"; else printf 'na'; fi
+          }
+
+          sample() {
+            local node_total=0 node_max=0 rss
+            while read -r rss; do
+              [[ -z "${rss}" ]] && continue
+              node_total=$((node_total + rss))
+              (( rss > node_max )) && node_max="${rss}"
+            done < <(ps -C node -o rss= 2>/dev/null || true)
+
+            printf 'RESOURCE ts=%s mem_available_kb=%s cgroup_current=%s cgroup_peak=%s cgroup_max=%s oom=%s oom_kill=%s high=%s max_events=%s node_total_kb=%s node_max_kb=%s disk_avail_kb=%s\n' \
+              "$(date -Iseconds)" \
+              "$(awk '/MemAvailable:/ {print $2}' /proc/meminfo)" \
+              "$(file_value /sys/fs/cgroup/memory.current)" \
+              "$(file_value /sys/fs/cgroup/memory.peak)" \
+              "$(file_value /sys/fs/cgroup/memory.max)" \
+              "$(event_value oom)" \
+              "$(event_value oom_kill)" \
+              "$(event_value high)" \
+              "$(event_value max)" \
+              "${node_total}" \
+              "${node_max}" \
+              "$(df -Pk . | awk 'NR == 2 {print $4}')"
+          }
+
+          sample
+          (
+            while true; do
+              sleep 5
+              sample
+            done
+          ) &
+          MONITOR_PID=$!
+
+          cleanup() {
+            kill "${MONITOR_PID}" 2>/dev/null || true
+            wait "${MONITOR_PID}" 2>/dev/null || true
+            sample || true
+            echo "PHASE ts=$(date -Iseconds) name=build-end"
+            tail -n 20 build-output.log 2>/dev/null || true
+          }
+          trap cleanup EXIT INT TERM
+
+          npm run build >build-output.log 2>&1
