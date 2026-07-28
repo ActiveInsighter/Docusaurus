@@ -1,0 +1,5673 @@
+---
+title: "一、一元函数导数的计算"
+sidebar_position: 1
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+# 一、一元函数导数的计算
+
+## 小题
+
+### （一）初等函数的导数
+
+1. **【1987-45-4 分】** 已知 $\displaystyle y=\ln \dfrac{\sqrt{1+x^{2}}-1}{\sqrt{1+x^{2}}+1}$，求 $\displaystyle y'$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'=\dfrac{2}{x\sqrt{1+x^{2}}}\quad(x\ne 0).
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle u=\sqrt{1+x^{2}}$，则
+
+$$
+\displaystyle y=\ln(u-1)-\ln(u+1),
+$$
+
+且
+
+$$
+\displaystyle u'=\dfrac{x}{\sqrt{1+x^{2}}}=\dfrac{x}{u}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=\dfrac{u'}{u-1}-\dfrac{u'}{u+1}\\
+&=u'\left(\dfrac{1}{u-1}-\dfrac{1}{u+1}\right)\\
+&=\dfrac{x}{u}\cdot\dfrac{2}{u^{2}-1}.
+\end{aligned}
+$$
+
+由于 $\displaystyle u^{2}-1=x^{2}$，故
+
+$$
+\displaystyle y'=\dfrac{x}{u}\cdot\dfrac{2}{x^{2}}
+=\dfrac{2}{x\sqrt{1+x^{2}}}.
+$$
+
+本题考查对数函数与复合函数的求导。原函数中对数的真数在 $\displaystyle x\ne0$ 时为正，因此导数的定义域为 $\displaystyle x\ne0$。
+
+</details>
+
+---
+
+2. **【1987-3-3 分】** 设 $\displaystyle y=\ln(1+ax)$，其中 $\displaystyle a$ 为非零常数，则 $\displaystyle y'=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'=\dfrac{a}{1+ax}.
+$$
+
+</div>
+</div>
+
+**解析：** 由复合函数求导法则，令 $\displaystyle u=1+ax$，则 $\displaystyle u'=a$。因此
+
+$$
+\displaystyle y'=\dfrac{u'}{u}=\dfrac{a}{1+ax}.
+$$
+
+原函数要求 $\displaystyle 1+ax>0$，导数也只在该定义域内有意义。
+
+</details>
+
+---
+
+3. **【1988-123-3 分】** 若 $\displaystyle f(t)=\lim_{x\to\infty}t\left(1+\dfrac{1}{x}\right)^{2tx}$，则 $\displaystyle f'(t)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f'(t)=(1+2t)e^{2t}.
+$$
+
+</div>
+</div>
+
+**解析：** 先求极限。利用基本极限
+
+$$
+\displaystyle \lim_{x\to\infty}\left(1+\dfrac{1}{x}\right)^x=e,
+$$
+
+有
+
+$$
+\begin{aligned}
+\displaystyle f(t)
+&=t\lim_{x\to\infty}\left[\left(1+\dfrac{1}{x}\right)^x\right]^{2t}\\
+&=te^{2t}.
+\end{aligned}
+$$
+
+于是由乘积求导法则，
+
+$$
+\displaystyle f'(t)=e^{2t}+2te^{2t}=(1+2t)e^{2t}.
+$$
+
+关键是先把极限化为关于 $\displaystyle t$ 的显函数，再对 $\displaystyle t$ 求导，不能直接把极限变量 $\displaystyle x$ 与求导变量 $\displaystyle t$ 混淆。
+
+</details>
+
+---
+
+4. **【1989-3-4 分】** 已知 $\displaystyle y=\arcsin e^{-\sqrt{x}}$，求 $\displaystyle y'$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'=-\dfrac{e^{-\sqrt{x}}}{2\sqrt{x}\sqrt{1-e^{-2\sqrt{x}}}}\quad(x>0).
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=e^{-\sqrt{x}},
+$$
+
+则
+
+$$
+\displaystyle y=\arcsin u,
+\qquad
+\displaystyle y'=\dfrac{u'}{\sqrt{1-u^{2}}}.
+$$
+
+又
+
+$$
+\displaystyle u'=e^{-\sqrt{x}}\left(-\dfrac{1}{2\sqrt{x}}\right)
+=-\dfrac{e^{-\sqrt{x}}}{2\sqrt{x}}.
+$$
+
+故
+
+$$
+\displaystyle y'
+=-\dfrac{e^{-\sqrt{x}}}{2\sqrt{x}\sqrt{1-e^{-2\sqrt{x}}}}.
+$$
+
+虽然原函数在 $\displaystyle x=0$ 处有定义，但上式在 $\displaystyle x=0$ 处无意义，且右导数不为有限值，所以通常写导数适用范围为 $\displaystyle x>0$。
+
+</details>
+
+---
+
+5. **【1990-3-3 分】** 设 $\displaystyle y=e^{\tan \frac{1}{x}}\sin \dfrac{1}{x}$，则 $\displaystyle y'=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'=-\dfrac{e^{\tan \frac{1}{x}}}{x^{2}}
+\left(\sin\dfrac{1}{x}\sec^{2}\dfrac{1}{x}+\cos\dfrac{1}{x}\right).
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle u=\dfrac{1}{x}$，则 $\displaystyle u'=-\dfrac{1}{x^{2}}$，原函数为
+
+$$
+\displaystyle y=e^{\tan u}\sin u.
+$$
+
+由乘积求导法则，
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=e^{\tan u}\sec^{2}u\,u'\sin u
++e^{\tan u}\cos u\,u'\\
+&=e^{\tan u}u'\left(\sin u\sec^{2}u+\cos u\right).
+\end{aligned}
+$$
+
+代入 $\displaystyle u=\dfrac{1}{x}$ 与 $\displaystyle u'=-\dfrac{1}{x^{2}}$，即得答案。
+
+本题同时使用乘积求导法则和多层复合函数求导法则，容易遗漏最内层 $\displaystyle \dfrac{1}{x}$ 的导数中的负号。
+
+</details>
+
+---
+
+6. **【1991-3-3 分】** 设 $\displaystyle y=\ln(1+3^{-x})$，则 $\displaystyle dy=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy=-\dfrac{\ln3}{1+3^{x}}\,dx.
+$$
+
+</div>
+</div>
+
+**解析：** 先求导数。由于
+
+$$
+\displaystyle \left(3^{-x}\right)'=-\ln3\cdot3^{-x},
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=\dfrac{-\ln3\cdot3^{-x}}{1+3^{-x}}\\
+&=-\dfrac{\ln3}{1+3^{x}}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle dy=y'\,dx=-\dfrac{\ln3}{1+3^{x}}\,dx.
+$$
+
+本题考查指数函数、对数函数的复合求导以及微分公式 $\displaystyle dy=y'\,dx$。
+
+</details>
+
+---
+
+7. **【1992-5-3 分】** 设 $\displaystyle f(t)=\lim_{x\to\infty}t\left(\dfrac{x+t}{x-t}\right)^x$，则 $\displaystyle f'(t)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f'(t)=(1+2t)e^{2t}.
+$$
+
+</div>
+</div>
+
+**解析：** 先计算极限。对幂函数部分取对数：
+
+$$
+\begin{aligned}
+\displaystyle \lim_{x\to\infty}x\ln\dfrac{x+t}{x-t}
+&=\lim_{x\to\infty}x\ln\dfrac{1+\frac{t}{x}}{1-\frac{t}{x}}\\
+&=\lim_{x\to\infty}x\left[\ln\left(1+\dfrac{t}{x}\right)-\ln\left(1-\dfrac{t}{x}\right)\right].
+\end{aligned}
+$$
+
+当 $\displaystyle x\to\infty$ 时，
+
+$$
+\displaystyle \ln\left(1+\dfrac{t}{x}\right)\sim\dfrac{t}{x},
+\qquad
+\displaystyle \ln\left(1-\dfrac{t}{x}\right)\sim-\dfrac{t}{x},
+$$
+
+故
+
+$$
+\displaystyle \lim_{x\to\infty}x\ln\dfrac{x+t}{x-t}=2t.
+$$
+
+从而
+
+$$
+\displaystyle \lim_{x\to\infty}\left(\dfrac{x+t}{x-t}\right)^x=e^{2t},
+$$
+
+所以
+
+$$
+\displaystyle f(t)=te^{2t}.
+$$
+
+最后求导得
+
+$$
+\displaystyle f'(t)=e^{2t}+2te^{2t}=(1+2t)e^{2t}.
+$$
+
+</details>
+
+---
+
+8. **【1995-3-3 分】** 设 $\displaystyle y=\cos(x^{2})\sin^{2}\dfrac{1}{x}$，则 $\displaystyle y'=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'=-2x\sin(x^{2})\sin^{2}\dfrac{1}{x}
+-\dfrac{\cos(x^{2})}{x^{2}}\sin\dfrac{2}{x}.
+$$
+
+</div>
+</div>
+
+**解析：** 由乘积求导法则，
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=\left[\cos(x^{2})\right]'\sin^{2}\dfrac{1}{x}
++\cos(x^{2})\left[\sin^{2}\dfrac{1}{x}\right]'\\
+&=-2x\sin(x^{2})\sin^{2}\dfrac{1}{x}
++\cos(x^{2})\cdot2\sin\dfrac{1}{x}\cos\dfrac{1}{x}\left(-\dfrac{1}{x^{2}}\right).
+\end{aligned}
+$$
+
+利用
+
+$$
+\displaystyle 2\sin\dfrac{1}{x}\cos\dfrac{1}{x}=\sin\dfrac{2}{x},
+$$
+
+得到
+
+$$
+\displaystyle y'=-2x\sin(x^{2})\sin^{2}\dfrac{1}{x}
+-\dfrac{\cos(x^{2})}{x^{2}}\sin\dfrac{2}{x}.
+$$
+
+原函数与导函数均只在 $\displaystyle x\ne0$ 时有定义。易错点是遗漏 $\displaystyle \left(\dfrac{1}{x}\right)'=-\dfrac{1}{x^{2}}$。
+
+</details>
+
+---
+
+9. **【1996-5-3 分】** 设 $\displaystyle y=\ln(x+\sqrt{1+x^{2}})$，则 $\displaystyle y'''\big|_{x=\sqrt{3}}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'''\big|_{x=\sqrt{3}}=\dfrac{5}{32}.
+$$
+
+</div>
+</div>
+
+**解析：** 先求一阶导数：
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=\dfrac{1+\frac{x}{\sqrt{1+x^{2}}}}{x+\sqrt{1+x^{2}}}\\
+&=\dfrac{1}{\sqrt{1+x^{2}}}.
+\end{aligned}
+$$
+
+于是
+
+$$
+\displaystyle y''=-x(1+x^{2})^{-\frac{3}{2}}.
+$$
+
+再求一次导数：
+
+$$
+\begin{aligned}
+\displaystyle y'''
+&=-(1+x^{2})^{-\frac{3}{2}}
++3x^{2}(1+x^{2})^{-\frac{5}{2}}\\
+&=\dfrac{2x^{2}-1}{(1+x^{2})^{\frac{5}{2}}}.
+\end{aligned}
+$$
+
+当 $\displaystyle x=\sqrt{3}$ 时，
+
+$$
+\displaystyle y'''\big|_{x=\sqrt{3}}
+=\dfrac{2\cdot3-1}{(1+3)^{\frac{5}{2}}}
+=\dfrac{5}{4^{\frac{5}{2}}}
+=\dfrac{5}{32}.
+$$
+
+本题中 $\displaystyle \ln(x+\sqrt{1+x^{2}})$ 是反双曲正弦函数 $\displaystyle \operatorname{arsinh}x$ 的表达式，其导数为 $\displaystyle \dfrac{1}{\sqrt{1+x^{2}}}$。
+
+</details>
+
+---
+
+10. **【1996-45-3 分】** 设方程 $\displaystyle x=y^{y}$ 确定 $\displaystyle y$ 是 $\displaystyle x$ 的函数，则 $\displaystyle dy=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy=\dfrac{1}{x(1+\ln y)}\,dx.
+$$
+
+</div>
+</div>
+
+**解析：** 由 $\displaystyle x=y^{y}$，两边取自然对数，得
+
+$$
+\displaystyle \ln x=y\ln y.
+$$
+
+两边对 $\displaystyle x$ 求微分：
+
+$$
+\displaystyle \dfrac{1}{x}\,dx=(1+\ln y)\,dy.
+$$
+
+因此
+
+$$
+\displaystyle dy=\dfrac{1}{x(1+\ln y)}\,dx.
+$$
+
+也可利用 $\displaystyle x=y^{y}$ 写成
+
+$$
+\displaystyle dy=\dfrac{1}{y^{y}(1+\ln y)}\,dx.
+$$
+
+本题考查幂指函数的对数求导法。由于实数范围内 $\displaystyle y^{y}$ 的一般求导通常要求 $\displaystyle y>0$，还需满足 $\displaystyle 1+\ln y\ne0$，即 $\displaystyle y\ne e^{-1}$，才能由隐函数关系解出有限的 $\displaystyle dy$。
+
+</details>
+
+---
+
+11. **【1996-3-3 分】** 设 $\displaystyle y=\left(x+e^{-\frac{x}{2}}\right)^{\frac{2}{3}}$，则 $\displaystyle y'\big|_{x=0}=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'\big|_{x=0}=\dfrac{1}{3}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x+e^{-\frac{x}{2}},
+$$
+
+则
+
+$$
+\displaystyle y=u^{\frac{2}{3}},
+\qquad
+u'=1-\dfrac{1}{2}e^{-\frac{x}{2}}.
+$$
+
+由复合函数求导法则，
+
+$$
+\displaystyle y'=\dfrac{2}{3}u^{-\frac{1}{3}}u'
+=\dfrac{2}{3}\left(x+e^{-\frac{x}{2}}\right)^{-\frac{1}{3}}
+\left(1-\dfrac{1}{2}e^{-\frac{x}{2}}\right).
+$$
+
+当 $\displaystyle x=0$ 时，
+
+$$
+\displaystyle u(0)=1,
+\qquad
+u'(0)=1-\dfrac{1}{2}=\dfrac{1}{2}.
+$$
+
+因此
+
+$$
+\displaystyle y'\big|_{x=0}
+=\dfrac{2}{3}\cdot1^{-\frac{1}{3}}\cdot\dfrac{1}{2}
+=\dfrac{1}{3}.
+$$
+
+易错点是对 $\displaystyle e^{-x/2}$ 求导时遗漏系数 $\displaystyle -\dfrac{1}{2}$。
+
+</details>
+
+---
+
+12. **【1997-2-3 分】** 设 $\displaystyle y=\ln\sqrt{\dfrac{1-x}{1+x^{2}}}$，则 $\displaystyle y''\big|_{x=0}=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y''\big|_{x=0}=-\dfrac{3}{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 先利用对数运算化简：
+
+$$
+\displaystyle y=\dfrac{1}{2}\left[\ln(1-x)-\ln(1+x^{2})\right].
+$$
+
+于是
+
+$$
+\displaystyle y'=-\dfrac{1}{2(1-x)}-\dfrac{x}{1+x^{2}}.
+$$
+
+再求导，得
+
+$$
+\begin{aligned}
+\displaystyle y''
+&=-\dfrac{1}{2(1-x)^{2}}
+-\dfrac{(1+x^{2})-2x^{2}}{(1+x^{2})^{2}}\\
+&=-\dfrac{1}{2(1-x)^{2}}-\dfrac{1-x^{2}}{(1+x^{2})^{2}}.
+\end{aligned}
+$$
+
+代入 $\displaystyle x=0$，得到
+
+$$
+\displaystyle y''(0)=-\dfrac{1}{2}-1=-\dfrac{3}{2}.
+$$
+
+本题先取对数展开再求导，可显著减少根式与商式求导的计算量。
+
+</details>
+
+---
+
+13. **【2003-2-4 分】** 已知 $\displaystyle y=\dfrac{x}{\ln x}$ 是微分方程 $\displaystyle y'=\dfrac{y}{x}+\varphi\left(\dfrac{x}{y}\right)$ 的解，则 $\displaystyle \varphi\left(\dfrac{x}{y}\right)$ 的表达式为（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle -\dfrac{y^{2}}{x^{2}}$ &emsp;&emsp; B. $\displaystyle \dfrac{y^{2}}{x^{2}}$ &emsp;&emsp; C. $\displaystyle -\dfrac{x^{2}}{y^{2}}$ &emsp;&emsp; D. $\displaystyle \dfrac{x^{2}}{y^{2}}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 由
+
+$$
+\displaystyle y=\dfrac{x}{\ln x},
+$$
+
+求导得
+
+$$
+\displaystyle y'=\dfrac{\ln x-1}{(\ln x)^{2}}.
+$$
+
+又因为
+
+$$
+\displaystyle \dfrac{y}{x}=\dfrac{1}{\ln x},
+\qquad
+\dfrac{x}{y}=\ln x,
+$$
+
+代入微分方程，得到
+
+$$
+\begin{aligned}
+\displaystyle \varphi\left(\dfrac{x}{y}\right)
+&=y'-\dfrac{y}{x}\\
+&=\dfrac{\ln x-1}{(\ln x)^{2}}-\dfrac{1}{\ln x}\\
+&=-\dfrac{1}{(\ln x)^{2}}.
+\end{aligned}
+$$
+
+而
+
+$$
+\displaystyle \dfrac{y^{2}}{x^{2}}=\dfrac{1}{(\ln x)^{2}},
+$$
+
+故
+
+$$
+\displaystyle \varphi\left(\dfrac{x}{y}\right)=-\dfrac{y^{2}}{x^{2}}.
+$$
+
+因此选择 A。其余选项分别存在符号错误或将 $\displaystyle \dfrac{x}{y}$ 与 $\displaystyle \dfrac{y}{x}$ 颠倒。
+
+</details>
+
+---
+
+14. **【2004-4-4 分】** 设 $\displaystyle y=\arctan e^{x}-\ln\sqrt{\dfrac{e^{2x}}{e^{2x}+1}}$，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=1}=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=1}=\dfrac{e-1}{e^{2}+1}.
+$$
+
+</div>
+</div>
+
+**解析：** 第一项的导数为
+
+$$
+\displaystyle \left(\arctan e^{x}\right)'=\dfrac{e^{x}}{1+e^{2x}}.
+$$
+
+对第二项先化简：
+
+$$
+\begin{aligned}
+\displaystyle -\ln\sqrt{\dfrac{e^{2x}}{e^{2x}+1}}
+&=-\dfrac{1}{2}\left[2x-\ln(e^{2x}+1)\right]\\
+&=-x+\dfrac{1}{2}\ln(e^{2x}+1).
+\end{aligned}
+$$
+
+故其导数为
+
+$$
+\displaystyle -1+\dfrac{e^{2x}}{e^{2x}+1}
+=-\dfrac{1}{e^{2x}+1}.
+$$
+
+因此
+
+$$
+\displaystyle y'=\dfrac{e^{x}}{1+e^{2x}}-\dfrac{1}{1+e^{2x}}
+=\dfrac{e^{x}-1}{1+e^{2x}}.
+$$
+
+代入 $\displaystyle x=1$，得
+
+$$
+\displaystyle y'(1)=\dfrac{e-1}{e^{2}+1}.
+$$
+
+</details>
+
+---
+
+15. **【2005-2-4 分】** 设 $\displaystyle y=(1+\sin x)^{x}$，则 $\displaystyle dy\big|_{x=\pi}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy\big|_{x=\pi}=-\pi\,dx.
+$$
+
+</div>
+</div>
+
+**解析：** 这是幂指函数，采用对数求导。两边取自然对数：
+
+$$
+\displaystyle \ln y=x\ln(1+\sin x).
+$$
+
+两边对 $\displaystyle x$ 求导，得
+
+$$
+\displaystyle \dfrac{y'}{y}
+=\ln(1+\sin x)+\dfrac{x\cos x}{1+\sin x}.
+$$
+
+所以
+
+$$
+\displaystyle y'
+=(1+\sin x)^{x}
+\left[\ln(1+\sin x)+\dfrac{x\cos x}{1+\sin x}\right].
+$$
+
+当 $\displaystyle x=\pi$ 时，
+
+$$
+\displaystyle (1+\sin\pi)^{\pi}=1,
+\qquad
+\ln(1+\sin\pi)=0,
+\qquad
+\dfrac{\pi\cos\pi}{1+\sin\pi}=-\pi.
+$$
+
+因此
+
+$$
+\displaystyle y'(\pi)=-\pi,
+$$
+
+从而
+
+$$
+\displaystyle dy\big|_{x=\pi}=y'(\pi)\,dx=-\pi\,dx.
+$$
+
+</details>
+
+---
+
+16. **【2011-3-4 分】** 设 $\displaystyle f(x)=\lim_{t\to0}x(1+3t)^{\frac{x}{t}}$，则 $\displaystyle f'(x)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f'(x)=e^{3x}(1+3x).
+$$
+
+</div>
+</div>
+
+**解析：** 先计算极限。由重要极限
+
+$$
+\displaystyle \lim_{t\to0}(1+3t)^{\frac{1}{t}}=e^{3},
+$$
+
+可得
+
+$$
+\displaystyle \lim_{t\to0}(1+3t)^{\frac{x}{t}}=e^{3x}.
+$$
+
+因此
+
+$$
+\displaystyle f(x)=xe^{3x}.
+$$
+
+由乘积求导法则，
+
+$$
+\displaystyle f'(x)=e^{3x}+3xe^{3x}=e^{3x}(1+3x).
+$$
+
+应先对参数 $\displaystyle t$ 求极限得到显函数，再对 $\displaystyle x$ 求导，不能直接混淆两个变量。
+
+</details>
+
+---
+
+17. **【2011-2-4 分】** 函数 $\displaystyle f(x)=\ln|(x-1)(x-2)(x-3)|$ 的驻点个数为（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. 0 &emsp;&emsp; B. 1 &emsp;&emsp; C. 2 &emsp;&emsp; D. 3</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C。
+
+**解析：** 函数的定义域为
+
+$$
+\displaystyle x\ne1,2,3.
+$$
+
+在定义域内，利用 $\displaystyle (\ln|u|)'=\dfrac{u'}{u}$，得
+
+$$
+\begin{aligned}
+\displaystyle f'(x)
+&=\dfrac{1}{x-1}+\dfrac{1}{x-2}+\dfrac{1}{x-3}\\
+&=\dfrac{(x-2)(x-3)+(x-1)(x-3)+(x-1)(x-2)}{(x-1)(x-2)(x-3)}\\
+&=\dfrac{3x^{2}-12x+11}{(x-1)(x-2)(x-3)}.
+\end{aligned}
+$$
+
+驻点要求函数在该点有定义且导数为零，因此解
+
+$$
+\displaystyle 3x^{2}-12x+11=0.
+$$
+
+其两根为
+
+$$
+\displaystyle x=2\pm\dfrac{\sqrt{3}}{3}.
+$$
+
+这两个根分别位于 $\displaystyle (1,2)$ 和 $\displaystyle (2,3)$ 内，均属于定义域，所以共有 2 个驻点。
+
+$\displaystyle x=1,2,3$ 是函数无定义的点，不能算作驻点。因此选择 C。
+
+</details>
+
+---
+
+18. **【2021-2-5 分】** 设函数 $\displaystyle F(x)=\sec x$ 在 $\displaystyle x=0$ 处的 2 次泰勒多项式为 $\displaystyle 1+ax+bx^{2}$，则（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle a=1,\ b=-\dfrac{1}{2}$ &emsp;&emsp; B. $\displaystyle a=1,\ b=\dfrac{1}{2}$ &emsp;&emsp; C. $\displaystyle a=0,\ b=-\dfrac{1}{2}$ &emsp;&emsp; D. $\displaystyle a=0,\ b=\dfrac{1}{2}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D。
+
+**解析：** 二阶泰勒多项式为
+
+$$
+\displaystyle P_{2}(x)=F(0)+F'(0)x+\dfrac{F''(0)}{2}x^{2}.
+$$
+
+对于 $\displaystyle F(x)=\sec x$，有
+
+$$
+\displaystyle F(0)=1,
+$$
+
+$$
+\displaystyle F'(x)=\sec x\tan x,
+\qquad
+F'(0)=0.
+$$
+
+再求二阶导数：
+
+$$
+\begin{aligned}
+\displaystyle F''(x)
+&=(\sec x\tan x)'\\
+&=\sec x\tan^{2}x+\sec^{3}x,
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle F''(0)=1.
+$$
+
+因此
+
+$$
+\displaystyle P_{2}(x)=1+\dfrac{x^{2}}{2},
+$$
+
+故
+
+$$
+\displaystyle a=0,
+\qquad
+b=\dfrac{1}{2}.
+$$
+
+选择 D。也可直接使用展开式 $\displaystyle \sec x=1+\dfrac{x^{2}}{2}+o(x^{2})$。
+
+</details>
+
+---
+
+19. **【2021-3-5 分】** 若 $\displaystyle y=\cos e^{-\sqrt{x}}$，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=1}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=1}
+=\dfrac{\sin(e^{-1})}{2e}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=e^{-\sqrt{x}},
+$$
+
+则
+
+$$
+\displaystyle y=\cos u.
+$$
+
+由链式法则，
+
+$$
+\displaystyle y'=-\sin u\cdot u'.
+$$
+
+又
+
+$$
+\displaystyle u'
+=e^{-\sqrt{x}}\left(-\dfrac{1}{2\sqrt{x}}\right)
+=-\dfrac{e^{-\sqrt{x}}}{2\sqrt{x}}.
+$$
+
+所以
+
+$$
+\displaystyle y'
+=\dfrac{e^{-\sqrt{x}}\sin\left(e^{-\sqrt{x}}\right)}{2\sqrt{x}}.
+$$
+
+代入 $\displaystyle x=1$，得到
+
+$$
+\displaystyle y'(1)
+=\dfrac{e^{-1}\sin(e^{-1})}{2}
+=\dfrac{\sin(e^{-1})}{2e}.
+$$
+
+本题含有三层复合：余弦函数、指数函数与根式函数，求导时需逐层使用链式法则。
+
+</details>
+
+### （二）隐函数的导数：求导函数
+
+1. **【1989-3-3 分】** 设 $\displaystyle \tan y=x+y$，则 $\displaystyle dy=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy=\dfrac{dx}{\tan^{2}y}=\dfrac{dx}{(x+y)^{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 方程两边对 $\displaystyle x$ 求导，得
+
+$$
+\displaystyle \sec^{2}y\,y'=1+y'.
+$$
+
+移项整理：
+
+$$
+\begin{aligned}
+\displaystyle (\sec^{2}y-1)y'&=1,\\
+\tan^{2}y\,y'&=1.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle y'=\dfrac{1}{\tan^{2}y}.
+$$
+
+由原方程 $\displaystyle \tan y=x+y$，还可写成
+
+$$
+\displaystyle y'=\dfrac{1}{(x+y)^{2}}.
+$$
+
+所以
+
+$$
+\displaystyle dy=y'\,dx=\dfrac{dx}{(x+y)^{2}}.
+$$
+
+本题考查隐函数求导。对 $\displaystyle \tan y$ 求导时必须乘以 $\displaystyle y'$，不能遗漏链式法则中的这一因子。
+
+</details>
+
+---
+
+2. **【1990-3-5 分】** 求由 $\displaystyle 2y-x=(x-y)\ln(x-y)$ 所确定的函数 $\displaystyle y=y(x)$ 的微分 $\displaystyle dy$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy=\dfrac{\ln(x-y)+2}{\ln(x-y)+3}\,dx.
+$$
+
+</div>
+</div>
+
+**解析：** 由对数的定义，需有 $\displaystyle x-y>0$。方程两边对 $\displaystyle x$ 求导：
+
+$$
+\displaystyle 2y'-1=(1-y')\ln(x-y)+(x-y)\dfrac{1-y'}{x-y}.
+$$
+
+右端整理为
+
+$$
+\displaystyle (1-y')[\ln(x-y)+1].
+$$
+
+于是
+
+$$
+\displaystyle 2y'-1=(1-y')[\ln(x-y)+1].
+$$
+
+展开并收集含 $\displaystyle y'$ 的项：
+
+$$
+\begin{aligned}
+\displaystyle 2y'-1
+&=\ln(x-y)+1-y'[\ln(x-y)+1],\\
+\{\ln(x-y)+3\}y'
+&=\ln(x-y)+2.
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle y'=\dfrac{\ln(x-y)+2}{\ln(x-y)+3},
+$$
+
+从而
+
+$$
+\displaystyle dy=\dfrac{\ln(x-y)+2}{\ln(x-y)+3}\,dx.
+$$
+
+关键在于对 $\displaystyle (x-y)\ln(x-y)$ 使用乘积法则，并对 $\displaystyle \ln(x-y)$ 使用链式法则。
+
+</details>
+
+---
+
+3. **【1992-12-3 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle e^{x+y}+\cos(xy)=0$ 确定，则 $\displaystyle \dfrac{dy}{dx}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{y\sin(xy)-e^{x+y}}{e^{x+y}-x\sin(xy)}.
+$$
+
+</div>
+</div>
+
+**解析：** 方程两边对 $\displaystyle x$ 求导：
+
+$$
+\displaystyle e^{x+y}(1+y')-\sin(xy)(y+xy')=0.
+$$
+
+展开后，将含 $\displaystyle y'$ 的项合并：
+
+$$
+\displaystyle e^{x+y}+e^{x+y}y'-y\sin(xy)-x\sin(xy)y'=0,
+$$
+
+即
+
+$$
+\displaystyle [e^{x+y}-x\sin(xy)]y'
+=y\sin(xy)-e^{x+y}.
+$$
+
+所以
+
+$$
+\displaystyle y'
+=\dfrac{y\sin(xy)-e^{x+y}}{e^{x+y}-x\sin(xy)}.
+$$
+
+本题同时包含 $\displaystyle e^{x+y}$ 与 $\displaystyle \cos(xy)$ 两个复合函数。求导时分别有
+
+$$
+\displaystyle (e^{x+y})'=e^{x+y}(1+y'),
+$$
+
+$$
+\displaystyle [\cos(xy)]'=-\sin(xy)(y+xy').
+$$
+
+</details>
+
+---
+
+4. **【1993-3-3 分】** 函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle \sin(x^{2}+y^{2})+e^{x}-xy^{2}=0$ 所确定，则 $\displaystyle \dfrac{dy}{dx}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{y^{2}-e^{x}-2x\cos(x^{2}+y^{2})}
+{2y[\cos(x^{2}+y^{2})-x]}.
+$$
+
+</div>
+</div>
+
+**解析：** 方程两边对 $\displaystyle x$ 求导，得到
+
+$$
+\displaystyle \cos(x^{2}+y^{2})(2x+2yy')+e^{x}-y^{2}-2xyy'=0.
+$$
+
+将不含 $\displaystyle y'$ 的项与含 $\displaystyle y'$ 的项分别合并：
+
+$$
+\displaystyle 2x\cos(x^{2}+y^{2})+e^{x}-y^{2}
++2y[\cos(x^{2}+y^{2})-x]y'=0.
+$$
+
+因此
+
+$$
+\displaystyle 2y[\cos(x^{2}+y^{2})-x]y'
+=y^{2}-e^{x}-2x\cos(x^{2}+y^{2}),
+$$
+
+从而
+
+$$
+\displaystyle y'
+=\dfrac{y^{2}-e^{x}-2x\cos(x^{2}+y^{2})}
+{2y[\cos(x^{2}+y^{2})-x]}.
+$$
+
+其中
+
+$$
+\displaystyle (-xy^{2})'=-y^{2}-2xyy',
+$$
+
+容易因乘积法则而漏掉其中一项。
+
+</details>
+
+---
+
+5. **【1994-45-3 分】** 设方程 $\displaystyle e^{xy}+y^{2}=\cos x$ 确定的 $\displaystyle y$ 为 $\displaystyle x$ 的函数，则 $\displaystyle \dfrac{dy}{dx}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=-\dfrac{\sin x+y e^{xy}}{x e^{xy}+2y}.
+$$
+
+</div>
+</div>
+
+**解析：** 方程两边对 $\displaystyle x$ 求导：
+
+$$
+\displaystyle e^{xy}(y+xy')+2yy'=-\sin x.
+$$
+
+整理含 $\displaystyle y'$ 的项：
+
+$$
+\displaystyle (xe^{xy}+2y)y'=-\sin x-ye^{xy}.
+$$
+
+因此
+
+$$
+\displaystyle y'
+=-\dfrac{\sin x+ye^{xy}}{xe^{xy}+2y}.
+$$
+
+求 $\displaystyle e^{xy}$ 的导数时，应先求指数 $\displaystyle xy$ 的导数：
+
+$$
+\displaystyle (xy)'=y+xy'.
+$$
+
+若只写成 $\displaystyle xy'$，就会遗漏乘积法则中的 $\displaystyle y$ 项。
+
+</details>
+
+---
+
+6. **【1995-3-5 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle xe^{f(y)}=e^{y}$ 确定，其中 $\displaystyle f$ 具有二阶导数，且 $\displaystyle f'\ne1$，求 $\displaystyle \dfrac{d^{2}y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{f''(y)-[1-f'(y)]^{2}}
+{x^{2}[1-f'(y)]^{3}}.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle xe^{f(y)}=e^{y}
+$$
+
+可知 $\displaystyle x>0$。两边取对数，得到
+
+$$
+\displaystyle \ln x+f(y)=y.
+$$
+
+对 $\displaystyle x$ 求导：
+
+$$
+\displaystyle \dfrac{1}{x}+f'(y)y'=y'.
+$$
+
+因此
+
+$$
+\displaystyle [1-f'(y)]y'=\dfrac{1}{x},
+$$
+
+即
+
+$$
+\displaystyle y'=\dfrac{1}{x[1-f'(y)]}.
+$$
+
+再对关系式
+
+$$
+\displaystyle \dfrac{1}{x}+f'(y)y'=y'
+$$
+
+求导，得
+
+$$
+\displaystyle -\dfrac{1}{x^{2}}+f''(y)(y')^{2}+f'(y)y''=y''.
+$$
+
+于是
+
+$$
+\displaystyle [1-f'(y)]y''
+=-\dfrac{1}{x^{2}}+f''(y)(y')^{2}.
+$$
+
+代入
+
+$$
+\displaystyle (y')^{2}=\dfrac{1}{x^{2}[1-f'(y)]^{2}},
+$$
+
+得到
+
+$$
+\begin{aligned}
+\displaystyle y''
+&=-\dfrac{1}{x^{2}[1-f'(y)]}
++\dfrac{f''(y)}{x^{2}[1-f'(y)]^{3}}\\
+&=\dfrac{f''(y)-[1-f'(y)]^{2}}
+{x^{2}[1-f'(y)]^{3}}.
+\end{aligned}
+$$
+
+条件 $\displaystyle f'(y)\ne1$ 保证上述分母不为零。本题先取对数可显著简化求导过程。
+
+</details>
+
+### （三）隐函数的导数：求某点处的导数
+
+1. **【1988-3-5 分】** 已知 $\displaystyle y=1+xe^{xy}$，求 $\displaystyle y'\big|_{x=0}$ 及 $\displaystyle y''\big|_{x=0}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y'\big|_{x=0}=1,\qquad y''\big|_{x=0}=2.
+$$
+
+</div>
+</div>
+
+**解析：** 先由原方程确定对应点。当 $\displaystyle x=0$ 时，
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对方程两边关于 $\displaystyle x$ 求导：
+
+$$
+\displaystyle y'=e^{xy}+xe^{xy}(y+xy').
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=1$，得
+
+$$
+\displaystyle y'(0)=1.
+$$
+
+令
+
+$$
+\displaystyle u=y+xy',
+$$
+
+则
+
+$$
+\displaystyle y'=e^{xy}+xe^{xy}u.
+$$
+
+再次求导，注意 $\displaystyle (e^{xy})'=e^{xy}u$，于是
+
+$$
+\begin{aligned}
+\displaystyle y''
+&=e^{xy}u+e^{xy}u+x\left[e^{xy}u^{2}+e^{xy}u'\right]\\
+&=2e^{xy}u+xe^{xy}(u^{2}+u').
+\end{aligned}
+$$
+
+当 $\displaystyle x=0$ 时，$\displaystyle u(0)=y(0)=1$，故
+
+$$
+\displaystyle y''(0)=2.
+$$
+
+本题求二阶导数时，关键是对 $\displaystyle e^{xy}$ 使用复合函数求导，并对指数 $\displaystyle xy$ 使用乘积法则。
+
+</details>
+
+---
+
+2. **【1992-3-5 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle y-xe^{y}=1$ 所确定，求 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}$ 的值。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}=2e^{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=0$ 时，由
+
+$$
+\displaystyle y-xe^{y}=1
+$$
+
+得
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle y'-e^{y}-xe^{y}y'=0.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=1$，得
+
+$$
+\displaystyle y'(0)=e.
+$$
+
+再次求导：
+
+$$
+\displaystyle y''-2e^{y}y'-xe^{y}\left[(y')^{2}+y''\right]=0.
+$$
+
+令 $\displaystyle x=0$，并代入 $\displaystyle y(0)=1$、$\displaystyle y'(0)=e$，可得
+
+$$
+\displaystyle y''(0)-2e\cdot e=0.
+$$
+
+因此
+
+$$
+\displaystyle y''(0)=2e^{2}.
+$$
+
+</details>
+
+---
+
+3. **【1999-2-3 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle \ln(x^{2}+y)=x^{3}y+\sin x$ 确定，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=1.
+$$
+
+</div>
+</div>
+
+**解析：** 先确定 $\displaystyle x=0$ 时的函数值。原方程化为
+
+$$
+\displaystyle \ln y=0,
+$$
+
+故
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle \dfrac{2x+y'}{x^{2}+y}=3x^{2}y+x^{3}y'+\cos x.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=1$，得
+
+$$
+\displaystyle y'(0)=1.
+$$
+
+这里必须先由原方程求出 $\displaystyle y(0)$，再代入求导后的关系式。
+
+</details>
+
+---
+
+4. **【2000-2-3 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle 2^{xy}=x+y$ 所确定，则 $\displaystyle dy\big|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy\big|_{x=0}=(\ln 2-1)\,dx.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=0$ 时，原方程给出
+
+$$
+\displaystyle 1=y(0),
+$$
+
+故 $\displaystyle y(0)=1$。
+
+对原方程求导：
+
+$$
+\displaystyle 2^{xy}\ln 2\,(y+xy')=1+y'.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=1$，得
+
+$$
+\displaystyle \ln 2=1+y'(0),
+$$
+
+所以
+
+$$
+\displaystyle y'(0)=\ln 2-1.
+$$
+
+由 $\displaystyle dy=y'\,dx$，得到
+
+$$
+\displaystyle dy\big|_{x=0}=(\ln 2-1)\,dx.
+$$
+
+</details>
+
+---
+
+5. **【2002-1-3 分】** 已知函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle e^{y}+6xy+x^{2}-1=0$ 确定，则 $\displaystyle y''(0)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y''(0)=-2.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=0$ 时，原方程变为
+
+$$
+\displaystyle e^{y}-1=0,
+$$
+
+故
+
+$$
+\displaystyle y(0)=0.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle e^{y}y'+6y+6xy'+2x=0.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=0$，得
+
+$$
+\displaystyle y'(0)=0.
+$$
+
+再次求导：
+
+$$
+\displaystyle e^{y}\left[(y')^{2}+y''\right]+12y'+6xy''+2=0.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y(0)=0$、$\displaystyle y'(0)=0$，得到
+
+$$
+\displaystyle y''(0)+2=0.
+$$
+
+因此
+
+$$
+\displaystyle y''(0)=-2.
+$$
+
+</details>
+
+---
+
+6. **【2006-2-4 分】** 设函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle y=1-xe^{y}$ 确定，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=-e.
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle x=0$，由原方程得
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle y'=-e^{y}-xe^{y}y'.
+$$
+
+整理得
+
+$$
+\displaystyle (1+xe^{y})y'=-e^{y}.
+$$
+
+因此
+
+$$
+\displaystyle y'=-\dfrac{e^{y}}{1+xe^{y}}.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=1$，得到
+
+$$
+\displaystyle y'(0)=-e.
+$$
+
+</details>
+
+---
+
+7. **【2009-2-4 分】** 设 $\displaystyle y=y(x)$ 是由方程 $\displaystyle xy+e^{y}=x+1$ 确定的隐函数，则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}=-3.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=0$ 时，原方程化为
+
+$$
+\displaystyle e^{y}=1,
+$$
+
+故
+
+$$
+\displaystyle y(0)=0.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle y+xy'+e^{y}y'=1.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=0$，得
+
+$$
+\displaystyle y'(0)=1.
+$$
+
+再次求导：
+
+$$
+\displaystyle 2y'+xy''+e^{y}\left[(y')^{2}+y''\right]=0.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y(0)=0$、$\displaystyle y'(0)=1$，得到
+
+$$
+\displaystyle 2+1+y''(0)=0.
+$$
+
+因此
+
+$$
+\displaystyle y''(0)=-3.
+$$
+
+</details>
+
+---
+
+8. **【2010-3-4 分】** 设可导函数 $\displaystyle y=y(x)$ 由方程
+
+$$
+\displaystyle \int_{0}^{x+y}e^{-t^{2}}\,dt=\int_{0}^{x}x\sin t^{2}\,dt
+$$
+
+确定，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=-1.
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle x=0$，则右端为 $\displaystyle 0$，故
+
+$$
+\displaystyle \int_{0}^{y(0)}e^{-t^{2}}\,dt=0.
+$$
+
+由于 $\displaystyle e^{-t^{2}}>0$，所以
+
+$$
+\displaystyle y(0)=0.
+$$
+
+右端可写为
+
+$$
+\displaystyle x\int_{0}^{x}\sin t^{2}\,dt.
+$$
+
+对原方程求导，得
+
+$$
+\displaystyle e^{-(x+y)^{2}}(1+y')
+=\int_{0}^{x}\sin t^{2}\,dt+x\sin x^{2}.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y(0)=0$，得
+
+$$
+\displaystyle 1+y'(0)=0.
+$$
+
+因此
+
+$$
+\displaystyle y'(0)=-1.
+$$
+
+本题右端被积函数中含有求导变量 $\displaystyle x$，应先将其提出积分号，再使用乘积法则。
+
+</details>
+
+---
+
+9. **【2012-2-4 分】** 设 $\displaystyle y=y(x)$ 是由方程 $\displaystyle x^{2}-y+1=e^{y}$ 所确定的隐函数，则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=0}=1.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=0$ 时，原方程为
+
+$$
+\displaystyle 1-y=e^{y}.
+$$
+
+显然 $\displaystyle y=0$ 满足该方程。又令
+
+$$
+\displaystyle H(y)=1-y-e^{y},
+$$
+
+则 $\displaystyle H'(y)=-1-e^{y}<0$，故该解唯一。因此
+
+$$
+\displaystyle y(0)=0.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle 2x-y'=e^{y}y'.
+$$
+
+即
+
+$$
+\displaystyle 2x=(1+e^{y})y'.
+$$
+
+代入 $\displaystyle x=0$、$\displaystyle y=0$，得
+
+$$
+\displaystyle y'(0)=0.
+$$
+
+再次求导：
+
+$$
+\displaystyle 2-y''=e^{y}\left[(y')^{2}+y''\right].
+$$
+
+代入 $\displaystyle y(0)=0$、$\displaystyle y'(0)=0$，有
+
+$$
+\displaystyle 2-y''(0)=y''(0).
+$$
+
+故
+
+$$
+\displaystyle y''(0)=1.
+$$
+
+</details>
+
+---
+
+10. **【2022-2-5 分】** 已知函数 $\displaystyle y=y(x)$ 由方程 $\displaystyle x^{2}+xy+y^{3}=3$ 确定，则 $\displaystyle y''(1)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y''(1)=-\dfrac{31}{32}.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x=1$ 时，原方程变为
+
+$$
+\displaystyle y^{3}+y-2=0.
+$$
+
+因
+
+$$
+\displaystyle y^{3}+y-2=(y-1)(y^{2}+y+2),
+$$
+
+而 $\displaystyle y^{2}+y+2>0$，故
+
+$$
+\displaystyle y(1)=1.
+$$
+
+对原方程求导：
+
+$$
+\displaystyle 2x+y+xy'+3y^{2}y'=0.
+$$
+
+即
+
+$$
+\displaystyle (x+3y^{2})y'=-(2x+y).
+$$
+
+代入 $\displaystyle x=1$、$\displaystyle y=1$，得
+
+$$
+\displaystyle y'(1)=-\dfrac{3}{4}.
+$$
+
+再次求导：
+
+$$
+\displaystyle 2+2y'+xy''+6y(y')^{2}+3y^{2}y''=0.
+$$
+
+整理为
+
+$$
+\displaystyle (x+3y^{2})y''=-2-2y'-6y(y')^{2}.
+$$
+
+代入 $\displaystyle x=1$、$\displaystyle y=1$、$\displaystyle y'=-\dfrac{3}{4}$，得到
+
+$$
+\begin{aligned}
+\displaystyle 4y''(1)
+&=-2-2\left(-\dfrac{3}{4}\right)-6\left(\dfrac{9}{16}\right)\\
+&=-\dfrac{31}{8}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle y''(1)=-\dfrac{31}{32}.
+$$
+
+</details>
+
+### （四）参数方程的导数(数一、数二)：求导函数
+
+1. **【1989-3-4 分】** 已知 $\displaystyle \begin{cases}x=\ln (1+t^{2}),\\ y=\arctan t\end{cases}$，求 $\displaystyle \dfrac{d y}{dx}$ 及 $\displaystyle \dfrac{d^{2} y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}=\dfrac{1}{2t},\qquad
+\dfrac{d^{2}y}{dx^{2}}=-\dfrac{1+t^{2}}{4t^{3}}\quad(t\ne0).
+$$
+
+</div>
+</div>
+
+**解析：** 由参数方程求导公式，
+
+$$
+\displaystyle \dfrac{dy}{dx}=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}.
+$$
+
+先求参数导数：
+
+$$
+\displaystyle \dfrac{dx}{dt}=\dfrac{2t}{1+t^{2}},\qquad
+\dfrac{dy}{dt}=\dfrac{1}{1+t^{2}}.
+$$
+
+因此当 $\displaystyle t\ne0$ 时，
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{\dfrac{1}{1+t^{2}}}{\dfrac{2t}{1+t^{2}}}
+=\dfrac{1}{2t}.
+$$
+
+再由
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}},
+$$
+
+可得
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{-\dfrac{1}{2t^{2}}}{\dfrac{2t}{1+t^{2}}}\\
+&=-\dfrac{1+t^{2}}{4t^{3}}.
+\end{aligned}
+$$
+
+这里 $\displaystyle t=0$ 时 $\displaystyle \dfrac{dx}{dt}=0$，不能直接使用参数方程求导公式。
+
+</details>
+
+---
+
+2. **【1991-3-5 分】** 设 $\displaystyle \begin{cases}x=t\cos t,\\ y=t\sin t,\end{cases}$ 求 $\displaystyle \dfrac{d^{2} y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{t^{2}+2}{(\cos t-t\sin t)^{3}}.
+$$
+
+</div>
+</div>
+
+**解析：** 先求一阶参数导数：
+
+$$
+\displaystyle \dfrac{dx}{dt}=\cos t-t\sin t,
+$$
+
+$$
+\displaystyle \dfrac{dy}{dt}=\sin t+t\cos t.
+$$
+
+故
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{\sin t+t\cos t}{\cos t-t\sin t}.
+$$
+
+记
+
+$$
+\displaystyle N=\sin t+t\cos t,\qquad D=\cos t-t\sin t.
+$$
+
+则
+
+$$
+\displaystyle N'=2\cos t-t\sin t,
+$$
+
+$$
+\displaystyle D'=-2\sin t-t\cos t.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+&=\dfrac{N'D-ND'}{D^{2}}\\
+&=\dfrac{(2\cos t-t\sin t)(\cos t-t\sin t)
++(\sin t+t\cos t)(2\sin t+t\cos t)}{D^{2}}\\
+&=\dfrac{t^{2}+2}{D^{2}}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}}\\
+&=\dfrac{t^{2}+2}{(\cos t-t\sin t)^{3}}.
+\end{aligned}
+$$
+
+上述公式适用于 $\displaystyle \cos t-t\sin t\ne0$ 的参数点。
+
+</details>
+
+---
+
+3. **【1991-12-3 分】** 设 $\displaystyle \begin{cases}x=1+t^{2},\\ y=\cos t,\end{cases}$，则 $\displaystyle \dfrac{d^{2} y}{dx^{2}}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{\sin t-t\cos t}{4t^{3}}\quad(t\ne0).
+$$
+
+</div>
+</div>
+
+当 $\displaystyle t=0$ 时，该式的极限为 $\displaystyle \dfrac{1}{12}$。
+
+**解析：** 由
+
+$$
+\displaystyle \dfrac{dx}{dt}=2t,\qquad
+\dfrac{dy}{dt}=-\sin t,
+$$
+
+得
+
+$$
+\displaystyle \dfrac{dy}{dx}=-\dfrac{\sin t}{2t}.
+$$
+
+对参数 $\displaystyle t$ 求导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+&=-\dfrac{1}{2}\dfrac{t\cos t-\sin t}{t^{2}}\\
+&=\dfrac{\sin t-t\cos t}{2t^{2}}.
+\end{aligned}
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{\sin t-t\cos t}{2t^{2}}}{2t}\\
+&=\dfrac{\sin t-t\cos t}{4t^{3}}.
+\end{aligned}
+$$
+
+若考察 $\displaystyle t=0$ 对应点，则利用展开式
+
+$$
+\displaystyle \sin t-t\cos t
+=\left(t-\dfrac{t^{3}}{6}+o(t^{3})\right)
+-t\left(1-\dfrac{t^{2}}{2}+o(t^{2})\right)
+=\dfrac{t^{3}}{3}+o(t^{3}),
+$$
+
+从而
+
+$$
+\displaystyle \lim_{t\to0}\dfrac{\sin t-t\cos t}{4t^{3}}
+=\dfrac{1}{12}.
+$$
+
+</details>
+
+---
+
+4. **【1994-3-3 分】** 设函数 $\displaystyle y=y(x)$ 由参数方程 $\displaystyle \begin{cases}x=t-\ln (1+t),\\ y=t^{3}+t^{2}\end{cases}$ 所确定，则 $\displaystyle \dfrac{d^{2} y}{dx^{2}}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{(6t+5)(1+t)}{t}
+=6t+11+\dfrac{5}{t}\quad(t\ne0).
+$$
+
+</div>
+</div>
+
+**解析：** 先求
+
+$$
+\displaystyle \dfrac{dx}{dt}
+=1-\dfrac{1}{1+t}
+=\dfrac{t}{1+t},
+$$
+
+$$
+\displaystyle \dfrac{dy}{dt}=3t^{2}+2t=t(3t+2).
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{t(3t+2)}{\dfrac{t}{1+t}}\\
+&=(1+t)(3t+2)\\
+&=3t^{2}+5t+2.
+\end{aligned}
+$$
+
+对 $\displaystyle t$ 求导得
+
+$$
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)=6t+5.
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{6t+5}{\dfrac{t}{1+t}}\\
+&=\dfrac{(6t+5)(1+t)}{t}.
+\end{aligned}
+$$
+
+参数范围应满足 $\displaystyle t>-1$；上述二阶导数公式还要求 $\displaystyle t\ne0$。
+
+</details>
+
+---
+
+5. **【1996-3-5 分】** 设 $\displaystyle \begin{cases}x=\int_{0}^{t} f(u^{2})\,du,\\ y=[f(t^{2})]^{2},\end{cases}$ 其中 $\displaystyle f(u)$ 具有二阶导数，且 $\displaystyle f(u)\ne0$，求 $\displaystyle \dfrac{d^{2} y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{4f'(t^{2})+8t^{2}f''(t^{2})}{f(t^{2})}.
+$$
+
+</div>
+</div>
+
+**解析：** 由变上限积分求导公式，
+
+$$
+\displaystyle \dfrac{dx}{dt}=f(t^{2}).
+$$
+
+又
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dt}
+&=2f(t^{2})\cdot f'(t^{2})\cdot2t\\
+&=4t f(t^{2})f'(t^{2}).
+\end{aligned}
+$$
+
+因 $\displaystyle f(t^{2})\ne0$，故
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{4t f(t^{2})f'(t^{2})}{f(t^{2})}\\
+&=4t f'(t^{2}).
+\end{aligned}
+$$
+
+再对参数 $\displaystyle t$ 求导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+&=4f'(t^{2})+4t\cdot f''(t^{2})\cdot2t\\
+&=4f'(t^{2})+8t^{2}f''(t^{2}).
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}}\\
+&=\dfrac{4f'(t^{2})+8t^{2}f''(t^{2})}{f(t^{2})}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+6. **【1997-2-5 分】** 设 $\displaystyle y=y(x)$ 由 $\displaystyle \begin{cases}x=\arctan t,\\ 2y-ty^{2}+e^{t}=5\end{cases}$ 所确定，求 $\displaystyle \dfrac{dy}{dx}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{(1+t^{2})(y^{2}-e^{t})}{2(1-ty)}.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle x=\arctan t,
+$$
+
+得
+
+$$
+\displaystyle \dfrac{dx}{dt}=\dfrac{1}{1+t^{2}}.
+$$
+
+对隐式关系
+
+$$
+\displaystyle 2y-ty^{2}+e^{t}=5
+$$
+
+两边关于 $\displaystyle t$ 求导：
+
+$$
+\displaystyle 2\dfrac{dy}{dt}-y^{2}-2ty\dfrac{dy}{dt}+e^{t}=0.
+$$
+
+整理得
+
+$$
+\displaystyle 2(1-ty)\dfrac{dy}{dt}=y^{2}-e^{t},
+$$
+
+故
+
+$$
+\displaystyle \dfrac{dy}{dt}=\dfrac{y^{2}-e^{t}}{2(1-ty)}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}\\
+&=\dfrac{(1+t^{2})(y^{2}-e^{t})}{2(1-ty)}.
+\end{aligned}
+$$
+
+该公式要求 $\displaystyle 1-ty\ne0$。
+
+</details>
+
+### （五）参数方程的导数(数一、数二)：求某点处的导数
+
+1. **【1992-3-3 分】** 设 $\displaystyle \begin{cases}x=f(t)-\pi,\\ y=f(e^{3t}-1),\end{cases}$ 其中 $\displaystyle f$ 可导，且 $\displaystyle f'(0)\ne0$，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{t=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 3.
+$$
+
+</div>
+</div>
+
+**解析：** 由参数方程求导公式，
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}.
+$$
+
+分别求导得
+
+$$
+\displaystyle \dfrac{dx}{dt}=f'(t),
+$$
+
+$$
+\displaystyle \dfrac{dy}{dt}=3e^{3t}f'(e^{3t}-1).
+$$
+
+当 $\displaystyle t=0$ 时，
+
+$$
+\displaystyle \left.\dfrac{dx}{dt}\right|_{t=0}=f'(0),
+\qquad
+\displaystyle \left.\dfrac{dy}{dt}\right|_{t=0}=3f'(0).
+$$
+
+因 $\displaystyle f'(0)\ne0$，故
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{t=0}
+=\dfrac{3f'(0)}{f'(0)}=3.
+$$
+
+</details>
+
+---
+
+2. **【1994-12-5 分】** 设 $\displaystyle \begin{cases}x=\cos(t^{2}),\\ y=t^{2}\cos(t^{2})-\displaystyle\int_{1}^{t^{2}}\dfrac{\cos u}{2\sqrt{u}}\,du,\end{cases}$ 求 $\displaystyle \dfrac{dy}{dx}$，$\displaystyle \dfrac{d^{2}y}{dx^{2}}$ 在 $\displaystyle t=\sqrt{\dfrac{\pi}{2}}$ 的值。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{t=\sqrt{\frac{\pi}{2}}}
+=\dfrac{\pi}{2},
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=\sqrt{\frac{\pi}{2}}}
+=-2+\dfrac{1}{\sqrt{2\pi}}.
+$$
+
+**解析：** 令 $\displaystyle s=t^{2}$。在所求点附近 $\displaystyle t>0$，故 $\displaystyle \sqrt{s}=t$。由
+
+$$
+\displaystyle x=\cos s,
+\qquad
+\displaystyle y=s\cos s-\int_{1}^{s}\dfrac{\cos u}{2\sqrt{u}}\,du,
+$$
+
+得
+
+$$
+\displaystyle \dfrac{dx}{ds}=-\sin s,
+$$
+
+$$
+\displaystyle \dfrac{dy}{ds}
+=\cos s-s\sin s-\dfrac{\cos s}{2\sqrt{s}}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{\dfrac{dy}{ds}}{\dfrac{dx}{ds}}\\
+&=s-\cot s+\dfrac{\cot s}{2\sqrt{s}}.
+\end{aligned}
+$$
+
+当 $\displaystyle s=\dfrac{\pi}{2}$ 时，
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{t=\sqrt{\frac{\pi}{2}}}
+=\dfrac{\pi}{2}.
+$$
+
+记
+
+$$
+\displaystyle q(s)=s-\cot s+\dfrac{\cot s}{2\sqrt{s}},
+$$
+
+则
+
+$$
+\displaystyle q'(s)
+=1+\csc^{2}s-\dfrac{\cot s}{4s^{3/2}}
+-\dfrac{\csc^{2}s}{2\sqrt{s}}.
+$$
+
+又
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{q'(s)}{-\sin s}.
+$$
+
+代入 $\displaystyle s=\dfrac{\pi}{2}$，得
+
+$$
+\begin{aligned}
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=\sqrt{\frac{\pi}{2}}}
+&=-\left(2-\dfrac{1}{2\sqrt{\pi/2}}\right)\\
+&=-2+\dfrac{1}{\sqrt{2\pi}}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+3. **【2010-1-4 分】** 设 $\displaystyle \begin{cases}x=e^{-t},\\ y=\displaystyle\int_{0}^{t}\ln(1+u^{2})\,du,\end{cases}$ 则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 0.
+$$
+
+</div>
+</div>
+
+**解析：** 由变上限积分求导公式，
+
+$$
+\displaystyle \dfrac{dx}{dt}=-e^{-t},
+\qquad
+\displaystyle \dfrac{dy}{dt}=\ln(1+t^{2}).
+$$
+
+故
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=-e^{t}\ln(1+t^{2}).
+$$
+
+再关于 $\displaystyle t$ 求导，
+
+$$
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+=-e^{t}\left[\ln(1+t^{2})+\dfrac{2t}{1+t^{2}}\right].
+$$
+
+于是
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=e^{2t}\left[\ln(1+t^{2})+\dfrac{2t}{1+t^{2}}\right].
+$$
+
+代入 $\displaystyle t=0$，得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}=0.
+$$
+
+</details>
+
+---
+
+4. **【2013-1-4 分】** 设 $\displaystyle \begin{cases}x=\sin t,\\ y=t\sin t+\cos t,\end{cases}$（$\displaystyle t$ 为参数），则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=\frac{\pi}{4}}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \sqrt{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 有
+
+$$
+\displaystyle \dfrac{dx}{dt}=\cos t,
+$$
+
+$$
+\displaystyle \dfrac{dy}{dt}
+=\sin t+t\cos t-\sin t=t\cos t.
+$$
+
+所以
+
+$$
+\displaystyle \dfrac{dy}{dx}=t.
+$$
+
+进而
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{\dfrac{d}{dt}(t)}{\dfrac{dx}{dt}}
+=\dfrac{1}{\cos t}.
+$$
+
+故
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=\frac{\pi}{4}}
+=\sqrt{2}.
+$$
+
+</details>
+
+---
+
+5. **【2015-2-4 分】** 设 $\displaystyle \begin{cases}x=\arctan t,\\ y=3t+t^{3},\end{cases}$ 则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=1}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 48.
+$$
+
+</div>
+</div>
+
+**解析：** 分别求导：
+
+$$
+\displaystyle \dfrac{dx}{dt}=\dfrac{1}{1+t^{2}},
+\qquad
+\displaystyle \dfrac{dy}{dt}=3(1+t^{2}).
+$$
+
+于是
+
+$$
+\displaystyle \dfrac{dy}{dx}=3(1+t^{2})^{2}.
+$$
+
+再求导得
+
+$$
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+=12t(1+t^{2}).
+$$
+
+故
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=12t(1+t^{2})^{2}.
+$$
+
+代入 $\displaystyle t=1$，得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=1}
+=12\cdot4=48.
+$$
+
+</details>
+
+---
+
+6. **【2017-2-4 分】** 设函数 $\displaystyle y=y(x)$ 由参数方程 $\displaystyle \begin{cases}x=t+e^{t},\\ y=\sin t\end{cases}$ 确定，则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle -\dfrac{1}{8}.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle \dfrac{dx}{dt}=1+e^{t},
+\qquad
+\displaystyle \dfrac{dy}{dt}=\cos t,
+$$
+
+得
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\dfrac{\cos t}{1+e^{t}}.
+$$
+
+对 $\displaystyle t$ 求导：
+
+$$
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+=\dfrac{-\sin t(1+e^{t})-e^{t}\cos t}{(1+e^{t})^{2}}.
+$$
+
+所以
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{-\sin t(1+e^{t})-e^{t}\cos t}{(1+e^{t})^{3}}.
+$$
+
+代入 $\displaystyle t=0$，得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}
+=-\dfrac{1}{8}.
+$$
+
+</details>
+
+---
+
+7. **【2020-12-4 分】** 设 $\displaystyle y=y(x)$ 由 $\displaystyle \begin{cases}x=\sqrt{t^{2}+1},\\ y=\ln(t+\sqrt{t^{2}+1})\end{cases}$ 所确定，则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=1}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle -\sqrt{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 分别求导得
+
+$$
+\displaystyle \dfrac{dx}{dt}
+=\dfrac{t}{\sqrt{t^{2}+1}},
+$$
+
+$$
+\displaystyle \dfrac{dy}{dt}
+=\dfrac{1}{\sqrt{t^{2}+1}}.
+$$
+
+因此
+
+$$
+\displaystyle \dfrac{dy}{dx}=\dfrac{1}{t}.
+$$
+
+再求二阶导数：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{d}{dt}\left(\frac1t\right)}
+{\dfrac{dx}{dt}}\\
+&=-\dfrac{\sqrt{t^{2}+1}}{t^{3}}.
+\end{aligned}
+$$
+
+代入 $\displaystyle t=1$，得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=1}
+=-\sqrt{2}.
+$$
+
+</details>
+
+---
+
+8. **【2021-12-5 分】** 设函数 $\displaystyle y=y(x)$ 由参数方程 $\displaystyle \begin{cases}x=2e^{t}+t+1,\\ y=4(t-1)e^{t}+t^{2}\end{cases}$ 确定，则 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{2}{3}.
+$$
+
+</div>
+</div>
+
+**解析：** 有
+
+$$
+\displaystyle \dfrac{dx}{dt}=2e^{t}+1,
+$$
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dt}
+&=4\left[e^{t}+(t-1)e^{t}\right]+2t\\
+&=4te^{t}+2t\\
+&=2t(2e^{t}+1).
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle \dfrac{dy}{dx}=2t,
+$$
+
+从而
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{2}{2e^{t}+1}.
+$$
+
+代入 $\displaystyle t=0$，得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{t=0}
+=\dfrac{2}{3}.
+$$
+
+</details>
+
+---
+
+9. **【2023-12-5 分】** 设函数 $\displaystyle y=f(x)$ 由 $\displaystyle \begin{cases}x=2t+|t|,\\ y=|t|\sin t\end{cases}$ 确定，则（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle f(x)$ 连续，$\displaystyle f'(0)$ 不存在 &emsp;&emsp; B. $\displaystyle f'(0)$ 存在，$\displaystyle f'(x)$ 在 $\displaystyle x=0$ 处不连续</div>
+<div className="choice-option-row">C. $\displaystyle f'(x)$ 连续，$\displaystyle f''(0)$ 不存在 &emsp;&emsp; D. $\displaystyle f''(0)$ 存在，$\displaystyle f''(x)$ 在 $\displaystyle x=0$ 处不连续</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C。
+
+**解析：** 当 $\displaystyle t\ge0$ 时，$\displaystyle x=3t$，故 $\displaystyle t=\dfrac{x}{3}$；当 $\displaystyle t<0$ 时，$\displaystyle x=t$。因此
+
+$$
+\displaystyle f(x)=
+\begin{cases}
+-x\sin x,&x<0,\\[2mm]
+\dfrac{x}{3}\sin\dfrac{x}{3},&x\ge0.
+\end{cases}
+$$
+
+显然 $\displaystyle f(0)=0$，且
+
+$$
+\displaystyle f'(0)
+=\lim_{x\to0}\dfrac{f(x)}{x}=0.
+$$
+
+当 $\displaystyle x<0$ 时，
+
+$$
+\displaystyle f'(x)=-\sin x-x\cos x;
+$$
+
+当 $\displaystyle x>0$ 时，
+
+$$
+\displaystyle f'(x)
+=\dfrac13\sin\dfrac{x}{3}
++\dfrac{x}{9}\cos\dfrac{x}{3}.
+$$
+
+两侧均趋于 $\displaystyle 0=f'(0)$，所以 $\displaystyle f'(x)$ 在 $\displaystyle x=0$ 处连续。
+
+但是
+
+$$
+\displaystyle \lim_{x\to0^-}\dfrac{f'(x)-f'(0)}{x}=-2,
+$$
+
+而
+
+$$
+\displaystyle \lim_{x\to0^+}\dfrac{f'(x)-f'(0)}{x}
+=\dfrac{2}{9}.
+$$
+
+左右极限不相等，故 $\displaystyle f''(0)$ 不存在，应选 C。
+
+A 错在 $\displaystyle f'(0)$ 存在；B 错在 $\displaystyle f'$ 在零点连续；D 错在 $\displaystyle f''(0)$ 不存在。
+
+</details>
+
+---
+
+10. **【2025-2-5 分】** 已知函数 $\displaystyle y=y(x)$ 由 $\displaystyle \begin{cases}x=\ln(1+2t),\\ 2t-\displaystyle\int_{1}^{y+t^{2}}e^{-u^{2}}\,du=0\end{cases}$ 确定，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{t=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle e.
+$$
+
+</div>
+</div>
+
+**解析：** 先代入 $\displaystyle t=0$。由
+
+$$
+\displaystyle \int_{1}^{y(0)}e^{-u^{2}}\,du=0
+$$
+
+及 $\displaystyle e^{-u^{2}}>0$，得
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对隐式关系关于 $\displaystyle t$ 求导：
+
+$$
+\displaystyle 2-e^{-(y+t^{2})^{2}}
+\left(\dfrac{dy}{dt}+2t\right)=0.
+$$
+
+所以
+
+$$
+\displaystyle \dfrac{dy}{dt}+2t
+=2e^{(y+t^{2})^{2}}.
+$$
+
+在 $\displaystyle t=0$、$\displaystyle y=1$ 时，
+
+$$
+\displaystyle \left.\dfrac{dy}{dt}\right|_{t=0}=2e.
+$$
+
+另一方面，
+
+$$
+\displaystyle \dfrac{dx}{dt}=\dfrac{2}{1+2t},
+\qquad
+\displaystyle \left.\dfrac{dx}{dt}\right|_{t=0}=2.
+$$
+
+因此
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{t=0}
+=\dfrac{2e}{2}=e.
+$$
+
+</details>
+
+### （六）抽象函数的导数
+
+1. **【1993-45-3 分】** 已知 $\displaystyle y=f\left(\dfrac{3x-2}{3x+2}\right)$，$\displaystyle f'(x)=\arctan x^{2}$，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{3\pi}{4}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=\dfrac{3x-2}{3x+2},
+$$
+
+则由复合函数求导法则，
+
+$$
+\displaystyle \dfrac{dy}{dx}=f'(u)\dfrac{du}{dx}.
+$$
+
+计算得
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{du}{dx}
+&=\dfrac{3(3x+2)-3(3x-2)}{(3x+2)^2}\\
+&=\dfrac{12}{(3x+2)^2}.
+\end{aligned}
+$$
+
+当 $\displaystyle x=0$ 时，
+
+$$
+\displaystyle u=-1,\qquad \left.\dfrac{du}{dx}\right|_{x=0}=3.
+$$
+
+又
+
+$$
+\displaystyle f'(-1)=\arctan(-1)^2=\arctan1=\dfrac{\pi}{4},
+$$
+
+所以
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=0}
+=f'(-1)\cdot3
+=\dfrac{3\pi}{4}.
+$$
+
+</details>
+
+---
+
+2. **【1993-3-5 分】** 设 $\displaystyle y=\sin f(x^{2})$，其中 $f$ 具有二阶导数，求 $\displaystyle \dfrac{d^{2}y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\left[2f'(x^{2})+4x^{2}f''(x^{2})\right]\cos f(x^{2})
+-4x^{2}[f'(x^{2})]^{2}\sin f(x^{2}).
+$$
+
+</div>
+</div>
+
+**解析：** 先求一阶导数。由复合函数求导法则，
+
+$$
+\displaystyle \dfrac{dy}{dx}
+=\cos f(x^{2})\cdot f'(x^{2})\cdot2x
+=2xf'(x^{2})\cos f(x^{2}).
+$$
+
+再对上式求导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+={}&\left[2f'(x^{2})+4x^{2}f''(x^{2})\right]\cos f(x^{2})\\
+&+2xf'(x^{2})\left[-\sin f(x^{2})\right]\cdot2xf'(x^{2}).
+\end{aligned}
+$$
+
+整理得
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\left[2f'(x^{2})+4x^{2}f''(x^{2})\right]\cos f(x^{2})
+-4x^{2}[f'(x^{2})]^{2}\sin f(x^{2}).
+$$
+
+本题需要同时使用乘积求导法则和多层复合函数求导法则。
+
+</details>
+
+---
+
+3. **【1993-3-3 分】** 若 $\displaystyle f(x)=-f(-x)$，在 $\displaystyle (0,+\infty)$ 内 $\displaystyle f'(x)>0$，$\displaystyle f''(x)>0$，则 $\displaystyle f(x)$ 在 $\displaystyle (-\infty,0)$ 内（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle f'(x)<0,\\ f''(x)<0$ &emsp;&emsp; B. $\displaystyle f'(x)>0,\\ f''(x)>0$ &emsp;&emsp; C. $\displaystyle f'(x)>0,\\ f''(x)<0$ &emsp;&emsp; D. $\displaystyle f'(x)<0,\\ f''(x)>0$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C。
+
+**解析：** 由
+
+$$
+\displaystyle f(x)=-f(-x)
+$$
+
+可知 $\displaystyle f$ 为奇函数。
+
+对等式两边关于 $\displaystyle x$ 求导：
+
+$$
+\displaystyle f'(x)=f'(-x),
+$$
+
+所以 $\displaystyle f'$ 为偶函数。
+
+当 $\displaystyle x<0$ 时，$\displaystyle -x>0$，故
+
+$$
+\displaystyle f'(x)=f'(-x)>0.
+$$
+
+再对 $\displaystyle f'(x)=f'(-x)$ 求导，得
+
+$$
+\displaystyle f''(x)=-f''(-x),
+$$
+
+即 $\displaystyle f''$ 为奇函数。因此当 $\displaystyle x<0$ 时，
+
+$$
+\displaystyle f''(x)=-f''(-x)<0.
+$$
+
+故在 $\displaystyle (-\infty,0)$ 内有
+
+$$
+\displaystyle f'(x)>0,\qquad f''(x)<0,
+$$
+
+应选 C。
+
+A、D 错在一阶导数符号；B 错在二阶导数符号。
+
+</details>
+
+---
+
+4. **【1994-3-5 分】** 设 $\displaystyle y=f(x+y)$，其中 $f$ 具有二阶导数，且其一阶导数不等于 $\displaystyle 1$，求 $\displaystyle \dfrac{d^{2}y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{f''(x+y)}{[1-f'(x+y)]^{3}}.
+$$
+
+</div>
+</div>
+
+**解析：** 对隐式方程
+
+$$
+\displaystyle y=f(x+y)
+$$
+
+两边关于 $\displaystyle x$ 求导：
+
+$$
+\displaystyle y'=f'(x+y)(1+y').
+$$
+
+于是
+
+$$
+\displaystyle y'[1-f'(x+y)]=f'(x+y).
+$$
+
+由于题设 $\displaystyle f'(x+y)\ne1$，故
+
+$$
+\displaystyle y'=\dfrac{f'(x+y)}{1-f'(x+y)}.
+$$
+
+令 $\displaystyle u=x+y$，则
+
+$$
+\displaystyle 1+y'
+=1+\dfrac{f'(u)}{1-f'(u)}
+=\dfrac{1}{1-f'(u)}.
+$$
+
+对 $\displaystyle y'=\dfrac{f'(u)}{1-f'(u)}$ 再求导，得
+
+$$
+\begin{aligned}
+\displaystyle y''
+&=\dfrac{f''(u)u'}{[1-f'(u)]^{2}}\\
+&=\dfrac{f''(u)}{[1-f'(u)]^{2}}\cdot\dfrac{1}{1-f'(u)}\\
+&=\dfrac{f''(u)}{[1-f'(u)]^{3}}.
+\end{aligned}
+$$
+
+代回 $\displaystyle u=x+y$，即得
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{f''(x+y)}{[1-f'(x+y)]^{3}}.
+$$
+
+</details>
+
+---
+
+5. **【1997-34-3 分】** 设 $\displaystyle y=f(\ln x)e^{f(x)}$，其中 $f$ 可微，则 $\displaystyle dy=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle dy=e^{f(x)}\left[\dfrac{f'(\ln x)}{x}+f(\ln x)f'(x)\right]dx.
+$$
+
+</div>
+</div>
+
+**解析：** 将
+
+$$
+\displaystyle y=f(\ln x)e^{f(x)}
+$$
+
+看作两个函数的乘积。由乘积求导法则，
+
+$$
+\begin{aligned}
+\displaystyle y'
+&=[f(\ln x)]'e^{f(x)}
++f(\ln x)[e^{f(x)}]'\\
+&=\dfrac{f'(\ln x)}{x}e^{f(x)}
++f(\ln x)e^{f(x)}f'(x).
+\end{aligned}
+$$
+
+提取公因子，得
+
+$$
+\displaystyle y'
+=e^{f(x)}\left[\dfrac{f'(\ln x)}{x}+f(\ln x)f'(x)\right].
+$$
+
+因此
+
+$$
+\displaystyle dy=y'\,dx
+=e^{f(x)}\left[\dfrac{f'(\ln x)}{x}+f(\ln x)f'(x)\right]dx.
+$$
+
+</details>
+
+---
+
+6. **【2006-3-4 分】** 设函数 $\displaystyle f(x)$ 在 $\displaystyle x=2$ 的某邻域内可导，且 $\displaystyle f'(x)=e^{f(x)}$，$\displaystyle f(2)=1$，则 $\displaystyle f'''(2)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 2e^{3}.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle f'(x)=e^{f(x)}
+$$
+
+继续求导，得
+
+$$
+\displaystyle f''(x)=e^{f(x)}f'(x).
+$$
+
+又因 $\displaystyle f'(x)=e^{f(x)}$，所以
+
+$$
+\displaystyle f''(x)=e^{2f(x)}.
+$$
+
+再求导：
+
+$$
+\begin{aligned}
+\displaystyle f'''(x)
+&=2e^{2f(x)}f'(x)\\
+&=2e^{2f(x)}e^{f(x)}\\
+&=2e^{3f(x)}.
+\end{aligned}
+$$
+
+由 $\displaystyle f(2)=1$，得
+
+$$
+\displaystyle f'''(2)=2e^{3f(2)}=2e^{3}.
+$$
+
+</details>
+
+---
+
+7. **【2006-2-4 分】** 设函数 $\displaystyle g(x)$ 可微，$\displaystyle h(x)=e^{1+g(x)}$，$\displaystyle h'(1)=1$，$\displaystyle g'(1)=2$，则 $\displaystyle g(1)$ 等于（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \ln3-1$ &emsp;&emsp; B. $\displaystyle -\ln3-1$ &emsp;&emsp; C. $\displaystyle -\ln2-1$ &emsp;&emsp; D. $\displaystyle \ln2-1$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C。
+
+**解析：** 由
+
+$$
+\displaystyle h(x)=e^{1+g(x)}
+$$
+
+求导得
+
+$$
+\displaystyle h'(x)=e^{1+g(x)}g'(x).
+$$
+
+在 $\displaystyle x=1$ 处，利用 $\displaystyle h'(1)=1$、$\displaystyle g'(1)=2$，有
+
+$$
+\displaystyle 1=e^{1+g(1)}\cdot2.
+$$
+
+故
+
+$$
+\displaystyle e^{1+g(1)}=\dfrac12.
+$$
+
+两边取自然对数：
+
+$$
+\displaystyle 1+g(1)=\ln\dfrac12=-\ln2.
+$$
+
+所以
+
+$$
+\displaystyle g(1)=-\ln2-1.
+$$
+
+应选 C。
+
+</details>
+
+---
+
+8. **【2012-3-4 分】** 设函数
+
+$$
+\displaystyle f(x)=
+\begin{cases}
+\ln\sqrt{x},&x\ge1,\\
+2x-1,&x<1,
+\end{cases}
+$$
+
+$\displaystyle y=f(f(x))$，则 $\displaystyle \left.\dfrac{dy}{dx}\right|_{x=e}=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac1e.
+$$
+
+</div>
+</div>
+
+**解析：** 先判断内层函数 $\displaystyle f(x)$ 在 $\displaystyle x=e$ 时所取的分支。由于 $\displaystyle e>1$，
+
+$$
+\displaystyle f(e)=\ln\sqrt e=\dfrac12.
+$$
+
+因为 $\displaystyle \dfrac12<1$，所以外层函数 $\displaystyle f(f(e))$ 应使用 $\displaystyle f(u)=2u-1$ 这一分支，其导数为
+
+$$
+\displaystyle f'(u)=2\qquad(u<1).
+$$
+
+另一方面，当 $\displaystyle x>1$ 时，
+
+$$
+\displaystyle f(x)=\ln\sqrt{x}=\dfrac12\ln x,
+$$
+
+故
+
+$$
+\displaystyle f'(x)=\dfrac{1}{2x},
+\qquad
+\displaystyle f'(e)=\dfrac{1}{2e}.
+$$
+
+由复合函数求导法则，
+
+$$
+\displaystyle y'=f'(f(x))f'(x).
+$$
+
+因此
+
+$$
+\displaystyle \left.\dfrac{dy}{dx}\right|_{x=e}
+=f'\left(\dfrac12\right)f'(e)
+=2\cdot\dfrac{1}{2e}
+=\dfrac1e.
+$$
+
+</details>
+
+### （七）变限积分求导：被积函数不含求导变量
+
+1. **【1988-3-4 分】** 设 $\displaystyle f(x)$ 是连续函数，且
+
+$$
+\displaystyle \int_{0}^{x^{3}-1} f(t)\,dt=x-1,
+$$
+
+则 $\displaystyle f(7)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{1}{12}.
+$$
+
+</div>
+</div>
+
+**解析：** 等式两边关于 $\displaystyle x$ 求导。由变上限积分求导公式及链式法则，
+
+$$
+\displaystyle 3x^{2}f(x^{3}-1)=1.
+$$
+
+要求 $\displaystyle f(7)$，令
+
+$$
+\displaystyle x^{3}-1=7,
+$$
+
+得 $\displaystyle x=2$。代入上式：
+
+$$
+\displaystyle 3\cdot 2^{2}f(7)=1.
+$$
+
+因此
+
+$$
+\displaystyle f(7)=\dfrac{1}{12}.
+$$
+
+本题关键是先对积分等式求导，再由积分上限 $\displaystyle x^{3}-1=7$ 确定对应的 $\displaystyle x$。
+
+</details>
+
+---
+
+2. **【1988-12-3 分】** 设 $\displaystyle f(x)$ 是连续函数，且
+
+$$
+\displaystyle \int_{0}^{x^{3}-1} f(t)\,dt=x,
+$$
+
+则 $\displaystyle f(7)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{1}{12}.
+$$
+
+</div>
+</div>
+
+**解析：** 对等式两边关于 $\displaystyle x$ 求导，得
+
+$$
+\displaystyle f(x^{3}-1)\cdot 3x^{2}=1.
+$$
+
+令 $\displaystyle x^{3}-1=7$，得 $\displaystyle x=2$。于是
+
+$$
+\displaystyle 12f(7)=1,
+$$
+
+故
+
+$$
+\displaystyle f(7)=\dfrac{1}{12}.
+$$
+
+虽然本题右端为 $\displaystyle x$，上一题右端为 $\displaystyle x-1$，但二者求导后均为 $\displaystyle 1$，所以结果相同。
+
+</details>
+
+---
+
+3. **【1990-12-3 分】** 设 $\displaystyle f(x)$ 是连续函数，且
+
+$$
+\displaystyle F(x)=\int_{x}^{e^{-x}}f(t)\,dt,
+$$
+
+则 $\displaystyle F'(x)$ 等于（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle -e^{-x}f\left(e^{-x}\right)-f(x)$ &emsp;&emsp; B. $\displaystyle -e^{-x}f\left(e^{-x}\right)+f(x)$</div>
+<div className="choice-option-row">C. $\displaystyle e^{-x}f\left(e^{-x}\right)-f(x)$ &emsp;&emsp; D. $\displaystyle e^{-x}f\left(e^{-x}\right)+f(x)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 对于
+
+$$
+\displaystyle F(x)=\int_{\alpha(x)}^{\beta(x)}f(t)\,dt,
+$$
+
+有
+
+$$
+\displaystyle F'(x)=f(\beta(x))\beta'(x)-f(\alpha(x))\alpha'(x).
+$$
+
+本题中
+
+$$
+\displaystyle \alpha(x)=x,
+\qquad
+\displaystyle \beta(x)=e^{-x},
+$$
+
+故
+
+$$
+\displaystyle \alpha'(x)=1,
+\qquad
+\displaystyle \beta'(x)=-e^{-x}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle F'(x)
+&=f\left(e^{-x}\right)\left(-e^{-x}\right)-f(x)\cdot 1\\
+&=-e^{-x}f\left(e^{-x}\right)-f(x).
+\end{aligned}
+$$
+
+应选 A。易错点是下限项前本身带负号，而上限 $\displaystyle e^{-x}$ 的导数也为负数。
+
+</details>
+
+---
+
+4. **【1992-3-3 分】** 设 $\displaystyle f(x)$ 连续，
+
+$$
+\displaystyle F(x)=\int_{0}^{x^{2}}f(t^{2})\,dt,
+$$
+
+则 $\displaystyle F'(x)$ 等于（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle f\left(x^{4}\right)$ &emsp;&emsp; B. $\displaystyle x^{2}f\left(x^{4}\right)$ &emsp;&emsp; C. $\displaystyle 2xf\left(x^{4}\right)$ &emsp;&emsp; D. $\displaystyle 2xf\left(x^{2}\right)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** C。
+
+**解析：** 令
+
+$$
+\displaystyle \Phi(u)=\int_{0}^{u}f(t^{2})\,dt,
+$$
+
+则 $\displaystyle F(x)=\Phi(x^{2})$。由微积分基本定理，
+
+$$
+\displaystyle \Phi'(u)=f(u^{2}).
+$$
+
+再由链式法则，
+
+$$
+\begin{aligned}
+\displaystyle F'(x)
+&=\Phi'(x^{2})\cdot 2x\\
+&=f\left((x^{2})^{2}\right)\cdot 2x\\
+&=2xf(x^{4}).
+\end{aligned}
+$$
+
+应选 C。选项 D 忽略了将积分上限 $\displaystyle x^{2}$ 代入被积函数中的 $\displaystyle t^{2}$ 后应得到 $\displaystyle x^{4}$。
+
+</details>
+
+---
+
+5. **【1993-45-3 分】** 设 $\displaystyle f(x)$ 为连续函数，且
+
+$$
+\displaystyle F(x)=\int_{\frac1x}^{\ln x}f(t)\,dt,
+$$
+
+则 $\displaystyle F'(x)$ 等于（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \dfrac1x f(\ln x)+\dfrac1{x^{2}}f\left(\dfrac1x\right)$ &emsp;&emsp; B. $\displaystyle f(\ln x)+f\left(\dfrac1x\right)$</div>
+<div className="choice-option-row">C. $\displaystyle \dfrac1x f(\ln x)-\dfrac1{x^{2}}f\left(\dfrac1x\right)$ &emsp;&emsp; D. $\displaystyle f(\ln x)-f\left(\dfrac1x\right)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 由变上下限积分求导公式，
+
+$$
+\displaystyle F'(x)
+=f(\ln x)(\ln x)'-f\left(\dfrac1x\right)\left(\dfrac1x\right)'.
+$$
+
+又
+
+$$
+\displaystyle (\ln x)'=\dfrac1x,
+\qquad
+\displaystyle \left(\dfrac1x\right)'=-\dfrac1{x^{2}},
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle F'(x)
+&=\dfrac1x f(\ln x)-f\left(\dfrac1x\right)\left(-\dfrac1{x^{2}}\right)\\
+&=\dfrac1x f(\ln x)+\dfrac1{x^{2}}f\left(\dfrac1x\right).
+\end{aligned}
+$$
+
+应选 A。下限求导项前的负号与 $\displaystyle (1/x)'$ 的负号相消。
+
+</details>
+
+---
+
+6. **【1994-3-3 分】**
+
+$$
+\displaystyle \dfrac{d}{dx}\left[\int_{0}^{\cos 3x}f(t)\,dt\right]=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle -3\sin 3x\,f(\cos 3x).
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u(x)=\cos 3x.
+$$
+
+由变上限积分求导公式和链式法则，
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{u(x)}f(t)\,dt=f(u(x))u'(x).
+$$
+
+而
+
+$$
+\displaystyle u'(x)=-3\sin 3x,
+$$
+
+故
+
+$$
+\displaystyle \dfrac{d}{dx}\left[\int_{0}^{\cos 3x}f(t)\,dt\right]
+=-3\sin 3x\,f(\cos 3x).
+$$
+
+</details>
+
+---
+
+7. **【2004-1-4 分】** 设 $\displaystyle f(x)$ 为连续函数，
+
+$$
+\displaystyle F(t)=\int_{1}^{t}dy\int_{y}^{t}f(x)\,dx,
+$$
+
+则 $\displaystyle F'(2)$ 等于（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle 2f(2)$ &emsp;&emsp; B. $\displaystyle f(2)$ &emsp;&emsp; C. $\displaystyle -f(2)$ &emsp;&emsp; D. $\displaystyle 0$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B。
+
+**解析：** 积分区域为
+
+$$
+\displaystyle 1\le y\le t,
+\qquad
+\displaystyle y\le x\le t.
+$$
+
+交换积分次序后，$\displaystyle x$ 的范围为 $\displaystyle 1\le x\le t$，对固定的 $\displaystyle x$，有 $\displaystyle 1\le y\le x$。因此
+
+$$
+\begin{aligned}
+\displaystyle F(t)
+&=\int_{1}^{t}f(x)\left(\int_{1}^{x}dy\right)dx\\
+&=\int_{1}^{t}(x-1)f(x)\,dx.
+\end{aligned}
+$$
+
+由微积分基本定理，
+
+$$
+\displaystyle F'(t)=(t-1)f(t).
+$$
+
+于是
+
+$$
+\displaystyle F'(2)=(2-1)f(2)=f(2).
+$$
+
+应选 B。
+
+</details>
+
+---
+
+8. **【2013-2-4 分】** 设函数
+
+$$
+\displaystyle f(x)=\int_{-1}^{x}\sqrt{1-e^{t}}\,dt,
+$$
+
+则 $\displaystyle y=f(x)$ 的反函数 $\displaystyle x=f^{-1}(y)$ 在 $\displaystyle y=0$ 处的导数
+
+$$
+\displaystyle \left.\dfrac{dx}{dy}\right|_{y=0}=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{1}{\sqrt{1-e^{-1}}}
+=\sqrt{\dfrac{e}{e-1}}.
+$$
+
+</div>
+</div>
+
+**解析：** 先确定 $\displaystyle y=0$ 对应的原函数自变量。由积分定义，
+
+$$
+\displaystyle f(-1)=\int_{-1}^{-1}\sqrt{1-e^{t}}\,dt=0,
+$$
+
+故 $\displaystyle y=0$ 对应 $\displaystyle x=-1$。
+
+由微积分基本定理，
+
+$$
+\displaystyle f'(x)=\sqrt{1-e^{x}}.
+$$
+
+于是
+
+$$
+\displaystyle f'(-1)=\sqrt{1-e^{-1}}>0,
+$$
+
+所以反函数在该点可导，且
+
+$$
+\displaystyle \left.\dfrac{dx}{dy}\right|_{y=0}
+=\dfrac{1}{f'(-1)}
+=\dfrac{1}{\sqrt{1-e^{-1}}}
+=\sqrt{\dfrac{e}{e-1}}.
+$$
+
+</details>
+
+### （八）变限积分求导：被积函数含求导变量可拆分
+
+1. **【1995-12-3 分】**
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{x^{2}}^{0}x\cos t^{2}\,dt=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \int_{x^{2}}^{0}\cos t^{2}\,dt-2x^{2}\cos x^{4}.
+$$
+
+</div>
+</div>
+
+**解析：** 由于积分变量为 $\displaystyle t$，而 $\displaystyle x$ 与 $\displaystyle t$ 无关，可先将 $\displaystyle x$ 提到积分号外：
+
+$$
+\displaystyle \int_{x^{2}}^{0}x\cos t^{2}\,dt
+=x\int_{x^{2}}^{0}\cos t^{2}\,dt.
+$$
+
+对其求导，利用乘积求导法则与变上、下限积分求导公式，得
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dx}\left[x\int_{x^{2}}^{0}\cos t^{2}\,dt\right]
+&=\int_{x^{2}}^{0}\cos t^{2}\,dt
++x\dfrac{d}{dx}\int_{x^{2}}^{0}\cos t^{2}\,dt\\
+&=\int_{x^{2}}^{0}\cos t^{2}\,dt
++x\left[-\cos\left((x^{2})^{2}\right)\cdot 2x\right]\\
+&=\int_{x^{2}}^{0}\cos t^{2}\,dt-2x^{2}\cos x^{4}.
+\end{aligned}
+$$
+
+其中下限为变量时会产生负号，这是本题容易出错之处。
+
+</details>
+
+---
+
+2. **【2015-23-4 分】** 设函数 $\displaystyle f(x)$ 连续，
+
+$$
+\displaystyle \varphi(x)=\int_{0}^{x^{2}}x f(t)\,dt,
+$$
+
+若 $\displaystyle \varphi(1)=1$，$\displaystyle \varphi'(1)=5$，则 $\displaystyle f(1)=\underline{\qquad}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 2.
+$$
+
+</div>
+</div>
+
+**解析：** 由于 $\displaystyle x$ 与积分变量 $\displaystyle t$ 无关，可写成
+
+$$
+\displaystyle \varphi(x)=x\int_{0}^{x^{2}}f(t)\,dt.
+$$
+
+由 $\displaystyle \varphi(1)=1$，得到
+
+$$
+\displaystyle \int_{0}^{1}f(t)\,dt=1.
+$$
+
+再对 $\displaystyle \varphi(x)$ 求导：
+
+$$
+\begin{aligned}
+\displaystyle \varphi'(x)
+&=\int_{0}^{x^{2}}f(t)\,dt
++x\cdot f(x^{2})\cdot 2x\\
+&=\int_{0}^{x^{2}}f(t)\,dt+2x^{2}f(x^{2}).
+\end{aligned}
+$$
+
+令 $\displaystyle x=1$，结合 $\displaystyle \varphi'(1)=5$，得
+
+$$
+\displaystyle 5=\int_{0}^{1}f(t)\,dt+2f(1)=1+2f(1).
+$$
+
+因此
+
+$$
+\displaystyle f(1)=2.
+$$
+
+</details>
+
+### （九）变限积分求导：被积函数含求导变量不可拆分
+
+1. **【1998-1-3 分】** 设 $\displaystyle f(x)$ 连续，则
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x}t f(x^{2}-t^{2})\,dt=(\ \ ).
+$$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle x f(x^{2})$ &emsp;&emsp; B. $\displaystyle -x f(x^{2})$ &emsp;&emsp; C. $\displaystyle 2x f(x^{2})$ &emsp;&emsp; D. $\displaystyle -2x f(x^{2})$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 被积函数同时含有 $\displaystyle x$ 与 $\displaystyle t$，直接使用莱布尼茨公式会涉及 $\displaystyle f'$，但题目只给出 $\displaystyle f$ 连续，因此应先作换元。
+
+令
+
+$$
+\displaystyle u=x^{2}-t^{2},
+\qquad
+\displaystyle du=-2t\,dt.
+$$
+
+当 $\displaystyle t=0$ 时，$\displaystyle u=x^{2}$；当 $\displaystyle t=x$ 时，$\displaystyle u=0$。于是
+
+$$
+\begin{aligned}
+\displaystyle \int_{0}^{x}t f(x^{2}-t^{2})\,dt
+&=-\dfrac{1}{2}\int_{x^{2}}^{0}f(u)\,du\\
+&=\dfrac{1}{2}\int_{0}^{x^{2}}f(u)\,du.
+\end{aligned}
+$$
+
+由微积分基本定理，
+
+$$
+\displaystyle \dfrac{d}{dx}\left[\dfrac{1}{2}\int_{0}^{x^{2}}f(u)\,du\right]
+=\dfrac{1}{2}f(x^{2})\cdot 2x
+=xf(x^{2}).
+$$
+
+故应选 A。
+
+</details>
+
+---
+
+2. **【1998-2-3 分】** 设 $\displaystyle f(x)$ 连续，则
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x}t f(x^{2}-t^{2})\,dt=
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle xf(x^{2}).
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x^{2}-t^{2},
+\qquad
+\displaystyle du=-2t\,dt.
+$$
+
+则
+
+$$
+\begin{aligned}
+\displaystyle \int_{0}^{x}t f(x^{2}-t^{2})\,dt
+&=-\dfrac{1}{2}\int_{x^{2}}^{0}f(u)\,du\\
+&=\dfrac{1}{2}\int_{0}^{x^{2}}f(u)\,du.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dx}\int_{0}^{x}t f(x^{2}-t^{2})\,dt
+&=\dfrac{1}{2}f(x^{2})\cdot 2x\\
+&=xf(x^{2}).
+\end{aligned}
+$$
+
+本题与上一题题型相同，关键是通过换元消去被积函数内部同时出现的 $\displaystyle x$ 与 $\displaystyle t$。
+
+</details>
+
+---
+
+3. **【1999-1-3 分】**
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x}\sin (x-t)^{2}\,dt=\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \sin x^{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 令
+
+$$
+\displaystyle u=x-t,
+\qquad
+\displaystyle dt=-du.
+$$
+
+当 $\displaystyle t=0$ 时，$\displaystyle u=x$；当 $\displaystyle t=x$ 时，$\displaystyle u=0$。于是
+
+$$
+\begin{aligned}
+\displaystyle \int_{0}^{x}\sin (x-t)^{2}\,dt
+&=-\int_{x}^{0}\sin u^{2}\,du\\
+&=\int_{0}^{x}\sin u^{2}\,du.
+\end{aligned}
+$$
+
+由微积分基本定理，
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x}\sin u^{2}\,du
+=\sin x^{2}.
+$$
+
+这里 $\displaystyle \sin (x-t)^{2}$ 表示 $\displaystyle \sin\bigl((x-t)^{2}\bigr)$，换元后即可直接应用变上限积分求导公式。
+
+</details>
+
+### （十）高阶导数
+
+1. **【1990-12-3 分】** 已知函数 $\displaystyle f(x)$ 具有任意阶导数，且 $\displaystyle f'(x)=[f(x)]^{2}$，则当 $\displaystyle n$ 为大于 2 的正整数时，$\displaystyle f(x)$ 的 $\displaystyle n$ 阶导数 $\displaystyle f^{(n)}(x)$ 是（  ）.
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle n![f(x)]^{n+1}$ &emsp;&emsp; B. $\displaystyle n[f(x)]^{n+1}$ &emsp;&emsp; C. $\displaystyle [f(x)]^{2n}$ &emsp;&emsp; D. $\displaystyle n![f(x)]^{2n}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A
+
+**解析：** 由 $\displaystyle f'=f^{2}$，逐次求导可得
+
+$$
+\displaystyle f''=2ff'=2f^{3},
+$$
+
+$$
+\displaystyle f'''=6f^{2}f'=6f^{4}.
+$$
+
+据此猜想
+
+$$
+\displaystyle f^{(n)}(x)=n![f(x)]^{n+1}.
+$$
+
+下面用数学归纳法验证。假设对某个正整数 $\displaystyle n$ 有
+
+$$
+\displaystyle f^{(n)}(x)=n![f(x)]^{n+1},
+$$
+
+则
+
+$$
+\begin{aligned}
+\displaystyle f^{(n+1)}(x)
+&=n!(n+1)[f(x)]^{n}f'(x)\\
+&=(n+1)![f(x)]^{n} [f(x)]^{2}\\
+&=(n+1)![f(x)]^{n+2}.
+\end{aligned}
+$$
+
+故公式对任意正整数 $\displaystyle n$ 成立，应选 A。
+
+</details>
+
+---
+
+2. **【1991-45-3 分】** 设 $\displaystyle f(x)=xe^{x}$，则 $\displaystyle f^{(n)}(x)$ 在点 $\displaystyle x=$ _____ 处取极小值。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle -(n+1).
+$$
+
+</div>
+</div>
+
+**解析：** 由莱布尼茨公式，因 $\displaystyle x$ 的二阶及以上导数均为零，故
+
+$$
+\begin{aligned}
+\displaystyle f^{(n)}(x)
+&=(xe^{x})^{(n)}\\
+&=xe^{x}+n e^{x}\\
+&=(x+n)e^{x}.
+\end{aligned}
+$$
+
+令 $\displaystyle \bigl[f^{(n)}(x)\bigr]'=0$，即
+
+$$
+\displaystyle f^{(n+1)}(x)=(x+n+1)e^{x}=0.
+$$
+
+因为 $\displaystyle e^{x}>0$，所以唯一驻点为
+
+$$
+\displaystyle x=-(n+1).
+$$
+
+又
+
+$$
+\displaystyle f^{(n+2)}\bigl(-(n+1)\bigr)
+=e^{-(n+1)}>0,
+$$
+
+因此该点为极小值点。
+
+</details>
+
+---
+
+3. **【1995-4-3 分】** 设 $\displaystyle f(x)=\dfrac{1-x}{1+x}$，则 $\displaystyle f^{(n)}(x)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f^{(n)}(x)=\dfrac{2(-1)^{n}n!}{(1+x)^{n+1}},\qquad n\geq 1.
+$$
+
+</div>
+</div>
+
+**解析：** 先将函数改写为
+
+$$
+\displaystyle f(x)=-1+\dfrac{2}{1+x}=-1+2(1+x)^{-1}.
+$$
+
+当 $\displaystyle n\geq1$ 时，常数项的高阶导数为零，而
+
+$$
+\displaystyle \dfrac{d^{n}}{dx^{n}}(1+x)^{-1}
+=(-1)^{n}n!(1+x)^{-n-1}.
+$$
+
+因此
+
+$$
+\displaystyle f^{(n)}(x)
+=2(-1)^{n}n!(1+x)^{-n-1}
+=\dfrac{2(-1)^{n}n!}{(1+x)^{n+1}}.
+$$
+
+</details>
+
+---
+
+4. **【2000-2-5 分】** 求函数 $\displaystyle f(x)=x^{2}\ln(1+x)$ 在 $\displaystyle x=0$ 处的 $\displaystyle n$ 阶导数 $\displaystyle f^{(n)}(0)\ (n\geq3)$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f^{(n)}(0)=(-1)^{n-1}\dfrac{n!}{n-2},\qquad n\geq3.
+$$
+
+</div>
+</div>
+
+**解析：** 利用幂级数展开
+
+$$
+\displaystyle \ln(1+x)=\sum_{k=1}^{\infty}(-1)^{k+1}\dfrac{x^{k}}{k},\qquad |x|<1.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle f(x)
+&=x^{2}\ln(1+x)\\
+&=\sum_{k=1}^{\infty}(-1)^{k+1}\dfrac{x^{k+2}}{k}.
+\end{aligned}
+$$
+
+当 $\displaystyle n\geq3$ 时，令 $\displaystyle k=n-2$，则 $\displaystyle x^{n}$ 的系数为
+
+$$
+\displaystyle \dfrac{(-1)^{n-1}}{n-2}.
+$$
+
+根据泰勒展开中 $\displaystyle x^{n}$ 的系数等于 $\displaystyle \dfrac{f^{(n)}(0)}{n!}$，得
+
+$$
+\displaystyle f^{(n)}(0)=(-1)^{n-1}\dfrac{n!}{n-2}.
+$$
+
+</details>
+
+---
+
+5. **【2007-234-4 分】** 设函数 $\displaystyle y=\dfrac{1}{2x+3}$，则 $\displaystyle y^{(n)}(0)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y^{(n)}(0)=(-1)^{n}\dfrac{2^{n}n!}{3^{n+1}}.
+$$
+
+</div>
+</div>
+
+**解析：** 写成幂函数形式
+
+$$
+\displaystyle y=(2x+3)^{-1}.
+$$
+
+连续求导可得
+
+$$
+\displaystyle y^{(n)}(x)=(-1)^{n}n!2^{n}(2x+3)^{-n-1}.
+$$
+
+令 $\displaystyle x=0$，得到
+
+$$
+\displaystyle y^{(n)}(0)
+=(-1)^{n}n!2^{n}\cdot3^{-n-1}
+=(-1)^{n}\dfrac{2^{n}n!}{3^{n+1}}.
+$$
+
+</details>
+
+---
+
+6. **【2010-2-4 分】** 函数 $\displaystyle y=\ln(1-2x)$ 在 $\displaystyle x=0$ 处的 $\displaystyle n$ 阶导数 $\displaystyle y^{(n)}(0)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle y^{(n)}(0)=-2^{n}(n-1)!,\qquad n\geq1.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle \ln(1-u)=-\sum_{k=1}^{\infty}\dfrac{u^{k}}{k},\qquad |u|<1,
+$$
+
+取 $\displaystyle u=2x$，得
+
+$$
+\displaystyle \ln(1-2x)
+=-\sum_{k=1}^{\infty}\dfrac{2^{k}}{k}x^{k}.
+$$
+
+因此 $\displaystyle x^{n}$ 的系数为 $\displaystyle -\dfrac{2^{n}}{n}$，从而
+
+$$
+\displaystyle \dfrac{y^{(n)}(0)}{n!}=-\dfrac{2^{n}}{n}.
+$$
+
+故
+
+$$
+\displaystyle y^{(n)}(0)=-2^{n}(n-1)!.
+$$
+
+</details>
+
+---
+
+7. **【2015-2-4 分】** 函数 $\displaystyle f(x)=x^{2}\cdot2^{x}$ 在 $\displaystyle x=0$ 处的 $\displaystyle n$ 阶导数 $\displaystyle f^{(n)}(0)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f^{(n)}(0)=n(n-1)(\ln2)^{n-2},\qquad n\geq2.
+$$
+
+</div>
+</div>
+
+**解析：** 由于
+
+$$
+\displaystyle 2^{x}=e^{x\ln2},
+$$
+
+故
+
+$$
+\displaystyle f(x)=x^{2}e^{x\ln2}.
+$$
+
+利用莱布尼茨公式，令 $\displaystyle u=x^{2}$、$\displaystyle v=e^{x\ln2}$。在 $\displaystyle x=0$ 处，只有 $\displaystyle u''(0)=2$ 对应的项不为零，因此
+
+$$
+\begin{aligned}
+\displaystyle f^{(n)}(0)
+&=\binom{n}{2}u''(0)v^{(n-2)}(0)\\
+&=\binom{n}{2}\cdot2\cdot(\ln2)^{n-2}\\
+&=n(n-1)(\ln2)^{n-2}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+8. **【2016-2-4 分】** 已知函数 $\displaystyle f(x)$ 在 $\displaystyle (-\infty,+\infty)$ 上连续，且
+
+$$
+\displaystyle f(x)=(x+1)^{2}+2\int_{0}^{x}f(t)\,dt,
+$$
+
+则当 $\displaystyle n\geq2$ 时，$\displaystyle f^{(n)}(0)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f^{(n)}(0)=10\cdot2^{n-2},\qquad n\geq2.
+$$
+
+</div>
+</div>
+
+**解析：** 先令 $\displaystyle x=0$，由原式得
+
+$$
+\displaystyle f(0)=1.
+$$
+
+两边对 $\displaystyle x$ 求导，得到
+
+$$
+\displaystyle f'(x)=2(x+1)+2f(x),
+$$
+
+故
+
+$$
+\displaystyle f'(0)=2+2f(0)=4.
+$$
+
+再求一次导数：
+
+$$
+\displaystyle f''(x)=2+2f'(x),
+$$
+
+所以
+
+$$
+\displaystyle f''(0)=2+2\times4=10.
+$$
+
+当 $\displaystyle n\geq3$ 时，对等式 $\displaystyle f''(x)=2+2f'(x)$ 继续求导，有
+
+$$
+\displaystyle f^{(n)}(x)=2f^{(n-1)}(x).
+$$
+
+因此
+
+$$
+\displaystyle f^{(n)}(0)
+=2^{n-2}f''(0)
+=10\cdot2^{n-2}.
+$$
+
+</details>
+
+---
+
+9. **【2016-1-4 分】** 设函数
+
+$$
+\displaystyle f(x)=\arctan x-\dfrac{x}{1+ax^{2}},
+$$
+
+且 $\displaystyle f'''(0)=1$，则 $\displaystyle a=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{1}{2}.
+$$
+
+</div>
+</div>
+
+**解析：** 在 $\displaystyle x=0$ 附近展开：
+
+$$
+\displaystyle \arctan x=x-\dfrac{x^{3}}{3}+o(x^{3}),
+$$
+
+且
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{x}{1+ax^{2}}
+&=x(1+ax^{2})^{-1}\\
+&=x\left(1-ax^{2}+o(x^{2})\right)\\
+&=x-ax^{3}+o(x^{3}).
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle f(x)=\left(a-\dfrac{1}{3}\right)x^{3}+o(x^{3}).
+$$
+
+于是
+
+$$
+\displaystyle f'''(0)=3!\left(a-\dfrac{1}{3}\right)
+=6a-2.
+$$
+
+由 $\displaystyle f'''(0)=1$，得
+
+$$
+\displaystyle 6a-2=1,
+$$
+
+所以
+
+$$
+\displaystyle a=\dfrac{1}{2}.
+$$
+
+</details>
+
+---
+
+10. **【2017-1-4 分】** 已知函数 $\displaystyle f(x)=\dfrac{1}{1+x^{2}}$，则 $\displaystyle f'''(0)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 0.
+$$
+
+</div>
+</div>
+
+**解析：** 函数
+
+$$
+\displaystyle f(x)=\dfrac{1}{1+x^{2}}
+$$
+
+是偶函数。偶函数在原点处存在的所有奇数阶导数均为零，因此
+
+$$
+\displaystyle f'''(0)=0.
+$$
+
+也可由幂级数
+
+$$
+\displaystyle \dfrac{1}{1+x^{2}}=1-x^{2}+x^{4}-x^{6}+\cdots
+$$
+
+看出其展开式中没有 $\displaystyle x^{3}$ 项，所以三阶导数在原点为零。
+
+</details>
+
+---
+
+11. **【2020-2-4 分】** 设 $\displaystyle f(x)=x^{2}\ln(1-x)$，则 $\displaystyle n\geq3$ 时，$\displaystyle f^{(n)}(0)=(\ \ )$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle -\dfrac{n!}{n-2}$ &emsp;&emsp; B. $\displaystyle \dfrac{n!}{n-2}$ &emsp;&emsp; C. $\displaystyle -\dfrac{(n-2)!}{n}$ &emsp;&emsp; D. $\displaystyle \dfrac{(n-2)!}{n}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 利用幂级数展开
+
+$$
+\displaystyle \ln(1-x)=-\sum_{k=1}^{\infty}\dfrac{x^{k}}{k},\qquad |x|<1,
+$$
+
+可得
+
+$$
+\begin{aligned}
+\displaystyle f(x)
+&=x^{2}\ln(1-x)\\
+&=-\sum_{k=1}^{\infty}\dfrac{x^{k+2}}{k}.
+\end{aligned}
+$$
+
+当 $\displaystyle n\geq3$ 时，$\displaystyle x^{n}$ 项对应 $\displaystyle k=n-2$，其系数为
+
+$$
+\displaystyle -\dfrac{1}{n-2}.
+$$
+
+而泰勒展开中 $\displaystyle x^{n}$ 的系数为 $\displaystyle \dfrac{f^{(n)}(0)}{n!}$，故
+
+$$
+\displaystyle \dfrac{f^{(n)}(0)}{n!}=-\dfrac{1}{n-2},
+$$
+
+从而
+
+$$
+\displaystyle f^{(n)}(0)=-\dfrac{n!}{n-2}.
+$$
+
+因此选 A。
+
+</details>
+
+---
+
+12. **【2022-3-5 分】** 已知函数 $\displaystyle f(x)=e^{\sin x}+e^{-\sin x}$，则 $\displaystyle f'''(2\pi)=$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 0.
+$$
+
+</div>
+</div>
+
+**解析：** 令 $\displaystyle h=x-2\pi$，则
+
+$$
+\displaystyle \sin x=\sin(2\pi+h)=\sin h.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle f(2\pi+h)
+&=e^{\sin h}+e^{-\sin h}\\
+&=2\cosh(\sin h).
+\end{aligned}
+$$
+
+由于 $\displaystyle \sin h$ 是关于 $\displaystyle h$ 的奇函数，而 $\displaystyle \cosh u$ 是关于 $\displaystyle u$ 的偶函数，所以 $\displaystyle f(2\pi+h)$ 是关于 $\displaystyle h$ 的偶函数。
+
+因此它在 $\displaystyle h=0$ 处的所有奇数阶导数均为零，故
+
+$$
+\displaystyle f'''(2\pi)=0.
+$$
+
+</details>
+
+---
+
+13. **【2024-2-5 分】** 已知函数 $\displaystyle f(x)=(e^{x}+1)x^{2}$，则 $\displaystyle f^{(5)}(1)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle 31e.
+$$
+
+</div>
+</div>
+
+**解析：** 将函数写为
+
+$$
+\displaystyle f(x)=x^{2}e^{x}+x^{2}.
+$$
+
+由于 $\displaystyle x^{2}$ 的五阶导数为零，只需求 $\displaystyle x^{2}e^{x}$ 的五阶导数。
+
+由莱布尼茨公式，且 $\displaystyle (x^{2})^{(k)}=0$（$\displaystyle k\geq3$），有
+
+$$
+\begin{aligned}
+\displaystyle (x^{2}e^{x})^{(5)}
+&=\binom50x^{2}e^{x}
+ +\binom51(2x)e^{x}
+ +\binom52\cdot2e^{x}\\
+&=e^{x}(x^{2}+10x+20).
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle f^{(5)}(1)
+=e(1+10+20)
+=31e.
+$$
+
+</details>
+
+## 大题
+
+### （一）参数方程的导数(数一、数二)：求导函数
+
+1. **【1987-3-7 分】** 设
+
+$$
+\displaystyle
+\begin{cases}
+x=5(t-\sin t),\\
+y=5(1-\cos t),
+\end{cases}
+$$
+
+求 $\displaystyle \dfrac{dy}{dx}$，$\displaystyle \dfrac{d^{2}y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{dy}{dx}=\dfrac{\sin t}{1-\cos t}=\cot\dfrac{t}{2},
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}=-\dfrac{1}{5(1-\cos t)^{2}}.
+$$
+
+**解析：** 由参数方程得
+
+$$
+\displaystyle \dfrac{dx}{dt}=5(1-\cos t),
+\qquad
+\dfrac{dy}{dt}=5\sin t.
+$$
+
+当 $\displaystyle \dfrac{dx}{dt}\neq0$ 时，
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}\\
+&=\dfrac{5\sin t}{5(1-\cos t)}\\
+&=\dfrac{\sin t}{1-\cos t}\\
+&=\cot\dfrac{t}{2}.
+\end{aligned}
+$$
+
+再由参数方程二阶导数公式
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}},
+$$
+
+而
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{\sin t}{1-\cos t}\right)
+&=\dfrac{\cos t(1-\cos t)-\sin^{2}t}{(1-\cos t)^{2}}\\
+&=\dfrac{\cos t-1}{(1-\cos t)^{2}}\\
+&=-\dfrac{1}{1-\cos t}.
+\end{aligned}
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{-\dfrac{1}{1-\cos t}}{5(1-\cos t)}\\
+&=-\dfrac{1}{5(1-\cos t)^{2}}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+2. **【2008-2-10 分】** 设函数 $\displaystyle y=y(x)$ 由参数方程
+
+$$
+\displaystyle
+\begin{cases}
+x=x(t),\\
+y=\displaystyle\int_{0}^{t^{2}}\ln(1+u)\,du
+\end{cases}
+$$
+
+确定，其中 $\displaystyle x(t)$ 是初值问题
+
+$$
+\displaystyle
+\begin{cases}
+\dfrac{dx}{dt}-2te^{-x}=0,\\
+x\big|_{t=0}=0
+\end{cases}
+$$
+
+的解，求 $\displaystyle \dfrac{d^{2}y}{dx^{2}}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}=(1+t^{2})\bigl[\ln(1+t^{2})+1\bigr]
+=e^{x}(x+1).
+$$
+
+</div>
+</div>
+
+**解析：** 由微分方程
+
+$$
+\displaystyle \dfrac{dx}{dt}=2te^{-x},
+$$
+
+两边同乘 $\displaystyle e^{x}$，得
+
+$$
+\displaystyle e^{x}\dfrac{dx}{dt}=2t.
+$$
+
+注意到左边为 $\displaystyle \dfrac{d}{dt}(e^{x})$，故
+
+$$
+\displaystyle \dfrac{d}{dt}(e^{x})=2t.
+$$
+
+积分得
+
+$$
+\displaystyle e^{x}=t^{2}+C.
+$$
+
+由初值 $\displaystyle x(0)=0$，有 $\displaystyle C=1$，所以
+
+$$
+\displaystyle e^{x}=1+t^{2},
+\qquad
+x=\ln(1+t^{2}).
+$$
+
+于是
+
+$$
+\displaystyle \dfrac{dx}{dt}=\dfrac{2t}{1+t^{2}}.
+$$
+
+另一方面，由变上限积分求导公式，
+
+$$
+\displaystyle \dfrac{dy}{dt}=2t\ln(1+t^{2}).
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}\\
+&=\dfrac{2t\ln(1+t^{2})}{\dfrac{2t}{1+t^{2}}}\\
+&=(1+t^{2})\ln(1+t^{2}).
+\end{aligned}
+$$
+
+继续求导：
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+&=\dfrac{d}{dt}\left[(1+t^{2})\ln(1+t^{2})\right]\\
+&=2t\ln(1+t^{2})+2t\\
+&=2t\bigl[\ln(1+t^{2})+1\bigr].
+\end{aligned}
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}}\\
+&=\dfrac{2t[\ln(1+t^{2})+1]}{\dfrac{2t}{1+t^{2}}}\\
+&=(1+t^{2})[\ln(1+t^{2})+1].
+\end{aligned}
+$$
+
+又因为 $\displaystyle 1+t^{2}=e^{x}$、$\displaystyle \ln(1+t^{2})=x$，所以也可写为
+
+$$
+\displaystyle \dfrac{d^{2}y}{dx^{2}}=e^{x}(x+1).
+$$
+
+</details>
+
+### （二）参数方程的导数(数一、数二)：求某点处的导数
+
+1. **【2003-2-9 分】** 设函数 $\displaystyle y=y(x)$ 由参数方程
+
+$$
+\displaystyle
+\begin{cases}
+x=1+2t^{2},&t>1,\\[1mm]
+y=\displaystyle\int_{1}^{1+2\ln t}\dfrac{e^{u}}{u}\,du,&t>1
+\end{cases}
+$$
+
+所确定，求 $\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=9}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=9}
+=-\dfrac{e}{16(1+2\ln 2)^{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 由
+
+$$
+\displaystyle x=1+2t^{2},
+$$
+
+得
+
+$$
+\displaystyle \dfrac{dx}{dt}=4t.
+$$
+
+又由变上限积分求导公式，
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dt}
+&=\dfrac{e^{1+2\ln t}}{1+2\ln t}\cdot\dfrac{2}{t}\\
+&=\dfrac{et^{2}}{1+2\ln t}\cdot\dfrac{2}{t}\\
+&=\dfrac{2et}{1+2\ln t}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{dy}{dx}
+&=\dfrac{\dfrac{dy}{dt}}{\dfrac{dx}{dt}}\\
+&=\dfrac{\dfrac{2et}{1+2\ln t}}{4t}\\
+&=\dfrac{e}{2(1+2\ln t)}.
+\end{aligned}
+$$
+
+继续对参数 $\displaystyle t$ 求导，
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)
+&=\dfrac{e}{2}\cdot\left[-(1+2\ln t)^{-2}\cdot\dfrac{2}{t}\right]\\
+&=-\dfrac{e}{t(1+2\ln t)^{2}}.
+\end{aligned}
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \dfrac{d^{2}y}{dx^{2}}
+&=\dfrac{\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)}{\dfrac{dx}{dt}}\\
+&=\dfrac{-\dfrac{e}{t(1+2\ln t)^{2}}}{4t}\\
+&=-\dfrac{e}{4t^{2}(1+2\ln t)^{2}}.
+\end{aligned}
+$$
+
+当 $\displaystyle x=9$ 时，
+
+$$
+\displaystyle 1+2t^{2}=9.
+$$
+
+因 $\displaystyle t>1$，所以 $\displaystyle t=2$。代入得
+
+$$
+\displaystyle \left.\dfrac{d^{2}y}{dx^{2}}\right|_{x=9}
+=-\dfrac{e}{16(1+2\ln 2)^{2}}.
+$$
+
+</details>
+
+### （三）抽象函数的导数
+
+1. **【2007-2-11 分】** 已知函数 $\displaystyle f(u)$ 具有二阶导数，且 $\displaystyle f'(0)=1$。函数 $\displaystyle y=y(x)$ 由方程
+
+$$
+\displaystyle y-xe^{y-1}=1
+$$
+
+所确定，设
+
+$$
+\displaystyle z=f(\ln y-\sin x),
+$$
+
+求 $\displaystyle \left.\dfrac{dz}{dx}\right|_{x=0}$，$\displaystyle \left.\dfrac{d^{2}z}{dx^{2}}\right|_{x=0}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \left.\dfrac{dz}{dx}\right|_{x=0}=0,
+\qquad
+\left.\dfrac{d^{2}z}{dx^{2}}\right|_{x=0}=1.
+$$
+
+</div>
+</div>
+
+**解析：** 先由隐函数方程确定 $\displaystyle y$ 在 $\displaystyle x=0$ 处的函数值及导数。
+
+令 $\displaystyle x=0$，由
+
+$$
+\displaystyle y-xe^{y-1}=1
+$$
+
+得
+
+$$
+\displaystyle y(0)=1.
+$$
+
+对原方程两边关于 $\displaystyle x$ 求导：
+
+$$
+\displaystyle y'-e^{y-1}-xe^{y-1}y'=0.
+$$
+
+即
+
+$$
+\displaystyle y'(1-xe^{y-1})=e^{y-1}.
+$$
+
+令 $\displaystyle x=0$，并利用 $\displaystyle y(0)=1$，得
+
+$$
+\displaystyle y'(0)=1.
+$$
+
+再对
+
+$$
+\displaystyle y'-e^{y-1}(1+xy')=0
+$$
+
+求导，得
+
+$$
+\displaystyle y''-e^{y-1}y'(1+xy')-e^{y-1}(y'+xy'')=0.
+$$
+
+令 $\displaystyle x=0$，代入 $\displaystyle y(0)=1$、$\displaystyle y'(0)=1$，得
+
+$$
+\displaystyle y''(0)-1-1=0,
+$$
+
+所以
+
+$$
+\displaystyle y''(0)=2.
+$$
+
+设
+
+$$
+\displaystyle u(x)=\ln y-\sin x,
+$$
+
+则
+
+$$
+\displaystyle u(0)=\ln 1-\u200b\sin 0=0.
+$$
+
+并且
+
+$$
+\displaystyle u'=\dfrac{y'}{y}-\cos x.
+$$
+
+因此
+
+$$
+\displaystyle u'(0)=\dfrac{1}{1}-1=0.
+$$
+
+继续求导：
+
+$$
+\displaystyle u''=\dfrac{y''}{y}-\dfrac{(y')^{2}}{y^{2}}+\sin x.
+$$
+
+故
+
+$$
+\displaystyle u''(0)=2-1+0=1.
+$$
+
+因为 $\displaystyle z=f(u)$，所以
+
+$$
+\displaystyle z'=f'(u)u',
+$$
+
+从而
+
+$$
+\displaystyle z'(0)=f'(0)u'(0)=1\cdot0=0.
+$$
+
+又
+
+$$
+\displaystyle z''=f''(u)(u')^{2}+f'(u)u''.
+$$
+
+在 $\displaystyle x=0$ 处，由 $\displaystyle u'(0)=0$，第一项自动为零，故
+
+$$
+\displaystyle z''(0)=f'(0)u''(0)=1\cdot1=1.
+$$
+
+</details>
+
+### （四）变限积分求导：被积函数不含求导变量
+
+1. **【2001-2-7 分】** 设函数 $\displaystyle f(x)$ 在 $\displaystyle [0,+\infty)$ 上可导，$\displaystyle f(0)=0$，且其反函数为 $\displaystyle g(x)$。若
+
+$$
+\displaystyle \int_{0}^{f(x)}g(t)\,dt=x^{2}e^{x},
+$$
+
+求 $\displaystyle f(x)$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f(x)=(x+1)e^{x}-1.
+$$
+
+</div>
+</div>
+
+**解析：** 对等式两边关于 $\displaystyle x$ 求导。由变上限积分求导公式，左边为
+
+$$
+\displaystyle g(f(x))f'(x).
+$$
+
+由于 $\displaystyle g$ 是 $\displaystyle f$ 的反函数，故
+
+$$
+\displaystyle g(f(x))=x.
+$$
+
+右边求导为
+
+$$
+\displaystyle \dfrac{d}{dx}(x^{2}e^{x})
+=e^{x}(x^{2}+2x)
+=xe^{x}(x+2).
+$$
+
+因此
+
+$$
+\displaystyle xf'(x)=xe^{x}(x+2).
+$$
+
+当 $\displaystyle x>0$ 时，可以约去 $\displaystyle x$，得
+
+$$
+\displaystyle f'(x)=e^{x}(x+2).
+$$
+
+注意到
+
+$$
+\displaystyle \dfrac{d}{dx}\bigl[(x+1)e^{x}\bigr]=(x+2)e^{x},
+$$
+
+故
+
+$$
+\displaystyle f(x)=(x+1)e^{x}+C.
+$$
+
+由 $\displaystyle f(0)=0$，得
+
+$$
+\displaystyle 1+C=0,
+$$
+
+所以 $\displaystyle C=-1$。因此
+
+$$
+\displaystyle f(x)=(x+1)e^{x}-1.
+$$
+
+</details>
+
+---
+
+2. **【2007-2-10 分】** 设 $\displaystyle f(x)$ 是区间 $\displaystyle \left[0,\dfrac{\pi}{4}\right]$ 上的单调、可导函数，且满足
+
+$$
+\displaystyle \int_{0}^{f(x)}f^{-1}(t)\,dt
+=\int_{0}^{x}t\dfrac{\cos t-\sin t}{\sin t+\cos t}\,dt,
+$$
+
+其中 $\displaystyle f^{-1}$ 是 $\displaystyle f$ 的反函数，求 $\displaystyle f(x)$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f(x)=\ln(\sin x+\cos x).
+$$
+
+</div>
+</div>
+
+**解析：** 对题设等式两边关于 $\displaystyle x$ 求导。左边为
+
+$$
+\displaystyle f^{-1}(f(x))f'(x)=xf'(x),
+$$
+
+右边为
+
+$$
+\displaystyle x\dfrac{\cos x-\sin x}{\sin x+\cos x}.
+$$
+
+因此
+
+$$
+\displaystyle xf'(x)=x\dfrac{\cos x-\sin x}{\sin x+\cos x}.
+$$
+
+当 $\displaystyle x>0$ 时，约去 $\displaystyle x$，得
+
+$$
+\displaystyle f'(x)=\dfrac{\cos x-\sin x}{\sin x+\cos x}.
+$$
+
+而
+
+$$
+\displaystyle \dfrac{d}{dx}\ln(\sin x+\cos x)
+=\dfrac{\cos x-\sin x}{\sin x+\cos x},
+$$
+
+故
+
+$$
+\displaystyle f(x)=\ln(\sin x+\cos x)+C.
+$$
+
+下面确定常数 $\displaystyle C$。由于 $\displaystyle f'(x)>0$ 在 $\displaystyle \left[0,\dfrac{\pi}{4}\right)$ 上成立，所以 $\displaystyle f$ 单调增加。令 $\displaystyle x=0$，题设给出
+
+$$
+\displaystyle \int_{0}^{f(0)}f^{-1}(t)\,dt=0.
+$$
+
+在反函数的定义域内，$\displaystyle f^{-1}(t)\ge0$；结合 $\displaystyle f$ 的严格单调性，上式只能在
+
+$$
+\displaystyle f(0)=0
+$$
+
+时成立。因此
+
+$$
+\displaystyle C=f(0)-\ln 1=0.
+$$
+
+故
+
+$$
+\displaystyle f(x)=\ln(\sin x+\cos x).
+$$
+
+</details>
+
+### （五）变限积分求导：被积函数含求导变量可拆分
+
+1. **【1992-2-6 分】** 求
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x^{2}}(x^{2}-t)f(t)\,dt,
+$$
+
+其中 $\displaystyle f(t)$ 为已知的连续函数。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \dfrac{d}{dx}\int_{0}^{x^{2}}(x^{2}-t)f(t)\,dt
+=2x\int_{0}^{x^{2}}f(t)\,dt.
+$$
+
+</div>
+</div>
+
+**解析：** 记
+
+$$
+\displaystyle F(x)=\int_{0}^{x^{2}}(x^{2}-t)f(t)\,dt.
+$$
+
+将被积函数拆开：
+
+$$
+\displaystyle F(x)=x^{2}\int_{0}^{x^{2}}f(t)\,dt-\int_{0}^{x^{2}}tf(t)\,dt.
+$$
+
+分别求导，得
+
+$$
+\begin{aligned}
+\displaystyle F'(x)
+&=2x\int_{0}^{x^{2}}f(t)\,dt
++x^{2}f(x^{2})\cdot2x
+-x^{2}f(x^{2})\cdot2x\\
+&=2x\int_{0}^{x^{2}}f(t)\,dt.
+\end{aligned}
+$$
+
+其中两项边界贡献恰好相消。
+
+也可直接使用莱布尼茨公式：上限处 $\displaystyle x^{2}-t=0$，故边界项为零，而对被积函数关于 $\displaystyle x$ 求偏导得到 $\displaystyle 2xf(t)$，从而同样有
+
+$$
+\displaystyle F'(x)=\int_{0}^{x^{2}}2xf(t)\,dt
+=2x\int_{0}^{x^{2}}f(t)\,dt.
+$$
+
+</details>
+
+### （六）变限积分求导：被积函数含求导变量不可拆分
+
+1. **【1999-4-6 分】** 已知 $\displaystyle f(x)$ 连续，
+
+$$
+\displaystyle \int_{0}^{x}t f(x-t)\,dt=1-\cos x,
+$$
+
+求
+
+$$
+\displaystyle \int_{0}^{\frac{\pi}{2}}f(x)\,dx.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \int_{0}^{\frac{\pi}{2}}f(x)\,dx=1.
+$$
+
+</div>
+</div>
+
+**解析：** 原积分中的被积函数同时含有 $\displaystyle x$ 与 $\displaystyle t$，先作换元
+
+$$
+\displaystyle u=x-t,
+$$
+
+则 $\displaystyle t=x-u$，并且当 $\displaystyle t=0$ 时 $\displaystyle u=x$，当 $\displaystyle t=x$ 时 $\displaystyle u=0$。因此
+
+$$
+\begin{aligned}
+\displaystyle \int_{0}^{x}t f(x-t)\,dt
+&=\int_{x}^{0}(x-u)f(u)(-du)\\
+&=\int_{0}^{x}(x-u)f(u)\,du.
+\end{aligned}
+$$
+
+于是题设化为
+
+$$
+\displaystyle \int_{0}^{x}(x-u)f(u)\,du=1-\cos x.
+$$
+
+对两边关于 $\displaystyle x$ 求导。由莱布尼茨公式，左端上限处的边界项为
+
+$$
+\displaystyle (x-x)f(x)=0,
+$$
+
+而被积函数对 $\displaystyle x$ 的偏导数为 $\displaystyle f(u)$，故
+
+$$
+\displaystyle \int_{0}^{x}f(u)\,du=\sin x.
+$$
+
+令 $\displaystyle x=\dfrac{\pi}{2}$，得到
+
+$$
+\displaystyle \int_{0}^{\frac{\pi}{2}}f(u)\,du
+=\sin\dfrac{\pi}{2}=1.
+$$
+
+因此
+
+$$
+\boxed{\displaystyle \int_{0}^{\frac{\pi}{2}}f(x)\,dx=1}.
+$$
+
+本题关键是先利用换元把卷积型积分改写为便于求导的形式；直接对原式求导也可以，但换元后结构更清晰。
+
+</details>
+
+---
+
+2. **【1999-3-6 分】** 设函数 $\displaystyle f(x)$ 连续，且
+
+$$
+\displaystyle \int_{0}^{x}t f(2x-t)\,dt=\dfrac{1}{2}\arctan x^{2},
+$$
+
+已知 $\displaystyle f(1)=1$，求
+
+$$
+\displaystyle \int_{1}^{2}f(x)\,dx.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \int_{1}^{2}f(x)\,dx=\dfrac{3}{4}.
+$$
+
+</div>
+</div>
+
+**解析：** 作换元
+
+$$
+\displaystyle u=2x-t,
+$$
+
+则 $\displaystyle t=2x-u$，且当 $\displaystyle t=0$ 时 $\displaystyle u=2x$，当 $\displaystyle t=x$ 时 $\displaystyle u=x$。于是
+
+$$
+\begin{aligned}
+\displaystyle \int_{0}^{x}t f(2x-t)\,dt
+&=\int_{2x}^{x}(2x-u)f(u)(-du)\\
+&=\int_{x}^{2x}(2x-u)f(u)\,du.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle \int_{x}^{2x}(2x-u)f(u)\,du
+=\dfrac{1}{2}\arctan x^{2}.
+$$
+
+对两边关于 $\displaystyle x$ 求导。设
+
+$$
+\displaystyle H(x)=\int_{x}^{2x}(2x-u)f(u)\,du.
+$$
+
+由莱布尼茨公式，
+
+$$
+\begin{aligned}
+\displaystyle H'(x)
+&=(2x-2x)f(2x)\cdot2-(2x-x)f(x)\cdot1
++\int_{x}^{2x}2f(u)\,du\\
+&=2\int_{x}^{2x}f(u)\,du-xf(x).
+\end{aligned}
+$$
+
+右端求导为
+
+$$
+\displaystyle \dfrac{d}{dx}\left(\dfrac{1}{2}\arctan x^{2}\right)
+=\dfrac{x}{1+x^{4}}.
+$$
+
+故
+
+$$
+\displaystyle 2\int_{x}^{2x}f(u)\,du-xf(x)
+=\dfrac{x}{1+x^{4}}.
+$$
+
+令 $\displaystyle x=1$，利用 $\displaystyle f(1)=1$，得
+
+$$
+\displaystyle 2\int_{1}^{2}f(u)\,du-1
+=\dfrac{1}{2}.
+$$
+
+因此
+
+$$
+\displaystyle 2\int_{1}^{2}f(u)\,du=\dfrac{3}{2},
+$$
+
+从而
+
+$$
+\boxed{\displaystyle \int_{1}^{2}f(x)\,dx=\dfrac{3}{4}}.
+$$
+
+本题求导时需要同时考虑上、下限变化产生的边界项，以及被积函数中 $\displaystyle x$ 的显含项；其中上限 $\displaystyle u=2x$ 处因系数 $\displaystyle 2x-u=0$，对应边界项恰好消失。
+
+</details>

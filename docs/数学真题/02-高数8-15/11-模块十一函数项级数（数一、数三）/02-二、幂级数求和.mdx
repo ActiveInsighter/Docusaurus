@@ -1,0 +1,2801 @@
+---
+title: "二、幂级数求和"
+sidebar_position: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+# 二、幂级数求和
+
+## （一）系数为有理函数
+
+54. **【1987-12-10 分】** 求幂级数 $\displaystyle \sum_{n=1}^{\infty}\dfrac{1}{n2^n}x^{n+1}$ 的收敛域，并求其和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-2,2)$，和函数为
+
+$$
+\displaystyle S(x)=-x\ln\left(1-\dfrac{x}{2}\right),\qquad -2\le x<2.
+$$
+
+**解析：** 原级数可写为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{x^{n+1}}{n2^n}
+=x\sum_{n=1}^{\infty}\dfrac{1}{n}\left(\dfrac{x}{2}\right)^n.
+$$
+
+由基本幂级数
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{t^n}{n}=-\ln(1-t),\qquad |t|<1,
+$$
+
+取 $\displaystyle t=\dfrac{x}{2}$，得到在 $\displaystyle |x|<2$ 时
+
+$$
+\displaystyle S(x)=-x\ln\left(1-\dfrac{x}{2}\right).
+$$
+
+再考察端点。
+
+当 $\displaystyle x=2$ 时，级数化为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{2^{n+1}}{n2^n}
+=2\sum_{n=1}^{\infty}\dfrac1n,
+$$
+
+故发散。
+
+当 $\displaystyle x=-2$ 时，级数化为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{(-2)^{n+1}}{n2^n}
+=2\sum_{n=1}^{\infty}\dfrac{(-1)^{n+1}}n,
+$$
+
+由莱布尼茨判别法知其收敛，并且
+
+$$
+\displaystyle S(-2)=2\ln2.
+$$
+
+这与和函数表达式在 $\displaystyle x=-2$ 处的取值一致。因此收敛域为
+
+$$
+\displaystyle \boxed{[-2,2)}.
+$$
+
+</details>
+
+---
+
+55. **【1990-12-6 分】** 求幂级数 $\displaystyle \sum_{n=0}^{\infty}(2n+1)x^n$ 的收敛域，并求其和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle (-1,1)$，和函数为
+
+$$
+\displaystyle S(x)=\dfrac{1+x}{(1-x)^2}.
+$$
+
+**解析：** 当 $\displaystyle |x|<1$ 时，几何级数满足
+
+$$
+\displaystyle \sum_{n=0}^{\infty}x^n=\dfrac1{1-x}.
+$$
+
+逐项求导得
+
+$$
+\displaystyle \sum_{n=1}^{\infty}nx^{n-1}=\dfrac1{(1-x)^2}.
+$$
+
+两边同乘 $\displaystyle x$，有
+
+$$
+\displaystyle \sum_{n=0}^{\infty}nx^n=\dfrac{x}{(1-x)^2}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=2\sum_{n=0}^{\infty}nx^n+\sum_{n=0}^{\infty}x^n\\
+&=\dfrac{2x}{(1-x)^2}+\dfrac1{1-x}\\
+&=\dfrac{1+x}{(1-x)^2}.
+\end{aligned}
+$$
+
+当 $\displaystyle x=1$ 时，一般项 $\displaystyle 2n+1$ 不趋于 $\displaystyle 0$；当 $\displaystyle x=-1$ 时，一般项 $\displaystyle (2n+1)(-1)^n$ 也不趋于 $\displaystyle 0$。故两个端点均发散。
+
+因此
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{1+x}{(1-x)^2},\qquad -1<x<1}.
+$$
+
+</details>
+
+---
+
+56. **【1993-4-3 分】** 级数 $\displaystyle \sum_{n=0}^{\infty}\dfrac{(\ln3)^n}{2^n}$ 的和为 _____.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle \dfrac{2}{2-\ln3}$。
+
+**解析：** 原级数是首项为 $\displaystyle 1$、公比为
+
+$$
+\displaystyle q=\dfrac{\ln3}{2}
+$$
+
+的几何级数。由于 $\displaystyle 0<\ln3<2$，故 $\displaystyle |q|<1$，级数收敛，其和为
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\left(\dfrac{\ln3}{2}\right)^n
+=\dfrac{1}{1-\frac{\ln3}{2}}
+=\boxed{\dfrac{2}{2-\ln3}}.
+$$
+
+</details>
+
+---
+
+57. **【1993-12-6 分】** 求级数 $\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{n^2-n+1}{2^n}$ 的和.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle \dfrac{22}{27}$。
+
+**解析：** 令
+
+$$
+\displaystyle r=-\dfrac12.
+$$
+
+则原级数可写为
+
+$$
+\displaystyle S=\sum_{n=0}^{\infty}(n^2-n+1)r^n.
+$$
+
+当 $\displaystyle |r|<1$ 时，有
+
+$$
+\displaystyle \sum_{n=0}^{\infty}r^n=\dfrac1{1-r},
+$$
+
+$$
+\displaystyle \sum_{n=0}^{\infty}nr^n=\dfrac{r}{(1-r)^2},
+$$
+
+以及
+
+$$
+\displaystyle \sum_{n=0}^{\infty}n^2r^n=\dfrac{r(1+r)}{(1-r)^3}.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle S
+&=\dfrac{r(1+r)}{(1-r)^3}
+-\dfrac{r}{(1-r)^2}
++\dfrac1{1-r}.
+\end{aligned}
+$$
+
+代入 $\displaystyle r=-\dfrac12$，得
+
+$$
+\displaystyle \sum_{n=0}^{\infty}n^2r^n=-\dfrac2{27},
+\qquad
+\sum_{n=0}^{\infty}nr^n=-\dfrac29,
+\qquad
+\sum_{n=0}^{\infty}r^n=\dfrac23.
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle S
+&=-\dfrac2{27}+\dfrac29+\dfrac23\\
+&=\boxed{\dfrac{22}{27}}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+58. **【1996-12-7 分】** 求级数 $\displaystyle \sum_{n=2}^{\infty}\dfrac{1}{(n^2-1)2^n}$ 的和.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle \dfrac58-\dfrac34\ln2$。
+
+**解析：** 利用部分分式分解
+
+$$
+\displaystyle \dfrac1{n^2-1}
+=\dfrac1{(n-1)(n+1)}
+=\dfrac12\left(\dfrac1{n-1}-\dfrac1{n+1}\right).
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle S
+&=\dfrac12\sum_{n=2}^{\infty}\dfrac1{(n-1)2^n}
+-\dfrac12\sum_{n=2}^{\infty}\dfrac1{(n+1)2^n}.
+\end{aligned}
+$$
+
+对第一项令 $\displaystyle k=n-1$，则
+
+$$
+\displaystyle \sum_{n=2}^{\infty}\dfrac1{(n-1)2^n}
+=\dfrac12\sum_{k=1}^{\infty}\dfrac1{k2^k}
+=\dfrac12\ln2.
+$$
+
+对第二项令 $\displaystyle k=n+1$，则
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=2}^{\infty}\dfrac1{(n+1)2^n}
+&=2\sum_{k=3}^{\infty}\dfrac1{k2^k}\\
+&=2\left(\ln2-\dfrac12-\dfrac18\right)\\
+&=2\ln2-\dfrac54.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle S
+&=\dfrac12\left(\dfrac12\ln2-2\ln2+\dfrac54\right)\\
+&=\boxed{\dfrac58-\dfrac34\ln2}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+59. **【1997-3-6 分】** 从点 $\displaystyle P_1(1,0)$ 作 $x$ 轴的垂线，交抛物线 $\displaystyle y=x^2$ 于点 $\displaystyle Q_1(1,1)$，再从 $\displaystyle Q_1$ 作这条抛物线的切线与 $X$ 轴交于 $\displaystyle P_2$，然后又从 $\displaystyle P_2$ 作 $X$ 轴的垂线，交抛物线于点 $\displaystyle Q_2$，依次重复上述过程得到一系列的点 $\displaystyle P_1,Q_1;P_2,Q_2;\cdots;P_n,Q_n;\cdots$，其中 $\displaystyle n(n\ge1)$ 为自然数，而 $\displaystyle \overline{M_1M_2}$ 表示 $\displaystyle M_1$ 与 $\displaystyle M_2$ 之间的距离.
+
+(1) 求 $\displaystyle |OP_n|$；
+
+(2) 求级数 $\displaystyle \overline{Q_1P_1}+\overline{Q_2P_2}+\cdots+\overline{Q_nP_n}+\cdots$ 的和.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** (1)
+
+$$
+\displaystyle |OP_n|=\dfrac1{2^{n-1}}.
+$$
+
+(2)
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\overline{Q_nP_n}=\dfrac43.
+$$
+
+**解析：** 设
+
+$$
+\displaystyle P_n=(x_n,0),\qquad Q_n=(x_n,x_n^2),
+$$
+
+其中 $\displaystyle x_n>0$，且由 $\displaystyle P_1=(1,0)$ 知
+
+$$
+\displaystyle x_1=1.
+$$
+
+抛物线 $\displaystyle y=x^2$ 在点 $\displaystyle Q_n(x_n,x_n^2)$ 处的切线斜率为
+
+$$
+\displaystyle y'(x_n)=2x_n.
+$$
+
+故切线方程为
+
+$$
+\begin{aligned}
+\displaystyle y-x_n^2
+&=2x_n(x-x_n),
+\end{aligned}
+$$
+
+即
+
+$$
+\displaystyle y=2x_nx-x_n^2.
+$$
+
+令 $\displaystyle y=0$，可求得该切线与 $\displaystyle x$ 轴的交点横坐标为
+
+$$
+\displaystyle x=\dfrac{x_n}{2}.
+$$
+
+因此
+
+$$
+\displaystyle x_{n+1}=\dfrac{x_n}{2}.
+$$
+
+由 $\displaystyle x_1=1$，得到
+
+$$
+\displaystyle x_n=\left(\dfrac12\right)^{n-1}.
+$$
+
+所以
+
+$$
+\displaystyle |OP_n|=x_n=\boxed{\dfrac1{2^{n-1}}}.
+$$
+
+又因为 $\displaystyle P_nQ_n$ 是竖直线段，故
+
+$$
+\displaystyle \overline{Q_nP_n}=x_n^2
+=\left(\dfrac14\right)^{n-1}.
+$$
+
+于是所求级数为首项 $\displaystyle 1$、公比 $\displaystyle \dfrac14$ 的几何级数，故
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\overline{Q_nP_n}
+=\sum_{n=1}^{\infty}\left(\dfrac14\right)^{n-1}
+=\dfrac1{1-\frac14}
+=\boxed{\dfrac43}.
+$$
+
+</details>
+
+---
+
+60. **【1999-3-3 分】** $\displaystyle \sum_{n=1}^{\infty}n\left(\dfrac12\right)^{n-1}=$ _____.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle 4$。
+
+**解析：** 由几何级数
+
+$$
+\displaystyle \sum_{n=0}^{\infty}x^n=\dfrac1{1-x},\qquad |x|<1,
+$$
+
+逐项求导得
+
+$$
+\displaystyle \sum_{n=1}^{\infty}nx^{n-1}=\dfrac1{(1-x)^2}.
+$$
+
+取 $\displaystyle x=\dfrac12$，可得
+
+$$
+\displaystyle \sum_{n=1}^{\infty}n\left(\dfrac12\right)^{n-1}
+=\dfrac1{\left(1-\frac12\right)^2}
+=\boxed{4}.
+$$
+
+</details>
+
+---
+
+61. **【2000-134-6 分】** 设 $\displaystyle I_n=\int_0^{\dfrac{\pi}{4}}\sin^n x\cos x\,dx,\ n=0,1,2,\cdots$，求 $\displaystyle \sum_{n=0}^{\infty}I_n$.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle \ln(2+\sqrt2)$。
+
+**解析：** 当 $\displaystyle 0\le x\le\dfrac{\pi}{4}$ 时，
+
+$$
+\displaystyle 0\le\sin x\le\dfrac{\sqrt2}{2}<1.
+$$
+
+因此几何级数 $\displaystyle \sum_{n=0}^{\infty}\sin^n x$ 在区间 $\displaystyle \left[0,\dfrac{\pi}{4}\right]$ 上一致收敛，可以逐项积分。于是
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}I_n
+&=\sum_{n=0}^{\infty}\int_0^{\dfrac{\pi}{4}}\sin^n x\cos x\,dx\\
+&=\int_0^{\dfrac{\pi}{4}}\cos x\sum_{n=0}^{\infty}\sin^n x\,dx\\
+&=\int_0^{\dfrac{\pi}{4}}\dfrac{\cos x}{1-\sin x}\,dx.
+\end{aligned}
+$$
+
+令 $\displaystyle u=1-\sin x$，则 $\displaystyle du=-\cos x\,dx$，故
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}I_n
+&=-\ln(1-\sin x)\bigg|_0^{\dfrac{\pi}{4}}\\
+&=-\ln\left(1-\dfrac{\sqrt2}{2}\right)\\
+&=\ln\dfrac1{1-\dfrac{\sqrt2}{2}}\\
+&=\ln(2+\sqrt2).
+\end{aligned}
+$$
+
+也可先直接计算
+
+$$
+\displaystyle I_n=\dfrac1{n+1}\left(\dfrac{\sqrt2}{2}\right)^{n+1},
+$$
+
+再利用对数型幂级数求和，结论相同。
+
+</details>
+
+---
+
+62. **【2003-3-9 分】** 求幂级数 $\displaystyle 1+\sum_{n=1}^{\infty}(-1)^n\dfrac{x^{2n}}{2n}(|x|<1)$ 的和函数 $f(x)$ 及其极值.
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle f(x)=1-\dfrac12\ln(1+x^2),\qquad |x|<1.
+$$
+
+</div>
+</div>
+
+在区间 $\displaystyle (-1,1)$ 内，$\displaystyle x=0$ 是唯一的极大值点，极大值为 $\displaystyle f(0)=1$；无极小值。
+
+**解析：** 由基本展开式
+
+$$
+\displaystyle \ln(1+t)=\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{t^n}{n},\qquad |t|<1,
+$$
+
+令 $\displaystyle t=x^2$，得
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^n\dfrac{x^{2n}}{n}=-\ln(1+x^2).
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle f(x)
+&=1+\dfrac12\sum_{n=1}^{\infty}(-1)^n\dfrac{x^{2n}}n\\
+&=1-\dfrac12\ln(1+x^2),\qquad |x|<1.
+\end{aligned}
+$$
+
+求导得
+
+$$
+\displaystyle f'(x)=-\dfrac{x}{1+x^2}.
+$$
+
+于是当 $\displaystyle -1<x<0$ 时，$\displaystyle f'(x)>0$；当 $\displaystyle 0<x<1$ 时，$\displaystyle f'(x)<0$。所以 $\displaystyle f(x)$ 在 $\displaystyle (-1,0)$ 上单调增加，在 $\displaystyle (0,1)$ 上单调减少，故 $\displaystyle x=0$ 为唯一的极大值点，且
+
+$$
+\displaystyle f_{\max}=f(0)=1.
+$$
+
+由于定义区间是开区间 $\displaystyle (-1,1)$，且
+
+$$
+\displaystyle \lim_{x\to\pm1}f(x)=1-\dfrac12\ln2,
+$$
+
+该下确界在区间内取不到，因此没有极小值。若将和函数连续延拓到 $\displaystyle [-1,1]$，则 $\displaystyle x=\pm1$ 处取得最小值 $\displaystyle 1-\dfrac12\ln2$。
+
+</details>
+
+---
+
+63. **【2005-1-12 分】** 求幂级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\left(1+\dfrac{1}{n(2n-1)}\right)x^{2n}$ 的收敛区间与和函数 $f(x)$.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛区间为 $\displaystyle (-1,1)$，和函数为
+
+$$
+\displaystyle f(x)=\dfrac{x^2}{1+x^2}-\ln(1+x^2)+2x\arctan x,
+\qquad |x|<1.
+$$
+
+**解析：** 记一般项中的系数为
+
+$$
+\displaystyle c_n=(-1)^{n-1}\left(1+\dfrac1{n(2n-1)}\right).
+$$
+
+由于
+
+$$
+\displaystyle \lim_{n\to\infty}\sqrt[2n]{|c_n|}=1,
+$$
+
+故关于 $\displaystyle x$ 的幂级数收敛半径为 $\displaystyle R=1$，即在 $\displaystyle |x|<1$ 时绝对收敛。
+
+当 $\displaystyle x=\pm1$ 时，一般项为
+
+$$
+\displaystyle (-1)^{n-1}\left(1+\dfrac1{n(2n-1)}\right),
+$$
+
+其绝对值趋于 $\displaystyle 1$，一般项不趋于零，所以两端点均发散。因此收敛区间为
+
+$$
+\displaystyle (-1,1).
+$$
+
+下面求和函数。将级数拆分为
+
+$$
+\begin{aligned}
+\displaystyle f(x)
+&=\sum_{n=1}^{\infty}(-1)^{n-1}x^{2n}
++\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{n(2n-1)}.
+\end{aligned}
+$$
+
+第一部分是几何级数：
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}x^{2n}
+=\dfrac{x^2}{1+x^2}.
+$$
+
+又有部分分式分解
+
+$$
+\displaystyle \dfrac1{n(2n-1)}=-\dfrac1n+\dfrac2{2n-1}.
+$$
+
+所以第二部分为
+
+$$
+\begin{aligned}
+\displaystyle &\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{n(2n-1)}\\
+&=-\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}n
++2\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{2n-1}.
+\end{aligned}
+$$
+
+由
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}n=\ln(1+x^2),
+$$
+
+以及
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{2n-1}
+&=x\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n-1}}{2n-1}\\
+&=x\arctan x,
+\end{aligned}
+$$
+
+可得
+
+$$
+\displaystyle f(x)=\dfrac{x^2}{1+x^2}-\ln(1+x^2)+2x\arctan x,
+\qquad |x|<1.
+$$
+
+</details>
+
+---
+
+64. **【2005-3-9 分】** 求幂级数 $\displaystyle \sum_{n=1}^{\infty}\left(\dfrac{1}{2n+1}-1\right)x^{2n}$ 在区间 $(-1,1)$ 内的和函数 $S(x)$.
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+\dfrac1{2x}\ln\dfrac{1+x}{1-x}-\dfrac1{1-x^2},&x\ne0,\\[2mm]
+0,&x=0,
+\end{cases}
+\qquad -1<x<1.
+$$
+
+</div>
+</div>
+
+**解析：** 将原级数拆分为
+
+$$
+\displaystyle S(x)=\sum_{n=1}^{\infty}\dfrac{x^{2n}}{2n+1}-\sum_{n=1}^{\infty}x^{2n}.
+$$
+
+由几何级数逐项积分，得
+
+$$
+\begin{aligned}
+\displaystyle \int_0^x\dfrac{dt}{1-t^2}
+&=\int_0^x\sum_{n=0}^{\infty}t^{2n}\,dt\\
+&=\sum_{n=0}^{\infty}\dfrac{x^{2n+1}}{2n+1},\qquad |x|<1.
+\end{aligned}
+$$
+
+而
+
+$$
+\displaystyle \int_0^x\dfrac{dt}{1-t^2}
+=\dfrac12\ln\dfrac{1+x}{1-x}.
+$$
+
+因此当 $\displaystyle x\ne0$ 时，
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n}}{2n+1}
+=\dfrac1{2x}\ln\dfrac{1+x}{1-x}.
+$$
+
+从中减去 $\displaystyle n=0$ 项，得到
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{x^{2n}}{2n+1}
+=\dfrac1{2x}\ln\dfrac{1+x}{1-x}-1.
+$$
+
+另一方面，
+
+$$
+\displaystyle \sum_{n=1}^{\infty}x^{2n}=\dfrac{x^2}{1-x^2}.
+$$
+
+故对 $\displaystyle x\ne0$，
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=\dfrac1{2x}\ln\dfrac{1+x}{1-x}-1-\dfrac{x^2}{1-x^2}\\
+&=\dfrac1{2x}\ln\dfrac{1+x}{1-x}-\dfrac1{1-x^2}.
+\end{aligned}
+$$
+
+当 $\displaystyle x=0$ 时，原级数每一项均为零，因此 $\displaystyle S(0)=0$。同时上式在 $\displaystyle x\to0$ 时的极限也为零，故和函数在 $\displaystyle x=0$ 处连续。
+
+</details>
+
+---
+
+65. **【2006-3-10 分】** 求幂级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n+1}}{n(2n-1)}$ 的收敛域及和函数 $S(x)$.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-1,1]$，和函数为
+
+$$
+\displaystyle S(x)=2x^2\arctan x-x\ln(1+x^2),\qquad -1\le x\le1.
+$$
+
+**解析：** 先求收敛域。记
+
+$$
+\displaystyle u_n(x)=(-1)^{n-1}\dfrac{x^{2n+1}}{n(2n-1)}.
+$$
+
+当 $\displaystyle x\ne0$ 时，利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=\lim_{n\to\infty}|x|^2\dfrac{n(2n-1)}{(n+1)(2n+1)}\\
+&=|x|^2.
+\end{aligned}
+$$
+
+因此，当 $\displaystyle |x|<1$ 时级数绝对收敛；当 $\displaystyle |x|>1$ 时级数发散。
+
+考察端点。若 $\displaystyle x=1$，则级数化为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac1{n(2n-1)};
+$$
+
+若 $\displaystyle x=-1$，则级数化为
+
+$$
+\displaystyle -\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac1{n(2n-1)}.
+$$
+
+由于
+
+$$
+\displaystyle \dfrac1{n(2n-1)}\sim\dfrac1{2n^2},
+$$
+
+两端点处均绝对收敛，故收敛域为
+
+$$
+\displaystyle \boxed{[-1,1]}.
+$$
+
+下面求和函数。作部分分式分解：
+
+$$
+\displaystyle \dfrac1{n(2n-1)}=-\dfrac1n+\dfrac2{2n-1}.
+$$
+
+于是当 $\displaystyle |x|<1$ 时，
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=-\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n+1}}n
++2\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n+1}}{2n-1}\\
+&=-x\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}n
++2x^2\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n-1}}{2n-1}.
+\end{aligned}
+$$
+
+利用基本展开式
+
+$$
+\displaystyle \ln(1+x^2)=\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}n,
+\qquad |x|<1,
+$$
+
+以及
+
+$$
+\displaystyle \arctan x=\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n-1}}{2n-1},
+\qquad |x|\le1,
+$$
+
+得到
+
+$$
+\displaystyle S(x)=2x^2\arctan x-x\ln(1+x^2),\qquad |x|<1.
+$$
+
+原级数在 $\displaystyle x=\pm1$ 处均收敛，且上式在闭区间端点处有意义。代入可得
+
+$$
+\displaystyle S(1)=\dfrac\pi2-\ln2,
+$$
+
+$$
+\displaystyle S(-1)=-\dfrac\pi2+\ln2.
+$$
+
+因此和函数可统一写为
+
+$$
+\displaystyle \boxed{S(x)=2x^2\arctan x-x\ln(1+x^2),\qquad -1\le x\le1}.
+$$
+
+</details>
+
+---
+
+66. **【2009-1-9 分】** 设 $a_n$ 为曲线 $\displaystyle y=x^n$ 与 $\displaystyle y=x^{n+1}(n=1,2,\cdots)$ 所围成区域的面积，记 $\displaystyle S_1=\sum_{n=1}^{\infty}a_n,S_2=\sum_{n=1}^{\infty}a_{2n-1}$，求 $S_1$ 与 $S_2$ 的值.
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle S_1=\dfrac12,\qquad S_2=1-\ln2.
+$$
+
+</div>
+</div>
+
+**解析：** 曲线 $\displaystyle y=x^n$ 与 $\displaystyle y=x^{n+1}$ 在所围成的有限区域上交于 $\displaystyle x=0$ 与 $\displaystyle x=1$。当 $\displaystyle 0<x<1$ 时，
+
+$$
+\displaystyle x^n>x^{n+1},
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle a_n
+&=\int_0^1\left(x^n-x^{n+1}\right)\,dx\\
+&=\dfrac1{n+1}-\dfrac1{n+2}\\
+&=\dfrac1{(n+1)(n+2)}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle S_1
+&=\sum_{n=1}^{\infty}\left(\dfrac1{n+1}-\dfrac1{n+2}\right)\\
+&=\dfrac12.
+\end{aligned}
+$$
+
+这是一个裂项相消级数。
+
+再求 $\displaystyle S_2$。由
+
+$$
+\displaystyle a_{2n-1}=\dfrac1{2n}-\dfrac1{2n+1},
+$$
+
+可得
+
+$$
+\displaystyle S_2=\sum_{n=1}^{\infty}\left(\dfrac1{2n}-\dfrac1{2n+1}\right).
+$$
+
+利用交错调和级数
+
+$$
+\displaystyle \ln2=1-\dfrac12+\dfrac13-\dfrac14+\dfrac15-\cdots,
+$$
+
+有
+
+$$
+\begin{aligned}
+\displaystyle 1-\ln2
+&=\dfrac12-\dfrac13+\dfrac14-\dfrac15+\cdots\\
+&=\sum_{n=1}^{\infty}\left(\dfrac1{2n}-\dfrac1{2n+1}\right).
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle \boxed{S_2=1-\ln2}.
+$$
+
+也可由非负函数项逐项积分得到
+
+$$
+\begin{aligned}
+\displaystyle S_2
+&=\sum_{n=1}^{\infty}\int_0^1\left(x^{2n-1}-x^{2n}\right)\,dx\\
+&=\int_0^1(1-x)\sum_{n=1}^{\infty}x^{2n-1}\,dx\\
+&=\int_0^1\dfrac{x}{1+x}\,dx\\
+&=1-\ln2.
+\end{aligned}
+$$
+
+综上，
+
+$$
+\displaystyle \boxed{S_1=\dfrac12,\qquad S_2=1-\ln2}.
+$$
+
+</details>
+
+---
+
+67. **【2010-1-10 分】** 求幂级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{2n-1}$ 的收敛域及和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-1,1]$，和函数为
+
+$$
+\displaystyle S(x)=x\arctan x,
+\qquad -1\le x\le1.
+$$
+
+**解析：** 记
+
+$$
+\displaystyle u_n(x)=(-1)^{n-1}\dfrac{x^{2n}}{2n-1}.
+$$
+
+利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=\lim_{n\to\infty}|x|^2\dfrac{2n-1}{2n+1}\\
+&=|x|^2.
+\end{aligned}
+$$
+
+因此，当 $\displaystyle |x|<1$ 时级数绝对收敛；当 $\displaystyle |x|>1$ 时级数发散。
+
+当 $\displaystyle x=1$ 或 $\displaystyle x=-1$ 时，均有 $\displaystyle x^{2n}=1$，原级数化为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\dfrac1{2n-1}
+=1-\dfrac13+\dfrac15-\dfrac17+\cdots.
+$$
+
+该级数由莱布尼茨判别法收敛，但其绝对值级数
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac1{2n-1}
+$$
+
+发散。因此两端点处均条件收敛，原幂级数的收敛域为
+
+$$
+\displaystyle \boxed{[-1,1]}.
+$$
+
+下面求和函数。由反正切函数的幂级数
+
+$$
+\displaystyle \arctan x
+=\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n-1}}{2n-1},
+\qquad |x|\le1,
+$$
+
+两边同乘 $\displaystyle x$，得到
+
+$$
+\displaystyle x\arctan x
+=\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^{2n}}{2n-1}.
+$$
+
+故和函数为
+
+$$
+\displaystyle \boxed{S(x)=x\arctan x,
+\qquad -1\le x\le1}.
+$$
+
+在两个端点，
+
+$$
+\displaystyle S(1)=S(-1)=\dfrac\pi4,
+$$
+
+与原级数的端点和一致。
+
+</details>
+
+---
+
+68. **【2012-1-10 分】** 求幂级数 $\displaystyle \sum_{n=0}^{\infty}\dfrac{4n^2+4n+3}{2n+1}x^{2n}$ 的收敛域及和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle (-1,1)$，和函数为
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+\dfrac{1+x^2}{(1-x^2)^2}+\dfrac1x\ln\dfrac{1+x}{1-x},&x\ne0,\\[3mm]
+3,&x=0.
+\end{cases}
+$$
+
+**解析：** 先将系数拆分。由于
+
+$$
+\displaystyle 4n^2+4n+3=(2n+1)^2+2,
+$$
+
+故
+
+$$
+\displaystyle \dfrac{4n^2+4n+3}{2n+1}
+=2n+1+\dfrac2{2n+1}.
+$$
+
+因此原级数可写为
+
+$$
+\displaystyle S(x)
+=\sum_{n=0}^{\infty}(2n+1)x^{2n}
++2\sum_{n=0}^{\infty}\dfrac{x^{2n}}{2n+1}.
+$$
+
+先判断收敛域。原级数的一般项为
+
+$$
+\displaystyle u_n(x)=\dfrac{4n^2+4n+3}{2n+1}x^{2n}.
+$$
+
+利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=|x|^2
+\lim_{n\to\infty}
+\dfrac{4(n+1)^2+4(n+1)+3}{2n+3}
+\cdot
+\dfrac{2n+1}{4n^2+4n+3}\\
+&=|x|^2.
+\end{aligned}
+$$
+
+故当 $\displaystyle |x|<1$ 时绝对收敛，当 $\displaystyle |x|>1$ 时发散。
+
+当 $\displaystyle x=\pm1$ 时，一般项为
+
+$$
+\displaystyle \dfrac{4n^2+4n+3}{2n+1},
+$$
+
+其值不趋于零，故两端点处均发散。因此收敛域为
+
+$$
+\displaystyle \boxed{(-1,1)}.
+$$
+
+下面求和函数。当 $\displaystyle |x|<1$ 时，令 $\displaystyle t=x^2$。由
+
+$$
+\displaystyle \sum_{n=0}^{\infty}t^n=\dfrac1{1-t}
+$$
+
+逐项求导，得
+
+$$
+\displaystyle \sum_{n=1}^{\infty}nt^{n-1}=\dfrac1{(1-t)^2}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}(2n+1)t^n
+&=2t\sum_{n=1}^{\infty}nt^{n-1}+\sum_{n=0}^{\infty}t^n\\
+&=\dfrac{2t}{(1-t)^2}+\dfrac1{1-t}\\
+&=\dfrac{1+t}{(1-t)^2}.
+\end{aligned}
+$$
+
+取 $\displaystyle t=x^2$，可得
+
+$$
+\displaystyle \sum_{n=0}^{\infty}(2n+1)x^{2n}
+=\dfrac{1+x^2}{(1-x^2)^2}.
+$$
+
+又由
+
+$$
+\displaystyle \operatorname{arctanh}x
+=\sum_{n=0}^{\infty}\dfrac{x^{2n+1}}{2n+1}
+=\dfrac12\ln\dfrac{1+x}{1-x},
+\qquad |x|<1,
+$$
+
+当 $\displaystyle x\ne0$ 时，
+
+$$
+\begin{aligned}
+\displaystyle 2\sum_{n=0}^{\infty}\dfrac{x^{2n}}{2n+1}
+&=\dfrac2x\operatorname{arctanh}x\\
+&=\dfrac1x\ln\dfrac{1+x}{1-x}.
+\end{aligned}
+$$
+
+因此，当 $\displaystyle 0<|x|<1$ 时，
+
+$$
+\displaystyle \boxed{
+S(x)=\dfrac{1+x^2}{(1-x^2)^2}
++\dfrac1x\ln\dfrac{1+x}{1-x}}.
+$$
+
+当 $\displaystyle x=0$ 时，原级数仅保留首项，故
+
+$$
+\displaystyle S(0)=3.
+$$
+
+同时
+
+$$
+\displaystyle \lim_{x\to0}\dfrac1x\ln\dfrac{1+x}{1-x}=2,
+$$
+
+故上述分段表达式在 $\displaystyle x=0$ 处连续。
+
+</details>
+
+---
+
+69. **【2014-3-10 分】** 求幂级数 $\displaystyle \sum_{n=0}^{\infty}(n+1)(n+3)x^n$ 的收敛域及和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle (-1,1)$，和函数为
+
+$$
+\displaystyle S(x)=\dfrac{3-x}{(1-x)^3},\qquad -1<x<1.
+$$
+
+**解析：** 设
+
+$$
+\displaystyle u_n(x)=(n+1)(n+3)x^n.
+$$
+
+利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=|x|\lim_{n\to\infty}\dfrac{(n+2)(n+4)}{(n+1)(n+3)}\\
+&=|x|.
+\end{aligned}
+$$
+
+因此，当 $\displaystyle |x|<1$ 时级数绝对收敛；当 $\displaystyle |x|>1$ 时级数发散。
+
+当 $\displaystyle x=1$ 时，一般项 $\displaystyle (n+1)(n+3)$ 不趋于零；当 $\displaystyle x=-1$ 时，一般项 $\displaystyle (-1)^n(n+1)(n+3)$ 也不趋于零，故两个端点均发散。所以收敛域为
+
+$$
+\displaystyle \boxed{(-1,1)}.
+$$
+
+下面求和函数。由
+
+$$
+\displaystyle (n+1)(n+3)=n^2+4n+3,
+$$
+
+以及基本公式
+
+$$
+\displaystyle \sum_{n=0}^{\infty}x^n=\dfrac1{1-x},
+$$
+
+逐项求导可得
+
+$$
+\displaystyle \sum_{n=0}^{\infty}nx^n=\dfrac{x}{(1-x)^2},
+$$
+
+$$
+\displaystyle \sum_{n=0}^{\infty}n^2x^n=\dfrac{x(1+x)}{(1-x)^3},
+\qquad |x|<1.
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=\sum_{n=0}^{\infty}n^2x^n
++4\sum_{n=0}^{\infty}nx^n
++3\sum_{n=0}^{\infty}x^n\\
+&=\dfrac{x(1+x)}{(1-x)^3}
++\dfrac{4x}{(1-x)^2}
++\dfrac3{1-x}\\
+&=\dfrac{x(1+x)+4x(1-x)+3(1-x)^2}{(1-x)^3}\\
+&=\boxed{\dfrac{3-x}{(1-x)^3}}.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+70. **【2016-3-10 分】** 求幂级数 $\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{(n+1)(2n+1)}$ 的收敛域及和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-1,1]$，和函数为
+
+$$
+\displaystyle S(x)
+=(1+x)\ln(1+x)+(1-x)\ln(1-x),
+\qquad -1<x<1,
+$$
+
+并且
+
+$$
+\displaystyle S(1)=S(-1)=2\ln2.
+$$
+
+**解析：** 记
+
+$$
+\displaystyle u_n(x)=\dfrac{x^{2n+2}}{(n+1)(2n+1)}.
+$$
+
+利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=|x|^2
+\lim_{n\to\infty}
+\dfrac{(n+1)(2n+1)}{(n+2)(2n+3)}\\
+&=|x|^2.
+\end{aligned}
+$$
+
+故当 $\displaystyle |x|<1$ 时绝对收敛，当 $\displaystyle |x|>1$ 时发散。
+
+当 $\displaystyle x=1$ 或 $\displaystyle x=-1$ 时，均化为正项级数
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac1{(n+1)(2n+1)}.
+$$
+
+由于
+
+$$
+\displaystyle \dfrac1{(n+1)(2n+1)}\sim\dfrac1{2n^2},
+$$
+
+故该级数收敛。因此原幂级数的收敛域为
+
+$$
+\displaystyle \boxed{[-1,1]}.
+$$
+
+下面求和函数。作部分分式分解：
+
+$$
+\displaystyle \dfrac1{(n+1)(2n+1)}
+=-\dfrac1{n+1}+\dfrac2{2n+1}.
+$$
+
+因此，当 $\displaystyle |x|<1$ 时，
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=-\sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{n+1}
++2\sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{2n+1}.
+\end{aligned}
+$$
+
+第一部分满足
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{n+1}
+=-\ln(1-x^2),
+$$
+
+故
+
+$$
+\displaystyle -\sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{n+1}
+=\ln(1-x^2).
+$$
+
+第二部分满足
+
+$$
+\begin{aligned}
+\displaystyle 2\sum_{n=0}^{\infty}\dfrac{x^{2n+2}}{2n+1}
+&=2x\sum_{n=0}^{\infty}\dfrac{x^{2n+1}}{2n+1}\\
+&=2x\operatorname{arctanh}x\\
+&=x\ln\dfrac{1+x}{1-x}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=\ln(1-x^2)+x\ln\dfrac{1+x}{1-x}\\
+&=(1+x)\ln(1+x)+(1-x)\ln(1-x),
+\qquad |x|<1.
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle \boxed{
+S(x)=(1+x)\ln(1+x)+(1-x)\ln(1-x)},
+\qquad -1<x<1.
+$$
+
+再由阿贝尔定理，或直接令 $\displaystyle x\to\pm1$，得到
+
+$$
+\displaystyle S(1)=S(-1)=2\ln2,
+$$
+
+其中使用了极限
+
+$$
+\displaystyle \lim_{t\to0^+}t\ln t=0.
+$$
+
+故和函数在整个收敛域上可写为
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+(1+x)\ln(1+x)+(1-x)\ln(1-x),&-1<x<1,\\[2mm]
+2\ln2,&x=\pm1.
+\end{cases}
+$$
+
+</details>
+
+---
+
+71. **【2017-1-4 分】** 幂级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}nx^{n-1}$ 在区间 $(-1,1)$ 内的和函数 $S(x)=$ _____.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle \dfrac{1}{(1+x)^2}$。
+
+**解析：** 当 $\displaystyle |x|<1$ 时，由几何级数
+
+$$
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}x^n
+=x-x^2+x^3-\cdots
+=\dfrac{x}{1+x}.
+$$
+
+在收敛区间内部可逐项求导，因此
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}nx^{n-1}
+&=\dfrac{d}{dx}\left(\dfrac{x}{1+x}\right)\\
+&=\dfrac{1}{(1+x)^2}.
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{1}{(1+x)^2}},
+\qquad -1<x<1.
+$$
+
+</details>
+
+---
+
+72. **【2021-3-12 分】** 设 $n$ 为正整数，$\displaystyle y=y_n(x)$ 是微分方程 $\displaystyle xy'-(n+1)y=0$ 满足条件 $\displaystyle y_n(1)=\dfrac{1}{n(n+1)}$ 的解.
+
+（I）求 $\displaystyle y_n(x)$；
+
+（II）求级数 $\displaystyle \sum_{n=1}^{\infty}y_n(x)$ 的收敛域及和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （I）
+
+$$
+\displaystyle y_n(x)=\dfrac{x^{n+1}}{n(n+1)}.
+$$
+
+（II）收敛域为 $\displaystyle [-1,1]$，和函数为
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+x+(1-x)\ln(1-x),&-1\le x<1,\\[2mm]
+1,&x=1.
+\end{cases}
+$$
+
+**解析：** **（I）求 $\displaystyle y_n(x)$**
+
+当 $\displaystyle x\ne0$ 时，原微分方程可写为
+
+$$
+\displaystyle \dfrac{y'}{y}=\dfrac{n+1}{x}.
+$$
+
+积分得
+
+$$
+\displaystyle \ln|y|=(n+1)\ln|x|+C,
+$$
+
+从而
+
+$$
+\displaystyle y=C_1x^{n+1}.
+$$
+
+利用条件
+
+$$
+\displaystyle y_n(1)=C_1=\dfrac{1}{n(n+1)},
+$$
+
+故
+
+$$
+\displaystyle \boxed{y_n(x)=\dfrac{x^{n+1}}{n(n+1)}}.
+$$
+
+该表达式为多项式型函数，在 $\displaystyle x=0$ 处也满足原方程，因而可在全体实数上定义。
+
+**（II）求收敛域**
+
+所求函数项级数为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{x^{n+1}}{n(n+1)}.
+$$
+
+记其一般项为
+
+$$
+\displaystyle u_n(x)=\dfrac{x^{n+1}}{n(n+1)}.
+$$
+
+利用比值判别法，
+
+$$
+\begin{aligned}
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}(x)}{u_n(x)}\right|
+&=|x|\lim_{n\to\infty}\dfrac{n(n+1)}{(n+1)(n+2)}\\
+&=|x|.
+\end{aligned}
+$$
+
+故当 $\displaystyle |x|<1$ 时绝对收敛，当 $\displaystyle |x|>1$ 时发散。
+
+当 $\displaystyle x=1$ 时，级数为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{1}{n(n+1)},
+$$
+
+它是收敛的正项级数；当 $\displaystyle x=-1$ 时，级数为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{(-1)^{n+1}}{n(n+1)},
+$$
+
+其绝对值级数仍为 $\displaystyle \sum \dfrac{1}{n(n+1)}$，故也绝对收敛。因此收敛域为
+
+$$
+\displaystyle \boxed{[-1,1]}.
+$$
+
+下面求和函数。设
+
+$$
+\displaystyle S(x)=\sum_{n=1}^{\infty}\dfrac{x^{n+1}}{n(n+1)},
+\qquad |x|<1.
+$$
+
+在收敛区间内部逐项求导，得
+
+$$
+\begin{aligned}
+\displaystyle S'(x)
+&=\sum_{n=1}^{\infty}\dfrac{x^n}{n}\\
+&=-\ln(1-x).
+\end{aligned}
+$$
+
+又因为 $\displaystyle S(0)=0$，故
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=-\int_0^x\ln(1-t)\,dt\\
+&=x+(1-x)\ln(1-x),
+\qquad |x|<1.
+\end{aligned}
+$$
+
+在端点 $\displaystyle x=1$ 处，
+
+$$
+\displaystyle S(1)=\sum_{n=1}^{\infty}\left(\dfrac1n-\dfrac1{n+1}\right)=1.
+$$
+
+在 $\displaystyle x=-1$ 处，内点公式可直接代入，得到
+
+$$
+\displaystyle S(-1)=-1+2\ln2.
+$$
+
+因此和函数为
+
+$$
+\displaystyle \boxed{
+S(x)=
+\begin{cases}
+x+(1-x)\ln(1-x),&-1\le x<1,\\[2mm]
+1,&x=1.
+\end{cases}}
+$$
+
+</details>
+
+---
+
+73. **【2021-1-12 分】** 求 $\displaystyle \sum_{n=1}^{\infty}\left[e^{-nx}+\dfrac{x^{n+1}}{n(n+1)}\right]$ 的和函数与收敛域.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle (0,1]$，和函数为
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+\dfrac{1}{e^x-1}+x+(1-x)\ln(1-x),&0<x<1,\\[3mm]
+\dfrac{e}{e-1},&x=1.
+\end{cases}
+$$
+
+**解析：** 将原级数拆成
+
+$$
+\displaystyle \sum_{n=1}^{\infty}e^{-nx}
++\sum_{n=1}^{\infty}\dfrac{x^{n+1}}{n(n+1)}.
+$$
+
+先考察第一部分。它是公比为 $\displaystyle e^{-x}$ 的几何级数，收敛的充要条件为
+
+$$
+\displaystyle |e^{-x}|<1.
+$$
+
+由于 $\displaystyle e^{-x}>0$，上述条件等价于
+
+$$
+\displaystyle x>0.
+$$
+
+在此范围内，
+
+$$
+\displaystyle \sum_{n=1}^{\infty}e^{-nx}
+=\dfrac{e^{-x}}{1-e^{-x}}
+=\dfrac{1}{e^x-1}.
+$$
+
+第二部分为上一题中的幂级数，其收敛域为
+
+$$
+\displaystyle [-1,1],
+$$
+
+并且当 $\displaystyle -1\le x<1$ 时，和函数为
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{x^{n+1}}{n(n+1)}
+=x+(1-x)\ln(1-x).
+$$
+
+因此原级数的收敛域是两个收敛域的交集：
+
+$$
+\displaystyle (0,+\infty)\cap[-1,1]=(0,1].
+$$
+
+当 $\displaystyle 0<x<1$ 时，
+
+$$
+\displaystyle S(x)
+=\dfrac{1}{e^x-1}+x+(1-x)\ln(1-x).
+$$
+
+当 $\displaystyle x=1$ 时，
+
+$$
+\begin{aligned}
+\displaystyle S(1)
+&=\sum_{n=1}^{\infty}e^{-n}
++\sum_{n=1}^{\infty}\dfrac1{n(n+1)}\\
+&=\dfrac1{e-1}+1\\
+&=\dfrac{e}{e-1}.
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle \boxed{
+S(x)=
+\begin{cases}
+\dfrac{1}{e^x-1}+x+(1-x)\ln(1-x),&0<x<1,\\[3mm]
+\dfrac{e}{e-1},&x=1.
+\end{cases}}
+$$
+
+需注意，$\displaystyle x=0$ 时第一部分的通项恒为 $\displaystyle 1$，故原级数发散，不能把左端点包含在收敛域内。
+
+</details>
+
+---
+
+74. **【2022-3-12 分】** 求幂级数 $\displaystyle \sum_{n=0}^{\infty}\dfrac{(-4)^n+1}{4^n(2n+1)}x^{2n}$ 的收敛域及和函数 $S(x)$.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-1,1]$，和函数为
+
+$$
+\displaystyle S(x)=
+\begin{cases}
+\dfrac{1}{x}\left[\arctan x+\ln\dfrac{2+x}{2-x}\right],&x\ne0,\\[3mm]
+2,&x=0.
+\end{cases}
+$$
+
+**解析：** 先将系数拆开：
+
+$$
+\displaystyle \dfrac{(-4)^n+1}{4^n}=(-1)^n+\dfrac1{4^n}.
+$$
+
+因此
+
+$$
+\displaystyle S(x)
+=\sum_{n=0}^{\infty}(-1)^n\dfrac{x^{2n}}{2n+1}
++\sum_{n=0}^{\infty}\dfrac{x^{2n}}{4^n(2n+1)}.
+$$
+
+第一部分的收敛半径为 $\displaystyle 1$，第二部分的收敛半径为 $\displaystyle 2$，故原幂级数的收敛半径为 $\displaystyle 1$。
+
+当 $\displaystyle x=\pm1$ 时，原级数化为
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac{(-1)^n+4^{-n}}{2n+1}.
+$$
+
+其中 $\displaystyle \sum (-1)^n/(2n+1)$ 收敛，而 $\displaystyle \sum 4^{-n}/(2n+1)$ 绝对收敛，所以端点处原级数收敛。又因其一般项的绝对值与 $\displaystyle 1/(2n+1)$ 同阶，故端点处不是绝对收敛，而是条件收敛。因此收敛域为
+
+$$
+\displaystyle \boxed{[-1,1]}.
+$$
+
+下面求和函数。由
+
+$$
+\displaystyle \arctan x
+=\sum_{n=0}^{\infty}(-1)^n\dfrac{x^{2n+1}}{2n+1},
+\qquad |x|\le1,
+$$
+
+当 $\displaystyle x\ne0$ 时，
+
+$$
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{x^{2n}}{2n+1}
+=\dfrac{\arctan x}{x}.
+$$
+
+另一方面，令 $\displaystyle t=x/2$。由
+
+$$
+\displaystyle \operatorname{arctanh}t
+=\sum_{n=0}^{\infty}\dfrac{t^{2n+1}}{2n+1}
+=\dfrac12\ln\dfrac{1+t}{1-t},
+$$
+
+可得
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n}}{4^n(2n+1)}
+&=\sum_{n=0}^{\infty}\dfrac{t^{2n}}{2n+1}\\
+&=\dfrac{\operatorname{arctanh}t}{t}\\
+&=\dfrac1x\ln\dfrac{2+x}{2-x}.
+\end{aligned}
+$$
+
+所以当 $\displaystyle x\ne0$ 时，
+
+$$
+\displaystyle S(x)=\dfrac1x\left[\arctan x+\ln\dfrac{2+x}{2-x}\right].
+$$
+
+当 $\displaystyle x=0$ 时，原级数只保留第 $\displaystyle n=0$ 项，故
+
+$$
+\displaystyle S(0)=2.
+$$
+
+并且上述表达式在 $\displaystyle x\to0$ 时的极限也是 $\displaystyle 2$。
+
+</details>
+
+## （二）系数含阶乘
+
+75. **【2002-13-7 分】** （1）验证函数
+
+$$
+\displaystyle y(x)=1+\dfrac{x^3}{3!}+\dfrac{x^6}{6!}+\dfrac{x^9}{9!}+\cdots+\dfrac{x^{3n}}{(3n)!}+\cdots
+\qquad(-\infty<x<+\infty)
+$$
+
+满足微分方程 $\displaystyle y''+y'+y=e^x$；
+
+（2）利用（1）的结果求幂级数 $\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{3n}}{(3n)!}$ 的和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \boxed{y(x)=\dfrac13e^x+\dfrac23e^{-x/2}\cos\dfrac{\sqrt3x}{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** （1）原级数含有指数为 $\displaystyle 3n$ 的各项。由于该幂级数的收敛半径为 $\displaystyle +\infty$，可逐项求导：
+
+$$
+\displaystyle y'(x)=\dfrac{x^2}{2!}+\dfrac{x^5}{5!}+\dfrac{x^8}{8!}+\cdots,
+$$
+
+$$
+\displaystyle y''(x)=x+\dfrac{x^4}{4!}+\dfrac{x^7}{7!}+\cdots.
+$$
+
+于是 $\displaystyle y$、$\displaystyle y'$、$\displaystyle y''$ 分别包含指数模 $\displaystyle 3$ 余 $\displaystyle 0$、$\displaystyle 2$、$\displaystyle 1$ 的各项，三者相加恰好得到指数函数的全部麦克劳林级数：
+
+$$
+\begin{aligned}
+\displaystyle y''+y'+y
+&=1+x+\dfrac{x^2}{2!}+\dfrac{x^3}{3!}+\cdots\\
+&=e^x.
+\end{aligned}
+$$
+
+故所给函数满足
+
+$$
+\displaystyle y''+y'+y=e^x.
+$$
+
+（2）由级数直接得到初始条件
+
+$$
+\displaystyle y(0)=1,\qquad y'(0)=0.
+$$
+
+求解非齐次方程
+
+$$
+\displaystyle y''+y'+y=e^x.
+$$
+
+对应齐次方程的特征方程为
+
+$$
+\displaystyle r^2+r+1=0,
+$$
+
+其根为
+
+$$
+\displaystyle r_{1,2}=\dfrac{-1\pm i\sqrt3}{2}.
+$$
+
+因此齐次通解为
+
+$$
+\displaystyle y_h=e^{-x/2}\left(C_1\cos\dfrac{\sqrt3x}{2}+C_2\sin\dfrac{\sqrt3x}{2}\right).
+$$
+
+设特解为 $\displaystyle y_p=Ae^x$，代入得 $\displaystyle 3Ae^x=e^x$，所以 $\displaystyle A=1/3$。故
+
+$$
+\displaystyle y=\dfrac13e^x+e^{-x/2}\left(C_1\cos\dfrac{\sqrt3x}{2}+C_2\sin\dfrac{\sqrt3x}{2}\right).
+$$
+
+由 $\displaystyle y(0)=1$，得 $\displaystyle C_1=2/3$；再由 $\displaystyle y'(0)=0$，得 $\displaystyle C_2=0$。所以
+
+$$
+\displaystyle \boxed{y(x)=\dfrac13e^x+\dfrac23e^{-x/2}\cos\dfrac{\sqrt3x}{2}}.
+$$
+
+</details>
+
+---
+
+76. **【2004-3-11 分】** 设级数
+
+$$
+\displaystyle \dfrac{x^4}{2\cdot4}
++\dfrac{x^6}{2\cdot4\cdot6}
++\dfrac{x^8}{2\cdot4\cdot6\cdot8}
++\cdots
+\qquad(-\infty<x<+\infty)
+$$
+
+的和函数为 $\displaystyle S(x)$。求：
+
+（1）$\displaystyle S(x)$ 所满足的一阶微分方程；
+
+（2）$\displaystyle S(x)$ 的表达式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）$\displaystyle S(x)$ 满足
+
+$$
+\displaystyle \boxed{S'(x)-xS(x)=\dfrac{x^3}{2}},
+\qquad S(0)=0.
+$$
+
+（2）
+
+$$
+\displaystyle \boxed{S(x)=e^{\frac{x^2}{2}}-1-\dfrac{x^2}{2}},
+\qquad -\infty<x<+\infty.
+$$
+
+**解析：** 原级数的一般项为
+
+$$
+\displaystyle \dfrac{x^{2n}}{2\cdot4\cdots(2n)},
+\qquad n\ge2.
+$$
+
+又因为
+
+$$
+\displaystyle 2\cdot4\cdots(2n)=2^n n!,
+$$
+
+所以
+
+$$
+\displaystyle S(x)=\sum_{n=2}^{\infty}\dfrac{x^{2n}}{2^n n!}.
+$$
+
+该幂级数的收敛半径为 $\displaystyle +\infty$，故可逐项求导：
+
+$$
+\begin{aligned}
+\displaystyle S'(x)
+&=\sum_{n=2}^{\infty}\dfrac{2n x^{2n-1}}{2^n n!}\\
+&=\sum_{n=2}^{\infty}\dfrac{x^{2n-1}}{2^{n-1}(n-1)!}.
+\end{aligned}
+$$
+
+另一方面，
+
+$$
+\displaystyle xS(x)
+=\sum_{n=2}^{\infty}\dfrac{x^{2n+1}}{2^n n!}
+=\sum_{n=3}^{\infty}\dfrac{x^{2n-1}}{2^{n-1}(n-1)!},
+$$
+
+其中最后一步将指标作了平移。因此两式相减，只剩下 $\displaystyle S'(x)$ 中对应 $\displaystyle n=2$ 的一项：
+
+$$
+\displaystyle S'(x)-xS(x)=\dfrac{x^3}{2}.
+$$
+
+又由原级数显然有
+
+$$
+\displaystyle S(0)=0.
+$$
+
+这就得到所求一阶线性微分方程
+
+$$
+\displaystyle \boxed{S'(x)-xS(x)=\dfrac{x^3}{2}}.
+$$
+
+下面求解。方程的积分因子为
+
+$$
+\displaystyle \mu(x)=e^{\int(-x)dx}=e^{-\frac{x^2}{2}}.
+$$
+
+两边同乘 $\displaystyle e^{-\frac{x^2}{2}}$，得
+
+$$
+\displaystyle \left(e^{-\frac{x^2}{2}}S(x)\right)'
+=\dfrac{x^3}{2}e^{-\frac{x^2}{2}}.
+$$
+
+从 $\displaystyle 0$ 到 $\displaystyle x$ 积分，并利用 $\displaystyle S(0)=0$，可得
+
+$$
+\displaystyle e^{-\frac{x^2}{2}}S(x)
+=\int_0^x\dfrac{t^3}{2}e^{-\frac{t^2}{2}}dt.
+$$
+
+令 $\displaystyle u=\dfrac{t^2}{2}$，则 $\displaystyle tdt=du$，且 $\displaystyle t^2=2u$，故
+
+$$
+\begin{aligned}
+\displaystyle \int_0^x\dfrac{t^3}{2}e^{-\frac{t^2}{2}}dt
+&=\int_0^{\frac{x^2}{2}}u e^{-u}du\\
+&=\left[-(u+1)e^{-u}\right]_0^{\frac{x^2}{2}}\\
+&=1-\left(1+\dfrac{x^2}{2}\right)e^{-\frac{x^2}{2}}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle S(x)
+&=e^{\frac{x^2}{2}}
+\left[1-\left(1+\dfrac{x^2}{2}\right)e^{-\frac{x^2}{2}}\right]\\
+&=e^{\frac{x^2}{2}}-1-\dfrac{x^2}{2}.
+\end{aligned}
+$$
+
+也可直接由指数函数展开式
+
+$$
+\displaystyle e^{\frac{x^2}{2}}
+=\sum_{n=0}^{\infty}\dfrac{x^{2n}}{2^n n!}
+$$
+
+去掉 $\displaystyle n=0$ 与 $\displaystyle n=1$ 两项，立即得到同一结果。
+
+</details>
+
+---
+
+77. **【2018-1-4 分】**
+
+$$
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{2n+3}{(2n+1)!}=
+$$
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \sin1+\cos1$； &emsp;&emsp; B. $\displaystyle 2\sin1+\cos1$； &emsp;&emsp; C. $\displaystyle 2\sin1+2\cos1$； &emsp;&emsp; D. $\displaystyle 2\sin1+3\cos1$。</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 将分子拆成
+
+$$
+\displaystyle 2n+3=(2n+1)+2.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{2n+3}{(2n+1)!}
+&=\sum_{n=0}^{\infty}(-1)^n\dfrac{2n+1}{(2n+1)!}
++2\sum_{n=0}^{\infty}(-1)^n\dfrac1{(2n+1)!}\\
+&=\sum_{n=0}^{\infty}(-1)^n\dfrac1{(2n)!}
++2\sum_{n=0}^{\infty}(-1)^n\dfrac1{(2n+1)!}.
+\end{aligned}
+$$
+
+由
+
+$$
+\displaystyle \cos1=\sum_{n=0}^{\infty}(-1)^n\dfrac1{(2n)!},
+$$
+
+以及
+
+$$
+\displaystyle \sin1=\sum_{n=0}^{\infty}(-1)^n\dfrac1{(2n+1)!},
+$$
+
+可得
+
+$$
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{2n+3}{(2n+1)!}
+=\cos1+2\sin1.
+$$
+
+故选择 B。
+
+A、C、D 的系数组合均与上述拆分结果不符。
+
+</details>
+
+---
+
+78. **【2019-1-4 分】** 幂级数
+
+$$
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{x^n}{(2n)!}
+$$
+
+在 $\displaystyle (0,+\infty)$ 内的和函数 $\displaystyle S(x)=$ _____。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \boxed{S(x)=\cos\sqrt{x}}.
+$$
+
+</div>
+</div>
+
+**解析：** 当 $\displaystyle x>0$ 时，令 $\displaystyle t=\sqrt{x}$，则 $\displaystyle x^n=t^{2n}$。由余弦函数的麦克劳林展开式
+
+$$
+\displaystyle \cos t
+=\sum_{n=0}^{\infty}(-1)^n\dfrac{t^{2n}}{(2n)!},
+\qquad -\infty<t<+\infty,
+$$
+
+可得
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=0}^{\infty}(-1)^n\dfrac{x^n}{(2n)!}
+&=\sum_{n=0}^{\infty}(-1)^n\dfrac{(\sqrt{x})^{2n}}{(2n)!}\\
+&=\cos\sqrt{x}.
+\end{aligned}
+$$
+
+因此在题目指定的区间 $\displaystyle (0,+\infty)$ 内，
+
+$$
+\displaystyle \boxed{S(x)=\cos\sqrt{x}}.
+$$
+
+</details>
+
+---
+
+79. **【2020-1-10 分】** 设数列 $\displaystyle \{a_n\}$ 满足
+
+$$
+\displaystyle a_1=1,\qquad (n+1)a_{n+1}=\left(n+\dfrac12\right)a_n,
+\qquad n=1,2,\cdots.
+$$
+
+证明：当 $\displaystyle |x|<1$ 时，幂级数 $\displaystyle \sum_{n=1}^{\infty}a_nx^n$ 收敛并求其和函数.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 当 $\displaystyle |x|<1$ 时级数收敛，其和函数为
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{2}{\sqrt{1-x}}-2}.
+$$
+
+**解析：** 设
+
+$$
+\displaystyle u_n=a_nx^n.
+$$
+
+由递推关系，
+
+$$
+\displaystyle \left|\dfrac{u_{n+1}}{u_n}\right|
+=|x|\dfrac{n+\dfrac12}{n+1}.
+$$
+
+因此
+
+$$
+\displaystyle \lim_{n\to\infty}\left|\dfrac{u_{n+1}}{u_n}\right|=|x|.
+$$
+
+当 $\displaystyle |x|<1$ 时，由比值判别法知幂级数绝对收敛。
+
+令
+
+$$
+\displaystyle S(x)=\sum_{n=1}^{\infty}a_nx^n,
+\qquad |x|<1.
+$$
+
+在收敛区间内逐项求导，得
+
+$$
+\begin{aligned}
+\displaystyle S'(x)
+&=a_1+\sum_{n=1}^{\infty}(n+1)a_{n+1}x^n\\
+&=1+\sum_{n=1}^{\infty}\left(n+\dfrac12\right)a_nx^n\\
+&=1+xS'(x)+\dfrac12S(x).
+\end{aligned}
+$$
+
+故 $\displaystyle S(x)$ 满足
+
+$$
+\displaystyle (1-x)S'(x)-\dfrac12S(x)=1,
+$$
+
+且 $\displaystyle S(0)=0$。
+
+将方程写成
+
+$$
+\displaystyle S'(x)-\dfrac{1}{2(1-x)}S(x)=\dfrac1{1-x}.
+$$
+
+积分因子为
+
+$$
+\displaystyle \mu(x)=\exp\left(\int-\dfrac{dx}{2(1-x)}\right)=\sqrt{1-x}.
+$$
+
+于是
+
+$$
+\displaystyle \left[\sqrt{1-x}\,S(x)\right]'=\dfrac1{\sqrt{1-x}}.
+$$
+
+积分得
+
+$$
+\displaystyle \sqrt{1-x}\,S(x)=-2\sqrt{1-x}+C.
+$$
+
+由 $\displaystyle S(0)=0$ 得 $\displaystyle C=2$，所以
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{2}{\sqrt{1-x}}-2},
+\qquad |x|<1.
+$$
+
+</details>
+
+---
+
+80. **【2023-3-5 分】**
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n}}{(2n)!}=
+\underline{\qquad}.
+$$
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \boxed{\dfrac{e^x+e^{-x}}{2}}.
+$$
+
+</div>
+</div>
+
+**解析：** 由指数函数的展开式
+
+$$
+\displaystyle e^x=\sum_{n=0}^{\infty}\dfrac{x^n}{n!},
+\qquad
+e^{-x}=\sum_{n=0}^{\infty}\dfrac{(-1)^nx^n}{n!},
+$$
+
+两式相加，奇次幂项相互抵消，偶次幂项相加，得到
+
+$$
+\begin{aligned}
+\displaystyle e^x+e^{-x}
+&=2\left(1+\dfrac{x^2}{2!}+\dfrac{x^4}{4!}+\cdots\right)\\
+&=2\sum_{n=0}^{\infty}\dfrac{x^{2n}}{(2n)!}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle \sum_{n=0}^{\infty}\dfrac{x^{2n}}{(2n)!}
+=\dfrac{e^x+e^{-x}}{2}.
+$$
+
+该函数也称为双曲余弦函数，即
+
+$$
+\displaystyle \cosh x=\dfrac{e^x+e^{-x}}{2}.
+$$
+
+</details>
+
+---
+
+81. **【2024-13-5 分】** 已知幂级数 $\displaystyle \sum_{n=0}^{\infty}a_nx^n$ 的和函数为 $\displaystyle \ln(2+x)$，则 $\displaystyle \sum_{n=1}^{\infty}na_{2n}=$（  ）
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle -\dfrac16$ &emsp;&emsp; B. $\displaystyle -\dfrac13$ &emsp;&emsp; C. $\displaystyle \dfrac16$ &emsp;&emsp; D. $\displaystyle \dfrac13$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** A。
+
+**解析：** 在 $\displaystyle |x|<2$ 时，
+
+$$
+\begin{aligned}
+\displaystyle \ln(2+x)
+&=\ln2+\ln\left(1+\dfrac{x}{2}\right)\\
+&=\ln2+\sum_{n=1}^{\infty}(-1)^{n-1}\dfrac{x^n}{n2^n}.
+\end{aligned}
+$$
+
+因此
+
+$$
+\displaystyle a_n=(-1)^{n-1}\dfrac1{n2^n},\qquad n\ge1.
+$$
+
+取偶数下标，得
+
+$$
+\displaystyle a_{2n}=-\dfrac1{2n\,2^{2n}}=-\dfrac1{2n\,4^n}.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \sum_{n=1}^{\infty}na_{2n}
+&=-\dfrac12\sum_{n=1}^{\infty}\dfrac1{4^n}\\
+&=-\dfrac12\cdot\dfrac{\dfrac14}{1-\dfrac14}\\
+&=-\dfrac16.
+\end{aligned}
+$$
+
+故选择 A。B、C、D 均与偶数项系数的符号或几何级数求和结果不符。
+
+</details>
+
+## （三）抽象型
+
+82. **【2001-3-7 分】** 已知 $\displaystyle f_n(x)$ 满足
+
+$$
+\displaystyle f_n'(x)=f_n(x)+x^{n-1}e^x,
+$$
+
+$\displaystyle n$ 为正整数，且 $\displaystyle f_n(1)=\dfrac en$，求函数项级数 $\displaystyle \sum_{n=1}^{\infty}f_n(x)$ 之和.
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 收敛域为 $\displaystyle [-1,1)$，其和函数为
+
+$$
+\displaystyle \boxed{S(x)=-e^x\ln(1-x)},
+\qquad -1\le x<1.
+$$
+
+**解析：** 对微分方程作整理：
+
+$$
+\displaystyle f_n'(x)-f_n(x)=x^{n-1}e^x.
+$$
+
+两边乘以积分因子 $\displaystyle e^{-x}$，得
+
+$$
+\displaystyle \left[e^{-x}f_n(x)\right]'=x^{n-1}.
+$$
+
+积分后有
+
+$$
+\displaystyle e^{-x}f_n(x)=\dfrac{x^n}{n}+C_n.
+$$
+
+由条件 $\displaystyle f_n(1)=e/n$，得
+
+$$
+\displaystyle \dfrac1n=\dfrac1n+C_n,
+$$
+
+所以 $\displaystyle C_n=0$，从而
+
+$$
+\displaystyle f_n(x)=e^x\dfrac{x^n}{n}.
+$$
+
+因此
+
+$$
+\displaystyle \sum_{n=1}^{\infty}f_n(x)
+=e^x\sum_{n=1}^{\infty}\dfrac{x^n}{n}.
+$$
+
+当 $\displaystyle |x|<1$ 时，利用
+
+$$
+\displaystyle \sum_{n=1}^{\infty}\dfrac{x^n}{n}=-\ln(1-x),
+$$
+
+得到
+
+$$
+\displaystyle S(x)=-e^x\ln(1-x).
+$$
+
+再考察端点：
+
+- 当 $\displaystyle x=1$ 时，级数为 $\displaystyle e\sum 1/n$，发散；
+- 当 $\displaystyle x=-1$ 时，级数为 $\displaystyle e^{-1}\sum (-1)^n/n$，收敛，其和为 $\displaystyle -e^{-1}\ln2$；
+- 当 $\displaystyle |x|>1$ 时，一般项 $\displaystyle e^xx^n/n$ 不趋于零，故发散。
+
+所以收敛域为 $\displaystyle [-1,1)$。由于公式 $\displaystyle -e^x\ln(1-x)$ 在 $\displaystyle x=-1$ 时也给出 $\displaystyle -e^{-1}\ln2$，故和函数可统一写为
+
+$$
+\displaystyle \boxed{S(x)=-e^x\ln(1-x)},
+\qquad -1\le x<1.
+$$
+
+</details>
+
+---
+
+83. **【2007-1-10 分】** 设幂级数 $\displaystyle \sum_{n=0}^{\infty}a_nx^n$ 在 $\displaystyle (-\infty,+\infty)$ 内收敛，其和函数 $\displaystyle y(x)$ 满足
+
+$$
+\displaystyle y''-2xy'-4y=0,
+\qquad y(0)=0,
+\qquad y'(0)=1.
+$$
+
+（1）证明：$\displaystyle a_{n+2}=\dfrac{2}{n+1}a_n\ (n=1,2,\ldots)$；
+
+（2）求 $\displaystyle y(x)$ 的表达式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \boxed{a_{n+2}=\dfrac{2}{n+1}a_n\quad(n\ge1)},
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \boxed{y(x)=xe^{x^2}}.
+$$
+
+**解析：** 由
+
+$$
+\displaystyle y(x)=\sum_{n=0}^{\infty}a_nx^n
+$$
+
+在全体实数上收敛，可在任意有限区间内逐项求导，得
+
+$$
+\displaystyle y'(x)=\sum_{n=0}^{\infty}(n+1)a_{n+1}x^n,
+$$
+
+$$
+\displaystyle y''(x)=\sum_{n=0}^{\infty}(n+2)(n+1)a_{n+2}x^n.
+$$
+
+又有
+
+$$
+\begin{aligned}
+\displaystyle 2xy'(x)
+&=2x\sum_{n=1}^{\infty}na_nx^{n-1}\\
+&=2\sum_{n=1}^{\infty}na_nx^n.
+\end{aligned}
+$$
+
+将这些式子代入微分方程
+
+$$
+\displaystyle y''-2xy'-4y=0,
+$$
+
+得到
+
+$$
+\begin{aligned}
+0={}&\sum_{n=0}^{\infty}(n+2)(n+1)a_{n+2}x^n
+-2\sum_{n=1}^{\infty}na_nx^n
+-4\sum_{n=0}^{\infty}a_nx^n.
+\end{aligned}
+$$
+
+比较常数项，得
+
+$$
+\displaystyle 2a_2-4a_0=0.
+$$
+
+由 $\displaystyle y(0)=a_0=0$，可知 $\displaystyle a_2=0$。
+
+对任意 $\displaystyle n\ge1$，比较 $\displaystyle x^n$ 的系数，有
+
+$$
+\displaystyle (n+2)(n+1)a_{n+2}-2na_n-4a_n=0.
+$$
+
+即
+
+$$
+\displaystyle (n+2)(n+1)a_{n+2}=2(n+2)a_n.
+$$
+
+约去 $\displaystyle n+2$，得到
+
+$$
+\displaystyle \boxed{a_{n+2}=\dfrac{2}{n+1}a_n},
+\qquad n=1,2,\ldots
+$$
+
+这就证明了（1）。
+
+再由初始条件
+
+$$
+\displaystyle a_0=y(0)=0,
+\qquad
+a_1=y'(0)=1.
+$$
+
+因为 $\displaystyle a_2=0$，递推关系说明所有偶数项系数均为零：
+
+$$
+\displaystyle a_{2k}=0,
+\qquad k=0,1,2,\ldots
+$$
+
+对奇数项，令 $\displaystyle n=2k+1$，则
+
+$$
+\displaystyle a_{2k+3}=\dfrac{2}{2k+2}a_{2k+1}
+=\dfrac{1}{k+1}a_{2k+1}.
+$$
+
+由 $\displaystyle a_1=1$ 逐次递推，得
+
+$$
+\displaystyle a_{2k+1}=\dfrac1{k!},
+\qquad k=0,1,2,\ldots
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle y(x)
+&=\sum_{k=0}^{\infty}a_{2k+1}x^{2k+1}\\
+&=\sum_{k=0}^{\infty}\dfrac{x^{2k+1}}{k!}\\
+&=x\sum_{k=0}^{\infty}\dfrac{(x^2)^k}{k!}\\
+&=xe^{x^2}.
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle \boxed{y(x)=xe^{x^2}}.
+$$
+
+</details>
+
+---
+
+84. **【2013-1-10 分】** 设数列 $\displaystyle \{a_n\}$ 满足
+
+$$
+\displaystyle a_0=3,
+\qquad a_1=1,
+\qquad a_{n-2}-n(n-1)a_n=0\quad(n\ge2),
+$$
+
+$\displaystyle S(x)$ 是幂级数 $\displaystyle \sum_{n=0}^{\infty}a_nx^n$ 的和函数。
+
+（1）证明：$\displaystyle S''(x)-S(x)=0$；
+
+（2）求 $\displaystyle S(x)$ 的表达式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle \boxed{S''(x)-S(x)=0},
+$$
+
+</div>
+</div>
+
+$$
+\displaystyle \boxed{S(x)=2e^x+e^{-x}}.
+$$
+
+**解析：** 由递推关系
+
+$$
+\displaystyle a_{n-2}-n(n-1)a_n=0
+$$
+
+可得
+
+$$
+\displaystyle n(n-1)a_n=a_{n-2},
+\qquad n\ge2.
+$$
+
+在幂级数的收敛区间内逐项求二阶导数：
+
+$$
+\begin{aligned}
+\displaystyle S''(x)
+&=\sum_{n=2}^{\infty}n(n-1)a_nx^{n-2}\\
+&=\sum_{n=2}^{\infty}a_{n-2}x^{n-2}.
+\end{aligned}
+$$
+
+令 $\displaystyle k=n-2$，则
+
+$$
+\displaystyle S''(x)=\sum_{k=0}^{\infty}a_kx^k=S(x).
+$$
+
+所以
+
+$$
+\displaystyle \boxed{S''(x)-S(x)=0}.
+$$
+
+这就证明了（1）。
+
+由幂级数在原点的系数可知
+
+$$
+\displaystyle S(0)=a_0=3,
+\qquad
+S'(0)=a_1=1.
+$$
+
+微分方程
+
+$$
+\displaystyle S''-S=0
+$$
+
+的通解为
+
+$$
+\displaystyle S(x)=C_1e^x+C_2e^{-x}.
+$$
+
+代入初始条件，得到
+
+$$
+\begin{cases}
+\displaystyle C_1+C_2=3,\\[1mm]
+\displaystyle C_1-C_2=1.
+\end{cases}
+$$
+
+解得
+
+$$
+\displaystyle C_1=2,
+\qquad C_2=1.
+$$
+
+因此
+
+$$
+\displaystyle \boxed{S(x)=2e^x+e^{-x}}.
+$$
+
+</details>
+
+---
+
+85. **【2017-3-10 分】** 设
+
+$$
+\displaystyle a_0=1,
+\qquad a_1=0,
+\qquad a_{n+1}=\dfrac{1}{n+1}\left(na_n+a_{n-1}\right)
+\quad(n=1,2,\ldots),
+$$
+
+$\displaystyle S(x)$ 为幂级数 $\displaystyle \sum_{n=0}^{\infty}a_nx^n$ 的和函数。
+
+（1）证明幂级数 $\displaystyle \sum_{n=0}^{\infty}a_nx^n$ 的收敛半径不小于 $\displaystyle 1$；
+
+（2）证明
+
+$$
+\displaystyle (1-x)S'(x)-xS(x)=0
+\qquad(x\in(-1,1)),
+$$
+
+并求 $\displaystyle S(x)$ 的表达式。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 幂级数的收敛半径满足 $\displaystyle R\ge1$，且
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{e^{-x}}{1-x}},
+\qquad |x|<1.
+$$
+
+**解析：** 先证明系数有界。
+
+由初值
+
+$$
+\displaystyle a_0=1,
+\qquad a_1=0
+$$
+
+可知 $\displaystyle 0\le a_0\le1$，$\displaystyle 0\le a_1\le1$。
+
+假设对某个 $\displaystyle n\ge1$，有
+
+$$
+\displaystyle 0\le a_{n-1}\le1,
+\qquad 0\le a_n\le1.
+$$
+
+则由递推关系
+
+$$
+\begin{aligned}
+\displaystyle 0\le a_{n+1}
+&=\dfrac{na_n+a_{n-1}}{n+1}\\
+&\le\dfrac{n+1}{n+1}=1.
+\end{aligned}
+$$
+
+由数学归纳法，得到
+
+$$
+\displaystyle 0\le a_n\le1,
+\qquad n=0,1,2,\ldots
+$$
+
+因此当 $\displaystyle |x|<1$ 时，
+
+$$
+\displaystyle |a_nx^n|\le |x|^n.
+$$
+
+而几何级数 $\displaystyle \sum_{n=0}^{\infty}|x|^n$ 收敛，故由比较判别法，原幂级数在 $\displaystyle |x|<1$ 内绝对收敛。因此其收敛半径满足
+
+$$
+\displaystyle \boxed{R\ge1}.
+$$
+
+在 $\displaystyle |x|<1$ 内可以逐项求导：
+
+$$
+\displaystyle S'(x)=\sum_{n=0}^{\infty}(n+1)a_{n+1}x^n.
+$$
+
+由于 $\displaystyle a_1=0$，并利用递推关系，得
+
+$$
+\begin{aligned}
+\displaystyle S'(x)
+&=a_1+\sum_{n=1}^{\infty}(n+1)a_{n+1}x^n\\
+&=\sum_{n=1}^{\infty}(na_n+a_{n-1})x^n\\
+&=\sum_{n=1}^{\infty}na_nx^n
+ +\sum_{n=1}^{\infty}a_{n-1}x^n\\
+&=xS'(x)+xS(x).
+\end{aligned}
+$$
+
+所以
+
+$$
+\displaystyle \boxed{(1-x)S'(x)-xS(x)=0},
+\qquad |x|<1.
+$$
+
+将方程写为
+
+$$
+\displaystyle \dfrac{S'(x)}{S(x)}=\dfrac{x}{1-x}.
+$$
+
+注意
+
+$$
+\displaystyle \dfrac{x}{1-x}=-1+\dfrac1{1-x},
+$$
+
+故
+
+$$
+\begin{aligned}
+\displaystyle \ln|S(x)|
+&=\int\dfrac{x}{1-x}\,dx\\
+&=-x-\ln(1-x)+C.
+\end{aligned}
+$$
+
+于是
+
+$$
+\displaystyle S(x)=C\dfrac{e^{-x}}{1-x}.
+$$
+
+又因为
+
+$$
+\displaystyle S(0)=a_0=1,
+$$
+
+所以 $\displaystyle C=1$。因此
+
+$$
+\displaystyle \boxed{S(x)=\dfrac{e^{-x}}{1-x}},
+\qquad |x|<1.
+$$
+
+</details>

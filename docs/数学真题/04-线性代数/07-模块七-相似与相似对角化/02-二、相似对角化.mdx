@@ -1,0 +1,3377 @@
+---
+title: "二、相似对角化"
+sidebar_position: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+# 二、相似对角化
+
+## 小题
+
+### （一）相似对角化的判断
+
+1. **【1993-4-3分】** $\displaystyle n$ 阶方阵 $\displaystyle A$ 具有 $\displaystyle n$ 个不同的特征值是 $\displaystyle A$ 与对角阵相似的（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 充分必要条件 &emsp;&emsp; B. 充分而非必要条件 &emsp;&emsp; C. 必要而非充分条件 &emsp;&emsp; D. 既非充分也非必要条件</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 若 $\displaystyle n$ 阶矩阵 $\displaystyle A$ 有 $\displaystyle n$ 个互不相同的特征值，则属于不同特征值的特征向量线性无关，所以 $\displaystyle A$ 有 $\displaystyle n$ 个线性无关的特征向量，从而 $\displaystyle A$ 可以相似对角化。因此，该条件是充分条件。
+
+但它不是必要条件。例如单位矩阵
+
+$$
+\displaystyle E=\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix}
+$$
+
+只有一个特征值 $\displaystyle 1$，却已经是对角矩阵，当然可以相似对角化。
+
+因此，“具有 $\displaystyle n$ 个不同的特征值”是矩阵可相似对角化的充分而非必要条件。
+
+- A：误把充分条件当成充要条件。
+- C：该条件本身足以保证可对角化，并非仅为必要条件。
+- D：该条件确实是充分条件，因此不可能既非充分也非必要。
+
+</details>
+
+---
+
+2. **【2022-23-5分】** 设 $\displaystyle A$ 为3阶矩阵，交换 $\displaystyle A$ 的第2行和第3行，再将第2列的 $\displaystyle -1$ 倍加到第1列，得到矩阵
+
+$$
+\displaystyle M=\begin{pmatrix}
+-2&1&-1\\
+1&-1&0\\
+-1&0&0
+\end{pmatrix},
+$$
+
+则 $\displaystyle A^{-1}$ 的 $\displaystyle \operatorname{tr}(A^{-1})=$_________。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle -1$
+
+**解析：** 由题意，先交换第2、3行，再作列变换 $\displaystyle C_1\leftarrow C_1-C_2$。
+
+设交换第2、3行对应的初等矩阵为
+
+$$
+\displaystyle R=\begin{pmatrix}
+1&0&0\\
+0&0&1\\
+0&1&0
+\end{pmatrix},
+$$
+
+列变换 $\displaystyle C_1\leftarrow C_1-C_2$ 对应右乘矩阵
+
+$$
+\displaystyle Q=\begin{pmatrix}
+1&0&0\\
+-1&1&0\\
+0&0&1
+\end{pmatrix}.
+$$
+
+于是
+
+$$
+\displaystyle RAQ=M.
+$$
+
+由于 $\displaystyle R^{-1}=R$，故
+
+$$
+\displaystyle A=RMQ^{-1}.
+$$
+
+计算
+
+$$
+\displaystyle Q^{-1}=\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+0&0&1
+\end{pmatrix},
+$$
+
+从而
+
+$$
+\begin{aligned}
+\displaystyle A
+&=\begin{pmatrix}
+1&0&0\\
+0&0&1\\
+0&1&0
+\end{pmatrix}
+\begin{pmatrix}
+-2&1&-1\\
+1&-1&0\\
+-1&0&0
+\end{pmatrix}
+\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+0&0&1
+\end{pmatrix}\\
+&=\begin{pmatrix}
+-1&1&-1\\
+-1&0&0\\
+0&-1&0
+\end{pmatrix}.
+\end{aligned}
+$$
+
+对 $\displaystyle A$ 作初等变换或直接验证可得
+
+$$
+\displaystyle A^{-1}=\begin{pmatrix}
+0&-1&0\\
+0&0&-1\\
+-1&1&-1
+\end{pmatrix}.
+$$
+
+因此
+
+$$
+\displaystyle \operatorname{tr}(A^{-1})=0+0-1=-1.
+$$
+
+相关知识点：初等行变换等价于左乘初等矩阵，初等列变换等价于右乘初等矩阵；矩阵的迹等于主对角线元素之和。
+
+</details>
+
+---
+
+3. **【2023-1-5分】** 下列矩阵不能相似于对角矩阵的是（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle \begin{pmatrix}1&1&a\\0&2&2\\0&0&3\end{pmatrix}$ &emsp;&emsp; B. $\displaystyle \begin{pmatrix}1&1&a\\1&2&0\\a&0&3\end{pmatrix}$</div>
+<div className="choice-option-row">C. $\displaystyle \begin{pmatrix}1&1&a\\0&2&0\\0&0&2\end{pmatrix}$ &emsp;&emsp; D. $\displaystyle \begin{pmatrix}1&1&a\\0&2&2\\0&0&2\end{pmatrix}$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 逐项判断。
+
+A项为上三角矩阵，三个特征值 $\displaystyle 1,2,3$ 互不相同，故可相似对角化。
+
+B项为实对称矩阵，故可正交相似对角化。
+
+C项的特征值为 $\displaystyle 1,2,2$；对二重特征值 $\displaystyle 2$，有 $\displaystyle r(C-2E)=1$，对应特征子空间维数为2，故也可相似对角化。
+
+D项矩阵为上三角矩阵，特征值为 $\displaystyle 1,2,2$。考察二重特征值 $\displaystyle \lambda=2$：
+
+$$
+\displaystyle D-2E=\begin{pmatrix}
+-1&1&a\\
+0&0&2\\
+0&0&0
+\end{pmatrix}.
+$$
+
+解齐次方程组 $\displaystyle (D-2E)x=0$，有
+
+$$
+\displaystyle 2x_3=0,\qquad -x_1+x_2+ax_3=0,
+$$
+
+所以
+
+$$
+\displaystyle x_3=0,\qquad x_2=x_1.
+$$
+
+属于特征值 $\displaystyle 2$ 的特征空间只有1维，即
+
+$$
+\displaystyle \dim V_2=1<2.
+$$
+
+该特征值的几何重数小于代数重数，因此D项不能相似于对角矩阵。
+
+</details>
+
+---
+
+4. **【2025-3-5分】** 设 $\displaystyle A$ 为三阶矩阵，则“$\displaystyle A^3-A^2$ 可对角化”是“$\displaystyle A$ 可对角化”的（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. 充分不必要条件 &emsp;&emsp; B. 必要不充分条件 &emsp;&emsp; C. 充要条件 &emsp;&emsp; D. 既不充分也不必要条件</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** B
+
+**解析：** 先判断必要性。若 $\displaystyle A$ 可对角化，则存在可逆矩阵 $\displaystyle P$，使
+
+$$
+\displaystyle P^{-1}AP=\Lambda,
+$$
+
+其中 $\displaystyle \Lambda$ 为对角矩阵。于是
+
+$$
+\begin{aligned}
+\displaystyle P^{-1}(A^3-A^2)P
+&=(P^{-1}AP)^3-(P^{-1}AP)^2\\
+&=\Lambda^3-\Lambda^2.
+\end{aligned}
+$$
+
+因为 $\displaystyle \Lambda^3-\Lambda^2$ 仍是对角矩阵，所以 $\displaystyle A^3-A^2$ 可对角化。因此该条件是必要条件。
+
+再判断充分性。取
+
+$$
+\displaystyle A=\begin{pmatrix}
+0&1&0\\
+0&0&0\\
+0&0&1
+\end{pmatrix}.
+$$
+
+矩阵 $\displaystyle A$ 的特征值为 $\displaystyle 0,0,1$。对于特征值 $\displaystyle 0$，有
+
+$$
+\displaystyle \dim N(A)=1<2,
+$$
+
+故 $\displaystyle A$ 不可对角化。
+
+但是
+
+$$
+\displaystyle A^2=\begin{pmatrix}
+0&0&0\\
+0&0&0\\
+0&0&1
+\end{pmatrix},
+\qquad
+A^3=A^2,
+$$
+
+因而
+
+$$
+\displaystyle A^3-A^2=O,
+$$
+
+零矩阵显然可以对角化。这说明“$\displaystyle A^3-A^2$ 可对角化”不能推出“$\displaystyle A$ 可对角化”，故不是充分条件。
+
+综上，它是必要不充分条件。
+
+</details>
+
+### （二）相似变换矩阵及相似对角阵的计算
+
+1. **【2020-23-4分】** 设 $\displaystyle A$ 为3阶矩阵，$\displaystyle \alpha_1$，$\displaystyle \alpha_2$ 为 $\displaystyle A$ 属于特征值 $\displaystyle 1$ 的线性无关的特征向量，$\displaystyle \alpha_3$ 为 $\displaystyle A$ 属于特征值 $\displaystyle -1$ 的特征向量，则满足
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+1&0&0\\
+0&-1&0\\
+0&0&1
+\end{pmatrix}
+$$
+
+的可逆矩阵 $\displaystyle P$ 为（  ）。
+
+<div className="choice-options">
+<div className="choice-option-row">A. $\displaystyle (\alpha_1+\alpha_3,\alpha_2,-\alpha_3)$ &emsp;&emsp; B. $\displaystyle (\alpha_1+\alpha_2,\alpha_2,-\alpha_3)$</div>
+<div className="choice-option-row">C. $\displaystyle (\alpha_1+\alpha_3,-\alpha_3,\alpha_2)$ &emsp;&emsp; D. $\displaystyle (\alpha_1+\alpha_2,-\alpha_3,\alpha_2)$</div>
+</div>
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** D
+
+**解析：** 若
+
+$$
+\displaystyle P=(p_1,p_2,p_3),
+$$
+
+且
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(1,-1,1),
+$$
+
+则 $\displaystyle P$ 的第1、2、3列必须依次是属于特征值 $\displaystyle 1,-1,1$ 的特征向量。
+
+由于 $\displaystyle \alpha_1,\alpha_2$ 都属于特征值 $\displaystyle 1$，所以它们的任意非零线性组合仍属于特征值 $\displaystyle 1$。特别地，
+
+$$
+\displaystyle A(\alpha_1+\alpha_2)=\alpha_1+\alpha_2.
+$$
+
+又因为
+
+$$
+\displaystyle A(-\alpha_3)=-A\alpha_3=-(-\alpha_3),
+$$
+
+所以 $\displaystyle -\alpha_3$ 仍是属于特征值 $\displaystyle -1$ 的特征向量。
+
+因此
+
+$$
+\displaystyle P=(\alpha_1+\alpha_2,-\alpha_3,\alpha_2)
+$$
+
+的三列依次对应特征值 $\displaystyle 1,-1,1$。
+
+还需验证 $\displaystyle P$ 可逆。若
+
+$$
+\displaystyle k_1(\alpha_1+\alpha_2)+k_2(-\alpha_3)+k_3\alpha_2=0,
+$$
+
+则
+
+$$
+\displaystyle k_1\alpha_1+(k_1+k_3)\alpha_2-k_2\alpha_3=0.
+$$
+
+属于不同特征值的特征向量组线性无关，且 $\displaystyle \alpha_1,\alpha_2$ 本身线性无关，故
+
+$$
+\displaystyle k_1=k_2=k_3=0.
+$$
+
+所以 $\displaystyle P$ 可逆，D正确。
+
+- A、C中的 $\displaystyle \alpha_1+\alpha_3$ 混合了属于不同特征值的特征向量，一般不是特征向量。
+- B的三列依次对应特征值 $\displaystyle 1,1,-1$，所得对角阵的排列与题设不符。
+
+</details>
+
+### （三）相似对角化的综合应用
+
+1. **【2012-1-4分】** 设 $\displaystyle \alpha$ 为3维单位列向量，$\displaystyle E$ 为3阶单位矩阵，则矩阵 $\displaystyle E-\alpha\alpha^T$ 的秩为_________。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle 2$
+
+**解析：** 因为 $\displaystyle \alpha$ 是单位列向量，所以
+
+$$
+\displaystyle \alpha^T\alpha=1.
+$$
+
+令
+
+$$
+\displaystyle B=E-\alpha\alpha^T.
+$$
+
+作用于向量 $\displaystyle \alpha$，有
+
+$$
+\displaystyle B\alpha
+=(E-\alpha\alpha^T)\alpha
+=\alpha-\alpha(\alpha^T\alpha)
+=\alpha-\alpha=0.
+$$
+
+因此 $\displaystyle \alpha$ 是 $\displaystyle B$ 属于特征值 $\displaystyle 0$ 的特征向量。
+
+若 $\displaystyle x\perp\alpha$，即 $\displaystyle \alpha^Tx=0$，则
+
+$$
+\displaystyle Bx=x-\alpha(\alpha^Tx)=x.
+$$
+
+所以与 $\displaystyle \alpha$ 正交的二维子空间中的任意非零向量，都是 $\displaystyle B$ 属于特征值 $\displaystyle 1$ 的特征向量。
+
+故 $\displaystyle B$ 的特征值为
+
+$$
+\displaystyle 0,1,1.
+$$
+
+矩阵 $\displaystyle B$ 为实对称矩阵，可以相似对角化，因此其秩等于非零特征值的个数，即
+
+$$
+\displaystyle r(E-\alpha\alpha^T)=2.
+$$
+
+从几何意义上看，$\displaystyle E-\alpha\alpha^T$ 是到平面 $\displaystyle \alpha^\perp$ 上的正交投影矩阵，其像空间正是二维平面 $\displaystyle \alpha^\perp$。
+
+</details>
+
+## 大题
+
+### （一）相似对角化的判断
+
+1. **【1997-1-6分】** 已知
+
+$$
+\displaystyle \zeta=\begin{pmatrix}1\\1\\-1\end{pmatrix}
+$$
+
+是矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&-1&2\\
+5&a&3\\
+-1&b&-2
+\end{pmatrix}
+$$
+
+的一个特征向量。
+
+（1）试确定参数 $\displaystyle a$，$\displaystyle b$ 及特征向量 $\displaystyle \zeta$ 所对应的特征值；
+
+（2）问 $\displaystyle A$ 能否相似于对角阵？说明理由。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）$\displaystyle a=-3$，$\displaystyle b=0$，$\displaystyle \zeta$ 对应的特征值为 $\displaystyle -1$；
+
+（2）$\displaystyle A$ 不能相似于对角阵。
+
+**解析：** （1）设 $\displaystyle \zeta$ 所对应的特征值为 $\displaystyle \lambda$。由特征向量的定义，
+
+$$
+\displaystyle A\zeta=\lambda\zeta.
+$$
+
+直接计算得
+
+$$
+\begin{aligned}
+\displaystyle A\zeta
+&=\begin{pmatrix}
+2&-1&2\\
+5&a&3\\
+-1&b&-2
+\end{pmatrix}
+\begin{pmatrix}1\\1\\-1\end{pmatrix}\\
+&=\begin{pmatrix}
+2-1-2\\
+5+a-3\\
+-1+b+2
+\end{pmatrix}
+=\begin{pmatrix}
+-1\\
+a+2\\
+b+1
+\end{pmatrix}.
+\end{aligned}
+$$
+
+另一方面，
+
+$$
+\displaystyle \lambda\zeta
+=\begin{pmatrix}
+\lambda\\
+\lambda\\
+-\lambda
+\end{pmatrix}.
+$$
+
+比较对应分量，得到
+
+$$
+\displaystyle
+\begin{cases}
+-1=\lambda,\\
+a+2=\lambda,\\
+b+1=-\lambda.
+\end{cases}
+$$
+
+因此
+
+$$
+\displaystyle \lambda=-1,\qquad a=-3,\qquad b=0.
+$$
+
+（2）代入 $\displaystyle a=-3$，$\displaystyle b=0$，得
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&-1&2\\
+5&-3&3\\
+-1&0&-2
+\end{pmatrix}.
+$$
+
+其特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-2&1&-2\\
+-5&\lambda+3&-3\\
+1&0&\lambda+2
+\end{vmatrix}\\
+&=(\lambda+1)^3.
+\end{aligned}
+$$
+
+所以 $\displaystyle A$ 只有一个特征值
+
+$$
+\displaystyle \lambda=-1,
+$$
+
+其代数重数为 $\displaystyle 3$。
+
+考查对应的齐次线性方程组
+
+$$
+\displaystyle (A+E)x=0.
+$$
+
+有
+
+$$
+\displaystyle A+E=\begin{pmatrix}
+3&-1&2\\
+5&-2&3\\
+-1&0&-1
+\end{pmatrix}
+\xrightarrow{\text{初等行变换}}
+\begin{pmatrix}
+1&0&1\\
+0&1&1\\
+0&0&0
+\end{pmatrix}.
+$$
+
+因此
+
+$$
+\displaystyle r(A+E)=2,
+$$
+
+从而特征子空间的维数为
+
+$$
+\displaystyle 3-r(A+E)=1.
+$$
+
+也就是说，特征值 $\displaystyle -1$ 只有一个线性无关的特征向量，而三阶矩阵可相似对角化必须具有 $\displaystyle 3$ 个线性无关的特征向量。
+
+故 $\displaystyle A$ 不能相似于对角阵。
+
+本题的关键知识点是：特征值的代数重数为 $\displaystyle m$ 时，只有当其几何重数也为 $\displaystyle m$，才能为矩阵的可对角化提供足够的特征向量。
+
+</details>
+
+---
+
+2. **【2004-12-9分】** 设矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+1&2&-3\\
+-1&4&-3\\
+1&a&5
+\end{pmatrix}
+$$
+
+的特征方程有一个二重根，求 $\displaystyle a$ 的值，并讨论 $\displaystyle A$ 是否可相似对角化。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle a=-2\quad\text{或}\quad a=-\dfrac{2}{3}.
+$$
+
+</div>
+</div>
+
+当 $\displaystyle a=-2$ 时，$\displaystyle A$ 可相似对角化；
+
+当 $\displaystyle a=-\dfrac{2}{3}$ 时，$\displaystyle A$ 不能相似对角化。
+
+**解析：** 先求特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-1&-2&3\\
+1&\lambda-4&3\\
+-1&-a&\lambda-5
+\end{vmatrix}\\
+&=(\lambda-2)\left(\lambda^2-8\lambda+18+3a\right).
+\end{aligned}
+$$
+
+特征方程有二重根，可能有以下两种情形。
+
+**情形一：** $\displaystyle \lambda=2$ 同时也是二次因子的根。
+
+令
+
+$$
+\displaystyle 2^2-8\cdot2+18+3a=0,
+$$
+
+得
+
+$$
+\displaystyle 6+3a=0,
+$$
+
+所以
+
+$$
+\displaystyle a=-2.
+$$
+
+此时
+
+$$
+\displaystyle |\lambda E-A|=(\lambda-2)^2(\lambda-6).
+$$
+
+考查二重特征值 $\displaystyle \lambda=2$。当 $\displaystyle a=-2$ 时，
+
+$$
+\displaystyle A-2E
+=\begin{pmatrix}
+-1&2&-3\\
+-1&2&-3\\
+1&-2&3
+\end{pmatrix}.
+$$
+
+显然
+
+$$
+\displaystyle r(A-2E)=1,
+$$
+
+故
+
+$$
+\displaystyle \dim\ker(A-2E)=3-1=2.
+$$
+
+特征值 $\displaystyle 2$ 的几何重数等于其代数重数 $\displaystyle 2$；另一个特征值 $\displaystyle 6$ 还能提供一个线性无关的特征向量。因此 $\displaystyle A$ 共有 $\displaystyle 3$ 个线性无关的特征向量，故可以相似对角化。
+
+例如，$\displaystyle \lambda=2$ 的两个线性无关特征向量可取
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}2\\1\\0\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}-3\\0\\1\end{pmatrix},
+$$
+
+而 $\displaystyle \lambda=6$ 的特征向量可取
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}-1\\-1\\1\end{pmatrix}.
+$$
+
+**情形二：** 二次因子本身有二重根。
+
+其判别式应为零，即
+
+$$
+\displaystyle \Delta=(-8)^2-4(18+3a)=0.
+$$
+
+于是
+
+$$
+\displaystyle 64-72-12a=0,
+$$
+
+从而
+
+$$
+\displaystyle a=-\dfrac{2}{3}.
+$$
+
+此时
+
+$$
+\displaystyle |\lambda E-A|=(\lambda-2)(\lambda-4)^2.
+$$
+
+考查二重特征值 $\displaystyle \lambda=4$。当 $\displaystyle a=-\dfrac{2}{3}$ 时，
+
+$$
+\displaystyle A-4E
+=\begin{pmatrix}
+-3&2&-3\\
+-1&0&-3\\
+1&-\dfrac{2}{3}&1
+\end{pmatrix}.
+$$
+
+对其作初等行变换可得
+
+$$
+\displaystyle r(A-4E)=2.
+$$
+
+故
+
+$$
+\displaystyle \dim\ker(A-4E)=3-2=1.
+$$
+
+也就是说，二重特征值 $\displaystyle 4$ 仅有一个线性无关的特征向量，其几何重数小于代数重数。因此矩阵 $\displaystyle A$ 不能相似对角化。
+
+综上，
+
+$$
+\boxed{
+\displaystyle
+\begin{cases}
+a=-2,&A\text{ 可相似对角化},\\[1mm]
+a=-\dfrac{2}{3},&A\text{ 不可相似对角化}.
+\end{cases}}
+$$
+
+</details>
+
+### （二）相似变换矩阵及相似对角阵的计算
+
+1. **【1988-12-8分】** 已知矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&0&0\\
+0&0&1\\
+0&1&x
+\end{pmatrix}
+$$
+
+与
+
+$$
+\displaystyle B=\begin{pmatrix}
+2&0&0\\
+0&y&0\\
+0&0&-1
+\end{pmatrix}
+$$
+
+相似。
+
+（1）求 $\displaystyle x$ 与 $\displaystyle y$；
+
+（2）求一个满足 $\displaystyle P^{-1}AP=B$ 的可逆矩阵 $\displaystyle P$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle x=0,\qquad y=1.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+1&0&0\\
+0&1&1\\
+0&1&-1
+\end{pmatrix},
+$$
+
+使得
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+2&0&0\\
+0&1&0\\
+0&0&-1
+\end{pmatrix}=B.
+$$
+
+**解析：** 因为相似矩阵具有相同的迹与行列式，所以
+
+$$
+\displaystyle \operatorname{tr}(A)=\operatorname{tr}(B),
+\qquad |A|=|B|.
+$$
+
+先比较行列式。由
+
+$$
+\begin{aligned}
+\displaystyle |A|
+&=2\begin{vmatrix}0&1\\1&x\end{vmatrix}
+=-2,\\
+\displaystyle |B|
+&=2\cdot y\cdot(-1)=-2y,
+\end{aligned}
+$$
+
+得
+
+$$
+\displaystyle -2=-2y,
+$$
+
+故
+
+$$
+\displaystyle y=1.
+$$
+
+再比较迹：
+
+$$
+\displaystyle 2+x=2+y-1.
+$$
+
+代入 $\displaystyle y=1$，得到
+
+$$
+\displaystyle x=0.
+$$
+
+此时
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&0&0\\
+0&0&1\\
+0&1&0
+\end{pmatrix}.
+$$
+
+分别求与 $\displaystyle B$ 的对角元顺序相对应的特征向量。
+
+当 $\displaystyle \lambda=2$ 时，可取
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}1\\0\\0\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=1$ 时，由
+
+$$
+\displaystyle (A-E)\alpha=0
+$$
+
+可取
+
+$$
+\displaystyle \alpha_2=\begin{pmatrix}0\\1\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=-1$ 时，由
+
+$$
+\displaystyle (A+E)\alpha=0
+$$
+
+可取
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}0\\1\\-1\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+1&0&0\\
+0&1&1\\
+0&1&-1
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=-2\ne0,
+$$
+
+所以 $\displaystyle P$ 可逆。又有
+
+$$
+\displaystyle AP=P\operatorname{diag}(2,1,-1)=PB,
+$$
+
+因此
+
+$$
+\displaystyle P^{-1}AP=B.
+$$
+
+</details>
+
+---
+
+2. **【1992-4-7分】** 设矩阵 $\displaystyle A$，$\displaystyle B$ 相似，其中
+
+$$
+\displaystyle A=\begin{pmatrix}
+-2&0&0\\
+2&x&2\\
+3&1&1
+\end{pmatrix},
+\qquad
+B=\begin{pmatrix}
+-1&0&0\\
+0&2&0\\
+0&0&y
+\end{pmatrix}.
+$$
+
+（1）求 $\displaystyle x$ 和 $\displaystyle y$ 的值；
+
+（2）求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP=B$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle x=0,\qquad y=-2.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+0&0&-1\\
+-2&1&0\\
+1&1&1
+\end{pmatrix},
+$$
+
+使得
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+-1&0&0\\
+0&2&0\\
+0&0&-2
+\end{pmatrix}=B.
+$$
+
+**解析：** 计算 $\displaystyle A$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda+2&0&0\\
+-2&\lambda-x&-2\\
+-3&-1&\lambda-1
+\end{vmatrix}\\
+&=(\lambda+2)
+\begin{vmatrix}
+\lambda-x&-2\\
+-1&\lambda-1
+\end{vmatrix}\\
+&=(\lambda+2)\left[(\lambda-x)(\lambda-1)-2\right].
+\end{aligned}
+$$
+
+因此，无论 $\displaystyle x$ 取何值，$\displaystyle -2$ 都是 $\displaystyle A$ 的特征值。
+
+矩阵 $\displaystyle B$ 的三个特征值为
+
+$$
+\displaystyle -1,\quad 2,\quad y.
+$$
+
+由于相似矩阵具有完全相同的特征值，且 $\displaystyle -2\ne-1,2$，故必有
+
+$$
+\displaystyle y=-2.
+$$
+
+再利用相似矩阵的迹相等：
+
+$$
+\displaystyle \operatorname{tr}(A)=x-1,
+\qquad
+\operatorname{tr}(B)=-1+2+y=1+y.
+$$
+
+于是
+
+$$
+\displaystyle x-1=1+y.
+$$
+
+代入 $\displaystyle y=-2$，得
+
+$$
+\displaystyle x=0.
+$$
+
+此时
+
+$$
+\displaystyle A=\begin{pmatrix}
+-2&0&0\\
+2&0&2\\
+3&1&1
+\end{pmatrix}.
+$$
+
+按照 $\displaystyle B$ 的对角元顺序，依次求 $\displaystyle \lambda=-1,2,-2$ 的特征向量。
+
+当 $\displaystyle \lambda=-1$ 时，解
+
+$$
+\displaystyle (A+E)\alpha=0,
+$$
+
+可取
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}0\\-2\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=2$ 时，解
+
+$$
+\displaystyle (A-2E)\alpha=0,
+$$
+
+可取
+
+$$
+\displaystyle \alpha_2=\begin{pmatrix}0\\1\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=-2$ 时，解
+
+$$
+\displaystyle (A+2E)\alpha=0,
+$$
+
+可取
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}-1\\0\\1\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+0&0&-1\\
+-2&1&0\\
+1&1&1
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=3\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。由特征向量的定义，
+
+$$
+\displaystyle AP=P\operatorname{diag}(-1,2,-2)=PB,
+$$
+
+因此
+
+$$
+\displaystyle P^{-1}AP=B.
+$$
+
+</details>
+
+---
+
+3. **【1997-4-9分】** 设矩阵 $\displaystyle A$ 与 $\displaystyle B$ 相似，且
+
+$$
+\displaystyle A=\begin{pmatrix}
+1&-1&1\\
+2&4&-2\\
+-3&-3&a
+\end{pmatrix},
+\qquad
+B=\begin{pmatrix}
+2&0&0\\
+0&2&0\\
+0&0&b
+\end{pmatrix}.
+$$
+
+（1）求 $\displaystyle a$，$\displaystyle b$ 的值；
+
+（2）求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP=B$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle a=5,\qquad b=6.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+-1&1&1\\
+1&0&-2\\
+0&1&3
+\end{pmatrix},
+$$
+
+使得
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+2&0&0\\
+0&2&0\\
+0&0&6
+\end{pmatrix}=B.
+$$
+
+**解析：** 计算 $\displaystyle A$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-1&1&-1\\
+-2&\lambda-4&2\\
+3&3&\lambda-a
+\end{vmatrix}\\
+&=(\lambda-2)\left[\lambda^2-(a+3)\lambda+3a-3\right].
+\end{aligned}
+$$
+
+矩阵 $\displaystyle B$ 的特征多项式为
+
+$$
+\displaystyle |\lambda E-B|=(\lambda-2)^2(\lambda-b).
+$$
+
+因为 $\displaystyle A$ 与 $\displaystyle B$ 相似，所以两者的特征多项式相同。消去公共因子 $\displaystyle \lambda-2$，得
+
+$$
+\displaystyle \lambda^2-(a+3)\lambda+3a-3
+=(\lambda-2)(\lambda-b).
+$$
+
+展开右端：
+
+$$
+\displaystyle (\lambda-2)(\lambda-b)
+=\lambda^2-(b+2)\lambda+2b.
+$$
+
+比较系数，得到
+
+$$
+\displaystyle
+\begin{cases}
+a+3=b+2,\\
+3a-3=2b.
+\end{cases}
+$$
+
+即
+
+$$
+\displaystyle
+\begin{cases}
+b=a+1,\\
+3a-3=2a+2.
+\end{cases}
+$$
+
+从而
+
+$$
+\displaystyle a=5,\qquad b=6.
+$$
+
+此时
+
+$$
+\displaystyle A=\begin{pmatrix}
+1&-1&1\\
+2&4&-2\\
+-3&-3&5
+\end{pmatrix},
+$$
+
+其特征值为
+
+$$
+\displaystyle \lambda_1=\lambda_2=2,
+\qquad
+\lambda_3=6.
+$$
+
+当 $\displaystyle \lambda=2$ 时，解
+
+$$
+\displaystyle (A-2E)\alpha=0.
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}-1\\1\\0\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}1\\0\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=6$ 时，解
+
+$$
+\displaystyle (A-6E)\alpha=0,
+$$
+
+可取
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}1\\-2\\3\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+-1&1&1\\
+1&0&-2\\
+0&1&3
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=-4\ne0,
+$$
+
+所以 $\displaystyle P$ 可逆。并且
+
+$$
+\displaystyle AP=P\operatorname{diag}(2,2,6)=PB.
+$$
+
+故
+
+$$
+\displaystyle P^{-1}AP=B.
+$$
+
+</details>
+
+---
+
+4. **【1999-4-7分】** 设矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+3&2&-2\\
+-k&-1&k\\
+4&2&-3
+\end{pmatrix},
+$$
+
+$\displaystyle k$ 为何值时，存在可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP$ 为对角矩阵？并求出 $\displaystyle P$ 和相应的对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle k=0.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+1&-1&1\\
+0&2&0\\
+1&0&2
+\end{pmatrix},
+\qquad
+P^{-1}AP=\begin{pmatrix}
+1&0&0\\
+0&-1&0\\
+0&0&-1
+\end{pmatrix}.
+$$
+
+**解析：** 先求 $\displaystyle A$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-3&-2&2\\
+k&\lambda+1&-k\\
+-4&-2&\lambda+3
+\end{vmatrix}\\
+&=(\lambda-1)(\lambda+1)^2.
+\end{aligned}
+$$
+
+因此，$\displaystyle A$ 的特征值为
+
+$$
+\displaystyle \lambda_1=1,
+\qquad
+\lambda_2=\lambda_3=-1.
+$$
+
+由于 $\displaystyle -1$ 是二重特征值，$\displaystyle A$ 可相似对角化的充要条件是特征值 $\displaystyle -1$ 对应的线性无关特征向量有两个，即
+
+$$
+\displaystyle \dim\ker(A+E)=2,
+$$
+
+等价于
+
+$$
+\displaystyle r(A+E)=1.
+$$
+
+而
+
+$$
+\displaystyle A+E=\begin{pmatrix}
+4&2&-2\\
+-k&0&k\\
+4&2&-2
+\end{pmatrix}.
+$$
+
+第一行与第三行相同。若其秩为 $\displaystyle 1$，则第二行必须是第一行的倍数。设
+
+$$
+\displaystyle (-k,0,k)=c(4,2,-2).
+$$
+
+由第二个分量得 $\displaystyle 0=2c$，所以 $\displaystyle c=0$，进而
+
+$$
+\displaystyle k=0.
+$$
+
+当 $\displaystyle k=0$ 时，
+
+$$
+\displaystyle A=\begin{pmatrix}
+3&2&-2\\
+0&-1&0\\
+4&2&-3
+\end{pmatrix}.
+$$
+
+对特征值 $\displaystyle \lambda=1$，解
+
+$$
+\displaystyle (A-E)\alpha=0,
+$$
+
+可取特征向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}1\\0\\1\end{pmatrix}.
+$$
+
+对特征值 $\displaystyle \lambda=-1$，解
+
+$$
+\displaystyle (A+E)\alpha=0,
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle \alpha_2=\begin{pmatrix}-1\\2\\0\end{pmatrix},
+\qquad
+\alpha_3=\begin{pmatrix}1\\0\\2\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+1&-1&1\\
+0&2&0\\
+1&0&2
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=2\ne0,
+$$
+
+故 $\displaystyle P$ 可逆，且
+
+$$
+\displaystyle AP=P\operatorname{diag}(1,-1,-1).
+$$
+
+因此
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(1,-1,-1).
+$$
+
+</details>
+
+---
+
+5. **【2000-4-9分】** 设矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+1&-1&1\\
+x&4&y\\
+-3&-3&5
+\end{pmatrix},
+$$
+
+已知 $\displaystyle A$ 有三个线性无关的特征向量，$\displaystyle \lambda=2$ 是 $\displaystyle A$ 的二重特征值，试求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP$ 为对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle x=2,
+\qquad
+y=-2.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+-1&1&1\\
+1&0&-2\\
+0&1&3
+\end{pmatrix},
+\qquad
+P^{-1}AP=\begin{pmatrix}
+2&0&0\\
+0&2&0\\
+0&0&6
+\end{pmatrix}.
+$$
+
+**解析：** 矩阵 $\displaystyle A$ 的特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-1&1&-1\\
+-x&\lambda-4&-y\\
+3&3&\lambda-5
+\end{vmatrix}\\
+&=(\lambda-2)\left(\lambda^2-8\lambda+x+3y+16\right).
+\end{aligned}
+$$
+
+因为 $\displaystyle \lambda=2$ 是二重特征值，所以二次因式在 $\displaystyle \lambda=2$ 时也应为零：
+
+$$
+\displaystyle 2^2-8\cdot2+x+3y+16=0,
+$$
+
+即
+
+$$
+\displaystyle x+3y+4=0.
+$$
+
+又因为 $\displaystyle A$ 有三个线性无关的特征向量，所以 $\displaystyle A$ 可相似对角化。对于二重特征值 $\displaystyle \lambda=2$，其特征子空间的维数必须为 $\displaystyle 2$，即
+
+$$
+\displaystyle r(A-2E)=1.
+$$
+
+计算得
+
+$$
+\displaystyle A-2E=\begin{pmatrix}
+-1&-1&1\\
+x&2&y\\
+-3&-3&3
+\end{pmatrix}.
+$$
+
+第三行是第一行的 $\displaystyle 3$ 倍。要使秩为 $\displaystyle 1$，第二行也必须是第一行的倍数。设
+
+$$
+\displaystyle (x,2,y)=c(-1,-1,1).
+$$
+
+由第二个分量得
+
+$$
+\displaystyle 2=-c,
+$$
+
+所以 $\displaystyle c=-2$，从而
+
+$$
+\displaystyle x=2,
+\qquad
+y=-2.
+$$
+
+此时特征多项式为
+
+$$
+\displaystyle |\lambda E-A|=(\lambda-2)^2(\lambda-6),
+$$
+
+故另一个特征值为 $\displaystyle 6$。
+
+当 $\displaystyle \lambda=2$ 时，解
+
+$$
+\displaystyle (A-2E)\alpha=0,
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}-1\\1\\0\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}1\\0\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=6$ 时，解
+
+$$
+\displaystyle (A-6E)\alpha=0,
+$$
+
+可取特征向量
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}1\\-2\\3\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+-1&1&1\\
+1&0&-2\\
+0&1&3
+\end{pmatrix}.
+$$
+
+因为
+
+$$
+\displaystyle |P|=-4\ne0,
+$$
+
+所以 $\displaystyle P$ 可逆，并且
+
+$$
+\displaystyle AP=P\operatorname{diag}(2,2,6).
+$$
+
+故
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(2,2,6).
+$$
+
+</details>
+
+---
+
+6. **【2002-4-8分】** 设实对称矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+a&1&1\\
+1&a&-1\\
+1&-1&a
+\end{pmatrix},
+$$
+
+求可逆矩阵 $\displaystyle P$，使 $\displaystyle P^{-1}AP$ 为对角矩阵，并计算行列式 $\displaystyle |A-E|$ 的值。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** 可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+1&1&-1\\
+1&-1&1\\
+0&2&1
+\end{pmatrix},
+$$
+
+则
+
+$$
+\displaystyle P^{-1}AP
+=\begin{pmatrix}
+a+1&0&0\\
+0&a+1&0\\
+0&0&a-2
+\end{pmatrix}.
+$$
+
+并且
+
+$$
+\displaystyle |A-E|=a^2(a-3).
+$$
+
+**解析：** 将 $\displaystyle A$ 写成
+
+$$
+\displaystyle A=aE+C,
+\qquad
+C=\begin{pmatrix}
+0&1&1\\
+1&0&-1\\
+1&-1&0
+\end{pmatrix}.
+$$
+
+因为 $\displaystyle A$ 与 $\displaystyle C$ 具有相同的特征向量，若 $\displaystyle \mu$ 是 $\displaystyle C$ 的特征值，则 $\displaystyle a+\mu$ 是 $\displaystyle A$ 的特征值。
+
+计算 $\displaystyle C$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\mu E-C|
+&=\begin{vmatrix}
+\mu&-1&-1\\
+-1&\mu&1\\
+-1&1&\mu
+\end{vmatrix}\\
+&=(\mu-1)^2(\mu+2).
+\end{aligned}
+$$
+
+所以 $\displaystyle C$ 的特征值为
+
+$$
+\displaystyle \mu_1=\mu_2=1,
+\qquad
+\mu_3=-2.
+$$
+
+因此 $\displaystyle A$ 的特征值为
+
+$$
+\displaystyle \lambda_1=\lambda_2=a+1,
+\qquad
+\lambda_3=a-2.
+$$
+
+当 $\displaystyle \mu=1$ 时，解
+
+$$
+\displaystyle (C-E)\alpha=0,
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}1\\1\\0\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}1\\-1\\2\end{pmatrix}.
+$$
+
+当 $\displaystyle \mu=-2$ 时，解
+
+$$
+\displaystyle (C+2E)\alpha=0,
+$$
+
+可取特征向量
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}-1\\1\\1\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+1&1&-1\\
+1&-1&1\\
+0&2&1
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=-6\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。并且
+
+$$
+\displaystyle AP=P\operatorname{diag}(a+1,a+1,a-2),
+$$
+
+所以
+
+$$
+\displaystyle P^{-1}AP
+=\operatorname{diag}(a+1,a+1,a-2).
+$$
+
+最后，$\displaystyle A-E$ 的特征值为
+
+$$
+\displaystyle a,
+\qquad
+a,
+\qquad
+a-3.
+$$
+
+故其行列式等于全部特征值之积：
+
+$$
+\displaystyle |A-E|=a\cdot a\cdot(a-3)=a^2(a-3).
+$$
+
+</details>
+
+---
+
+7. **【2003-2-10分】** 若矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&2&0\\
+8&2&a\\
+0&0&6
+\end{pmatrix}
+$$
+
+相似于对角矩阵 $\displaystyle \Lambda$，试确定常数 $\displaystyle a$ 的值；并求可逆矩阵 $\displaystyle P$，使 $\displaystyle P^{-1}AP=\Lambda$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle a=0.
+$$
+
+</div>
+</div>
+
+可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+1&0&1\\
+2&0&-2\\
+0&1&0
+\end{pmatrix},
+\qquad
+\Lambda=\begin{pmatrix}
+6&0&0\\
+0&6&0\\
+0&0&-2
+\end{pmatrix},
+$$
+
+则 $\displaystyle P^{-1}AP=\Lambda$。
+
+**解析：** 由于 $\displaystyle A$ 为分块上三角矩阵，其特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda-2&-2&0\\
+-8&\lambda-2&-a\\
+0&0&\lambda-6
+\end{vmatrix}\\
+&=(\lambda-6)\begin{vmatrix}
+\lambda-2&-2\\
+-8&\lambda-2
+\end{vmatrix}\\
+&=(\lambda-6)\bigl[(\lambda-2)^2-16\bigr]\\
+&=(\lambda-6)^2(\lambda+2).
+\end{aligned}
+$$
+
+故 $\displaystyle A$ 的特征值为
+
+$$
+\displaystyle \lambda_1=\lambda_2=6,
+\qquad
+\lambda_3=-2.
+$$
+
+其中 $\displaystyle \lambda=6$ 为二重特征值。矩阵 $\displaystyle A$ 可相似于对角矩阵的充要条件是该特征值对应的特征子空间维数为 $\displaystyle 2$，即
+
+$$
+\displaystyle \dim\ker(A-6E)=2,
+$$
+
+等价于
+
+$$
+\displaystyle r(A-6E)=1.
+$$
+
+而
+
+$$
+\displaystyle A-6E=\begin{pmatrix}
+-4&2&0\\
+8&-4&a\\
+0&0&0
+\end{pmatrix}.
+$$
+
+前两行在 $\displaystyle a=0$ 时线性相关，此时矩阵的秩为 $\displaystyle 1$；若 $\displaystyle a\ne0$，则前两行线性无关，矩阵的秩为 $\displaystyle 2$。因此必须有
+
+$$
+\displaystyle a=0.
+$$
+
+此时
+
+$$
+\displaystyle A=\begin{pmatrix}
+2&2&0\\
+8&2&0\\
+0&0&6
+\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=6$ 时，解
+
+$$
+\displaystyle (A-6E)\alpha=0,
+$$
+
+得到
+
+$$
+\displaystyle -4x_1+2x_2=0,
+$$
+
+即 $\displaystyle x_2=2x_1$，而 $\displaystyle x_3$ 为自由变量。因此可取两个线性无关的特征向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}1\\2\\0\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=-2$ 时，解
+
+$$
+\displaystyle (A+2E)\alpha=0,
+$$
+
+可取特征向量
+
+$$
+\displaystyle \alpha_3=\begin{pmatrix}1\\-2\\0\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+1&0&1\\
+2&0&-2\\
+0&1&0
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=4\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。又
+
+$$
+\displaystyle AP=P\operatorname{diag}(6,6,-2),
+$$
+
+所以
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(6,6,-2).
+$$
+
+</details>
+
+---
+
+8. **【2004-3-13分】** 设 $\displaystyle n$ 阶矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+1&b&\cdots&b\\
+b&1&\cdots&b\\
+\vdots&\vdots&&\vdots\\
+b&b&\cdots&1
+\end{pmatrix}.
+$$
+
+（1）求特征值和特征向量；
+
+（2）求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP$ 为对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** $\displaystyle A$ 的特征值为
+
+$$
+\displaystyle \lambda_1=1+(n-1)b,
+$$
+
+其对应特征向量可取
+
+$$
+\displaystyle \alpha_1=(1,1,\ldots,1)^T;
+$$
+
+以及
+
+$$
+\displaystyle \lambda_2=1-b,
+$$
+
+其代数重数与几何重数均为 $\displaystyle n-1$，对应特征子空间为
+
+$$
+\displaystyle V_{1-b}=\left\{x=(x_1,\ldots,x_n)^T:\sum_{i=1}^{n}x_i=0\right\}.
+$$
+
+可取该特征子空间的一组基
+
+$$
+\displaystyle \alpha_k=e_1-e_k,
+\qquad k=2,3,\ldots,n,
+$$
+
+其中 $\displaystyle e_k$ 为第 $\displaystyle k$ 个标准单位列向量。
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\ldots,\alpha_n),
+$$
+
+则
+
+$$
+\displaystyle P^{-1}AP
+=\operatorname{diag}\bigl(1+(n-1)b,\underbrace{1-b,\ldots,1-b}_{n-1\text{ 个}}\bigr).
+$$
+
+**解析：** 记
+
+$$
+\displaystyle \mathbf{1}=(1,1,\ldots,1)^T,
+$$
+
+并令 $\displaystyle J=\mathbf{1}\mathbf{1}^T$ 为全 $\displaystyle 1$ 矩阵，则
+
+$$
+\displaystyle A=(1-b)E+bJ.
+$$
+
+首先，由于
+
+$$
+\displaystyle J\mathbf{1}=n\mathbf{1},
+$$
+
+所以
+
+$$
+\begin{aligned}
+\displaystyle A\mathbf{1}
+&=(1-b)\mathbf{1}+bJ\mathbf{1}\\
+&=(1-b)\mathbf{1}+bn\mathbf{1}\\
+&=[1+(n-1)b]\mathbf{1}.
+\end{aligned}
+$$
+
+故
+
+$$
+\displaystyle \lambda_1=1+(n-1)b
+$$
+
+是 $\displaystyle A$ 的一个特征值，对应特征向量为 $\displaystyle \mathbf{1}$。
+
+再设 $\displaystyle x=(x_1,\ldots,x_n)^T$ 满足
+
+$$
+\displaystyle \sum_{i=1}^{n}x_i=0.
+$$
+
+则
+
+$$
+\displaystyle Jx=\mathbf{1}(\mathbf{1}^Tx)=0,
+$$
+
+从而
+
+$$
+\displaystyle Ax=(1-b)x.
+$$
+
+因此，所有分量之和为零的非零向量都是特征值 $\displaystyle 1-b$ 的特征向量。该子空间由一个线性方程确定，所以维数为 $\displaystyle n-1$。
+
+可取
+
+$$
+\displaystyle \alpha_2=e_1-e_2,
+\quad
+\alpha_3=e_1-e_3,
+\quad\ldots\quad,
+\alpha_n=e_1-e_n.
+$$
+
+下面说明 $\displaystyle \alpha_1,\alpha_2,\ldots,\alpha_n$ 线性无关。若
+
+$$
+\displaystyle c_1\alpha_1+c_2\alpha_2+\cdots+c_n\alpha_n=0,
+$$
+
+比较第 $\displaystyle k$ 个分量（$\displaystyle k\ge2$），得
+
+$$
+\displaystyle c_1-c_k=0,
+$$
+
+即 $\displaystyle c_k=c_1$。再比较第一个分量，得
+
+$$
+\displaystyle c_1+c_2+\cdots+c_n=nc_1=0.
+$$
+
+故 $\displaystyle c_1=c_2=\cdots=c_n=0$，于是这些向量线性无关。
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\ldots,\alpha_n),
+$$
+
+则 $\displaystyle P$ 可逆，且
+
+$$
+\displaystyle AP
+=P\operatorname{diag}\bigl(1+(n-1)b,1-b,\ldots,1-b\bigr).
+$$
+
+因此
+
+$$
+\displaystyle P^{-1}AP
+=\operatorname{diag}\bigl(1+(n-1)b,1-b,\ldots,1-b\bigr).
+$$
+
+当 $\displaystyle b=0$ 时，两个特征值相同，且 $\displaystyle A=E$，上述结论仍然成立。
+
+</details>
+
+---
+
+9. **【2005-4-6分】** 设 $\displaystyle A$ 为3阶矩阵，$\displaystyle \alpha_1$，$\displaystyle \alpha_2$，$\displaystyle \alpha_3$ 是线性无关的三维列向量，且满足
+
+$$
+\displaystyle A\alpha_1=\alpha_1+\alpha_2+\alpha_3,
+$$
+
+$$
+\displaystyle A\alpha_2=2\alpha_2+\alpha_3,
+$$
+
+$$
+\displaystyle A\alpha_3=2\alpha_2+3\alpha_3.
+$$
+
+（1）求矩阵 $\displaystyle B$，使得
+
+$$
+\displaystyle A(\alpha_1,\alpha_2,\alpha_3)
+=(\alpha_1,\alpha_2,\alpha_3)B;
+$$
+
+（2）求矩阵 $\displaystyle A$ 的特征值；
+
+（3）求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP$ 为对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\displaystyle B=\begin{pmatrix}
+1&0&0\\
+1&2&2\\
+1&1&3
+\end{pmatrix}.
+$$
+
+（2）$\displaystyle A$ 的特征值为
+
+$$
+\displaystyle \lambda_1=\lambda_2=1,
+\qquad
+\lambda_3=4.
+$$
+
+（3）可取
+
+$$
+\displaystyle P=(\alpha_2-\alpha_1,\ \alpha_3-2\alpha_1,\ \alpha_2+\alpha_3),
+$$
+
+则
+
+$$
+\displaystyle P^{-1}AP
+=\begin{pmatrix}
+1&0&0\\
+0&1&0\\
+0&0&4
+\end{pmatrix}.
+$$
+
+**解析：** 设
+
+$$
+\displaystyle R=(\alpha_1,\alpha_2,\alpha_3).
+$$
+
+由于 $\displaystyle \alpha_1,\alpha_2,\alpha_3$ 线性无关，所以 $\displaystyle R$ 可逆。
+
+由题设，$\displaystyle A\alpha_j$ 在基 $\displaystyle \alpha_1,\alpha_2,\alpha_3$ 下的坐标分别为
+
+$$
+\displaystyle
+\begin{pmatrix}1\\1\\1\end{pmatrix},
+\qquad
+\begin{pmatrix}0\\2\\1\end{pmatrix},
+\qquad
+\begin{pmatrix}0\\2\\3\end{pmatrix}.
+$$
+
+因此
+
+$$
+\displaystyle AR=RB,
+$$
+
+其中
+
+$$
+\displaystyle B=\begin{pmatrix}
+1&0&0\\
+1&2&2\\
+1&1&3
+\end{pmatrix}.
+$$
+
+于是
+
+$$
+\displaystyle B=R^{-1}AR,
+$$
+
+故 $\displaystyle A$ 与 $\displaystyle B$ 相似，二者具有相同的特征值。
+
+计算 $\displaystyle B$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-B|
+&=\begin{vmatrix}
+\lambda-1&0&0\\
+-1&\lambda-2&-2\\
+-1&-1&\lambda-3
+\end{vmatrix}\\
+&=(\lambda-1)\begin{vmatrix}
+\lambda-2&-2\\
+-1&\lambda-3
+\end{vmatrix}\\
+&=(\lambda-1)\bigl[(\lambda-2)(\lambda-3)-2\bigr]\\
+&=(\lambda-1)^2(\lambda-4).
+\end{aligned}
+$$
+
+所以 $\displaystyle A$ 的特征值为
+
+$$
+\displaystyle 1,1,4.
+$$
+
+当 $\displaystyle \lambda=1$ 时，解
+
+$$
+\displaystyle (B-E)x=0,
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle v_1=\begin{pmatrix}-1\\1\\0\end{pmatrix},
+\qquad
+v_2=\begin{pmatrix}-2\\0\\1\end{pmatrix}.
+$$
+
+它们对应到原向量空间中的特征向量分别为
+
+$$
+\begin{aligned}
+\displaystyle Rv_1&=-\alpha_1+\alpha_2=\alpha_2-\alpha_1,\\
+\displaystyle Rv_2&=-2\alpha_1+\alpha_3=\alpha_3-2\alpha_1.
+\end{aligned}
+$$
+
+当 $\displaystyle \lambda=4$ 时，解
+
+$$
+\displaystyle (B-4E)x=0,
+$$
+
+可取
+
+$$
+\displaystyle v_3=\begin{pmatrix}0\\1\\1\end{pmatrix}.
+$$
+
+对应到原向量空间中的特征向量为
+
+$$
+\displaystyle Rv_3=\alpha_2+\alpha_3.
+$$
+
+令
+
+$$
+\displaystyle C=(v_1,v_2,v_3)
+=\begin{pmatrix}
+-1&-2&0\\
+1&0&1\\
+0&1&1
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |C|=3\ne0,
+$$
+
+故 $\displaystyle C$ 可逆。又 $\displaystyle R$ 可逆，所以
+
+$$
+\displaystyle P=RC
+=(\alpha_2-\alpha_1,\alpha_3-2\alpha_1,\alpha_2+\alpha_3)
+$$
+
+可逆，并且
+
+$$
+\displaystyle AP=P\operatorname{diag}(1,1,4).
+$$
+
+因此
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(1,1,4).
+$$
+
+</details>
+
+---
+
+10. **【2015-123-11分】** 设矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+0&2&-3\\
+-1&3&-3\\
+1&-2&a
+\end{pmatrix}
+$$
+
+相似于矩阵
+
+$$
+\displaystyle B=\begin{pmatrix}
+1&-2&0\\
+0&b&0\\
+0&3&1
+\end{pmatrix}.
+$$
+
+（1）求 $\displaystyle a,b$ 的值；
+
+（2）求可逆矩阵 $\displaystyle P$，使 $\displaystyle P^{-1}AP$ 为对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\displaystyle a=4,\qquad b=5.
+$$
+
+（2）可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+2&-3&-1\\
+1&0&-1\\
+0&1&1
+\end{pmatrix},
+$$
+
+则
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(1,1,5).
+$$
+
+**解析：** 由于 $\displaystyle A$ 与 $\displaystyle B$ 相似，所以它们的迹和行列式分别相等。
+
+先比较迹：
+
+$$
+\displaystyle \operatorname{tr}(A)=a+3,
+\qquad
+\operatorname{tr}(B)=b+2,
+$$
+
+故
+
+$$
+\displaystyle b=a+1.
+$$
+
+再比较行列式：
+
+$$
+\begin{aligned}
+\displaystyle |A|
+&=\begin{vmatrix}
+0&2&-3\\
+-1&3&-3\\
+1&-2&a
+\end{vmatrix}\\
+&=2a-3,
+\end{aligned}
+$$
+
+而
+
+$$
+\displaystyle |B|=b.
+$$
+
+因此
+
+$$
+\displaystyle b=2a-3.
+$$
+
+联立
+
+$$
+\displaystyle b=a+1,
+\qquad
+b=2a-3,
+$$
+
+得
+
+$$
+\displaystyle a=4,
+\qquad
+b=5.
+$$
+
+于是
+
+$$
+\displaystyle A=\begin{pmatrix}
+0&2&-3\\
+-1&3&-3\\
+1&-2&4
+\end{pmatrix}.
+$$
+
+其特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda&-2&3\\
+1&\lambda-3&3\\
+-1&2&\lambda-4
+\end{vmatrix}\\
+&=(\lambda-1)^2(\lambda-5).
+\end{aligned}
+$$
+
+故特征值为
+
+$$
+\displaystyle \lambda=1\ \text{（二重）},
+\qquad
+\lambda=5.
+$$
+
+当 $\displaystyle \lambda=1$ 时，解
+
+$$
+\displaystyle (A-E)x=0,
+$$
+
+可取两个线性无关的特征向量
+
+$$
+\displaystyle \xi_1=\begin{pmatrix}2\\1\\0\end{pmatrix},
+\qquad
+\xi_2=\begin{pmatrix}-3\\0\\1\end{pmatrix}.
+$$
+
+当 $\displaystyle \lambda=5$ 时，解
+
+$$
+\displaystyle (A-5E)x=0,
+$$
+
+可取特征向量
+
+$$
+\displaystyle \xi_3=\begin{pmatrix}-1\\-1\\1\end{pmatrix}.
+$$
+
+令
+
+$$
+\displaystyle P=(\xi_1,\xi_2,\xi_3)
+=\begin{pmatrix}
+2&-3&-1\\
+1&0&-1\\
+0&1&1
+\end{pmatrix}.
+$$
+
+由于
+
+$$
+\displaystyle |P|=4\ne0,
+$$
+
+所以 $\displaystyle P$ 可逆。由
+
+$$
+\displaystyle AP=P\operatorname{diag}(1,1,5),
+$$
+
+得到
+
+$$
+\displaystyle P^{-1}AP=\operatorname{diag}(1,1,5).
+$$
+
+</details>
+
+### （三）相似对角化的综合应用
+
+1. **【1995-5-8分】** 设三阶矩阵 $\displaystyle A$ 满足
+
+$$
+\displaystyle A\alpha_i=i\alpha_i\qquad(i=1,2,3),
+$$
+
+其中列向量
+
+$$
+\displaystyle \alpha_1=\begin{pmatrix}1\\2\\2\end{pmatrix},
+\qquad
+\alpha_2=\begin{pmatrix}2\\-2\\1\end{pmatrix},
+\qquad
+\alpha_3=\begin{pmatrix}-2\\-1\\2\end{pmatrix}.
+$$
+
+试求矩阵 $\displaystyle A$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+<div className="exercise-label-row">
+<strong>答案：</strong>
+<div className="exercise-label-body">
+
+$$
+\displaystyle A=\begin{pmatrix}
+\dfrac{7}{3}&0&-\dfrac{2}{3}\\[2mm]
+0&\dfrac{5}{3}&-\dfrac{2}{3}\\[2mm]
+-\dfrac{2}{3}&-\dfrac{2}{3}&2
+\end{pmatrix}.
+$$
+
+</div>
+</div>
+
+**解析：** 由题设，$\displaystyle \alpha_1,\alpha_2,\alpha_3$ 分别是 $\displaystyle A$ 属于特征值 $\displaystyle 1,2,3$ 的特征向量。
+
+令
+
+$$
+\displaystyle P=(\alpha_1,\alpha_2,\alpha_3)
+=\begin{pmatrix}
+1&2&-2\\
+2&-2&-1\\
+2&1&2
+\end{pmatrix}.
+$$
+
+计算得
+
+$$
+\displaystyle |P|=-27\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。又有
+
+$$
+\displaystyle AP=P\begin{pmatrix}
+1&0&0\\
+0&2&0\\
+0&0&3
+\end{pmatrix}.
+$$
+
+因此
+
+$$
+\displaystyle A=P\begin{pmatrix}
+1&0&0\\
+0&2&0\\
+0&0&3
+\end{pmatrix}P^{-1}.
+$$
+
+将矩阵相乘，得
+
+$$
+\displaystyle A=\begin{pmatrix}
+\dfrac{7}{3}&0&-\dfrac{2}{3}\\[2mm]
+0&\dfrac{5}{3}&-\dfrac{2}{3}\\[2mm]
+-\dfrac{2}{3}&-\dfrac{2}{3}&2
+\end{pmatrix}.
+$$
+
+也可直接验证
+
+$$
+\displaystyle A\alpha_1=\alpha_1,
+\qquad
+A\alpha_2=2\alpha_2,
+\qquad
+A\alpha_3=3\alpha_3.
+$$
+
+</details>
+
+---
+
+2. **【2000-1-8分】** 某试验性生产线每年一月份进行熟练工与非熟练工的人数统计，然后将 $\displaystyle \dfrac{1}{6}$ 熟练工支援其他生产部门，其缺额由招收新的非熟练工补齐。新、老非熟练工经过培训及实践至年终考核有 $\displaystyle \dfrac{2}{5}$ 成为熟练工。
+
+设第 $\displaystyle n$ 年一月份统计的熟练工和非熟练工所占百分比分别为 $\displaystyle x_n$ 和 $\displaystyle y_n$，记成向量
+
+$$
+\displaystyle \begin{pmatrix}x_n\\y_n\end{pmatrix}.
+$$
+
+（1）求 $\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}$ 与 $\displaystyle \begin{pmatrix}x_n\\y_n\end{pmatrix}$ 的关系式并写成矩阵形式；
+
+（2）验证 $\displaystyle \eta_1=\begin{pmatrix}4\\1\end{pmatrix}$，$\displaystyle \eta_2=\begin{pmatrix}-1\\1\end{pmatrix}$ 是 $\displaystyle A$ 的两个线性无关的特征向量，并求出相应的特征值；
+
+（3）当 $\displaystyle \begin{pmatrix}x_1\\y_1\end{pmatrix}=\begin{pmatrix}\dfrac{1}{2}\\[1mm]\dfrac{1}{2}\end{pmatrix}$ 时，求 $\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}
+=A\begin{pmatrix}x_n\\y_n\end{pmatrix},
+\qquad
+A=\begin{pmatrix}
+\dfrac{9}{10}&\dfrac{2}{5}\\[2mm]
+\dfrac{1}{10}&\dfrac{3}{5}
+\end{pmatrix}.
+$$
+
+（2）$\displaystyle \eta_1,\eta_2$ 对应的特征值分别为
+
+$$
+\displaystyle \lambda_1=1,
+\qquad
+\lambda_2=\dfrac{1}{2}.
+$$
+
+（3）
+
+$$
+\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}
+=\dfrac{1}{5}\begin{pmatrix}4\\1\end{pmatrix}
++\dfrac{3}{10}\left(\dfrac{1}{2}\right)^n
+\begin{pmatrix}-1\\1\end{pmatrix}.
+$$
+
+即
+
+$$
+\displaystyle x_{n+1}=\dfrac{4}{5}-\dfrac{3}{10}\left(\dfrac{1}{2}\right)^n,
+$$
+
+$$
+\displaystyle y_{n+1}=\dfrac{1}{5}+\dfrac{3}{10}\left(\dfrac{1}{2}\right)^n.
+$$
+
+**解析：** 第 $\displaystyle n$ 年一月份熟练工所占比例为 $\displaystyle x_n$。支援其他部门后，留下的熟练工比例为
+
+$$
+\displaystyle \dfrac{5}{6}x_n.
+$$
+
+离开的熟练工人数由新招非熟练工补齐，因此参加培训的非熟练工比例为
+
+$$
+\displaystyle y_n+\dfrac{1}{6}x_n.
+$$
+
+其中 $\displaystyle \dfrac{2}{5}$ 在年终成为熟练工，故
+
+$$
+\begin{aligned}
+\displaystyle x_{n+1}
+&=\dfrac{5}{6}x_n+\dfrac{2}{5}\left(y_n+\dfrac{1}{6}x_n\right)\\
+&=\dfrac{9}{10}x_n+\dfrac{2}{5}y_n.
+\end{aligned}
+$$
+
+剩余 $\displaystyle \dfrac{3}{5}$ 仍为非熟练工，因此
+
+$$
+\begin{aligned}
+\displaystyle y_{n+1}
+&=\dfrac{3}{5}\left(y_n+\dfrac{1}{6}x_n\right)\\
+&=\dfrac{1}{10}x_n+\dfrac{3}{5}y_n.
+\end{aligned}
+$$
+
+故转移关系为
+
+$$
+\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}
+=\begin{pmatrix}
+\dfrac{9}{10}&\dfrac{2}{5}\\[2mm]
+\dfrac{1}{10}&\dfrac{3}{5}
+\end{pmatrix}
+\begin{pmatrix}x_n\\y_n\end{pmatrix}.
+$$
+
+记上述矩阵为 $\displaystyle A$。直接计算：
+
+$$
+\displaystyle A\eta_1
+=\begin{pmatrix}
+\dfrac{9}{10}&\dfrac{2}{5}\\[2mm]
+\dfrac{1}{10}&\dfrac{3}{5}
+\end{pmatrix}
+\begin{pmatrix}4\\1\end{pmatrix}
+=\begin{pmatrix}4\\1\end{pmatrix}
+=\eta_1,
+$$
+
+所以 $\displaystyle \eta_1$ 对应特征值 $\displaystyle 1$。
+
+同理，
+
+$$
+\displaystyle A\eta_2
+=\begin{pmatrix}
+\dfrac{9}{10}&\dfrac{2}{5}\\[2mm]
+\dfrac{1}{10}&\dfrac{3}{5}
+\end{pmatrix}
+\begin{pmatrix}-1\\1\end{pmatrix}
+=\dfrac{1}{2}\begin{pmatrix}-1\\1\end{pmatrix},
+$$
+
+所以 $\displaystyle \eta_2$ 对应特征值 $\displaystyle \dfrac{1}{2}$。
+
+又
+
+$$
+\displaystyle \begin{pmatrix}\dfrac{1}{2}\\[1mm]\dfrac{1}{2}\end{pmatrix}
+=\dfrac{1}{5}\eta_1+\dfrac{3}{10}\eta_2.
+$$
+
+于是
+
+$$
+\begin{aligned}
+\displaystyle \begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}
+&=A^n\begin{pmatrix}x_1\\y_1\end{pmatrix}\\
+&=\dfrac{1}{5}A^n\eta_1+\dfrac{3}{10}A^n\eta_2\\
+&=\dfrac{1}{5}\eta_1+\dfrac{3}{10}\left(\dfrac{1}{2}\right)^n\eta_2.
+\end{aligned}
+$$
+
+从而得到所求结果。
+
+</details>
+
+---
+
+3. **【2016-123-11分】** 已知矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+0&-1&1\\
+2&-3&0\\
+0&0&0
+\end{pmatrix}.
+$$
+
+（1）求 $\displaystyle A^{99}$；
+
+（2）设三阶矩阵 $\displaystyle B=(\alpha_1,\alpha_2,\alpha_3)$ 满足 $\displaystyle B^2=BA$，记
+
+$$
+\displaystyle B^{100}=(\beta_1,\beta_2,\beta_3),
+$$
+
+将 $\displaystyle \beta_1,\beta_2,\beta_3$ 分别表示为 $\displaystyle \alpha_1,\alpha_2,\alpha_3$ 的线性组合。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\displaystyle A^{99}=\begin{pmatrix}
+2^{99}-2&1-2^{99}&2-2^{98}\\
+2^{100}-2&1-2^{100}&2-2^{99}\\
+0&0&0
+\end{pmatrix}.
+$$
+
+（2）
+
+$$
+\displaystyle \beta_1=(2^{99}-2)\alpha_1+(2^{100}-2)\alpha_2,
+$$
+
+$$
+\displaystyle \beta_2=(1-2^{99})\alpha_1+(1-2^{100})\alpha_2,
+$$
+
+$$
+\displaystyle \beta_3=(2-2^{98})\alpha_1+(2-2^{99})\alpha_2.
+$$
+
+**解析：** 矩阵 $\displaystyle A$ 的特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda&1&-1\\
+-2&\lambda+3&0\\
+0&0&\lambda
+\end{vmatrix}\\
+&=\lambda(\lambda+1)(\lambda+2).
+\end{aligned}
+$$
+
+故 $\displaystyle A$ 的特征值为
+
+$$
+\displaystyle 0,-1,-2.
+$$
+
+三个特征值互不相同，所以 $\displaystyle A$ 可相似对角化。
+
+设二次多项式
+
+$$
+\displaystyle p(t)=c_1t+c_2t^2
+$$
+
+满足在 $\displaystyle t=0,-1,-2$ 时
+
+$$
+\displaystyle p(t)=t^{99}.
+$$
+
+由
+
+$$
+\displaystyle -c_1+c_2=-1,
+$$
+
+$$
+\displaystyle -2c_1+4c_2=-2^{99},
+$$
+
+解得
+
+$$
+\displaystyle c_1=2-2^{98},
+\qquad
+c_2=1-2^{98}.
+$$
+
+因此
+
+$$
+\displaystyle A^{99}=(2-2^{98})A+(1-2^{98})A^2.
+$$
+
+而
+
+$$
+\displaystyle A^2=\begin{pmatrix}
+-2&3&0\\
+-6&7&2\\
+0&0&0
+\end{pmatrix}.
+$$
+
+代入整理，得
+
+$$
+\displaystyle A^{99}=\begin{pmatrix}
+2^{99}-2&1-2^{99}&2-2^{98}\\
+2^{100}-2&1-2^{100}&2-2^{99}\\
+0&0&0
+\end{pmatrix}.
+$$
+
+由 $\displaystyle B^2=BA$，归纳可得，对任意 $\displaystyle n\ge2$，
+
+$$
+\displaystyle B^n=BA^{n-1}.
+$$
+
+事实上，从 $\displaystyle B^2=BA$ 左乘 $\displaystyle B^{n-2}$，逐次得到
+
+$$
+\displaystyle B^n=B^{n-1}A=\cdots=BA^{n-1}.
+$$
+
+故
+
+$$
+\displaystyle B^{100}=BA^{99}.
+$$
+
+由于
+
+$$
+\displaystyle B=(\alpha_1,\alpha_2,\alpha_3),
+$$
+
+将 $\displaystyle A^{99}$ 的各列作为系数列，即有
+
+$$
+\begin{aligned}
+\displaystyle \beta_1
+&=(2^{99}-2)\alpha_1+(2^{100}-2)\alpha_2,\\
+\displaystyle \beta_2
+&=(1-2^{99})\alpha_1+(1-2^{100})\alpha_2,\\
+\displaystyle \beta_3
+&=(2-2^{98})\alpha_1+(2-2^{99})\alpha_2.
+\end{aligned}
+$$
+
+</details>
+
+---
+
+4. **【2019-123-11分】** 已知矩阵
+
+$$
+\displaystyle A=\begin{pmatrix}
+-2&-2&1\\
+2&x&-2\\
+0&0&-2
+\end{pmatrix}
+$$
+
+与
+
+$$
+\displaystyle B=\begin{pmatrix}
+2&1&0\\
+0&-1&0\\
+0&0&y
+\end{pmatrix}
+$$
+
+相似。
+
+（1）求 $\displaystyle x,y$；
+
+（2）求可逆矩阵 $\displaystyle P$，使得 $\displaystyle P^{-1}AP=B$。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）
+
+$$
+\displaystyle x=3,\qquad y=-2.
+$$
+
+（2）可取
+
+$$
+\displaystyle P=\begin{pmatrix}
+1&-1&1\\
+-2&0&-2\\
+0&0&-4
+\end{pmatrix},
+$$
+
+此时
+
+$$
+\displaystyle P^{-1}AP=B.
+$$
+
+**解析：** 由于 $\displaystyle A$ 与 $\displaystyle B$ 相似，它们具有相同的特征多项式。
+
+先计算 $\displaystyle A$ 的特征多项式：
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-A|
+&=\begin{vmatrix}
+\lambda+2&2&-1\\
+-2&\lambda-x&2\\
+0&0&\lambda+2
+\end{vmatrix}\\
+&=(\lambda+2)
+\begin{vmatrix}
+\lambda+2&2\\
+-2&\lambda-x
+\end{vmatrix}\\
+&=(\lambda+2)\big[(\lambda+2)(\lambda-x)+4\big].
+\end{aligned}
+$$
+
+而 $\displaystyle B$ 为上三角矩阵，其特征值为
+
+$$
+\displaystyle 2,-1,y.
+$$
+
+矩阵 $\displaystyle A$ 显然有特征值 $\displaystyle -2$，因此由相似矩阵特征值相同可知
+
+$$
+\displaystyle y=-2.
+$$
+
+于是 $\displaystyle A$ 的另外两个特征值应为 $\displaystyle 2,-1$，故
+
+$$
+\displaystyle (\lambda+2)(\lambda-x)+4=(\lambda-2)(\lambda+1).
+$$
+
+展开两边：
+
+$$
+\displaystyle \lambda^2+(2-x)\lambda-2x+4
+=\lambda^2-\lambda-2.
+$$
+
+比较系数得
+
+$$
+\displaystyle 2-x=-1,
+$$
+
+所以
+
+$$
+\displaystyle x=3.
+$$
+
+下面求 $\displaystyle P$。令
+
+$$
+\displaystyle P=(p_1,p_2,p_3).
+$$
+
+由
+
+$$
+\displaystyle AP=PB
+$$
+
+可知各列应满足
+
+$$
+\displaystyle Ap_1=2p_1,
+$$
+
+$$
+\displaystyle Ap_2=p_1-p_2,
+$$
+
+$$
+\displaystyle Ap_3=-2p_3.
+$$
+
+当 $\displaystyle x=3$ 时，
+
+$$
+\displaystyle A=\begin{pmatrix}
+-2&-2&1\\
+2&3&-2\\
+0&0&-2
+\end{pmatrix}.
+$$
+
+对特征值 $\displaystyle 2$，解
+
+$$
+\displaystyle (A-2E)p_1=0,
+$$
+
+可取
+
+$$
+\displaystyle p_1=\begin{pmatrix}1\\-2\\0\end{pmatrix}.
+$$
+
+再解
+
+$$
+\displaystyle (A+E)p_2=p_1,
+$$
+
+可取
+
+$$
+\displaystyle p_2=\begin{pmatrix}-1\\0\\0\end{pmatrix}.
+$$
+
+对特征值 $\displaystyle -2$，解
+
+$$
+\displaystyle (A+2E)p_3=0,
+$$
+
+可取
+
+$$
+\displaystyle p_3=\begin{pmatrix}1\\-2\\-4\end{pmatrix}.
+$$
+
+因此可取
+
+$$
+\displaystyle P=(p_1,p_2,p_3)
+=\begin{pmatrix}
+1&-1&1\\
+-2&0&-2\\
+0&0&-4
+\end{pmatrix}.
+$$
+
+并且
+
+$$
+\displaystyle |P|=8\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。直接验证得
+
+$$
+\displaystyle AP=PB,
+$$
+
+从而
+
+$$
+\displaystyle P^{-1}AP=B.
+$$
+
+</details>
+
+---
+
+5. **【2020-123-11分】** 设 $\displaystyle A$ 为2阶矩阵，$\displaystyle P=(\alpha,A\alpha)$，其中 $\displaystyle \alpha$ 是非零向量且不是 $\displaystyle A$ 的特征向量。
+
+（1）证明 $\displaystyle P$ 为可逆矩阵；
+
+（2）若
+
+$$
+\displaystyle A^2\alpha+A\alpha-6\alpha=0,
+$$
+
+求 $\displaystyle P^{-1}AP$，并判断 $\displaystyle A$ 是否相似于对角矩阵。
+
+<details>
+<summary>查看答案与解析</summary>
+
+**答案：** （1）$\displaystyle P$ 可逆。
+
+（2）
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+0&6\\
+1&-1
+\end{pmatrix}.
+$$
+
+矩阵 $\displaystyle A$ 可以相似对角化，且
+
+$$
+\displaystyle A\sim\begin{pmatrix}
+2&0\\
+0&-3
+\end{pmatrix}.
+$$
+
+**解析：** （1）证明 $\displaystyle P$ 可逆。
+
+矩阵
+
+$$
+\displaystyle P=(\alpha,A\alpha)
+$$
+
+的两列分别为 $\displaystyle \alpha$ 与 $\displaystyle A\alpha$。
+
+若这两个向量线性相关，则存在常数 $\displaystyle k$，使
+
+$$
+\displaystyle A\alpha=k\alpha.
+$$
+
+由于 $\displaystyle \alpha\ne0$，这说明 $\displaystyle \alpha$ 是 $\displaystyle A$ 的特征向量，与题设矛盾。
+
+所以 $\displaystyle \alpha$ 与 $\displaystyle A\alpha$ 线性无关。它们是两个线性无关的二维列向量，因此
+
+$$
+\displaystyle |P|\ne0,
+$$
+
+故 $\displaystyle P$ 可逆。
+
+（2）求 $\displaystyle P^{-1}AP$。
+
+由
+
+$$
+\displaystyle P=(\alpha,A\alpha),
+$$
+
+有
+
+$$
+\displaystyle AP=(A\alpha,A^2\alpha).
+$$
+
+题设给出
+
+$$
+\displaystyle A^2\alpha+A\alpha-6\alpha=0,
+$$
+
+即
+
+$$
+\displaystyle A^2\alpha=6\alpha-A\alpha.
+$$
+
+因此
+
+$$
+\begin{aligned}
+\displaystyle AP
+&=(A\alpha,6\alpha-A\alpha)\\
+&=(\alpha,A\alpha)
+\begin{pmatrix}
+0&6\\
+1&-1
+\end{pmatrix}.
+\end{aligned}
+$$
+
+于是
+
+$$
+\displaystyle AP=P\begin{pmatrix}
+0&6\\
+1&-1
+\end{pmatrix}.
+$$
+
+左乘 $\displaystyle P^{-1}$，得
+
+$$
+\displaystyle P^{-1}AP=\begin{pmatrix}
+0&6\\
+1&-1
+\end{pmatrix}.
+$$
+
+记
+
+$$
+\displaystyle C=\begin{pmatrix}
+0&6\\
+1&-1
+\end{pmatrix}.
+$$
+
+则其特征多项式为
+
+$$
+\begin{aligned}
+\displaystyle |\lambda E-C|
+&=\begin{vmatrix}
+\lambda&-6\\
+-1&\lambda+1
+\end{vmatrix}\\
+&=\lambda(\lambda+1)-6\\
+&=(\lambda-2)(\lambda+3).
+\end{aligned}
+$$
+
+所以 $\displaystyle C$ 有两个不同的特征值
+
+$$
+\displaystyle 2,-3.
+$$
+
+因此 $\displaystyle C$ 可相似对角化。又 $\displaystyle A$ 与 $\displaystyle C$ 相似，故 $\displaystyle A$ 也可相似对角化，并且
+
+$$
+\displaystyle A\sim\begin{pmatrix}
+2&0\\
+0&-3
+\end{pmatrix}.
+$$
+
+</details>
