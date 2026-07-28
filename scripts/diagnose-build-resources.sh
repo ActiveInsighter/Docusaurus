@@ -24,8 +24,10 @@ PY
 
 SAMPLES_FILE="resource-samples.tsv"
 BUILD_LOG="build-output.log"
+SUMMARY_FILE="benchmark-summary.txt"
 : >"${SAMPLES_FILE}"
 : >"${BUILD_LOG}"
+: >"${SUMMARY_FILE}"
 
 sample_to_file() {
   local node_total=0
@@ -110,30 +112,32 @@ cache_kb=$(du -sk node_modules/.cache 2>/dev/null | awk '{print $1}')
 build_kb=$(du -sk build 2>/dev/null | awk '{print $1}')
 warning_count=$(grep -c '^\[WARNING\]' "${BUILD_LOG}" 2>/dev/null || true)
 
-printf '%s\n' 'BENCHMARK_SUMMARY_BEGIN'
-printf 'variant=rspack_persistent_cache_false\n'
-printf 'exit_code=%s\n' "${exit_code}"
-printf 'elapsed_seconds=%s\n' "$((end_epoch - start_epoch))"
-printf 'sample_count=%s\n' "${sample_count:-0}"
-printf 'min_mem_available_kb=%s\n' "${min_mem_available:-0}"
-printf 'min_mem_free_kb=%s\n' "${min_mem_free:-0}"
-printf 'max_node_total_kb=%s\n' "${max_node_total:-0}"
-printf 'max_node_single_kb=%s\n' "${max_node_single:-0}"
-printf 'start_disk_available_kb=%s\n' "${start_disk_kb}"
-printf 'end_disk_available_kb=%s\n' "${end_disk_kb}"
-printf 'min_disk_available_kb=%s\n' "${min_disk_available:-0}"
-printf 'disk_consumed_kb=%s\n' "$((start_disk_kb - end_disk_kb))"
-printf 'rspack_cache_size_kb=%s\n' "${cache_kb:-0}"
-printf 'build_size_kb=%s\n' "${build_kb:-0}"
-printf 'warning_count=%s\n' "${warning_count:-0}"
-printf '%s\n' 'PERF_LINES_BEGIN'
-grep -E '\[PERF\].*(Bundling with rspack|SSG( \(current thread\))? -|Build > zh-Hans -|\[PERF\] Build -)' "${BUILD_LOG}" || true
-printf '%s\n' 'PERF_LINES_END'
-if (( exit_code != 0 )); then
-  printf '%s\n' 'ERROR_TAIL_BEGIN'
-  tail -n 30 "${BUILD_LOG}" || true
-  printf '%s\n' 'ERROR_TAIL_END'
-fi
-printf '%s\n' 'BENCHMARK_SUMMARY_END'
+{
+  printf '%s\n' 'BENCHMARK_SUMMARY_BEGIN'
+  printf 'variant=rspack_persistent_cache_false\n'
+  printf 'exit_code=%s\n' "${exit_code}"
+  printf 'elapsed_seconds=%s\n' "$((end_epoch - start_epoch))"
+  printf 'sample_count=%s\n' "${sample_count:-0}"
+  printf 'min_mem_available_kb=%s\n' "${min_mem_available:-0}"
+  printf 'min_mem_free_kb=%s\n' "${min_mem_free:-0}"
+  printf 'max_node_total_kb=%s\n' "${max_node_total:-0}"
+  printf 'max_node_single_kb=%s\n' "${max_node_single:-0}"
+  printf 'start_disk_available_kb=%s\n' "${start_disk_kb}"
+  printf 'end_disk_available_kb=%s\n' "${end_disk_kb}"
+  printf 'min_disk_available_kb=%s\n' "${min_disk_available:-0}"
+  printf 'disk_consumed_kb=%s\n' "$((start_disk_kb - end_disk_kb))"
+  printf 'rspack_cache_size_kb=%s\n' "${cache_kb:-0}"
+  printf 'build_size_kb=%s\n' "${build_kb:-0}"
+  printf 'warning_count=%s\n' "${warning_count:-0}"
+  printf '%s\n' 'PERF_LINES_BEGIN'
+  grep -E '\[PERF\].*(Bundling with rspack|SSG( \(current thread\))? -|Build > zh-Hans -|\[PERF\] Build -)' "${BUILD_LOG}" || true
+  printf '%s\n' 'PERF_LINES_END'
+  if (( exit_code != 0 )); then
+    printf '%s\n' 'ERROR_TAIL_BEGIN'
+    tail -n 30 "${BUILD_LOG}" || true
+    printf '%s\n' 'ERROR_TAIL_END'
+  fi
+  printf '%s\n' 'BENCHMARK_SUMMARY_END'
+} | tee "${SUMMARY_FILE}"
 
 exit "${exit_code}"
