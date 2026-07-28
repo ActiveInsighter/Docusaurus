@@ -213,9 +213,9 @@ const config: Config = {
     v4: true,
     faster: {
       // The question bank contains tens of thousands of formulas. Keep the
-      // default parallel SSG and MDX cross-compiler cache enabled so the
-      // KaTeX-heavy production build does not fall back to serial processing.
-      ssgWorkerThreads: true,
+      // cross-compiler cache enabled, but avoid worker-thread memory pressure
+      // while statically rendering the KaTeX-heavy production build.
+      ssgWorkerThreads: false,
       mdxCrossCompilerCache: true,
     },
   },
