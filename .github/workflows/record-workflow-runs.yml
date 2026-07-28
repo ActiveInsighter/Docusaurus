@@ -42,6 +42,15 @@ jobs:
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMPLETED_WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          COMPLETED_RUN_ID: ${{ github.event.workflow_run.id }}
+          COMPLETED_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+          COMPLETED_RUN_STATUS: ${{ github.event.workflow_run.status }}
+          COMPLETED_RUN_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          COMPLETED_RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          COMPLETED_RUN_URL: ${{ github.event.workflow_run.html_url }}
+          COMPLETED_RUN_JOBS_URL: ${{ github.event.workflow_run.jobs_url }}
+          COMPLETED_RUN_LOGS_URL: ${{ github.event.workflow_run.logs_url }}
         run: |
           set -euo pipefail
 
@@ -54,6 +63,23 @@ jobs:
             git reset --hard origin/main
 
             node scripts/sync-workflow-runs.mjs
+
+            if [[ "${COMPLETED_WORKFLOW_NAME:-}" == "Diagnose build resources" ]]; then
+              mkdir -p .github/workflow-runs/diagnose
+              jq -n \
+                --arg workflow "${COMPLETED_WORKFLOW_NAME}" \
+                --arg run_id "${COMPLETED_RUN_ID}" \
+                --arg run_number "${COMPLETED_RUN_NUMBER}" \
+                --arg status "${COMPLETED_RUN_STATUS}" \
+                --arg conclusion "${COMPLETED_RUN_CONCLUSION}" \
+                --arg head_sha "${COMPLETED_RUN_HEAD_SHA}" \
+                --arg run_url "${COMPLETED_RUN_URL}" \
+                --arg jobs_url "${COMPLETED_RUN_JOBS_URL}" \
+                --arg logs_url "${COMPLETED_RUN_LOGS_URL}" \
+                '{workflow: $workflow, run_id: $run_id, run_number: $run_number, status: $status, conclusion: $conclusion, head_sha: $head_sha, run_url: $run_url, jobs_url: $jobs_url, logs_url: $logs_url}' \
+                > .github/workflow-runs/diagnose/latest-event.json
+            fi
+
             git add .github/workflow-runs
 
             if git diff --cached --quiet; then
