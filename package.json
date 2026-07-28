@@ -9,7 +9,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "docusaurus build --no-minify",
     "check": "npm run typecheck && npm run check:lzy && npm run check:408 && npm run check:question-performance && npm run test:workflow-runs && npm run build",
     "check:408": "node scripts/check-408-mock-mdx.mjs",
     "check:lzy": "node scripts/check-lizhengyuan-mdx.mjs",
