@@ -53,8 +53,17 @@ jobs:
         shell: bash
         env:
           SKIP_NPM_CI: "1"
-          RESOURCE_SAMPLE_SECONDS: "10"
+          RESOURCE_SAMPLE_SECONDS: "2"
         run: bash scripts/diagnose-build-resources.sh
+
+      - name: Upload benchmark summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-summary
+          path: benchmark-summary.txt
+          if-no-files-found: warn
+          retention-days: 1
 
       - name: Check Cloudflare authentication
         if: >-
@@ -91,3 +100,17 @@ jobs:
           --project-name="${CLOUDFLARE_PAGES_PROJECT}"
           --branch=main
           --commit-hash="${GITHUB_SHA}"
+
+  benchmark-report:
+    name: Benchmark report
+    if: always()
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download benchmark summary
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-summary
+
+      - name: Print benchmark summary
+        run: cat benchmark-summary.txt
