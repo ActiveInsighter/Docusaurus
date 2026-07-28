@@ -46,6 +46,9 @@ jobs:
       - name: Check TypeScript
         run: npm run typecheck
 
+      - name: Validate math MDX files individually
+        run: node scripts/validate-math-mdx.mjs
+
       - name: Test workflow run index
         run: npm run test:workflow-runs
 
