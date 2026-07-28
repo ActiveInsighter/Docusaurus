@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-28T06:38:35.871Z",
+  "generated_at": "2026-07-28T06:41:54.821Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
   },
   "latest_run": {
-    "run_id": "30335433355",
-    "run_number": 175,
+    "run_id": "30335622600",
+    "run_number": 176,
     "run_attempt": 1,
     "workflow": "Build and deploy Docusaurus",
     "event": "workflow_dispatch",
     "status": "completed",
-    "conclusion": "failure",
+    "conclusion": "success",
     "branch": "codex/diagnose-math-module",
-    "head_sha": "2a82209ebe28231d57e62c17c6e00be9117d7108",
+    "head_sha": "c05d1749ccf84b2882f7a91c67beb7568ce7a997",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-28T06:37:30Z",
-    "run_started_at": "2026-07-28T06:37:30Z",
-    "updated_at": "2026-07-28T06:38:17Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30335433355",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335433355/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335433355/logs",
+    "created_at": "2026-07-28T06:40:55Z",
+    "run_started_at": "2026-07-28T06:40:55Z",
+    "updated_at": "2026-07-28T06:41:39Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30335622600",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335622600/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335622600/logs",
     "workflow_key": "build",
     "workflow_file": "ci.yaml"
   },
@@ -48,6 +48,27 @@
     "workflow_file": "ci.yaml"
   },
   "recent_runs": [
+    {
+      "run_id": "30335622600",
+      "run_number": 176,
+      "run_attempt": 1,
+      "workflow": "Build and deploy Docusaurus",
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "branch": "codex/diagnose-math-module",
+      "head_sha": "c05d1749ccf84b2882f7a91c67beb7568ce7a997",
+      "actor": "ActiveInsighter",
+      "triggering_actor": "ActiveInsighter",
+      "created_at": "2026-07-28T06:40:55Z",
+      "run_started_at": "2026-07-28T06:40:55Z",
+      "updated_at": "2026-07-28T06:41:39Z",
+      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30335622600",
+      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335622600/jobs",
+      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30335622600/logs",
+      "workflow_key": "build",
+      "workflow_file": "ci.yaml"
+    },
     {
       "run_id": "30335433355",
       "run_number": 175,
@@ -236,27 +257,6 @@
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30220263555/logs",
       "workflow_key": "update-content",
       "workflow_file": "update-content.yml"
-    },
-    {
-      "run_id": "30209717894",
-      "run_number": 168,
-      "run_attempt": 1,
-      "workflow": "Build and deploy Docusaurus",
-      "event": "push",
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "head_sha": "85cc40a31219ba34d8985a852671d55caa569dfb",
-      "actor": "ActiveInsighter",
-      "triggering_actor": "ActiveInsighter",
-      "created_at": "2026-07-26T16:08:09Z",
-      "run_started_at": "2026-07-26T16:08:09Z",
-      "updated_at": "2026-07-26T16:11:31Z",
-      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30209717894",
-      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30209717894/jobs",
-      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30209717894/logs",
-      "workflow_key": "build",
-      "workflow_file": "ci.yaml"
     }
   ],
   "workflows": [
@@ -265,7 +265,7 @@
       "workflow_file": "ci.yaml",
       "workflow": "Build and deploy Docusaurus",
       "retained_run_count": 10,
-      "latest_run_id": "30335433355",
+      "latest_run_id": "30335622600",
       "latest_failed_run_id": "30335433355"
     },
     {
