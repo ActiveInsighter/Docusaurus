@@ -1,5 +1,24 @@
 [
   {
+    "run_id": "30507072338",
+    "run_number": 222,
+    "run_attempt": 1,
+    "workflow": "Build and deploy Docusaurus",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "branch": "main",
+    "head_sha": "6cd400bfe7d1b8427145c8a91471aac348988b9e",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-07-30T01:56:53Z",
+    "run_started_at": "2026-07-30T01:56:53Z",
+    "updated_at": "2026-07-30T02:01:22Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30507072338",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30507072338/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30507072338/logs"
+  },
+  {
     "run_id": "30431253207",
     "run_number": 221,
     "run_attempt": 1,
@@ -169,24 +188,5 @@
     "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30364851195",
     "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30364851195/jobs",
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30364851195/logs"
-  },
-  {
-    "run_id": "30364345756",
-    "run_number": 212,
-    "run_attempt": 1,
-    "workflow": "Build and deploy Docusaurus",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "cancelled",
-    "branch": "diagnose/no-minify-memory",
-    "head_sha": "c6bb004de3eeeaaa459e9e8d97af26486d772f30",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-07-28T13:37:21Z",
-    "run_started_at": "2026-07-28T13:37:21Z",
-    "updated_at": "2026-07-28T13:45:20Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30364345756",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30364345756/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30364345756/logs"
   }
 ]
