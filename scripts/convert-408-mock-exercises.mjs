@@ -11,6 +11,7 @@ const sourcePath = path.join(
   '408模拟选择题详细解答_合并版_600题-Docusaurus公式格式化.md',
 );
 const docsRoot = path.join(projectRoot, 'docs', '408模拟选择题');
+const mockImageWebRoot = '/img/questions/408-mock';
 const generatedMarker =
   '{/* 此文件由 scripts/convert-408-mock-exercises.mjs 自动生成，请勿直接修改。 */}';
 
@@ -100,11 +101,29 @@ function cleanContentLines(lines) {
   );
 }
 
+function normalizeMockImageName(imagePath) {
+  const basename = path.basename(imagePath);
+  const jingchengMatch = basename.match(/^jc_(\d{2})_q(\d{2})\.png$/u);
+  if (jingchengMatch) {
+    return `jingcheng-set-${jingchengMatch[1]}-q${jingchengMatch[2]}.png`;
+  }
+
+  const wangdaoMatch = basename.match(
+    /^卷([一二三四五六七八])_Q(\d{2})_.+\.png$/u,
+  );
+  if (wangdaoMatch) {
+    const paperNumber = '一二三四五六七八'.indexOf(wangdaoMatch[1]) + 1;
+    return `wangdao-set-${String(paperNumber).padStart(2, '0')}-q${wangdaoMatch[2]}.png`;
+  }
+
+  throw new Error(`无法规范化模拟题图片名：${imagePath}`);
+}
+
 function replaceMissingImage(line) {
   const match = line.match(/^!\[([^\]]*)\]\((images\/[^)]+)\)$/u);
   if (!match) return line;
   const [, alt, imagePath] = match;
-  return `> **题图缺失：** ${alt || '未命名题图'}（原引用：\`${imagePath}\`）`;
+  return `![${alt || '模拟题题图'}](${mockImageWebRoot}/${normalizeMockImageName(imagePath)})`;
 }
 
 function ensureBlankLinesAroundBlocks(lines) {
@@ -627,10 +646,11 @@ async function main() {
         (left, right) => left.sourceLine - right.sourceLine,
       );
       const chapter = chapterQuestions[0].chapter;
-      const title = `408模拟选择题 · ${subject.name} · ${chapter.label}`;
+      const title = chapter.label;
+      const compactChapterLabel = chapter.label.replace(/^第\d+章\s*/u, '');
       const fileName =
         `${String(chapterNumber).padStart(2, '0')}-` +
-        `${safeFileSegment(chapter.label)}.mdx`;
+        `${safeFileSegment(compactChapterLabel)}.mdx`;
       const body = [
         '---',
         `sidebar_position: ${chapterNumber}`,

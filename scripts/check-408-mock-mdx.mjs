@@ -6,10 +6,12 @@ import remarkMath from 'remark-math';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const docsRoot = path.join(projectRoot, 'docs', '408模拟选择题');
+const staticRoot = path.join(projectRoot, 'static');
 const expectedFiles = 26;
 const expectedCategoryFiles = 5;
 const expectedQuestions = 600;
-const expectedMissingImages = 26;
+const expectedMissingImages = 0;
+const expectedQuestionImages = 26;
 const expectedSubjects = {
   '01-数据结构': {
     name: '数据结构',
@@ -140,6 +142,7 @@ if (
 
 let totalQuestions = 0;
 let totalMissingImages = 0;
+let totalQuestionImages = 0;
 const seenTags = new Set();
 const paperQuestions = new Map();
 const actualCounts = new Map();
@@ -158,7 +161,7 @@ for (const filePath of files) {
   if (!subjectConfig) {
     throw new Error(`${relativePath}: 科目目录不符合预期`);
   }
-  if (!/^\d{2}-第\d+章-.+\.mdx$/u.test(fileName)) {
+  if (!/^\d{2}-.+\.mdx$/u.test(fileName)) {
     throw new Error(`${relativePath}: 章节文件名不符合编号命名规则`);
   }
 
@@ -254,6 +257,23 @@ for (const filePath of files) {
 
   totalQuestions += details;
   totalMissingImages += countMatches(content, /^> \*\*题图缺失：\*\*/gmu);
+  const questionImages = [
+    ...content.matchAll(
+      /!\[[^\]]*\]\((\/img\/questions\/408-mock\/[^)]+)\)/gmu,
+    ),
+  ];
+  for (const imageMatch of questionImages) {
+    const imageFile = path.join(
+      staticRoot,
+      ...imageMatch[1].split('/').filter(Boolean),
+    );
+    try {
+      await fs.access(imageFile);
+    } catch {
+      throw new Error(`${relativePath}: 图片文件不存在：${imageMatch[1]}`);
+    }
+  }
+  totalQuestionImages += questionImages.length;
   actualCounts.set(groupKey, (actualCounts.get(groupKey) ?? 0) + details);
 }
 
@@ -315,7 +335,12 @@ if (totalMissingImages !== expectedMissingImages) {
     `应保留 ${expectedMissingImages} 个缺图提示，实际为 ${totalMissingImages} 个`,
   );
 }
+if (totalQuestionImages !== expectedQuestionImages) {
+  throw new Error(
+    `应有 ${expectedQuestionImages} 个模拟题图片引用，实际为 ${totalQuestionImages} 个`,
+  );
+}
 
 console.log(
-  `408模拟选择题校验通过：4 个科目目录，${files.length} 个章节文件，王道 320 题，竟成 280 题，共 ${totalQuestions} 个原生答案折叠区，${totalMissingImages} 个缺图提示`,
+  `408模拟选择题校验通过：4 个科目目录，${files.length} 个章节文件，王道 320 题，竟成 280 题，共 ${totalQuestions} 个原生答案折叠区，${totalQuestionImages} 个题图引用`,
 );
