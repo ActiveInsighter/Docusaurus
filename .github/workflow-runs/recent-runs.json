@@ -1,5 +1,26 @@
 [
   {
+    "run_id": "31639726529",
+    "run_number": 107,
+    "run_attempt": 1,
+    "workflow": "Update generated docs",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "branch": "main",
+    "head_sha": "2e8efc51b6f31dcd6b0643600998f62dc1d001a4",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-08-12T20:51:26Z",
+    "run_started_at": "2026-08-12T20:51:26Z",
+    "updated_at": "2026-08-12T20:56:51Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/31639726529",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/31639726529/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/31639726529/logs",
+    "workflow_key": "update-content",
+    "workflow_file": "update-content.yml"
+  },
+  {
     "run_id": "31535058212",
     "run_number": 106,
     "run_attempt": 1,
@@ -187,26 +208,5 @@
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30951623816/logs",
     "workflow_key": "update-content",
     "workflow_file": "update-content.yml"
-  },
-  {
-    "run_id": "30914505150",
-    "run_number": 225,
-    "run_attempt": 1,
-    "workflow": "Build and deploy Docusaurus",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "branch": "dependabot/npm_and_yarn/production-dependencies-a1f8c18e81",
-    "head_sha": "c64f67f831e4be8aa618295e84f46d83979c8d59",
-    "actor": "dependabot[bot]",
-    "triggering_actor": "dependabot[bot]",
-    "created_at": "2026-08-04T13:34:35Z",
-    "run_started_at": "2026-08-04T13:34:35Z",
-    "updated_at": "2026-08-04T13:38:46Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/30914505150",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30914505150/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/30914505150/logs",
-    "workflow_key": "build",
-    "workflow_file": "ci.yaml"
   }
 ]
