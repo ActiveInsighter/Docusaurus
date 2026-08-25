@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-25T11:19:53.510Z",
+  "generated_at": "2026-08-25T11:26:39.921Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
   },
   "latest_run": {
-    "run_id": "32841429014",
-    "run_number": 232,
+    "run_id": "32841884565",
+    "run_number": 233,
     "run_attempt": 1,
     "workflow": "Build and deploy Docusaurus",
     "event": "pull_request",
     "status": "completed",
-    "conclusion": "failure",
+    "conclusion": "success",
     "branch": "codex/replace-408-final-review-20260825",
-    "head_sha": "59251a2fdfcda69c648ff5014ca6dfdecd221b0a",
+    "head_sha": "6b410cfaa28e85714ceefb40e6b1202a0a8fdef5",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-08-25T11:16:02Z",
-    "run_started_at": "2026-08-25T11:16:02Z",
-    "updated_at": "2026-08-25T11:19:38Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32841429014",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841429014/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841429014/logs",
+    "created_at": "2026-08-25T11:21:26Z",
+    "run_started_at": "2026-08-25T11:21:26Z",
+    "updated_at": "2026-08-25T11:26:25Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32841884565",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841884565/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841884565/logs",
     "workflow_key": "build",
     "workflow_file": "ci.yaml"
   },
@@ -48,6 +48,27 @@
     "workflow_file": "ci.yaml"
   },
   "recent_runs": [
+    {
+      "run_id": "32841884565",
+      "run_number": 233,
+      "run_attempt": 1,
+      "workflow": "Build and deploy Docusaurus",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "branch": "codex/replace-408-final-review-20260825",
+      "head_sha": "6b410cfaa28e85714ceefb40e6b1202a0a8fdef5",
+      "actor": "ActiveInsighter",
+      "triggering_actor": "ActiveInsighter",
+      "created_at": "2026-08-25T11:21:26Z",
+      "run_started_at": "2026-08-25T11:21:26Z",
+      "updated_at": "2026-08-25T11:26:25Z",
+      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32841884565",
+      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841884565/jobs",
+      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841884565/logs",
+      "workflow_key": "build",
+      "workflow_file": "ci.yaml"
+    },
     {
       "run_id": "32841429014",
       "run_number": 232,
@@ -236,27 +257,6 @@
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32596768703/logs",
       "workflow_key": "update-content",
       "workflow_file": "update-content.yml"
-    },
-    {
-      "run_id": "32523897418",
-      "run_number": 116,
-      "run_attempt": 1,
-      "workflow": "Update generated docs",
-      "event": "schedule",
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "head_sha": "ccf0a824608bda8c7031a351972813023a4c786d",
-      "actor": "ActiveInsighter",
-      "triggering_actor": "ActiveInsighter",
-      "created_at": "2026-08-21T20:30:27Z",
-      "run_started_at": "2026-08-21T20:30:27Z",
-      "updated_at": "2026-08-21T20:36:31Z",
-      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32523897418",
-      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32523897418/jobs",
-      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32523897418/logs",
-      "workflow_key": "update-content",
-      "workflow_file": "update-content.yml"
     }
   ],
   "workflows": [
@@ -265,7 +265,7 @@
       "workflow_file": "ci.yaml",
       "workflow": "Build and deploy Docusaurus",
       "retained_run_count": 10,
-      "latest_run_id": "32841429014",
+      "latest_run_id": "32841884565",
       "latest_failed_run_id": "32841429014"
     },
     {
