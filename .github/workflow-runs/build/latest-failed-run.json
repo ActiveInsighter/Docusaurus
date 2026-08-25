@@ -1,19 +1,19 @@
 {
-  "run_id": "32840823236",
-  "run_number": 231,
+  "run_id": "32841429014",
+  "run_number": 232,
   "run_attempt": 1,
   "workflow": "Build and deploy Docusaurus",
   "event": "pull_request",
   "status": "completed",
   "conclusion": "failure",
   "branch": "codex/replace-408-final-review-20260825",
-  "head_sha": "e88e43d364e51cc64cfb02cf79d834e75d9b0483",
+  "head_sha": "59251a2fdfcda69c648ff5014ca6dfdecd221b0a",
   "actor": "ActiveInsighter",
   "triggering_actor": "ActiveInsighter",
-  "created_at": "2026-08-25T11:09:08Z",
-  "run_started_at": "2026-08-25T11:09:08Z",
-  "updated_at": "2026-08-25T11:13:31Z",
-  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32840823236",
-  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32840823236/jobs",
-  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32840823236/logs"
+  "created_at": "2026-08-25T11:16:02Z",
+  "run_started_at": "2026-08-25T11:16:02Z",
+  "updated_at": "2026-08-25T11:19:38Z",
+  "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32841429014",
+  "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841429014/jobs",
+  "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32841429014/logs"
 }
