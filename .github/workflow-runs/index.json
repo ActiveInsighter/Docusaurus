@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T04:11:58.079Z",
+  "generated_at": "2026-08-29T02:51:42.626Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
   },
   "latest_run": {
-    "run_id": "33140867395",
-    "run_number": 122,
+    "run_id": "33229747869",
+    "run_number": 123,
     "run_attempt": 1,
     "workflow": "Update generated docs",
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
     "branch": "main",
-    "head_sha": "b4dc0855920687ad8ed78b1fa8ed4261ef4c865d",
+    "head_sha": "f4058116e98ece2ad2a409ab5011f05e6a67112a",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-08-28T04:07:01Z",
-    "run_started_at": "2026-08-28T04:07:01Z",
-    "updated_at": "2026-08-28T04:11:45Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33140867395",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33140867395/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33140867395/logs",
+    "created_at": "2026-08-29T02:45:54Z",
+    "run_started_at": "2026-08-29T02:45:54Z",
+    "updated_at": "2026-08-29T02:51:26Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33229747869",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/logs",
     "workflow_key": "update-content",
     "workflow_file": "update-content.yml"
   },
@@ -48,6 +48,27 @@
     "workflow_file": "ci.yaml"
   },
   "recent_runs": [
+    {
+      "run_id": "33229747869",
+      "run_number": 123,
+      "run_attempt": 1,
+      "workflow": "Update generated docs",
+      "event": "schedule",
+      "status": "completed",
+      "conclusion": "success",
+      "branch": "main",
+      "head_sha": "f4058116e98ece2ad2a409ab5011f05e6a67112a",
+      "actor": "ActiveInsighter",
+      "triggering_actor": "ActiveInsighter",
+      "created_at": "2026-08-29T02:45:54Z",
+      "run_started_at": "2026-08-29T02:45:54Z",
+      "updated_at": "2026-08-29T02:51:26Z",
+      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33229747869",
+      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/jobs",
+      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/logs",
+      "workflow_key": "update-content",
+      "workflow_file": "update-content.yml"
+    },
     {
       "run_id": "33140867395",
       "run_number": 122,
@@ -236,27 +257,6 @@
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32810598415/logs",
       "workflow_key": "build",
       "workflow_file": "ci.yaml"
-    },
-    {
-      "run_id": "32810180413",
-      "run_number": 228,
-      "run_attempt": 1,
-      "workflow": "Build and deploy Docusaurus",
-      "event": "pull_request",
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "codex/replace-408-final-review-20260825",
-      "head_sha": "a3624615e567e3496d6e453c2832726ea3790703",
-      "actor": "ActiveInsighter",
-      "triggering_actor": "ActiveInsighter",
-      "created_at": "2026-08-25T04:45:37Z",
-      "run_started_at": "2026-08-25T04:45:37Z",
-      "updated_at": "2026-08-25T04:50:05Z",
-      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/32810180413",
-      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32810180413/jobs",
-      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/32810180413/logs",
-      "workflow_key": "build",
-      "workflow_file": "ci.yaml"
     }
   ],
   "workflows": [
@@ -273,7 +273,7 @@
       "workflow_file": "update-content.yml",
       "workflow": "Update generated docs",
       "retained_run_count": 10,
-      "latest_run_id": "33140867395",
+      "latest_run_id": "33229747869",
       "latest_failed_run_id": null
     },
     {
