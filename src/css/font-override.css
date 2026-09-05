@@ -1,0 +1,12 @@
+/*
+ * Keep the documentation UI on the locally bundled LXGW WenKai font.
+ * custom.css already declares the @font-face; this higher-specificity root
+ * override prevents later theme/font-source variables from switching the UI
+ * back to Noto Sans SC or a platform system font.
+ */
+html:root {
+  --ifm-font-family-base: "LXGW WenKai GB Screen", "Noto Sans SC Variable",
+    "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Microsoft YaHei", sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
