@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T22:20:17.082Z",
+  "generated_at": "2026-09-05T07:06:21.545Z",
   "retention": {
     "per_workflow": 10,
     "global": 10
   },
   "latest_run": {
-    "run_id": "33924713393",
-    "run_number": 130,
+    "run_id": "33951354491",
+    "run_number": 237,
     "run_attempt": 1,
-    "workflow": "Update generated docs",
-    "event": "schedule",
+    "workflow": "Build and deploy Docusaurus",
+    "event": "push",
     "status": "completed",
     "conclusion": "success",
     "branch": "main",
-    "head_sha": "4035678a2c1c396d0c873c01d497a09fe1875b2c",
+    "head_sha": "0ccd3575f6a9f18395c64b58fdf4c341888b0960",
     "actor": "ActiveInsighter",
     "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-09-04T22:15:13Z",
-    "run_started_at": "2026-09-04T22:15:13Z",
-    "updated_at": "2026-09-04T22:20:03Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33924713393",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33924713393/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33924713393/logs",
-    "workflow_key": "update-content",
-    "workflow_file": "update-content.yml"
+    "created_at": "2026-09-05T07:00:29Z",
+    "run_started_at": "2026-09-05T07:00:29Z",
+    "updated_at": "2026-09-05T07:06:03Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33951354491",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/logs",
+    "workflow_key": "build",
+    "workflow_file": "ci.yaml"
   },
   "latest_failed_run": {
     "run_id": "33864284135",
@@ -48,6 +48,27 @@
     "workflow_file": "ci.yaml"
   },
   "recent_runs": [
+    {
+      "run_id": "33951354491",
+      "run_number": 237,
+      "run_attempt": 1,
+      "workflow": "Build and deploy Docusaurus",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "branch": "main",
+      "head_sha": "0ccd3575f6a9f18395c64b58fdf4c341888b0960",
+      "actor": "ActiveInsighter",
+      "triggering_actor": "ActiveInsighter",
+      "created_at": "2026-09-05T07:00:29Z",
+      "run_started_at": "2026-09-05T07:00:29Z",
+      "updated_at": "2026-09-05T07:06:03Z",
+      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33951354491",
+      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/jobs",
+      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/logs",
+      "workflow_key": "build",
+      "workflow_file": "ci.yaml"
+    },
     {
       "run_id": "33924713393",
       "run_number": 130,
@@ -236,27 +257,6 @@
       "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33278787047/logs",
       "workflow_key": "update-content",
       "workflow_file": "update-content.yml"
-    },
-    {
-      "run_id": "33229747869",
-      "run_number": 123,
-      "run_attempt": 1,
-      "workflow": "Update generated docs",
-      "event": "schedule",
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "head_sha": "f4058116e98ece2ad2a409ab5011f05e6a67112a",
-      "actor": "ActiveInsighter",
-      "triggering_actor": "ActiveInsighter",
-      "created_at": "2026-08-29T02:45:54Z",
-      "run_started_at": "2026-08-29T02:45:54Z",
-      "updated_at": "2026-08-29T02:51:26Z",
-      "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33229747869",
-      "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/jobs",
-      "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33229747869/logs",
-      "workflow_key": "update-content",
-      "workflow_file": "update-content.yml"
     }
   ],
   "workflows": [
@@ -265,7 +265,7 @@
       "workflow_file": "ci.yaml",
       "workflow": "Build and deploy Docusaurus",
       "retained_run_count": 10,
-      "latest_run_id": "33864360605",
+      "latest_run_id": "33951354491",
       "latest_failed_run_id": "33864284135"
     },
     {
