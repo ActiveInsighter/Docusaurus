@@ -1,5 +1,26 @@
 [
   {
+    "run_id": "34906876503",
+    "run_number": 140,
+    "run_attempt": 1,
+    "workflow": "Update generated docs",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "branch": "main",
+    "head_sha": "0e937dace4b829dbe59c52c3e247d0a12447f307",
+    "actor": "ActiveInsighter",
+    "triggering_actor": "ActiveInsighter",
+    "created_at": "2026-09-14T23:01:09Z",
+    "run_started_at": "2026-09-14T23:01:09Z",
+    "updated_at": "2026-09-14T23:05:05Z",
+    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/34906876503",
+    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/34906876503/jobs",
+    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/34906876503/logs",
+    "workflow_key": "update-content",
+    "workflow_file": "update-content.yml"
+  },
+  {
     "run_id": "34786234078",
     "run_number": 139,
     "run_attempt": 1,
@@ -187,26 +208,5 @@
     "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33994600460/logs",
     "workflow_key": "update-content",
     "workflow_file": "update-content.yml"
-  },
-  {
-    "run_id": "33951354491",
-    "run_number": 237,
-    "run_attempt": 1,
-    "workflow": "Build and deploy Docusaurus",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "success",
-    "branch": "main",
-    "head_sha": "0ccd3575f6a9f18395c64b58fdf4c341888b0960",
-    "actor": "ActiveInsighter",
-    "triggering_actor": "ActiveInsighter",
-    "created_at": "2026-09-05T07:00:29Z",
-    "run_started_at": "2026-09-05T07:00:29Z",
-    "updated_at": "2026-09-05T07:06:03Z",
-    "run_url": "https://github.com/ActiveInsighter/Docusaurus/actions/runs/33951354491",
-    "jobs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/jobs",
-    "logs_url": "https://api.github.com/repos/ActiveInsighter/Docusaurus/actions/runs/33951354491/logs",
-    "workflow_key": "build",
-    "workflow_file": "ci.yaml"
   }
 ]
